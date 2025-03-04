@@ -16,7 +16,7 @@
                 {!! advertisementCode('home_page_thin_ad_after_signin_section') !!}
             </div>
         @endif
-    @endif
+    @endif 
     <!-- google adsense area end -->
     <section class="banner-section">
         <div class="rt-single-banner5">
