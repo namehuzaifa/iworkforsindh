@@ -1,0 +1,6 @@
+.env
+.env.backup
+.env.production
+/.vscode
+.well-known
+/public/.well-known
