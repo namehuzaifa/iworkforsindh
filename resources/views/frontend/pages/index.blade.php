@@ -4,7 +4,7 @@
     $data = metaData('home');
 @endphp
 @section('description', $data->description)
-@section('og:image', asset($data->image))
+@section('og:image', asset($data->image))clear
 @section('title', $data->title)
 
 @section('main')
