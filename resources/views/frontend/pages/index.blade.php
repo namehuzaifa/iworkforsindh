@@ -7,6 +7,7 @@
 @section('og:image', asset($data->image))clear
 @section('title', $data->title)
 
+
 @section('main')
 
     <!-- google adsense area -->
