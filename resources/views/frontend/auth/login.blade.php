@@ -1,4 +1,4 @@
-@extends('frontend.auth.layouts.auth')
+@extends('frontend.layouts.app')
 
 @section('meta')
     @php
@@ -18,11 +18,11 @@
     {{ asset($data->image) }}
 @endsection
 
-@section('content')
+@section('main')
     <div class="row mt-0 mt-lg-5">
-        <div class="full-height col-12 order-1 order-lg-0">
+        <div class="col-12 order-1 order-lg-0">
             <div class="container">
-                <div class="row full-height align-items-center">
+                <div class="row align-items-center justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-12">
                         <div class="auth-box2">
                             <form action="{{ route('login') }}" method="POST" class="rt-form" id="login_form">
@@ -191,7 +191,8 @@
                 </div>
             </div>
         </div>
-        <div class="auth-right-sidebar r-z order-1 order-lg-0">
+        <div class="rt-spacer-100 rt-spacer-md-50"></div>
+        <div class="auth-right-sidebar r-z order-1 order-lg-0 d-none">
             <div class="sidebar-bg" style="background-image: url({{ asset($cms_setting->login_page_image) }})">
                 <div class="sidebar-content">
                     <h4 class="text-gray-10 rt-mb-50">{{ openJobs() }} {{ __('open_jobs_waiting_for_you') }}</h4>

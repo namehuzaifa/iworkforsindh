@@ -1,4 +1,4 @@
-@extends('frontend.auth.layouts.auth')
+@extends('frontend.layouts.app')
 
 @section('meta')
     @php
@@ -18,14 +18,14 @@
     {{ asset($data->image) }}
 @endsection
 
-@section('content')
+@section('main')
     <div class="row">
         <div class="auth-page2 order-1 order-lg-0">
-            <div class="rt-spacer-100  rt-spacer-lg-50 rt-spacer-xs-50"></div>
-            <div class="rt-spacer-100 rt-spacer-lg-50 rt-spacer-xs-0"></div>
+            {{-- <div class="rt-spacer-100  rt-spacer-lg-50 rt-spacer-xs-50"></div> --}}
+            {{-- <div class="rt-spacer-100 rt-spacer-lg-50 rt-spacer-xs-0"></div>/ --}}
             <div class="rt-spacer-50 rt-spacer-lg-0 rt-spacer-xs-0"></div>
             <div class="container">
-                <div class="row ">
+                <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-12 tw-bg-white tw-relative tw-z-50">
                         <div class="auth-box2">
                             <form id="formId" action="{{ route('register') }}" method="POST" class="rt-form">
@@ -77,6 +77,22 @@
                                                 class="field form-control @error('name') is-invalid @enderror"
                                                 type="text" placeholder="{{ __('full_name') }}">
                                             @error('name')
+                                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="fromGroup rt-mb-15">
+                                            <input name="nic" id="nic" value="{{ old('nic') }}"
+                                                class="field form-control @error('nic') is-invalid @enderror"
+                                                type="number" placeholder="{{ __('NIC') }}">
+                                            @error('nic')
+                                                <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="fromGroup rt-mb-15">
+                                            <input name="phone" id="phone" value="{{ old('phone') }}"
+                                                class="field form-control @error('phone') is-invalid @enderror"
+                                                type="text" placeholder="{{ __('Phone') }}">
+                                            @error('phone')
                                                 <span class="invalid-feedback" role="alert">{{ __($message) }}</span>
                                             @enderror
                                         </div>
@@ -253,7 +269,7 @@
             </div>
             <div class="rt-spacer-100 rt-spacer-md-50"></div>
         </div>
-        <div class="auth-right-sidebar reg-sidebar order-1 order-lg-0">
+        <div class="auth-right-sidebar reg-sidebar order-1 order-lg-0 d-none">
             <div class="sidebar-bg" style="background-image: url({{ asset($cms_setting->register_page_image) }})">
                 <div class="sidebar-content">
                     <h4 class="text-gray-10 rt-mb-50">{{ openJobs() }} {{ __('open_jobs_waiting_for_you') }}</h4>

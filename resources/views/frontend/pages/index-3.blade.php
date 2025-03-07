@@ -560,6 +560,27 @@
         body:has(.hero-section-2) .n-header--bottom {
             box-shadow: none; !important;
         }
+
+        #desktop {
+            display: block;
+        }
+
+        #mobile {
+            display: none;
+        }
+
+        /* Mobile View - using media query */
+        @media screen and (max-width: 768px) {
+            #desktop {
+                display: none; /* Hide desktop design on mobile */
+            }
+
+            #mobile {
+                display: block; /* Show mobile design on mobile */
+            }
+        }
+
+
     </style>
 @endsection
 
@@ -599,4 +620,313 @@
             ]
         });
     </script>
+@endsection
+
+
+@section('mobile')
+    <div id="mobile" >
+        
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: 'Montserrat', sans-serif;
+                overflow-x: hidden;
+            }
+            
+            .background-container {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                overflow: hidden;
+            }
+            
+            #background-video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                transform: translateX(-50%) translateY(-50%);
+                object-fit: cover;
+                max-width: none;
+                max-height: none;
+            }
+            
+            @media (min-aspect-ratio: 16/9) {
+                #background-video {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            
+            @media (max-aspect-ratio: 16/9) {
+                #background-video {
+                    width: auto;
+                    height: 100%;
+                }
+            }
+            
+            .gradient-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .search-icon {
+                position: absolute;
+                left: 30px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #777;
+            }
+            
+            .login-btn {
+                background: linear-gradient(45deg, #a53f98, #7a1ea1);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                font-weight: 500;
+                letter-spacing: 1px;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 0 15px #a53f98;
+                animation: glow 1.5s infinite alternate;
+                width: 85px;
+                height: 85px;
+            }
+            
+            .login-form-btn {
+                /* background: linear-gradient(45deg, #a53f98, #7a1ea1); */
+                background-color: #1967d2;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                padding: 12px 0;
+                width: 100%;
+                /* box-shadow: 0 0 10px rgba(165, 63, 152, 0.7); */
+            }
+            
+            .register-form-btn {
+                /* background: transparent; */
+                background-color: #1967d2;
+
+                color: white;
+                border: 1px solid #1967d2;
+                border-radius: 25px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                padding: 12px 0;
+                width: 100%;
+                /* transition: background 0.3s; */
+            }
+            
+            .register-form-btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            @keyframes glow {
+                from {
+                    box-shadow: 0 0 5px #a53f98;
+                }
+                to {
+                    box-shadow: 0 0 20px #a53f98, 0 0 30px #a53f98;
+                }
+            }
+            
+            .app-icon {
+                /* background: rgba(255, 255, 255, 0.2); */
+                /* border-radius: 15px; */
+                /* padding: 10px; */
+                width: 135px;
+                transition: transform 0.3s;
+            }
+            
+            .app-icon:hover {
+                transform: scale(1.05);
+            }
+            
+            .custom-footer {
+                color: white;
+                border-top: 1px solid white;
+                padding-top: 15px;
+                font-size: 10px;
+            }
+            
+            .jobs-text {
+                color: #9E9E9E;
+                font-size: 14px;
+                text-align: center;
+            }
+            
+            .form-control {
+                font-family: 'Montserrat', sans-serif;
+            }
+            
+            .custom-control {
+                font-family: 'Montserrat', sans-serif;
+            }
+            
+            .forgotten-password {
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+                opacity: 0.9;
+                transition: opacity 0.3s;
+            }
+            
+            .forgotten-password:hover {
+                opacity: 1;
+                color: white;
+                text-decoration: underline;
+            }
+            
+            .login-section {
+                display: none;
+                margin: 20px auto;
+            }
+            
+            .form-check-input:checked {
+                background-color: #a53f98;
+                border-color: #a53f98;
+            }
+            .img-fluid{
+                margin-top: 100px;
+            }
+            .search-field-text{
+                text-align: center;;
+                margin-bottom: 0px;
+                font-size: 16px !important;
+                margin-top: 0px !important;
+                font-weight: 500;
+            }
+            .main-heading{
+                font-size: 16px !important;
+                /* margin-bottom: -10px; */
+                font-weight: 500 !important;
+            }
+            #search-section{
+                /* width: 400px; */
+                margin: 20px auto;
+            }
+            .search-field{
+                padding: 12px 45px !important;
+            }
+            .download-heading{
+                font-size:  16px 
+            }
+            #login-section .form-control{
+                padding: 12px 25px !important;
+                font-size: 16px;
+            }
+            #login-section .login-form-btn, #login-section .register-form-btn{
+                font-size: 16px !important;
+                font-weight: 500 !important
+            }
+        </style>
+        <!-- Background Container with video -->
+        <div class="background-container">
+            <video autoplay muted loop playsinline id="background-video" class="w-100 h-100">
+                <source src="https://iwork4sindh.com/wp-content/uploads/2025/01/WhatsApp-Video-2025-01-28-at-22.06.11_52c4cd68-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="gradient-overlay"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="container-fluid d-flex flex-column min-vh-100 position-relative text-white p-3">
+            <!-- Logo -->
+            <div class="row mt-5">
+                <div class="col-12 text-start">
+                    <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/Screenshot_2025-01-28_204411-removebg-preview-1.png" alt="iWork4Sindh Logo" class="img-fluid" style="max-width: 220px;">
+                </div>
+            </div>
+            
+            <!-- Main Text -->
+            <div class="row mt-3 " >
+                <div class="col-12 text-start">
+                    <h4 class="fw-bold main-heading">Pakistan's First Government and private Job Portal</h4>
+
+                </div>
+            </div>
+            
+            <!-- Search Section - Initially Visible -->
+            <div id="search-section">
+                <!-- Search Field with icon -->
+                <p class="mt-4 fs-5 search-field-text">Search Your Perfect Job</p>
+
+                <form class="row mt-3" action="/jobs">
+                    <div class="col-12 position-relative">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" name="keyword" class="form-control rounded-pill py-3 ps-5 search-field" placeholder="Job title, keywords...">
+                    </div>
+                </form>
+                
+                <!-- Text below search -->
+                <div class="row mt-2 mb-4">
+                    <div class="col-12">
+                        <p class="jobs-text">Find opportunities that match your skills and interests</p>
+                    </div>
+                </div>
+                
+                <!-- Login Button -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button id="login-toggle-btn" class="login-btn">Login</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Download App Section -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <h4 class="mb-3 download-heading">DOWNLOAD APP</h4>
+                    <div class="d-flex justify-content-center gap-2">
+                        <div>
+                            <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/IOS-BUTTON.png" alt="Google Play" class="app-icon">
+                        </div>
+                        <div>
+                            <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/Andriod_Button-1.png" alt="App Store" class="app-icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="row mt-auto">
+                <div class="col-12 text-center custom-footer">
+                    All Rights Reserved By <b>Sindh Information Department</b>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Scripts - Local Bootstrap JS -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Toggle Login Form Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const loginToggleBtn = document.getElementById('login-toggle-btn');
+                const searchSection = document.getElementById('search-section');
+                const loginSection = document.getElementById('login-section');
+                
+                loginToggleBtn.addEventListener('click', function() {
+                    window.location.href = "{{URL::to('login');}}";
+                    // searchSection.style.display = 'none';
+                    
+                    // // Show login section
+                    // loginSection.style.display = 'block';
+                });
+            });
+        </script>
+    </div>
 @endsection
