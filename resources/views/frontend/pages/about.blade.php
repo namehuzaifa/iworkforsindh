@@ -168,7 +168,7 @@
         <div class="rt-spacer-100 rt-spacer-md-10"></div>
 
         <!-- Why choose us -->
-        <div class="working-process tw-bg-[#F1F2F4]">
+        <div class="working-process tw-bg-[#F1F2F4] d-none">
             <div class="rt-spacer-100 rt-spacer-md-50"></div>
             <div class="container">
                 <div class="row">
@@ -237,8 +237,8 @@
 
         <!-- Misson  area  start -->
 
-        <div class="rt-spacer-100 rt-spacer-md-50"></div>
-        <section class="mission">
+        <div class="rt-spacer-100 rt-spacer-md-50  d-none"></div>
+        <section class="mission  d-none">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -257,7 +257,7 @@
                 </div>
             </div>
         </section>
-        <div class="rt-spacer-100 rt-spacer-md-50"></div>
+        <div class="rt-spacer-100 rt-spacer-md-50  d-none"></div>
 
        <!-- Testimonail Start -->
         @if ($testimonials->count())
@@ -344,7 +344,7 @@
         @endif
 
         <!-- Call to action Start -->
-        <div class="cta-area rt-pt-100 rt-mb-100 rt-mb-md-30 rt-pt-md-50">
+        <div class="cta-area rt-pt-100 rt-mb-100 rt-mb-md-30 rt-pt-md-50  d-none">
             @include('frontend.partials.call-to-action')
         </div>
 

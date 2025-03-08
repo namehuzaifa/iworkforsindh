@@ -27,10 +27,10 @@
                         <li><a href="{{ route('website.about') }}">{{ __('about') }}</a></li>
                         <li><a href="{{ route('website.contact') }}">{{ __('contact') }}</a></li>
                         @guest
-                            <li><a href="{{ route('website.plan') }}">{{ __('pricing') }}</a></li>
+                            {{-- <li><a href="{{ route('website.plan') }}">{{ __('pricing') }}</a></li> --}}
                         @endguest
                         @if (auth('user')->check() && authUser()->role != 'candidate')
-                            <li><a href="{{ route('website.plan') }}">{{ __('pricing') }}</a></li>
+                            {{-- <li><a href="{{ route('website.plan') }}">{{ __('pricing') }}</a></li> --}}
                         @endif
                         @foreach ($custom_pages->where('show_footer', 1)->where('footer_column_position', 1) as $page)
                         <li><a href="{{ route('showCustomPage', $page->slug) }}">{{ $page->title }}</a></li>
