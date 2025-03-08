@@ -14,6 +14,7 @@ use App\Models\Skill;
 use App\Models\SkillTranslation;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Modules\Language\Entities\Language;
@@ -110,12 +111,17 @@ class CandidateSettingUpdateService
     {
         $request->validate([
             'name' => 'required',
+            'nic' =>    ['required', 'int', Rule::unique('users')->ignore($user->id)],
+            'phone' =>  ['required', 'string', 'max:20', Rule::unique('users')->ignore($user->id)],
             'birth_date' => 'date',
             'birth_date' => 'required',
             'education' => 'required',
             'experience' => 'required',
         ]);
-        $user->update(['name' => $request->name]);
+        $user->update(['name' => $request->name,
+                        'name' => $request['name'],
+                        'nic' => $request['nic'],
+                    ]);
 
         // Experience
         $experience_request = $request->experience;

@@ -78,8 +78,8 @@ class RegisterController extends Controller
             $data,
             [
                 'name' =>   ['required', 'string', 'max:255'],
-                'nic' =>    ['required', 'int'],
-                'phone' =>  ['required', 'string', 'max:20',],
+                'nic' =>    ['required', 'int', 'unique:users'],
+                'phone' =>  ['required', 'string', 'max:20', 'unique:users'],
                 'email' => [
                     'required',
                     'string',
@@ -125,8 +125,8 @@ class RegisterController extends Controller
         $user = User::create([
             'role' => $data['role'] == 'candidate' ? 'candidate' : 'company',
             'name' => $data['name'],
-            // 'nic' => $data['nic'],
-            // 'phone' => $data['phone'],
+            'nic' => $data['nic'],
+            'phone' => $data['phone'],
             'username' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

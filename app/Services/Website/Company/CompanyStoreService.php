@@ -97,7 +97,8 @@ class CompanyStoreService
             $job_role_id = $job_category->job_role_id;
         }
 
-        $deadline = Carbon::parse(now()->addDays(setting('job_deadline_expiration_limit')))->format('Y-m-d');
+        // $deadline = Carbon::parse(now()->addDays(setting('job_deadline_expiration_limit')))->format('Y-m-d');
+        $deadline = Carbon::parse($request->deadline)->format('Y-m-d');
 
         $jobCreated = Job::create([
             'title' => $request->title,

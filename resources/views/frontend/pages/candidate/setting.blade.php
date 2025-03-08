@@ -107,6 +107,28 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-3">
+                                                        <x-forms.label :required="true" name="NIC"
+                                                            class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
+                                                        <div class="fromGroup">
+                                                            <div class="form-control-icon">
+                                                                <x-forms.input type="text" name="nic"
+                                                                    value="{{ $candidate->user?->nic }}"
+                                                                    placeholder="{{ __('NIC') }}" class="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-3">
+                                                        <x-forms.label :required="true" name="Phone"
+                                                            class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
+                                                        <div class="fromGroup">
+                                                            <div class="form-control-icon">
+                                                                <x-forms.input type="text" name="phone"
+                                                                    value="{{ $candidate->user->phone }}"
+                                                                    placeholder="{{ __('Phone') }}" class="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-3">
                                                         <x-forms.label :required="false" name="professional_title_tagline"
                                                             class="pointer body-font-4 d-block text-gray-900 rt-mb-8" />
                                                         <div class="fromGroup">
