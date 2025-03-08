@@ -686,6 +686,7 @@
                 top: 50%;
                 transform: translateY(-50%);
                 color: #777;
+                z-index: 99;
             }
             
             .login-btn {
@@ -719,7 +720,7 @@
             .register-form-btn {
                 /* background: transparent; */
                 background-color: #1967d2;
-
+    
                 color: white;
                 border: 1px solid #1967d2;
                 border-radius: 25px;
@@ -756,10 +757,22 @@
             }
             
             .custom-footer {
-                color: white;
+                /* color: white; */
+               
+           
+            }
+            footer{
+                background-color: #00278C; /* Background color */
+                color: #fff; /* Text color (white) */
+                padding: 10px 0; /* Optional: Add padding for better spacing */
+                width: 100%; /* Full width */
+                position: sticky;
+                bottom: 0;
+                z-index: 1000; /* Ensures the footer is always on top */
                 border-top: 1px solid white;
-                padding-top: 15px;
+                /* padding-top: 15px; */
                 font-size: 10px;
+                text-align: center;
             }
             
             .jobs-text {
@@ -800,7 +813,7 @@
                 border-color: #a53f98;
             }
             .img-fluid{
-                margin-top: 100px;
+                margin-top: 75px;
             }
             .search-field-text{
                 text-align: center;;
@@ -809,10 +822,11 @@
                 margin-top: 0px !important;
                 font-weight: 500;
             }
-            .main-heading{
+            .main-heading {
                 font-size: 16px !important;
-                /* margin-bottom: -10px; */
+                margin-bottom: -10px !important;
                 font-weight: 500 !important;
+                color: #fff;
             }
             #search-section{
                 /* width: 400px; */
@@ -822,7 +836,8 @@
                 padding: 12px 45px !important;
             }
             .download-heading{
-                font-size:  16px 
+                font-size:  16px;
+                color: #fff;
             }
             #login-section .form-control{
                 padding: 12px 25px !important;
@@ -834,75 +849,77 @@
             }
         </style>
         <!-- Background Container with video -->
-        <div class="background-container">
-            <video autoplay muted loop playsinline id="background-video" class="w-100 h-100">
-                <source src="https://iwork4sindh.com/wp-content/uploads/2025/01/WhatsApp-Video-2025-01-28-at-22.06.11_52c4cd68-1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="gradient-overlay"></div>
-        </div>
+        <div class="main-container">
+            <div class="background-container">
+                <video autoplay muted loop playsinline id="background-video" class="w-100 h-100">
+                    <source src="{{ url('video/mobile-view-home.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="gradient-overlay"></div>
+            </div>
         
         <!-- Main Content -->
-        <div class="container-fluid d-flex flex-column min-vh-100 position-relative text-white p-3">
-            <!-- Logo -->
-            <div class="row mt-5">
-                <div class="col-12 text-start">
-                    <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/Screenshot_2025-01-28_204411-removebg-preview-1.png" alt="iWork4Sindh Logo" class="img-fluid" style="max-width: 220px;">
-                </div>
-            </div>
-            
-            <!-- Main Text -->
-            <div class="row mt-3 " >
-                <div class="col-12 text-start">
-                    <h4 class="fw-bold main-heading">Pakistan's First Government and private Job Portal</h4>
-
-                </div>
-            </div>
-            
-            <!-- Search Section - Initially Visible -->
-            <div id="search-section">
-                <!-- Search Field with icon -->
-                <p class="mt-4 fs-5 search-field-text">Search Your Perfect Job</p>
-
-                <form class="row mt-3" action="/jobs">
-                    <div class="col-12 position-relative">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" name="keyword" class="form-control rounded-pill py-3 ps-5 search-field" placeholder="Job title, keywords...">
-                    </div>
-                </form>
-                
-                <!-- Text below search -->
-                <div class="row mt-2 mb-4">
-                    <div class="col-12">
-                        <p class="jobs-text">Find opportunities that match your skills and interests</p>
+            <div class="container-fluid d-flex flex-column min-vh-100 position-relative text-white p-3">
+                <!-- Logo -->
+                <div class="row mt-5">
+                    <div class="col-12 text-start">
+                        <img src="{{ url('uploads/app/logo/logo.png') }}" alt="iWork4Sindh Logo" class="img-fluid" style="max-width: 220px;">
                     </div>
                 </div>
                 
-                <!-- Login Button -->
-                <div class="row">
+                <!-- Main Text -->
+                <div class="row mt-3 " >
+                    <div class="col-12 text-start">
+                        <h4 class="fw-bold main-heading">Pakistan's First Government and private Job Portal</h4>
+
+                    </div>
+                </div>
+                
+                <!-- Search Section - Initially Visible -->
+                <div id="search-section">
+                    <!-- Search Field with icon -->
+                    <p class="mt-4 fs-5 search-field-text">Search Your Perfect Job</p>
+
+                    <form class="row mt-3" action="/jobs">
+                        <div class="col-12 position-relative">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" name="keyword" class="form-control rounded-pill py-3 ps-5 search-field" placeholder="Job title, keywords...">
+                        </div>
+                    </form>
+                    
+                    <!-- Text below search -->
+                    <div class="row mt-2 mb-4">
+                        <div class="col-12">
+                            <p class="jobs-text">Find opportunities that match your skills and interests</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button id="login-toggle-btn" class="login-btn">Login</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Download App Section -->
+                <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <button id="login-toggle-btn" class="login-btn">Login</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Download App Section -->
-            <div class="row mt-4">
-                <div class="col-12 text-center">
-                    <h4 class="mb-3 download-heading">DOWNLOAD APP</h4>
-                    <div class="d-flex justify-content-center gap-2">
-                        <div>
-                            <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/IOS-BUTTON.png" alt="Google Play" class="app-icon">
-                        </div>
-                        <div>
-                            <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/Andriod_Button-1.png" alt="App Store" class="app-icon">
+                        <h4 class="mb-3 download-heading">DOWNLOAD APP</h4>
+                        <div class="d-flex justify-content-center gap-2">
+                            <div>
+                                <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/IOS-BUTTON.png" alt="Google Play" class="app-icon">
+                            </div>
+                            <div>
+                                <img src="https://iwork4sindh.com/wp-content/uploads/2025/01/Andriod_Button-1.png" alt="App Store" class="app-icon">
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Footer -->
             </div>
-            
-            <!-- Footer -->
-            <footer class="row mt-auto">
+            <footer class="footer mt-auto">
                 <div class="col-12 text-center custom-footer">
                     All Rights Reserved By <b>Sindh Information Department</b>
                 </div>

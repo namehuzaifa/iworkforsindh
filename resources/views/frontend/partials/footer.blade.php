@@ -35,7 +35,7 @@
                         @foreach ($custom_pages->where('show_footer', 1)->where('footer_column_position', 1) as $page)
                         <li><a href="{{ route('showCustomPage', $page->slug) }}">{{ $page->title }}</a></li>
                         @endforeach
-                        <li><a href="{{ route('website.posts') }}">{{ __('blog') }}</a></li>
+                        {{-- <li><a href="{{ route('website.posts') }}">{{ __('blog') }}</a></li> --}}
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6 rt-single-widget ">
@@ -70,9 +70,9 @@
                     <h2 class="footer-title">{{ __('support') }}</h2>
                     <ul class="rt-usefulllinks2">
                         <li><a href="{{ route('website.faq') }}">{{ __('faq') }}</a></li>
-                        <li><a href="{{ route('website.privacyPolicy') }}">{{ __('privacy_policy') }}</a></li>
+                        {{-- <li><a href="{{ route('website.privacyPolicy') }}">{{ __('privacy_policy') }}</a></li> --}}
                         <li><a href="{{ route('website.termsCondition') }}">{{ __('terms_condition') }}</a></li>
-                        <li><a href="{{ route('website.refundPolicy') }}">{{ __('refund_policy') }}</a></li>
+                        {{-- <li><a href="{{ route('website.refundPolicy') }}">{{ __('refund_policy') }}</a></li> --}}
                         @foreach ($custom_pages->where('show_footer', 1)->where('footer_column_position', 4) as $page)
                         <li><a href="{{ route('showCustomPage', $page->slug) }}">{{ $page->title }}</a></li>
                         @endforeach
