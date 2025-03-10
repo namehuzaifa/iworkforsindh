@@ -13,6 +13,7 @@
 /.vscode
 .well-known
 /public/
+/public/manifest.json
 /storage/
 /uploads/
 /vendor/
