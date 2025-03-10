@@ -897,7 +897,7 @@
                     <!-- Login Button -->
                     <div class="row">
                         <div class="col-12 text-center">
-                            <button id="login-toggle-btn" class="login-btn">{{Auth::check() ? 'Job' : 'Login' }}</button>
+                            <button id="login-toggle-btn" class="login-btn">{{Auth::check() ? 'Jobs' : 'Login' }}</button>
                         </div>
                     </div>
                 </div>
