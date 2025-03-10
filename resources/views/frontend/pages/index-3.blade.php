@@ -897,7 +897,7 @@
                     <!-- Login Button -->
                     <div class="row">
                         <div class="col-12 text-center">
-                            <button id="login-toggle-btn" class="login-btn">Login</button>
+                            <button id="login-toggle-btn" class="login-btn">{{Auth::check() ? 'Jobs' : 'Login' }}</button>
                         </div>
                     </div>
                 </div>
@@ -937,7 +937,7 @@
                 const loginSection = document.getElementById('login-section');
                 
                 loginToggleBtn.addEventListener('click', function() {
-                    window.location.href = "{{URL::to('login');}}";
+                    window.location.href = "{{Auth::check() ? URL::to('jobs') : URL::to('login')}}";
                     // searchSection.style.display = 'none';
                     
                     // // Show login section
