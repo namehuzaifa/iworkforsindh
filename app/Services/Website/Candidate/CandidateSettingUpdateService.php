@@ -159,7 +159,8 @@ class CandidateSettingUpdateService
             deleteImage($candidate->photo);
 
             $path = 'uploads/images/candidates';
-            $image = uploadImage($request->image, $path, [164, 164]);
+            // $image = uploadImage($request->image, $path, [164, 164]);
+            $image = uploadImage($request->image, $path, );
 
             $candidate->update([
                 'photo' => $image,
