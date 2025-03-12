@@ -67,8 +67,8 @@ return [
     'mollie_key' => 'test_Q9JvB3aM6e2Wkc92QjpBV3k88AF3x6',
     'mollie_active' => true,
 
-    'google_analytics' => '',
-    'google_analytics_status' => false,
+    'google_analytics' => 'G-36438JTPM2',
+    'google_analytics_status' => true,
 
     'indeed_id' => '7778623931867371',
     'indeed_limit' => '10',
