@@ -62,7 +62,7 @@
                         </div>
                         <span class="tw-flex tw-items-center tw-gap-1">
                             <i class="ph-map-pin"></i>
-                            <span class="tw-location">{{ $job->address }}</span>
+                            <span class="tw-location">{{ $job->exact_location }}</span>
                         </span>
                     </div>
                 </div>
