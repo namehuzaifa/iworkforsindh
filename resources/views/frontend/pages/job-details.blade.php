@@ -210,7 +210,7 @@ $long = $job->long;
                                     </span>
                                 </button>
                                 @else
-                                @if ($job->can_apply)
+                                @if ($job->can_apply || $job->apply_email)
                                 <div class="max-311">
                                     @if ($job->deadline_active)
                                     @auth('user')
@@ -276,12 +276,12 @@ $long = $job->long;
                                     </span>
                                 </a>
                                 @else
-                                <a href="mailto:{{ $job->apply_email }}" class="btn btn-primary btn-lg d-block">
+                                {{-- <a href="mailto:{{ $job->apply_email }}" class="btn btn-primary btn-lg d-block">
                                     <span class="button-content-wrapper ">
                                         <span class="button-icon align-icon-right"><i class="ph-arrow-right"></i></span>
                                         <span class="button-text">{{ __('apply_now') }}</span>
                                     </span>
-                                </a>
+                                </a> --}}
                                 @endif
                                 @endif
                                 @endif
