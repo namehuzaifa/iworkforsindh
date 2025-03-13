@@ -426,7 +426,7 @@
     @endif
     <!-- google adsense area end -->
     <!-- newsletter -->
-    <section class="section-box tw-mb-8">
+    <section class="section-box tw-mb-8 d-none">
         <div class="container">
             <div class="tw-bg-primary-500 tw-p-8 tw-rounded-xl">
                 <div class="row align-items-center">
