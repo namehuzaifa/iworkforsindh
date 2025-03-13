@@ -870,7 +870,7 @@
                 <!-- Main Text -->
                 <div class="row mt-3 " >
                     <div class="col-12 text-start">
-                        <h4 class="fw-bold main-heading">Pakistan's First Government and private Job Portal</h4>
+                        <h4 class="fw-bold main-heading">{!! __('no_1_job_portal_home_3') !!}</h4>
 
                     </div>
                 </div>

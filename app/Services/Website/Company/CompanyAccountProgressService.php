@@ -150,7 +150,8 @@ class CompanyAccountProgressService
 
             $path = 'uploads/images/company';
 
-            $image = uploadImage($request->image, $path, [68, 68]);
+            // $image = uploadImage($request->image, $path, [68, 68]);
+            $image = uploadImage($request->image, $path,);
 
             $company->logo = $image;
         } else {
@@ -167,7 +168,8 @@ class CompanyAccountProgressService
             // $banner = uploadImage($request->banner, 'images/company');
 
             $path = 'uploads/images/company';
-            $banner = uploadImage($request->banner, $path, [1920, 312]);
+            // $banner = uploadImage($request->banner, $path, [1920, 312]);
+            $banner = uploadImage($request->banner, $path,);
 
             $company->banner = $banner;
         } else {
