@@ -10,6 +10,6 @@ Route::middleware(['auth:admin', 'set_lang'])->prefix('admin/newsletter')->group
     Route::get('/send-mail', [NewsletterController::class, 'sendMail'])->name('module.newsletter.send_mail');
     Route::post('/send-mail', [NewsletterController::class, 'submitMail'])->name('module.newsletter.submit_mail');
 });
-// store email from frontend user
-Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
-Route::get('/subscribe/confirm/{token}', [NewsletterController::class, 'subscribeDataSave'])->name('newsletter.subscribe.confirm');
+// // store email from frontend user
+// Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+// Route::get('/subscribe/confirm/{token}', [NewsletterController::class, 'subscribeDataSave'])->name('newsletter.subscribe.confirm');
