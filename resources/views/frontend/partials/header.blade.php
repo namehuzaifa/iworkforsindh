@@ -566,6 +566,7 @@ config('templatecookie.default_language'))->first();
 
                                 <span id="autocomplete_job_results"></span>
                             </div>
+                            <span class="header_tagline">Powered by  Information Department Government of Sindh</span>
                         </form>
                     </div>
 
