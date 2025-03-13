@@ -3,7 +3,7 @@
     iframe {
     width: 30%;
     height: 900px;
-    border: 1px solid #0a65cc;
+    border: 1px solid #dadbdd
     border-radius: 5px;
     padding: 20px;
 }
