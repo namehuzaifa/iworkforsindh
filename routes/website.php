@@ -27,6 +27,11 @@ if (! app()->runningInConsole()) {
 }
 
 // Email Verification
+Route::get('/mobile', function () {
+    return view('frontend.pages.mobile');
+});
+
+// Email Verification
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
