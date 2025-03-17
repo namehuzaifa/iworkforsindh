@@ -396,6 +396,7 @@ config('templatecookie.default_language'))->first();
                                 {{ $cms_setting?->footer_phone_no }}
                             </a>
                         </div>
+                        @endif
                         <div id="google_translate_element" style="position: relative; height: 45px; right: 20px; z-index: 9999; overflow: hidden; margin-top:-10px"></div>
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
@@ -411,7 +412,6 @@ config('templatecookie.default_language'))->first();
                                 );
                             }
                         </script>
-                        @endif
                         @if ($setting->language_changing)
                         <div class="dropdown">
                             @php
