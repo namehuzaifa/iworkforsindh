@@ -397,7 +397,20 @@ config('templatecookie.default_language'))->first();
                             </a>
                         </div>
                         <div id="google_translate_element" style="position: relative; height: 45px; right: 20px; z-index: 9999; overflow: hidden; margin-top:-10px"></div>
-
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var script = document.createElement("script");
+                                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                                document.body.appendChild(script);
+                            });
+                        
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement(
+                                    {pageLanguage: 'en', includedLanguages: 'en,ur,sd', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL},
+                                    'google_translate_element'
+                                );
+                            }
+                        </script>
                         @endif
                         @if ($setting->language_changing)
                         <div class="dropdown">
@@ -759,13 +772,3 @@ config('templatecookie.default_language'))->first();
         <div class="sidebar-overlay"></div>
     </div>
 </header>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-            {pageLanguage: 'en', includedLanguages: 'en,ur,sd', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL},
-            'google_translate_element'
-        );
-    }
-</script>
