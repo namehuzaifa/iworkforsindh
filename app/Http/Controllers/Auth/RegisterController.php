@@ -132,10 +132,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         try {
-            $admins = Admin::all();
-            foreach ($admins as $admin) {
-                Notification::send($admin, new NewUserRegisteredNotification($admin, $user));
-            }
+            // $admins = Admin::all();
+            // foreach ($admins as $admin) {
+            //     Notification::send($admin, new NewUserRegisteredNotification($admin, $user));
+            // }
         } catch (\Throwable $th) {
         }
 
