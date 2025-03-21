@@ -78,8 +78,8 @@ class RegisterController extends Controller
             $data,
             [
                 'name' =>   ['required', 'string', 'max:255'],
-                'nic' =>    ['required', 'int', 'unique:users'],
-                'phone' =>  ['required', 'string', 'max:20', 'unique:users'],
+                'nic' =>    ['required', 'int', ],
+                'phone' =>  ['required', 'string', 'max:20',],
                 'email' => [
                     'required',
                     'string',
@@ -147,7 +147,7 @@ class RegisterController extends Controller
                 $candidate_account_auto_activation_enabled = Setting::where('candidate_account_auto_activation', 1)->count();
 
                 if ($candidate_account_auto_activation_enabled) {
-                    Notification::route('mail', $user->email)->notify(new CandidateCreateNotification($user, $data['password']));
+                    // Notification::route('mail', $user->email)->notify(new CandidateCreateNotification($user, $data['password']));
                 } else {
                     Notification::route('mail', $user->email)->notify(new CandidateCreateApprovalPendingNotification($user, $data['password']));
                 }
