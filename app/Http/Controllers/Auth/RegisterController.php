@@ -155,7 +155,7 @@ class RegisterController extends Controller
                 $employer_auto_activation_enabled = Setting::where('employer_auto_activation', 1)->count();
 
                 if ($employer_auto_activation_enabled) {
-                    Notification::route('mail', $user->email)->notify(new CompanyCreatedNotification($user, $data['password']));
+                    // Notification::route('mail', $user->email)->notify(new CompanyCreatedNotification($user, $data['password']));
                 } else {
                     Notification::route('mail', $user->email)->notify(new CompanyCreateApprovalPendingNotification($user, $data['password']));
                 }
