@@ -144,6 +144,10 @@ class CandidateJobsController extends Controller
             $candidate = auth('sanctum')->user()->candidate;
             $job = Job::find($request->job_id);
 
+            if (!$job) {
+                return $this->respondError('Job not found');
+            }
+
             // if ($job->apply_on != 'app') {
             //     return $this->respondError('You can not apply on this job. Because this job is not for apply on website');
             // }
@@ -171,7 +175,7 @@ class CandidateJobsController extends Controller
                     'status' => true,
                 ],
             ]);
-            
+
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Error: '.$e->getMessage(),
