@@ -129,46 +129,54 @@ class CandidateJobsController extends Controller
             );
         }
 
-        // if (auth('sanctum')->user()->candidate->profile_complete != 0) {
-        //     return response()->json(
-        //         ['message' => __('complete_your_profile_before_applying_to_jobs_add_your_information_resume_and_profile_picture_for_a_better_chance_of_getting_hired')], 500
-        //     );
-        // }
+        try {
+            //code...
+            // if (auth('sanctum')->user()->candidate->profile_complete != 0) {
+            //     return response()->json(
+            //         ['message' => __('complete_your_profile_before_applying_to_jobs_add_your_information_resume_and_profile_picture_for_a_better_chance_of_getting_hired')], 500
+            //     );
+            // }
 
-        if (! CandidateResume::where('id', $request->resume_id)->where('candidate_id', auth('sanctum')->user()->candidate->id)->exists()) {
-            return $this->respondError('You can not apply on this job. Because this resume is not yours');
+            if (! CandidateResume::where('id', $request->resume_id)->where('candidate_id', auth('sanctum')->user()->candidate->id)->exists()) {
+                return $this->respondError('You can not apply on this job. Because this resume is not yours');
+            }
+
+            $candidate = auth('sanctum')->user()->candidate;
+            $job = Job::find($request->job_id);
+
+            // if ($job->apply_on != 'app') {
+            //     return $this->respondError('You can not apply on this job. Because this job is not for apply on website');
+            // }
+
+            DB::table('applied_jobs')->insert([
+                'candidate_id' => $candidate->id,
+                'job_id' => $job->id,
+                'cover_letter' => $request->cover_letter,
+                'candidate_resume_id' => $request->resume_id,
+                'application_group_id' => $job->company->applicationGroups->where('is_deleteable', false)->first()->id ?? 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // make notification to candidate and company for notify
+            $job->company->user->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
+
+            if (auth('sanctum')->user()->recent_activities_alert) {
+                auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
+            }
+
+            return $this->respondWithSuccess([
+                'data' => [
+                    'message' => 'Your job application submitted successfully!',
+                    'status' => true,
+                ],
+            ]);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Error: '.$e->getMessage(),
+            ], 500);
         }
-
-        $candidate = auth('sanctum')->user()->candidate;
-        $job = Job::find($request->job_id);
-
-        // if ($job->apply_on != 'app') {
-        //     return $this->respondError('You can not apply on this job. Because this job is not for apply on website');
-        // }
-
-        DB::table('applied_jobs')->insert([
-            'candidate_id' => $candidate->id,
-            'job_id' => $job->id,
-            'cover_letter' => $request->cover_letter,
-            'candidate_resume_id' => $request->resume_id,
-            'application_group_id' => $job->company->applicationGroups->where('is_deleteable', false)->first()->id ?? 1,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // make notification to candidate and company for notify
-        $job->company->user->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
-
-        if (auth('sanctum')->user()->recent_activities_alert) {
-            auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
-        }
-
-        return $this->respondWithSuccess([
-            'data' => [
-                'message' => 'Your job application submitted successfully!',
-                'status' => true,
-            ],
-        ]);
     }
 
     public function jobAlerts(Request $request)
