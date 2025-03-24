@@ -134,9 +134,9 @@ class CandidateJobsController extends Controller
         $candidate = auth('sanctum')->user()->candidate;
         $job = Job::find($request->job_id);
 
-        if ($job->apply_on != 'app') {
-            return $this->respondError('You can not apply on this job. Because this job is not for apply on website');
-        }
+        // if ($job->apply_on != 'app') {
+        //     return $this->respondError('You can not apply on this job. Because this job is not for apply on website');
+        // }
 
         DB::table('applied_jobs')->insert([
             'candidate_id' => $candidate->id,
