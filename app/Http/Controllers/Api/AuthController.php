@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -73,11 +74,20 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
+        // $request->validate([
+        $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'nic' =>    ['required', 'int', ],
+            'phone' =>  ['required', 'string', 'max:20',],
             'password' => 'required|string|min:8|confirmed',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(
+                ['errors' => $validator->messages()], 422
+            );
+        }
 
         $newUsername = Str::slug($request->name);
         $oldUserName = User::where('username', $newUsername)->first();
@@ -91,16 +101,18 @@ class AuthController extends Controller
         $user = User::create([
             'role' => $request->role == 'candidate' ? 'candidate' : 'company',
             'name' => $request->name,
+            'nic'   => $request['nic'],
+            'phone' => $request['phone'],
             'username' => $username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
         try {
-            $admins = Admin::all();
-            foreach ($admins as $admin) {
-                Notification::send($admin, new NewUserRegisteredNotification($admin, $user));
-            }
+            // $admins = Admin::all();
+            // foreach ($admins as $admin) {
+            //     Notification::send($admin, new NewUserRegisteredNotification($admin, $user));
+            // }
         } catch (\Throwable $th) {
         }
 
@@ -110,7 +122,7 @@ class AuthController extends Controller
                 $candidate_account_auto_activation_enabled = Setting::where('candidate_account_auto_activation', 1)->count();
 
                 if ($candidate_account_auto_activation_enabled) {
-                    Notification::route('mail', $user->email)->notify(new CandidateCreateNotification($user, $request->password));
+                    // Notification::route('mail', $user->email)->notify(new CandidateCreateNotification($user, $request->password));
                 } else {
                     Notification::route('mail', $user->email)->notify(new CandidateCreateApprovalPendingNotification($user, $request->password));
                 }
@@ -118,7 +130,7 @@ class AuthController extends Controller
                 $employer_auto_activation_enabled = Setting::where('employer_auto_activation', 1)->count();
 
                 if ($employer_auto_activation_enabled) {
-                    Notification::route('mail', $user->email)->notify(new CompanyCreatedNotification($user, $request->password));
+                    // Notification::route('mail', $user->email)->notify(new CompanyCreatedNotification($user, $request->password));
                 } else {
                     Notification::route('mail', $user->email)->notify(new CompanyCreateApprovalPendingNotification($user, $request->password));
                 }
