@@ -165,9 +165,16 @@ class AuthController extends Controller
 
     public function sendResetCodeEmail(Request $request)
     {
-        $this->validate($request, [
+        // $this->validate($request, [
+        $validator = Validator::make($request->all(),[
             'email' => 'required|string|email|exists:users,email',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(
+                ['errors' => $validator->messages()], 422
+            );
+        }
 
         $customer = User::where('email', $request->email)->first();
         $code = rand(100000, 999999);
@@ -193,11 +200,18 @@ class AuthController extends Controller
 
     public function reset(Request $request)
     {
-        $this->validate($request, [
+        // $this->validate($request, [
+        $validator = Validator::make($request->all(),[
             'code' => 'required',
             'email' => 'required|string|max:100|email|exists:users,email',
             'password' => 'required|min:8|max:50',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(
+                ['errors' => $validator->messages()], 422
+            );
+        }
 
         $customer = User::where('email', $request->email)->first();
         $verificationCode = VerificationCode::reset()

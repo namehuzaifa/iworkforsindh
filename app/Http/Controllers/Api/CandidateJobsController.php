@@ -15,6 +15,7 @@ use F9Web\ApiResponseHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
 
 class CandidateJobsController extends Controller
 {
@@ -113,13 +114,20 @@ class CandidateJobsController extends Controller
 
     public function jobApply(Request $request)
     {
-        $request->validate([
+        // $request->validate([
+        $validator = Validator::make($request->all(),[
             'resume_id' => 'required',
             'cover_letter' => 'required|max:2000',
         ], [
             'resume_id.required' => 'Please select resume',
             'cover_letter.required' => 'Please enter cover letter',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(
+                ['errors' => $validator->messages()], 422
+            );
+        }
 
         // if (auth('sanctum')->user()->candidate->profile_complete != 0) {
         //     return response()->json(
