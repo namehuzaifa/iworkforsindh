@@ -311,7 +311,7 @@ class SettingsController extends Controller
     {
         $request->validate(['test_email' => ['required', 'email']]);
         try {
-            Mail::to($request->test_email)->send(new SmtpTestEmail);
+            // Mail::to($request->test_email)->send(new SmtpTestEmail);
 
             $data = [
                 'name' => 'John Doe',
