@@ -30,11 +30,11 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
      */
     public function __construct($user, $company, $job, $isCompany)
     {
-        $this->subject = "Applied for ". $this->job->title ." at ". $this->company->name;
         $this->isCompany    = $isCompany;
         $this->user         = $user;
         $this->company      = $company;
         $this->job          = $job;
+        $this->subject = "Applied for ". $this->job->title ." at ". $this->company->name;
     }
 
      /**
@@ -55,9 +55,9 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
             return $this->subject($this->subject)
             ->from(config('mail.from.address'), config('mail.from.name'))
             ->markdown('mails.applyByEmail')->with([
-                'job' => $this->job,
-                'user' => $this->user,
-                'company' => $this->company,
+                'jobTitle' => $this->job->title,
+                'userName' => $this->user->name,
+                'companyName' => $this->company->name,
             ]);
         }
     }
