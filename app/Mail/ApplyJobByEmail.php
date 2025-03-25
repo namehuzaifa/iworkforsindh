@@ -11,7 +11,13 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public $subject;
+    public $isCompany;
+    public $user;
+    public $company;
+    public $job;
+    
+
     /**
      * Create a new message instance.
      */
@@ -22,9 +28,13 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
      * @param  array  $data
      * @return void
      */
-    public function __construct($data)
+    public function __construct($user, $company, $job, $isCompany)
     {
-       $this->data = $data;
+        $this->subject = "Applied for ". $this->job->title ." at ". $this->company->name;
+        $this->isCompany    = $isCompany;
+        $this->user         = $user;
+        $this->company      = $company;
+        $this->job          = $job;
     }
 
      /**
@@ -37,8 +47,18 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
         // return $this->view('mails.applyByEmail')
         //             ->with('data', $this->data);
 
-        return $this->subject('Smtp Configuration Test')
-        ->from(config('mail.from.address'), config('mail.from.name'))
-        ->markdown('mails.applyByEmail');
+        if ($this->isCompany) {
+            return $this->subject($this->subject)
+            ->from(config('mail.from.address'), config('mail.from.name'))
+            ->markdown('mails.applyByEmailCompany');
+        } else {
+            return $this->subject($this->subject)
+            ->from(config('mail.from.address'), config('mail.from.name'))
+            ->markdown('mails.applyByEmail')->with([
+                'job' => $this->job,
+                'user' => $this->user,
+                'company' => $this->company,
+            ]);
+        }
     }
 }

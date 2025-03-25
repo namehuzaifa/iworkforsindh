@@ -56,7 +56,7 @@ class ApplyJobNotification extends Notification
             ->subject("Applied for {$this->job->title} at {$this->company->name}'")
             ->line("Thank you for applying for the position of {$this->job->title} at {$this->company->name}. We have received your application and it is currently under review.")
             ->line("If your qualifications align with our requirements, we will be in touch regarding the next steps. Thank you for considering {$this->company->name} as your potential employer.")
-            ->line('Thank you for choosing <strong>'.config('app.name').'.</strong>');
+            ->line('Thank you for choosing'.config('app.name'));
 
     }
 

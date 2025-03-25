@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Job\JobListResource;
 use App\Http\Traits\JobableApi;
+use App\Mail\ApplyJobByEmail;
 use App\Models\Candidate;
 use App\Models\CandidateResume;
 use App\Models\Job;
@@ -14,6 +15,7 @@ use App\Notifications\Website\Candidate\BookmarkJobNotification;
 use F9Web\ApiResponseHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
@@ -164,7 +166,7 @@ class CandidateJobsController extends Controller
 
             // make notification to candidate and company for notify
             // $job->company->user->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
-
+            Mail::to('iwork4sindh@gmail.com')->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, false));
             if (auth('sanctum')->user()->recent_activities_alert) {
                 // auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
             }
