@@ -8,6 +8,7 @@ use App\Http\Requests\AdminMailUpdateRequest;
 use App\Http\Requests\AdminPayperjobSettingUpdateRequest;
 use App\Http\Requests\AdminWPUpdateRequest;
 use App\Http\Traits\UploadAble;
+use App\Mail\ApplyJobByEmail;
 use App\Mail\SmtpTestEmail;
 use App\Models\cms;
 use App\Models\Cookies;
@@ -311,6 +312,14 @@ class SettingsController extends Controller
         $request->validate(['test_email' => ['required', 'email']]);
         try {
             Mail::to($request->test_email)->send(new SmtpTestEmail);
+
+            $data = [
+                'name' => 'John Doe',
+                'message' => 'This is a test email sent from Laravel Controller.'
+            ];
+    
+            // Send the email
+            Mail::to($request->test_email)->send(new ApplyJobByEmail($data));
 
             return back()->with('success', 'Test email sent successfully.');
         } catch (\Throwable $th) {
