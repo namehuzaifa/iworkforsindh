@@ -34,7 +34,11 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('mails.applyByEmail')
-                    ->with('data', $this->data);
+        // return $this->view('mails.applyByEmail')
+        //             ->with('data', $this->data);
+
+        return $this->subject('Smtp Configuration Test')
+        ->from(config('mail.from.address'), config('mail.from.name'))
+        ->markdown('mails.applyByEmail');
     }
 }
