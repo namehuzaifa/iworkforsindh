@@ -702,12 +702,12 @@ class WebsiteController extends Controller
             ]);
 
             // make notification to candidate and company for notify
-            $job->company->user->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+            // $job->company->user->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
 
             if (auth('user')->user()->recent_activities_alert) {
-                auth('user')
-                    ->user()
-                    ->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+                // auth('user')
+                //     ->user()
+                //     ->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
             }
 
             flashSuccess(__('job_applied_successfully'));

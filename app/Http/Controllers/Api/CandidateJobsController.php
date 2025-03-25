@@ -163,10 +163,10 @@ class CandidateJobsController extends Controller
             ]);
 
             // make notification to candidate and company for notify
-            $job->company->user->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
+            // $job->company->user->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
 
             if (auth('sanctum')->user()->recent_activities_alert) {
-                auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
+                // auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
             }
 
             return $this->respondWithSuccess([
