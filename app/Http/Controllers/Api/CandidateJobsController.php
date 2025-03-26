@@ -169,8 +169,9 @@ class CandidateJobsController extends Controller
 
             if ($job->apply_on == 'email') {
 
+                $companyEmail = $job->apply_email;
                 $resume = CandidateResume::select(['id', 'name', 'file'])->findOrFail($request->resume_id);
-                Mail::to('iwork4sindh@gmail.com')->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, $resume, true));
+                    Mail::to($companyEmail)->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, $resume, true));
                 // Mail::to('iwork4sindh@gmail.com')->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, $resume, false));
                 if (auth('sanctum')->user()->recent_activities_alert) {
                     auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
