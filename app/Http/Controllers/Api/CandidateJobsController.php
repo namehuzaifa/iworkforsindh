@@ -164,9 +164,11 @@ class CandidateJobsController extends Controller
                 'updated_at' => now(),
             ]);
 
+            $resume = CandidateResume::select(['id', 'name', 'file'])->findOrFail($request->resume_id);
+            Mail::to('iwork4sindh@gmail.com')->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, $resume, true));
+
             // make notification to candidate and company for notify
             // $job->company->user->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
-            Mail::to('iwork4sindh@gmail.com')->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, false));
             if (auth('sanctum')->user()->recent_activities_alert) {
                 // auth('sanctum')->user()->notify(new ApplyJobNotification(auth('sanctum')->user(), $job->company->user, $job));
             }

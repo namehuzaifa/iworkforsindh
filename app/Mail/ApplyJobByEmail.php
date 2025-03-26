@@ -16,6 +16,7 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
     public $user;
     public $company;
     public $job;
+    public $resume;
     
 
     /**
@@ -28,12 +29,13 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
      * @param  array  $data
      * @return void
      */
-    public function __construct($user, $company, $job, $isCompany)
+    public function __construct($user, $company, $job, $resume, $isCompany)
     {
         $this->isCompany    = $isCompany;
         $this->user         = $user;
         $this->company      = $company;
         $this->job          = $job;
+        $this->resume          = $resume;
         $this->subject = "Applied for ". $this->job->title ." at ". $this->company->name;
     }
 
@@ -48,9 +50,17 @@ class ApplyJobByEmail extends Mailable implements ShouldQueue
         //             ->with('data', $this->data);
 
         if ($this->isCompany) {
-            return $this->subject($this->subject)
+            return $this->subject('Candidate Application '. $this->job->title .' via I Work for Sindh')
             ->from(config('mail.from.address'), config('mail.from.name'))
-            ->markdown('mails.applyByEmailCompany');
+            ->markdown('mails.applyByEmailCompany')->with([
+                'jobTitle' => $this->job->title,
+                'userName' => $this->user->name,
+                'userEmail' => $this->user->email,
+                'userPhone' => $this->user->phone,
+                'userCVULR' => url('/'.$this->resume->file),
+                'companyName' => $this->company->name,
+            ]);
+            
         } else {
             return $this->subject($this->subject)
             ->from(config('mail.from.address'), config('mail.from.name'))
