@@ -8,6 +8,7 @@ use App\Http\Traits\HasCountryBasedJobs;
 use App\Http\Traits\JobAble;
 use App\Http\Traits\PaymentTrait;
 use App\Http\Traits\ResetCvViewsHistoryTrait;
+use App\Mail\ApplyJobByEmail;
 use App\Models\Candidate;
 use App\Models\CandidateCvView;
 use App\Models\CandidateResume;
@@ -35,6 +36,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -701,14 +703,24 @@ class WebsiteController extends Controller
                 'updated_at' => now(),
             ]);
 
-            // make notification to candidate and company for notify
-            // $job->company->user->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+            if ($job->apply_on == 'email') {
 
-            if (auth('user')->user()->recent_activities_alert) {
-                // auth('user')
-                //     ->user()
-                //     ->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+                $companyEmail = $job->apply_email;
+                $resume = CandidateResume::select(['id', 'name', 'file'])->findOrFail($request->resume_id);
+                Mail::to($companyEmail)->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, $resume, true));
+                // Mail::to('iwork4sindh@gmail.com')->send(new ApplyJobByEmail(auth('sanctum')->user(), $job->company->user, $job, $resume, false));
+                if (auth('user')->user()->recent_activities_alert) {
+                    auth('user')->user()->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+                }
+
+            } else {
+
+                $job->company->user->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+               if (auth('user')->user()->recent_activities_alert) {
+                    auth('user')->user()->notify(new ApplyJobNotification(auth('user')->user(), $job->company->user, $job));
+                }
             }
+
 
             flashSuccess(__('job_applied_successfully'));
 
