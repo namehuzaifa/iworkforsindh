@@ -1,14 +1,16 @@
 @component('mail::message')
 
-<h4>Dear Employer's,</h4>
+<h4>To Whom It May Concern,</h4>
 
-<p>We are pleased to inform you that {{ $userName }} has applied for the {{ $jobTitle }} position at your esteemed organization through the I Work for Sindh platform.</p>
+<p>We are pleased to inform you that <b>{{ $userName }}</b> has applied for the <b>{{ $jobTitle }}</b> position at your esteemed organization through the I Work for Sindh platform.</p>
 <p>Below are the candidate's details for your consideration</p>
 
 <ul>
     <li>Name: {{ $userName }}</li>
     <li>Email: {{ $userEmail }}</li>
-    <li>Contact Number: {{ $userPhone }}</li>
+    @if ($userPhone)
+        <li>Contact Number: {{ $userPhone }}</li>
+    @endif
 </ul>
 
 <x-mail::button :url="$userCVULR">
