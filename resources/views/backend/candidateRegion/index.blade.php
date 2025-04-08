@@ -57,6 +57,7 @@
 <script>
     jQuery(document).ready(function() {
         jQuery('#regionTable').DataTable({
+            "pageLength" : 25,
             "order": [[0, 'asc']], 
             layout: {
                 topStart: {
