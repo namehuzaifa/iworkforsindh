@@ -32,14 +32,16 @@ use Modules\Location\Entities\Country;
 class CandidateController extends Controller {
 
     public function viewRegions() {
-        $regionCounts = Candidate::select('region', DB::raw('count(*) as total'))
-        ->groupBy('region')
+        $regionCounts = Candidate::select('district', DB::raw('count(*) as total'))
+        ->groupBy('district')
         ->get();
+
+        // dd($regionCounts);
 
         // Move "Region not defined" to the last
         $regionCounts = $regionCounts->map(function ($item) {
-            if (is_null($item->region)) {
-                $item->region = 'Region not defined'; // Replace null with custom text
+            if (is_null($item->district)) {
+                $item->district = 'Region not defined'; // Replace null with custom text
             }
             return $item;
         })->sortBy(function ($item) {
@@ -50,13 +52,13 @@ class CandidateController extends Controller {
         return view('backend.candidateRegion.index', compact('regionCounts'));
     }
 
-    public function viewRegionDetail($region) {
-        // Handle "Region not defined"
-        $regionName = $region === 'Region not defined' ? null : $region;
+    public function viewRegionDetail($district) {
+        // Handle "district not defined"
+        $districtName = $district === 'District not defined' ? null : $district;
     
-        $candidates = Candidate::where('region', $regionName)->get();
+        $candidates = Candidate::where('district', $districtName)->get();
     
-        return view('backend.candidateRegion.detail', compact('candidates', 'region'));
+        return view('backend.candidateRegion.detail', compact('candidates', 'district'));
     }
 
     /**

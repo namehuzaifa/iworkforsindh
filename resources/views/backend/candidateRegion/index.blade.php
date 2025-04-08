@@ -22,10 +22,10 @@
             <tbody>
                 @foreach($regionCounts as $region)
                     <tr>
-                        <td>{{ $region->region }}</td>
+                        <td>{{ $region->district }}</td>
                         <td>{{ $region->total }}</td>
                         <td>
-                            <a href="{{ route('candidates.region', $region->region) }}">View Detail</a>
+                            <a href="{{ route('candidates.region', $region->district) }}">View Detail</a>
                         </td>                    
                     </tr>
                 @endforeach

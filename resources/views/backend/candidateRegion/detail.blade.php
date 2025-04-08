@@ -9,7 +9,7 @@
     
     <div class="container" style="margin-right: 400px;">
 
-        <h3>Candidates from: {{ $region }}</h3>
+        <h3>Candidates from: {{ $district }}</h3>
 
         <table id="regionTable" class="table table-bordered table-striped">
             <thead>
