@@ -23,13 +23,42 @@ use App\Notifications\CandidateCreateNotification;
 use App\Notifications\UpdateCompanyPassNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Location\Entities\Country;
 
-class CandidateController extends Controller
-{
+class CandidateController extends Controller {
+
+    public function viewRegions() {
+        $regionCounts = Candidate::select('region', DB::raw('count(*) as total'))
+        ->groupBy('region')
+        ->get();
+
+        // Move "Region not defined" to the last
+        $regionCounts = $regionCounts->map(function ($item) {
+            if (is_null($item->region)) {
+                $item->region = 'Region not defined'; // Replace null with custom text
+            }
+            return $item;
+        })->sortBy(function ($item) {
+            // Move "Region not defined" to the last position
+            return $item->region == 'Region not defined' ? 1 : 0;
+        });
+
+        return view('backend.candidateRegion.index', compact('regionCounts'));
+    }
+
+    public function viewRegionDetail($region) {
+        // Handle "Region not defined"
+        $regionName = $region === 'Region not defined' ? null : $region;
+    
+        $candidates = Candidate::where('region', $regionName)->get();
+    
+        return view('backend.candidateRegion.detail', compact('candidates', 'region'));
+    }
+
     /**
      * Display a listing of the resource.
      *

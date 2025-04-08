@@ -17,18 +17,24 @@
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-dollar-sign"></i></span>
+                
                 <div class="info-box-content">
+                    <span class="info-box-text">{{ __('Candidate Region') }}</span>
+                    <a href="{{ route('candidates.regions') }}"><span class="info-box-number"> {{ 'View candidates region' }}</span></a>
+                </div>
+
+                {{-- <div class="info-box-content">
                     <span class="info-box-text">{{ __('earnings') }}</span>
                     <span class="info-box-number">
                         {{ currencyPosition($data['earnings']) }}
                         @if($data['earnings'] == null || $data['earnings'] == 0) 0 @endif
                         <span data-toggle="tooltip"
-                            {{-- title="All the earnings are converted to '{{ config('jobpilot.currency') }}' currency"> --}}
+                            title="All the earnings are converted to '{{ config('jobpilot.currency') }}' currency">
                             title="All the earnings are converted to '{{ config('templatecookie.currency') }}' currency">
                             <x-svg.info-icon />
                         </span>
                     </span>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="clearfix hidden-md-up"></div>

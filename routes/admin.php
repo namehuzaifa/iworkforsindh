@@ -55,6 +55,11 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware(['auth:admin'])->group(function () {
+        
+        // candidate region
+        Route::get('/candidates/regions', [CandidateController::class, 'viewRegions'])->name('candidates.regions'); 
+        Route::get('/candidates/region/{region}/detail', [CandidateController::class, 'viewRegionDetail'])->name('candidates.region.detail');
+        
         //Dashboard Route
         Route::get('/', [AdminController::class, 'dashboard']);
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
