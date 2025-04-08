@@ -25,7 +25,7 @@
                         <td>{{ $region->region }}</td>
                         <td>{{ $region->total }}</td>
                         <td>
-                            <a href="{{ route('candidates.region.detail', $region->region) }}">View Detail</a>
+                            <a href="{{ route('candidates.region', $region->region) }}">View Detail</a>
                         </td>                    
                     </tr>
                 @endforeach

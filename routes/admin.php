@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function () {
         
         // candidate region
         Route::get('/candidates/regions', [CandidateController::class, 'viewRegions'])->name('candidates.regions'); 
-        Route::get('/candidates/region/{region}/detail', [CandidateController::class, 'viewRegionDetail'])->name('candidates.region.detail');
+        Route::get('/candidates/region/{region}/', [CandidateController::class, 'viewRegionDetail'])->name('candidates.region');
         
         //Dashboard Route
         Route::get('/', [AdminController::class, 'dashboard']);

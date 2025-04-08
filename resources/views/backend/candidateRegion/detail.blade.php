@@ -7,7 +7,7 @@
     <!-- DataTable Buttons CSS CDN -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.css">
     
-    <div class="container">
+    <div class="container" style="margin-right: 400px;">
 
         <h3>Candidates from: {{ $region }}</h3>
 
@@ -16,23 +16,33 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
                     <th>Region</th>
                     <th>District</th>
                     <th>Gender</th>
-                    <th>Cv</th>
                     <th>Marital Status</th>
+                    <th>CV</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($candidates as $candidate)
+                    @php
+                        $resumes = 'Not Defined';
+                        if (isset($candidate?->resumes[0])) {
+                            $resumes = url($candidate?->resumes[0]?->file);
+                        }
+                    @endphp 
                     <tr>
                         <td>{{ $candidate->id }}</td>
-                        <td>{{ $candidate->first_name ?? 'Not Defined' }}</td>
+                        <td>{{ $candidate?->user?->name ?? 'Not Defined' }}</td>
+                        <td>{{ $candidate?->user?->email ?? 'Not Defined' }}</td>
+                        <td>{{ $candidate?->user?->phone ?? 'Not Defined' }}</td>
                         <td>{{ $candidate->region ?? 'Not Defined' }}</td>
                         <td>{{ $candidate->district ?? 'Not Defined' }}</td>
                         <td>{{ $candidate->gender ?? 'Not Defined' }}</td>
-                        <td>{{ $candidate->cv ?? 'Not Defined' }}</td>
                         <td>{{ $candidate->marital_status ?? 'Not Defined' }}</td>
+                        <td> <a href="{{ $resumes }}"> {{ $resumes }} </a></td>
                     </tr>
                 @empty
                     <tr>
@@ -68,6 +78,7 @@
 <script>
     jQuery(document).ready(function() {
         jQuery('#regionTable').DataTable({
+            "pageLength" : 25,
             "order": [[0, 'asc']], 
             layout: {
                 topStart: {
