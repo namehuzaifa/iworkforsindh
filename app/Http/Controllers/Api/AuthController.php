@@ -38,7 +38,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -47,14 +47,21 @@ class AuthController extends Controller
             $token = $user->createToken('job-pilot')->plainTextToken;
 
             return $this->respondWithSuccess([
+                'status' => false,
+                'message' => 'Login Succeeded',
                 'data' => [
                     'token' => $token,
-                    'message' => 'Login Succeeded',
                     'user' => $user->role == 'candidate' ? new CandidateResource($user->candidate) : new CompanyResource($user->company),
                 ],
             ]);
         } else {
-            return $this->respondUnAuthenticated('Invalid Credentials');
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid Credentials',
+            ], 401);
+
+            // return $this->respondUnAuthenticated('Invalid Credentials');
         }
     }
 

@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof AuthenticationException) {
             return response()->json([
-                'status' => 'error',
+                'status' => false,
                 'message' => 'Unauthorized. Please login again.',
             ], 401);
         }
