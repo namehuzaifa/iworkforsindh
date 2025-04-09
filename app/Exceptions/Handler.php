@@ -78,6 +78,13 @@ class Handler extends ExceptionHandler
             return response()->view('errors.419', [], 419);
         }
 
+        if ($exception instanceof AuthenticationException) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized. Please login again.',
+            ], 401);
+        }
+
         return parent::render($request, $exception);
     }
 }
