@@ -47,7 +47,7 @@ class AuthController extends Controller
             $token = $user->createToken('job-pilot')->plainTextToken;
 
             return $this->respondWithSuccess([
-                'status' => false,
+                'status' => true,
                 'message' => 'Login Succeeded',
                 'data' => [
                     'token' => $token,
@@ -73,15 +73,21 @@ class AuthController extends Controller
             $token = $request->bearerToken();
 
             return $this->respondWithSuccess([
+                'status' => true,
+                'message' => 'User data retrieved successfully',
                 'data' => [
                     'token' => $request->bearerToken(),
-                    'message' => 'User data retrieved successfully',
                     'user' => $user->role == 'candidate' ? new CandidateResource($user->candidate) : new CompanyResource($user->company),
 
                 ],
             ]);
         } else {
-            return $this->respondUnAuthenticated('Unauthenticated User');
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid Credentials',
+            ], 401);
+            // return $this->respondUnAuthenticated('Unauthenticated User');
 
         }
     }
@@ -99,7 +105,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -153,12 +159,18 @@ class AuthController extends Controller
 
         if ($user) {
             return $this->respondWithSuccess([
-                'data' => $user,
+                'status' => false,
                 'message' => 'Registration Succeeded',
+                'data' => $user,
             ]);
         }
 
-        return $this->respondError('Registration Failed');
+        return response()->json([
+            'status' => false,
+            'message' => 'Registration Failed',
+        ], 422);
+
+        // return $this->respondError('Registration Failed');
     }
 
     public function profile()
@@ -166,6 +178,8 @@ class AuthController extends Controller
         $user = Auth::user();
 
         return $this->respondWithSuccess([
+            'status' => true,
+            'message' => '',
             'data' => $user,
         ]);
     }
@@ -179,7 +193,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(),  'status' => false], 422
             );
         }
 
@@ -196,9 +210,9 @@ class AuthController extends Controller
         }
 
         return $this->respondWithSuccess([
+            'status' => true,
+            'message' => 'We have emailed you password reset code',
             'data' => [
-                'message' => 'We have emailed you password reset code',
-
                 // testing only should remove in production
                 'code' => $code,
             ],
@@ -216,7 +230,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(),  'status' => false], 422
             );
         }
 
@@ -227,9 +241,17 @@ class AuthController extends Controller
             ->first();
 
         if (! $verificationCode) {
-            return $this->respondError('Invalid code');
+            // return $this->respondError('Invalid code');
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid code',
+            ], 400);
         } elseif ($verificationCode && now()->isAfter($verificationCode->expire_at)) {
-            return $this->respondError('Code expired');
+            // return $this->respondError('Code expired');
+            return response()->json([
+                'status' => false,
+                'message' => 'Code expired',
+            ], 400);
         }
 
         if ($customer) {
@@ -238,13 +260,19 @@ class AuthController extends Controller
             ]);
 
             return $this->respondWithSuccess([
-                'data' => [
-                    'message' => 'Password reset successfully',
-                ],
+                'status' => true,
+                'message' => 'Password reset successfully',
+                // 'data' => [
+                //     'message' => 'Password reset successfully',
+                // ],
             ]);
         }
 
-        return $this->respondNotFound('Invalid code');
+        return response()->json([
+            'status' => false,
+            'message' => 'Invalid code',
+        ], 400);
+        // return $this->respondNotFound('Invalid code');
     }
 
     public function socialLogin(Request $request)
