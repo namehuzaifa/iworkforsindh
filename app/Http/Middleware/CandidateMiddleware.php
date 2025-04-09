@@ -23,6 +23,6 @@ class CandidateMiddleware
             return redirect()->route('company.dashboard');
         }
 
-        return redirect()->route('login');
+        return redirect()->route('company.dashboard');
     }
 }
