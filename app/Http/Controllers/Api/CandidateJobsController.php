@@ -127,7 +127,7 @@ class CandidateJobsController extends Controller
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -140,14 +140,27 @@ class CandidateJobsController extends Controller
             // }
 
             if (! CandidateResume::where('id', $request->resume_id)->where('candidate_id', auth('sanctum')->user()->candidate->id)->exists()) {
-                return $this->respondError('You can not apply on this job. Because this resume is not yours');
+
+                return response()->json([
+                    'status' => false,
+                    'message' => 'You can not apply on this job. Because this resume is not yours',
+                ], 400);
+
+                // return $this->respondError('You can not apply on this job. Because this resume is not yours');
+
             }
 
             $candidate = auth('sanctum')->user()->candidate;
             $job = Job::find($request->job_id);
 
             if (!$job) {
-                return $this->respondError('Job not found');
+
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Job not found',
+                ], 400);
+
+                // return $this->respondError('Job not found');
             }
 
             // if ($job->apply_on != 'app') {
@@ -186,13 +199,14 @@ class CandidateJobsController extends Controller
 
             return $this->respondWithSuccess([
                 'data' => [
-                    'message' => 'Your job application submitted successfully!',
                     'status' => true,
+                    'message' => 'Your job application submitted successfully!',
                 ],
             ]);
 
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             return response()->json([
+                'status' => false,
                 'message' => 'Error: '.$e->getMessage(),
             ], 500);
         }
