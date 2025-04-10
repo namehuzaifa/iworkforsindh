@@ -91,14 +91,14 @@ class Handler extends ExceptionHandler
         }
 
          // Handle all HTTP exceptions like 404 for API
-    if ($exception instanceof HttpExceptionInterface) {
-        if ($request->is('api/*') && $exception->getStatusCode() === 404) {
+    // if ($exception instanceof HttpExceptionInterface) {
+        if ($request->is('api/*')) {
             return response()->json([
                 'status' => false,
                 'message' => 'API route not found.',
             ], 404);
         }
-    }
+    // }
 
         return parent::render($request, $exception);
     }
