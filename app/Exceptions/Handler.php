@@ -6,7 +6,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Arr;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -90,15 +90,15 @@ class Handler extends ExceptionHandler
             }
         }
 
-          // Handle invalid API routes
-        if ($exception instanceof NotFoundHttpException) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'API route not found.',
-                ], 404);
-            }
+         // Handle all HTTP exceptions like 404 for API
+    if ($exception instanceof HttpExceptionInterface) {
+        if ($request->is('api/*') && $exception->getStatusCode() === 404) {
+            return response()->json([
+                'status' => false,
+                'message' => 'API route not found.',
+            ], 404);
         }
+    }
 
         return parent::render($request, $exception);
     }
