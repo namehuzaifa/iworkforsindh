@@ -6,6 +6,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Arr;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -78,6 +79,7 @@ class Handler extends ExceptionHandler
             return response()->view('errors.419', [], 419);
         }
 
+         // Handle unauthenticated access
         if ($exception instanceof AuthenticationException) {
             // if ($request->expectsJson()) {
             if ($request->is('api/*')) {
@@ -85,6 +87,16 @@ class Handler extends ExceptionHandler
                     'status' => false,
                     'message' => 'Unauthorized. Please login again.',
                 ], 401);
+            }
+        }
+
+          // Handle invalid API routes
+        if ($exception instanceof NotFoundHttpException) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'API route not found.',
+                ], 404);
             }
         }
 
