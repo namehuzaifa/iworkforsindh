@@ -78,6 +78,7 @@ class Handler extends ExceptionHandler
             return response()->view('errors.419', [], 419);
         }
 
+        return response()->json($request);
         if ($exception instanceof AuthenticationException) {
             if ($request->expectsJson()) {
                 return response()->json([
