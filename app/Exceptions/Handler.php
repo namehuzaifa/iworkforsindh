@@ -79,7 +79,8 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof AuthenticationException) {
-            if ($request->expectsJson()) {
+            // if ($request->expectsJson()) {
+            if ($request->is('api/*')) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Unauthorized. Please login again.',
