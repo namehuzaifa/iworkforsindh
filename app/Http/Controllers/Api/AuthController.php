@@ -59,7 +59,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid Credentials',
-            ], 401);
+            ], 404);
 
             // return $this->respondUnAuthenticated('Invalid Credentials');
         }
@@ -245,13 +245,13 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid code',
-            ], 400);
+            ], 404);
         } elseif ($verificationCode && now()->isAfter($verificationCode->expire_at)) {
             // return $this->respondError('Code expired');
             return response()->json([
                 'status' => false,
                 'message' => 'Code expired',
-            ], 400);
+            ], 404);
         }
 
         if ($customer) {
@@ -271,7 +271,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => false,
             'message' => 'Invalid code',
-        ], 400);
+        ], 404);
         // return $this->respondNotFound('Invalid code');
     }
 
