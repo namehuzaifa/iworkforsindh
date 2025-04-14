@@ -222,7 +222,7 @@ trait JobableApi
 
         // Related Jobs With Single && Multiple Country Base
         if (auth('sanctum')->user()) {
-            $related_jobs_query = Job::query()->withoutEdited()->active()->where('id', '!=', $job->id)->where('category_id', $job->category_id)->with('category', 'job_type');
+            $related_jobs_query = Job::query()->withoutEdited()->active()->where('id', '!=', $job->id)->where('category_id', $job->category_id);
             $setting = Setting::first();
             if ($setting->app_country_type == 'single_base') {
                 if ($setting->app_country) {
@@ -246,9 +246,9 @@ trait JobableApi
                     'bookmarkJobs as bookmarked' => function ($q) {
                         $q->where('candidate_id', auth('sanctum')->user()->candidate ? auth('sanctum')->user()->candidate->id : '');
                     },
-                ])->get();
+                ])->with('category', 'job_type')->get();
         } else {
-            $related_jobs_query = Job::query()->withoutEdited()->active()->where('id', '!=', $job->id)->where('category_id', $job->category_id)->with('category', 'job_type');
+            $related_jobs_query = Job::query()->withoutEdited()->active()->where('id', '!=', $job->id)->where('category_id', $job->category_id);
             $setting = Setting::first();
             if ($setting->app_country_type == 'single_base') {
                 if ($setting->app_country) {
@@ -272,7 +272,7 @@ trait JobableApi
                     'bookmarkJobs as bookmarked' => function ($q) {
                         $q->where('candidate_id', '');
                     },
-                ])->get();
+                ])->with('category', 'job_type')->get();
         }
 
         if (auth('sanctum')->check() && auth('sanctum')->user()->role == 'candidate') {
