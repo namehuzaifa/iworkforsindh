@@ -188,7 +188,7 @@ trait JobableApi
 
             $job_details = $job->load([
                 'bookmarkJobs', 'benefits', 'education',
-                'experience', 'tags', 'role',
+                'experience', 'tags', 'role', 'category',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
                 },
@@ -206,7 +206,7 @@ trait JobableApi
         } else {
 
             $job_details = $job->load([
-                'benefits', 'education', 'experience', 'tags', 'role',
+                'benefits', 'education', 'experience', 'tags', 'role', 'category',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
                 },
@@ -246,7 +246,7 @@ trait JobableApi
                     'bookmarkJobs as bookmarked' => function ($q) {
                         $q->where('candidate_id', auth('sanctum')->user()->candidate ? auth('sanctum')->user()->candidate->id : '');
                     },
-                ])->with('category', 'job_type')->get();
+                ])->get();
         } else {
             $related_jobs_query = Job::query()->withoutEdited()->active()->where('id', '!=', $job->id)->where('category_id', $job->category_id);
             $setting = Setting::first();
@@ -272,7 +272,7 @@ trait JobableApi
                     'bookmarkJobs as bookmarked' => function ($q) {
                         $q->where('candidate_id', '');
                     },
-                ])->with('category', 'job_type')->get();
+                ])->get();
         }
 
         if (auth('sanctum')->check() && auth('sanctum')->user()->role == 'candidate') {
