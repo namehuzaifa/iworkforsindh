@@ -188,7 +188,7 @@ trait JobableApi
 
             $job_details = $job->load([
                 'bookmarkJobs', 'benefits', 'education',
-                'experience', 'tags', 'role', 'category',
+                'experience', 'tags', 'role',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
                 },
@@ -206,7 +206,7 @@ trait JobableApi
         } else {
 
             $job_details = $job->load([
-                'benefits', 'education', 'experience', 'tags', 'role', 'category',
+                'benefits', 'education', 'experience', 'tags', 'role',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
                 },
