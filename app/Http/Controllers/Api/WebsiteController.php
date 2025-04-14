@@ -205,6 +205,12 @@ class WebsiteController extends Controller
             }
         }
 
+        return response()->json([
+            'data' => [
+                'message' => 'Job not found',
+            ],
+        ]);
+
         $data = $this->getJobDetails($job);
 
         $data['job'] = new JobDetailResource($data['job']);
