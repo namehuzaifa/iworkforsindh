@@ -181,12 +181,6 @@ class WebsiteController extends Controller
     public function jobDetails(Job $job)
     {
 
-        return response()->json([
-            'data' => [
-                'message' => 'Job not found',
-            ],
-        ]);
-        
         if (! $job) {
             return response()->json([
                 'data' => [
