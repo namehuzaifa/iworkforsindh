@@ -7,6 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Arr;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -87,6 +88,15 @@ class Handler extends ExceptionHandler
                     'status' => false,
                     'message' => 'Unauthorized. Please login again.',
                 ], 401);
+            }
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Resource not found.',
+                ], 404);
             }
         }
 
