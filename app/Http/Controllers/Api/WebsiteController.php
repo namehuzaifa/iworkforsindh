@@ -181,6 +181,12 @@ class WebsiteController extends Controller
     public function jobDetails(Job $job)
     {
 
+        return response()->json([
+            'data' => [
+                'message' => 'Job not found',
+            ],
+        ]);
+        
         if (! $job) {
             return response()->json([
                 'data' => [
@@ -204,12 +210,6 @@ class WebsiteController extends Controller
                 }
             }
         }
-
-        return response()->json([
-            'data' => [
-                'message' => 'Job not found',
-            ],
-        ]);
 
         $data = $this->getJobDetails($job);
 
