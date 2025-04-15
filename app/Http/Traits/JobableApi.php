@@ -205,7 +205,7 @@ trait JobableApi
                 ]);
         } else {
 
-            $job_details = $job->load([
+            $job_details = Job::load([
                 'benefits', 'education', 'experience', 'tags', 'role',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
@@ -217,7 +217,7 @@ trait JobableApi
                 }, 'appliedJobs as applied' => function ($q) {
                     $q->where('candidate_id', '');
                 },
-            ])->with('skills', 'category',);
+            ]);
         }
 
         // Related Jobs With Single && Multiple Country Base
