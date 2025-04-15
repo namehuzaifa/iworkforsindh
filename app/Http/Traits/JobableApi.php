@@ -186,7 +186,7 @@ trait JobableApi
     {
         if (auth('sanctum')->user()) {
 
-            $job_details = $job->load([
+            $job_details = $job->with('skills', 'category',)->load([
                 'bookmarkJobs', 'benefits', 'education',
                 'experience', 'tags', 'role',
                 'company.user' => function ($q) {
@@ -202,7 +202,7 @@ trait JobableApi
                     }, 'appliedJobs as applied' => function ($q) {
                         $q->where('candidate_id', auth('sanctum')->user()->candidate ? auth('sanctum')->user()->candidate->id : '');
                     },
-                ])->with('job_type', 'salary_type', 'skills', 'category',);
+                ]);
         } else {
 
             $job_details = $job->load([
@@ -217,7 +217,7 @@ trait JobableApi
                 }, 'appliedJobs as applied' => function ($q) {
                     $q->where('candidate_id', '');
                 },
-            ])->with('job_type', 'salary_type', 'skills', 'category',);
+            ]);
         }
 
         // Related Jobs With Single && Multiple Country Base
