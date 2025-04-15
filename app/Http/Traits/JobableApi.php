@@ -186,7 +186,7 @@ trait JobableApi
     {
         if (auth('sanctum')->user()) {
 
-            $job_details = $job->load([
+            $job_details = Job::load([
                 'bookmarkJobs', 'benefits', 'education',
                 'experience', 'tags', 'role',
                 'company.user' => function ($q) {
@@ -240,7 +240,7 @@ trait JobableApi
                     $related_jobs_query->where('country', 'LIKE', "%$country%");
                 }
             }
-            $related_jobs = $related_jobs_query->with('skills', 'category',)->latest()->limit(18)
+            $related_jobs = $related_jobs_query->latest()->limit(18)
                 ->withCount([
                     'bookmarkJobs',
                     'bookmarkJobs as bookmarked' => function ($q) {
