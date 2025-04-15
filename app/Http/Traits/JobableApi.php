@@ -188,7 +188,7 @@ trait JobableApi
 
             $job_details = $job->load([
                 'bookmarkJobs', 'benefits', 'education',
-                'experience', 'tags', 'role',
+                'experience', 'tags', 'role', 'job_type', 'salary_type', 'skills', 'category',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
                 },
