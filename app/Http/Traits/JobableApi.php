@@ -240,7 +240,7 @@ trait JobableApi
                     $related_jobs_query->where('country', 'LIKE', "%$country%");
                 }
             }
-            $related_jobs = $related_jobs_query->with('job_type', 'salary_type', 'skills', 'category',)->latest()->limit(18)
+            $related_jobs = $related_jobs_query->latest()->limit(18)
                 ->withCount([
                     'bookmarkJobs',
                     'bookmarkJobs as bookmarked' => function ($q) {
