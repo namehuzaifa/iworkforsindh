@@ -186,7 +186,7 @@ trait JobableApi
     {
         if (auth('sanctum')->user()) {
 
-            $job_details = Job::load([
+            $job_details = $job->load([
                 'bookmarkJobs', 'benefits', 'education',
                 'experience', 'tags', 'role',
                 'company.user' => function ($q) {
@@ -205,7 +205,7 @@ trait JobableApi
                 ]);
         } else {
 
-            $job_details = $job->load([
+            $job_details = $job->with('job_type', 'salary_type', 'skills', 'category',)->load([
                 'benefits', 'education', 'experience', 'tags', 'role',
                 'company.user' => function ($q) {
                     return $q->with('contactInfo', 'socialInfo');
