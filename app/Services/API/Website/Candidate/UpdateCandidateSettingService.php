@@ -57,7 +57,7 @@ class UpdateCandidateSettingService
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -92,17 +92,16 @@ class UpdateCandidateSettingService
         }
 
         return $this->respondWithSuccess([
+            'message' => 'Basic Info Updated Successful!',
+            'status' => true,
             'data' => [
-                'message' => 'Basic Info Updated Successful!',
-                'data' => [
-                    'name' => $user->name,
-                    'title' => $candidate->title,
-                    'experience_id' => (int) $candidate->experience_id,
-                    'education_id' => (int) $candidate->education_id,
-                    'website' => $candidate->website,
-                    'date_of_birth' => $candidate->birth_date,
-                    'image_url' => $candidate->photo,
-                ],
+                'name' => $user->name,
+                'title' => $candidate->title,
+                'experience_id' => (int) $candidate->experience_id,
+                'education_id' => (int) $candidate->education_id,
+                'website' => $candidate->website,
+                'date_of_birth' => $candidate->birth_date,
+                'image_url' => $candidate->photo,
             ],
         ]);
     }
@@ -119,7 +118,7 @@ class UpdateCandidateSettingService
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -192,46 +191,45 @@ class UpdateCandidateSettingService
         }
 
         return $this->respondWithSuccess([
+            'message' => 'Profile Info Updated Successful!',
+            'status' => true,
             'data' => [
-                'message' => 'Profile Info Updated Successful!',
-                'data' => [
-                    'gender' => $candidate->gender,
-                    'marital_status' => $candidate->marital_status,
-                    'profession_id' => (int) $candidate->profession_id,
-                    'bio' => $candidate->bio,
-                    'availability' => $candidate->status,
-                    'available_in' => $candidate->available_in ?? null,
-                    'skills' => $candidate->skills->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'name' => $item->name,
-                        ];
-                    }),
-                    'languages' => $candidate->languages->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'name' => $item->name,
-                        ];
-                    }),
-                    'profession_list' => Profession::all()->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'name' => $item->name,
-                        ];
-                    }),
-                    'skill_list' => Skill::all()->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'name' => $item->name,
-                        ];
-                    }),
-                    'language_list' => CandidateLanguage::all()->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'name' => $item->name,
-                        ];
-                    }),
-                ],
+                'gender' => $candidate->gender,
+                'marital_status' => $candidate->marital_status,
+                'profession_id' => (int) $candidate->profession_id,
+                'bio' => $candidate->bio,
+                'availability' => $candidate->status,
+                'available_in' => $candidate->available_in ?? null,
+                'skills' => $candidate->skills->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                    ];
+                }),
+                'languages' => $candidate->languages->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                    ];
+                }),
+                'profession_list' => Profession::all()->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                    ];
+                }),
+                'skill_list' => Skill::all()->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                    ];
+                }),
+                'language_list' => CandidateLanguage::all()->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                    ];
+                }),
             ],
         ]);
     }
@@ -249,7 +247,7 @@ class UpdateCandidateSettingService
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -275,8 +273,9 @@ class UpdateCandidateSettingService
         }
 
         return $this->respondWithSuccess([
+            'message' => 'Social Link Updated Successful!',
+            'status' => true,
             'data' => [
-                'message' => 'Social Link Updated Successful!',
                 'social_media' => $user->socialInfo->map(function ($item) {
                     return [
                         'id' => $item->id,
@@ -304,7 +303,7 @@ class UpdateCandidateSettingService
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -340,22 +339,21 @@ class UpdateCandidateSettingService
         ]);
 
         return $this->respondWithSuccess([
+            'message' => 'Contact Information Updated Successful!',
+            'status' => true,
             'data' => [
-                'message' => 'Contact Information Updated Successful!',
-                'data' => [
-                    'contact_info' => [
-                        'phone' => $request->phone,
-                        'secondary_phone' => $request->secondary_phone,
-                        'whatsapp_no' => $request->whatsapp_number,
-                        'secondary_email' => $request->secondary_email,
-                    ],
-                    'location' => [
-                        'country' => $request->country,
-                        'address' => $request->address,
-                        'exact_location' => $request->exact_location,
-                        'latitude' => $request->lat,
-                        'longitude' => $request->long,
-                    ],
+                'contact_info' => [
+                    'phone' => $request->phone,
+                    'secondary_phone' => $request->secondary_phone,
+                    'whatsapp_no' => $request->whatsapp_number,
+                    'secondary_email' => $request->secondary_email,
+                ],
+                'location' => [
+                    'country' => $request->country,
+                    'address' => $request->address,
+                    'exact_location' => $request->exact_location,
+                    'latitude' => $request->lat,
+                    'longitude' => $request->long,
                 ],
             ],
         ]);
@@ -371,7 +369,7 @@ class UpdateCandidateSettingService
 
         if ($validator->fails()) {
             return response()->json(
-                ['errors' => $validator->messages()], 422
+                ['errors' => $validator->messages(), 'status' => false], 422
             );
         }
 
@@ -384,8 +382,9 @@ class UpdateCandidateSettingService
         }
 
         return $this->respondWithSuccess([
+            'message' => 'Password Updated Successful!',
+            'status' => true,
             'data' => [
-                'message' => 'Password Updated Successful!',
             ],
         ]);
     }
@@ -401,7 +400,7 @@ class UpdateCandidateSettingService
 
             if ($validator->fails()) {
                 return response()->json(
-                    ['errors' => $validator->messages()], 422
+                    ['errors' => $validator->messages(), 'status' => false], 422
                 );
             }
 
@@ -412,15 +411,25 @@ class UpdateCandidateSettingService
                 });
 
                 return $this->respondWithSuccess([
+                    'message' => 'Account Deleted Successful!',
+                    'status' => true,
                     'data' => [
-                        'message' => 'Account Deleted Successful!',
                     ],
                 ]);
             } else {
-                return $this->respondError('Current password does not match!');
+
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Current password does not match!',
+                ], 404);
+                // return $this->respondError('Current password does not match!');
             }
         }
 
-        return $this->respondError('User not found!');
+        return response()->json([
+            'status' => false,
+            'message' => 'User not found!',
+        ], 404);
+        // return $this->respondError('User not found!');
     }
 }
