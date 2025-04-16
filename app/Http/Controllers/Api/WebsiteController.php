@@ -138,13 +138,11 @@ class WebsiteController extends Controller
 
     // get jobs If candidate is logged in
     public function ifLoggedinCadidateJobs(Request $request)
-    {
-        return response()->json([
-            'status' => false,
-            'message' => 'Current password does not match!',
-        ], 404);
+    {   
+        $data = (new JobPageService)->execute($request);
         return $this->respondWithSuccess([
-            'data' => (new JobPageService)->execute($request),
+            'data' => $data,
+            // 'data' => (new JobPageService)->execute($request),
         ]);
     }
 
