@@ -15,14 +15,10 @@ use Modules\Location\Entities\Country;
 
 class JobPageService
 {
-    use Jobable;
+    // use Jobable;
 
     public function execute($request)
     {
-        return response()->json([
-            'status' => false,
-            'message' => 'Current password does not match!',
-        ], 404);
         if (auth()->user()) {
             $query = Job::with('company.user', 'category', 'job_type:id,name')
                 ->withCount([
