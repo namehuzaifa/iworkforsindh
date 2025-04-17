@@ -159,7 +159,7 @@ class AuthController extends Controller
 
         if ($user) {
             return $this->respondWithSuccess([
-                'status' => false,
+                'status' => true,
                 'message' => 'Registration Succeeded',
                 'data' => $user,
             ]);
