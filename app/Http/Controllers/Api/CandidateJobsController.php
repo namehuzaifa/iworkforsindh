@@ -40,6 +40,7 @@ class CandidateJobsController extends Controller
             $salary = $data->salary_mode == 'range' ? currencyAmountShort($data->min_salary).' - '.currencyAmountShort($data->max_salary).' '.currentCurrencyCode() : $data->custom_salary;
 
             return [
+                'id' => $data->id,
                 'title' => $data->title,
                 'slug' => $data->slug,
                 'job_details' => route('website.job.details', $data->slug),
@@ -63,6 +64,7 @@ class CandidateJobsController extends Controller
         });
 
         return $this->respondWithSuccess([
+            'status' => true,
             'data' => $appliedJobs,
         ]);
     }
@@ -83,6 +85,7 @@ class CandidateJobsController extends Controller
 
         return $this->respondWithSuccess([
             // 'data' => $appliedJobs,
+            'status' => true,
             'data' => JobListResource::collection($appliedJobs)->response()->getData(),
         ]);
 
@@ -97,10 +100,10 @@ class CandidateJobsController extends Controller
 
             $user = auth('sanctum')->user();
             // make notification to company candidate bookmark job
-            Notification::send($job->company->user, new BookmarkJobNotification($user, $job));
+            // Notification::send($job->company->user, new BookmarkJobNotification($user, $job));
             // make notification to candidate for notify
             if (auth('sanctum')->user()->recent_activities_alert) {
-                Notification::send(auth('sanctum')->user(), new BookmarkJobNotification($user, $job));
+                // Notification::send(auth('sanctum')->user(), new BookmarkJobNotification($user, $job));
             }
         }
         $check['attached'] ? $message = 'Job added to favorite list' : $message = 'Job removed from favorite list';
@@ -225,6 +228,7 @@ class CandidateJobsController extends Controller
                     .currencyAmountShort($job->max_salary).' '.currentCurrencyCode() : $job->custom_salary;
 
                     return [
+                        'id' => $job->id,
                         'title' => $job->title,
                         'slug' => $job->slug,
                         'job_type' => $job->job_type?->name,
@@ -240,6 +244,7 @@ class CandidateJobsController extends Controller
 
         return $this->respondWithSuccess([
             'data' => [
+                'status' => true,
                 'notifications' => $notifications,
                 'message' => 'Job alert retried successful!',
             ],
