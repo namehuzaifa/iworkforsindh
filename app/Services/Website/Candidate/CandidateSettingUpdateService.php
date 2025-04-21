@@ -111,7 +111,7 @@ class CandidateSettingUpdateService
     {
         $request->validate([
             'name' => 'required',
-            'nic' =>    ['required', 'int', Rule::unique('users')->ignore($user->id)],
+            'nic' =>    ['required', 'int', ],//Rule::unique('users')->ignore($user->id)
             'phone' =>  ['required', 'string', 'max:20', Rule::unique('users')->ignore($user->id)],
             'birth_date' => 'date',
             'birth_date' => 'required',
