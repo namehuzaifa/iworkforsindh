@@ -144,8 +144,10 @@
                             <table class="ll-table table table-hover text-nowrap">
                                 <thead>
                                     <tr>
+                                        <th width="2%">{{ __('id') }}</th>
                                         <th width="5%">{{ __('job') }}</th>
                                         <th width="10%">{{ __('category') }}/{{ __('role') }}</th>
+                                        <th width="10%">{{ __('Apply type') }}</th>
                                         <th width="10%">{{ __('salary') }}</th>
                                         <th width="10%">{{ __('deadline') }}</th>
                                         <th width="10%">{{ __('status') }}</th>
@@ -190,6 +192,15 @@
                                                         <div>
                                                             <h3>{{ $job->category->name }}</h3>
                                                             <p>{{ $job->role->name }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td tabindex="0">
+                                                    <div class="apply-type">
+                                                        {{-- <x-svg.table-layer /> --}}
+                                                        <div>
+                                                            <h3>{{ $job->apply_on }}</h3>
+                                                            <p>{{ $job->apply_email ? $job?->apply_email : $job?->apply_url }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
