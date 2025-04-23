@@ -160,9 +160,10 @@
                                     @if ($jobs->count() > 0)
                                         @foreach ($jobs as $job)
                                             <tr>
-                                                <td>
-                                                    <input type="checkbox" class="job-checkbox"
+                                                <td style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                                    <input id="job_{{ $job->id }}" type="checkbox" class="job-checkbox"
                                                         value="{{ $job->id }}">
+                                                        <label for="job_{{ $job->id }}">{{ $job->id }}</label>
                                                 </td>
                                                 <td tabindex="0">
                                                     <a href="{{ route('job.show', $job->id) }}" class="company">
