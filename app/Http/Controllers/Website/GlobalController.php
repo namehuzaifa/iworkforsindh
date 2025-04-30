@@ -75,6 +75,10 @@ class GlobalController extends Controller
      */
     public function ckeditorImageUpload(Request $request)
     {
+        $request->validate([
+            'upload' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        
         try {
             if ($request->hasFile('upload')) {
                 $originName = $request->file('upload')->getClientOriginalName();

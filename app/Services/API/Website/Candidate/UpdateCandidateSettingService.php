@@ -91,7 +91,7 @@ class UpdateCandidateSettingService
             ]);
         }
 
-        return $this->respondWithSuccess([
+        return $this->respondWithSuccess([ 
             'message' => 'Basic Info Updated Successful!',
             'status' => true,
             'data' => [
