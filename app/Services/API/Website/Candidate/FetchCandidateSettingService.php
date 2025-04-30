@@ -38,8 +38,8 @@ class FetchCandidateSettingService
                 'image_url' => $candidate_user->image_url,
                 'name' => $candidate_user->name,
                 'title' => $candidate->title,
-                'education_id' => $candidate->name,
-                'experience_id' => $candidate->name,
+                'education_id' => $candidate->education_id,
+                'experience_id' => $candidate->experience_id,
                 'website' => $candidate->website,
                 'date_of_birth' => formatTime($candidate->birth_date, 'Y-m-d'),
                 'experience_list' => Experience::all()->map(function ($item) {
@@ -64,7 +64,7 @@ class FetchCandidateSettingService
             'data' => [
                 'gender' => $candidate->gender,
                 'marital_status' => $candidate->marital_status,
-                'profession_id' => $candidate->name,
+                'profession_id' => (int) $candidate->profession_id,
                 'bio' => $candidate->bio,
                 'availability' => $candidate->status,
                 'available_in' => $candidate->available_in,
