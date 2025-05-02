@@ -31,11 +31,11 @@ class CompanyStoreService
         storePlanInformation();
         $userPlan = session('user_plan');
 
-        if ((int) $userPlan->job_limit < 1) {
-            session()->flash('error', __('you_have_reached_your_plan_limit_please_upgrade_your_plan'));
+        // if ((int) $userPlan->job_limit < 1) {
+        //     session()->flash('error', __('you_have_reached_your_plan_limit_please_upgrade_your_plan'));
 
-            return redirect()->route('company.plan');
-        }
+        //     return redirect()->route('company.plan');
+        // }
 
         $min = $request->min_salary;
         $max = $request->max_salary;
@@ -122,7 +122,7 @@ class CompanyStoreService
             'featured' => $featured,
             'highlight' => $highlight,
             'is_remote' => $request->is_remote ?? 0,
-            'status' => setting('job_auto_approved') ? 'active' : 'pending',
+            'status' => setting('job_auto_approved') ? 'active' : (currentCompany()->is_profile_verified ? 'active' : 'pending'),
         ]);
 
         // Location
