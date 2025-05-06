@@ -13,7 +13,7 @@
                         <group-dropdown v-if="applicationGroup.is_deleteable" :application-group="applicationGroup"
                             @edit-group="editGroup" />
                     </div>
-                    <draggable class="list-group kanban-column scrollbar-hidden tw-px-5" v-model="applicationGroup.applications"
+                    <draggable class="list-group kanban-column scrollbar-hidden-none tw-px-5" v-model="applicationGroup.applications"
                         v-bind="taskDragOptions" @end="handleTaskMoved" ghost-class="ghost" drag-class="dragg">
                         <div class="application-card" v-for="application in applicationGroup.applications"
                             :key="application.id">
