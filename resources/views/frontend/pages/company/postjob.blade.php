@@ -625,13 +625,13 @@
         @livewireScripts
         <script>
 
-            // $(document).ready(function() {
-            //     $('.select21').select2();
-            // });
-            // window.addEventListener('render-select2', event => {
-            //     console.log('fired');
-            //     $('.select21').select2();
-            // })
+            $(document).ready(function() {
+                $('.select21').select2();
+            });
+            window.addEventListener('render-select2', event => {
+                console.log('fired');
+                $('.select21').select2();
+            })
         </script>
         @stack('js')
         <script src="{{ asset('frontend/assets/js/bootstrap-datepicker.min.js') }}"></script>
