@@ -693,6 +693,17 @@ class WebsiteController extends Controller
             $candidate = auth('user')->user()->candidate;
             $job = Job::find($request->id);
 
+            $job->loadCount(['appliedJobs',
+                'appliedJobs as applied' => function ($q) {
+                    $q->where('candidate_id', currentCandidate() ? currentCandidate()->id : '');
+                },
+            ]);
+
+            if ($job->applied) {
+                flashError('This job is already applied');
+                return back();
+            }
+
             DB::table('applied_jobs')->insert([
                 'candidate_id' => $candidate->id,
                 'job_id' => $job->id,

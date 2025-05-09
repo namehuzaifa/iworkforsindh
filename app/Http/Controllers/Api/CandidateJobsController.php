@@ -166,6 +166,20 @@ class CandidateJobsController extends Controller
                 // return $this->respondError('Job not found');
             }
 
+            $job->loadCount(['appliedJobs',
+                'appliedJobs as applied' => function ($q) {
+                    $q->where('candidate_id', currentCandidate() ? currentCandidate()->id : '');
+                },
+            ]);
+
+            if ($job->applied) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'This job is already applied',
+                ], 400);
+            }
+
+
             // if ($job->apply_on != 'app') {
             //     return $this->respondError('You can not apply on this job. Because this job is not for apply on website');
             // }

@@ -624,6 +624,13 @@
     @section('frontend_scripts')
         @livewireScripts
         <script>
+
+            $('#skills').select2({
+                theme: 'bootstrap4',
+                tags: true,
+                placeholder: 'Select Skill'
+            });
+
             $(document).ready(function() {
                 $('.select21').select2();
             });

@@ -373,11 +373,11 @@ class CompanyController extends Controller
             storePlanInformation();
             $userPlan = session('user_plan');
 
-            if ((int) $userPlan->job_limit < 1) {
-                session()->flash('error', __('you_have_reached_your_plan_limit_please_upgrade_your_plan'));
+            // if ((int) $userPlan->job_limit < 1) {
+            //     session()->flash('error', __('you_have_reached_your_plan_limit_please_upgrade_your_plan'));
 
-                return redirect()->route('company.plan');
-            }
+            //     return redirect()->route('company.plan');
+            // }
 
             $data['jobCategories'] = JobCategory::all()->sortBy('name');
             $data['roles'] = JobRole::all()->sortBy('name');
