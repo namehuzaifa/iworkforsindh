@@ -143,6 +143,13 @@ class SkilledLabourController extends Controller
      */
     public function edit(SkilledLabour $labor)
     {
+        // In your store method, before create:
+        if (!Auth::check()) {
+            return redirect()->back()->with('error', 'You must be logged in to perform this action');
+        }
+        if ($labor->user_id != auth()->id()) {
+            return redirect()->back()->with('error', 'You must be logged in to perform this action');
+        }
         $professions = Profession::all();
         $skills = Skill::all();
         return view('skilledLabor.edit', compact('labor', 'professions', 'skills'));
@@ -155,6 +162,10 @@ class SkilledLabourController extends Controller
 
          // In your store method, before create:
         if (!Auth::check()) {
+            return redirect()->back()->with('error', 'You must be logged in to perform this action');
+        }
+
+        if ($labor->user_id != auth()->id()) {
             return redirect()->back()->with('error', 'You must be logged in to perform this action');
         }
 
@@ -253,6 +264,10 @@ class SkilledLabourController extends Controller
      */
     public function destroy(SkilledLabour $labor)
     {
+
+        if ($labor->user_id != auth()->id()) {
+            return redirect()->back()->with('error', 'You must be logged in to perform this action');
+        }
         // Optional: Delete associated files from storage
         Storage::delete([
             'public/'.$labor->image,

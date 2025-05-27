@@ -37,18 +37,20 @@ button.btn.btn-sm.btn-danger.delete-btn {
         @foreach($labors as $labor)
         <div class="col-md-3 mb-3">
             <!-- Edit/Delete Icons -->
-            <div class="card-actions">
-                <a href="{{ route('skilled-labour.edit', $labor->id) }}" class="btn btn-sm btn-primary edit-btn">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <form action="{{ route('skilled-labour.destroy', $labor->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger delete-btn" onclick="return confirm('Are you sure you want to delete this labor?')">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </form>
-            </div>
+            @if ($labor->user_id == auth()->id())
+                <div class="card-actions">
+                    <a href="{{ route('skilled-labour.edit', $labor->id) }}" class="btn btn-sm btn-primary edit-btn">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="{{ route('skilled-labour.destroy', $labor->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger delete-btn" onclick="return confirm('Are you sure you want to delete this labor?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            @endif
             <div class="card labor-card" data-labor-id="{{ $labor->id }}" style="cursor: pointer;">
                 <div class="card-img-top-container text-center">
                     <img src="{{ asset($labor->image) }}" class="card-img-top labor-image" alt="{{ $labor->name }}">
