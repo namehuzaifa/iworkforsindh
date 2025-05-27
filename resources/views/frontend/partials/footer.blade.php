@@ -70,7 +70,7 @@
                     <h2 class="footer-title">{{ __('support') }}</h2>
                     <ul class="rt-usefulllinks2">
                         <li><a href="{{ route('website.faq') }}">{{ __('faq') }}</a></li>
-                        {{-- <li><a href="{{ route('website.privacyPolicy') }}">{{ __('privacy_policy') }}</a></li> --}}
+                        <li><a href="{{ route('website.privacyPolicy') }}">{{ __('privacy_policy') }}</a></li>
                         <li><a href="{{ route('website.termsCondition') }}">{{ __('terms_condition') }}</a></li>
                         {{-- <li><a href="{{ route('website.refundPolicy') }}">{{ __('refund_policy') }}</a></li> --}}
                         @foreach ($custom_pages->where('show_footer', 1)->where('footer_column_position', 4) as $page)

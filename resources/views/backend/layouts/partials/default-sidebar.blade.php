@@ -38,6 +38,18 @@
                             plus_icon="fa fa-plus-circle" icon="fas fa-user">
                             {{ __('candidate') }}
                         </x-admin.sidebar-list>
+
+                        {{-- Add Riders and skilled labors nav --}}
+
+                        <x-admin.sidebar-list :linkActive="Route::is('skilled-labour.riders*') ? true : false" route="skilled-labour.riders" path="skilled-labour.riders"
+                            plus_icon="fa fa-plus-circle" icon="fas fa-user">
+                            {{ __('Riders') }}
+                        </x-admin.sidebar-list>
+
+                        <x-admin.sidebar-list :linkActive="Route::is('admin-skilled-labour.index*') ? true : false" route="admin-skilled-labour.index" path="admin-skilled-labour.index"
+                            plus_icon="fa fa-plus-circle" icon="fas fa-user">
+                            {{ __('Skilled Labors') }}
+                        </x-admin.sidebar-list>
                     @endif
                     @if (userCan('job.view') ||
                             userCan('job_category.view') ||

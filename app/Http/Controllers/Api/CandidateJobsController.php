@@ -168,7 +168,8 @@ class CandidateJobsController extends Controller
 
             $job->loadCount(['appliedJobs',
                 'appliedJobs as applied' => function ($q) {
-                    $q->where('candidate_id', currentCandidate() ? currentCandidate()->id : '');
+                    $candidate = auth('sanctum')->user()->candidate;
+                    $q->where('candidate_id', $candidate->id ? $candidate->id : '');
                 },
             ]);
 

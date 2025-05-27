@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TeamSizeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\Admin\SkilledLaborController;
 use App\Http\Controllers\SearchCountryController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\Website\WebsiteSettingController;
@@ -59,6 +60,11 @@ Route::prefix('admin')->group(function () {
         // candidate region
         Route::get('/candidates/regions', [CandidateController::class, 'viewRegions'])->name('candidates.regions'); 
         Route::get('/candidates/region/{region}/', [CandidateController::class, 'viewRegionDetail'])->name('candidates.region');
+
+        Route::get('/riders', [SkilledLaborController::class, 'getriders'])->name('skilled-labour.riders');
+        Route::get('/skilled-labors/{id?}', [SkilledLaborController::class, 'index'])->name('admin-skilled-labour.index');
+        Route::get('/skilled-labors-details/{labor}', [SkilledLaborController::class, 'viewSkilledLaborDetail'])->name('skilled-labour.details'); // fetching single labor details
+
         
         //Dashboard Route
         Route::get('/', [AdminController::class, 'dashboard']);

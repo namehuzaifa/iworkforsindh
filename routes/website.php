@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Api\CompanyController as ApiCompanyController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Payment\PayPalController;
+use App\Http\Controllers\SkilledLabourController;
 use App\Http\Controllers\Website\CandidateController;
 use App\Http\Controllers\Website\CompanyController;
 use App\Http\Controllers\Website\CompanyVerifyDocuments;
@@ -104,6 +105,16 @@ Route::controller(WebsiteController::class)->name('website.')->group(function ()
     Route::get('success-transaction', 'successTransaction')->name('paypal.successTransaction');
     Route::get('mollie-success-web', 'paymentSuccess')->name('mollie.success');
 });
+
+Route::middleware(['auth', 'restrict.rider'])->group(function () {
+    Route::get('/skilled-labour/create', [SkilledLabourController::class, 'create'])->name('skilled-labour.create');
+    Route::post('/skilled-labour', [SkilledLabourController::class, 'store'])->name('skilled-labour.store');
+    Route::get('skilled-labour/{labor}/edit', [SkilledLabourController::class, 'edit'])->name('skilled-labour.edit');
+    Route::put('skilled-labour/{labor}', [SkilledLabourController::class, 'update'])->name('skilled-labour.update');
+    Route::delete('skilled-labour/{labor}', [SkilledLabourController::class, 'destroy'])->name('skilled-labour.destroy');
+});
+Route::get('/skilled-labors', [SkilledLabourController::class, 'index'])->name('skilled-labour.index');
+Route::get('/skilled-labors/{labor}', [SkilledLabourController::class, 'show'])->name('skilled-labour.show'); // fetching single labor details
 
 // ======================================================================
 // =============================Authenticated Routes=====================

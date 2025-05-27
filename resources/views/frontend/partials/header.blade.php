@@ -631,7 +631,7 @@ config('templatecookie.default_language'))->first();
                                 <x-website.candidate.notifications-component />
                                 @endif
 
-                                <x-website.company.message-component />
+                                {{-- <x-website.company.message-component /> --}}
 
                                 <div class="dropdown dropstart">
                                     <a href="javascript:void(0)" class="candidate-profile position-relative"
@@ -654,6 +654,11 @@ config('templatecookie.default_language'))->first();
                                     </a>
                                     @candidate
                                     <ul class="custom-border dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:;"> <i class="ph-user"></i>
+                                                {{ __(auth()->user()->name) }}
+                                            </a>
+                                        </li>
                                         <li>
                                             <a class="dropdown-item {{ request()->routeIs('candidate.dashboard') ? 'active' : '' }}"
                                                 href="{{ route('candidate.dashboard') }}">
@@ -680,8 +685,14 @@ config('templatecookie.default_language'))->first();
                                             </form>
                                         </li>
                                     </ul>
-                                    @else
+                                    @endcandidate
+                                    @company
                                     <ul class="dropdown-menu custom-border" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:;"> <i class="ph-user"></i>
+                                                {{ __(auth()->user()->name) }}
+                                            </a>
+                                        </li>
                                         <li>
                                             <a class="dropdown-item {{ request()->routeIs('company.dashboard') ? 'active' : '' }}"
                                                 href="{{ route('company.dashboard') }}">
@@ -722,8 +733,61 @@ config('templatecookie.default_language'))->first();
                                             </form>
                                         </li>
                                     </ul>
-                                    @endcandidate
+                                    @endcompany
+                                    @if (auth()->user()->role == 'rider')
+                                        <ul class="dropdown-menu custom-border" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="javascript:;"> <i class="ph-user"></i>
+                                                    {{ __(auth()->user()->name) }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item {{ request()->routeIs('skilled-labour.index') ? 'active' : '' }}"
+                                                    href="{{ route('skilled-labour.index') }}">
+                                                    <i class="ph-stack"></i>
+                                                    {{ __('My Labours') }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item {{ request()->routeIs('skilled-labour.create') ? 'active' : '' }}"
+                                                    href="{{ route('skilled-labour.create') }}">
+                                                    <i class="ph-plus"></i>
+                                                    {{ __('Add New Labours') }}
+                                                </a>
+                                            </li>
+                                            {{-- <li>
+                                                <a class="dropdown-item {{ request()->routeIs('company.setting') ? 'active' : '' }}"
+                                                    href="{{ route('company.setting') }}">
+                                                    <i class="ph-gear"></i>
+                                                    {{ __('settings') }}
+                                                </a>
+                                            </li> --}}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    <i class="ph-sign-out"></i>
+                                                    {{ __('log_out') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    @endif
                                 </div>
+
+                                @if (auth()->user()->role == 'rider')
+                                    <li class="tw-hidden sm:tw-block">
+
+                                        <a href="{{ route('skilled-labour.create') }}">
+                                            <button class="btn btn-light">
+                                                {{ __('Add New') }}
+                                            </button>
+                                        </a>
+                                    </li>
+                                @endif
+
                                 @if (!request()->is('email/verify'))
                                 @company
                                 <li class="tw-hidden sm:tw-block">
