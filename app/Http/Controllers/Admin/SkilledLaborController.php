@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SkilledLaborController extends Controller
 {
-    public function index(Request $request, $id)
+    public function index(Request $request, $id = null)
     {       
         // If rider_id is provided in the request, filter by that rider
         if (isset($id) && !empty($id)) {
