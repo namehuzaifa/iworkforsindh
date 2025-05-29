@@ -24,7 +24,7 @@
         object-fit: contain;
         border: 1px dashed #ccc;
         margin-top: 5px;
-        /* display: none; */
+        display: none;
     }
 
     .document input {
