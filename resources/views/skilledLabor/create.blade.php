@@ -149,7 +149,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="work_location" class="form-label required-field">Work location</label>
-                            <input type="tel" class="form-control" id="work_location" name="work_location" required>
+                            <input type="text" class="form-control" id="work_location" name="work_location" required>
                         </div>
                     </div>
                     
