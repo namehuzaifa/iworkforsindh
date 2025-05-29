@@ -23,6 +23,7 @@
         </div>
         
         <div class="col-md-8">
+            
             <div class="mb-4">
                 <h5>Personal Details</h5>
                 {{-- <div class="row"> --}}

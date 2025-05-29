@@ -4,16 +4,18 @@
 
 <style>
     img.card-img-top.labor-image {
-    width: 200px;
-}
+        width: 200px;
+        height: 150px;
+        object-fit: contain;
+    }
 
-a.btn.btn-sm.btn-primary.edit-btn {
-    padding: 5px 10px;
-}
+    a.btn.btn-sm.btn-primary.edit-btn {
+        padding: 5px 10px;
+    }
 
-button.btn.btn-sm.btn-danger.delete-btn {
-    padding: 5px 11px;
-}
+    button.btn.btn-sm.btn-danger.delete-btn {
+        padding: 5px 11px;
+    }
 </style>
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -56,6 +58,7 @@ button.btn.btn-sm.btn-danger.delete-btn {
                     <img src="{{ asset($labor->image) }}" class="card-img-top labor-image" alt="{{ $labor->name }}">
                 </div>
                 <div class="card-body">
+                    <p> <strong>Status:</strong> {{ $labor->status == 1 ? 'Approved' : 'Pending' }}</p>
                     <h5 class="card-title">{{ $labor->name }}</h5>
                     <p class="card-text mb-1">
                         <strong>Profession:</strong> {{ $labor->profession->name }}
@@ -63,6 +66,11 @@ button.btn.btn-sm.btn-danger.delete-btn {
                     <p class="card-text mb-1">
                         <strong>Skill:</strong> {{ $labor->skill->name }}
                     </p>
+                    @auth
+                        <p class="card-text mb-1">
+                            <strong>Status:</strong> {{ $labor->status ? "Active" : "Pending" }}
+                        </p>
+                    @endauth
                   
                 </div>
             </div>

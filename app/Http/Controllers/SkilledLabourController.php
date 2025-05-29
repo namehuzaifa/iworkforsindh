@@ -36,7 +36,7 @@ class SkilledLabourController extends Controller
         } 
         // For guests (not logged in), show all labors
         else {
-            $labors = SkilledLabour::with(['profession', 'skill'])->get();
+            $labors = SkilledLabour::with(['profession', 'skill'])->where('status', 1)->get();
         }
 
         return view('skilledLabor.index', compact('labors'));
@@ -67,6 +67,8 @@ class SkilledLabourController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:skilled_labours,email',
+            'vage_per_day' => 'required|string|max:255',
+            'work_location' => 'required|string',
             'description' => 'required|string',
             'profession_id' => 'required|exists:professions,id',
             'skill_id' => 'required|exists:skills,id',
@@ -76,26 +78,38 @@ class SkilledLabourController extends Controller
             'birth_date' => 'required|date',
             'phone' => 'required|string',
             'image' => 'required|image|max:2048',
-            'cnic_image' => 'required|image|max:2048',
-            'fingerprint_image' => 'required|image|max:2048',
+            'cnic_front_image' => 'required|image|max:2048',
+            'cnic_back_image' => 'required|image|max:2048',
+            'fingerprint_right_hand_image' => 'required|image|max:2048',
+            'fingerprint_left_hand_image' => 'required|image|max:2048',
         ]);
         
         // Handle file uploads
         $imagePath = '';
-        $cnicImagePath = '';
-        $fingerprintImagePath = '';
+        $cnicFrontImagePath = '';
+        $cnicBackImagePath = '';
+        $fingerprintRightImagePath = '';
+        $fingerprintLeftImagePath = '';
 
         if ($request->image) {
             $Path = 'labour/images/';
             $imagePath = uploadFileToPublic($request->image, $Path);
         }
-        if ($request->cnic_image) {
+        if ($request->cnic_front_image) {
             $Path = 'labour/cnic/';
-            $cnicImagePath = uploadFileToPublic($request->cnic_image, $Path);
+            $cnicFrontImagePath = uploadFileToPublic($request->cnic_front_image, $Path);
         }
-        if ($request->fingerprint_image) {
+        if ($request->cnic_back_image) {
+            $Path = 'labour/cnic/';
+            $cnicBackImagePath = uploadFileToPublic($request->cnic_back_image, $Path);
+        }
+        if ($request->fingerprint_right_hand_image) {
             $Path = 'labour/fingerprints/';
-            $fingerprintImagePath = uploadFileToPublic($request->fingerprint_image, $Path);
+            $fingerprintRightImagePath = uploadFileToPublic($request->fingerprint_right_hand_image, $Path);
+        }
+        if ($request->fingerprint_left_hand_image) {
+            $Path = 'labour/fingerprints/';
+            $fingerprintLeftImagePath = uploadFileToPublic($request->fingerprint_left_hand_image, $Path);
         }
 
         // Handle file uploads
@@ -108,6 +122,8 @@ class SkilledLabourController extends Controller
             'user_id' => Auth::user()->id,
             'name' => $validated['name'],
             'email' => $validated['email'],
+            'vage_per_day' => $validated['vage_per_day'],
+            'work_location' => $validated['work_location'],
             'description' => $validated['description'],
             'profession_id' => $validated['profession_id'],
             'skill_id' => $validated['skill_id'],
@@ -117,14 +133,15 @@ class SkilledLabourController extends Controller
             'birth_date' => $validated['birth_date'],
             'phone' => $validated['phone'],
             'image' => $imagePath,
-            'cnic_image' => $cnicImagePath,
-            'fingerprint_image' => $fingerprintImagePath,
+            'cnic_front_image' => $cnicFrontImagePath,
+            'cnic_back_image' => $cnicBackImagePath,
+            'fingerprint_right_hand_image' => $fingerprintRightImagePath,
+            'fingerprint_left_hand_image' => $fingerprintLeftImagePath,
             'role' => 'skilledlabor',
-            'status' => true,
+            'status' => false,
         ]);
 
         return redirect()->route('skilled-labour.index')->with('success', 'Skilled labour registered successfully!');
-
     }
 
     /**
@@ -174,6 +191,8 @@ class SkilledLabourController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:skilled_labours,email,'.$labor->id,
+            'vage_per_day' => 'required|string|max:255',
+            'work_location' => 'required|string',
             'description' => 'required|string',
             'profession_id' => 'required|exists:professions,id',
             'skill_id' => 'required|exists:skills,id',
@@ -183,15 +202,19 @@ class SkilledLabourController extends Controller
             'birth_date' => 'required|date',
             'phone' => 'required|string',
             'image' => 'sometimes|image|max:2048',
-            'cnic_image' => 'sometimes|image|max:2048',
-            'fingerprint_image' => 'sometimes|image|max:2048',
+            'cnic_front_image' => 'sometimes|image|max:2048',
+            'cnic_back_image' => 'sometimes|image|max:2048',
+            'fingerprint_right_hand_image' => 'sometimes|image|max:2048',
+            'fingerprint_left_hand_image' => 'sometimes|image|max:2048',
         ]);
 
        
         // Handle file uploads
         $imagePath = $labor->image; // Keep existing path if no new image
-        $cnicImagePath = $labor->cnic_image; // Keep existing path if no new image
-        $fingerprintImagePath = $labor->fingerprint_image; // Keep existing path if no new image
+        $cnicFrontImagePath = $labor->cnic_front_image; // Keep existing path if no new image
+        $cnicBackImagePath = $labor->cnic_back_image; // Keep existing path if no new image
+        $fingerprintRightImagePath = $labor->fingerprint_right_hand_image; // Keep existing path if no new image
+        $fingerprintLeftImagePath = $labor->fingerprint_left_hand_image; // Keep existing path if no new image
 
         if ($request->image) {
             $Path = 'labour/images/';
@@ -201,20 +224,30 @@ class SkilledLabourController extends Controller
                 unlink(public_path($labor->image));
             }
         }
+        
         if ($request->cnic_image) {
             $Path = 'labour/cnic/';
-            $cnicImagePath = uploadFileToPublic($request->cnic_image, $Path);
+            $cnicFrontImagePath = uploadFileToPublic($request->cnic_front_image, $Path);
+            $cnicBackImagePath = uploadFileToPublic($request->cnic_back_image, $Path);
             // Delete old cnic image if it exists
-            if ($labor->cnic_image && file_exists(public_path($labor->cnic_image))) {
-                unlink(public_path($labor->cnic_image));
+            if ($labor->cnic_front_image && file_exists(public_path($labor->cnic_front_image))) {
+                unlink(public_path($labor->cnic_front_image));
+            }
+            if ($labor->cnic_back_image && file_exists(public_path($labor->cnic_back_image))) {
+                unlink(public_path($labor->cnic_back_image));
             }
         }
         if ($request->fingerprint_image) {
             $Path = 'labour/fingerprints/';
-            $fingerprintImagePath = uploadFileToPublic($request->fingerprint_image, $Path);
+            $fingerprintRightImagePath = uploadFileToPublic($request->fingerprint_right_hand_image, $Path);
+            $fingerprintLeftImagePath = uploadFileToPublic($request->fingerprint_left_hand_image, $Path);
+
             // Delete old fingerprint image if it exists
-            if ($labor->fingerprint_image && file_exists(public_path($labor->fingerprint_image))) {
-                unlink(public_path($labor->fingerprint_image));
+            if ($labor->fingerprint_right_hand_image && file_exists(public_path($labor->fingerprint_right_hand_image))) {
+                unlink(public_path($labor->fingerprint_right_hand_image));
+            }
+            if ($labor->fingerprint_left_hand_image && file_exists(public_path($labor->fingerprint_left_hand_image))) {
+                unlink(public_path($labor->fingerprint_left_hand_image));
             }
         }
  
@@ -222,6 +255,8 @@ class SkilledLabourController extends Controller
          $updateData = [
             'name' => $validated['name'],
             'email' => $validated['email'],
+            'vage_per_day' => $validated['vage_per_day'],
+            'work_location' => $validated['work_location'],
             'description' => $validated['description'],
             'profession_id' => $validated['profession_id'],
             'skill_id' => $validated['skill_id'],
@@ -231,8 +266,10 @@ class SkilledLabourController extends Controller
             'birth_date' => $validated['birth_date'],
             'phone' => $validated['phone'],
             'image' => $imagePath,
-            'cnic_image' => $cnicImagePath,
-            'fingerprint_image' => $fingerprintImagePath,
+            'cnic_front_image' => $cnicFrontImagePath,
+            'cnic_back_image' => $cnicBackImagePath,
+            'fingerprint_right_hand_image' => $fingerprintRightImagePath,
+            'fingerprint_left_hand_image' => $fingerprintLeftImagePath,
         ];
 
 
@@ -271,8 +308,10 @@ class SkilledLabourController extends Controller
         // Optional: Delete associated files from storage
         Storage::delete([
             'public/'.$labor->image,
-            'public/'.$labor->cnic_image,
-            'public/'.$labor->fingerprint_image
+            'public/'.$labor->cnic_front_image,
+            'public/'.$labor->cnic_back_image,
+            'public/'.$labor->fingerprint_right_hand_image,
+            'public/'.$labor->fingerprint_left_hand_image
         ]);
         
         $labor->delete();

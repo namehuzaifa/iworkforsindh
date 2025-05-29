@@ -18,6 +18,8 @@ return new class extends Migration
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('vage_per_day')->default('Not specified');
+            $table->string('work_location')->default('Not specified');
             $table->longText('description');
             $table->foreignId('profession_id')->constrained('professions')->cascadeOnDelete();
             $table->foreignIdFor(Skill::class)->constrained()->cascadeOnDelete();
@@ -27,10 +29,12 @@ return new class extends Migration
             $table->datetime('birth_date');
             $table->string('phone');
             $table->string('image')->default('backend/image/default.png');
-            $table->string('cnic_image')->default('backend/image/default.png');
-            $table->string('fingerprint_image')->default('backend/image/default.png');
+            $table->string('cnic_front_image')->default('backend/image/default.png');
+            $table->string('cnic_back_image')->default('backend/image/default.png');
+            $table->string('fingerprint_right_hand_image')->default('backend/image/default.png');
+            $table->string('fingerprint_left_hand_image')->default('backend/image/default.png');
             $table->enum('role', ['skilledlabor'])->default('skilledlabor');
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

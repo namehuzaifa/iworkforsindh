@@ -106,7 +106,7 @@ Route::controller(WebsiteController::class)->name('website.')->group(function ()
     Route::get('mollie-success-web', 'paymentSuccess')->name('mollie.success');
 });
 
-Route::middleware(['auth', 'restrict.rider'])->group(function () {
+Route::middleware(['auth', 'user_active', 'restrict.rider'])->group(function () {
     Route::get('/skilled-labour/create', [SkilledLabourController::class, 'create'])->name('skilled-labour.create');
     Route::post('/skilled-labour', [SkilledLabourController::class, 'store'])->name('skilled-labour.store');
     Route::get('skilled-labour/{labor}/edit', [SkilledLabourController::class, 'edit'])->name('skilled-labour.edit');

@@ -2,7 +2,7 @@
 @section('css')
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 <style>
-    .form-container {
+     .form-container {
         max-width: 1000px;
         margin: 30px auto;
         padding: 20px;
@@ -19,16 +19,20 @@
         color: red;
     }
     .image-preview {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
+        width: 200px;
+        height: 140px;
+        object-fit: contain;
         border: 1px dashed #ccc;
         margin-top: 5px;
-        display: none;
+        /* display: none; */
     }
 
-    input#fingerprint_image, input#cnic_image, input#image {
+    .document input {
         display: none !important;
+    }
+
+    .document label{
+        cursor: pointer;
     }
 </style>
 
@@ -141,6 +145,16 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="vage_per_day" class="form-label required-field">Vage per day</label>
+                                <input type="text" class="form-control" id="vage_per_day" name="vage_per_day" value="{{ old('vage_per_day', $labor->vage_per_day) }}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="work_location" class="form-label required-field">Work location</label>
+                                <input type="tel" class="form-control" id="work_location" name="work_location" value="{{ old('work_location', $labor->work_location) }}" required>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="mb-3">
@@ -169,22 +183,40 @@
                             <img id="imagePreview" class="image-preview" alt="Profile Photo Preview">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="cnic_image" class="form-label required-field">CNIC Image</label>
-                            <input type="file" class="form-control" id="cnic_image" name="cnic_image" accept="image/*" >
+                            <label for="cnic_front_image" class="form-label required-field">CNIC Front Image</label>
+                            <input type="file" class="form-control" id="cnic_front_image" name="cnic_front_image" accept="image/*" >
                             <div class="mt-2">
                                 <small>Current:</small>
-                                <img src="{{ asset($labor->cnic_image) }}" class="img-thumbnail" style="max-height: 100px;">
+                                <img src="{{ asset($labor->cnic_front_image) }}" class="img-thumbnail" style="max-height: 100px;">
                             </div>
-                            <img id="cnicPreview" class="image-preview" alt="CNIC Preview">
+                            <img id="cnicFrontPreview" class="image-preview" alt="CNIC Preview">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="fingerprint_image" class="form-label required-field">Fingerprint Image</label>
-                            <input type="file" class="form-control" id="fingerprint_image" name="fingerprint_image" accept="image/*" >
+                            <label for="cnic_back_image" class="form-label required-field">CNIC Back Image</label>
+                            <input type="file" class="form-control" id="cnic_back_image" name="cnic_back_image" accept="image/*" >
                             <div class="mt-2">
                                 <small>Current:</small>
-                                <img src="{{ asset($labor->fingerprint_image) }}" class="img-thumbnail" style="max-height: 100px;">
+                                <img src="{{ asset($labor->cnic_back_image) }}" class="img-thumbnail" style="max-height: 100px;">
                             </div>
-                            <img id="fingerprintPreview" class="image-preview" alt="Fingerprint Preview">
+                            <img id="cnicBackPreview" class="image-preview" alt="CNIC Preview">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="fingerprint_right_hand_image" class="form-label required-field">Fingerprint Right Hand Image</label>
+                            <input type="file" class="form-control" id="fingerprint_right_hand_image" name="fingerprint_right_hand_image" accept="image/*" >
+                            <div class="mt-2">
+                                <small>Current:</small>
+                                <img src="{{ asset($labor->fingerprint_right_hand_image) }}" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                            <img id="fingerprintRightPreview" class="image-preview" alt="Fingerprint Preview">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="fingerprint_left_hand_image" class="form-label required-field">Fingerprint Left Hand Image</label>
+                            <input type="file" class="form-control" id="fingerprint_left_hand_image" name="fingerprint_left_hand_image" accept="image/*" >
+                            <div class="mt-2">
+                                <small>Current:</small>
+                                <img src="{{ asset($labor->fingerprint_left_hand_image) }}" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                            <img id="fingerprintLeftPreview" class="image-preview" alt="Fingerprint Preview">
                         </div>
                     </div>
                 </div>
@@ -201,6 +233,10 @@
 @push('frontend_scripts')
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 <script>
+
+    $('.document img').click(function() {
+        $(this).parent().find('label').trigger('click');
+    });
     // Image preview functionality
     document.getElementById('image').addEventListener('change', function(e) {
         const preview = document.getElementById('imagePreview');
@@ -213,8 +249,8 @@
         }
     });
 
-    document.getElementById('cnic_image').addEventListener('change', function(e) {
-        const preview = document.getElementById('cnicPreview');
+    document.getElementById('cnic_front_image').addEventListener('change', function(e) {
+        const preview = document.getElementById('cnicFrontPreview');
         const file = e.target.files[0];
         if (file) {
             preview.style.display = 'block';
@@ -224,8 +260,30 @@
         }
     });
 
-    document.getElementById('fingerprint_image').addEventListener('change', function(e) {
-        const preview = document.getElementById('fingerprintPreview');
+    document.getElementById('cnic_back_image').addEventListener('change', function(e) {
+        const preview = document.getElementById('cnicBackPreview');
+        const file = e.target.files[0];
+        if (file) {
+            preview.style.display = 'block';
+            preview.src = URL.createObjectURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    });
+
+    document.getElementById('fingerprint_right_hand_image').addEventListener('change', function(e) {
+        const preview = document.getElementById('fingerprintRightPreview');
+        const file = e.target.files[0];
+        if (file) {
+            preview.style.display = 'block';
+            preview.src = URL.createObjectURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    });
+
+    document.getElementById('fingerprint_left_hand_image').addEventListener('change', function(e) {
+        const preview = document.getElementById('fingerprintLeftPreview');
         const file = e.target.files[0];
         if (file) {
             preview.style.display = 'block';

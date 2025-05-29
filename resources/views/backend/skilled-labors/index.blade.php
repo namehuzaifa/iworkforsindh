@@ -2,14 +2,6 @@
 
 @section('content')
 
-<style>
-    .labor-image{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-</style>
     <!-- DataTable CSS CDN -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
 
@@ -34,6 +26,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Gender</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -46,6 +39,18 @@
                         <td>{{ $labor->phone }}</td>
                         <td>{{ $labor->gender }}</td>
                         <td>
+                            <a href="javascript:void(0)" class="active-status">
+                                <label class="switch ">
+                                    <input data-id="{{ $labor->id }}" type="checkbox"
+                                        class="success status-switch change-active-status"
+                                        {{ $labor->status == 1 ? 'checked' : '' }}>
+                                    <span class="slider round"></span>
+                                </label>
+                                <p class="{{ $labor->status == 1 ? 'active' : '' }}" id="status_{{ $labor->id }}">
+                                    {{ $labor->status == 1 ? __('activated') : __('deactivated') }}</p>
+                            </a>
+                        </td>
+                        <td>
                             <a href="{{ route('skilled-labour.details', $labor->id) }}">View Detail</a>
                         </td>                    
                     </tr>
@@ -54,7 +59,74 @@
         </table>
     </div>
 @endsection
+@section('style')
+    <style>
+        .labor-image{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 35px;
+            height: 19px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            display: none;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 15px;
+            width: 15px;
+            left: 3px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input.success:checked+.slider {
+            background-color: #28a745;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(15px);
+            -ms-transform: translateX(15px);
+            transform: translateX(15px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+@endsection
 @section('script')
+<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
 <!-- DataTable JS CDN -->
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
 
@@ -84,6 +156,29 @@
                 topStart: {
                     buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
                 }
+            }
+        });
+
+        $('.status-switch').on('change', function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('labor.status.change') }}',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(response) {
+                    toastr.success(response.message, 'Success');
+                }
+            });
+
+            if (status == 1) {
+                $(`#status_${id}`).text("{{ __('activated') }}")
+            }else{
+                $(`#status_${id}`).text("{{ __('deactivated') }}")
             }
         });
     });

@@ -38,4 +38,47 @@ class SkilledLaborController extends Controller
         $labor->birth_date = \Carbon\Carbon::parse($labor->birth_date);
         return view('backend.skilled-labors.detail', compact('labor'));
     }
+
+    /**
+     * Change rider status
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function riderStatusChange(Request $request)
+    {
+        try {
+            $user = User::findOrFail($request->id);
+            $user->status = $request->status;
+            $user->save();
+
+            if ($request->status == 1) {
+                return responseSuccess(__('Rider activated successfully'));
+            } else {
+                return responseSuccess(__('Rider deactivated successfully'));
+            }
+        } catch (\Exception $e) {
+            flashError('An error occurred: '.$e->getMessage());
+
+            return back();
+        }
+    }
+
+    public function laborStatusChange(Request $request)
+    {
+        try {
+            $user = SkilledLabour::findOrFail($request->id);
+            $user->status = $request->status;
+            $user->save();
+
+            if ($request->status == 1) {
+                return responseSuccess(__('Labor activated successfully'));
+            } else {
+                return responseSuccess(__('Labor deactivated successfully'));
+            }
+        } catch (\Exception $e) {
+            flashError('An error occurred: '.$e->getMessage());
+
+            return back();
+        }
+    }
 }
