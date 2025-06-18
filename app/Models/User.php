@@ -74,6 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function skilledLabors()
+    {
+        return $this->hasMany(SkilledLabour::class, 'user_id');
+    }
+
     public function getImageAttributes($image)
     {
         if ($image) {

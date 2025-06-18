@@ -23,9 +23,11 @@
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    {{-- <th>Email</th> --}}
                     <th>Phone</th>
                     <th>Gender</th>
+                    <th>Profession</th>
+                    <th>Rider</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -35,9 +37,11 @@
                     <tr>
                         <td><img src="{{ asset($labor->image) }}" class="card-img-top labor-image" alt="{{ $labor->name }}"></td>
                         <td>{{ $labor->name }}</td>
-                        <td>{{ $labor->email }}</td>
+                        {{-- <td>{{ $labor->email }}</td> --}}
                         <td>{{ $labor->phone }}</td>
                         <td>{{ $labor->gender }}</td>
+                        <td>{{ $labor->profession->name }}</td>
+                        <td>{{ $labor->user->name }} <br> {{ $labor->user->email }}</td>
                         <td>
                             <a href="javascript:void(0)" class="active-status">
                                 <label class="switch ">
@@ -51,7 +55,8 @@
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('skilled-labour.details', $labor->id) }}">View Detail</a>
+                            <a href="{{ route('admin-skilled-labour.edit', $labor->id) }}">Edit</a> |
+                            <a href="{{ route('skilled-labour.details', $labor->id) }}">View</a>
                         </td>                    
                     </tr>
                 @endforeach
@@ -62,7 +67,7 @@
 @section('style')
     <style>
         .labor-image{
-            width: 50px;
+            width: 50px !important;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;

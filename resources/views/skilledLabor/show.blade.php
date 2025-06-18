@@ -9,10 +9,10 @@
             
             <div class="mb-3">
                 <h5>Contact Information</h5>
-                <div class="detail-row">
+                {{-- <div class="detail-row">
                     <span class="detail-label">Email:</span>
                     <span class="detail-value">{{ $labor->email }}</span>
-                </div>
+                </div> --}}
                 <div class="detail-row">
                     <span class="detail-label">Phone:</span>
                     <span class="detail-value">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-header">Fingerprint Right Hand Image</div>
                         <div class="card-body p-2 text-center">
@@ -119,7 +119,7 @@
                             <img src="{{ asset($labor->fingerprint_left_hand_image) }}" class="img-fluid" style="max-height: 150px;">
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             @endauth
         </div>

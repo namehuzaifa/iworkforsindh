@@ -112,6 +112,9 @@ Route::middleware(['auth', 'user_active', 'restrict.rider'])->group(function () 
     Route::get('skilled-labour/{labor}/edit', [SkilledLabourController::class, 'edit'])->name('skilled-labour.edit');
     Route::put('skilled-labour/{labor}', [SkilledLabourController::class, 'update'])->name('skilled-labour.update');
     Route::delete('skilled-labour/{labor}', [SkilledLabourController::class, 'destroy'])->name('skilled-labour.destroy');
+
+    Route::get('rider/{rider}/edit', [SkilledLabourController::class, 'editRider'])->name('rider.edit');
+    Route::put('rider/{rider}', [SkilledLabourController::class, 'updateRider'])->name('rider.update');
 });
 Route::get('/skilled-labors', [SkilledLabourController::class, 'index'])->name('skilled-labour.index');
 Route::get('/skilled-labors/{labor}', [SkilledLabourController::class, 'show'])->name('skilled-labour.show'); // fetching single labor details

@@ -67,14 +67,14 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-12 mb-6">
                             <label for="name" class="form-label required-field">Full Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        {{-- <div class="col-md-6 mb-3">
                             <label for="email" class="form-label required-field">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
+                        </div> --}}
                     </div>
                     
                     <div class="row">
@@ -133,13 +133,23 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="skill_id" class="form-label required-field">Skill</label>
-                            <select class="" id="skill_id" name="skill_id" required>
+                            <select class="js-example-basic-single" name="skill_id">
                                 <option value="">Select Skill</option>
                                 @foreach($skills as $skill)
                                     <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                                 @endforeach
                             </select>
+
+                            {{-- <select class="" id="skill_id" name="skill_id" required>
+                                <option value="">Select Skill</option>
+                                @foreach($skills as $skill)
+                                    <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                                @endforeach
+                            </select> --}}
                         </div>
+
+                        
+
                     </div>
 
                     <div class="row">
@@ -182,7 +192,7 @@
                             <input type="file" class="form-control" id="cnic_back_image" name="cnic_back_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="cnicBackPreview" class="image-preview" alt="CNIC Preview">
                         </div>
-                        <div class="col-md-4 mb-3">
+                        {{-- <div class="col-md-4 mb-3">
                             <label for="fingerprint_right_hand_image" class="form-label required-field">Fingerprint Right Hand Image</label>
                             <input type="file" class="form-control" id="fingerprint_right_hand_image" name="fingerprint_right_hand_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="fingerprintRightPreview" class="image-preview" alt="Fingerprint Preview">
@@ -191,7 +201,7 @@
                             <label for="fingerprint_left_hand_image" class="form-label required-field">Fingerprint Left Hand Image</label>
                             <input type="file" class="form-control" id="fingerprint_left_hand_image" name="fingerprint_left_hand_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="fingerprintLeftPreview" class="image-preview" alt="Fingerprint Preview">
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -207,6 +217,11 @@
 @section('script')
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 <script>
+
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+        $('#profession_id').select2();
+    });
 
     $('.document img').click(function() {
         $(this).parent().find('label').trigger('click');
@@ -245,27 +260,27 @@
         }
     });
 
-    document.getElementById('fingerprint_right_hand_image').addEventListener('change', function(e) {
-        const preview = document.getElementById('fingerprintRightPreview');
-        const file = e.target.files[0];
-        if (file) {
-            preview.style.display = 'block';
-            preview.src = URL.createObjectURL(file);
-        } else {
-            preview.style.display = 'none';
-        }
-    });
+    //document.getElementById('fingerprint_right_hand_image').addEventListener('change', function(e) {
+    //     const preview = document.getElementById('fingerprintRightPreview');
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         preview.style.display = 'block';
+    //         preview.src = URL.createObjectURL(file);
+    //     } else {
+    //         preview.style.display = 'none';
+    //     }
+    // });
 
-    document.getElementById('fingerprint_left_hand_image').addEventListener('change', function(e) {
-        const preview = document.getElementById('fingerprintLeftPreview');
-        const file = e.target.files[0];
-        if (file) {
-            preview.style.display = 'block';
-            preview.src = URL.createObjectURL(file);
-        } else {
-            preview.style.display = 'none';
-        }
-    });
+    // document.getElementById('fingerprint_left_hand_image').addEventListener('change', function(e) {
+    //     const preview = document.getElementById('fingerprintLeftPreview');
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         preview.style.display = 'block';
+    //         preview.src = URL.createObjectURL(file);
+    //     } else {
+    //         preview.style.display = 'none';
+    //     }
+    // });
 
     // CNIC format validation
     document.getElementById('cnic').addEventListener('input', function(e) {

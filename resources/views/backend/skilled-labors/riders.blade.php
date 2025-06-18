@@ -18,6 +18,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>CNIC</th>
+                    <th>Labor Count</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -29,6 +30,7 @@
                         <td>{{ $rider->email }}</td>
                         <td>{{ $rider->phone }}</td>
                         <td>{{ $rider->nic }}</td>
+                        <td>{{ $rider->skilledLabors->count() }}</td>
                         <td>
                             <a href="javascript:void(0)" class="active-status">
                                 <label class="switch ">

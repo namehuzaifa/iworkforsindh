@@ -12,7 +12,7 @@ class SkilledLabour extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'email',
+        // 'email',
         'vage_per_day',
         'work_location',
         'description',
@@ -26,8 +26,8 @@ class SkilledLabour extends Model
         'image',
         'cnic_front_image',
         'cnic_back_image',
-        'fingerprint_right_hand_image',
-        'fingerprint_left_hand_image',
+        // 'fingerprint_right_hand_image',
+        // 'fingerprint_left_hand_image',
         'role',
         'status',
     ];
@@ -42,6 +42,11 @@ class SkilledLabour extends Model
     public function skill()
     {
         return $this->belongsTo(Skill::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     // public function candidate()

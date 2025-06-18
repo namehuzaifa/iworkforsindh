@@ -11,10 +11,10 @@
             
             <div class="mb-3">
                 <h5>Contact Information</h5>
-                <div class="detail-row">
+                {{-- <div class="detail-row">
                     <span class="detail-label">Email:</span>
                     <span class="detail-value">{{ $labor->email }}</span>
-                </div>
+                </div> --}}
                 <div class="detail-row">
                     <span class="detail-label">Phone:</span>
                     <span class="detail-value">{{ $labor->phone }}</span></span>
@@ -70,22 +70,32 @@
             </div>
             
             <div class="row">
+               
+
                 <div class="col-md-6">
                     <div class="card mb-3">
-                        <div class="card-header">CNIC Image</div>
+                        <div class="card-header">CNIC Front Image</div>
                         <div class="card-body p-2 text-center">
-                            <img src="{{ asset($labor->cnic_image) }}" class="img-fluid" style="max-height: 150px;">
+                            <img src="{{ asset($labor->cnic_front_image) }}" class="img-fluid" style="max-height: 150px;">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header">CNIC Back Image</div>
+                        <div class="card-body p-2 text-center">
+                            <img src="{{ asset($labor->cnic_back_image) }}" class="img-fluid" style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-header">Fingerprint Image</div>
                         <div class="card-body p-2 text-center">
                             <img src="{{ asset($labor->fingerprint_image) }}" class="img-fluid" style="max-height: 150px;">
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

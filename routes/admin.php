@@ -64,6 +64,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/riders', [SkilledLaborController::class, 'getriders'])->name('skilled-labour.riders');
         Route::get('/skilled-labors/{id?}', [SkilledLaborController::class, 'index'])->name('admin-skilled-labour.index');
         Route::get('/skilled-labors-details/{labor}', [SkilledLaborController::class, 'viewSkilledLaborDetail'])->name('skilled-labour.details'); // fetching single labor details
+        Route::get('/skilled-labors/{labor}/edit', [SkilledLaborController::class, 'edit'])->name('admin-skilled-labour.edit');
+        Route::put('/skilled-labors/{labor}', [SkilledLaborController::class, 'update'])->name('admin-skilled-labour.update');
         Route::get('/riders/change/status', [SkilledLaborController::class, 'riderStatusChange'])->name('riders.status.change');
         Route::get('/labor/change/status', [SkilledLaborController::class, 'laborStatusChange'])->name('labor.status.change');
 
