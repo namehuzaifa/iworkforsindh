@@ -908,10 +908,10 @@
                         <h4 class="mb-3 download-heading">DOWNLOAD APP</h4>
                         <div class="d-flex justify-content-center gap-2">
                             <div>
-                                <img src="{{ url('uploads/app/logo/Andriod_Button-1.png') }}" alt="Google Play" class="app-icon">
+                                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.sindh.iworkforsindh&pcampaignid=web_share"> <img src="{{ url('uploads/app/logo/Andriod_Button-1.png') }}" alt="Google Play" class="app-icon"></a>
                             </div>
                             <div>
-                                <img src="{{ url('uploads/app/logo/IOS-BUTTON.png') }}" alt="App Store" class="app-icon">
+                               <a target="_blank" href="https://apps.apple.com/pk/app/iwork4sindh/id6745734134"><img src="{{ url('uploads/app/logo/IOS-BUTTON.png') }}" alt="App Store" class="app-icon"></a>
                             </div>
                         </div>
                     </div>
