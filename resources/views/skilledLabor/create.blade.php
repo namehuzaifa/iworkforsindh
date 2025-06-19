@@ -69,22 +69,22 @@
                     <div class="row">
                         <div class="col-md-12 mb-6">
                             <label for="name" class="form-label required-field">Full Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <input {{ old('name') }} type="text" class="form-control" id="name" name="name" required>
                         </div>
                         {{-- <div class="col-md-6 mb-3">
                             <label for="email" class="form-label required-field">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input {{ old('email') }} type="email" class="form-control" id="email" name="email" required>
                         </div> --}}
                     </div>
                     
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="cnic" class="form-label required-field">CNIC</label>
-                            <input type="text" class="form-control" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" required>
+                            <input {{ old('cnic') }} type="text" class="form-control" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="phone" class="form-label required-field">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                            <input {{ old('phone') }} type="tel" class="form-control" id="phone" name="phone" required>
                         </div>
                     </div>
                     
@@ -92,24 +92,24 @@
                         <div class="col-md-4 mb-3">
                             <label for="gender" class="form-label required-field">Gender</label>
                             <select class="" id="gender" name="gender" required>
-                                <option value="male" selected>Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
+                                <option {{ old('cnic') == "male" ? 'selected' : '' }} value="male" selected>Male</option>
+                                <option {{ old('cnic') == "female" ? 'selected' : '' }} value="female">Female</option>
+                                <option {{ old('cnic') == "other" ? 'selected' : '' }} value="other">Other</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="marital_status" class="form-label">Marital Status</label>
                             <select class="" id="marital_status" name="marital_status">
                                 <option value="">Select</option>
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
-                                <option value="divorced">Divorced</option>
-                                <option value="widowed">Widowed</option>
+                                <option {{ old('marital_status') == "single" ? 'selected' : '' }} value="single">Single</option>
+                                <option {{ old('marital_status') == "married" ? 'selected' : '' }} value="married">Married</option>
+                                <option {{ old('marital_status') == "divorced" ? 'selected' : '' }} value="divorced">Divorced</option>
+                                <option {{ old('marital_status') == "widowed" ? 'selected' : '' }} value="widowed">Widowed</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birth_date" class="form-label required-field">Date of Birth</label>
-                            <input type="date" class="form-control" id="birth_date" name="birth_date" required>
+                            <input {{ old('birth_date') }} type="date" class="form-control" id="birth_date" name="birth_date" required>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                             <select class="" id="profession_id" name="profession_id" required>
                                 <option value="">Select Profession</option>
                                 @foreach($professions as $profession)
-                                    <option value="{{ $profession->id }}">{{ $profession->name }}</option>
+                                    <option {{ old('profession_id') == $profession->id ? 'selected' : '' }} value="{{ $profession->id }}">{{ $profession->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -136,7 +136,7 @@
                             <select class="js-example-basic-single" name="skill_id">
                                 <option value="">Select Skill</option>
                                 @foreach($skills as $skill)
-                                    <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                                    <option {{ old('skill_id') == $skill->id ? 'selected' : '' }} value="{{ $skill->id }}">{{ $skill->name }}</option>
                                 @endforeach
                             </select>
 
@@ -155,11 +155,11 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="vage_per_day" class="form-label required-field">Vage per day</label>
-                            <input type="text" class="form-control" id="vage_per_day" name="vage_per_day" required>
+                            <input {{ old('vage_per_day') }} type="text" class="form-control" id="vage_per_day" name="vage_per_day" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="work_location" class="form-label required-field">Work location</label>
-                            <input type="text" class="form-control" id="work_location" name="work_location" required>
+                            <input {{ old('work_location') }} type="text" class="form-control" id="work_location" name="work_location" required>
                         </div>
                     </div>
                     
@@ -194,12 +194,12 @@
                         </div>
                         {{-- <div class="col-md-4 mb-3">
                             <label for="fingerprint_right_hand_image" class="form-label required-field">Fingerprint Right Hand Image</label>
-                            <input type="file" class="form-control" id="fingerprint_right_hand_image" name="fingerprint_right_hand_image" accept="image/*" required>
+                            <input {{ old('title') }} type="file" class="form-control" id="fingerprint_right_hand_image" name="fingerprint_right_hand_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="fingerprintRightPreview" class="image-preview" alt="Fingerprint Preview">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="fingerprint_left_hand_image" class="form-label required-field">Fingerprint Left Hand Image</label>
-                            <input type="file" class="form-control" id="fingerprint_left_hand_image" name="fingerprint_left_hand_image" accept="image/*" required>
+                            <input {{ old('title') }} type="file" class="form-control" id="fingerprint_left_hand_image" name="fingerprint_left_hand_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="fingerprintLeftPreview" class="image-preview" alt="Fingerprint Preview">
                         </div> --}}
                     </div>
