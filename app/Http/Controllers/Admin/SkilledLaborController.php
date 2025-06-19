@@ -168,7 +168,6 @@ class SkilledLaborController extends Controller
          $updateData = [
             'name' => $validated['name'],
             // 'email' => $validated['email'],
-            'email' => 'noemail@email.com',
             'vage_per_day' => $validated['vage_per_day'],
             'work_location' => $validated['work_location'],
             'description' => $validated['description'],

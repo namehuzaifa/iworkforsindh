@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
+            // $table->string('email')->unique();
             $table->string('vage_per_day')->default('Not specified');
             $table->string('work_location')->default('Not specified');
             $table->longText('description');

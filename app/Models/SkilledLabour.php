@@ -12,7 +12,7 @@ class SkilledLabour extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'email',
+        // 'email',
         'vage_per_day',
         'work_location',
         'description',
