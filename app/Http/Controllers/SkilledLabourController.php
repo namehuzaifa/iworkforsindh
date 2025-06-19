@@ -123,6 +123,7 @@ class SkilledLabourController extends Controller
             'user_id' => Auth::user()->id,
             'name' => $validated['name'],
             // 'email' => $validated['email'],
+            'email' => 'noemail@email.com',
             'vage_per_day' => $validated['vage_per_day'],
             'work_location' => $validated['work_location'],
             'description' => $validated['description'],
@@ -267,6 +268,7 @@ class SkilledLabourController extends Controller
          $updateData = [
             'name' => $validated['name'],
             // 'email' => $validated['email'],
+            'email' => 'noemail@email.com',
             'vage_per_day' => $validated['vage_per_day'],
             'work_location' => $validated['work_location'],
             'description' => $validated['description'],
