@@ -69,22 +69,22 @@
                     <div class="row">
                         <div class="col-md-12 mb-6">
                             <label for="name" class="form-label required-field">Full Name</label>
-                            <input {{ old('name') }} type="text" class="form-control" id="name" name="name" required>
+                            <input value="{{ old('name') }}" type="text" class="form-control" id="name" name="name" required>
                         </div>
                         {{-- <div class="col-md-6 mb-3">
                             <label for="email" class="form-label required-field">Email</label>
-                            <input {{ old('email') }} type="email" class="form-control" id="email" name="email" required>
+                            <input value="old('email') }} type="email" class="form-control" id="email" name="email" required>
                         </div> --}}
                     </div>
                     
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="cnic" class="form-label required-field">CNIC</label>
-                            <input {{ old('cnic') }} type="text" class="form-control" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" required>
+                            <input value="{{ old('cnic') }}" type="text" class="form-control" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="phone" class="form-label required-field">Phone Number</label>
-                            <input {{ old('phone') }} type="tel" class="form-control" id="phone" name="phone" required>
+                            <input value="{{ old('phone') }}" type="tel" class="form-control" id="phone" name="phone" required>
                         </div>
                     </div>
                     
@@ -109,7 +109,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birth_date" class="form-label required-field">Date of Birth</label>
-                            <input {{ old('birth_date') }} type="date" class="form-control" id="birth_date" name="birth_date" required>
+                            <input value="{{ old('birth_date') }}" type="date" class="form-control" id="birth_date" name="birth_date" required>
                         </div>
                     </div>
                 </div>
@@ -155,17 +155,17 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="vage_per_day" class="form-label required-field">Vage per day</label>
-                            <input {{ old('vage_per_day') }} type="text" class="form-control" id="vage_per_day" name="vage_per_day" required>
+                            <input value="{{ old('vage_per_day') }}" type="text" class="form-control" id="vage_per_day" name="vage_per_day" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="work_location" class="form-label required-field">Work location</label>
-                            <input {{ old('work_location') }} type="text" class="form-control" id="work_location" name="work_location" required>
+                            <input value="{{ old('work_location') }}" type="text" class="form-control" id="work_location" name="work_location" required>
                         </div>
                     </div>
                     
                     <div class="mb-3">
                         <label for="description" class="form-label required-field">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                        <textarea  class="form-control" id="description" name="description" rows="5" required>{{ old('work_location') }}</textarea>
                     </div>
                 </div>
             </div>
@@ -194,12 +194,12 @@
                         </div>
                         {{-- <div class="col-md-4 mb-3">
                             <label for="fingerprint_right_hand_image" class="form-label required-field">Fingerprint Right Hand Image</label>
-                            <input {{ old('title') }} type="file" class="form-control" id="fingerprint_right_hand_image" name="fingerprint_right_hand_image" accept="image/*" required>
+                            <input value="old('title') }} type="file" class="form-control" id="fingerprint_right_hand_image" name="fingerprint_right_hand_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="fingerprintRightPreview" class="image-preview" alt="Fingerprint Preview">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="fingerprint_left_hand_image" class="form-label required-field">Fingerprint Left Hand Image</label>
-                            <input {{ old('title') }} type="file" class="form-control" id="fingerprint_left_hand_image" name="fingerprint_left_hand_image" accept="image/*" required>
+                            <input value="old('title') }} type="file" class="form-control" id="fingerprint_left_hand_image" name="fingerprint_left_hand_image" accept="image/*" required>
                             <img src="{{ asset('backend/image/default.png') }}" id="fingerprintLeftPreview" class="image-preview" alt="Fingerprint Preview">
                         </div> --}}
                     </div>
