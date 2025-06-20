@@ -36,6 +36,31 @@
     .document label{
         cursor: pointer;
     }
+
+    .loader-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
 </style>
 
 @endsection
@@ -232,6 +257,9 @@
         </form>
     </div>
 </div>
+<div class="loader-overlay" id="loader">
+    <div class="spinner"></div>
+  </div>
 @endsection
 @push('frontend_scripts')
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -253,19 +281,19 @@
     );
 
     $(document).ready(function () {
-        $('#skilledLabourForm1').on('submit', function (e) {
+        $('#skilledLabourForm').on('submit', function (e) {
             e.preventDefault();
 
             var isValid = true;
 
-            $(this).find('select, input, textarea').each(function () {
-                if ($(this).val() === "") {
-                isValid = false;
-                const label = $(this).prev('label').text();
-                toastr.error('Please enter a value for "' + label + '"', 'Error!');
-                return false;
-                }
-            });
+            // $(this).find('select, input, textarea').each(function () {
+            //     if ($(this).val() === "") {
+            //     isValid = false;
+            //     const label = $(this).prev('label').text();
+            //     toastr.error('Please enter a value for "' + label + '"', 'Error!');
+            //     return false;
+            //     }
+            // });
 
             if (isValid) {
                 $('#loader').css('display','flex');
