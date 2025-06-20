@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 @section('css')
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://iwork4sindh.com/frontend/assets/css/bootstrap-datepicker.min.css">
+
 <style>
      .form-container {
         max-width: 1000px;
@@ -57,7 +59,7 @@
             </div>
         @endif
         
-        <form action="{{ route('skilled-labour.update', $labor->id) }}" method="POST" enctype="multipart/form-data">
+        <form id="skilledLabourForm" action="{{ route('skilled-labour.update', $labor->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             
@@ -70,7 +72,7 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="name" class="form-label required-field">Full Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $labor->name) }}" required>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $labor->name) }}">
                         </div>
                         {{-- <div class="col-md-6 mb-3">
                             <label for="email" class="form-label required-field">Email</label>
@@ -81,18 +83,18 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="cnic" class="form-label required-field">CNIC</label>
-                            <input type="text" class="form-control" id="cnic" name="cnic" value="{{ old('cnic', $labor->cnic) }}" placeholder="XXXXX-XXXXXXX-X" required>
+                            <input type="text" class="form-control" id="cnic" name="cnic" value="{{ old('cnic', $labor->cnic) }}" placeholder="XXXXX-XXXXXXX-X" >
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="phone" class="form-label required-field">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone', $labor->phone) }}" required>
+                            <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone', $labor->phone) }}" >
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="gender" class="form-label required-field">Gender</label>
-                            <select class="" id="gender" name="gender" required>
+                            <select class="" id="gender" name="gender">
                                 <option value="male" {{ old('gender', $labor->gender) == 'male' ? 'selected' : '' }}>Male</option>
                                 <option value="female" {{ old('gender', $labor->gender) == 'female' ? 'selected' : '' }}>Female</option>
                                 <option value="other" {{ old('gender', $labor->gender) == 'other' ? 'selected' : '' }}>Other</option>
@@ -110,7 +112,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="birth_date" class="form-label required-field">Date of Birth</label>
-                            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ old('birth_date', \Carbon\Carbon::parse($labor->birth_date)->format('Y-m-d')) }}" required>
+                            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ old('birth_date', \Carbon\Carbon::parse($labor->birth_date)->format('Y-m-d')) }}">
                         </div>
                     </div>
                 </div>
@@ -125,7 +127,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="profession_id" class="form-label required-field">Profession</label>
-                            <select class="" id="profession_id" name="profession_id" required>
+                            <select class="" id="profession_id" name="profession_id">
                                 <option value="">Select Profession</option>
                                 @foreach($professions as $profession)
                                     <option value="{{ $profession->id }}" {{ old('profession_id', $labor->profession_id) == $profession->id ? 'selected' : '' }}>
@@ -136,7 +138,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="skill_id" class="form-label required-field">Skill</label>
-                            <select class="js-example-basic-single" id="skill_id" name="skill_id" required>
+                            <select class="js-example-basic-single" id="skill_id" name="skill_id">
                                 <option value="">Select Skill</option>
                                 @foreach($skills as $skill)
                                     <option value="{{ $skill->id }}" {{ old('skill_id', $labor->skill_id) == $skill->id ? 'selected' : '' }}>
@@ -149,18 +151,18 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="vage_per_day" class="form-label required-field">Vage per day</label>
-                                <input type="text" class="form-control" id="vage_per_day" name="vage_per_day" value="{{ old('vage_per_day', $labor->vage_per_day) }}" required>
+                                <input type="text" class="form-control" id="vage_per_day" name="vage_per_day" value="{{ old('vage_per_day', $labor->vage_per_day) }}">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="work_location" class="form-label required-field">Work location</label>
-                                <input type="text" class="form-control" id="work_location" name="work_location" value="{{ old('work_location', $labor->work_location) }}" required>
+                                <input type="text" class="form-control" id="work_location" name="work_location" value="{{ old('work_location', $labor->work_location) }}" >
                             </div>
                         </div>
                     </div>
                     
                     <div class="mb-3">
                         <label for="description" class="form-label required-field">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="5" required>{{ old('description', $labor->description) }}</textarea>
+                        <textarea class="form-control" id="description" name="description" rows="5" >{{ old('description', $labor->description) }}</textarea>
 
                     </div>
                 </div>
@@ -234,6 +236,43 @@
 @push('frontend_scripts')
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 <script>
+    var max_days = '1'
+
+    //init datepicker
+    $("#birth_date").attr("autocomplete", "off");
+    //init datepicker
+    $('#birth_date').off('focus').datepicker({
+        format: 'yyyy-mm-dd',
+        endDate: `+${max_days}d`,
+        isRTL: "",
+        language: "en",
+    }).on('click',
+        function() {
+            $(this).datepicker('show');
+        }
+    );
+
+    $(document).ready(function () {
+        $('#skilledLabourForm1').on('submit', function (e) {
+            e.preventDefault();
+
+            var isValid = true;
+
+            $(this).find('select, input, textarea').each(function () {
+                if ($(this).val() === "") {
+                isValid = false;
+                const label = $(this).prev('label').text();
+                toastr.error('Please enter a value for "' + label + '"', 'Error!');
+                return false;
+                }
+            });
+
+            if (isValid) {
+                $('#loader').css('display','flex');
+                    this.submit();
+            }
+        });
+    });
 
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
