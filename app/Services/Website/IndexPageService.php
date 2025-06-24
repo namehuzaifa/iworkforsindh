@@ -48,6 +48,9 @@ class IndexPageService
             },
         ]);
         $data['featured_jobs'] = $this->filterCountryBasedJobs($featured_jobs_query)->where('featured', 1)->deadlineActive()->active()->get()->take(6);
+        $data['latestjobs'] = Job::latest()->active()->take(12)->get();
+      
+
 
         $setting = loadSetting();
         $is_single_base_country_type = $setting->app_country_type == 'single_base' ? true : false;

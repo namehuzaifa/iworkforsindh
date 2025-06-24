@@ -245,7 +245,7 @@
     @endif
     <!-- google adsense area end -->
     <!-- jobs card -->
-    <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12">
+    {{-- <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12">
         <div class="container">
             <div class="row md:tw-pb-12 tw-pb-8">
                 <div class="col-12">
@@ -337,7 +337,71 @@
                 @endif
             </div>
         </div>
-    </section>
+    </section> --}}
+    {{-- Jobs listing --}}
+    
+        @if (!auth('user')->check() || (auth('user')->check() && authUser()->role == 'candidate'))
+            <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12">
+               
+                <div class="container">
+                    <div class="row md:tw-pb-12 tw-pb-8">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap">
+                                <div class="flex-grow-1">
+                                    <h4>Latest <span
+                                            class="text-primary-500 has-title-shape">Jobs
+                                            <img src="{{ asset('frontend') }}/assets/images/all-img/title-shape.png"
+                                                alt="">
+                                        </span></h4>
+                                </div>
+                                <a href="{{ route('website.job') }}" class="flex-grow-0 rt-pt-md-10">
+                                    <button class="btn btn-outline-primary">
+                                        <span class="button-content-wrapper ">
+                                            <span class="button-icon align-icon-right">
+                                                <i class="ph-arrow-right"></i>
+                                            </span>
+                                            <span>
+                                                {{ __('view_all') }}
+                                            </span>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-section flex flex-col gap-8">
+                        @foreach ($latestjobs as $job)
+                            <div class="job-card">
+                                <div class="header">Deadline {{ \Carbon\Carbon::parse($job->deadline)->format('d M Y') }}</div>
+                                <div class="content">
+                                    <div class="job-title">{{ $job->title }}</div>
+                                    <div class="job-detail"> <b>Job Type:</b> {{ $job->job_type ? $job->job_type->name : '' }}</div>
+                                    <div class="job-detail"> <b>Salary:</b>  
+                                        @if ($job->salary_mode == 'range')
+                                        {{ currencyAmountShort($job->min_salary) }} -
+                                        {{ currencyAmountShort($job->max_salary) }} {{ currentCurrencyCode() }}
+                                        @else
+                                            {{ $job->custom_salary }}
+                                        @endif
+                                    </div>
+                                   
+                                    <div class="job-detail"> <b>Location:</b> {{$job->exact_location}}</div>
+                                    <a href="{{ route('website.job.details', $job->slug) }}" class="apply-button">Apply Now</a>
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- @php
+        dd($latestjobs);
+    @endphp --}}
+    
+    {{-- Jobs listing --}}
     <!-- google adsense area -->
     @if (advertisement_status('home_page_ad'))
         @if (advertisementCode('home_page_fat_ad_after_featuredjob_section'))
@@ -474,6 +538,145 @@
     <x-map.leaflet.autocomplete_links />
     @include('map::links')
     <style>
+       
+    
+       .apply-button {
+            display: inline-block;
+            margin-top: 10px;
+            background: #0076BF;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+        }
+
+        .apply-button:hover {
+            background: #0076BF;
+        }
+        .main-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            /* Tablet: 2 columns */
+            .main-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* Large screen: 3 columns */
+            .main-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .job-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #0076BF;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-card .header {
+            background: #0076BF;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+        }
+
+        .job-card .content {
+            padding: 20px;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #0076BF;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-detail {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 0.3rem;
+        }
+
+        .apply-button {
+            padding: 15px 25px;
+            border: unset;
+            border-radius: 15px;
+            color: #212121;
+            z-index: 1;
+            background: #e8e8e8;
+            position: relative;
+            font-weight: 1000;
+            font-size: 13px;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 250ms;
+            overflow: hidden;
+        }
+
+        .apply-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            border-radius: 15px;
+            background-color: #0076bf;        
+            z-index: -1;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 250ms
+        }
+
+        .apply-button:hover {
+            color: #e8e8e8;
+        }
+
+        .apply-button:hover::before {
+            width: 100%;
+        }
+
+
+        .main-section .job-card {
+            cursor: pointer;
+            transition: 400ms;
+        }
+
+        .main-section .job-card p.tip {
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .main-section .job-card p.second-text {
+            font-size: .7em;
+        }
+
+        .main-section .job-card:hover {
+            transform: scale(1.1, 1.1);
+        }
+
+    </style>
+
+    <style>
+        
+
         .hero-section-3 {
             padding: 100px 0px;
             background-image: url('{{ asset('frontend/assets/images/H_1.jpg') }}');

@@ -118,13 +118,17 @@ class WebsiteController extends Controller
     public function index()
     {
         try {
+           
             $data = (new IndexPageService)->execute();
 
             if ($this?->setting?->landing_page == 2) {
+               
                 return view('frontend.pages.index-2', $data);
             } elseif ($this->setting->landing_page == 3) {
+                
                 return view('frontend.pages.index-3', $data);
             } else {
+               
                 return view('frontend.pages.index', $data);
             }
         } catch (\Exception $e) {

@@ -538,6 +538,9 @@
             </div>
         </section>
     @endif
+
+
+
     <!-- google adsense area -->
     @if (advertisement_status('home_page_ad'))
         @if (advertisementCode('home_page_fat_ad_after_featuredjob_section'))
