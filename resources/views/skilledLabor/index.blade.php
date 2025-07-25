@@ -16,6 +16,14 @@
     button.btn.btn-sm.btn-danger.delete-btn {
         padding: 5px 11px;
     }
+    /* .select2-container .select2-selection--single {
+        height: 38px !important;
+        padding: 5px 10px;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 28px;
+    } */
 </style>
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -34,6 +42,42 @@
             {{ session('success') }}
         </div>
     @endif
+
+    <form method="GET" class="mb-4 row g-3">
+        <div class="col-md-3">
+            <select name="profession_id" class="form-control select2 profession">
+                <option value="">-- Select Profession --</option>
+                @foreach($professions as $profession)
+                    <option value="{{ $profession->id }}" {{ request('profession_id') == $profession->id ? 'selected' : '' }}>
+                        {{ $profession->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    
+        <div class="col-md-3">
+            <select name="skill_id" class="form-control select2 skill">
+                <option value="">-- Select Skill --</option>
+                @foreach($skills as $skill)
+                    <option value="{{ $skill->id }}" {{ request('skill_id') == $skill->id ? 'selected' : '' }}>
+                        {{ $skill->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    
+        <div class="col-md-3">
+            <input type="text" name="location" class="form-control" placeholder="Enter Location" value="{{ request('location') }}">
+        </div>
+    
+        <div class="col-md-3 d-flex gap-2">
+            <button type="submit" class="btn btn-primary w-50">Filter</button>
+            <a href="{{ route('skilled-labour.index') }}" class="btn btn-secondary w-50">Clear</a>
+        </div>
+    </form>
+    
+    
+    
 
     <div class="row">
         @foreach($labors as $labor)
@@ -76,6 +120,11 @@
             </div>
         </div>
         @endforeach
+    </div>
+    <div class="pagination" style="justify-content: center;">
+        {{-- {{ $labors->links() }} --}}
+        {{ $labors->appends(request()->query())->links() }}
+
     </div>
 </div>
 
@@ -159,6 +208,18 @@
                     alert('Error loading labor details');
                 }
             });
+        });
+
+        $('.select2.profession').select2({
+            placeholder: 'Select Profession',
+            allowClear: true,
+            width: '100%' // important for responsiveness
+        });
+
+        $('.select2.skill').select2({
+            placeholder: 'Select Skill',
+            allowClear: true,
+            width: '100%' // important for responsiveness
         });
 
         // Delete confirmation

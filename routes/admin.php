@@ -68,6 +68,8 @@ Route::prefix('admin')->group(function () {
         Route::put('/skilled-labors/{labor}', [SkilledLaborController::class, 'update'])->name('admin-skilled-labour.update');
         Route::get('/riders/change/status', [SkilledLaborController::class, 'riderStatusChange'])->name('riders.status.change');
         Route::get('/labor/change/status', [SkilledLaborController::class, 'laborStatusChange'])->name('labor.status.change');
+        Route::delete('/skilled-labors/{id}', [SkilledLaborController::class, 'destroy'])->name('admin-skilled-labour.destroy');
+
 
         
         //Dashboard Route

@@ -19,10 +19,10 @@ class SkilledLaborController extends Controller
         if (isset($id) && !empty($id)) {
             $labors = SkilledLabour::where('user_id', $id)
                 ->with(['profession', 'skill'])
-                ->get();
+                ->paginate(10);
         } else {
             // Otherwise show all labors
-            $labors = SkilledLabour::with(['profession', 'skill'])->get();
+            $labors = SkilledLabour::with(['profession', 'skill'])->paginate(10);
         }
         
         return view('backend.skilled-labors.index', compact('labors'));
@@ -191,4 +191,28 @@ class SkilledLaborController extends Controller
         // return view('backend.skilled-labors.index')->with('success', 'Labor updated successfully!');
 
     }
+
+    public function destroy($id){
+        try {
+            $labor = SkilledLabour::findOrFail($id);
+
+            // Delete images if exist
+            if ($labor->image && file_exists(public_path($labor->image))) {
+                unlink(public_path($labor->image));
+            }
+            if ($labor->cnic_front_image && file_exists(public_path($labor->cnic_front_image))) {
+                unlink(public_path($labor->cnic_front_image));
+            }
+            if ($labor->cnic_back_image && file_exists(public_path($labor->cnic_back_image))) {
+                unlink(public_path($labor->cnic_back_image));
+            }
+
+            $labor->delete();
+
+            return redirect()->route('admin-skilled-labour.index')->with('success', 'Skilled labor deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error deleting skilled labor: '.$e->getMessage());
+        }
+    }
+
 }

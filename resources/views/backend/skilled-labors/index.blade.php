@@ -3,10 +3,10 @@
 @section('content')
 
     <!-- DataTable CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"> --}}
 
     <!-- DataTable Buttons CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.css"> --}}
     
     <div class="container">
         @if(request()->has('rider_id'))
@@ -53,15 +53,25 @@
                                 <p class="{{ $labor->status == 1 ? 'active' : '' }}" id="status_{{ $labor->id }}">
                                     {{ $labor->status == 1 ? __('activated') : __('deactivated') }}</p>
                             </a>
+                            <p>{{ $labor->created_at }}</p>
                         </td>
                         <td>
                             <a href="{{ route('admin-skilled-labour.edit', $labor->id) }}">Edit</a> |
-                            <a href="{{ route('skilled-labour.details', $labor->id) }}">View</a>
+                            <a href="{{ route('skilled-labour.details', $labor->id) }}">View</a> |
+                           
+                            <form action="{{ route('admin-skilled-labour.destroy', $labor->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this skilled labor?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                                                    
                         </td>                    
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $labors->links() }}
+
     </div>
 @endsection
 @section('style')
@@ -133,38 +143,39 @@
 <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
 <!-- DataTable JS CDN -->
-<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+{{-- <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script> --}}
 
 <!-- DataTable Buttons JS CDN -->
-<script src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.js"></script>
+{{-- <script src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.js"></script> --}}
 
 <!-- DataTable Buttons Extension for Export -->
-<script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+{{-- <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script> --}}
 
 <!-- JSZip for Excel export -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script> --}}
 
 <!-- PDFMake for PDF export -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> --}}
 
 <!-- PDFMake Fonts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> --}}
 
 <!-- DataTable Buttons HTML5 for Export Options (CSV, Excel, PDF) -->
-<script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script>
+{{-- <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script> --}}
 <script>
     jQuery(document).ready(function() {
-        jQuery('#regionTable').DataTable({
-            "pageLength" : 25,
-            "order": [[0, 'asc']], 
-            layout: {
-                topStart: {
-                    buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
-                }
-            }
-        });
+        // jQuery('#regionTable').DataTable({
+        //     "pageLength" : 25,
+        //     "order": [[0, 'asc']], 
+        //     layout: {
+        //         topStart: {
+        //             buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+        //         }
+        //     }
+        // });
 
-        $('.status-switch').on('change', function() {
+        $(document).on("change",".status-switch",function() {
+        // $('.status-switch').on('change', function() {
             var status = $(this).prop('checked') == true ? 1 : 0;
             var id = $(this).data('id');
             $.ajax({

@@ -270,6 +270,23 @@
         .feature-job .slick-dots {
             display: none !important;
         }
+
+        .jobcardStyle1 {
+            background: white !important;
+            border-radius: 1rem !important;
+            border: 2px solid #0076BF !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
+            transition: 400ms;
+        }
+        .jobcardStyle1:hover {
+            transform: scale(1.1, 1.1) !important;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+        .jobcardStyle1 span.tw-text-base {
+            font-size: 1.25rem !important;
+            font-weight: bold !important;
+            color: #0076BF !important;
+        }
     </style>
 @endsection
 

@@ -553,6 +553,7 @@ config('templatecookie.default_language'))->first();
 
                         <form action="{{ $form_action }}" method="GET" id="search-form"
                             class="mx-width-300 header-search-form d-lg-block d-none">
+                            <span class="header_tagline">Powered by  Information Department Government of Sindh</span>
                             <div class="search-box">
                                 <select id="headerSearchs" onclick="changeSearchSelections()" class="form-select"
                                     aria-label="Default select example">
@@ -581,7 +582,6 @@ config('templatecookie.default_language'))->first();
 
                                 <span id="autocomplete_job_results"></span>
                             </div>
-                            <span class="header_tagline">Powered by  Information Department Government of Sindh</span>
                         </form>
                     </div>
 

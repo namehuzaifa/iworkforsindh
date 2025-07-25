@@ -19,28 +19,63 @@ class SkilledLabourController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index()
-    {
+    // public function index()
+    // {
 
-        // Check if user is authenticated
-        if (Auth::user()) {
-            // If user is a rider, show only their inserted labors
+        
+    //     // Check if user is authenticated
+    //     if (Auth::user()) {
+    //         // If user is a rider, show only their inserted labors
+    //         if (Auth::user()->role === 'rider') {
+    //             $labors = SkilledLabour::where('user_id', Auth::user()->id)
+    //                         ->with(['profession', 'skill'])
+    //                         ->latest()->paginate(12);
+    //         } 
+    //         // For other user types (admin, etc.), show all labors
+    //         else {
+    //             $labors = SkilledLabour::with(['profession', 'skill'])->latest()->paginate(12);
+    //         }
+    //     } 
+    //     // For guests (not logged in), show all labors
+    //     else {
+    //         $labors = SkilledLabour::with(['profession', 'skill'])->where('status', 1)->latest()->paginate(12);
+    //     }
+
+    //     return view('skilledLabor.index', compact('labors'));
+    // }
+
+    public function index(Request $request)
+    {
+        $query = SkilledLabour::with(['profession', 'skill']);
+
+        // Role-based filtering
+        if (Auth::check()) {
             if (Auth::user()->role === 'rider') {
-                $labors = SkilledLabour::where('user_id', Auth::user()->id)
-                            ->with(['profession', 'skill'])
-                            ->get();
-            } 
-            // For other user types (admin, etc.), show all labors
-            else {
-                $labors = SkilledLabour::with(['profession', 'skill'])->get();
+                $query->where('user_id', Auth::id());
             }
-        } 
-        // For guests (not logged in), show all labors
-        else {
-            $labors = SkilledLabour::with(['profession', 'skill'])->where('status', 1)->get();
+        } else {
+            $query->where('status', 1); // For guests, only approved labors
         }
 
-        return view('skilledLabor.index', compact('labors'));
+        // Apply filters if present
+        if ($request->filled('profession_id')) {
+            $query->where('profession_id', $request->profession_id);
+        }
+
+        if ($request->filled('skill_id')) {
+            $query->where('skill_id', $request->skill_id);
+        }
+
+        if ($request->filled('location')) {
+            $query->where('work_location', 'like', '%' . $request->location . '%');
+        }
+
+        $labors = $query->latest()->paginate(12);
+
+        $professions = Profession::all();
+        $skills = Skill::all();
+
+        return view('skilledLabor.index', compact('labors', 'professions', 'skills'));
     }
 
     /**
