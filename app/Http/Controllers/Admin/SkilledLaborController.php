@@ -209,7 +209,7 @@ class SkilledLaborController extends Controller
 
             $labor->delete();
 
-            return redirect()->route('admin-skilled-labour.index')->with('success', 'Skilled labor deleted successfully.');
+            return redirect()->back()->with('success', 'Skilled labor deleted successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error deleting skilled labor: '.$e->getMessage());
         }
