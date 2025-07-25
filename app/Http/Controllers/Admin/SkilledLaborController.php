@@ -18,11 +18,11 @@ class SkilledLaborController extends Controller
         // If rider_id is provided in the request, filter by that rider
         if (isset($id) && !empty($id)) {
             $labors = SkilledLabour::where('user_id', $id)
-                ->with(['profession', 'skill'])
+                ->with(['profession', 'skill'])->latest()
                 ->paginate(10);
         } else {
             // Otherwise show all labors
-            $labors = SkilledLabour::with(['profession', 'skill'])->paginate(10);
+            $labors = SkilledLabour::with(['profession', 'skill'])->latest()->paginate(10);
         }
         
         return view('backend.skilled-labors.index', compact('labors'));
