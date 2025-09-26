@@ -4,68 +4,66 @@
         <loc>https://iwork4sindh.com/</loc>
             <changefreq>daily</changefreq>
         <priority>1.0</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/jobs</loc>
             <changefreq>daily</changefreq>
         <priority>0.9</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/candidates</loc>
             <changefreq>daily</changefreq>
         <priority>0.9</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/employers</loc>
             <changefreq>daily</changefreq>
         <priority>0.9</priority>
-            </url>
+    </url>
+    <url>
+        <loc>https://iwork4sindh.com/skilled-labors</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority> 
+    </url>
     <url>
         <loc>https://iwork4sindh.com/about</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/contact</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/login</loc>
             <changefreq>yearly</changefreq>
         <priority>0.9</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/register</loc>
             <changefreq>yearly</changefreq>
         <priority>0.9</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/faq</loc>
             <changefreq>yearly</changefreq>
         <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>http://127.0.0.1:8000/plans</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/privacy-policy</loc>
             <changefreq>never</changefreq>
         <priority>0.7</priority>
-            </url>
-    <url>
+    </url>
     <url>
         <loc>https://iwork4sindh.com/terms-condition</loc>
             <changefreq>never</changefreq>
-        <priority>0.7</priority>
+        <priority>0.7</priority> 
     </url>
 
-    <!-- <url>
-        <loc>http://127.0.0.1:8000/job/mid-level-laravel-developer_1715761075_3850895252</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-     </url> -->
-
+     <!--<url>-->
+     <!--   <loc>http://127.0.0.1:8000/job/mid-level-laravel-developer_1715761075_3850895252</loc>-->
+     <!--       <changefreq>daily</changefreq>-->
+     <!--   <priority>0.8</priority>-->
+     <!--</url>-->
 </urlset>

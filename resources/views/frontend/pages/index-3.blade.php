@@ -794,7 +794,7 @@
         </div>
         <div class="testimonial-slider" id="testimonial-slider">
             <div class="testimonial-card">
-                <p>”I Work For Sindh’ is not just a slogan — it’s a movement that puts the people at the heart of governance. Our mission is to create jobs, empower youth, and deliver results that matter to every citizen. This initiative reflects the Pakistan Peoples Party’s commitment to a people-first development agenda.”</p>
+                <p>I Work For Sindh’ is not just a slogan — it’s a movement that puts the people at the heart of governance. Our mission is to create jobs, empower youth, and deliver results that matter to every citizen. This initiative reflects the Pakistan Peoples Party’s commitment to a people-first development agenda.</p>
                 <div class="testimonial-footer">
                     <img src="{{ asset('frontend') }}/assets/images/bilawal.jpg" alt="Bilawal Bhutto Zardari">
                     <h4>Bilawal Bhutto Zardari</h4>
@@ -802,7 +802,7 @@
                 </div>
             </div>
             <div class="testimonial-card">
-                <p>“Under the ‘I Work For Sindh’ initiative, we are ensuring transparency, merit, and equal opportunity for all. Our administration is focused on inclusive growth, investing in human capital, and uplifting communities across the province. We are building a stronger, progressive Sindh — together.”</p>
+                <p>Under the ‘I Work For Sindh’ initiative, we are ensuring transparency, merit, and equal opportunity for all. Our administration is focused on inclusive growth, investing in human capital, and uplifting communities across the province. We are building a stronger, progressive Sindh — together.</p>
                 <div class="testimonial-footer">
                     <img src="{{ asset('frontend') }}/assets/images/syed_murad_ali_shah.jpg" alt="Syed Murad Ali Shah">
                     <h4>Syed Murad Ali Shah</h4>
@@ -810,7 +810,7 @@
                 </div>
             </div>
             <div class="testimonial-card">
-                <p>"This project is a step forward in making governance participatory. Through ‘I Work For Sindh’, we are inviting the people to be part of the change. Whether it’s through employment, innovation, or infrastructure, this is the time to rise and work for our province with pride.”</p>
+                <p>This project is a step forward in making governance participatory. Through ‘I Work For Sindh’, we are inviting the people to be part of the change. Whether it’s through employment, innovation, or infrastructure, this is the time to rise and work for our province with pride.</p>
                 <div class="testimonial-footer">
                     <img src="{{ asset('frontend') }}/assets/images/sharjeel-memon.jpg" alt="Sharjeel Inam Memon">
                     <h4>Sharjeel Inam Memon</h4>
@@ -1188,7 +1188,7 @@
         
 
         .hero-section-3 {
-            padding: 100px 0px;
+            padding: 150px 0px;
             background-image: url('{{ asset('frontend/assets/images/H_1.jpg') }}');
             background-repeat: no-repeat;
             background-size: cover;
@@ -1210,7 +1210,7 @@
                 background-image: url('{{ asset('frontend/assets/images/H_4.jpg') }}');
             } 
             100% {
-                background-image: url('{{ asset('frontend/assets/images/H_1.jpg') }}');
+                background-image: url('{{ asset('frontend/assets/images/H_5.jpg') }}');
             }
         }
 
