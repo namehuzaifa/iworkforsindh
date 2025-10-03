@@ -790,11 +790,11 @@
     <section class="testimonial-section">
         <div class="testimonial-heading">
             <!-- <h5>TESTIMONIAL</h5> -->
-            <h4>HEAR WHAT <span class="text-primary-500 has-title-shape">OUR OFFICIALS SAY<img src="http://portal.test/frontend/assets/images/all-img/title-shape.png" alt=""></span></h4>
+            <h4>What Our Officials Say About <span class="text-primary-500 has-title-shape">iwork4sindh<img src="http://portal.test/frontend/assets/images/all-img/title-shape.png" alt=""></span></h4>
         </div>
         <div class="testimonial-slider" id="testimonial-slider">
             <div class="testimonial-card">
-                <p>I Work For Sindh’ is not just a slogan — it’s a movement that puts the people at the heart of governance. Our mission is to create jobs, empower youth, and deliver results that matter to every citizen. This initiative reflects the Pakistan Peoples Party’s commitment to a people-first development agenda.</p>
+                <p>iwork4sindh’ is not just a slogan — it’s a movement that puts the people at the heart of governance. Our mission is to create jobs, empower youth, and deliver results that matter to every citizen. This initiative reflects the Pakistan Peoples Party’s commitment to a people-first development agenda.</p>
                 <div class="testimonial-footer">
                     <img src="{{ asset('frontend') }}/assets/images/bilawal.jpg" alt="Bilawal Bhutto Zardari">
                     <h4>Bilawal Bhutto Zardari</h4>
@@ -802,7 +802,7 @@
                 </div>
             </div>
             <div class="testimonial-card">
-                <p>Under the ‘I Work For Sindh’ initiative, we are ensuring transparency, merit, and equal opportunity for all. Our administration is focused on inclusive growth, investing in human capital, and uplifting communities across the province. We are building a stronger, progressive Sindh — together.</p>
+                <p>Under the ‘iwork4sindh’ initiative, we are ensuring transparency, merit, and equal opportunity for all. Our administration is focused on inclusive growth, investing in human capital, and uplifting communities across the province. We are building a stronger, progressive Sindh — together.</p>
                 <div class="testimonial-footer">
                     <img src="{{ asset('frontend') }}/assets/images/syed_murad_ali_shah.jpg" alt="Syed Murad Ali Shah">
                     <h4>Syed Murad Ali Shah</h4>
@@ -810,7 +810,7 @@
                 </div>
             </div>
             <div class="testimonial-card">
-                <p>This project is a step forward in making governance participatory. Through ‘I Work For Sindh’, we are inviting the people to be part of the change. Whether it’s through employment, innovation, or infrastructure, this is the time to rise and work for our province with pride.</p>
+                <p>This project is a step forward in making governance participatory. Through ‘iwork4sindh’, we are inviting the people to be part of the change. Whether it’s through employment, innovation, or infrastructure, this is the time to rise and work for our province with pride.</p>
                 <div class="testimonial-footer">
                     <img src="{{ asset('frontend') }}/assets/images/sharjeel-memon.jpg" alt="Sharjeel Inam Memon">
                     <h4>Sharjeel Inam Memon</h4>
