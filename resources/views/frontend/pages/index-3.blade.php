@@ -151,7 +151,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center text-h4 ft-wt-5">
-                    <span class="text-primary-500 has-title-shape">{{ config('app.name') }}
+                    {{-- <span class="text-primary-500 has-title-shape">{{ config('app.name') }} --}}
+                    <span class="text-primary-500 has-title-shape">iwork4sindh
                         <img src="{{ asset('frontend') }}/assets/images/all-img/title-shape.png" alt="">
                     </span>
                     <label for="">{{ __('working_process') }}</label>
