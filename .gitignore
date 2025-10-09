@@ -20,3 +20,4 @@
 /wp/
 .user.ini
 php.ini
+/public/sitemap.xml
