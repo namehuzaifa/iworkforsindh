@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CandidateController;
 use App\Http\Controllers\Api\CandidateJobsController;
 use App\Http\Controllers\Api\CloudMessageController;
+use App\Http\Controllers\Api\SkilledLabourController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\CompanyJobsController;
 use App\Http\Controllers\Api\LocalizationController;
@@ -54,7 +55,12 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/refund-policy', 'refundPolicy');
     Route::post('/contact', 'contact');
     Route::get('/page-list', 'pageList');
+
+   
 });
+
+    Route::get('/skill-labors', [SkilledLabourController::class, 'index']);
+    Route::get('/skill-labors/{labor}', [SkilledLabourController::class, 'show']); // fetching single labor details
 
 Route::post('/social-media-authentication', [SocialAuthController::class, 'socialAuthentication']);
 
