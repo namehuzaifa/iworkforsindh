@@ -187,11 +187,12 @@ class StoreJobService
             'featured' => $featured,
             'highlight' => $highlight,
             'is_remote' => $request->is_remote ?? 0,
-            'status' => setting('job_auto_approved') ? 'active' : 'pending',
+            'status' => 'active',
+            // 'status' => setting('job_auto_approved') ? 'active' : 'pending',
         ]);
 
         // Location
-        // updateMap($jobCreated);
+        updateMap($jobCreated);
 
         // Benefits
         $benefits = $request->benefits ?? null;
@@ -215,19 +216,19 @@ class StoreJobService
             if ($highlight) {
                 $user_plan->highlight_job_limit = $user_plan->highlight_job_limit - 1;
             }
-            $user_plan->save();
+            // $user_plan->save();
 
             storePlanInformation();
 
-            Notification::send(auth('sanctum')->user(), new JobCreatedNotification($jobCreated));
+            // Notification::send(auth('sanctum')->user(), new JobCreatedNotification($jobCreated));
 
-            if (checkMailConfig()) {
-                // make notification to admins for approved
-                $admins = Admin::all();
-                foreach ($admins as $admin) {
-                    Notification::send($admin, new NewJobAvailableNotification($admin, $jobCreated));
-                }
-            }
+            // if (checkMailConfig()) {
+            //     // make notification to admins for approved
+            //     $admins = Admin::all();
+            //     foreach ($admins as $admin) {
+            //         Notification::send($admin, new NewJobAvailableNotification($admin, $jobCreated));
+            //     }
+            // }
         }
 
         return $this->respondWithSuccess([
