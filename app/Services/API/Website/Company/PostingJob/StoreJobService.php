@@ -129,7 +129,7 @@ class StoreJobService
             $skill = new Education;
             $skill->slug = Str::slug($education_request);
             $skill->save();
-            $education = $skill->id;
+            $education = $skill;
 
             $skill->translateOrNew()->name = $education_request;
             $skill->save();
@@ -149,24 +149,25 @@ class StoreJobService
             $skill = new Experience;
             $skill->slug = Str::slug($experience_request);
             $skill->save();
-            $experience = $skill->id;
+            $experience = $skill;
 
             $skill->translateOrNew()->name = $experience_request;
             $skill->save();
             // }
         }
 
-        $deadline = Carbon::parse(now()
-            ->addDays(setting('job_deadline_expiration_limit')))
-            ->format('Y-m-d');
+        // $deadline = Carbon::parse(now()
+        //     ->addDays(setting('job_deadline_expiration_limit')))
+        //     ->format('Y-m-d');
+        $deadline = Carbon::parse($request->deadline)->format('Y-m-d');
 
         $jobCreated = Job::create([
             'title' => $request->title,
             'company_id' => auth('sanctum')->user()->company->id,
             'category_id' => $job_category_id,
             'role_id' => $job_role_id,
-            'education_id' => $education,
-            'experience_id' => $experience,
+            'education_id' => $education->id,
+            'experience_id' => $experience->id,
             // 'salary_mode' => $request->salary_mode,
             // 'custom_salary' => $request->custom_salary,
             'salary_mode' => 'custom',
