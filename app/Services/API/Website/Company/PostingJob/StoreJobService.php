@@ -6,7 +6,9 @@ use App\Http\Traits\CompanyJobTrait;
 use App\Http\Traits\Jobable;
 use App\Models\Admin;
 use App\Models\Education;
+use App\Models\EducationTranslation;
 use App\Models\Experience;
+use App\Models\ExperienceTranslation;
 use App\Models\Job;
 use App\Models\JobCategory;
 use App\Models\JobCategoryTranslation;
@@ -117,7 +119,7 @@ class StoreJobService
 
         // Experience
         $education_request = $request->education;
-        $education = Education::where('id', $education_request)->orWhere('name', $education_request)->first();
+        $education = EducationTranslation::where('education_id', $education_request)->orWhere('name', $education_request)->first();
         if (! $education) {
             $education = Education::where('name', $education_request)->first();
 
@@ -128,7 +130,7 @@ class StoreJobService
 
         // Education
         $experience_request = $request->experience;
-        $experience = Experience::where('id', $experience_request)->orWhere('name', $experience_request)->first();
+        $experience = ExperienceTranslation::where('experience_id', $experience_request)->orWhere('name', $experience_request)->first();
         if (! $experience) {
             $experience = Experience::where('name', $experience_request)->first();
 
