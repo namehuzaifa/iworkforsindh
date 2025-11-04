@@ -187,6 +187,7 @@ class StoreJobService
             'featured' => $featured,
             'highlight' => $highlight,
             'is_remote' => $request->is_remote ?? 0,
+            'country' => 'Pakistan',
             'status' => 'active',
             // 'status' => setting('job_auto_approved') ? 'active' : 'pending',
         ]);
