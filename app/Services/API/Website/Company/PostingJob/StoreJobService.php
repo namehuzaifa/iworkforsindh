@@ -30,17 +30,17 @@ class StoreJobService
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'category_id' => 'required',
-            'role_id' => 'required',
+            'category' => 'required',
+            'job_role' => 'required',
             'experience' => 'required',
             'education' => 'required',
-            'job_type' => 'required',
+            // 'job_type' => 'required',
             'vacancies' => 'required',
-            'salary_mode' => 'required',
-            'custom_salary' => 'required_if:salary_mode,==,custom',
-            'min_salary' => 'nullable|numeric',
-            'max_salary' => 'nullable|numeric',
-            'salary_type' => 'required',
+            // 'salary_mode' => 'required',
+            // 'custom_salary' => 'required_if:salary_mode,==,custom',
+            // 'min_salary' => 'nullable|numeric',
+            // 'max_salary' => 'nullable|numeric',
+            // 'salary_type' => 'required',
             'deadline' => 'required|date',
             'description' => 'required',
             'featured' => 'nullable|numeric',
@@ -79,7 +79,7 @@ class StoreJobService
         $featured = $request->badge == 'featured' ? 1 : 0;
 
         // Job Category
-        $job_category_request = $request->category_id;
+        $job_category_request = $request->category;
 
         $job_category = JobCategoryTranslation::where('job_category_id', $job_category_request)->orWhere('name', $job_category_request)->first();
         if (! $job_category) {
@@ -97,7 +97,7 @@ class StoreJobService
         }
 
         // Job Role
-        $job_role_request = $request->role_id;
+        $job_role_request = $request->job_role;
 
         $job_category = JobRoleTranslation::where('job_role_id', $job_role_request)->orWhere('name', $job_role_request)->first();
 
@@ -148,13 +148,17 @@ class StoreJobService
             'role_id' => $job_role_id,
             'education_id' => $education->id,
             'experience_id' => $experience->id,
-            'salary_mode' => $request->salary_mode,
-            'custom_salary' => $request->custom_salary,
-            'min_salary' => $request->min_salary,
-            'max_salary' => $request->max_salary,
-            'salary_type_id' => $request->salary_type,
+            // 'salary_mode' => $request->salary_mode,
+            // 'custom_salary' => $request->custom_salary,
+            'salary_mode' => 'custom',
+            'custom_salary' => 'Market Competitive',
+            // 'min_salary' => $request->min_salary,
+            // 'max_salary' => $request->max_salary,
+            // 'salary_type_id' => $request->salary_type,
+            'salary_type_id' => 1,
             'deadline' => $deadline,
-            'job_type_id' => $request->job_type,
+            // 'job_type_id' => $request->job_type,
+            'job_type_id' => 6,
             'vacancies' => $request->vacancies,
             'apply_on' => $request->apply_on,
             'apply_email' => $request->apply_email ?? null,
