@@ -8,6 +8,7 @@
     <meta property="og:image" content="@yield('og:image')">
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> --}}
     <title>@yield('title') - {{ config('app.name') }}</title>
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     @yield('ld-data')
 

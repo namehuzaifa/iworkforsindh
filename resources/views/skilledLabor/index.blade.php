@@ -27,7 +27,7 @@
 </style>
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Skilled Labors</h1>
+        <h1>Skilled Helpers</h1>
         @auth
         @if(Auth::user()->role === 'rider')
             <a href="{{ route('skilled-labour.create') }}" class="btn btn-primary">
@@ -198,7 +198,7 @@
             const laborId = $(this).data('labor-id');
             
             $.ajax({
-                url: `/skilled-labors/${laborId}`,
+                url: `/skilled-helper/${laborId}`,
                 method: 'GET',
                 success: function(response) {
                     $('#laborModalBody').html(response);

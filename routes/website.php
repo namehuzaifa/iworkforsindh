@@ -116,8 +116,8 @@ Route::middleware(['auth', 'user_active', 'restrict.rider'])->group(function () 
     Route::get('rider/{rider}/edit', [SkilledLabourController::class, 'editRider'])->name('rider.edit');
     Route::put('rider/{rider}', [SkilledLabourController::class, 'updateRider'])->name('rider.update');
 });
-Route::get('/skilled-labors', [SkilledLabourController::class, 'index'])->name('skilled-labour.index');
-Route::get('/skilled-labors/{labor}', [SkilledLabourController::class, 'show'])->name('skilled-labour.show'); // fetching single labor details
+Route::get('/skilled-helper', [SkilledLabourController::class, 'index'])->name('skilled-labour.index');
+Route::get('/skilled-helper/{labor}', [SkilledLabourController::class, 'show'])->name('skilled-labour.show'); // fetching single labor details
 
 Route::get('/resume-maker', function () {
     return view('cv.index');

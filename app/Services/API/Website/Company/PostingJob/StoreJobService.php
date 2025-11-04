@@ -23,7 +23,8 @@ use Modules\Language\Entities\Language;
 
 class StoreJobService
 {
-    use ApiResponseHelpers, CompanyJobTrait, Jobable;
+    // use ApiResponseHelpers, CompanyJobTrait, Jobable;
+    use ApiResponseHelpers;
 
     public function execute($request)
     {

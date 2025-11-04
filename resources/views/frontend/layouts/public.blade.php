@@ -7,6 +7,7 @@
     <meta name="description" content="@yield('description')">
     <meta property="og:image" content="@yield('og:image')">
     <title>@yield('title') - {{ config('app.name') }}</title>
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     @yield('ld-data')
 

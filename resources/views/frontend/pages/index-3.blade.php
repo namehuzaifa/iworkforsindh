@@ -634,70 +634,129 @@
             </div>
         </div>
     </section> --}}
-    {{-- Jobs listing --}}
-    
-        @if (!auth('user')->check() || (auth('user')->check() && authUser()->role == 'candidate'))
-            {{-- <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12"> --}}
-            <section class="jobs-card-section md:tw-py-20 tw-py-12">
-               
-                <div class="container">
-                    <div class="row md:tw-pb-12 tw-pb-8">
-                        <div class="col-12">
-                            <div class="d-flex flex-wrap">
-                                <div class="flex-grow-1">
-                                    <h4>Latest <span
-                                            class="text-primary-500 has-title-shape">Jobs
-                                            <img src="{{ asset('frontend') }}/assets/images/all-img/title-shape.png"
-                                                alt="">
-                                        </span></h4>
-                                </div>
-                                <a href="{{ route('website.job') }}" class="flex-grow-0 rt-pt-md-10">
-                                    <button class="apply-button">
-                                        <span class="button-content-wrapper ">
-                                            <span class="button-icon align-icon-right">
-                                                <i class="ph-arrow-right"></i>
-                                            </span>
-                                            <span>
-                                                {{ __('view_all') }}
-                                            </span>
-                                        </span>
-                                    </button>
-                                </a>
+
+
+    {{-- Army jobs --}}
+    @if ( count($company_jobs) && !auth('user')->check() || (auth('user')->check() && authUser()->role == 'candidate'))
+        {{-- <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12"> --}}
+        <section class="army-jobs-card-section md:tw-py-20 tw-py-12">
+            
+            <div class="container">
+                <div class="row md:tw-pb-12 tw-pb-8">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap">
+                            <div class="flex-grow-1">
+                                <h4>Pak Army <span
+                                        class="text-primary-500 has-title-shape">Jobs
+                                        <img src="{{ asset('frontend') }}/assets/images/all-img/title-shape.png"
+                                            alt="">
+                                    </span></h4>
                             </div>
+                            <a href="{{ route('website.job') }}" class="flex-grow-0 rt-pt-md-10">
+                                <button class="apply-button">
+                                    <span class="button-content-wrapper ">
+                                        <span class="button-icon align-icon-right">
+                                            <i class="ph-arrow-right"></i>
+                                        </span>
+                                        <span>
+                                            {{ __('view_all') }}
+                                        </span>
+                                    </span>
+                                </button>
+                            </a>
                         </div>
                     </div>
-                    <div class="main-section flex flex-col gap-8">
-                        @foreach ($latestjobs as $job)
-                            <div class="job-card">
-                                <div class="header">Deadline {{ \Carbon\Carbon::parse($job->deadline)->format('d M Y') }}</div>
-                                <div class="content">
-                                    <div class="job-title">{{ $job->title }}</div>
-                                    <div class="job-detail"> <b>Job Type:</b> {{ $job->job_type ? $job->job_type->name : '' }}</div>
-                                    <div class="job-detail"> <b>Salary:</b>  
-                                        @if ($job->salary_mode == 'range')
-                                        {{ currencyAmountShort($job->min_salary) }} -
-                                        {{ currencyAmountShort($job->max_salary) }} {{ currentCurrencyCode() }}
-                                        @else
-                                            {{ $job->custom_salary }}
-                                        @endif
-                                    </div>
-                                   
-                                    <div class="job-detail"> <b>Location:</b> {{$job->exact_location}}</div>
-                                    <a href="{{ route('website.job.details', $job->slug) }}" class="apply-button">Apply Now</a>
-
+                </div>
+                <div class="main-section flex flex-col gap-8">
+                    @foreach ($company_jobs as $job)
+                        <div class="job-card">
+                            <div class="header">Deadline {{ \Carbon\Carbon::parse($job->deadline)->format('d M Y') }}</div>
+                            <div class="content">
+                                <div class="job-title">{{ $job->title }}</div>
+                                <div class="job-detail"> <b>Job Type:</b> {{ $job->job_type ? $job->job_type->name : '' }}</div>
+                                <div class="job-detail"> <b>Salary:</b>  
+                                    @if ($job->salary_mode == 'range')
+                                    {{ currencyAmountShort($job->min_salary) }} -
+                                    {{ currencyAmountShort($job->max_salary) }} {{ currentCurrencyCode() }}
+                                    @else
+                                        {{ $job->custom_salary }}
+                                    @endif
                                 </div>
-                            </div>
-                        @endforeach
+                                
+                                <div class="job-detail"> <b>Location:</b> {{$job->exact_location}}</div>
+                                <a href="{{ route('website.job.details', $job->slug) }}" class="apply-button">Apply Now</a>
 
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </section>
+    @endif
+    {{-- Army jobs --}}
+
+
+    {{-- Jobs listing --}}
+    
+    @if (!auth('user')->check() || (auth('user')->check() && authUser()->role == 'candidate'))
+        {{-- <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12"> --}}
+        <section class="jobs-card-section md:tw-py-20 tw-py-12">
+            
+            <div class="container">
+                <div class="row md:tw-pb-12 tw-pb-8">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap">
+                            <div class="flex-grow-1">
+                                <h4>Latest <span
+                                        class="text-primary-500 has-title-shape">Jobs
+                                        <img src="{{ asset('frontend') }}/assets/images/all-img/title-shape.png"
+                                            alt="">
+                                    </span></h4>
+                            </div>
+                            <a href="{{ route('website.job') }}" class="flex-grow-0 rt-pt-md-10">
+                                <button class="apply-button">
+                                    <span class="button-content-wrapper ">
+                                        <span class="button-icon align-icon-right">
+                                            <i class="ph-arrow-right"></i>
+                                        </span>
+                                        <span>
+                                            {{ __('view_all') }}
+                                        </span>
+                                    </span>
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </section>
-        @endif
+                <div class="main-section flex flex-col gap-8">
+                    @foreach ($latestjobs as $job)
+                        <div class="job-card">
+                            <div class="header">Deadline {{ \Carbon\Carbon::parse($job->deadline)->format('d M Y') }}</div>
+                            <div class="content">
+                                <div class="job-title">{{ $job->title }}</div>
+                                <div class="job-detail"> <b>Job Type:</b> {{ $job->job_type ? $job->job_type->name : '' }}</div>
+                                <div class="job-detail"> <b>Salary:</b>  
+                                    @if ($job->salary_mode == 'range')
+                                    {{ currencyAmountShort($job->min_salary) }} -
+                                    {{ currencyAmountShort($job->max_salary) }} {{ currentCurrencyCode() }}
+                                    @else
+                                        {{ $job->custom_salary }}
+                                    @endif
+                                </div>
+                                
+                                <div class="job-detail"> <b>Location:</b> {{$job->exact_location}}</div>
+                                <a href="{{ route('website.job.details', $job->slug) }}" class="apply-button">Apply Now</a>
 
-        {{-- @php
-        dd($latestjobs);
-    @endphp --}}
-    
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </section>
+    @endif
+
     {{-- Jobs listing --}}
     <!-- google adsense area -->
     @if (advertisement_status('home_page_ad'))
@@ -993,6 +1052,10 @@
 
         section.jobs-card-section {
             background: linear-gradient(135deg, #ffffff, #0a65cc);
+        }
+
+        section.army-jobs-card-section {
+            background-color: rgb(237, 239, 245);
         }
 
         .apply-button {

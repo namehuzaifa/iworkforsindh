@@ -51,6 +51,18 @@ class IndexPageService
         $data['latestjobs'] = Job::latest()->active()->take(12)->get();
       
 
+        // get only pak army jobs
+        $data['company_jobs'] = Job::query()
+        ->where('company_id', 1423)
+        ->withoutEdited()
+        ->with('company.user', 'job_type:id', 'category')
+        ->active()
+        ->deadlineActive()
+        ->latest()
+        ->take(10)
+        ->get();
+        // end get only pak army jobs
+
 
         $setting = loadSetting();
         $is_single_base_country_type = $setting->app_country_type == 'single_base' ? true : false;

@@ -31,7 +31,8 @@ use PDF;
 
 class CompanyController extends Controller
 {
-    use ApiResponseHelpers, Jobable;
+    // use ApiResponseHelpers, Jobable;
+    use ApiResponseHelpers;
 
     public function dashboard()
     {
