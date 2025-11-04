@@ -188,6 +188,8 @@ class StoreJobService
             'highlight' => $highlight,
             'is_remote' => $request->is_remote ?? 0,
             'country' => 'Pakistan',
+            'exact_location' => 'Karachi Division,Pakistan,Pakistan',
+            'address' => 'pakistan-pakistan',
             'status' => 'active',
             // 'status' => setting('job_auto_approved') ? 'active' : 'pending',
         ]);
