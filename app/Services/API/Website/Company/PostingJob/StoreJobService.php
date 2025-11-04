@@ -121,22 +121,22 @@ class StoreJobService
         $education_request = $request->education;
         $education = EducationTranslation::where('education_id', $education_request)->orWhere('name', $education_request)->first();
         if (! $education) {
-            $education = Education::where('name', $education_request)->first();
+            // $education = Education::where('name', $education_request)->first();
 
-            if (! $education) {
+            // if (! $education) {/
                 $education = Education::create(['name' => $education_request]);
-            }
+            // }
         }
 
         // Education
         $experience_request = $request->experience;
         $experience = ExperienceTranslation::where('experience_id', $experience_request)->orWhere('name', $experience_request)->first();
         if (! $experience) {
-            $experience = Experience::where('name', $experience_request)->first();
+            // $experience = Experience::where('name', $experience_request)->first();
 
-            if (! $experience) {
+            // if (! $experience) {
                 $experience = Experience::create(['name' => $experience_request]);
-            }
+            // }
         }
 
         $deadline = Carbon::parse(now()
