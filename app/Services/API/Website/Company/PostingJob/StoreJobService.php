@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Modules\Language\Entities\Language;
+use Illuminate\Support\Str;
 
 class StoreJobService
 {
@@ -124,7 +125,13 @@ class StoreJobService
             // $education = Education::where('name', $education_request)->first();
 
             // if (! $education) {/
-                $education = Education::create(['name' => $education_request]);
+            // $education = Education::create(['name' => $education_request]);
+            $skill = new Education;
+            $skill->slug = Str::slug($education_request);
+            $skill->save();
+            $skill->translateOrNew()->name = $education_request;
+            $skill->save();
+           
             // }
         }
 
@@ -135,7 +142,13 @@ class StoreJobService
             // $experience = Experience::where('name', $experience_request)->first();
 
             // if (! $experience) {
-                $experience = Experience::create(['name' => $experience_request]);
+                // $experience = Experience::create(['name' => $experience_request]);
+
+            $skill = new Experience;
+            $skill->slug = Str::slug($experience_request);
+            $skill->save();
+            $skill->translateOrNew()->name = $experience_request;
+            $skill->save();
             // }
         }
 
