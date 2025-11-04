@@ -118,7 +118,7 @@ class StoreJobService
             $job_role_id = $job_category->job_role_id;
         }
 
-        // Experience
+        // Education
         $education_request = $request->education;
         $education = EducationTranslation::where('education_id', $education_request)->orWhere('name', $education_request)->first();
         if (! $education) {
@@ -129,13 +129,15 @@ class StoreJobService
             $skill = new Education;
             $skill->slug = Str::slug($education_request);
             $skill->save();
+            $education = $skill->id;
+
             $skill->translateOrNew()->name = $education_request;
             $skill->save();
            
             // }
         }
 
-        // Education
+        // Experience
         $experience_request = $request->experience;
         $experience = ExperienceTranslation::where('experience_id', $experience_request)->orWhere('name', $experience_request)->first();
         if (! $experience) {
@@ -147,6 +149,8 @@ class StoreJobService
             $skill = new Experience;
             $skill->slug = Str::slug($experience_request);
             $skill->save();
+            $experience = $skill->id;
+
             $skill->translateOrNew()->name = $experience_request;
             $skill->save();
             // }
@@ -161,8 +165,8 @@ class StoreJobService
             'company_id' => auth('sanctum')->user()->company->id,
             'category_id' => $job_category_id,
             'role_id' => $job_role_id,
-            'education_id' => $education->id,
-            'experience_id' => $experience->id,
+            'education_id' => $education,
+            'experience_id' => $experience,
             // 'salary_mode' => $request->salary_mode,
             // 'custom_salary' => $request->custom_salary,
             'salary_mode' => 'custom',
