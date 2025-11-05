@@ -8,7 +8,6 @@
 .env.testing
 .gitattributes
 .styleci.yml
-.gitignore
 .htaccess
 /.vscode
 .well-known
