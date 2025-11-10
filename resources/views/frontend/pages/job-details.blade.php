@@ -502,6 +502,23 @@ $long = $job->long;
                                 </div>
                             </div>
                             @endif
+                            @if ($job->min_age)
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
+                                <div class="single-jSidebarWidget">
+                                    <div class="icon-thumb rt-mr-17">
+                                        <i class="ph-calendar-blank f-size-30 text-primary-500"></i>
+                                    </div>
+                                    <div class="iconbox-content">
+                                        <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
+                                            Age requirment</div>
+                                        <span class=d-block f-size-14 ft-wt-5 text-gray-900">
+                                            {{ $job->min_age }} Year - {{ $job->max_age }} Year
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                           
                         </div>
                     </div>
                     <div class="tw-share-area tw-px-8 tw-pt-6 tw-pb-8">
