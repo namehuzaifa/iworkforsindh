@@ -697,6 +697,35 @@ class WebsiteController extends Controller
             $candidate = auth('user')->user()->candidate;
             $job = Job::find($request->id);
 
+            // -----------------------------
+            // Age Validation Start
+            // -----------------------------
+
+            if (!$candidate->birth_date) {
+                flashError('Please add your date of birth to your profile before proceeding');
+                return back();
+            }
+
+            if ($candidate->birth_date) {
+                $candidateAge = Carbon::parse($candidate->birth_date)->age;
+
+                if ($job->min_age && $candidateAge < $job->min_age) {
+                    flashError('You do not meet the minimum age requirement for this job.');
+                    return back();
+                }
+
+                if ($job->max_age && $candidateAge > $job->max_age) {
+                    flashError('You exceed the maximum age limit for this job.');
+                    return back();
+                }
+            } else {
+                flashError('Your date of birth is not set. Please update your profile.');
+                return back();
+            }
+            // -----------------------------
+            // Age Validation End
+            // -----------------------------
+
             $job->loadCount(['appliedJobs',
                 'appliedJobs as applied' => function ($q) {
                     $q->where('candidate_id', currentCandidate() ? currentCandidate()->id : '');

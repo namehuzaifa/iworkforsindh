@@ -111,6 +111,8 @@ class CompanyStoreService
             'custom_salary' => $request->custom_salary,
             'min_salary' => $request->min_salary,
             'max_salary' => $request->max_salary,
+            'min_age' => $request->min_age,
+            'max_age' => $request->max_age,
             'salary_type_id' => $request->salary_type,
             'deadline' => $deadline,
             'job_type_id' => $request->job_type,

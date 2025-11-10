@@ -239,6 +239,32 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{-- Max min age --}}
+                                    <div class="rt-mb-20 col-md-6">
+                                        <x-forms.label name="Minimum Age" :required="false" class="tw-text-sm tw-mb-2" />
+                                        <div class="position-relative">
+                                            <input step="1" value="{{ $job->min_age }}"
+                                                class="form-control @error('min_age') is-invalid @enderror"
+                                                name="min_age" type="number" placeholder="Minimum Age"
+                                                id="minAge">
+                                            @error('min_age')
+                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="rt-mb-20 col-md-6">
+                                        <x-forms.label name="Maximum Age" :required="false" class="tw-text-sm tw-mb-2" />
+                                        <div class="position-relative">
+                                            <input step="1" value="{{ $job->max_age }}"
+                                                class="form-control @error('max_age') is-invalid @enderror"
+                                                name="max_age" type="number" placeholder="Maximum Age"
+                                                id="maxAge">
+                                            @error('max_age')
+                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    {{--End Max min age --}}
                                 </div>
 
                             </div>
@@ -838,5 +864,34 @@
         if (apply_email1) {
             $('#apply_on_email').removeClass('d-none');
         }
+    </script>
+    <script>
+        function validateAge() {
+            let minAgeVal = $('#minAge').val();
+            let maxAgeVal = $('#maxAge').val();
+
+            // Check only if both fields have values
+            if (minAgeVal !== '' && maxAgeVal !== '') {
+                let minAge = parseInt(minAgeVal);
+                let maxAge = parseInt(maxAgeVal);
+
+                // if (minAge === maxAge) {
+                //     alert("Minimum and Maximum age cannot be equal.");
+                //     $('#minAge').val('');
+                //     $('#maxAge').val('');
+                // } 
+                if (minAge > maxAge) {
+                    alert("Minimum age cannot be greater than Maximum age.");
+                    $('#minAge').val('');
+                    $('#maxAge').val('');
+                }
+            }
+        }
+
+        // Input event on both fields
+        $('#minAge, #maxAge').on('change', function() {
+            validateAge();
+        });
+
     </script>
 @endsection

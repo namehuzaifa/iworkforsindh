@@ -184,6 +184,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-3">
+                                                       
                                                         <x-forms.label :required="true" name="date_of_birth"
                                                             class="body-font-4 d-block text-gray-900 rt-mb-8" />
                                                         <div class="fromGroup">
@@ -193,6 +194,7 @@
                                                                     value="{{ $candidate->birth_date ? date('d-m-Y', strtotime($candidate->birth_date)) : old('birth_date') }}"
                                                                     id="date" placeholder="dd/mm/yyyy"
                                                                     class="form-control border-cutom @error('birth_date') is-invalid @enderror" />
+                                                                  
                                                                 <span class="input-group-addon input-group-text-custom">
                                                                     <x-svg.calendar-icon />
                                                                 </span>
@@ -1868,5 +1870,27 @@
         $(document).on("click", "#remove_item", function() {
             $(this).parent().parent().parent('div').remove();
         });
+
+        // date of birth validation
+        $('#date').on('change', function() {
+            var dobStr = $(this).val(); // dd-mm-yyyy
+            if (!dobStr) return;
+
+            var parts = dobStr.split('-');
+            var dob = new Date(parts[2], parts[1]-1, parts[0]);
+
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            if (today.getMonth() < dob.getMonth() || 
+            (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            if (age < 17) {
+                alert("You must be at least 17 years old.");
+                $(this).val('');
+            }
+        });
+
     </script>
 @endsection

@@ -27,6 +27,8 @@ class CreateJobsTable extends Migration
             $table->string('vacancies');
             $table->integer('min_salary');
             $table->integer('max_salary');
+            $table->integer('min_age')->default('17');
+            $table->integer('max_age')->default('40');
             $table->date('deadline')->nullable();
             $table->longText('description');
             $table->enum('status', ['pending', 'active', 'expired'])->default('pending');
