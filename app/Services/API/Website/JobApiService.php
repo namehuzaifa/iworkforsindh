@@ -177,6 +177,8 @@ class JobApiService
                 'id' => $data->id,
                 'title' => $data->title,
                 'slug' => $data->slug,
+                'min_age' => $data->min_age,
+                'max_age' => $data->max_age,
                 'job_details' => route('website.job.details', $data->slug),
                 'company_name' => $data->company && $data->company->user ? $data->company->user->name : '',
                 'company_logo' => $data->company->logo_url,

@@ -511,7 +511,7 @@ $long = $job->long;
                                     <div class="iconbox-content">
                                         <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
                                             Age requirment</div>
-                                        <span class=d-block f-size-14 ft-wt-5 text-gray-900">
+                                        <span class="d-block f-size-14 ft-wt-5 text-gray-900">
                                             {{ $job->min_age }} Year - {{ $job->max_age }} Year
                                         </span>
                                     </div>

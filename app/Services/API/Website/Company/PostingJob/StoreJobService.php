@@ -35,7 +35,7 @@ class StoreJobService
             'title' => 'required|string|max:255',
             'category' => 'required',
             'job_role' => 'required',
-            'experience' => 'required',
+            // 'experience' => 'required',
             'education' => 'required',
             // 'job_type' => 'required',
             'vacancies' => 'required',
@@ -138,7 +138,8 @@ class StoreJobService
         }
 
         // Experience
-        $experience_request = $request->experience;
+        // $experience_request = $request->experience;
+        $experience_request = 'Fresher';
         $experience = ExperienceTranslation::where('experience_id', $experience_request)->orWhere('name', $experience_request)->first();
         if (! $experience) {
             // $experience = Experience::where('name', $experience_request)->first();
