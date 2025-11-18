@@ -121,6 +121,7 @@ class CandidateSettingUpdateService
         $user->update(['name' => $request->name,
                         'name' => $request['name'],
                         'nic' => $request['nic'],
+                        'phone' => $request['phone'],
                     ]);
 
         // Experience
