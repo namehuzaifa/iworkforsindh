@@ -203,7 +203,7 @@ class UpdateJobService
         ]);
 
         // Location
-        $jobCreated = $jobCreated->get();
+        $jobCreated = $jobCreated->fresh();
         updateMap($jobCreated);
 
         // Benefits
