@@ -161,7 +161,7 @@ Route::middleware(['auth:sanctum', 'api_company', 'api_has_plan'])->prefix('comp
         Route::get('/create/job', 'createJob');
         Route::post('/store/job', 'storeJob');
         Route::get('/edit/{job:slug}/job', 'editJob');
-        Route::put('/update/{job:id}/job', 'updateJob');
+        Route::put('/update/job/{job:id}', 'updateJob');
         Route::post('/promote/job', 'promoteJob');
         Route::post('/clone/job', 'cloneJob');
         Route::post('/change-status/job', 'changeJobStatus');
