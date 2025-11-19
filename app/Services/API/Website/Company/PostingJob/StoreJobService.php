@@ -169,6 +169,8 @@ class StoreJobService
             'role_id' => $job_role_id,
             'education_id' => $education->id,
             'experience_id' => $experience->id,
+            'min_age' => $request->min_age,
+            'max_age' => $request->max_age,
             // 'salary_mode' => $request->salary_mode,
             // 'custom_salary' => $request->custom_salary,
             'salary_mode' => 'custom',
