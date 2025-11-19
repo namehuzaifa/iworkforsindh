@@ -57,11 +57,11 @@ class UpdateJobService
             );
         }
 
-        $job = Job::find($job); // $jobId ko request ya route se le sakte ho
+        // $job = Job::find($job); // $jobId ko request ya route se le sakte ho
 
-        if (!$job) {
-            return response()->json(['message' => 'Job not found'], 404);
-        }
+        // if (!$job) {
+        //     return response()->json(['message' => 'Job not found'], 404);
+        // }
 
         // $min = $request->min_salary;
         // $max = $request->max_salary;
