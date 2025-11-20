@@ -184,6 +184,9 @@
                                                                     <span>{{ __('remote') }}</span>
                                                                 @endif
                                                             </p>
+                                                            <p>
+                                                                {{ $job->exact_location }}
+                                                            </p>
                                                         </div>
                                                     </a>
                                                 </td>
