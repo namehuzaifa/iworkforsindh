@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CompanyController as ApiCompanyController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Payment\PayPalController;
 use App\Http\Controllers\SkilledLabourController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\Website\CandidateController;
 use App\Http\Controllers\Website\CompanyController;
 use App\Http\Controllers\Website\CompanyVerifyDocuments;
@@ -118,6 +119,21 @@ Route::middleware(['auth', 'user_active', 'restrict.rider'])->group(function () 
 });
 Route::get('/skilled-helper', [SkilledLabourController::class, 'index'])->name('skilled-labour.index');
 Route::get('/skilled-helper/{labor}', [SkilledLabourController::class, 'show'])->name('skilled-labour.show'); // fetching single labor details
+
+// courses
+Route::middleware(['auth', 'user_active', 'restrict.course_manager'])->group(function () {
+    // Route::get('/', [CoursesController::class, 'index'])->name('courses.index');
+    Route::get('/courses/create', [CoursesController::class, 'create'])->name('courses.create');
+    Route::post('/courses', [CoursesController::class, 'store'])->name('courses.store');
+    Route::get('/courses/{course}/edit', [CoursesController::class, 'edit'])->name('courses.edit');
+    Route::put('/courses/{course}', [CoursesController::class, 'update'])->name('courses.update');
+    Route::delete('/courses/{course}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+    Route::patch('/courses/{course}/toggle', [CoursesController::class, 'toggleStatus'])->name('courses.toggle');
+
+});
+
+Route::get('/all-courses', [CoursesController::class, 'index'])->name('courses.index');
+
 
 Route::get('/resume-maker', function () {
     return view('cv.index');

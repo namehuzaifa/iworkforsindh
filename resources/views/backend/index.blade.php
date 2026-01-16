@@ -9,11 +9,104 @@
         </div>
     </div>
 @endsection
+
+
 @section('content')
     @if($appSetup->where('status', 0)->count())
         <x-setup-guide />
     @endif
-    <div class="row">
+   
+    {{-- Static --}}
+    <div class="row static" style="display:none">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-dollar-sign"></i></span>
+                
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('Candidate Region') }}</span>
+                    <a href="{{ route('candidates.regions') }}"><span class="info-box-number"> {{ 'View candidates region' }}</span></a>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="clearfix hidden-md-up"></div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('total_candidates') }}</span>
+                    <span class="info-box-number">111420</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('total_employers') }}</span>
+                    <span class="info-box-number">840</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-check"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('total_verified_users') }}</span>
+                    <span class="info-box-number">111420</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-briefcase"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('active_jobs') }}</span>
+                    <span class="info-box-number">19500</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-briefcase"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('expired_jobs') }}</span>
+                    <span class="info-box-number">5700</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-briefcase"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('pending_jobs') }}</span>
+                    <span class="info-box-number">250</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-briefcase"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('all_jobs') }}</span>
+                    <span class="info-box-number">25450</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Static end --}}
+
+    {{-- original --}}
+    <div class="row original">
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-dollar-sign"></i></span>
@@ -110,8 +203,9 @@
             </div>
         </div>
     </div>
+    {{-- original end --}}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" style="display: none">
             <!-- BAR CHART -->
             <div class="card">
                 <div class="card-header">
@@ -126,7 +220,7 @@
             </div>
             <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{ __('popular_location') }}</h3>
@@ -154,7 +248,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-12">
             <div class="card">
                 <div class="card-header">
                     <div class=" d-flex justify-content-between align-items-center">
@@ -206,7 +300,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-7" style="display: none">
             <div class="card">
                 <div class="card-header">
                     <div class=" d-flex justify-content-between align-items-center">
@@ -469,6 +563,18 @@
                 options: locationChartOptions
             })
         </script>
+
+        <script>
+            jQuery(document).on('change', '#toggleSwitch input[type="checkbox"]', function () {
+                if (this.checked) {
+                    jQuery('.static').show();
+                    jQuery('.original').hide();
+                } else {
+                    jQuery('.static').hide();
+                    jQuery('.original').show();
+                }
+            });
+        </script>
     @endsection
 
     @section('style')
@@ -478,4 +584,60 @@
                 min-height: 230px
             }
         </style>
+
+        <style>
+        /* From Uiverse.io by gharsh11032000 */ 
+        /* The switch - the box around the slider */
+        .switch {
+           font-size: 10px;
+            position: relative;
+            display: inline-block;
+            width: 3.5em;
+            height: 20px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #9fccfa;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 2em;
+            width: 2em;
+            inset: 0;
+            background-color: white;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .switch input:checked + .slider {
+            background: #0974f1;
+        }
+
+        .switch input:focus + .slider {
+            box-shadow: 0 0 1px #0974f1;
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translateX(1.6em);
+        }
+    </style>
     @endsection

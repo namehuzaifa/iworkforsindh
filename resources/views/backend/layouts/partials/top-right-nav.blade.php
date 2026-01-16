@@ -4,6 +4,12 @@
     $current_language = currentLanguage() ? currentLanguage() : loadDefaultLanguage();
 @endphp
 
+<li class="nav-item">
+    <label class="switch" id="toggleSwitch">
+        <input type="checkbox">
+        <span class="slider"></span>
+    </label>
+</li>
 <li class="nav-item dropdown">
     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
         <i class="flag-icon {{ $current_language?->icon }}"></i>

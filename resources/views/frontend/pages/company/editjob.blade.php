@@ -37,7 +37,8 @@
                                     <div class="col-lg-4 rt-mb-20 col-md-4">
                                         <x-forms.label name="job_category" :required="true" />
                                         <select
-                                            class=" select2-taggable form-control @error('category_id') is-invalid @enderror"
+                                            {{-- class=" select2-taggable form-control @error('category_id') is-invalid @enderror" --}}
+                                            class=" select2-search form-control @error('category_id') is-invalid @enderror"
                                             name="category_id">
                                             @foreach ($jobCategories as $category)
                                                 <option {{ $job->category_id == $category->id ? 'selected' : '' }}
@@ -69,7 +70,8 @@
                                     <div class="col-lg-4 rt-mb-20 col-md-4">
                                         <x-forms.label name="job_role" :required="true" class="tw-text-sm tw-mb-2" />
                                         <select
-                                            class=" select2-taggable form-control @error('role_id') is-invalid @enderror"
+                                            {{-- class=" select2-taggable form-control @error('role_id') is-invalid @enderror" --}}
+                                            class=" select2-search form-control @error('role_id') is-invalid @enderror"
                                             name="role_id">
                                             @foreach ($roles as $role)
                                                 <option {{ $job->role_id == $role->id ? 'selected' : '' }}
@@ -633,6 +635,11 @@
     <script>
         $(document).ready(function() {
             $('.select21').select2();
+        });
+        $('.select2-search').select2({
+            tags: false,
+            // placeholder: "Select Category",
+            allowClear: true,
         });
         window.addEventListener('render-select2', event => {
             console.log('fired');

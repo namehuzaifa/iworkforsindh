@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\SocialiteController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TeamSizeController;
+use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\SkilledLaborController;
@@ -61,6 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/candidates/regions', [CandidateController::class, 'viewRegions'])->name('candidates.regions'); 
         Route::get('/candidates/region/{region}/', [CandidateController::class, 'viewRegionDetail'])->name('candidates.region');
 
+        //Skilled Labors Route
         Route::get('/riders', [SkilledLaborController::class, 'getriders'])->name('skilled-labour.riders');
         Route::get('/skilled-labors/{id?}', [SkilledLaborController::class, 'index'])->name('admin-skilled-labour.index');
         Route::get('/skilled-labors-details/{labor}', [SkilledLaborController::class, 'viewSkilledLaborDetail'])->name('skilled-labour.details'); // fetching single labor details
@@ -70,6 +72,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/labor/change/status', [SkilledLaborController::class, 'laborStatusChange'])->name('labor.status.change');
         Route::delete('/skilled-labors/{id}', [SkilledLaborController::class, 'destroy'])->name('admin-skilled-labour.destroy');
 
+        //Course Manager Route
+        Route::get('/courses', [CoursesController::class, 'index'])->name('admin.courses.index');
+        Route::get('/courses/change/status', [CoursesController::class, 'statusChange'])->name('admin.status.change');
+        Route::delete('/courses/{course}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
 
         
         //Dashboard Route

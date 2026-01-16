@@ -50,6 +50,12 @@
                             plus_icon="fa fa-plus-circle" icon="fas fa-user">
                             {{ __('Skilled Labors') }}
                         </x-admin.sidebar-list>
+
+                        {{-- Courses --}}
+                        <x-admin.sidebar-list :linkActive="Route::is('admin.courses.index*') ? true : false" route="admin.courses.index" path="admin.courses.index"
+                            plus_icon="fas fa-th" icon="fas fa-th">
+                            {{ __('Courses') }}
+                        </x-admin.sidebar-list>
                     @endif
                     @if (userCan('job.view') ||
                             userCan('job_category.view') ||

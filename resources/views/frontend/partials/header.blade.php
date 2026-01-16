@@ -775,6 +775,48 @@ config('templatecookie.default_language'))->first();
                                             </li>
                                         </ul>
                                     @endif
+
+                                    @if (auth()->user()->role == 'course_manager')
+                                        <ul class="dropdown-menu custom-border" aria-labelledby="dropdownMenuButton1">
+                                            {{-- <li>
+                                                <a class="dropdown-item" href="javascript:;"> <i class="ph-user"></i>
+                                                    {{ __(auth()->user()->name) }}
+                                                </a>
+                                            </li> --}}
+                                            <li>
+                                                <a class="dropdown-item {{ request()->routeIs('courses.index') ? 'active' : '' }}"
+                                                    href="{{ route('courses.index') }}">
+                                                    <i class="ph-stack"></i>
+                                                    {{ __('Courses') }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item {{ request()->routeIs('courses.create') ? 'active' : '' }}"
+                                                    href="{{ route('courses.create') }}">
+                                                    <i class="ph-plus"></i>
+                                                    {{ __('Add New Course') }}
+                                                </a>
+                                            </li>
+                                            {{-- <li>
+                                                <a class="dropdown-item {{ request()->routeIs('company.setting') ? 'active' : '' }}"
+                                                    href="{{ route('company.setting') }}">
+                                                    <i class="ph-gear"></i>
+                                                    {{ __('settings') }}
+                                                </a>
+                                            </li> --}}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    <i class="ph-sign-out"></i>
+                                                    {{ __('log_out') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    @endif
                                 </div>
 
                                 @if (auth()->user()->role == 'rider')

@@ -657,7 +657,7 @@
 
                 $('.select2-search').select2({
                     tags: false,
-                    placeholder: "Select Category",
+                    // placeholder: "Select Category",
                     allowClear: true,
                 });
 
