@@ -47,7 +47,7 @@
                             <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
                             <div class="mt-1">
                                 <select id="category_id" name="category_id"
-                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
+                                    class="select2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
                                     <option value="">-- Select Category --</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
@@ -73,17 +73,17 @@
                             @enderror
                         </div>
 
-                        {{-- <div>
-                            <label for="discounted_price" class="block text-sm font-medium text-gray-700">Course Discounted Price</label>
+                        <div>
+                            <label for="platform" class="block text-sm font-medium text-gray-700">Platform</label>
                             <div class="mt-1">
-                                <input type="number" name="discounted_price" id="discounted_price" value="{{ old('discounted_price') }}"
+                                <input type="text" name="platform" id="platform" value="{{ old('platform') }}"
                                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                                    placeholder="e.g. 20000">
+                                    placeholder="e.g. Coursea,Udemy,Google...">
                             </div>
-                            @error('discounted_price')
+                            @error('platform')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                        </div> --}}
+                        </div>
 
 
                         <div>
@@ -130,3 +130,15 @@
         </div>
     </div>
 @endsection
+
+@push('frontend_scripts')
+<script>
+$(document).ready(function() {
+    $('#category_id').select2({
+        placeholder: "-- Select Category --",
+        allowClear: true,
+        width: '100%'
+    });
+});
+</script>
+@endpush

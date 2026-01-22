@@ -15,7 +15,7 @@ class Courses extends Model
         'title',
         'description',
         'price',
-        // 'discounted_price',
+        'platform',
         // 'duration',
         'thumbnail_url',
         'external_link',

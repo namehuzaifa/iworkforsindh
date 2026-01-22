@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('price');
-            // $table->text('discounted_price');
+            $table->string('platform');
             $table->longText('thumbnail_url');
             $table->longText('external_link');
             $table->boolean('is_active')->default(true);           

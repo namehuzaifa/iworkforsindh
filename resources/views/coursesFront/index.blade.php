@@ -62,10 +62,9 @@
         object-fit: cover;
     }
 
-    .price-tag {
-       position: absolute;
+    .price-tag , .platform-tag{
+        position: absolute;
         bottom: 10px;
-        right: 10px;
         background: rgba(255, 255, 255, 0.95);
         padding: 5px 15px;
         border-radius: 50px;
@@ -73,6 +72,15 @@
         color: var(--dark-blue);
         font-size: 0.9rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+       
+    }
+
+     .platform-tag {
+        right: 335px;
+    }
+
+    .price-tag {
+        right: 10px;
         text-decoration: line-through;
     }
 
@@ -101,8 +109,8 @@
     <!-- HERO -->
     <div class="hero-section text-center">
         <div class="container">
-            <h1 class="display-4 fw-bold main-heading">Seekhen aur <span class="text-gradient">Kamayen</span></h1>
-            <p class="lead text-muted mx-auto" style="max-width: 600px;">Sindh ka apna digital learning platform. Ab seekhen bhi aur kamayen bhi.</p>
+            <h1 class="display-4 fw-bold main-heading">Learn. <span class="text-gradient">Earn. </span> Rise.</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">Sindh's own digital learning portal - where skills turn into income.</p>
 
             <!-- Search + Category Row -->
             <div class="container mt-4">
@@ -163,6 +171,12 @@
                             Rs {{ $course->price }}
                             {{-- <span  class="free">FREE</span> --}}
                         </div>
+                        @if($course->platform)
+                        <div class="platform-tag">
+                            {{ $course->platform }}
+                            {{-- <span  class="free">FREE</span> --}}
+                        </div>
+                        @endif
                         
 
                         {{-- EDIT / DELETE (ONLY FOR LOGGED IN USER) --}}
@@ -193,7 +207,7 @@
                             <span class="badge badge-type text-primary">
                                 <i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i>Free
                             </span>
-                            <small class="text-muted"><i class="bi bi-tag-fill me-1"></i>{{ strtolower($course->category->name) }}</small>
+                            <small class="text-muted category-text"><i class="bi bi-tag-fill me-1"></i>{{ strtolower($course->category->name) }}</small>
                         </div>
                         {{-- <i class="bi bi-tag-fill me-1"></i>
                         <small class="text-muted category-text">

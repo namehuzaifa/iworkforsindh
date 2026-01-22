@@ -48,7 +48,7 @@ class CoursesController extends Controller
             'thumbnail_url' => 'required|url',
             'external_link' => 'required|url',
             'price' => 'required|integer',
-            // 'discounted_price' => 'required|integer',
+            'platform' => 'required|string',
             'is_active' => 'boolean',
             'category_id' => 'required|exists:job_categories,id',
         ]);
@@ -60,7 +60,7 @@ class CoursesController extends Controller
             'thumbnail_url' => $request->thumbnail_url,
             'external_link' => $request->external_link,
             'price' => $request->price,
-            // 'discounted_price' => $request->discounted_price,
+            'platform' => $request->platform,
             'is_active' => $request->has('is_active'),
             'category_id' => $request->category_id,
         ]);
@@ -82,7 +82,7 @@ class CoursesController extends Controller
             'thumbnail_url' => 'required|url',
             'external_link' => 'required|url',
             'price' => 'required|integer',
-            // 'discounted_price' => 'required|integer',
+            'platform' => 'required|string',
             'is_active' => 'boolean',
             'category_id' => 'required|exists:job_categories,id',
         ]);

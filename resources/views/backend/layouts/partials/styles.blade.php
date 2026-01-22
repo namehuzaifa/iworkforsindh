@@ -37,6 +37,18 @@
         /* For PWA Theme Color as it is Frontend  */
         --primary-500: {{ $primaryColor }} !important;
     }
+
+    ul.pagination li.page-item:first-child, ul.pagination li.page-item:last-child {
+        display: block;
+    }
+    
+    ul.pagination li.page-item {
+    display:none;
+    }
+    
+    section.testimonial-section {
+    display:none;
+    }
 </style>
 <style>
     .select2-results__option[aria-selected=true] {
