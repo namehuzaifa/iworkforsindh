@@ -32,7 +32,7 @@
                     <tr>
                         <td><img src="{{ asset($course->thumbnail_url) }}" class="card-img-top labor-image" alt="{{ $course->thumbnail_url }}"></td>
                         <td>{{ $course->title }}</td>
-                        <td><span>{{ $course->category->name }}</span>
+                        <td><span>{{ $course->category->name }}</span><br>
                             <span> Platform - {{ $course->platform }}</span>
                         </td>
                         <td> Rs <span class="old-price" style="text-decoration: line-through;">{{ $course->price }}</span>
