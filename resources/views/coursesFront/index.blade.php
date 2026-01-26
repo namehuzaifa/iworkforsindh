@@ -84,7 +84,7 @@
         }
 
         .platform-tag {
-            right: 335px;
+            left: 10px;
         }
 
         .price-tag {
