@@ -53,11 +53,12 @@
     }
 
 
-    .card-img-wrapper img {
+    /* .card-img-wrapper .courseimg {
         width: 100%;
         height: 100%;
         object-fit: fill;
-    }
+    } */
+
     .main-heading{
         font-family: 'Poppins', sans-serif !important;
     }
@@ -65,7 +66,7 @@
     .card-img-top {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: fill;
     }
 
     .price-tag , .platform-tag{
