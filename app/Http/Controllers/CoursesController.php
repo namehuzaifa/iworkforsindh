@@ -10,9 +10,25 @@ use App\Models\Courses;
 
 class CoursesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $query = Courses::with(['category']);
+
+        // Search Filter
+        if ($request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        // Category Filter
+        if ($request->filled('category_id') && $request->category_id != 'all') {
+            $query->where('category_id', $request->category_id);
+        }
+
+        // Platform Filter
+        if ($request->filled('platform') && $request->platform != 'all') {
+            $query->where('platform', $request->platform);
+        }
+
         // Role-based filtering
         if (Auth::check()) {
             if (Auth::user()->role === 'course_manager') {
@@ -23,10 +39,13 @@ class CoursesController extends Controller
         }
 
         $courses = $query->latest()->paginate(30);
+
         // Fetch all categories for dropdown
         $categories = JobCategoryTranslation::orderBy('name')->get();
+        // Fetch distinct platforms
+        $platforms = Courses::select('platform')->distinct()->whereNotNull('platform')->orderBy('platform')->pluck('platform');
 
-        return view('coursesFront.index', compact('courses','categories'));
+        return view('coursesFront.index', compact('courses', 'categories', 'platforms'));
     }
 
     public function create()
