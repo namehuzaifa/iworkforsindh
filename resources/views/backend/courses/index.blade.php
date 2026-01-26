@@ -22,6 +22,7 @@
                     <th>Title</th>
                     <th>Category</th>
                     <th>Price</th>
+                    <th>User</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -35,7 +36,8 @@
                         <td> Rs <span class="old-price" style="text-decoration: line-through;">{{ $course->price }}</span>
                             <span class="free">{{ $course->discounted_price }}</span>
                         </td>
-                      
+                        <td>{{ $course->user->name }}</td>
+
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             <a href="javascript:void(0)" class="active-status">
                                 <label class="switch">
@@ -77,7 +79,7 @@
 
                            
 
-                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"> --}}
+                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             {{-- <a href="{{ route('courses.edit', $course) }}" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a> --}}
                             <form action="{{ route('admin.courses.destroy', $course) }}" method="POST"
                                 class="inline-block" onsubmit="return confirm('Are you sure?');">
