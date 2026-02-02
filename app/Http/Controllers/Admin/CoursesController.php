@@ -9,10 +9,20 @@ use Illuminate\Http\Request;
 class CoursesController extends Controller
 {
 
-    public function index() {
-        $courses = Courses::with('category')
-        ->latest()
-        ->paginate(20);
+    public function index(Request $request)
+    {
+        $query = Courses::with('category')->latest();
+
+        if ($request->has('status') && $request->status !== 'all') {
+            if ($request->status == 'active') {
+                $query->where('is_active', 1);
+            } elseif ($request->status == 'inactive') {
+                $query->where('is_active', 0);
+            }
+        }
+
+        $courses = $query->paginate(20);
+
         return view('backend.courses.index', compact('courses'));
     }
 
@@ -29,13 +39,13 @@ class CoursesController extends Controller
                 return responseSuccess(__('Course deactivated successfully'));
             }
         } catch (\Exception $e) {
-            flashError('An error occurred: '.$e->getMessage());
+            flashError('An error occurred: ' . $e->getMessage());
 
             return back();
         }
     }
 
-     public function destroy(Courses $course)
+    public function destroy(Courses $course)
     {
         $course->delete();
         return redirect()->route('admin.courses.index')->with('success', 'Course deleted successfully.');

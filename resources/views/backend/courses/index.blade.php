@@ -10,8 +10,16 @@
             <a href="{{ route('courses.index') }}"
             target="_blank"
             class="fw-semibold text-decoration-none view">
-                View Active Courses
+                View Courses
             </a>
+        </div>
+
+        <div class="mb-4">
+            <div class="btn-group" role="group" aria-label="Course Status Filter">
+                <a href="{{ route('admin.courses.index', ['status' => 'all']) }}" class="btn btn-{{ request('status') == 'all' || !request('status') ? 'primary' : 'outline-primary' }}">All</a>
+                <a href="{{ route('admin.courses.index', ['status' => 'active']) }}" class="btn btn-{{ request('status') == 'active' ? 'primary' : 'outline-primary' }}">Active</a>
+                <a href="{{ route('admin.courses.index', ['status' => 'inactive']) }}" class="btn btn-{{ request('status') == 'inactive' ? 'primary' : 'outline-primary' }}">Inactive</a>
+            </div>
         </div>
 
         <table id="regionTable" class="table table-bordered table-striped">
