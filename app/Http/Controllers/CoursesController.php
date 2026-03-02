@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CoursesController extends Controller
 {
+    use ApiResponseHelpers;
     public function index(Request $request)
     {
         $query = Courses::with(['category']);
