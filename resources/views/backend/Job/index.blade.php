@@ -135,6 +135,7 @@
                                 <span>{{ __('select_all') }}</span>
                             </label>
                             <button id="delete-selected" class="btn btn-danger ml-3">{{ __('selected_delete') }}</button>
+                            <button id="active-job-selected" class="btn btn-info ml-3">Selected Active Jobs</button>
 
                         </div>
                     </div>
@@ -498,6 +499,35 @@
                         }
                     });
                 });
+
+                // Handle delete selected button click
+                $('#active-job-selected').click(function() {
+                    var selectedJobs = [];
+                    $('.job-checkbox:checked').each(function() {
+                        selectedJobs.push($(this).val());
+                    });
+
+                    function showSuccessMessage(message) {
+                        toastr.success(message);
+                    }
+                    // AJAX request to delete selected jobs
+                    $.ajax({
+                        url: '{{ route('admin.bulkjob.status.change') }}',
+                        data: {
+                            job_ids: selectedJobs,
+                            status: 'active',
+                        },
+                        success: function(response) {
+
+                            showSuccessMessage('{{ __('job_status_changed')}}');
+                            window.location.reload()
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+                });
+
             });
 
         });

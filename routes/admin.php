@@ -119,6 +119,7 @@ Route::prefix('admin')->group(function () {
         Route::get('applied/jobs/{applied_job}', [JobController::class, 'appliedJobsShow'])->name('applied.job.show');
         Route::post('/job/bulk/import', [JobController::class, 'bulkImport'])->name('admin.job.bulk.import');
         Route::put('job/change/status/{job}', [JobController::class, 'jobStatusChange'])->name('admin.job.status.change');
+        Route::get('bulkjob/change/status/', [JobController::class, 'bulkJobStatusChange'])->name('admin.bulkjob.status.change');
         Route::get('job/clone/{job:slug}', [JobController::class, 'clone'])->name('admin.job.clone');
         Route::get('edited/job/list', [JobController::class, 'editedJobList'])->name('admin.job.edited.index');
         Route::get('edited/job/show/{job:slug}', [JobController::class, 'editedShow'])->name('admin.job.edited.show');

@@ -135,6 +135,31 @@ class JobController extends Controller
         }
     }
 
+    public function bulkJobStatusChange(Request $request)
+    {
+        try {
+            abort_if(! userCan('job.update'), 403);
+
+            $request->validate([
+                'job_ids'   => 'required|array',
+                'job_ids.*' => 'exists:jobs,id',
+                'status'    => 'required|string'
+            ]);
+
+            // Bulk Update (Single Query ⚡)
+            Job::whereIn('id', $request->job_ids)
+                ->update(['status' => $request->status]);
+
+            flashSuccess(__('job_status_changed'));
+            return back();
+
+        } catch (\Exception $e) {
+
+            flashError('An error occurred: ' . $e->getMessage());
+            return back();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
