@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\JobCategoryTranslation;
 use App\Models\Courses;
+use F9Web\ApiResponseHelpers;
 use Symfony\Component\HttpFoundation\Response;
 
 class CoursesController extends Controller
