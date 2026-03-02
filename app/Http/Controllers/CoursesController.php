@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\JobCategoryTranslation;
 use App\Models\Courses;
+use Symfony\Component\HttpFoundation\Response;
 
 class CoursesController extends Controller
 {
@@ -46,6 +47,52 @@ class CoursesController extends Controller
         $platforms = Courses::select('platform')->distinct()->whereNotNull('platform')->orderBy('platform')->pluck('platform');
 
         return view('coursesFront.index', compact('courses', 'categories', 'platforms'));
+    }
+
+    public function apiIndex(Request $request)
+    {
+        $query = Courses::with(['category']);
+
+        // Search Filter
+        if ($request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        // Category Filter
+        if ($request->filled('category_id') && $request->category_id != 'all') {
+            $query->where('category_id', $request->category_id);
+        }
+
+        // Platform Filter
+        if ($request->filled('platform') && $request->platform != 'all') {
+            $query->where('platform', $request->platform);
+        }
+
+        // Role-based filtering
+        if (Auth::check()) {
+            if (Auth::user()->role === 'course_manager') {
+                $query->where('user_id', Auth::id());
+            }
+        } else {
+            $query->where('is_active', 1); // For guests, only approved labors
+        }
+
+        $courses = $query->latest()->paginate(30);
+
+        // Fetch all categories for dropdown
+        $categories = JobCategoryTranslation::orderBy('name')->get();
+        // Fetch distinct platforms
+        $platforms = Courses::select('platform')->distinct()->whereNotNull('platform')->orderBy('platform')->pluck('platform');
+
+         // API response
+        return $this->respondWithSuccess([
+            'message' => 'courses fetched successfully!',
+            'data' => [
+                'courses' => $courses,
+                'categories' => $categories,
+                'platforms' => $platforms,
+            ],
+        ]);
     }
 
     public function create()

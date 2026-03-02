@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CandidateController;
 use App\Http\Controllers\Api\CandidateJobsController;
 use App\Http\Controllers\Api\CloudMessageController;
 use App\Http\Controllers\Api\SkilledLabourController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\CompanyJobsController;
 use App\Http\Controllers\Api\LocalizationController;
@@ -58,6 +59,8 @@ Route::controller(WebsiteController::class)->group(function () {
 
    
 });
+
+    Route::get('/courses', [CoursesController::class, 'apiIndex']);
 
     Route::get('/skill-labors', [SkilledLabourController::class, 'index']);
     Route::get('/skill-labors/{labor}', [SkilledLabourController::class, 'show']); // fetching single labor details
