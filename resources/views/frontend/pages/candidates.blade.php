@@ -14,6 +14,9 @@ $data = metaData('candidates');
 @endsection
 
 @section('main')
+    <section class="main-banner">
+        <img class="banner-img" src="https://iwork4sindh.com/frontend/assets/images/Candidate-banner.jpeg" alt="Candidate Banner">
+    </section>
 <!-- Filter Component -->
 <x-website.candidate.candidate-filter :popular-tags="$popularTags" :professions="$professions"
     :experiences="$experiences" :educations="$educations" :skills="$skills" />
@@ -259,6 +262,21 @@ $data = metaData('candidates');
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 15px;
+    }
+      /* ===== BANNER ===== */
+    .main-banner {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .main-banner img.banner-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 550px;
+        object-fit: cover;
+        object-position: center top;
     }
 </style>
 @endpush

@@ -27,11 +27,23 @@
 
 <style>
     :root {
-        --primary-500: {{ $primaryColor }} !important;
-        --primary-600: {{ adjustBrightness($primaryColor, -0.2) }} !important;
-        --primary-200: {{ adjustBrightness($primaryColor, 0.7) }} !important;
-        --primary-100: {{ adjustBrightness($primaryColor, 0.8) }} !important;
-        --primary-50: {{ adjustBrightness($primaryColor, 0.93) }} !important;
-        --gray-20: {{ adjustBrightness($primaryColor, 0.98) }} !important;
+        --primary-500:
+            {{ $primaryColor }}
+            !important;
+        --primary-600:
+            {{ adjustBrightness($primaryColor, -0.2) }}
+            !important;
+        --primary-200:
+            {{ adjustBrightness($primaryColor, 0.7) }}
+            !important;
+        --primary-100:
+            {{ adjustBrightness($primaryColor, 0.8) }}
+            !important;
+        --primary-50:
+            {{ adjustBrightness($primaryColor, 0.93) }}
+            !important;
+        --gray-20:
+            {{ adjustBrightness($primaryColor, 0.98) }}
+            !important;
     }
 </style>

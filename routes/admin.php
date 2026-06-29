@@ -36,6 +36,8 @@ use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\SkilledLaborController;
+use App\Http\Controllers\Admin\CounselorController;
+use App\Http\Controllers\Admin\CounselingCategoryController;
 use App\Http\Controllers\SearchCountryController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\Website\WebsiteSettingController;
@@ -77,6 +79,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/courses/change/status', [CoursesController::class, 'statusChange'])->name('admin.status.change');
         Route::delete('/courses/{course}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
 
+        // Counselor Routes
+        Route::get('/counselors', [CounselorController::class, 'index'])->name('admin.counselors.index');
+        Route::post('/counselors/status-change', [CounselorController::class, 'statusChange'])->name('admin.counselors.status.change');
+        Route::get('/counselor/change/status', [CounselorController::class, 'statusChange'])->name('counselor.status.change');
         
         //Dashboard Route
         Route::get('/', [AdminController::class, 'dashboard']);
@@ -88,6 +94,9 @@ Route::prefix('admin')->group(function () {
 
         // Roles Route
         Route::resource('role', RolesController::class);
+
+        // Counseling Category Route
+        Route::resource('counseling-category', CounselingCategoryController::class)->except(['create', 'show']);
 
         //Users Route
         Route::resource('user', UserController::class)->only(['dashboard', 'index', 'create', 'store', 'edit', 'update', 'destroy']);

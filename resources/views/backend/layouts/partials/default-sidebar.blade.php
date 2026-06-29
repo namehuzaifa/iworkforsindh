@@ -1,4 +1,4 @@
-<aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4">
+<aside id="sidebar" class="main-sidebar ss sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
         <img src="{{ $setting->favicon_image_url }}" alt="{{ __('logo') }}" class="elevation-3">
@@ -55,6 +55,12 @@
                         <x-admin.sidebar-list :linkActive="Route::is('admin.courses.index*') ? true : false" route="admin.courses.index" path="admin.courses.index"
                             plus_icon="fas fa-th" icon="fas fa-th">
                             {{ __('Courses') }}
+                        </x-admin.sidebar-list>
+
+                        {{-- Counselors --}}
+                        <x-admin.sidebar-list :linkActive="Route::is('admin.counselors.index*') ? true : false" route="admin.counselors.index" path="admin.counselors.index"
+                            plus_icon="" icon="fas fa-user-md">
+                            {{ __('Counselors') }}
                         </x-admin.sidebar-list>
                     @endif
                     @if (userCan('job.view') ||
@@ -151,6 +157,12 @@
                                         {{ __('professions') }}
                                     </x-admin.sidebar-list>
                                 @endif
+
+                                <!-- ======= counseling categories ======== -->
+                                <x-admin.sidebar-list :linkActive="Request::is('admin/counseling-category*') ? true : false" route="counseling-category.index"
+                                    path="counseling-category.index" plus_icon="" icon="fas fa-list-alt">
+                                    {{ __('Counseling Categories') }}
+                                </x-admin.sidebar-list>
 
                                 <!-- ======= skills ======== -->
                                 @if (userCan('skills.view'))

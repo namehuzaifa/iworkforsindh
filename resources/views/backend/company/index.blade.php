@@ -18,7 +18,7 @@
                                             class="fas fa-plus mr-1"></i> {{ __('create') }}
                                     </a>
                                 @endif
-                                @if (request('keyword') || request('ev_status') || request('sort_by') || request('organization_type') || request('industry_type'))
+                                @if (request('keyword') || request('ev_status') || request('sort_by') || request('organization_type') || request('industry_type') || request('is_counselor'))
                                     <a href="{{ route('company.index') }}"
                                         class="btn bg-danger"><i
                                             class="fas fa-times"></i>&nbsp; {{ __('clear') }}
@@ -75,7 +75,21 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-xl-3 col-md-6 col-12">
+                            <div class="col-xl-2 col-md-6 col-12">
+                                <label>{{ __('Counseling') }}</label>
+                                <select name="is_counselor" class="form-control select2bs4">
+                                    <option value="">
+                                        {{ __('all') }}
+                                    </option>
+                                    <option {{ request('is_counselor') == 'yes' ? 'selected' : '' }} value="yes">
+                                        {{ __('Counselors') }}
+                                    </option>
+                                    <option {{ request('is_counselor') == 'no' ? 'selected' : '' }} value="no">
+                                        {{ __('Non-Counselors') }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-xl-2 col-md-6 col-12">
                                 <label>{{ __('sort_by') }}</label>
                                 <select name="sort_by" class="form-control select2bs4">
                                     <option {{ !request('sort_by') || request('sort_by') == 'latest' ? 'selected' : '' }}

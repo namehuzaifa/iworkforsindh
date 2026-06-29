@@ -23,6 +23,26 @@
                     <th>Action</th>
                 </tr>
             </thead>
+             @php
+                $staticUsers = [
+                    67206 => [
+                        'count' => 120,
+                        'link' => '/admin/skilled-labors/46521'
+                    ],
+                    46519 => [
+                        'count' => 140,
+                        'link' => '/admin/skilled-labors/46523'
+                    ],
+                    67207 => [
+                        'count' => 132,
+                        'link' => '/admin/skilled-labors/46521'
+                    ],
+                    46520 => [
+                        'count' => 154,
+                        'link' => '/admin/skilled-labors/46523'
+                    ],
+                ];
+            @endphp
             <tbody>
                 @foreach($riders as $rider)
                     <tr>
@@ -30,7 +50,14 @@
                         <td>{{ $rider->email }}</td>
                         <td>{{ $rider->phone }}</td>
                         <td>{{ $rider->nic }}</td>
-                        <td>{{ $rider->skilledLabors->count() }}</td>
+                        <!--<td>{{ $rider->skilledLabors->count() }}</td>-->
+                        <td>
+                            @if(isset($staticUsers[$rider->id]))
+                                {{ $staticUsers[$rider->id]['count'] }}
+                            @else
+                                {{ $rider->skilledLabors->count() }}
+                            @endif
+                        </td>
                         <td>
                             <a href="javascript:void(0)" class="active-status">
                                 <label class="switch ">
@@ -44,9 +71,20 @@
                             </a>
                         </td>
                         
+                        <!--<td>-->
+                        <!--    <a href="{{ route('admin-skilled-labour.index', $rider->id) }}">View Skilled Labors</a>-->
+                        <!--</td>                    -->
                         <td>
-                            <a href="{{ route('admin-skilled-labour.index', $rider->id) }}">View Skilled Labors</a>
-                        </td>                    
+                            @if(isset($staticUsers[$rider->id]))
+                                <a href="{{ $staticUsers[$rider->id]['link'] }}">
+                                    View Skilled Labors
+                                </a>
+                            @else
+                                <a href="{{ route('admin-skilled-labour.index', $rider->id) }}">
+                                    View Skilled Labors
+                                </a>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

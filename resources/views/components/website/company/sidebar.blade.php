@@ -97,8 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('company.questions.manage') }}"
-                    class="{{ linkActive('company.questions.manage') }}">
+                <a href="{{ route('company.questions.manage') }}" class="{{ linkActive('company.questions.manage') }}">
                     <span class="button-content-wrapper tw-items-center">
                         <span class="button-icon align-icon-left tw-flex tw-items-center">
                             <i class="ph-question"></i>
@@ -109,6 +108,7 @@
                     </span>
                 </a>
             </li>
+
             <li>
                 <a href="{{ route('company.plan') }}" class="{{ linkActive('company.plan') }}">
                     <span class="button-content-wrapper tw-items-center">
@@ -134,7 +134,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('company.verify.documents.index') }}" class="{{ linkActive('company.verify.documents.index') }}">
+                <a href="{{ route('company.verify.documents.index') }}"
+                    class="{{ linkActive('company.verify.documents.index') }}">
                     <span class="button-content-wrapper tw-items-center">
                         <span class="button-icon align-icon-left tw-flex tw-items-center">
                             <x-svg.user-check-icon width="24" height="24" stroke="currentColor" />
@@ -158,8 +159,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                     <span class="button-content-wrapper ">
                         <span class="button-icon align-icon-left">

@@ -49,6 +49,11 @@ class CompanyListService
             $query->where('industry_type_id', $request->industry_type);
         }
 
+        // counseling filter
+        if ($request->has('is_counselor') && $request->is_counselor != '') {
+            $query->where('is_counselor', $request->is_counselor == 'yes' ? true : false);
+        }
+
         $companies = $query->with('organization.translations', 'user')->paginate(10)->through(function ($company) {
             $company->active_jobs = Job::where('company_id', $company->id)->openPosition()->count();
 

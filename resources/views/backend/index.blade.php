@@ -48,7 +48,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('total_employers') }}</span>
-                    <span class="info-box-number">840</span>
+                    <span class="info-box-number">430</span>
                 </div>
             </div>
         </div>
@@ -565,6 +565,9 @@
         </script>
 
         <script>
+            jQuery(document).ready(function() {
+               jQuery('#toggleSwitch').click();
+            });
             jQuery(document).on('change', '#toggleSwitch input[type="checkbox"]', function () {
                 if (this.checked) {
                     jQuery('.static').show();

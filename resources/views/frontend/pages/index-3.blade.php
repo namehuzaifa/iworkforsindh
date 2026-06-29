@@ -93,7 +93,7 @@
         @endif
     @endif
 
-        {{-- Army jobs --}}
+    {{-- Army jobs --}}
     @if ( count($company_jobs) && !auth('user')->check() || (auth('user')->check() && authUser()->role == 'candidate'))
         {{-- <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12"> --}}
         <section class="army-jobs-card-section md:tw-py-20 tw-py-12">
@@ -152,6 +152,79 @@
         </section>
     @endif
     {{-- Army jobs --}}
+
+    {{-- Coming soon section --}}
+    <section class="coming-soon-section tw-relative tw-overflow-hidden">
+        <!-- Starfield canvas -->
+        <canvas id="starfield"></canvas>
+        <!-- Background layers -->
+        <div class="bg-mesh"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="bg-grid"></div>
+
+
+
+        <!-- Main -->
+        <main class="page">
+
+            <div class="hero section">
+
+                <!-- Badge -->
+                <div class="custom-badge">
+                <div class="badge-icon">✦</div>
+                New Feature Launching Soon
+                </div>
+
+                <!-- Headline -->
+                <h1 class="headline">
+                <span class="line-1">Career Counseling with</span>
+                <!-- <span class="line-2">On Your Schedule.</span> -->
+                <span class="line-3"> Industry Experts.</span>
+                </h1>
+
+                <!-- Sub -->
+                <p class="sub">
+                We're building a platform where verified professionals from top companies
+                can offer consultation sessions. Book a slot, get guided — on your terms.
+                </p>
+            </div>
+
+            <!-- Countdown -->
+            <div class="countdown-wrap">
+                <div class="countdown-label">Launching in</div>
+                <div class="countdown">
+                <div class="cd-block">
+                    <div class="cd-box"><span class="cd-num" id="cd-days">00</span></div>
+                    <span class="cd-unit">Days</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-block">
+                    <div class="cd-box"><span class="cd-num" id="cd-hours">00</span></div>
+                    <span class="cd-unit">Hours</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-block">
+                    <div class="cd-box"><span class="cd-num" id="cd-mins">00</span></div>
+                    <span class="cd-unit">Minutes</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-block">
+                    <div class="cd-box"><span class="cd-num" id="cd-secs">00</span></div>
+                    <span class="cd-unit">Seconds</span>
+                </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Scroll hint -->
+        <div class="scroll-hint">
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        </div>
+    </section>
+    {{-- Coming soon section --}}
     
     <!-- google adsense area end -->
     <!-- category section -->
@@ -1359,6 +1432,446 @@
 
 
     </style>
+
+    {{-- coming soon design css --}}
+    <style>
+
+        /* ─── RESET & BASE ─────────────────────────────────────── */
+        /* *,*::before,*::after{box-sizing:border-box;margin:0;padding:0} */
+        /* html{scroll-behavior:smooth;overflow-x:hidden;} */
+        :root{
+        --blue:#0a66cd;
+        --blue-mid:#0d55b0;
+        --blue-deep:#062d6e;
+        --blue-darkest:#073a74;
+        --blue-glow:rgba(10,102,205,0.55);
+        --gold:#f5c842;
+        --gold-dim:rgba(245,200,66,0.15);
+        --white:#ffffff;
+        --white-70:rgba(255,255,255,0.70);
+        --white-40:rgba(255,255,255,0.40);
+        --white-15:rgba(255,255,255,0.15);
+        --white-08:rgba(255,255,255,0.08);
+        }
+
+     
+
+        /* ─── CANVAS STARS ────────────────────────────────────── */
+        #starfield{
+        position:fixed;inset:0;
+        pointer-events:none;z-index:0;
+        opacity:0.6;
+        }
+
+        /* ─── BACKGROUND MESH ─────────────────────────────────── */
+        /* .bg-mesh{
+        position: absolute;inset:0;z-index:1;pointer-events:none;
+        background:
+            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(10,102,205,0.30) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 70% at 85% 90%, rgba(6,45,110,0.50) 0%, transparent 55%),
+            radial-gradient(ellipse 50% 40% at 60% 50%, rgba(13,85,176,0.18) 0%, transparent 65%);
+        } */
+
+        /* decorative orbs */
+
+        /* @keyframes drift{
+        0%,100%{transform:translate(0,0) scale(1)}
+        33%{transform:translate(30px,-20px) scale(1.06)}
+        66%{transform:translate(-20px,30px) scale(0.96)}
+        } */
+
+        /* grid overlay */
+        /* .bg-grid{
+        position:absolute;inset:0;z-index:2;pointer-events:none;
+        background-image:
+            linear-gradient(var(--white-08) 1px, transparent 1px),
+            linear-gradient(90deg, var(--white-08) 1px, transparent 1px);
+        background-size:64px 64px;
+        mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+        } */
+        section {
+        position: relative;
+        overflow: hidden;
+        }
+
+        /* ─── MAIN WRAPPER ─────────────────────────────────────── */
+        .page {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 24px; /* top/bottom breathing room */
+        gap: 0;
+        overflow: hidden;
+        width: 100%;
+        background: #0A65CC;
+        }
+
+        /* ─── TOP NAV STRIP ───────────────────────────────────── */
+        .nav-strip{
+        position:fixed;top:0;left:0;right:0;z-index:100;
+        display:flex;align-items:center;justify-content:space-between;
+        padding:20px 40px;
+        background:linear-gradient(to bottom, rgba(3,15,42,0.9) 0%, transparent 100%);
+        backdrop-filter:blur(0px);
+        }
+        .logo{
+        font-family:'Clash Display',sans-serif;
+        font-size:20px;font-weight:700;letter-spacing:-0.01em;
+        color:var(--white);
+        display:flex;align-items:center;gap:10px;
+        text-decoration:none;
+        }
+        .logo-icon{
+        width:34px;height:34px;border-radius:9px;
+        background:linear-gradient(135deg, var(--blue), #1e90ff);
+        display:flex;align-items:center;justify-content:center;
+        font-size:16px;font-weight:800;box-shadow:0 4px 16px rgba(10,102,205,0.5);
+        }
+        .nav-pill{
+        display:flex;align-items:center;gap:6px;
+        background:var(--white-08);
+        border:1px solid var(--white-15);
+        border-radius:100px;padding:8px 16px;
+        font-size:13px;color:var(--white-70);
+        backdrop-filter:blur(12px);
+        }
+        .nav-pill .live-dot{
+        width:7px;height:7px;border-radius:50%;
+        background:var(--gold);
+        animation:blink 2s ease-in-out infinite;
+        }
+        @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(1.5)}}
+
+        /* ─── HERO CONTENT ────────────────────────────────────── */
+        .hero{
+        text-align:center;
+        max-width:820px;
+        margin:0 auto;
+        padding-top:0px;
+        }
+
+        /* badge */
+        .custom-badge{
+        display:inline-flex;align-items:center;gap:8px;
+        background:var(--white-08);
+        border:1px solid var(--white-15);
+        border-radius:100px;
+        padding:7px 18px;
+        font-size:12.5px;font-weight:500;letter-spacing:0.06em;
+        color:#ffff;
+        text-transform:uppercase;
+        margin-bottom:10px;
+        backdrop-filter:blur(10px);
+        animation:fadeSlideDown .8s both;
+        }
+        .badge-icon{
+        width:18px;height:18px;border-radius:50%;
+        background:linear-gradient(135deg,var(--gold),#ffb84d);
+        display:flex;align-items:center;justify-content:center;
+        font-size:10px;
+        }
+
+        /* headline */
+        .headline{
+        font-family:'Clash Display',sans-serif;
+        font-size:clamp(42px,8vw,90px);
+        font-weight:700;
+        line-height:1.1;
+        letter-spacing:-0.03em;
+        margin-bottom:5px;
+        animation:fadeSlideUp .9s .15s both;
+        }
+        .headline .line-1{color:var(--white);}
+        .headline .line-2{
+        background:linear-gradient(95deg, #5eb0ff 0%, var(--white) 40%, #a8d4ff 80%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+        background-clip:text;
+        display:block;
+        }
+        .headline .line-3{
+        /* background:linear-gradient(95deg,var(--gold) 0%,#ffda6b 50%,var(--gold) 100%); */
+        /* -webkit-background-clip:text;-webkit-text-fill-color:transparent; */
+        background-clip:text;
+        display:block;font-size:clamp(36px,6.5vw,76px);
+        color: #f5c842;
+        }
+
+        /* subheading */
+        .sub{
+        font-size:clamp(15px,2vw,18px);
+        color: rgba(255, 255, 255,  0.8);
+        max-width:560px;margin:28px auto 0;
+        line-height:1.7;font-weight:400;
+        animation:fadeSlideUp .9s .3s both;
+        }
+
+        /* ─── COUNTDOWN ────────────────────────────────────────── */
+        .countdown-wrap{
+        margin:25px auto 0;
+        animation:fadeSlideUp .9s .45s both;
+        }
+        .countdown-label{
+        font-size:20px;letter-spacing:0.12em;text-transform:uppercase;
+        color:#ffff;font-weight:500;margin-bottom:18px;text-align:center;
+        font-weight:900;
+
+        }
+        .countdown{
+        display:flex;align-items:flex-start;justify-content:center;
+        gap:12px;flex-wrap:wrap;
+        }
+        .cd-block{
+        display:flex;flex-direction:column;align-items:center;
+        min-width:80px;
+        }
+        .cd-box{
+        position:relative;
+        background:linear-gradient(160deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%);
+        border:1px solid var(--white-15);
+        border-radius:16px;
+        width:82px;height:82px;
+        display:flex;align-items:center;justify-content:center;
+        backdrop-filter:blur(16px);
+        box-shadow:0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 var(--white-15);
+        overflow:hidden;
+        }
+        .cd-box::before{
+        content:'';position:absolute;inset:0;
+        background:linear-gradient(160deg,rgba(10,102,205,0.12) 0%,transparent 60%);
+        border-radius:inherit;
+        }
+        .cd-num{
+        font-family:'Clash Display',sans-serif;
+        font-size:36px;font-weight:700;
+        color:var(--white);letter-spacing:-0.02em;
+        line-height:1;position:relative;z-index:1;
+        transition:transform .15s;
+        }
+        .cd-unit{
+        font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+        color:#ffff;margin-top:8px;font-weight:500;
+        }
+        .cd-sep{
+        font-family:'Clash Display',sans-serif;
+        font-size:32px;font-weight:700;color:var(--white-40);
+        margin-top:20px;line-height:1;
+        animation:sepPulse 2s ease-in-out infinite;
+        }
+        @keyframes sepPulse{0%,100%{opacity:0.4}50%{opacity:0.9}}
+
+        /* ─── FEATURE PREVIEW CARDS ────────────────────────────── */
+        .features{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:16px;
+        max-width:780px;
+        margin:60px auto 0;
+        animation:fadeSlideUp .9s .6s both;
+        }
+        .feat-card{
+        background:var(--white-08);
+        border:1px solid var(--white-15);
+        border-radius:16px;
+        padding:24px 20px;
+        backdrop-filter:blur(12px);
+        transition:background .25s, border-color .25s, transform .25s;
+        text-align:left;
+        position:relative;overflow:hidden;
+        }
+        .feat-card::after{
+        content:'';position:absolute;inset:0;border-radius:inherit;
+        background:linear-gradient(135deg,rgba(10,102,205,0.12) 0%,transparent 60%);
+        opacity:0;transition:opacity .25s;
+        }
+        .feat-card:hover{
+        background:rgba(10,102,205,0.14);
+        border-color:rgba(10,102,205,0.45);
+        transform:translateY(-4px);
+        }
+        .feat-card:hover::after{opacity:1;}
+        .feat-icon{
+        width:42px;height:42px;border-radius:11px;
+        display:flex;align-items:center;justify-content:center;
+        font-size:20px;margin-bottom:14px;
+        position:relative;z-index:1;
+        }
+        .feat-icon.blue{background:linear-gradient(135deg,rgba(10,102,205,0.35),rgba(30,144,255,0.20));border:1px solid rgba(10,102,205,0.4);}
+        .feat-icon.gold{background:linear-gradient(135deg,rgba(245,200,66,0.25),rgba(255,180,50,0.12));border:1px solid rgba(245,200,66,0.3);}
+        .feat-icon.teal{background:linear-gradient(135deg,rgba(6,182,212,0.25),rgba(14,165,233,0.12));border:1px solid rgba(6,182,212,0.3);}
+        .feat-title{
+        font-family:'Clash Display',sans-serif;
+        font-size:15px;font-weight:600;color:var(--white);
+        margin-bottom:6px;position:relative;z-index:1;
+        }
+        .feat-desc{
+        font-size:13px;color:var(--white-40);line-height:1.6;
+        position:relative;z-index:1;
+        }
+
+        /* ─── NOTIFY FORM ──────────────────────────────────────── */
+        .notify-wrap{
+        margin:52px auto 0;
+        max-width:520px;width:100%;
+        animation:fadeSlideUp .9s .75s both;
+        text-align:center;
+        }
+        .notify-label{
+        font-size:13.5px;color:var(--white-70);margin-bottom:14px;font-weight:400;
+        }
+        .notify-label strong{color:var(--white);font-weight:600;}
+        .notify-form{
+        display:flex;gap:8px;
+        background:var(--white-08);
+        border:1px solid var(--white-15);
+        border-radius:100px;
+        padding:6px 6px 6px 22px;
+        backdrop-filter:blur(16px);
+        box-shadow:0 8px 40px rgba(0,0,0,0.2);
+        }
+        .notify-form input{
+        flex:1;background:transparent;border:none;outline:none;
+        font-family:'Bricolage Grotesque',sans-serif;
+        font-size:14.5px;color:var(--white);min-width:0;
+        }
+        .notify-form input::placeholder{color:var(--white-40);}
+        .notify-btn{
+        background:linear-gradient(135deg,#2d82e8,var(--blue));
+        color:#fff;border:none;cursor:pointer;
+        border-radius:100px;padding:12px 26px;
+        font-family:'Clash Display',sans-serif;
+        font-size:14px;font-weight:600;letter-spacing:0.01em;
+        white-space:nowrap;
+        box-shadow:0 4px 20px rgba(10,102,205,0.5);
+        transition:transform .18s, box-shadow .18s, opacity .18s;
+        }
+        .notify-btn:hover{transform:scale(1.04);box-shadow:0 6px 28px rgba(10,102,205,0.65);}
+        .notify-btn:active{transform:scale(0.98);}
+
+        /* success state */
+        .notify-success{
+        display:none;align-items:center;justify-content:center;gap:10px;
+        background:rgba(34,197,94,0.12);
+        border:1px solid rgba(34,197,94,0.3);
+        border-radius:100px;padding:14px 28px;
+        color:#86efac;font-size:14px;font-weight:500;
+        }
+        .notify-success.show{display:flex;}
+        .notify-form.hide{display:none;}
+
+        /* ─── PLATFORM LOGOS ROW ───────────────────────────────── */
+        .platforms{
+        margin:56px auto 0;
+        text-align:center;
+        animation:fadeSlideUp .9s .9s both;
+        }
+        .platforms-label{
+        font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
+        color:var(--white-40);margin-bottom:20px;
+        }
+        .platform-logos{
+        display:flex;align-items:center;justify-content:center;
+        gap:8px;flex-wrap:wrap;
+        }
+        .plt{
+        display:flex;align-items:center;gap:8px;
+        background:var(--white-08);
+        border:1px solid var(--white-15);
+        border-radius:100px;
+        padding:8px 18px;
+        font-size:13px;font-weight:500;color:var(--white-70);
+        backdrop-filter:blur(10px);
+        transition:background .2s,border-color .2s,color .2s;
+        }
+        .plt:hover{background:rgba(10,102,205,0.2);border-color:rgba(10,102,205,0.5);color:var(--white);}
+        .plt-dot{
+        width:10px;height:10px;border-radius:50%;flex-shrink:0;
+        }
+        .plt-more{
+        font-size:12.5px;color:var(--white-40);padding:8px 4px;
+        }
+
+        /* ─── BOTTOM DIVIDER & FOOTER ──────────────────────────── */
+        .divider{
+        width:1px;height:60px;
+        background:linear-gradient(to bottom,transparent,var(--white-15),transparent);
+        margin:52px auto 0;
+        }
+        .footer-row{
+        margin-top:24px;
+        display:flex;align-items:center;justify-content:center;gap:6px;
+        font-size:12.5px;color:var(--white-40);
+        animation:fadeSlideUp .9s 1.05s both;
+        }
+        .footer-row a{color:var(--white-40);text-decoration:none;}
+        .footer-row a:hover{color:var(--white-70);}
+
+        /* ─── SCROLL HINT ──────────────────────────────────────── */
+        .scroll-hint{
+        position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+        display:flex;flex-direction:column;align-items:center;gap:6px;
+        opacity:0;animation:fadeIn 1s 2s both;
+        pointer-events:none;z-index:50;
+        display: none;
+        }
+        .scroll-mouse{
+        width:22px;height:34px;border:1.5px solid var(--white-40);
+        border-radius:11px;display:flex;justify-content:center;padding-top:6px;
+        }
+        .scroll-wheel{
+        width:3px;height:6px;background:var(--white-40);border-radius:2px;
+        animation:scrollWheel 2s ease-in-out infinite;
+        }
+        @keyframes scrollWheel{0%,100%{opacity:1;transform:translateY(0)}60%{opacity:0;transform:translateY(8px)}}
+
+        /* ─── ANIMATIONS ───────────────────────────────────────── */
+        @keyframes fadeSlideDown{
+        from{opacity:0;transform:translateY(-16px)}
+        to{opacity:1;transform:translateY(0)}
+        }
+        @keyframes fadeSlideUp{
+        from{opacity:0;transform:translateY(20px)}
+        to{opacity:1;transform:translateY(0)}
+        }
+        @keyframes fadeIn{
+        from{opacity:0}to{opacity:1}
+        }
+
+        /* ─── RESPONSIVE ───────────────────────────────────────── */
+        @media(max-width:720px){
+        .nav-strip{padding:16px 20px;}
+        .features{grid-template-columns:1fr;max-width:400px;}
+        .countdown{gap:8px;}
+        .cd-box{width:68px;height:68px;}
+        .cd-num{font-size:28px;}
+        .cd-sep{font-size:24px;margin-top:16px;}
+        .notify-form{flex-direction:column;border-radius:16px;padding:12px;}
+        .notify-btn{border-radius:12px;padding:13px;}
+        .platform-logos{gap:6px;}
+        }
+        @media(max-width:480px){
+        .nav-strip{padding:14px 16px;}
+        .logo span{display:none;}
+        .cd-block{min-width:60px;}
+        .cd-box{width:60px;height:60px;}
+        .cd-num{font-size:24px;}
+        .cd-sep{display:none;}
+        }
+
+        @media only screen and (min-width: 1200px) {
+        span.line-1, span.line-2, span.line-3 {
+            font-size: 60px !important
+        }
+        }
+        @media screen and (max-width: 600px) {
+        .headline .line-1 {
+            
+            font-size: 30px;
+        }
+        }
+    </style>
 @endsection
 
 @section('script')
@@ -1484,6 +1997,115 @@
             ]
         });
     </script>
+
+    {{-- coming soon design js --}}
+    <script>
+        /* ── STARFIELD ─────────────────────────────────────────── */
+        (function(){
+        var canvas = document.getElementById('starfield');
+        var ctx = canvas.getContext('2d');
+        var stars = [];
+        function resize(){
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        function init(){
+            stars = [];
+            for(var i=0;i<180;i++){
+            stars.push({
+                x:Math.random()*canvas.width,
+                y:Math.random()*canvas.height,
+                r:Math.random()*1.2+0.2,
+                o:Math.random()*0.6+0.1,
+                speed:Math.random()*0.4+0.1,
+                phase:Math.random()*Math.PI*2
+            });
+            }
+        }
+        function draw(t){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            stars.forEach(function(s){
+            var pulse = s.o * (0.6 + 0.4*Math.sin(t*0.001*s.speed + s.phase));
+            ctx.beginPath();
+            ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+            ctx.fillStyle='rgba(255,255,255,'+pulse+')';
+            ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+        window.addEventListener('resize',function(){resize();init();});
+        resize();init();
+        requestAnimationFrame(draw);
+        })();
+
+        /* ── COUNTDOWN ─────────────────────────────────────────── */
+        (function(){
+        var launch = new Date("2026-07-11T00:00:00");
+        // launch.setDate(launch.getDate() + 30);
+        launch.setHours(0,0,0,0);
+
+        function pad(n){return String(n).padStart(2,'0');}
+        function animateTick(el, val){
+            var prev = el.textContent;
+            var next = pad(val);
+            if(prev !== next){
+            el.style.transform='translateY(-6px)';
+            el.style.opacity='0';
+            setTimeout(function(){
+                el.textContent=next;
+                el.style.transition='none';
+                el.style.transform='translateY(6px)';
+                el.style.opacity='0';
+                requestAnimationFrame(function(){
+                el.style.transition='transform .22s ease, opacity .22s ease';
+                el.style.transform='translateY(0)';
+                el.style.opacity='1';
+                });
+            },110);
+            }
+        }
+
+        function tick(){
+            var now = new Date();
+            var diff = launch - now;
+            if(diff < 0) diff = 0;
+            var d = Math.floor(diff/86400000);
+            var h = Math.floor((diff%86400000)/3600000);
+            var m = Math.floor((diff%3600000)/60000);
+            var s = Math.floor((diff%60000)/1000);
+            animateTick(document.getElementById('cd-days'),d);
+            animateTick(document.getElementById('cd-hours'),h);
+            animateTick(document.getElementById('cd-mins'),m);
+            animateTick(document.getElementById('cd-secs'),s);
+        }
+        tick();
+        setInterval(tick,1000);
+        })();
+
+        /* ── NOTIFY FORM ───────────────────────────────────────── */
+        function handleNotify(){
+        var input = document.getElementById('emailInput');
+        var val = input.value.trim();
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!re.test(val)){
+            input.style.animation='shake .35s';
+            setTimeout(function(){input.style.animation='';},400);
+            input.focus();
+            return;
+        }
+        document.getElementById('notifyForm').classList.add('hide');
+        document.getElementById('notifySuccess').classList.add('show');
+        }
+        document.getElementById('emailInput').addEventListener('keydown',function(e){
+        if(e.key==='Enter') handleNotify();
+        });
+
+        /* ── SHAKE KEYFRAME ────────────────────────────────────── */
+        var style = document.createElement('style');
+        style.textContent='@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}';
+        document.head.appendChild(style);
+    </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"499e684b7b1043878977050a0a606794","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 @endsection
 
 

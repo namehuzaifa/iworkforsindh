@@ -14,6 +14,10 @@
 @endsection
 
 @section('main')
+
+    <section class="main-banner">
+        <img class="banner-img" src="https://iwork4sindh.com/frontend/assets/images/FIND-JOB.jpg" alt="Company Banner">
+    </section>
     <form action="{{ route('website.job') }}" method="GET" id="job_search_form">
         {{-- job filtering --}}
         <x-website.job.job-filtering :countries="$countries" :categories="$categories" :job-roles="$job_roles" :min-salary="$min_salary"

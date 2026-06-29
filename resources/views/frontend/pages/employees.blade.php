@@ -14,6 +14,9 @@
 @endsection
 
 @section('main')
+    <section class="main-banner">
+        <img class="banner-img" src="https://iwork4sindh.com/frontend/assets/images/Company-banner.jpeg" alt="Company Banner">
+    </section>
     <div class="breadcrumbs style-two">
         <div class="container">
             <div class="row align-items-center ">
@@ -588,6 +591,21 @@
         .candidate-profession+.select2-container--default .select2-selection--single {
             border: none !important;
         }
+    /* ===== BANNER ===== */
+    .main-banner {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .main-banner img.banner-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 550px;
+        object-fit: cover;
+        object-position: center top;
+    }
     </style>
 @endpush
 

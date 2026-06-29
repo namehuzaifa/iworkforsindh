@@ -87,6 +87,7 @@ class RegisterController extends Controller
                     'max:255',
                     'unique:users',
                 ],
+                'role' => ['required', 'in:candidate,company,counselor'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'g-recaptcha-response' => config('captcha.active') ? 'required|captcha' : '',
             ],
@@ -123,7 +124,7 @@ class RegisterController extends Controller
         // }
 
         $user = User::create([
-            'role' => $data['role'] == 'candidate' ? 'candidate' : 'company',
+            'role' => in_array($data['role'], ['candidate', 'company', 'counselor']) ? $data['role'] : 'candidate',
             'name' => $data['name'],
             'nic' => $data['nic'],
             'phone' => $data['phone'],

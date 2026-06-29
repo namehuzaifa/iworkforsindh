@@ -11,6 +11,8 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\Website\CandidateController;
 use App\Http\Controllers\Website\CompanyController;
 use App\Http\Controllers\Website\CompanyVerifyDocuments;
+use App\Http\Controllers\Website\CounselingController;
+use App\Http\Controllers\Website\CounselingBookingController;
 use App\Http\Controllers\Website\GlobalController;
 use App\Http\Controllers\Website\MessengerController;
 use App\Http\Controllers\Website\WebsiteController;
@@ -22,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 // =====================================================================
 // =============================Authentication Routes===================
 // ======================================================================
-if (! app()->runningInConsole()) {
+if (!app()->runningInConsole()) {
     Auth::routes(['verify' => setting('email_verification')]);
 } else {
     Auth::routes(['verify' => false]);
@@ -46,7 +48,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 // Email Verification Update
 Route::get('/email/verify/update/{id}/{newEmail}', function (EmailVerificationUpdateRequest $request, $id, $newEmail) {
-    if (! $request->hasValidSignature()) {
+    if (!$request->hasValidSignature()) {
         abort(401);
     }
     $request->fulfill($newEmail);
@@ -134,6 +136,12 @@ Route::middleware(['auth', 'user_active', 'restrict.course_manager'])->group(fun
 
 Route::get('/all-courses', [CoursesController::class, 'index'])->name('courses.index');
 
+// Public Counseling Sessions
+Route::get('/counseling-sessions', [CounselingBookingController::class, 'index'])->name('counseling.sessions');
+Route::get('/counseling-sessions/{session}', [CounselingBookingController::class, 'show'])->name('counseling.session.show');
+Route::post('/counseling/slots', [CounselingBookingController::class, 'getSlots'])->name('counseling.slots');
+Route::post('/counseling/book', [CounselingBookingController::class, 'book'])->name('counseling.book')->middleware(['auth:user', 'verified']);
+
 
 Route::get('/resume-maker', function () {
     return view('cv.index');
@@ -142,7 +150,7 @@ Route::get('/resume-maker', function () {
 // ======================================================================
 // =============================Authenticated Routes=====================
 // ======================================================================
-Route::middleware('auth:user', 'verified')->group(function () {
+Route::middleware(['auth:user', 'verified'])->group(function () {
     // Dashboard Route
     Route::get('/user/dashboard', [WebsiteController::class, 'dashboard'])->name('user.dashboard');
 
@@ -169,6 +177,17 @@ Route::middleware('auth:user', 'verified')->group(function () {
         Route::put('/educations/update', 'educationUpdate')->name('educations.update');
         Route::delete('/educations/{education}', 'educationDelete')->name('educations.destroy');
         Route::post('/cv/show', 'cvShow')->name('cv.show');
+
+        // Candidate Counseling Bookings
+        Route::get('counseling-bookings', [CounselingBookingController::class, 'myBookings'])->name('counseling.bookings');
+        Route::post('counseling-bookings/{booking}/cancel', [CounselingBookingController::class, 'cancelBooking'])->name('counseling.booking.cancel');
+
+        // Reschedule
+        Route::get('counseling-bookings/{booking}/reschedule', [CounselingBookingController::class, 'editBooking'])->name('counseling.booking.edit');
+        Route::put('counseling-bookings/{booking}/reschedule', [CounselingBookingController::class, 'updateBooking'])->name('counseling.booking.update');
+
+        // Reviews
+        Route::post('counseling-bookings/{booking}/review', [CounselingBookingController::class, 'storeReview'])->name('counseling.booking.review');
     });
 
     // Company Routes
@@ -227,9 +246,27 @@ Route::middleware('auth:user', 'verified')->group(function () {
         Route::get('verify-documents', [CompanyVerifyDocuments::class, 'index'])->name('company.verify.documents.index');
         Route::post('verify-documents', [CompanyVerifyDocuments::class, 'store'])->name('company.verify.documents.store');
     });
+
+    // Counselor Routes
+    Route::prefix('counselor')->middleware(['counselor'])->name('counselor.')->group(function () {
+        Route::get('dashboard', [\App\Http\Controllers\Website\CounselorController::class, 'dashboard'])->name('dashboard');
+        
+        // Counseling Routes
+        Route::get('counseling', [CounselingController::class, 'index'])->name('counseling.index');
+        Route::get('counseling/create', [CounselingController::class, 'create'])->name('counseling.create');
+        Route::post('counseling', [CounselingController::class, 'store'])->name('counseling.store');
+        Route::get('counseling/all-bookings', [CounselingController::class, 'allBookings'])->name('counseling.all-bookings');
+        Route::get('counseling/{session}/edit', [CounselingController::class, 'edit'])->name('counseling.edit');
+        Route::put('counseling/{session}', [CounselingController::class, 'update'])->name('counseling.update');
+        Route::delete('counseling/{session}', [CounselingController::class, 'destroy'])->name('counseling.destroy');
+        Route::patch('counseling/{session}/toggle', [CounselingController::class, 'toggleStatus'])->name('counseling.toggle');
+        Route::get('counseling/{session}/bookings', [CounselingController::class, 'bookings'])->name('counseling.bookings');
+        Route::post('counseling/booking/{booking}/complete', [CounselingController::class, 'markComplete'])->name('counseling.booking.complete');
+        Route::post('counseling/booking/{booking}/cancel', [CounselingController::class, 'cancelBooking'])->name('counseling.booking.cancel');
+    });
 });
 
-Route::controller(MessengerController::class)->middleware('auth:user', 'verified')->group(function () {
+Route::controller(MessengerController::class)->middleware(['auth:user', 'verified'])->group(function () {
     Route::get('/company/messages', 'companyMessages')->name('company.messages')->middleware('company');
     Route::get('/candidate/messages', 'candidateMessages')->name('candidate.messages')->middleware('candidate');
     Route::post('/company/message/candidate', 'messageSendCandidate')->name('company.message.candidate');

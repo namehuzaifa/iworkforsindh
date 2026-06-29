@@ -51,19 +51,28 @@
                                                     class="switcher-toggle switcher-toggle-left tw-w-full" name="role"
                                                     value="candidate" type="radio" checked="">
                                                 <label for="switcher-toggle-on"
-                                                    class="switcher-button tw-w-full tw-rounded-tl-md  tw-rounded-bl-md"
+                                                    class="switcher-button tw-w-full tw-rounded-tl-md tw-rounded-bl-md"
                                                     id="web-btn">
                                                     <span><x-svg.candidate-profile-icon /></span>
                                                     <span>{{ __('candidate') }}</span>
                                                 </label>
                                                 <input id="switcher-toggle-off"
-                                                    class="switcher-toggle switcher-toggle-right tw-w-full" name="role"
+                                                    class="switcher-toggle tw-w-full" name="role"
                                                     value="company" type="radio">
                                                 <label for="switcher-toggle-off"
-                                                    class="switcher-button tw-w-full  tw-rounded-tr-md tw-rounded-br-md"
+                                                    class="switcher-button tw-w-full"
                                                     id="wp-btn">
                                                     <span><x-svg.employer-profile-icon /></span>
                                                     <span>{{ __('employer') }}</span>
+                                                </label>
+                                                <input id="switcher-toggle-counselor"
+                                                    class="switcher-toggle tw-w-full" name="role"
+                                                    value="counselor" type="radio">
+                                                <label for="switcher-toggle-counselor"
+                                                    class="switcher-button tw-w-full tw-rounded-tr-md tw-rounded-br-md"
+                                                    id="counselor-btn">
+                                                    <span><i class="ph-user-circle" style="font-size:18px;"></i></span>
+                                                    <span>Counselor</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -365,7 +374,6 @@
                                             {{ __('cancel') }}
                                         </span>
                                     </div>
-                                </button>
                                 <button type="submit" class="btn btn-primary">
                                     <div class="button-content-wrapper ">
                                         <span class="button-text">
@@ -380,6 +388,50 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('style')
+    <style>
+        .margin-top-12 {
+            margin-top: 12px;
+        }
+
+        .margin-bottom-12 {
+            margin-bottom: 12px;
+        }
+
+        .tw-bg-gray-50 {
+            background-color: #f9fafb;
+        }
+
+        .tw-border-transparent {
+            border-color: transparent;
+        }
+
+        .tw-text-gray-900 {
+            color: #111827;
+        }
+        
+        /* Override 2-tab slider CSS for 3 tabs */
+        input[type=radio].switcher-toggle + label:after {
+            display: none !important;
+        }
+        input[type=radio].switcher-toggle:checked + label {
+            background-color: #042852 !important;
+            color: #ffffff !important;
+        }
+        input[type=radio].switcher-toggle:checked + label span,
+        input[type=radio].switcher-toggle:checked + label span svg path {
+            color: #ffffff !important;
+            fill: #ffffff !important;
+        }
+        .switcher-button {
+            z-index: 1;
+        }
+        .font-size-25 {
+            font-size: 25px !important;
+        }
+    </style>
 @endsection
 
 @section('script')

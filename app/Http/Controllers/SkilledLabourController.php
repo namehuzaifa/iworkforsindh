@@ -70,7 +70,7 @@ class SkilledLabourController extends Controller
             $query->where('work_location', 'like', '%' . $request->location . '%');
         }
 
-        $labors = $query->latest()->paginate(12);
+        $labors = $query->latest()->paginate(25);
 
         $professions = Profession::all();
         $skills = Skill::all();

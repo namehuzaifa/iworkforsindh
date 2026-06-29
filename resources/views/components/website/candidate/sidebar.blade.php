@@ -55,6 +55,32 @@
                 </a>
             </li>
             <li>
+                <a class="{{ request()->routeIs('counseling.sessions') ? 'active' : '' }}"
+                    href="{{ route('counseling.sessions') }}">
+                    <span class="button-content-wrapper ">
+                        <span class="button-icon align-icon-left tw-flex tw-items-center">
+                            <i class="ph-magnifying-glass"></i>
+                        </span>
+                        <span class="button-text">
+                            {{ __('Browse Counseling') }}
+                        </span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a class="{{ request()->routeIs('candidate.counseling.bookings') ? 'active' : '' }}"
+                    href="{{ route('candidate.counseling.bookings') }}">
+                    <span class="button-content-wrapper ">
+                        <span class="button-icon align-icon-left tw-flex tw-items-center">
+                            <i class="ph-video-camera"></i>
+                        </span>
+                        <span class="button-text">
+                            {{ __('Counseling Bookings') }}
+                        </span>
+                    </span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('candidate.messages') }}" class="{{ linkActive('candidate.messages') }}">
                     <span class="button-content-wrapper tw-items-center">
                         <span class="button-icon align-icon-left tw-flex tw-items-center">

@@ -78,6 +78,8 @@ class WebsiteController extends Controller
                 storePlanInformation();
 
                 return redirect()->route('company.dashboard');
+            } elseif (auth('user')->check() && authUser()->role == 'counselor') {
+                return redirect()->route('counselor.dashboard');
             }
 
             return redirect('login');

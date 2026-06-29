@@ -92,6 +92,13 @@ config('templatecookie.default_language'))->first();
                                                     alt="company logo">
                                             </a>
                                         </li>
+                                        @elseif (auth()->check() && auth()->user()->role == 'counselor')
+                                        <li class="relative">
+                                            <a href="{{ route('counselor.dashboard') }} " class="candidate-profile p-0">
+                                                <img src="{{ asset('backend/image/default.png') }}"
+                                                    alt="user logo">
+                                            </a>
+                                        </li>
                                         @else
                                         <li class="relative">
                                             <a href="{{ route('user.dashboard') }} " class="candidate-profile p-0">
@@ -638,9 +645,11 @@ config('templatecookie.default_language'))->first();
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         @company
                                         <img src="{{ auth()->user()->company->logo_url }}" alt="logo">
+                                        @elseif (auth()->user()->role == 'counselor')
+                                        <img src="{{ auth()->user()->counselor?->image_url ?? asset('backend/image/default.png') }}" alt="counselor photo">
                                         @else
-                                        <img src="{{ auth()->user()->candidate->photo }}" alt="photo">
-                                        @if (auth()->user()->candidate->status == 'available')
+                                        <img src="{{ auth()->user()?->candidate?->photo ?? asset('backend/image/default.png') }}" alt="photo">
+                                        @if (auth()->user()?->candidate?->status == 'available')
                                         <span class="available-alert-header">
                                             <svg class="circle" width="14" height="14" viewBox="0 0 14 14" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -734,6 +743,40 @@ config('templatecookie.default_language'))->first();
                                         </li>
                                     </ul>
                                     @endcompany
+                                    @if (auth()->user()->role == 'counselor')
+                                    <ul class="dropdown-menu custom-border" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:;"> <i class="ph-user"></i>
+                                                {{ auth()->user()->name }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item {{ request()->routeIs('counselor.dashboard') ? 'active' : '' }}"
+                                                href="{{ route('counselor.dashboard') }}">
+                                                <i class="ph-stack"></i>
+                                                {{ __('dashboard') }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item {{ request()->routeIs('counselor.counseling.*') ? 'active' : '' }}"
+                                                href="{{ route('counselor.counseling.index') }}">
+                                                <i class="ph-video-camera"></i>
+                                                My Sessions
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form-counselor').submit();">
+                                                <i class="ph-sign-out"></i>
+                                                {{ __('log_out') }}
+                                            </a>
+                                            <form id="logout-form-counselor" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    @endif
                                     @if (auth()->user()->role == 'rider')
                                         <ul class="dropdown-menu custom-border" aria-labelledby="dropdownMenuButton1">
                                             <li>

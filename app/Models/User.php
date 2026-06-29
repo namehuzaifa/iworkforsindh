@@ -52,6 +52,14 @@ class User extends Authenticatable implements MustVerifyEmail
                         'organization_type_id' => OrganizationType::first()->id,
                         'team_size_id' => TeamSize::first()->id,
                     ]);
+                } elseif ($user->role == 'counselor') {
+                    // Auto-activate or deactivate based on candidate setting
+                    if (! setting('candidate_account_auto_activation')) {
+                        $user->update(['status' => 0]);
+                    }
+
+                    // Create counselor profile record
+                    $user->counselor()->create([]);
                 } else {
                     if (! setting('candidate_account_auto_activation')) {
                         $user->update(['status' => 0]);
@@ -105,6 +113,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function candidate(): HasOne
     {
         return $this->hasOne(Candidate::class)->withCount('bookmarkCandidates');
+    }
+
+    public function counselor(): HasOne
+    {
+        return $this->hasOne(Counselor::class);
     }
 
     public function contactInfo(): HasOne

@@ -67,7 +67,7 @@ class Company extends Model implements HasMedia
         $region = $this->region;
         $extra = $region != null ? ' , ' : '';
 
-        return $region.$extra.$country;
+        return $region . $extra . $country;
     }
 
     /**
@@ -78,7 +78,7 @@ class Company extends Model implements HasMedia
      */
     public function getLogoUrlAttribute()
     {
-        if (! $this->logo) {
+        if (!$this->logo) {
             return asset('backend/image/default.png');
         }
 
@@ -93,7 +93,7 @@ class Company extends Model implements HasMedia
      */
     public function getBannerUrlAttribute()
     {
-        if (! $this->banner) {
+        if (!$this->banner) {
             return asset('backend/image/default.png');
         }
 
@@ -235,6 +235,14 @@ class Company extends Model implements HasMedia
     public function questions()
     {
         return $this->hasMany(CompanyQuestion::class);
+    }
+
+    /**
+     * Get the company's counseling sessions
+     */
+    public function counselingSessions(): HasMany
+    {
+        return $this->hasMany(CounselingSession::class);
     }
 
     public function registerMediaCollections(): void

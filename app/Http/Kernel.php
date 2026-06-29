@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'candidate' => \App\Http\Middleware\CandidateMiddleware::class,
+        'counselor' => \App\Http\Middleware\CounselorMiddleware::class,
         'company' => \App\Http\Middleware\CompanyMiddleware::class,
         'company.profile' => \App\Http\Middleware\CompanyProfileCompletion::class,
         'check_mode' => \App\Http\Middleware\CheckForAppMode::class,
