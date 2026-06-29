@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('counseling_sessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('counselor_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('zoom_link');
