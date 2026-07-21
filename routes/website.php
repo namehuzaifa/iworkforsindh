@@ -16,6 +16,7 @@ use App\Http\Controllers\Website\CounselingBookingController;
 use App\Http\Controllers\Website\GlobalController;
 use App\Http\Controllers\Website\MessengerController;
 use App\Http\Controllers\Website\WebsiteController;
+use App\Http\Controllers\Website\CertificateVerifyController;
 use App\Http\Requests\EmailVerificationUpdateRequest;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
@@ -291,6 +292,7 @@ Route::controller(GlobalController::class)->group(function () {
 });
 
 Route::get('/payment-from-app/{label}', [ApiCompanyController::class, 'payment']);
+Route::get('/certificate/verify/{uuid}', [CertificateVerifyController::class, 'verify'])->name('certificate.verify');
 Route::get('/{slug}', [PageController::class, 'showCustomPage'])->name('showCustomPage');
 Route::controller(PayPalController::class)->group(function () {
     Route::post('paypal/payment', 'processTransaction')->name('paypal.post');

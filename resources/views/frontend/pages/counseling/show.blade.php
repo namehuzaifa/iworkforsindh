@@ -245,29 +245,52 @@
                         grid.innerHTML = '';
 
                         let hasAvailable = false;
+                        
                         data.slots.forEach(slot => {
                             const btn = document.createElement('button');
                             btn.type = 'button';
-                            btn.className = slot.is_booked
-                                ? 'btn btn-sm btn-outline-secondary tw-opacity-50'
-                                : 'btn btn-sm btn-outline-primary slot-btn';
-                            btn.disabled = slot.is_booked;
+                            btn.className = 'btn btn-sm btn-outline-primary slot-btn';
+                            // btn.disabled = slot.is_booked;
                             btn.innerHTML = slot.start_time + ' - ' + slot.end_time;
-                            if (slot.is_booked) {
-                                btn.innerHTML += ' <small>(Booked)</small>';
-                            }
+                            // if (slot.is_booked) {
+                            //     btn.innerHTML += ' <small>(Booked)</small>';
+                            // }
                             btn.dataset.start = slot.start_time;
                             btn.dataset.end = slot.end_time;
 
-                            if (!slot.is_booked) {
+                            // if (!slot.is_booked) {
                                 hasAvailable = true;
                                 btn.addEventListener('click', function () {
                                     selectSlot(this, dateStr);
                                 });
-                            }
+                            // }
 
                             grid.appendChild(btn);
                         });
+                        
+                        // data.slots.forEach(slot => {
+                        //     const btn = document.createElement('button');
+                        //     btn.type = 'button';
+                        //     btn.className = slot.is_booked
+                        //         ? 'btn btn-sm btn-outline-secondary tw-opacity-50'
+                        //         : 'btn btn-sm btn-outline-primary slot-btn';
+                        //     btn.disabled = slot.is_booked;
+                        //     btn.innerHTML = slot.start_time + ' - ' + slot.end_time;
+                        //     if (slot.is_booked) {
+                        //         btn.innerHTML += ' <small>(Booked)</small>';
+                        //     }
+                        //     btn.dataset.start = slot.start_time;
+                        //     btn.dataset.end = slot.end_time;
+
+                        //     if (!slot.is_booked) {
+                        //         hasAvailable = true;
+                        //         btn.addEventListener('click', function () {
+                        //             selectSlot(this, dateStr);
+                        //         });
+                        //     }
+
+                        //     grid.appendChild(btn);
+                        // });
 
                         document.getElementById('slots-container').style.display = 'block';
 

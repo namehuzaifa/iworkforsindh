@@ -3,18 +3,24 @@
 @section('title', __('Counseling Sessions'))
 
 @section('main')
-    <div class="breadcrumbs breadcrumbs-height">
-        <div class="container">
-            <div class="breadcrumb-menu">
-                <h6 class="f-size-18 m-0">{{ __('Counseling Sessions') }}</h6>
-                <ul>
-                    <li><a href="{{ route('website.home') }}">{{ __('home') }}</a></li>
-                    <li>/</li>
-                    <li>{{ __('Counseling Sessions') }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <section class="main-banner">
+        <img class="banner-img" src="https://iwork4sindh.com/images/counseling.png" alt="CareerCounceling Banner">
+    </section>
+    
+    <!--<div class="breadcrumbs breadcrumbs-height">-->
+    <!--    <div class="container">-->
+    <!--        <div class="breadcrumb-menu">-->
+    <!--            <h6 class="f-size-18 m-0">{{ __('Counseling Sessions') }}</h6>-->
+    <!--            <ul>-->
+    <!--                <li><a href="{{ route('website.home') }}">{{ __('home') }}</a></li>-->
+    <!--                <li>/</li>-->
+    <!--                <li>{{ __('Counseling Sessions') }}</li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+    
+   
 
     <div class="dashboard-wrapper">
         <div class="container">

@@ -300,7 +300,7 @@
         }
 
         .hero-badge::before {
-            content: '📚';
+            content: 'ðŸ“š';
             font-size: 12px;
         }
 
@@ -907,7 +907,7 @@
     </style>
         <!-- ===== HERO SECTION ===== -->
     <section class="main-banner">
-        <img class="banner-img" src="{{ asset('frontend/assets/images/courses-Banner.png') }}" alt="Courses Banner">
+        <img class="banner-img" src="{{ asset('/images/course-banner.png') }}" alt="Courses Banner">
     </section>
 
     <!-- ===== COURSES SECTION ===== -->
@@ -1015,7 +1015,7 @@
                                {{ Str::limit($course->description, 90) }}
                             </p>
 
-                            <a href="#" class="btn-enroll">
+                            <a href="{{ $course->external_link }}" class="btn-enroll">
                                 Enroll Now <i class="fas fa-chevron-right"></i>
                             </a>
 

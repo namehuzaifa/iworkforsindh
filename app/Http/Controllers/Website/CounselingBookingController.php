@@ -101,17 +101,17 @@ class CounselingBookingController extends Controller
 
         $candidate = Auth::user()->candidate;
 
-        // Check if slot is already booked
-        $alreadyBooked = CounselingBooking::where('counseling_session_id', $request->session_id)
-            ->where('booking_date', $request->date)
-            ->where('start_time', $request->start_time)
-            ->whereIn('status', ['pending', 'confirmed'])
-            ->exists();
+        // // Check if slot is already booked
+        // $alreadyBooked = CounselingBooking::where('counseling_session_id', $request->session_id)
+        //     ->where('booking_date', $request->date)
+        //     ->where('start_time', $request->start_time)
+        //     ->whereIn('status', ['pending', 'confirmed'])
+        //     ->exists();
 
-        if ($alreadyBooked) {
-            flashError('This slot is already booked. Please choose another time.');
-            return back();
-        }
+        // if ($alreadyBooked) {
+        //     flashError('This slot is already booked. Please choose another time.');
+        //     return back();
+        // }
 
         // Check if candidate already has a booking for this session on this date
         $duplicateBooking = CounselingBooking::where('counseling_session_id', $request->session_id)

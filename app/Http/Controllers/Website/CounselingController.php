@@ -39,6 +39,8 @@ class CounselingController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+        // exit;
         $request->validate([
             'counseling_category_id' => 'required|exists:counseling_categories,id',
             'title' => 'required|string|max:255',

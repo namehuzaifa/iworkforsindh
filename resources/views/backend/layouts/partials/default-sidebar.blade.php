@@ -57,6 +57,12 @@
                             {{ __('Courses') }}
                         </x-admin.sidebar-list>
 
+                        {{-- Certificates --}}
+                        <x-admin.sidebar-list :linkActive="Route::is('admin.certificates.index*') ? true : false" route="admin.certificates.index" path="admin.certificates.create"
+                            plus_icon="fa fa-plus-circle" icon="fas fa-certificate">
+                            {{ __('Certificates') }}
+                        </x-admin.sidebar-list>
+
                         {{-- Counselors --}}
                         <x-admin.sidebar-list :linkActive="Route::is('admin.counselors.index*') ? true : false" route="admin.counselors.index" path="admin.counselors.index"
                             plus_icon="" icon="fas fa-user-md">

@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\SocialiteController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TeamSizeController;
 use App\Http\Controllers\Admin\CoursesController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\SkilledLaborController;
@@ -78,6 +79,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/courses', [CoursesController::class, 'index'])->name('admin.courses.index');
         Route::get('/courses/change/status', [CoursesController::class, 'statusChange'])->name('admin.status.change');
         Route::delete('/courses/{course}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
+
+        //Certificate Generator Route
+        Route::get('/certificates', [CertificateController::class, 'index'])->name('admin.certificates.index');
+        Route::get('/certificates/create', [CertificateController::class, 'create'])->name('admin.certificates.create');
+        Route::post('/certificates/store', [CertificateController::class, 'store'])->name('admin.certificates.store');
+        Route::get('/certificates/{certificate}', [CertificateController::class, 'show'])->name('admin.certificates.show');
+        Route::get('/certificates/{certificate}/print', [CertificateController::class, 'print'])->name('admin.certificates.print');
+        Route::post('/certificates/{certificate}/send', [CertificateController::class, 'sendToUser'])->name('admin.certificates.send');
+        Route::delete('/certificates/{certificate}', [CertificateController::class, 'destroy'])->name('admin.certificates.destroy');
 
         // Counselor Routes
         Route::get('/counselors', [CounselorController::class, 'index'])->name('admin.counselors.index');

@@ -153,79 +153,7 @@
     @endif
     {{-- Army jobs --}}
 
-    {{-- Coming soon section --}}
-    <section class="coming-soon-section tw-relative tw-overflow-hidden">
-        <!-- Starfield canvas -->
-        <canvas id="starfield"></canvas>
-        <!-- Background layers -->
-        <div class="bg-mesh"></div>
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="bg-grid"></div>
-
-
-
-        <!-- Main -->
-        <main class="page">
-
-            <div class="hero section">
-
-                <!-- Badge -->
-                <div class="custom-badge">
-                <div class="badge-icon">✦</div>
-                New Feature Launching Soon
-                </div>
-
-                <!-- Headline -->
-                <h1 class="headline">
-                <span class="line-1">Career Counseling with</span>
-                <!-- <span class="line-2">On Your Schedule.</span> -->
-                <span class="line-3"> Industry Experts.</span>
-                </h1>
-
-                <!-- Sub -->
-                <p class="sub">
-                We're building a platform where verified professionals from top companies
-                can offer consultation sessions. Book a slot, get guided — on your terms.
-                </p>
-            </div>
-
-            <!-- Countdown -->
-            <div class="countdown-wrap">
-                <div class="countdown-label">Launching in</div>
-                <div class="countdown">
-                <div class="cd-block">
-                    <div class="cd-box"><span class="cd-num" id="cd-days">00</span></div>
-                    <span class="cd-unit">Days</span>
-                </div>
-                <div class="cd-sep">:</div>
-                <div class="cd-block">
-                    <div class="cd-box"><span class="cd-num" id="cd-hours">00</span></div>
-                    <span class="cd-unit">Hours</span>
-                </div>
-                <div class="cd-sep">:</div>
-                <div class="cd-block">
-                    <div class="cd-box"><span class="cd-num" id="cd-mins">00</span></div>
-                    <span class="cd-unit">Minutes</span>
-                </div>
-                <div class="cd-sep">:</div>
-                <div class="cd-block">
-                    <div class="cd-box"><span class="cd-num" id="cd-secs">00</span></div>
-                    <span class="cd-unit">Seconds</span>
-                </div>
-                </div>
-            </div>
-
-        </main>
-
-        <!-- Scroll hint -->
-        <div class="scroll-hint">
-            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-        </div>
-    </section>
-    {{-- Coming soon section --}}
-    
+   
     <!-- google adsense area end -->
     <!-- category section -->
     <section class="jobs-card-section md:tw-py-20 tw-py-12">
@@ -258,6 +186,24 @@
             </div>
         </div>
     </section>
+    
+     {{-- Coming soon section --}}
+    <section class="coming-soon-section tw-relative tw-overflow-hidden">
+      
+
+        <!-- Main -->
+        <main class="CouncelingFinal">
+            <img src="https://iwork4sindh.com/public/images/CouncelingFinal-compressed.jpg">
+        </main>
+
+        <!-- Scroll hint -->
+        <div class="scroll-hint">
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        </div>
+    </section>
+    {{-- Coming soon section --}}
+    
+    
     <!-- create profile -->
     {{-- <section class="md:tw-py-20 tw-py-12 !tw-border-t !tw-border-b !tw-border-primary-100">
         <div class="container">
@@ -2040,7 +1986,7 @@
 
         /* ── COUNTDOWN ─────────────────────────────────────────── */
         (function(){
-        var launch = new Date("2026-07-11T00:00:00");
+        var launch = new Date("2026-08-14T00:00:00");
         // launch.setDate(launch.getDate() + 30);
         launch.setHours(0,0,0,0);
 
