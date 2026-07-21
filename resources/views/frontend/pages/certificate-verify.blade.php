@@ -2,44 +2,50 @@
 
 @section('title', 'Certificate Verification - ' . config('app.name'))
 
-@section('style')
+@section('css')
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Alex+Brush&family=Cinzel:wght@500;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('Certificate-Generator/extra.css') }}" />
     
     <style>
         .verification-portal-container {
             padding: 3rem 0;
-            background-color: #f8fafc;
+            background-color: #f1f5f9;
             min-height: 70vh;
         }
+
+        /* ── Success Card ── */
         .portal-card {
             background: #fff;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
             border: none;
             overflow: hidden;
             margin-bottom: 2rem;
         }
         .portal-header {
-            padding: 2rem;
+            padding: 2rem 2rem 1.5rem;
             text-align: center;
             color: #fff;
         }
         .portal-header.success-header {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-        .portal-header.error-header {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            background: linear-gradient(135deg, #065cc4 0%, #002d62 100%);
         }
         .portal-header i {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+            display: block;
         }
         .portal-header h3 {
             font-weight: 700;
-            margin: 0;
-            font-size: 1.8rem;
+            margin: 0 0 0.25rem;
+            font-size: 1.6rem;
         }
+        .portal-header p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
         .verification-details-table {
             margin: 0;
         }
@@ -49,31 +55,41 @@
             font-weight: 600;
             background-color: #f8fafc;
             border-bottom: 1px solid #e2e8f0;
-            padding: 1rem 1.5rem;
+            padding: 0.85rem 1.5rem;
+            font-size: 0.9rem;
         }
         .verification-details-table td {
             color: #0f172a;
             font-weight: 500;
             border-bottom: 1px solid #e2e8f0;
-            padding: 1rem 1.5rem;
+            padding: 0.85rem 1.5rem;
+            font-size: 0.9rem;
         }
-        .certificate-preview-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
+
+        .certificate-preview-section {
+            padding: 2rem;
+            background: #f8fafc;
             border-top: 1px dashed #cbd5e1;
         }
+        .certificate-preview-section h5 {
+            text-align: center;
+            font-weight: 700;
+            color: #065cc4;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
         .certificate-wrapper {
             width: 100%;
             max-width: 650px;
+            margin: 0 auto;
             container-type: inline-size;
             container-name: certificate;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             border-radius: 8px;
             overflow: hidden;
         }
+
         .signature-img-placeholder {
             font-family: 'Great Vibes', 'Pinyon Script', 'Alex Brush', cursive !important;
             font-size: 21px !important;
@@ -82,6 +98,190 @@
             width: 9cqw;
             height: 9cqw;
         }
+
+        /* ── Error State – Premium Design ── */
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0;
+        }
+        .error-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            max-width: 550px;
+            width: 100%;
+        }
+        .error-card-header {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .error-card-header::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+        }
+        .error-card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .error-icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+            50% { box-shadow: 0 0 0 15px rgba(255,255,255,0); }
+        }
+        .error-icon-circle i {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+        .error-card-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0 0 0.3rem;
+        }
+        .error-card-header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .error-card-body {
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .error-code-badge {
+            display: inline-block;
+            background: #fef2f2;
+            color: #dc2626;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #fecaca;
+            margin-bottom: 1.5rem;
+        }
+        .error-message {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .error-suggestions {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .error-suggestions h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #334155;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .error-suggestions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .error-suggestions ul li {
+            font-size: 0.88rem;
+            color: #64748b;
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .error-suggestions ul li i {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .error-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .btn-error-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #065cc4, #002d62);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(6,92,196,0.25);
+            border: none;
+        }
+        .btn-error-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6,92,196,0.35);
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn-error-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: #64748b;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        .btn-error-secondary:hover {
+            color: #065cc4;
+            text-decoration: none;
+        }
     </style>
 @endsection
 
@@ -89,30 +289,49 @@
     <div class="verification-portal-container">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     @if(isset($error) || !$certificate)
-                        <!-- Invalid Certificate -->
-                        <div class="portal-card">
-                            <div class="portal-header error-header">
-                                <i class="fas fa-times-circle"></i>
-                                <h3>Verification Failed</h3>
-                            </div>
-                            <div class="card-body text-center p-5">
-                                <h4 class="text-danger mb-3 font-weight-bold">Invalid Certificate Link</h4>
-                                <p class="text-muted mb-4">
-                                    The certificate you are trying to verify does not exist, has been revoked, or the link is invalid. Please check the QR code or contact administration for verification queries.
-                                </p>
-                                <a href="{{ route('website.home') }}" class="btn btn-primary px-4 py-2 rounded-pill">
-                                    Go to Homepage
-                                </a>
+                        {{-- ── Invalid Certificate – Premium Error View ── --}}
+                        <div class="error-container">
+                            <div class="error-card">
+                                <div class="error-card-header">
+                                    <div class="error-icon-circle">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h3>Verification Failed</h3>
+                                    <p>This certificate could not be verified</p>
+                                </div>
+                                <div class="error-card-body">
+                                    <div class="error-code-badge">CERT NOT FOUND</div>
+                                    <p class="error-message">
+                                        The certificate you are trying to verify does not exist in our records, has been revoked, or the verification link is invalid.
+                                    </p>
+                                    <div class="error-suggestions">
+                                        <h6><i class="fas fa-lightbulb"></i> Possible reasons</h6>
+                                        <ul>
+                                            <li><i class="fas fa-chevron-right"></i> The QR code may be damaged or altered</li>
+                                            <li><i class="fas fa-chevron-right"></i> The certificate link has expired or been revoked</li>
+                                            <li><i class="fas fa-chevron-right"></i> The URL was typed incorrectly</li>
+                                        </ul>
+                                    </div>
+                                    <div class="error-actions">
+                                        <a href="{{ route('website.home') }}" class="btn-error-primary">
+                                            <i class="fas fa-home"></i> Go to Homepage
+                                        </a>
+                                        <a href="mailto:support@iwork4sindh.com" class="btn-error-secondary">
+                                            <i class="fas fa-envelope"></i> Contact Support
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     @else
-                        <!-- Valid Certificate -->
+                        {{-- ── Valid Certificate – Data + Certificate View ── --}}
                         <div class="portal-card">
                             <div class="portal-header success-header">
                                 <i class="fas fa-check-circle"></i>
-                                <h3>Officially Verified Certificate</h3>
+                                <h3>Certificate Verified Successfully</h3>
+                                <p>This certificate is authentic and issued by iWork4Sindh</p>
                             </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
@@ -150,19 +369,11 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Action/Toggle View Original Button -->
-                        <div class="text-center mb-4">
-                            <button type="button" class="btn btn-primary px-4 py-2 rounded-pill" data-toggle="collapse" data-target="#certPreviewCollapse" aria-expanded="false" aria-controls="certPreviewCollapse">
-                                <i class="fas fa-certificate"></i> View Ornate Certificate Document
-                            </button>
-                        </div>
-
-                        <!-- Certificate View Collapse -->
-                        <div class="collapse" id="certPreviewCollapse">
-                            <div class="certificate-preview-box">
-                                <div class="certificate-wrapper mb-4">
+                            {{-- Certificate Document Preview (always visible) --}}
+                            <div class="certificate-preview-section">
+                                <h5><i class="fas fa-certificate"></i> Official Certificate Document</h5>
+                                <div class="certificate-wrapper">
                                     <div class="certificate-card" id="certificateCard">
                                         <!-- Ornate Border Layer -->
                                         <div class="border-layer"></div>
@@ -306,10 +517,8 @@
             document.addEventListener('DOMContentLoaded', () => {
                 const qrcodeContainer = document.getElementById("verify-page-qrcode");
                 if (qrcodeContainer) {
-                    // Verification URL
                     const verifyUrl = "{{ $certificate->verify_url }}";
 
-                    // Generate the QR code
                     new QRCode(qrcodeContainer, {
                         text: verifyUrl,
                         width: 120,
