@@ -8,75 +8,163 @@
     
     <style>
         .verification-portal-container {
-            padding: 3rem 0;
-            background-color: #f1f5f9;
-            min-height: 70vh;
+            padding: 1.5rem 0 2rem;
+            background: #f1f5f9;
+            min-height: 60vh;
+            font-family: 'Outfit', sans-serif;
         }
 
         /* ── Success Card ── */
         .portal-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            border: none;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(6, 92, 196, 0.08);
+            border: 1px solid #e2e8f0;
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
+
         .portal-header {
-            padding: 2rem 2rem 1.5rem;
+            padding: 1.5rem 1.5rem 1.2rem;
             text-align: center;
             color: #fff;
+            position: relative;
+            overflow: hidden;
         }
+
         .portal-header.success-header {
             background: linear-gradient(135deg, #065cc4 0%, #002d62 100%);
         }
-        .portal-header i {
-            font-size: 3rem;
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-        .portal-header h3 {
-            font-weight: 700;
-            margin: 0 0 0.25rem;
-            font-size: 1.6rem;
-        }
-        .portal-header p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.85;
+        .portal-header.success-header::after {
+            content: '';
+            position: absolute;
+            top: -40%; right: -20%;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
         }
 
-        .verification-details-table {
+        .success-check-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.4);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.6rem;
+            animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .success-check-circle svg {
+            width: 22px; height: 22px;
+        }
+        .success-check-circle .check-path {
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 24;
+            stroke-dashoffset: 24;
+            animation: draw-check 0.5s 0.4s ease forwards;
+        }
+        @keyframes pop-in {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes draw-check {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .portal-header h3 {
+            font-weight: 700;
+            margin: 0 0 0.15rem;
+            font-size: 1.15rem;
+            position: relative;
+            color: #ffffff;
+        }
+
+        .portal-header p {
             margin: 0;
+            font-size: 0.78rem;
+            opacity: 0.8;
+            font-weight: 300;
         }
-        .verification-details-table th {
-            width: 35%;
-            color: #475569;
+
+        /* Clean Table */
+        .verify-table {
+            width: 100%;
+            margin: 0;
+            border-collapse: collapse;
+        }
+        .verify-table tr {
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.15s ease;
+        }
+        .verify-table tr:hover {
+            background: #f8fafc;
+        }
+        .verify-table tr:last-child {
+            border-bottom: none;
+        }
+        .verify-table th {
+            width: 40%;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            background-color: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0.85rem 1.5rem;
-            font-size: 0.9rem;
+            color: #64748b;
+            background: transparent;
+            text-align: left;
+            vertical-align: middle;
         }
-        .verification-details-table td {
-            color: #0f172a;
-            font-weight: 500;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0.85rem 1.5rem;
-            font-size: 0.9rem;
+        .verify-table th i {
+            width: 20px;
+            text-align: center;
+            color: #065cc4;
+            margin-right: 0.35rem;
+            font-size: 0.72rem;
+            opacity: 0.7;
+        }
+        .verify-table td {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #55719b;
+            vertical-align: middle;
+        }
+        .cert-number-val {
+            color: #065cc4;
+            font-weight: 700;
+            font-family: 'Outfit', monospace;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
         }
 
         .certificate-preview-section {
-            padding: 2rem;
+            padding: 1.2rem 1.5rem 1.5rem;
             background: #f8fafc;
-            border-top: 1px dashed #cbd5e1;
+            border-top: 1px solid #e2e8f0;
         }
         .certificate-preview-section h5 {
             text-align: center;
             font-weight: 700;
             color: #065cc4;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         .certificate-wrapper {
@@ -282,6 +370,71 @@
             color: #065cc4;
             text-decoration: none;
         }
+
+        /* ── Manual Search Form ── */
+        .manual-verify-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .manual-verify-section h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+        .manual-verify-section p {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .manual-search-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+        .manual-search-form input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #0f172a;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .manual-search-form input:focus {
+            border-color: #065cc4;
+            box-shadow: 0 0 0 3px rgba(6, 92, 196, 0.1);
+        }
+        .manual-search-form input::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .manual-search-form button {
+            padding: 0.7rem 1.3rem;
+            background: linear-gradient(135deg, #065cc4, #002d62);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .manual-search-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(6, 92, 196, 0.3);
+        }
     </style>
 @endsection
 
@@ -289,7 +442,7 @@
     <div class="verification-portal-container">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-9">
+                <div class="col-lg-6">
                     @if(isset($error) || !$certificate)
                         {{-- ── Invalid Certificate – Premium Error View ── --}}
                         <div class="error-container">
@@ -314,7 +467,18 @@
                                             <li><i class="fas fa-chevron-right"></i> The URL was typed incorrectly</li>
                                         </ul>
                                     </div>
-                                    <div class="error-actions">
+
+                                    {{-- Manual Verification Search --}}
+                                    <div class="manual-verify-section">
+                                        <h6><i class="fas fa-search"></i> Verify Manually</h6>
+                                        <p>Enter your certificate number (e.g. A00001) to verify</p>
+                                        <form class="manual-search-form" action="" method="GET" id="manualVerifyForm">
+                                            <input type="text" id="certNumberInput" placeholder="Enter Certificate No." required />
+                                            <button type="submit"><i class="fas fa-arrow-right"></i> Verify</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="error-actions" style="margin-top: 1.5rem;">
                                         <a href="{{ route('website.home') }}" class="btn-error-primary">
                                             <i class="fas fa-home"></i> Go to Homepage
                                         </a>
@@ -329,45 +493,43 @@
                         {{-- ── Valid Certificate – Data + Certificate View ── --}}
                         <div class="portal-card">
                             <div class="portal-header success-header">
-                                <i class="fas fa-check-circle"></i>
+                                <div class="success-check-circle">
+                                    <svg viewBox="0 0 24 24"><polyline class="check-path" points="6 12 10 16 18 8"/></svg>
+                                </div>
                                 <h3>Certificate Verified Successfully</h3>
                                 <p>This certificate is authentic and issued by iWork4Sindh</p>
                             </div>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table verification-details-table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Certificate Number</th>
-                                                <td><span class="text-primary font-weight-bold">{{ $certificate->certificate_number }}</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Recipient Name</th>
-                                                <td>{{ $certificate->first_name }} {{ $certificate->last_name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Course Name</th>
-                                                <td>{{ $certificate->course_name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Duration</th>
-                                                <td>{{ $certificate->duration }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Issue Date</th>
-                                                <td>{{ $certificate->certificate_date ? $certificate->certificate_date->format('d F, Y') : '-' }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Verification Status</th>
-                                                <td>
-                                                    <span class="badge bg-success text-white py-1 px-3 rounded-pill">
-                                                        <i class="fas fa-check"></i> Active & Authentic
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div style="padding: 10px 25px;">
+                                <table class="verify-table">
+                                    <tr>
+                                        <th><i class="fas fa-hashtag"></i> Certificate No.</th>
+                                        <td><span class="cert-number-val">{{ $certificate->certificate_number }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-user"></i> Recipient Name</th>
+                                        <td>{{ $certificate->first_name }} {{ $certificate->last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-book"></i> Course Name</th>
+                                        <td>{{ $certificate->course_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-clock"></i> Duration</th>
+                                        <td>{{ $certificate->duration }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-calendar-alt"></i> Issue Date</th>
+                                        <td>{{ $certificate->certificate_date ? $certificate->certificate_date->format('d F, Y') : '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-shield-alt"></i> Status</th>
+                                        <td>
+                                            <span class="status-badge">
+                                                <i class="fas fa-check-circle"></i> Active & Authentic
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
 
                             {{-- Certificate Document Preview (always visible) --}}
@@ -485,7 +647,7 @@
                                                         <div class="signature-line-box">
                                                             <span class="signature-img-placeholder">Moaawiz Malik</span>
                                                             <span class="sig-title">Program Director</span>
-                                                            <span class="sig-dept">Information Technology Division</span>
+                                                            <span class="sig-dept">iWork4Sindh</span>
                                                         </div>
                                                     </div>
                                                     
@@ -509,6 +671,22 @@
 @endsection
 
 @section('script')
+    {{-- Manual verify form JS (works on error page) --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('manualVerifyForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const certNo = document.getElementById('certNumberInput').value.trim();
+                    if (certNo) {
+                        window.location.href = "{{ url('/certificate/verify') }}/" + encodeURIComponent(certNo);
+                    }
+                });
+            }
+        });
+    </script>
+
     @if(isset($certificate) && $certificate)
         <!-- Include QR Code CDN library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

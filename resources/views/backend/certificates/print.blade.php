@@ -274,7 +274,7 @@
                             <div class="signature-line-box">
                                 <span class="signature-img-placeholder">Moaawiz Malik</span>
                                 <span class="sig-title">Program Director</span>
-                                <span class="sig-dept">Information Technology Division</span>
+                                <span class="sig-dept">iWork4Sindh</span>
                             </div>
                         </div>
 

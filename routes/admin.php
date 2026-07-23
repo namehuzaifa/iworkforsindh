@@ -84,6 +84,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/certificates', [CertificateController::class, 'index'])->name('admin.certificates.index');
         Route::get('/certificates/create', [CertificateController::class, 'create'])->name('admin.certificates.create');
         Route::post('/certificates/store', [CertificateController::class, 'store'])->name('admin.certificates.store');
+        Route::post('/certificates/lookup-email', [CertificateController::class, 'lookupByEmail'])->name('admin.certificates.lookup-email');
         Route::get('/certificates/{certificate}', [CertificateController::class, 'show'])->name('admin.certificates.show');
         Route::get('/certificates/{certificate}/print', [CertificateController::class, 'print'])->name('admin.certificates.print');
         Route::post('/certificates/{certificate}/send', [CertificateController::class, 'sendToUser'])->name('admin.certificates.send');

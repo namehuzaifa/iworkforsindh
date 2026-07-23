@@ -178,7 +178,8 @@
                 <i class="fas fa-arrow-left"></i> Back to List
             </a>
             <div style="display: flex; gap: 10px; align-items: center;">
-                <a href="{{ route('admin.certificates.print', $certificate) }}" target="_blank" class="custom-btn custom-btn-primary">
+                <a href="{{ route('admin.certificates.print', $certificate) }}" target="_blank"
+                    class="custom-btn custom-btn-primary">
                     <i class="fas fa-print"></i> Print / Save PDF
                 </a>
                 @if($certificate->status == 'issued')
@@ -317,8 +318,8 @@
 
                         <!-- Center: Page Number -->
                         <!-- <div class="footer-center-meta">
-                                <span>Page 01 of 01</span>
-                            </div> -->
+                                    <span>Page 01 of 01</span>
+                                </div> -->
 
                         <!-- Right: Signature and QR Verification -->
                         <div class="verification-wrapper">
@@ -326,7 +327,7 @@
                                 <div class="signature-line-box">
                                     <span class="signature-img-placeholder">Moaawiz Malik</span>
                                     <span class="sig-title">Program Director</span>
-                                    <span class="sig-dept">Information Technology Division</span>
+                                    <span class="sig-dept">iWork4Sindh</span>
                                 </div>
                             </div>
 

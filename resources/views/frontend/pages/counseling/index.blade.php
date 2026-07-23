@@ -4,7 +4,7 @@
 
 @section('main')
     <section class="main-banner">
-        <img class="banner-img" src="https://iwork4sindh.com/images/counseling.png" alt="CareerCounceling Banner">
+        <img class="banner-img" src="https://iwork4sindh.com/images/careercounseling.png" alt="CareerCounceling Banner">
     </section>
     
     <!--<div class="breadcrumbs breadcrumbs-height">-->

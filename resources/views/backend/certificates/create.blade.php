@@ -83,16 +83,19 @@
                 <form id="certForm" action="{{ route('admin.certificates.store') }}" method="POST" autocomplete="off">
                     @csrf
 
+                    <input type="hidden" name="user_id" id="user_id" value="">
+
                     <div class="form-group mb-3">
-                        <label for="user_id" class="form-label font-weight-bold">Select Candidate</label>
-                        <select name="user_id" id="user_id" class="form-control select2" required>
-                            <option value="">-- Choose Candidate --</option>
-                            @foreach($users as $user)
-                                <option value="{{ $user->id }}" data-name="{{ $user->name }}">
-                                    {{ $user->name }} ({{ $user->email }})
-                                </option>
-                            @endforeach
-                        </select>
+                        <label for="candidateEmail" class="form-label font-weight-bold">Candidate Email <small class="text-muted">(Optional)</small></label>
+                        <div class="input-group">
+                            <input type="email" id="candidateEmail" class="form-control" placeholder="Enter email to auto-fill name..." />
+                            <div class="input-group-append">
+                                <button type="button" id="lookupEmailBtn" class="btn btn-outline-primary">
+                                    <i class="fas fa-search"></i> Find
+                                </button>
+                            </div>
+                        </div>
+                        <div id="emailFeedback" class="mt-1" style="font-size: 0.85rem;"></div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -249,8 +252,8 @@
 
                             <!-- Center: Page Number -->
                             <!-- <div class="footer-center-meta">
-                                    <span>Page 01 of 01</span>
-                                </div> -->
+                                        <span>Page 01 of 01</span>
+                                    </div> -->
 
                             <!-- Right: Signature and QR Verification -->
                             <div class="verification-wrapper">
@@ -258,7 +261,7 @@
                                     <div class="signature-line-box">
                                         <span class="signature-img-placeholder">Moaawiz Malik</span>
                                         <span class="sig-title">Program Director</span>
-                                        <span class="sig-dept">Information Technology Division</span>
+                                        <span class="sig-dept">iWork4Sindh</span>
                                     </div>
                                 </div>
 
@@ -282,7 +285,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const userIdSelect = document.getElementById('user_id');
+            const userIdInput = document.getElementById('user_id');
+            const emailInput = document.getElementById('candidateEmail');
+            const lookupBtn = document.getElementById('lookupEmailBtn');
+            const emailFeedback = document.getElementById('emailFeedback');
             const firstNameInput = document.getElementById('firstName');
             const lastNameInput = document.getElementById('lastName');
             const courseSelect = document.getElementById('course_select');
@@ -361,15 +367,49 @@
                 durationDisplay.textContent = dr;
             };
 
-            // Autofill candidate name on selection
-            $(userIdSelect).on('change', function () {
-                const selectedOption = this.options[this.selectedIndex];
-                if (selectedOption && selectedOption.value) {
-                    const fullName = selectedOption.getAttribute('data-name') || '';
-                    const parts = fullName.trim().split(' ');
-                    firstNameInput.value = parts[0] || '';
-                    lastNameInput.value = parts.slice(1).join(' ') || '';
-                    updatePreview();
+            // Email lookup AJAX
+            lookupBtn.addEventListener('click', () => {
+                const email = emailInput.value.trim();
+                if (!email) {
+                    emailFeedback.innerHTML = '<span class="text-warning"><i class="fas fa-exclamation-triangle"></i> Please enter an email first.</span>';
+                    return;
+                }
+
+                lookupBtn.disabled = true;
+                lookupBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+                emailFeedback.innerHTML = '';
+
+                $.ajax({
+                    url: "{{ route('admin.certificates.lookup-email') }}",
+                    type: 'POST',
+                    data: { email: email, _token: "{{ csrf_token() }}" },
+                    success: function(res) {
+                        if (res.found) {
+                            userIdInput.value = res.user_id;
+                            firstNameInput.value = res.first_name;
+                            lastNameInput.value = res.last_name;
+                            updatePreview();
+                            emailFeedback.innerHTML = '<span class="text-success"><i class="fas fa-check-circle"></i> Candidate found! Name auto-filled.</span>';
+                        } else {
+                            userIdInput.value = '';
+                            emailFeedback.innerHTML = '<span class="text-danger"><i class="fas fa-times-circle"></i> No candidate found with this email. You can enter name manually.</span>';
+                        }
+                    },
+                    error: function() {
+                        emailFeedback.innerHTML = '<span class="text-danger"><i class="fas fa-times-circle"></i> Error looking up email. Please try again.</span>';
+                    },
+                    complete: function() {
+                        lookupBtn.disabled = false;
+                        lookupBtn.innerHTML = '<i class="fas fa-search"></i> Find';
+                    }
+                });
+            });
+
+            // Allow Enter key in email field to trigger lookup
+            emailInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    lookupBtn.click();
                 }
             });
 
@@ -393,22 +433,11 @@
                 inp.addEventListener('input', updatePreview);
             });
 
-            // Initialize Select2 if function exists
+            // Initialize Select2 if function exists (for course select only)
             if (typeof $.fn.select2 !== 'undefined') {
                 $('.select2').select2({
                     theme: 'bootstrap4',
                     width: '100%'
-                });
-
-                // Re-bind select2 events
-                $('#user_id').on('select2:select', function (e) {
-                    const data = e.params.data;
-                    const el = data.element;
-                    const fullName = el.getAttribute('data-name') || '';
-                    const parts = fullName.trim().split(' ');
-                    firstNameInput.value = parts[0] || '';
-                    lastNameInput.value = parts.slice(1).join(' ') || '';
-                    updatePreview();
                 });
 
                 $('#course_select').on('select2:select', function (e) {

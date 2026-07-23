@@ -41,12 +41,10 @@ class CertificateController extends Controller
      */
     public function create()
     {
-        // Fetch candidates (users with candidate role)
-        $users = User::where('role', 'candidate')->orderBy('name')->get();
         // Fetch all active courses
         $courses = Courses::where('is_active', 1)->orderBy('title')->get();
 
-        return view('backend.certificates.create', compact('users', 'courses'));
+        return view('backend.certificates.create', compact('courses'));
     }
 
     /**
@@ -55,7 +53,7 @@ class CertificateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'nullable|exists:users,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'course_name' => 'required|string|max:255',
@@ -64,7 +62,7 @@ class CertificateController extends Controller
         ]);
 
         $certificate = Certificate::create([
-            'user_id' => $request->user_id,
+            'user_id' => $request->user_id ?: null,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'course_name' => $request->course_name,
@@ -76,6 +74,29 @@ class CertificateController extends Controller
 
         return redirect()->route('admin.certificates.index')
             ->with('success', 'Certificate generated successfully.');
+    }
+
+    /**
+     * AJAX: Lookup a candidate by email and return their name + id.
+     */
+    public function lookupByEmail(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json(['found' => false]);
+        }
+
+        $parts = explode(' ', $user->name, 2);
+
+        return response()->json([
+            'found' => true,
+            'user_id' => $user->id,
+            'first_name' => $parts[0] ?? '',
+            'last_name' => $parts[1] ?? '',
+        ]);
     }
 
     /**
