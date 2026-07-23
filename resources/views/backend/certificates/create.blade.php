@@ -86,9 +86,11 @@
                     <input type="hidden" name="user_id" id="user_id" value="">
 
                     <div class="form-group mb-3">
-                        <label for="candidateEmail" class="form-label font-weight-bold">Candidate Email <small class="text-muted">(Optional)</small></label>
+                        <label for="candidateEmail" class="form-label font-weight-bold">Candidate Email <small
+                                class="text-muted">(Optional)</small></label>
                         <div class="input-group">
-                            <input type="email" id="candidateEmail" class="form-control" placeholder="Enter email to auto-fill name..." />
+                            <input type="email" id="candidateEmail" class="form-control"
+                                placeholder="Enter email to auto-fill name..." />
                             <div class="input-group-append">
                                 <button type="button" id="lookupEmailBtn" class="btn btn-outline-primary">
                                     <i class="fas fa-search"></i> Find
@@ -252,14 +254,16 @@
 
                             <!-- Center: Page Number -->
                             <!-- <div class="footer-center-meta">
-                                        <span>Page 01 of 01</span>
-                                    </div> -->
+                                            <span>Page 01 of 01</span>
+                                        </div> -->
 
                             <!-- Right: Signature and QR Verification -->
                             <div class="verification-wrapper">
                                 <div class="signature-section">
-                                    <div class="signature-line-box">
-                                        <span class="signature-img-placeholder">Moaawiz Malik</span>
+                                    <div class="">
+                                        <div class="signature-line-box">
+                                            <span class="signature-img-placeholder">Moaawiz Malik</span>
+                                        </div>
                                         <span class="sig-title">Program Director</span>
                                         <span class="sig-dept">iWork4Sindh</span>
                                     </div>
@@ -383,7 +387,7 @@
                     url: "{{ route('admin.certificates.lookup-email') }}",
                     type: 'POST',
                     data: { email: email, _token: "{{ csrf_token() }}" },
-                    success: function(res) {
+                    success: function (res) {
                         if (res.found) {
                             userIdInput.value = res.user_id;
                             firstNameInput.value = res.first_name;
@@ -395,10 +399,10 @@
                             emailFeedback.innerHTML = '<span class="text-danger"><i class="fas fa-times-circle"></i> No candidate found with this email. You can enter name manually.</span>';
                         }
                     },
-                    error: function() {
+                    error: function () {
                         emailFeedback.innerHTML = '<span class="text-danger"><i class="fas fa-times-circle"></i> Error looking up email. Please try again.</span>';
                     },
-                    complete: function() {
+                    complete: function () {
                         lookupBtn.disabled = false;
                         lookupBtn.innerHTML = '<i class="fas fa-search"></i> Find';
                     }

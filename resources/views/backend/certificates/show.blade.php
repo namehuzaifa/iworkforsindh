@@ -318,14 +318,16 @@
 
                         <!-- Center: Page Number -->
                         <!-- <div class="footer-center-meta">
-                                    <span>Page 01 of 01</span>
-                                </div> -->
+                                        <span>Page 01 of 01</span>
+                                    </div> -->
 
                         <!-- Right: Signature and QR Verification -->
                         <div class="verification-wrapper">
                             <div class="signature-section">
-                                <div class="signature-line-box">
-                                    <span class="signature-img-placeholder">Moaawiz Malik</span>
+                                <div class="">
+                                    <div class="signature-line-box">
+                                        <span class="signature-img-placeholder">Moaawiz Malik</span>
+                                    </div>
                                     <span class="sig-title">Program Director</span>
                                     <span class="sig-dept">iWork4Sindh</span>
                                 </div>

@@ -180,11 +180,26 @@
 
         .signature-img-placeholder {
             font-family: 'Great Vibes', 'Pinyon Script', 'Alex Brush', cursive !important;
-            font-size: 21px !important;
+            font-size: 3.5cqw !important;
+            white-space: nowrap !important;
+            display: inline-block;
+            margin-top: -3.5cqw;
+            margin-bottom: 0.3cqw;
         }
-        .qr-code-section #verify-page-qrcode img {
-            width: 9cqw;
-            height: 9cqw;
+        @supports not (width: 1cqw) {
+            .signature-img-placeholder {
+                font-size: 16px !important;
+            }
+        }
+        .qr-code-section #verify-page-qrcode img,
+        .qr-code-section #verify-page-qrcode canvas {
+            width: 9cqw !important;
+            height: 9cqw !important;
+            min-width: 36px !important;
+            min-height: 36px !important;
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: contain;
         }
 
         /* ── Error State – Premium Design ── */
@@ -644,8 +659,10 @@
                                                 <!-- Right: Signature and QR Verification -->
                                                 <div class="verification-wrapper">
                                                     <div class="signature-section">
+                                                        <div class="">
                                                         <div class="signature-line-box">
                                                             <span class="signature-img-placeholder">Moaawiz Malik</span>
+                                                        </div>
                                                             <span class="sig-title">Program Director</span>
                                                             <span class="sig-dept">iWork4Sindh</span>
                                                         </div>
@@ -695,16 +712,34 @@
             document.addEventListener('DOMContentLoaded', () => {
                 const qrcodeContainer = document.getElementById("verify-page-qrcode");
                 if (qrcodeContainer) {
+                    qrcodeContainer.innerHTML = '';
                     const verifyUrl = "{{ $certificate->verify_url }}";
 
                     new QRCode(qrcodeContainer, {
                         text: verifyUrl,
-                        width: 120,
-                        height: 120,
+                        width: 128,
+                        height: 128,
                         colorDark: "#0d47a1",
                         colorLight: "#ffffff",
                         correctLevel: QRCode.CorrectLevel.L
                     });
+
+                    // Ensure single visible QR code across all mobile & desktop browsers
+                    const checkQr = () => {
+                        const img = qrcodeContainer.querySelector('img');
+                        const canvas = qrcodeContainer.querySelector('canvas');
+                        if (img && img.getAttribute('src') && img.getAttribute('src').startsWith('data:image')) {
+                            img.style.setProperty('display', 'block', 'important');
+                            if (canvas) canvas.style.setProperty('display', 'none', 'important');
+                        } else if (canvas) {
+                            canvas.style.setProperty('display', 'block', 'important');
+                            if (img) img.style.setProperty('display', 'none', 'important');
+                        }
+                    };
+
+                    checkQr();
+                    setTimeout(checkQr, 100);
+                    setTimeout(checkQr, 500);
                 }
             });
         </script>
