@@ -471,7 +471,7 @@
                                     {{-- Manual Verification Search --}}
                                     <div class="manual-verify-section">
                                         <h6><i class="fas fa-search"></i> Verify Manually</h6>
-                                        <p>Enter your certificate number (e.g. A00001) to verify</p>
+                                        <p>Enter your certificate number (e.g. A00000) to verify</p>
                                         <form class="manual-search-form" action="" method="GET" id="manualVerifyForm">
                                             <input type="text" id="certNumberInput" placeholder="Enter Certificate No." required />
                                             <button type="submit"><i class="fas fa-arrow-right"></i> Verify</button>
