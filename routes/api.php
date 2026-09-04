@@ -64,6 +64,17 @@ Route::controller(WebsiteController::class)->group(function () {
 
     Route::get('/skill-labors', [SkilledLabourController::class, 'index']);
     Route::get('/skill-labors/{labor}', [SkilledLabourController::class, 'show']); // fetching single labor details
+    
+    
+// ─────────────────────────────────────────────────────────────────────────────
+// Career Counseling — Public Routes (no auth required)
+// ─────────────────────────────────────────────────────────────────────────────
+Route::controller(CounselingController::class)->prefix('counseling')->group(function () {
+    Route::get('/categories', 'categories');                           // All categories
+    Route::get('/sessions', 'sessions');                               // Active sessions list (search, filter)
+    Route::get('/sessions/{session}', 'sessionDetail');                // Single session detail
+    Route::get('/sessions/{session}/slots', 'sessionSlots');           // Available time slots for a date
+});
 
 Route::post('/social-media-authentication', [SocialAuthController::class, 'socialAuthentication']);
 
@@ -143,6 +154,17 @@ Route::middleware('auth:sanctum')->prefix('candidate')->group(function () {
         Route::post('/jobs/{job}/bookmark', 'bookmarkedJob');
         Route::post('/jobs/apply', 'jobApply');
         Route::get('/job-alert', 'jobAlerts');
+    });
+    
+    // ─────────────────────────────────────────────────────────────────────────
+    // Career Counseling — Candidate Authenticated Routes
+    // ─────────────────────────────────────────────────────────────────────────
+    Route::controller(CounselingController::class)->prefix('counseling')->group(function () {
+        Route::post('/book', 'book');                                           // Book a session slot
+        Route::get('/bookings', 'myBookings');                                  // My bookings (upcoming + past)
+        Route::post('/bookings/{booking}/reschedule', 'reschedule');            // Reschedule a booking
+        Route::post('/bookings/{booking}/cancel', 'cancelBooking');             // Cancel a booking
+        Route::post('/bookings/{booking}/review', 'storeReview');               // Submit review (completed only)
     });
 });
 

@@ -58,7 +58,7 @@
                         </x-admin.sidebar-list>
 
                         {{-- Certificates --}}
-                        <x-admin.sidebar-list :linkActive="Route::is('admin.certificates.index*') ? true : false" route="admin.certificates.index" path="admin.certificates.create"
+                        <x-admin.sidebar-list :linkActive="Route::is('admin.certificates.randomUsers*') ? true : false" route="admin.certificates.randomUsers" path="admin.certificates.randomUsers"
                             plus_icon="fa fa-plus-circle" icon="fas fa-certificate">
                             {{ __('Certificates') }}
                         </x-admin.sidebar-list>

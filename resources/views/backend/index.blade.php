@@ -37,7 +37,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('total_candidates') }}</span>
-                    <span class="info-box-number">111420</span>
+                    <span class="info-box-number">119520</span>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('total_employers') }}</span>
-                    <span class="info-box-number">430</span>
+                    <span class="info-box-number">695</span>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('total_verified_users') }}</span>
-                    <span class="info-box-number">111420</span>
+                    <span class="info-box-number">119520</span>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('active_jobs') }}</span>
-                    <span class="info-box-number">19500</span>
+                    <span class="info-box-number">17300</span>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('expired_jobs') }}</span>
-                    <span class="info-box-number">5700</span>
+                    <span class="info-box-number">8150</span>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('pending_jobs') }}</span>
-                    <span class="info-box-number">250</span>
+                    <span class="info-box-number">20</span>
                 </div>
             </div>
         </div>
@@ -99,6 +99,50 @@
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('all_jobs') }}</span>
                     <span class="info-box-number">25450</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-certificate"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Learn & Earn Enroll Candidates</span>
+                    <span class="info-box-number">5056</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-certificate"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Courses Completed </span>
+                    <span class="info-box-number">2885</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-th"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Ongoing Courses</span>
+                    <span class="info-box-number">2171</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-check"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Visitor</span>
+                    <span class="info-box-number">5.3 M</span>
                 </div>
             </div>
         </div>

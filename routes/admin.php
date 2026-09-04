@@ -81,6 +81,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/courses/{course}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
 
         //Certificate Generator Route
+        Route::get('/certificates-courses', [CertificateController::class, 'randomUsers'])->name('admin.certificates.randomUsers'); // random data
         Route::get('/certificates', [CertificateController::class, 'index'])->name('admin.certificates.index');
         Route::get('/certificates/create', [CertificateController::class, 'create'])->name('admin.certificates.create');
         Route::post('/certificates/store', [CertificateController::class, 'store'])->name('admin.certificates.store');
