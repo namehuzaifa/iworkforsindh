@@ -851,7 +851,7 @@
 
             <div class="pagination" style="justify-content: center;">
                 {{-- {{ $labors->links() }} --}}
-                {{ $labors->appends(request()->query())->links() }}
+                {{ $labors->appends(request()->query())->links('vendor.pagination.frontend') }}
             </div>
         </div>
     </section>

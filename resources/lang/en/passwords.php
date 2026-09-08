@@ -16,6 +16,7 @@ return [
     'reset' => 'Your password has been reset!',
     'sent' => 'We have emailed your password reset link!',
     'throttled' => 'Please wait before retrying.',
+    'throttled_seconds' => 'A reset link was already sent. You can request another one in :seconds seconds.',
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that email address.",
 

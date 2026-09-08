@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\HasCountryBasedJobs;
 use App\Models\Candidate;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -81,6 +83,28 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * The trait always hangs the error on the email field, which reads as
+     * "your email is wrong" even when only the password was mistyped. Point
+     * the message at whichever field is actually at fault.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $emailIsKnown = User::where($this->username(), $request->input($this->username()))->exists();
+
+        throw ValidationException::withMessages([
+            $emailIsKnown ? 'password' : $this->username() => [
+                $emailIsKnown ? trans('auth.password') : trans('auth.email'),
+            ],
+        ]);
     }
 
     /**

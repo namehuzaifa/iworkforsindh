@@ -528,7 +528,10 @@
         .course-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* Course banners usually carry text, so `cover` was cropping the
+               title off. `contain` keeps the whole banner visible. */
+            object-fit: contain;
+            background-color: #F1F2F4;
             display: block;
         }
 
@@ -930,7 +933,7 @@
 
                 <!-- Category (Chhoti) -->
                 <div class="col-12 col-md-3">
-                    <select name="category_id" class="form-control shadow-sm" onchange="this.form.submit()">
+                    <select name="category_id" class="form-control shadow-sm">
                         <option value="all">All Categories</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
@@ -942,7 +945,7 @@
 
                 <!-- Platform (Chhoti) -->
                 <div class="col-12 col-md-3">
-                    <select name="platform" class="form-control shadow-sm" onchange="this.form.submit()">
+                    <select name="platform" class="form-control shadow-sm">
                         <option value="all">All Platforms</option>
                         @foreach($platforms as $platform)
                             <option value="{{ $platform }}" {{ request('platform') == $platform ? 'selected' : '' }}>
@@ -1002,8 +1005,8 @@
                                 </span>
 
                                 <span class="tag tag-category">
-                                    <i class="fa-solid fa-tag"></i>
-                                    {{ strtolower($course->category->name) }}
+                                    <i class="fas fa-tag"></i>
+                                    {{ strtolower($course->category?->name ?? "") }}
                                 </span>
                             </div>
 
@@ -1026,7 +1029,7 @@
             </div>
              <div class="pagination" style="justify-content: center;">
                 {{-- {{ $labors->links() }} --}}
-                {{ $courses->appends(request()->query())->links() }}
+                {{ $courses->appends(request()->query())->links('vendor.pagination.frontend') }}
             </div>
 
             
@@ -1109,7 +1112,9 @@
         .card-img-top {
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            /* `fill` was stretching banners out of their aspect ratio. */
+            object-fit: contain;
+            background-color: #F1F2F4;
         }
 
         .price-tag,
@@ -1182,7 +1187,7 @@
 
                         <!-- Category (Chhoti) -->
                         <div class="col-12 col-md-3">
-                            <select name="category_id" class="form-control shadow-sm" onchange="this.form.submit()">
+                            <select name="category_id" class="form-control shadow-sm">
                                 <option value="all">All Categories</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
@@ -1194,7 +1199,7 @@
 
                         <!-- Platform (Chhoti) -->
                         <div class="col-12 col-md-3">
-                            <select name="platform" class="form-control shadow-sm" onchange="this.form.submit()">
+                            <select name="platform" class="form-control shadow-sm">
                                 <option value="all">All Platforms</option>
                                 @foreach($platforms as $platform)
                                     <option value="{{ $platform }}" {{ request('platform') == $platform ? 'selected' : '' }}>
@@ -1270,7 +1275,7 @@
                                         <i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i>Free
                                     </span>
                                     <small class="text-muted category-text"><i
-                                            class="bi bi-tag-fill me-1"></i>{{ strtolower($course->category->name) }}</small>
+                                            class="bi bi-tag-fill me-1"></i>{{ strtolower($course->category?->name ?? "") }}</small>
                                 </div>
                               
                                 <h5 class="card-title fw-bold mb-3">{{ $course->title }}</h5>
@@ -1288,7 +1293,7 @@
             </div>
             <div class="pagination" style="justify-content: center;">
                 
-                {{ $courses->appends(request()->query())->links() }}
+                {{ $courses->appends(request()->query())->links('vendor.pagination.frontend') }}
 
             </div>
         </main>

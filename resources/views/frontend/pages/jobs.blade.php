@@ -318,19 +318,35 @@
 
             let newUrl = `${urlWithoutQueryString.replace('/jobs', '/loadmore')}${updatedQueryString}`;
 
-            $('#load-more-button').prop('disabled', true).text('Loading...');
+            let $button = $('#load-more-button');
+            $button.prop('disabled', true).text('{{ __('loading') }}...');
+
             axios.get(newUrl).then((response) => {
-                $('#mix-job').append(response.data);
-                $('#load-more-button').prop('disabled', false).text('Load More');
-                let newId = parseInt(document.getElementById('get-id-page').getAttribute('data-id'));
-                document.getElementById('load-more-button').setAttribute('data-id', newId);
-                if (newId == 0) {
-                    document.getElementById('load-more-button').setAttribute('data-page', page + 1);
+                let $incoming = $('<div>').append(response.data);
+                let $marker = $incoming.find('#get-id-page');
+                let newJobs = $incoming.find('.jobcardStyle1').length;
+
+                // Nothing came back — we've reached the end of the list.
+                if (!newJobs) {
+                    $button.prop('disabled', true).text('{{ __('no_more_jobs') }}')
+                        .removeClass('btn-primary').addClass('btn-secondary');
+
+                    return;
                 }
-                $('#get-id-page').remove();
+
+                $marker.remove();
+                $('#mix-job').append($incoming.html());
+                $button.prop('disabled', false).text('{{ __('load_more') }}');
+
+                let newId = parseInt($marker.attr('data-id')) || 0;
+                $button.attr('data-id', newId);
+                if (newId == 0) {
+                    $button.attr('data-page', page + 1);
+                }
             }).catch((error) => {
-                $('#load-more-button').prop('disabled', true).text('No jobs found').removeClass('btn-primary')
-                    .addClass('btn-secondary');
+                // A genuine request failure — let the user try again rather
+                // than telling them there are no jobs.
+                $button.prop('disabled', false).text('{{ __('load_more') }}');
             })
         }
 

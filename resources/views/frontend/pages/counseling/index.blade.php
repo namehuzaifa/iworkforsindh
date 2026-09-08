@@ -46,7 +46,7 @@
                         <div class="tw-mb-6 tw-bg-white tw-p-4 tw-rounded-xl tw-shadow-sm tw-border">
                             <form action="{{ route('counseling.sessions') }}" method="GET">
                                 <div class="row align-items-center">
-                                    <div class="col-lg-6 col-md-5 mb-3 mb-md-0">
+                                    <div class="col-lg-5 col-md-5 mb-3 mb-md-0">
                                         <div class="position-relative">
                                             <i class="ph-magnifying-glass position-absolute" style="left: 15px; top: 50%; transform: translateY(-50%); color: #9ca3af;"></i>
                                             <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search by title or counselor...') }}" class="form-control" style="padding-left: 40px;">
@@ -62,13 +62,13 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-lg-2 col-md-3">
-                                        <div class="d-flex gap-2">
-                                            <button type="submit" class="btn btn-primary w-100">
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class="d-flex gap-2 filter-actions">
+                                            <button type="submit" class="btn btn-primary flex-fill text-nowrap">
                                                 {{ __('Search') }}
                                             </button>
                                             @if(request('search') || request('category_id'))
-                                                <a href="{{ route('counseling.sessions') }}" class="btn btn-outline-secondary">
+                                                <a href="{{ route('counseling.sessions') }}" class="btn btn-outline-secondary flex-fill text-nowrap">
                                                     {{ __('Clear') }}
                                                 </a>
                                             @endif
@@ -144,7 +144,7 @@
                 </div>
 
                 <div class="tw-mt-4">
-                    {{ $sessions->links() }}
+                    {{ $sessions->links('vendor.pagination.frontend') }}
                 </div>
             @else
                 <div class="text-center tw-py-12">

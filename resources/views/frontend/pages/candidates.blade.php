@@ -274,9 +274,10 @@ $data = metaData('candidates');
         width: 100%;
         height: auto;
         display: block;
-        max-height: 550px;
-        object-fit: cover;
-        object-position: center top;
+        /* `max-height` + `object-fit: cover` was cropping the bottom of the
+           banner, cutting the "Join 150,000+ …" line in half. Letting the
+           image keep its own aspect ratio shows the whole artwork. */
+        max-width: 100%;
     }
 </style>
 @endpush

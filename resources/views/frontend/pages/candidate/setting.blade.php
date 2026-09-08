@@ -390,7 +390,9 @@
                                                             class="d-flex align-items-center form-control-icon date datepicker">
                                                             <input type="text" id="available_id_date"
                                                                 name="available_in"
-                                                                value="{{ old('available_in', date('d-m-Y', strtotime($candidate->available_in))) }}"
+                                                                {{-- An empty date used to fall through strtotime(null) === false and
+                                                                     render as 01-01-1970; leave the field blank instead. --}}
+                                                                value="{{ old('available_in', $candidate->available_in ? date('d-m-Y', strtotime($candidate->available_in)) : '') }}"
                                                                 placeholder="dd/mm/yyyy"
                                                                 class="form-control border-cutom @error('available_in') is-invalid @enderror">
                                                             <span class="input-group-addon input-group-text-custom">
@@ -991,7 +993,7 @@
     <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog tw-max-w-[536px]">
             <div class="modal-content">
-                <form action="{{ route('candidate.resume.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('candidate.resume.store') }}" method="POST" enctype="multipart/form-data" data-busy-submit>
                     @csrf
                     <div class="modal-body">
                         <h5 class="tw-text-lg tw-text-[#18191C] tw-font-semibold tw-mb-[18px]" id="cvModalLabel">
@@ -1479,7 +1481,6 @@
 
 @section('frontend_scripts')
     @livewireScripts
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('frontend/assets/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -1891,6 +1892,51 @@
                 $(this).val('');
             }
         });
+
+    </script>
+
+    <script>
+        // Change-password: flag a mismatch as the user types instead of only
+        // after the round trip to the server.
+        (function () {
+            var marker = document.querySelector('form input[name="type"][value="password"]');
+            var form = marker ? marker.closest('form') : null;
+            if (!form) return;
+
+            var password = form.querySelector('input[name="password"]');
+            var confirmation = form.querySelector('input[name="password_confirmation"]');
+            if (!password || !confirmation) return;
+
+            var hint = document.createElement('span');
+            hint.id = 'password-match-hint';
+            hint.className = 'text-danger';
+            hint.setAttribute('role', 'alert');
+            hint.textContent = '{{ __('password_confirmation_does_not_match') }}';
+            hint.hidden = true;
+
+            // Sit directly under the field group, where the server-side error
+            // would appear.
+            var anchor = confirmation.closest('.fromGroup') || confirmation;
+            anchor.parentElement.insertBefore(hint, anchor.nextSibling);
+
+            function check() {
+                var mismatch = confirmation.value.length > 0 && password.value !== confirmation.value;
+                hint.hidden = !mismatch;
+                confirmation.classList.toggle('is-invalid', mismatch);
+
+                return !mismatch;
+            }
+
+            password.addEventListener('input', check);
+            confirmation.addEventListener('input', check);
+
+            form.addEventListener('submit', function (e) {
+                if (!check()) {
+                    e.preventDefault();
+                    confirmation.focus();
+                }
+            });
+        })();
 
     </script>
 @endsection

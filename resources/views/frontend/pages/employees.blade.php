@@ -602,9 +602,10 @@
         width: 100%;
         height: auto;
         display: block;
-        max-height: 550px;
-        object-fit: cover;
-        object-position: center top;
+        /* `max-height` + `object-fit: cover` was cropping the bottom of the
+           banner, cutting the "Join a growing network of 450+ …" line in
+           half. Letting the image keep its aspect ratio shows it all. */
+        max-width: 100%;
     }
     </style>
 @endpush

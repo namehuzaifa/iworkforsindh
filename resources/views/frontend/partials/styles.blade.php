@@ -9,6 +9,8 @@
 @yield('frontend_links')
 @vite(['resources/frontend/sass/app.scss', 'resources/frontend/app.css'])
 
+@include('frontend.partials.ui-fixes')
+
 @if (config('app.demo_mode'))
     <!--only for our live site -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/free-guide.css') }}">

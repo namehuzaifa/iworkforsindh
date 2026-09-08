@@ -39,6 +39,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Validation\ValidationException;
 use Modules\Currency\Entities\Currency;
 use Modules\Location\Entities\Country;
 use PDF;
@@ -660,6 +661,11 @@ class CompanyController extends Controller
             flashSuccess(__('profile_updated'));
 
             return back();
+        } catch (ValidationException $e) {
+            // Let Laravel redirect back with the errors bound to their fields.
+            // Swallowing this turned "password confirmation does not match"
+            // into a generic toast with no indication of which input was wrong.
+            throw $e;
         } catch (\Exception $e) {
             flashError('An error occurred: '.$e->getMessage());
 

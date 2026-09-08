@@ -228,7 +228,12 @@
                     thousand: ',',
                     suffix: ' ({{ $currentCurrency->symbol }})',
                 }),
-                tooltips: true,
+                // Tooltips drop the currency suffix so long amounts fit inside
+                // the filter panel; the Min/Max labels below already show it.
+                tooltips: wNumb({
+                    decimals: 0,
+                    thousand: ',',
+                }),
                 orientation: 'horizontal',
             });
 

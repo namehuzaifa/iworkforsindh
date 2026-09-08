@@ -16,8 +16,10 @@ trait CandidateSkillAble
             'company' => 'required',
             'department' => 'required',
             'designation' => 'required',
-            'start' => 'required',
-            'end' => 'sometimes',
+            // Without `date` any free text reaches Carbon::parse() below and
+            // throws, turning a bad entry into a 500 instead of a field error.
+            'start' => 'required|date',
+            'end' => 'nullable|date',
         ]);
 
         $start_date = $request->start ? formatTime($request->start, 'Y-m-d') : null;
@@ -46,8 +48,8 @@ trait CandidateSkillAble
             'company' => 'required',
             'designation' => 'required',
             'department' => 'required',
-            'start' => 'required',
-            'end' => 'sometimes',
+            'start' => 'required|date',
+            'end' => 'nullable|date',
         ]);
 
         $experience = CandidateExperience::findOrFail($request->experience_id);

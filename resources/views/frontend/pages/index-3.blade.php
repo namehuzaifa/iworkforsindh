@@ -94,7 +94,10 @@
     @endif
 
     {{-- Army jobs --}}
-    @if ( count($company_jobs) && !auth('user')->check() || (auth('user')->check() && authUser()->role == 'candidate'))
+    {{-- `&&` binds tighter than `||`, so the old grouping let a logged-in
+         candidate satisfy the condition on their own and the section rendered
+         even with zero army jobs. Requiring the jobs first fixes that. --}}
+    @if (count($company_jobs) && (!auth('user')->check() || authUser()->role == 'candidate'))
         {{-- <section class="tw-bg-primary-50 md:tw-py-20 tw-py-12"> --}}
         <section class="army-jobs-card-section md:tw-py-20 tw-py-12">
             
@@ -2267,6 +2270,29 @@
             .search-field{
                 padding: 12px 45px !important;
             }
+            /* Submit button sits inside the pill, mirroring .search-icon's offset. */
+            .search-submit-btn{
+                position: absolute;
+                right: 28px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 34px;
+                height: 34px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                border: 0;
+                border-radius: 50%;
+                background: #0A65CC;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color .15s ease;
+            }
+            .search-submit-btn:hover,
+            .search-submit-btn:focus-visible{
+                background: #0850A3;
+            }
             .download-heading{
                 font-size:  16px;
                 color: #fff;
@@ -2314,8 +2340,23 @@
 
                     <form class="row mt-3" action="/jobs">
                         <div class="col-12 position-relative">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" name="keyword" class="form-control rounded-pill py-3 ps-5 search-field" placeholder="Job title, keywords...">
+                            {{-- Inline SVG instead of an icon font, so the icon still renders
+                                 if the font file fails to load. --}}
+                            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                aria-hidden="true">
+                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+                                <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input type="text" name="keyword"
+                                class="form-control rounded-pill py-3 ps-5 search-field"
+                                placeholder="Job title, keywords...">
+                            <button type="submit" class="search-submit-btn" aria-label="{{ __('search') }}">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
                         </div>
                     </form>
                     

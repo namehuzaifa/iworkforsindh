@@ -20,6 +20,7 @@ use App\Models\Skill;
 use App\Services\Website\Candidate\CandidateSettingUpdateService;
 use App\Services\Website\Candidate\DashboardService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CandidateController extends Controller
 {
@@ -206,12 +207,15 @@ class CandidateController extends Controller
             }
 
             // for contact
-            $contactInfo = ContactInfo::where('user_id', auth()->id())->first();
-            $contact = [];
-            if ($contactInfo) {
-                $contact = $contactInfo;
-            } else {
-                $contact = '';
+            // Fall back to an unsaved record rather than an empty string so the
+            // view can read ->phone / ->email without blowing up.
+            $contact = ContactInfo::where('user_id', auth()->id())->first()
+                ?: new ContactInfo(['user_id' => auth()->id()]);
+
+            // The number given at signup lives on the user, so show it here
+            // until the candidate saves a contact number of their own.
+            if (blank($contact->phone)) {
+                $contact->phone = auth()->user()->phone;
             }
 
             // for social link
@@ -258,6 +262,11 @@ class CandidateController extends Controller
             (new CandidateSettingUpdateService)->update($request);
 
             return back();
+        } catch (ValidationException $e) {
+            // Let Laravel redirect back with the errors bound to their fields.
+            // Swallowing this turned "password confirmation does not match"
+            // into a generic toast with no indication of which input was wrong.
+            throw $e;
         } catch (\Exception $e) {
             flashError('An error occurred: '.$e->getMessage());
 
@@ -288,6 +297,8 @@ class CandidateController extends Controller
 
                 return back();
             }
+        } catch (ValidationException $e) {
+            throw $e;
         } catch (\Exception $e) {
             flashError('An error occurred: '.$e->getMessage());
 

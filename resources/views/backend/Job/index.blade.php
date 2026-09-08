@@ -195,8 +195,8 @@
                                                     <div class="category">
                                                         <x-svg.table-layer />
                                                         <div>
-                                                            <h3>{{ $job->category->name }}</h3>
-                                                            <p>{{ $job->role->name }}</p>
+                                                            <h3>{{ $job->category?->name }}</h3>
+                                                            <p>{{ $job->role?->name }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -221,7 +221,7 @@
                                                             @else
                                                                 <h3 class="bold">{{ $job->custom_salary }}</h3>
                                                             @endif
-                                                            <p>{{ $job->salary_type->name }} </p>
+                                                            <p>{{ $job->salary_type?->name }} </p>
                                                         </div>
                                                     </div>
                                                 </td>

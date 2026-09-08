@@ -40,13 +40,13 @@
                     <tr>
                         <td><img src="{{ asset($course->thumbnail_url) }}" class="card-img-top labor-image" alt="{{ $course->thumbnail_url }}"></td>
                         <td>{{ $course->title }}</td>
-                        <td><span>{{ $course->category->name }}</span><br>
+                        <td><span>{{ $course->category?->name }}</span><br>
                             <span> Platform - {{ $course->platform }}</span>
                         </td>
                         <td> Rs <span class="old-price" style="text-decoration: line-through;">{{ $course->price }}</span>
                             <span class="free">{{ $course->discounted_price }}</span>
                         </td>
-                        <td>{{ $course->user->name }}</td>
+                        <td>{{ $course->user?->name }}</td>
 
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             <a href="javascript:void(0)" class="active-status">
@@ -77,7 +77,7 @@
                                 data-bs-toggle="modal" 
                                 data-bs-target="#courseModal" 
                                 data-title="{{ $course->title }}"
-                                data-category="{{ $course->category->name }}"
+                                data-category="{{ $course->category?->name }}"
                                 data-platform="{{ $course->platform }}"
                                 data-price="{{ $course->price }}"
                                 {{-- data-discounted_price="{{ $course->discounted_price }}" --}}

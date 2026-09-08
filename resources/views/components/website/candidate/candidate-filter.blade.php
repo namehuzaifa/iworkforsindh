@@ -112,7 +112,7 @@
                                     request('profession') ||
                                     request('experience') ||
                                     request('skills.0') ||
-                                    request('education') | request('gender'))
+                                    request('education') || request('gender'))
                                 <h2 class="tw-text-sm tw-text-[#767F8C] tw-whitespace-nowrap tw-mb-0">
                                     {{ __('active_filter') }}:</h2>
                                 <div class="d-flex w-100-p">

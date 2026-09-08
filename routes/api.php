@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CloudMessageController;
 use App\Http\Controllers\Api\SkilledLabourController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\CounselingController;
 use App\Http\Controllers\Api\CompanyJobsController;
 use App\Http\Controllers\Api\LocalizationController;
 use App\Http\Controllers\Api\SocialAuthController;

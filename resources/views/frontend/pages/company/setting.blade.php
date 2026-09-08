@@ -679,7 +679,6 @@
 
 @section('script')
     @livewireScripts
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('frontend/assets/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -993,5 +992,50 @@
                 leaflet_map.invalidateSize(true);
             }, 200);
         })
+
+    </script>
+
+    <script>
+        // Change-password: flag a mismatch as the user types instead of only
+        // after the round trip to the server.
+        (function () {
+            var marker = document.querySelector('form input[name="type"][value="password"]');
+            var form = marker ? marker.closest('form') : null;
+            if (!form) return;
+
+            var password = form.querySelector('input[name="password"]');
+            var confirmation = form.querySelector('input[name="password_confirmation"]');
+            if (!password || !confirmation) return;
+
+            var hint = document.createElement('span');
+            hint.id = 'password-match-hint';
+            hint.className = 'text-danger';
+            hint.setAttribute('role', 'alert');
+            hint.textContent = '{{ __('password_confirmation_does_not_match') }}';
+            hint.hidden = true;
+
+            // Sit directly under the field group, where the server-side error
+            // would appear.
+            var anchor = confirmation.closest('.fromGroup') || confirmation;
+            anchor.parentElement.insertBefore(hint, anchor.nextSibling);
+
+            function check() {
+                var mismatch = confirmation.value.length > 0 && password.value !== confirmation.value;
+                hint.hidden = !mismatch;
+                confirmation.classList.toggle('is-invalid', mismatch);
+
+                return !mismatch;
+            }
+
+            password.addEventListener('input', check);
+            confirmation.addEventListener('input', check);
+
+            form.addEventListener('submit', function (e) {
+                if (!check()) {
+                    e.preventDefault();
+                    confirmation.focus();
+                }
+            });
+        })();
     </script>
 @endsection

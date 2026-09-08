@@ -72,7 +72,7 @@
             <div class="text-primary-500 hoverbg-primary-50 plain-button icon-button">
                 @auth
                     @if (auth()->user()->role == 'candidate')
-                        <a href="{{ route('website.job.bookmark', $job->slug) }}" class="tw-text-[#C8CCD1]">
+                        <a href="{{ route('website.job.bookmark', $job->slug) }}" class="tw-text-[#C8CCD1]" data-busy-click>
                             @if ($job->bookmarked)
                                 <x-svg.bookmark-icon width="24" height="24" fill="#0A65CC" stroke="#0A65CC" />
                             @else
@@ -99,8 +99,9 @@
 {{-- Careerjet Jobs --}}
 @if ($job->job_provider && $job->job_provider == 'careerjet')
     <div class="tw-h-full">
-        <a href="{{ $job->url ?? '#' }}" target="_blank" class="card tw-card extra-jobs jobcardStyle1">
-            <div class="tw-p-6">
+        <a href="{{ $job->url ?? '#' }}" target="_blank"
+            class="tw-h-full tw-block card tw-card extra-jobs jobcardStyle1">
+            <div class="tw-p-6 tw-h-full">
                 <div class="tw-mb-5">
                     <div class="tw-mb-1.5">
                         <span class="tw-text-[#18191C] tw-text-lg tw-font-medium">
@@ -158,8 +159,9 @@
 {{-- Indeed Jobs --}}
 @if ($job->job_provider && $job->job_provider == 'indeed')
     <div class="tw-h-full">
-        <a href="{{ $job->url ?? '#' }}" target="_blank" class="card tw-card extra-jobs jobcardStyle1">
-            <div class="tw-p-6">
+        <a href="{{ $job->url ?? '#' }}" target="_blank"
+            class="tw-h-full tw-block card tw-card extra-jobs jobcardStyle1">
+            <div class="tw-p-6 tw-h-full">
                 <div class="tw-mb-5">
                     <div class="tw-mb-1.5">
                         <span class="tw-text-[#18191C] tw-text-lg tw-font-medium">

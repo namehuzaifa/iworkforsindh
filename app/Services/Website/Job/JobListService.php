@@ -70,23 +70,27 @@ class JobListService
 
             return $jobs;
         } else {
+            // These helpers return a Collection when the provider answers and a
+            // plain array when it does not, so normalise before counting —
+            // `[]->count()` was a fatal error that surfaced as a 500.
             if (config('templatecookie.default_job_provider') == 'indeed') {
-                $newJob = $this->indeedJobs($this->getIndeedJobs($request, 18, $request->page));
-                if ($newJob->count()) {
+                $newJob = collect($this->indeedJobs($this->getIndeedJobs($request, 18, $request->page)));
+                if ($newJob->isNotEmpty()) {
                     return $newJob;
-                } else {
-                    return 0;
                 }
             }
             if (config('templatecookie.default_job_provider') == 'careerjet') {
-                $newJob = $this->careerjetJobs($this->getCareerjetJobs($request, 18, $request->page));
+                $newJob = collect($this->careerjetJobs($this->getCareerjetJobs($request, 18, $request->page)));
 
-                if ($newJob->count()) {
+                if ($newJob->isNotEmpty()) {
                     return $newJob;
-                } else {
-                    return 0;
                 }
             }
+
+            // No external provider configured, or it returned nothing. Always
+            // hand back an empty collection: returning null/0 made the view
+            // render nothing, which crashed the "load more" script.
+            return collect();
         }
     }
 

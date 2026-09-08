@@ -282,21 +282,21 @@
         <div class="container ribbon-wrapper">
 
             <div class="feature-item">
-                <i class="fa-solid fa-globe"></i>
+                <i class="fas fa-globe"></i>
                 <span>50+ International Formats &amp; Styles</span>
             </div>
 
             <div class="divider"></div>
 
             <div class="feature-item">
-                <i class="fa-solid fa-gears"></i>
+                <i class="fas fa-gears"></i>
                 <span>ATS-Friendly Templates</span>
             </div>
 
             <div class="divider"></div>
 
             <div class="feature-item">
-                <i class="fa-solid fa-bolt"></i>
+                <i class="fas fa-bolt"></i>
                 <span>Fast &amp; Easy Resume Building</span>
             </div>
 

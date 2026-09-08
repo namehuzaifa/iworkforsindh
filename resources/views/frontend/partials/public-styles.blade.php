@@ -12,6 +12,8 @@
 
 @vite(['resources/frontend/sass/app.scss', 'resources/frontend/public.css'])
 
+@include('frontend.partials.ui-fixes')
+
 @php
     $sessionPrimaryColor = session('primaryColor');
     $primaryColor = $sessionPrimaryColor ? $sessionPrimaryColor : $setting->frontend_primary_color;
