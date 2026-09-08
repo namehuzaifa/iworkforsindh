@@ -2,7 +2,10 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="tw-flex tw-flex-wrap tw-items-center tw-gap-2 tw-mb-6 tw-mx-1.5 sm:tw-mx-0">
+        {{-- Popular tag row hidden on request. Kept in the DOM rather than
+             removed because the hidden `tag` input below is part of the search
+             form and the list markup is what drives tagFilter(). --}}
+        <div class="d-none tw-flex tw-flex-wrap tw-items-center tw-gap-2 tw-mb-6 tw-mx-1.5 sm:tw-mx-0">
             <p class="tw-text-[#767F8C] tw-text-sm tw-mb-0">{{ __('popular_tag') }}:</p>
             <ul class="tw-popular-search tw-flex-wrap">
                 @if (request('tag') && is_string(request('tag')))
