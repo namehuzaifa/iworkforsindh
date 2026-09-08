@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('frontend.layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <title>{{ __('reset_password') }} - {{ config('app.name') }}</title>
+@section('title')
+    {{ __('reset_password') }}
+@endsection
 
-    {{-- Style --}}
-    @include('frontend.partials.styles')
-</head>
-
-<body class="" dir="{{ langDirection() }}">
-
-    <header class="site-header rt-fixed-top auth-header">
-        <div class="main-header">
-            <div class="navbar">
-                <div class="container container-full-xxl">
-                    <a href="/" class="brand-logo"><img src="{{ $setting->dark_logo_url }}" alt="logo"></a>
-                </div><!-- /.container -->
-            </div><!-- /.navbar -->
-        </div><!-- /.main-header -->
-    </header>
-
-    <div class="row">
-        <div class="full-height col-12 order-1 order-lg-0">
+@section('main')
+    <div class="row mt-0 mt-lg-5">
+        <div class="col-12 order-1 order-lg-0">
             <div class="container">
-                <div class="row full-height align-items-center">
-                    <div class="col-xl-5 col-lg-8 col-md-9">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-5 col-lg-6 col-md-12">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -78,131 +60,20 @@
                 </div>
             </div>
         </div>
-
-        <div class="auth-right-sidebar col-12 order-0 order-lg-1 rt-mb-lg-30">
-            <div class="auth-right-sidebar order-lg-1 order-0">
-                <div class="sidebar-bg" style="background-image: url({{ asset($cms_setting->login_page_image) }})">
-                    <div class="sidebar-content">
-                        <h4 class="text-gray-10 rt-mb-50">{{ openJobs() }} {{ __('open_jobs_waiting_for_you') }}
-                        </h4>
-                        <div class="d-flex">
-                            <div class="flex-grow-1 rt-mb-24">
-                                <div class="card jobcardStyle1 counterbox4">
-                                    <div class="card-body">
-                                        <div class="rt-single-icon-box icon-center2">
-                                            <div class="icon-thumb">
-                                                <div class="icon-64">
-                                                    <x-svg.livejob-icon />
-                                                </div>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-20 ft-wt-5"><span
-                                                        class="counter">{{ livejob() }}</span></div>
-                                                <span class=" f-size-14">{{ __('live_job') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1  rt-mb-24">
-                                <div class="card jobcardStyle1 counterbox4">
-                                    <div class="card-body">
-                                        <div class="rt-single-icon-box icon-center2">
-                                            <div class="icon-thumb">
-                                                <div class="icon-64">
-                                                    <x-svg.thumb-icon />
-
-                                                </div>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-20 ft-wt-5"><span
-                                                        class="counter">{{ companies() }}</span></div>
-                                                <span class=" f-size-14">{{ __('companies') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1 rt-mb-24">
-                                <div class="card jobcardStyle1 counterbox4">
-                                    <div class="card-body">
-                                        <div class="rt-single-icon-box icon-center2">
-                                            <div class="icon-thumb">
-                                                <div class="icon-64">
-                                                    <x-svg.newjobs-icon />
-                                                </div>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-20 ft-wt-5"><span
-                                                        class="counter">{{ $candidates }}</span>
-                                                </div>
-                                                <span class=" f-size-14">{{ __('candidates') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+@endsection
 
-    <!-- PWA Button Start -->
-    <button class="pwa-install-btn bg-white position-fixed d-none" id="installApp">
-        <img src="{{ asset('pwa-btn.png') }}" alt="Install App">
-    </button>
-    <!-- PWA Button End -->
-
-    <!-- scripts -->
-    @include('frontend.partials.scripts')
+@section('script')
     <script>
         Validate();
         $('#email').keyup(Validate);
 
         function Validate() {
-            if (
-                $('#email').val().length > 0) {
+            if ($('#email').val().length > 0) {
                 $('#submitButton').prop("disabled", false);
             } else {
                 $('#submitButton').prop("disabled", true);
             }
         }
     </script>
-
-    <!-- PWA Script Start -->
-    @if ($setting->pwa_enable)
-        <script src="{{ asset('/sw.js') }}"></script>
-        <script>
-            if (!navigator.serviceWorker) {
-                navigator.serviceWorker.register("/sw.js").then(function(reg) {
-                    console.log("Service worker has been registered for scope: " + reg);
-                });
-            }
-
-            let deferredPrompt;
-            window.addEventListener('beforeinstallprompt', (e) => {
-                $('#installApp').removeClass('d-none');
-                deferredPrompt = e;
-            });
-
-            const installApp = document.getElementById('installApp');
-            installApp.addEventListener('click', async () => {
-                if (deferredPrompt !== null) {
-                    deferredPrompt.prompt();
-                    const {
-                        outcome
-                    } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        deferredPrompt = null;
-                    }
-                }
-            });
-        </script>
-    @endif
-    <!-- PWA Script End -->
-
-</body>
-
-</html>
+@endsection
