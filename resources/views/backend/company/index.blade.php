@@ -121,6 +121,7 @@
                                     @endif
                                     @if (userCan('company.update'))
                                         <th>{{ __('profile') }} {{ __('status') }}</th>
+                                        <th>{{ __('Job Tracking') }}</th>
                                     @endif
                                     @if (userCan('company.update') || userCan('compnay.delete'))
                                         <th width="12%">
@@ -205,6 +206,23 @@
                                                 <div class="mt-2">
                                                     <a href="{{route('admin.company.documents',$company)}}">View Documents</a>
                                                 </div>
+                                            </td>
+                                            {{-- Turning this on adds the "Posted by" / "Job source" fields to this
+                                                 company's job form. Every other company is left untouched. --}}
+                                            <td tabindex="0">
+                                                <a href="#" class="active-status">
+                                                    <label class="switch">
+                                                        <input data-companyid="{{ $company->id }}" type="checkbox"
+                                                            class="success job-tracking-switch"
+                                                            {{ $company->is_job_tracking ? 'checked' : '' }}>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                    <p style="min-width:70px"
+                                                        class="{{ $company->is_job_tracking ? 'active' : '' }}"
+                                                        id="job_tracking_status_{{ $company->id }}">
+                                                        {{ $company->is_job_tracking ? __('On') : __('Off') }}
+                                                    </p>
+                                                </a>
                                             </td>
                                         @endif
 
@@ -379,6 +397,25 @@
             }else{
                 $(`profile_status_${id}`).text("{{ __('unverified') }}")
             }
+        });
+
+        $('.job-tracking-switch').on('change', function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('companyid');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('company.job.tracking.change') }}',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(response) {
+                    toastr.success(response.message, 'Success');
+                }
+            });
+
+            $(`#job_tracking_status_${id}`).text(status == 1 ? "{{ __('On') }}" : "{{ __('Off') }}");
         });
     </script>
 @endsection

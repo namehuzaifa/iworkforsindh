@@ -13,6 +13,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Job;
+use App\Observers\JobObserver;
 use Modules\Currency\Entities\Currency;
 use Modules\Language\Entities\Language;
 use Modules\Location\Entities\Country;
@@ -43,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
         // \URL::forceScheme('https');
         // }
         Paginator::useBootstrap();
+
+        Job::observe(JobObserver::class);
 
         if (! app()->runningInConsole()) {
 

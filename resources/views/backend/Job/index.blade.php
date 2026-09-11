@@ -148,6 +148,7 @@
                                         <th width="2%">{{ __('id') }}</th>
                                         <th width="5%">{{ __('job') }}</th>
                                         <th width="10%">{{ __('category') }}/{{ __('role') }}</th>
+                                        <th width="10%">{{ __('Posted By') }}</th>
                                         <th width="10%">{{ __('Apply type') }}</th>
                                         <th width="10%">{{ __('salary') }}</th>
                                         <th width="10%">{{ __('deadline') }}</th>
@@ -199,6 +200,20 @@
                                                             <p>{{ $job->role?->name }}</p>
                                                         </div>
                                                     </div>
+                                                </td>
+                                                {{-- Only in-house accounts with job tracking on carry this;
+                                                     every other job simply shows a dash. --}}
+                                                <td tabindex="0">
+                                                    @if ($job->postingLog?->teamMember)
+                                                        <div class="category">
+                                                            <div>
+                                                                <h3>{{ $job->postingLog->teamMember->name }}</h3>
+                                                                <p>{{ $job->postingLog->source?->name }}</p>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <span class="text-muted">-</span>
+                                                    @endif
                                                 </td>
                                                 <td tabindex="0">
                                                     <div class="apply-type">

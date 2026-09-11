@@ -43,6 +43,26 @@ class JobCreateRequest extends FormRequest
             'is_remote' => 'nullable|numeric',
             'apply_on' => 'required',
             'location' => $this->method() == 'PUT' ? '' : Rule::requiredIf(! session('location')),
+
+            // Only the in-house accounts record who posted and where the job
+            // came from; for every other company these stay optional and the
+            // fields are not even rendered.
+            'team_member_id' => [Rule::requiredIf($this->tracksJobPosting()), 'nullable', 'exists:team_members,id'],
+            'job_source_id' => [Rule::requiredIf($this->tracksJobPosting()), 'nullable', 'exists:job_sources,id'],
+            'source_note' => 'nullable|string|max:255',
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'team_member_id.required' => __('Please select who is posting this job.'),
+            'job_source_id.required' => __('Please select where this job came from.'),
+        ];
+    }
+
+    protected function tracksJobPosting(): bool
+    {
+        return (bool) optional(currentCompany())->is_job_tracking;
     }
 }

@@ -39,6 +39,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use App\Models\JobSource;
+use App\Models\TeamMember;
 use Illuminate\Validation\ValidationException;
 use Modules\Currency\Entities\Currency;
 use Modules\Location\Entities\Country;
@@ -234,6 +236,14 @@ class CompanyController extends Controller
             $company_benefits = $all_benefits->where('company_id', currentCompany()->id);
             $data['benefits'] = $non_company_benefits->merge($company_benefits);
 
+            $data['isJobTracking'] = (bool) currentCompany()->is_job_tracking;
+            $data['teamMembers'] = $data['isJobTracking']
+                ? TeamMember::active()->orderBy('name')->get(['id', 'name'])
+                : collect();
+            $data['jobSources'] = $data['isJobTracking']
+                ? JobSource::active()->orderBy('name')->get(['id', 'name'])
+                : collect();
+
             return view('frontend.pages.company.pay-per-job', $data);
         } catch (\Exception $e) {
             flashError('An error occurred: '.$e->getMessage());
@@ -397,6 +407,16 @@ class CompanyController extends Controller
             $company_benefits = $all_benefits->where('company_id', currentCompany()->id);
             $data['benefits'] = $non_company_benefits->merge($company_benefits);
             $data['skills'] = Skill::all()->sortBy('name');
+
+            // In-house accounts also record who posted and where the job came
+            // from. Every other company gets the form exactly as before.
+            $data['isJobTracking'] = (bool) currentCompany()->is_job_tracking;
+            $data['teamMembers'] = $data['isJobTracking']
+                ? TeamMember::active()->orderBy('name')->get(['id', 'name'])
+                : collect();
+            $data['jobSources'] = $data['isJobTracking']
+                ? JobSource::active()->orderBy('name')->get(['id', 'name'])
+                : collect();
 
             return view('frontend.pages.company.postjob', $data);
         } catch (\Exception $e) {

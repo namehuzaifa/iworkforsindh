@@ -170,6 +170,23 @@
                                     {{ __('Counseling Categories') }}
                                 </x-admin.sidebar-list>
 
+                                <!-- ======= job posting tracking ======== -->
+                                <x-admin.sidebar-list :linkActive="Request::is('admin/job-posting-report*') ? true : false"
+                                    route="job-posting-report.index" path="job-posting-report.index" plus_icon=""
+                                    icon="fas fa-clipboard-list">
+                                    {{ __('Job Posting Report') }}
+                                </x-admin.sidebar-list>
+
+                                <x-admin.sidebar-list :linkActive="Request::is('admin/team-member*') ? true : false"
+                                    route="team-member.index" path="team-member.index" plus_icon="" icon="fas fa-users-cog">
+                                    {{ __('Team Members') }}
+                                </x-admin.sidebar-list>
+
+                                <x-admin.sidebar-list :linkActive="Request::is('admin/job-source*') ? true : false"
+                                    route="job-source.index" path="job-source.index" plus_icon="" icon="fas fa-sitemap">
+                                    {{ __('Job Sources') }}
+                                </x-admin.sidebar-list>
+
                                 <!-- ======= skills ======== -->
                                 @if (userCan('skills.view'))
                                     <x-admin.sidebar-list :linkActive="request()->routeIs('skill.*') ? true : false" route="skill.index" path="skill.index"

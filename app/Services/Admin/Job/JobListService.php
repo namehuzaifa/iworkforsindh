@@ -49,7 +49,12 @@ class JobListService
             $query->where('status', $request->filter_by);
         }
 
-        $jobs = $query->withoutEdited()->with(['experience', 'job_type', 'category'])->latest()->paginate(15);
+        // postingLog is eager loaded so the "posted by" column does not fire a
+        // query per row; it stays null for companies without job tracking.
+        $jobs = $query->withoutEdited()
+            ->with(['experience', 'job_type', 'category', 'postingLog.teamMember', 'postingLog.source'])
+            ->latest()
+            ->paginate(15);
         $jobs->appends($request->all());
 
         return $jobs;

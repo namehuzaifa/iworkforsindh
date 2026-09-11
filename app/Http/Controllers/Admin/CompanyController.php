@@ -303,6 +303,31 @@ class CompanyController extends Controller
     }
 
     /**
+     * Turn job posting tracking on or off for a company.
+     *
+     * Only companies with this on get the "Posted by" / "Job source" fields on
+     * the job form, so every other company posts exactly as before.
+     *
+     * @return void
+     */
+    public function jobTrackingChange(Request $request)
+    {
+        try {
+            $company = Company::findOrFail($request->id);
+
+            $company->update(['is_job_tracking' => (bool) $request->status]);
+
+            return responseSuccess($company->is_job_tracking
+                ? __('Job tracking enabled for this company')
+                : __('Job tracking disabled for this company'));
+        } catch (\Exception $e) {
+            flashError('An error occurred: '.$e->getMessage());
+
+            return back();
+        }
+    }
+
+    /**
      * Change company document verification status
      *
      * @param  Request  $request

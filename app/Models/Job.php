@@ -273,6 +273,15 @@ class Job extends Model
     }
 
     /**
+     * Who on the team posted this job. Only present for the in-house accounts
+     * that have job tracking switched on, so it is null for everything else.
+     */
+    public function postingLog()
+    {
+        return $this->hasOne(JobPostingLog::class);
+    }
+
+    /**
      * Get all of the bookmarkedCandidates for the Job
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

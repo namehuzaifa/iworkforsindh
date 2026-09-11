@@ -39,6 +39,9 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\SkilledLaborController;
 use App\Http\Controllers\Admin\CounselorController;
 use App\Http\Controllers\Admin\CounselingCategoryController;
+use App\Http\Controllers\Admin\JobPostingReportController;
+use App\Http\Controllers\Admin\JobSourceController;
+use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\SearchCountryController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\Website\WebsiteSettingController;
@@ -109,6 +112,30 @@ Route::prefix('admin')->group(function () {
 
         // Counseling Category Route
         Route::resource('counseling-category', CounselingCategoryController::class)->except(['create', 'show']);
+
+        // Job posting tracking — who on the team posted which job
+        Route::controller(JobSourceController::class)->prefix('job-source')->name('job-source.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'store')->name('store');
+            Route::put('/{jobSource}', 'update')->name('update');
+            Route::get('/{jobSource}/toggle', 'toggle')->name('toggle');
+            Route::delete('/{jobSource}', 'destroy')->name('destroy');
+        });
+
+        Route::controller(TeamMemberController::class)->prefix('team-member')->name('team-member.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'store')->name('store');
+            Route::put('/{teamMember}', 'update')->name('update');
+            Route::get('/{teamMember}/toggle', 'toggle')->name('toggle');
+            Route::delete('/{teamMember}', 'destroy')->name('destroy');
+        });
+
+        Route::controller(JobPostingReportController::class)->prefix('job-posting-report')->name('job-posting-report.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/export', 'export')->name('export');
+        });
+
+        Route::get('/company/job-tracking/status', [CompanyController::class, 'jobTrackingChange'])->name('company.job.tracking.change');
 
         //Users Route
         Route::resource('user', UserController::class)->only(['dashboard', 'index', 'create', 'store', 'edit', 'update', 'destroy']);

@@ -22,6 +22,9 @@
                         </h2>
                         <form action="{{ route('company.job.store') }}" method="POST" class="rt-from">
                             @csrf
+
+                            @include('frontend.pages.company.partials.job-tracking-fields')
+
                             <div class="post-job-item rt-mb-15 tw-w-full tw-overflow-hidden">
                                 <div class="row">
                                     <div class="col-lg-8 rt-mb-20">
