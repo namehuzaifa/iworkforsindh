@@ -63,10 +63,28 @@
 
             {{-- ============ Held for review ============ --}}
             @if ($tab === 'held')
+                <form method="GET" class="form-inline mb-3">
+                    <input type="hidden" name="tab" value="held">
+                    <label class="mr-2">{{ __('Job title') }}</label>
+                    <input type="text" name="title" value="{{ request('title') }}"
+                        class="form-control form-control-sm mr-3" placeholder="{{ __('Search title') }}">
+                    <button class="btn btn-sm btn-primary">{{ __('Filter') }}</button>
+
+                    @if (request('title'))
+                        <a href="{{ route('duplicate-job.index', ['tab' => 'held']) }}"
+                            class="btn btn-sm btn-outline-secondary ml-2">{{ __('Reset') }}</a>
+                    @endif
+                </form>
+
                 @if ($held->isEmpty())
                     <div class="text-center py-5 text-muted">
-                        <i class="fas fa-check-circle fa-2x mb-2 d-block text-success"></i>
-                        {{ __('Nothing is waiting. New postings that match an existing job will appear here.') }}
+                        @if (request('title'))
+                            <i class="fas fa-search fa-2x mb-2 d-block"></i>
+                            {{ __('No held job matches that title.') }}
+                        @else
+                            <i class="fas fa-check-circle fa-2x mb-2 d-block text-success"></i>
+                            {{ __('Nothing is waiting. New postings that match an existing job will appear here.') }}
+                        @endif
                     </div>
                 @else
                     <form action="{{ route('duplicate-job.resolve') }}" method="POST" class="js-resolve-form">
@@ -147,8 +165,13 @@
             @if ($tab === 'groups')
                 <form method="GET" class="form-inline mb-3">
                     <input type="hidden" name="tab" value="groups">
+
+                    <label class="mr-2">{{ __('Job title') }}</label>
+                    <input type="text" name="title" value="{{ request('title') }}"
+                        class="form-control form-control-sm mr-3" placeholder="{{ __('Search title') }}">
+
                     <label class="mr-2">{{ __('Company') }}</label>
-                    <select name="company_id" class="form-control form-control-sm mr-2">
+                    <select name="company_id" class="form-control form-control-sm mr-3">
                         <option value="">{{ __('All') }}</option>
                         @foreach ($companies as $company)
                             <option value="{{ $company->id }}"
@@ -157,13 +180,24 @@
                             </option>
                         @endforeach
                     </select>
+
                     <button class="btn btn-sm btn-primary">{{ __('Filter') }}</button>
+
+                    @if (request('title') || request('company_id'))
+                        <a href="{{ route('duplicate-job.index', ['tab' => 'groups']) }}"
+                            class="btn btn-sm btn-outline-secondary ml-2">{{ __('Reset') }}</a>
+                    @endif
                 </form>
 
                 @if ($hashes->isEmpty())
                     <div class="text-center py-5 text-muted">
-                        <i class="fas fa-check-circle fa-2x mb-2 d-block text-success"></i>
-                        {{ __('No duplicate groups found.') }}
+                        @if (request('title') || request('company_id'))
+                            <i class="fas fa-search fa-2x mb-2 d-block"></i>
+                            {{ __('No duplicates match this filter.') }}
+                        @else
+                            <i class="fas fa-check-circle fa-2x mb-2 d-block text-success"></i>
+                            {{ __('No duplicate groups found.') }}
+                        @endif
                     </div>
                 @else
                     @foreach ($hashes as $hash)

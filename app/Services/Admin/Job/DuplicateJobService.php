@@ -94,6 +94,7 @@ class DuplicateJobService
             ->whereNotNull('duplicate_hash')
             ->where('waiting_for_edit_approval', false)
             ->when($request->company_id, fn ($q) => $q->where('company_id', $request->company_id))
+            ->when($request->title, fn ($q) => $q->where('title', 'LIKE', '%'.$request->title.'%'))
             ->groupBy('duplicate_hash')
             ->havingRaw('COUNT(*) > 1')
             ->orderByDesc('total')

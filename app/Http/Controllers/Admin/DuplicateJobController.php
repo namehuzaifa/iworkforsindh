@@ -37,7 +37,10 @@ class DuplicateJobController extends Controller
         ];
 
         if ($tab === 'held') {
+            // The badge above keeps the unfiltered total, so searching never
+            // makes it look like the queue has shrunk.
             $data['held'] = $this->heldQuery()
+                ->when($request->title, fn ($q) => $q->where('title', 'LIKE', '%'.$request->title.'%'))
                 ->with('company.user', 'postingLog.teamMember', 'duplicateOf')
                 ->withCount([
                     'allAppliedJobs as applications_count',
