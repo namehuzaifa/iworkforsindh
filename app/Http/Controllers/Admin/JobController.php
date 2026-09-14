@@ -21,6 +21,7 @@ use App\Models\Skill;
 use App\Models\Tag;
 use App\Notifications\JobApprovalNotification;
 use App\Notifications\Website\Candidate\RelatedJobNotification;
+use App\Services\Admin\Job\DuplicateJobService;
 use App\Services\Admin\Job\JobCreateService;
 use App\Services\Admin\Job\JobListService;
 use App\Services\Admin\Job\JobUpdateService;
@@ -282,23 +283,55 @@ class JobController extends Controller
         }
     }
 
-    public function deleteSelected(Request $request)
+    /**
+     * Bulk delete from the job list.
+     *
+     * Goes through the same service as the duplicate cleanup so that the
+     * deletion is audited, the rows in company_question_job that no foreign
+     * key covers are removed, and anything a candidate has already applied to
+     * or bookmarked is left alone unless it is deleted deliberately, one job
+     * at a time.
+     */
+    public function deleteSelected(Request $request, DuplicateJobService $service)
     {
-        $ids = $request->ids;
-        Job::whereIn('id', $ids)->delete();
-        flashSuccess(__('job_deleted_successfully'));
+        abort_if(! userCan('job.delete'), 403);
 
-        return back();
+        $request->validate([
+            'ids' => 'required|array|min:1',
+            'ids.*' => 'integer',
+        ]);
 
-        // Return response if needed
+        $result = $service->delete($request->ids);
+
+        $message = __(':count job(s) deleted.', ['count' => $result['done']]);
+
+        if ($result['skipped'] > 0) {
+            $message .= ' '.__(':count skipped because candidates have applied to or bookmarked them.', [
+                'count' => $result['skipped'],
+            ]);
+        }
+
+        return response()->json([
+            'deleted' => $result['done'],
+            'skipped' => $result['skipped'],
+            'message' => $message,
+        ]);
     }
 
     public function clone(Job $job)
     {
         try {
+            abort_if(! userCan('job.create'), 403);
+
             $newJob = $job->replicate();
             $newJob->created_at = now();
             $newJob->slug = Str::slug($job->title).'-'.time().'-'.uniqid();
+
+            // A clone is an exact copy of a live job. Publishing it straight
+            // away would put two identical listings on the site, so it waits
+            // for approval and starts its view count from zero.
+            $newJob->status = 'pending';
+            $newJob->total_views = 0;
             $newJob->save();
 
             flashSuccess(__('job_cloned_successfully'));

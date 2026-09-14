@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CandidateController;
 use App\Http\Controllers\Admin\CandidateLanguageController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\DuplicateJobController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\ExperienceController;
@@ -162,7 +163,16 @@ Route::prefix('admin')->group(function () {
 
         //job Route resource
         Route::resource('job', JobController::class);
-        Route::get('/jobs/delete-selected', [JobController::class, 'deleteSelected'])->name('jobs.deleteSelected');
+        // Deleting is a POST so it cannot be triggered by following a link.
+        Route::post('/jobs/delete-selected', [JobController::class, 'deleteSelected'])->name('jobs.deleteSelected');
+
+        // Duplicate jobs
+        Route::prefix('job-duplicates')->name('duplicate-job.')->group(function () {
+            Route::get('/', [DuplicateJobController::class, 'index'])->name('index');
+            Route::post('/resolve', [DuplicateJobController::class, 'resolve'])->name('resolve');
+            Route::post('/scan', [DuplicateJobController::class, 'scan'])->name('scan');
+            Route::post('/toggle', [DuplicateJobController::class, 'toggleCheck'])->name('toggle');
+        });
         Route::get('applied/jobs', [JobController::class, 'appliedJobs'])->name('applied.jobs');
         Route::get('applied/jobs/{applied_job}', [JobController::class, 'appliedJobsShow'])->name('applied.job.show');
         Route::post('/job/bulk/import', [JobController::class, 'bulkImport'])->name('admin.job.bulk.import');

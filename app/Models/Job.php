@@ -282,6 +282,15 @@ class Job extends Model
     }
 
     /**
+     * The job this one was flagged as a copy of, set by the pre-publish
+     * duplicate check.
+     */
+    public function duplicateOf(): BelongsTo
+    {
+        return $this->belongsTo(Job::class, 'duplicate_of_job_id');
+    }
+
+    /**
      * Get all of the bookmarkedCandidates for the Job
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

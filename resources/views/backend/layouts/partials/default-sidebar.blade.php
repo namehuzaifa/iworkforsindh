@@ -89,6 +89,13 @@
                             {{ __('jobs') }}
                         </x-admin.sidebar-list>
                     @endif
+                    <!-- ======= Duplicate Jobs ======== -->
+                    @if (userCan('job.view'))
+                        <x-admin.sidebar-list :linkActive="Request::is('admin/job-duplicates*') ? true : false" route="duplicate-job.index"
+                            path="duplicate-job.index" plus_icon="" icon="fas fa-clone">
+                            {{ __('Duplicate Jobs') }}
+                        </x-admin.sidebar-list>
+                    @endif
                     <!-- ======= Applied Job ======== -->
                     @if (userCan('job.view'))
                         <x-admin.sidebar-list :linkActive="Request::is('admin/applied/jobs/*') ||

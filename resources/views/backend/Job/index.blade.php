@@ -495,22 +495,36 @@
                         selectedJobs.push($(this).val());
                     });
 
-                    function showSuccessMessage(message) {
-                        toastr.success(message);
+                    if (selectedJobs.length === 0) {
+                        toastr.warning('{{ __('Select at least one job first.') }}');
+                        return;
                     }
+
+                    if (!confirm('{{ __('Permanently delete the selected jobs? This cannot be undone.') }}')) {
+                        return;
+                    }
+
                     // AJAX request to delete selected jobs
                     $.ajax({
                         url: '{{ route('jobs.deleteSelected') }}',
+                        type: 'POST',
                         data: {
+                            _token: '{{ csrf_token() }}',
                             ids: selectedJobs
                         },
                         success: function(response) {
-
-                            showSuccessMessage('Job deleted successfully');
-                            window.location.reload()
+                            if (response.skipped > 0) {
+                                toastr.warning(response.message);
+                            } else {
+                                toastr.success(response.message);
+                            }
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 1200);
                         },
                         error: function(xhr, status, error) {
                             console.error(error);
+                            toastr.error('{{ __('something_went_wrong') }}');
                         }
                     });
                 });
