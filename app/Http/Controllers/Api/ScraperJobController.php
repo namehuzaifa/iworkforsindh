@@ -212,7 +212,7 @@ class ScraperJobController extends Controller
             'education_id' => $this->lookupId(EducationTranslation::class, 'education_id', $request->education, 'Any'),
             'salary_type_id' => $this->lookupId(SalaryTypeTranslation::class, 'salary_type_id', $request->salary_type, 'Monthly'),
             'salary_mode' => $salaryMode,
-            'custom_salary' => $salaryMode === 'custom' ? ($request->custom_salary ?: 'Competitive') : null,
+            'custom_salary' => $salaryMode === 'custom' ? ($request->custom_salary ?: 'Market Competitive') : null,
             'min_salary' => $request->min_salary,
             'max_salary' => $request->max_salary,
             'vacancies' => $request->vacancies ?: 1,
