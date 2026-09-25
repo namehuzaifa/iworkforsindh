@@ -15,6 +15,8 @@ class JobPostingLog extends Model
         'team_member_id',
         'job_source_id',
         'source_note',
+        'source_url',
+        'source_url_hash',
         'ip_address',
         'user_agent',
     ];

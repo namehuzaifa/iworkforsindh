@@ -65,4 +65,11 @@ return [
         'redirect' => '/auth/github/callback',
         'active' => false,
     ],
+
+    // The job scraper posts through POST /api/scraper/jobs. It sends `key` in
+    // the X-API-KEY header, and every job it posts goes to `company_id`.
+    'scraper' => [
+        'key' => env('SCRAPER_API_KEY'),
+        'company_id' => env('SCRAPER_COMPANY_ID'),
+    ],
 ];

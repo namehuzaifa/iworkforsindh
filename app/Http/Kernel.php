@@ -80,6 +80,7 @@ class Kernel extends HttpKernel
 
         'api_company' => \App\Http\Middleware\Api\CompanyApiMiddleware::class,
         'api_has_plan' => \App\Http\Middleware\Api\HasPlanApiMiddleware::class,
+        'api_scraper' => \App\Http\Middleware\Api\ScraperApiKeyMiddleware::class,
         'restrict.rider' => \App\Http\Middleware\RestrictRiderAccess::class,
         'restrict.course_manager' => \App\Http\Middleware\RestrictCourseManager::class,
     ];

@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\CounselingController;
 use App\Http\Controllers\Api\CompanyJobsController;
 use App\Http\Controllers\Api\LocalizationController;
+use App\Http\Controllers\Api\ScraperJobController;
 use App\Http\Controllers\Api\SocialAuthController;
 use App\Http\Controllers\Api\WebsiteController;
 use Illuminate\Http\Request;
@@ -76,6 +77,11 @@ Route::controller(CounselingController::class)->prefix('counseling')->group(func
     Route::get('/sessions/{session}', 'sessionDetail');                // Single session detail
     Route::get('/sessions/{session}/slots', 'sessionSlots');           // Available time slots for a date
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Job Scraper — authenticated by the X-API-KEY header, not a user login
+// ─────────────────────────────────────────────────────────────────────────────
+Route::post('/scraper/jobs', [ScraperJobController::class, 'store'])->middleware('api_scraper');
 
 Route::post('/social-media-authentication', [SocialAuthController::class, 'socialAuthentication']);
 

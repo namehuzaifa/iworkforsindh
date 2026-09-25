@@ -1,0 +1,271 @@
+{
+    "info": {
+        "name": "Scraper Jobs API",
+        "description": "POST /api/scraper/jobs — posts one scraped job to the scraper company as pending.\n\nSet the collection variables before running:\n- base_url: https://iwork4sindh.com (live) or http://portal.test (local)\n- scraper_api_key: the SCRAPER_API_KEY from that server's .env\n\nResponses:\n- 201 created: job posted, waiting for admin approval\n- 200 created=false: skipped (no valid apply_url/apply_email) or already posted (same source_url)\n- 401: wrong or missing API key\n- 422: validation failed",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "https://iwork4sindh.com"
+        },
+        {
+            "key": "scraper_api_key",
+            "value": ""
+        }
+    ],
+    "item": [
+        {
+            "name": "Scraper - Post job (all fields)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": "{{base_url}}/api/scraper/jobs",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"Accountant (Postman test)\",\n  \"description\": \"We are hiring an accountant with good knowledge of bookkeeping, taxation and monthly reporting.\",\n  \"source_url\": \"https://example.com/jobs/postman-{{$timestamp}}\",\n  \"source\": \"Rozee.pk\",\n  \"category\": \"Accounting\",\n  \"role\": \"Accountant\",\n  \"job_type\": \"Full Time\",\n  \"experience\": \"2 Years\",\n  \"education\": \"Bachelor Degree\",\n  \"salary_type\": \"Monthly\",\n  \"min_salary\": 50000,\n  \"max_salary\": 80000,\n  \"vacancies\": 2,\n  \"deadline\": \"2026-12-31\",\n  \"apply_url\": \"https://example.com/apply/123\",\n  \"city\": \"Karachi\",\n  \"country\": \"Pakistan\",\n  \"is_remote\": false,\n  \"skills\": [\"Excel\", \"QuickBooks\"]\n}"
+                },
+                "description": "Every field the API accepts. source_url is unique on each send ({{$timestamp}}), so this always creates a new job. Expect 201.",
+                "auth": {
+                    "type": "apikey",
+                    "apikey": [
+                        {
+                            "key": "key",
+                            "value": "X-API-KEY",
+                            "type": "string"
+                        },
+                        {
+                            "key": "value",
+                            "value": "{{scraper_api_key}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "in",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Scraper - Post job (minimum, email apply)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": "{{base_url}}/api/scraper/jobs",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"Office Assistant (Postman test)\",\n  \"description\": \"Office assistant required for day to day admin work.\",\n  \"source_url\": \"https://example.com/jobs/postman-min-{{$timestamp}}\",\n  \"apply_email\": \"hr@example.com\"\n}"
+                },
+                "description": "Only the required fields plus an email to apply on. No category is sent, so it goes under Others. Expect 201.",
+                "auth": {
+                    "type": "apikey",
+                    "apikey": [
+                        {
+                            "key": "key",
+                            "value": "X-API-KEY",
+                            "type": "string"
+                        },
+                        {
+                            "key": "value",
+                            "value": "{{scraper_api_key}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "in",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Scraper - Duplicate (send twice)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": "{{base_url}}/api/scraper/jobs",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"Duplicate check (Postman test)\",\n  \"description\": \"Send this request twice to see the duplicate response.\",\n  \"source_url\": \"https://example.com/jobs/postman-duplicate-check\",\n  \"apply_url\": \"https://example.com/apply/dup\"\n}"
+                },
+                "description": "Fixed source_url. First send: 201. Every send after that: 200 with created=false, \"This job was already posted.\"",
+                "auth": {
+                    "type": "apikey",
+                    "apikey": [
+                        {
+                            "key": "key",
+                            "value": "X-API-KEY",
+                            "type": "string"
+                        },
+                        {
+                            "key": "value",
+                            "value": "{{scraper_api_key}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "in",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Scraper - Skipped (no apply option)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": "{{base_url}}/api/scraper/jobs",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"No apply option (Postman test)\",\n  \"description\": \"This job has no apply link or email so it should be skipped.\",\n  \"source_url\": \"https://example.com/jobs/postman-skip-{{$timestamp}}\",\n  \"apply_url\": \"not a link\"\n}"
+                },
+                "description": "No valid apply_url or apply_email. Expect 200 with skipped=true; no job is created.",
+                "auth": {
+                    "type": "apikey",
+                    "apikey": [
+                        {
+                            "key": "key",
+                            "value": "X-API-KEY",
+                            "type": "string"
+                        },
+                        {
+                            "key": "value",
+                            "value": "{{scraper_api_key}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "in",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Scraper - Validation error",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": "{{base_url}}/api/scraper/jobs",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"Missing fields\"\n}"
+                },
+                "description": "description and source_url are missing. Expect 422 with the errors listed.",
+                "auth": {
+                    "type": "apikey",
+                    "apikey": [
+                        {
+                            "key": "key",
+                            "value": "X-API-KEY",
+                            "type": "string"
+                        },
+                        {
+                            "key": "value",
+                            "value": "{{scraper_api_key}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "in",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Scraper - Wrong API key",
+            "request": {
+                "auth": {
+                    "type": "apikey",
+                    "apikey": [
+                        {
+                            "key": "key",
+                            "value": "X-API-KEY",
+                            "type": "string"
+                        },
+                        {
+                            "key": "value",
+                            "value": "wrong-key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "in",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": "{{base_url}}/api/scraper/jobs",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"Wrong key\"\n}"
+                },
+                "description": "Overrides the collection key with a wrong one. Expect 401."
+            }
+        }
+    ]
+}
