@@ -38,23 +38,23 @@ use function is_string;
 /**
  * @internal
  */
-final class WithLcobucciJWT implements Handler
+final readonly class WithLcobucciJWT implements Handler
 {
-    private readonly Parser $parser;
+    private Parser $parser;
 
-    private readonly Signer $signer;
+    private Signer $signer;
 
-    private readonly Validator $validator;
+    private Validator $validator;
 
-    private readonly bool $isRunOnEmulator;
+    private bool $isRunOnEmulator;
 
     /**
      * @param non-empty-string $projectId
      */
     public function __construct(
-        private readonly string $projectId,
-        private readonly Keys $keys,
-        private readonly ClockInterface $clock,
+        private string $projectId,
+        private Keys $keys,
+        private ClockInterface $clock,
     ) {
         $this->parser = new Parser(new JoseEncoder());
 
@@ -136,31 +136,27 @@ final class WithLcobucciJWT implements Handler
 
     private function getKey(UnencryptedToken $token): string
     {
+        $keys = $this->keys->all();
+        if ($keys === []) {
+            throw IdTokenVerificationFailed::withTokenAndReasons($token->toString(), ['No keys are available to verify the tokens signature.']);
+        }
+
         if ($this->isRunOnEmulator && ($this->signer instanceof None)) {
             return '';
         }
 
         $keyId = $token->headers()->get('kid');
-        $keys = $this->keys->all();
-        $key = $keys[$keyId] ?? null;
-
-        if ($key !== null) {
-            return $key;
-        }
-
-        if ($this->isRunOnEmulator) {
-            return '';
-        }
-
-        if ($keys === []) {
-            throw IdTokenVerificationFailed::withTokenAndReasons($token->toString(), ['No keys are available to verify the tokens signature.']);
-        }
-
         if (!is_string($keyId) || $keyId === '') {
             throw IdTokenVerificationFailed::withTokenAndReasons($token->toString(), ['No key ID was found to verify the signature of this token.']);
         }
 
-        throw IdTokenVerificationFailed::withTokenAndReasons($token->toString(), ["No public key matching the key ID '{$keyId}' was found to verify the signature of this token."]);
+        $key = $keys[$keyId] ?? null;
+
+        if ($key === null) {
+            throw IdTokenVerificationFailed::withTokenAndReasons($token->toString(), ["No public key matching the key ID '{$keyId}' was found to verify the signature of this token."]);
+        }
+
+        return $key;
     }
 
     private function assertUserAuthedAt(UnencryptedToken $token, DateTimeInterface $now): void

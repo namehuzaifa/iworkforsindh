@@ -23,17 +23,27 @@ class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata extends \Goo
   protected $backupConfigurationDataType = '';
   protected $backupRunType = StorageDatabasecenterPartnerapiV1mainBackupRun::class;
   protected $backupRunDataType = '';
+  /**
+   * Disable validation warnings
+   *
+   * @var bool
+   */
+  public $isDeletionProtectionEnabled;
   protected $productType = StorageDatabasecenterProtoCommonProduct::class;
   protected $productDataType = '';
   protected $resourceIdType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::class;
   protected $resourceIdDataType = '';
   /**
+   * Required. Disable validation warnings
+   *
    * @var string
    */
   public $resourceName;
 
   /**
-   * @param StorageDatabasecenterPartnerapiV1mainBackupConfiguration
+   * Disable validation warnings
+   *
+   * @param StorageDatabasecenterPartnerapiV1mainBackupConfiguration $backupConfiguration
    */
   public function setBackupConfiguration(StorageDatabasecenterPartnerapiV1mainBackupConfiguration $backupConfiguration)
   {
@@ -47,7 +57,9 @@ class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata extends \Goo
     return $this->backupConfiguration;
   }
   /**
-   * @param StorageDatabasecenterPartnerapiV1mainBackupRun
+   * Disable validation warnings
+   *
+   * @param StorageDatabasecenterPartnerapiV1mainBackupRun $backupRun
    */
   public function setBackupRun(StorageDatabasecenterPartnerapiV1mainBackupRun $backupRun)
   {
@@ -61,7 +73,25 @@ class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata extends \Goo
     return $this->backupRun;
   }
   /**
-   * @param StorageDatabasecenterProtoCommonProduct
+   * Disable validation warnings
+   *
+   * @param bool $isDeletionProtectionEnabled
+   */
+  public function setIsDeletionProtectionEnabled($isDeletionProtectionEnabled)
+  {
+    $this->isDeletionProtectionEnabled = $isDeletionProtectionEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getIsDeletionProtectionEnabled()
+  {
+    return $this->isDeletionProtectionEnabled;
+  }
+  /**
+   * Disable validation warnings
+   *
+   * @param StorageDatabasecenterProtoCommonProduct $product
    */
   public function setProduct(StorageDatabasecenterProtoCommonProduct $product)
   {
@@ -75,7 +105,9 @@ class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata extends \Goo
     return $this->product;
   }
   /**
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
+   * Disable validation warnings
+   *
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $resourceId
    */
   public function setResourceId(StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $resourceId)
   {
@@ -89,7 +121,9 @@ class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata extends \Goo
     return $this->resourceId;
   }
   /**
-   * @param string
+   * Required. Disable validation warnings
+   *
+   * @param string $resourceName
    */
   public function setResourceName($resourceName)
   {

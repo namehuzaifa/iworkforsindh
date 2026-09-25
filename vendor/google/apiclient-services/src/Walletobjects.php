@@ -57,6 +57,7 @@ class Walletobjects extends \Google\Service
   public $smarttap;
   public $transitclass;
   public $transitobject;
+  public $walletobjects_v1_privateContent;
   public $rootUrlTemplate;
 
   /**
@@ -712,6 +713,10 @@ class Walletobjects extends \Google\Service
               'path' => 'walletobjects/v1/jwt',
               'httpMethod' => 'POST',
               'parameters' => [],
+            ],'validate' => [
+              'path' => 'walletobjects/v1/jwt/validate',
+              'httpMethod' => 'POST',
+              'parameters' => [],
             ],
           ]
         ]
@@ -1222,6 +1227,20 @@ class Walletobjects extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],
+          ]
+        ]
+    );
+    $this->walletobjects_v1_privateContent = new Walletobjects\Resource\WalletobjectsV1PrivateContent(
+        $this,
+        $this->serviceName,
+        'privateContent',
+        [
+          'methods' => [
+            'setPassUpdateNotice' => [
+              'path' => 'walletobjects/v1/privateContent/setPassUpdateNotice',
+              'httpMethod' => 'POST',
+              'parameters' => [],
             ],
           ]
         ]

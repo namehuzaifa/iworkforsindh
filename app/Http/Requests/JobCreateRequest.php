@@ -46,7 +46,8 @@ class JobCreateRequest extends FormRequest
 
             // Only the in-house accounts record who posted and where the job
             // came from; for every other company these stay optional and the
-            // fields are not even rendered.
+            // fields are not even rendered. They are only asked for when the
+            // job is first posted; on edit they are shown locked and never sent.
             'team_member_id' => [Rule::requiredIf($this->tracksJobPosting()), 'nullable', 'exists:team_members,id'],
             'job_source_id' => [Rule::requiredIf($this->tracksJobPosting()), 'nullable', 'exists:job_sources,id'],
             'source_note' => 'nullable|string|max:255',
@@ -63,6 +64,10 @@ class JobCreateRequest extends FormRequest
 
     protected function tracksJobPosting(): bool
     {
+        if ($this->isMethod('PUT')) {
+            return false;
+        }
+
         return (bool) optional(currentCompany())->is_job_tracking;
     }
 }

@@ -23,6 +23,7 @@
                         <form action="{{ route('company.job.update', $job->slug) }}" method="POST" class="rt-from">
                             @csrf
                             @method('PUT')
+                            @include('frontend.pages.company.partials.job-tracking-fields-locked')
                             <div class="post-job-item rt-mb-15">
                                 <div class="row">
                                     <div class="col-lg-8 rt-mb-20">

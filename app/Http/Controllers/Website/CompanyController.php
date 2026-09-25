@@ -476,6 +476,13 @@ class CompanyController extends Controller
                 ->where('reuse', true)
                 ->get();
 
+            // Who posted the job and where it came from were fixed when it was
+            // posted, so the edit form only shows them, locked.
+            $data['isJobTracking'] = (bool) currentCompany()->is_job_tracking;
+            $data['postingLog'] = $data['isJobTracking']
+                ? $job->postingLog()->with('teamMember:id,name', 'source:id,name')->first()
+                : null;
+
             return view('frontend.pages.company.editjob', $data);
         } catch (\Exception $e) {
             flashError('An error occurred: '.$e->getMessage());

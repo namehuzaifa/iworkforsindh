@@ -25,7 +25,7 @@ use Google\Client;
  * <p>
  * Allows external bidders to manage their RTB integration with Google. This
  * includes managing bidder endpoints, QPS quotas, configuring what ad inventory
- * to receive via pretargeting, submitting creatives for verification, and
+ * to receive with pretargeting, submitting creatives for verification, and
  * accessing creative metadata such as approval status.</p>
  *
  * <p>
@@ -466,7 +466,17 @@ class RealTimeBidding extends \Google\Service
         'creatives',
         [
           'methods' => [
-            'create' => [
+            'addDeals' => [
+              'path' => 'v1/{+name}:addDeals',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'create' => [
               'path' => 'v1/{+parent}/creatives',
               'httpMethod' => 'POST',
               'parameters' => [

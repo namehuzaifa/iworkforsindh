@@ -17,26 +17,85 @@
 
 namespace Google\Service\DiscoveryEngine;
 
-class GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec extends \Google\Model
+class GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec extends \Google\Collection
 {
   /**
+   * Server behavior defaults to Condition.DISABLED.
+   */
+  public const CONDITION_CONDITION_UNSPECIFIED = 'CONDITION_UNSPECIFIED';
+  /**
+   * Disables Search As You Type.
+   */
+  public const CONDITION_DISABLED = 'DISABLED';
+  /**
+   * Enables Search As You Type.
+   */
+  public const CONDITION_ENABLED = 'ENABLED';
+  /**
+   * Automatic switching between search-as-you-type and standard search modes,
+   * ideal for single-API implementations (e.g., debouncing).
+   */
+  public const CONDITION_AUTO = 'AUTO';
+  protected $collection_key = 'fields';
+  /**
+   * The condition under which search as you type should occur. Default to
+   * Condition.DISABLED.
+   *
    * @var string
    */
   public $condition;
+  protected $fieldsType = GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField::class;
+  protected $fieldsDataType = 'array';
+  /**
+   * Optional. Search As You Type score threshold for filtering purpose. We keep
+   * the result if `score` >= `score_threshold`.
+   *
+   * @var 
+   */
+  public $scoreThreshold;
 
   /**
-   * @param string
+   * The condition under which search as you type should occur. Default to
+   * Condition.DISABLED.
+   *
+   * Accepted values: CONDITION_UNSPECIFIED, DISABLED, ENABLED, AUTO
+   *
+   * @param self::CONDITION_* $condition
    */
   public function setCondition($condition)
   {
     $this->condition = $condition;
   }
   /**
-   * @return string
+   * @return self::CONDITION_*
    */
   public function getCondition()
   {
     return $this->condition;
+  }
+  /**
+   * Optional. The list of fields to be used for Search As You Type scoring.
+   *
+   * @param GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField[] $fields
+   */
+  public function setFields($fields)
+  {
+    $this->fields = $fields;
+  }
+  /**
+   * @return GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField[]
+   */
+  public function getFields()
+  {
+    return $this->fields;
+  }
+  public function setScoreThreshold($scoreThreshold)
+  {
+    $this->scoreThreshold = $scoreThreshold;
+  }
+  public function getScoreThreshold()
+  {
+    return $this->scoreThreshold;
   }
 }
 
