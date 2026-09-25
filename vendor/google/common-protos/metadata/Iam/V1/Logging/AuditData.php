@@ -16,7 +16,12 @@ class AuditData
         }
         \GPBMetadata\Google\Iam\V1\Policy::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\x8F\x02\x0A&google/iam/v1/logging/audit_data.proto\x12\x15google.iam.v1.logging\"=\x0A\x09AuditData\x120\x0A\x0Cpolicy_delta\x18\x02 \x01(\x0B2\x1A.google.iam.v1.PolicyDeltaB\x86\x01\x0A\x19com.google.iam.v1.loggingB\x0EAuditDataProtoP\x01Z9cloud.google.com/go/iam/apiv1/logging/loggingpb;loggingpb\xAA\x02\x1BGoogle.Cloud.Iam.V1.Loggingb\x06proto3"
+            '
+è
+&google/iam/v1/logging/audit_data.protogoogle.iam.v1.logging"=
+	AuditData0
+policy_delta (2.google.iam.v1.PolicyDeltaBÜ
+com.google.iam.v1.loggingBAuditDataProtoPZ9cloud.google.com/go/iam/apiv1/logging/loggingpb;loggingpb™Google.Cloud.Iam.V1.Loggingbproto3'
         , true);
 
         static::$is_initialized = true;

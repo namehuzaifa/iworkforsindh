@@ -19,50 +19,6 @@ namespace Google\Service\MapsPlaces;
 
 class GoogleMapsPlacesV1Place extends \Google\Collection
 {
-  /**
-   * Default value. This value is unused.
-   */
-  public const BUSINESS_STATUS_BUSINESS_STATUS_UNSPECIFIED = 'BUSINESS_STATUS_UNSPECIFIED';
-  /**
-   * The establishment is operational, not necessarily open now.
-   */
-  public const BUSINESS_STATUS_OPERATIONAL = 'OPERATIONAL';
-  /**
-   * The establishment is temporarily closed.
-   */
-  public const BUSINESS_STATUS_CLOSED_TEMPORARILY = 'CLOSED_TEMPORARILY';
-  /**
-   * The establishment is permanently closed.
-   */
-  public const BUSINESS_STATUS_CLOSED_PERMANENTLY = 'CLOSED_PERMANENTLY';
-  /**
-   * The establishment will open in the future.
-   */
-  public const BUSINESS_STATUS_FUTURE_OPENING = 'FUTURE_OPENING';
-  /**
-   * Place price level is unspecified or unknown.
-   */
-  public const PRICE_LEVEL_PRICE_LEVEL_UNSPECIFIED = 'PRICE_LEVEL_UNSPECIFIED';
-  /**
-   * Place provides free services.
-   */
-  public const PRICE_LEVEL_PRICE_LEVEL_FREE = 'PRICE_LEVEL_FREE';
-  /**
-   * Place provides inexpensive services.
-   */
-  public const PRICE_LEVEL_PRICE_LEVEL_INEXPENSIVE = 'PRICE_LEVEL_INEXPENSIVE';
-  /**
-   * Place provides moderately priced services.
-   */
-  public const PRICE_LEVEL_PRICE_LEVEL_MODERATE = 'PRICE_LEVEL_MODERATE';
-  /**
-   * Place provides expensive services.
-   */
-  public const PRICE_LEVEL_PRICE_LEVEL_EXPENSIVE = 'PRICE_LEVEL_EXPENSIVE';
-  /**
-   * Place provides very expensive services.
-   */
-  public const PRICE_LEVEL_PRICE_LEVEL_VERY_EXPENSIVE = 'PRICE_LEVEL_VERY_EXPENSIVE';
   protected $collection_key = 'types';
   protected $accessibilityOptionsType = GoogleMapsPlacesV1PlaceAccessibilityOptions::class;
   protected $accessibilityOptionsDataType = '';
@@ -71,32 +27,24 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $addressDescriptorType = GoogleMapsPlacesV1AddressDescriptor::class;
   protected $addressDescriptorDataType = '';
   /**
-   * The place's address in adr microformat: http://microformats.org/wiki/adr.
-   *
    * @var string
    */
   public $adrFormatAddress;
   /**
-   * Place allows dogs.
-   *
    * @var bool
    */
   public $allowsDogs;
+  protected $areaSummaryType = GoogleMapsPlacesV1PlaceAreaSummary::class;
+  protected $areaSummaryDataType = '';
   protected $attributionsType = GoogleMapsPlacesV1PlaceAttribution::class;
   protected $attributionsDataType = 'array';
   /**
-   * The business status for the place.
-   *
    * @var string
    */
   public $businessStatus;
-  protected $consumerAlertType = GoogleMapsPlacesV1PlaceConsumerAlert::class;
-  protected $consumerAlertDataType = '';
   protected $containingPlacesType = GoogleMapsPlacesV1PlaceContainingPlace::class;
   protected $containingPlacesDataType = 'array';
   /**
-   * Specifies if the business supports curbside pickup.
-   *
    * @var bool
    */
   public $curbsidePickup;
@@ -105,14 +53,10 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $currentSecondaryOpeningHoursType = GoogleMapsPlacesV1PlaceOpeningHours::class;
   protected $currentSecondaryOpeningHoursDataType = 'array';
   /**
-   * Specifies if the business supports delivery.
-   *
    * @var bool
    */
   public $delivery;
   /**
-   * Specifies if the business supports indoor or outdoor seating options.
-   *
    * @var bool
    */
   public $dineIn;
@@ -120,15 +64,9 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $displayNameDataType = '';
   protected $editorialSummaryType = GoogleTypeLocalizedText::class;
   protected $editorialSummaryDataType = '';
-  protected $entrancesType = GoogleMapsPlacesV1PlaceEntrance::class;
-  protected $entrancesDataType = 'array';
-  protected $evChargeAmenitySummaryType = GoogleMapsPlacesV1PlaceEvChargeAmenitySummary::class;
-  protected $evChargeAmenitySummaryDataType = '';
   protected $evChargeOptionsType = GoogleMapsPlacesV1EVChargeOptions::class;
   protected $evChargeOptionsDataType = '';
   /**
-   * A full, human-readable address for this place.
-   *
    * @var string
    */
   public $formattedAddress;
@@ -137,113 +75,58 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $generativeSummaryType = GoogleMapsPlacesV1PlaceGenerativeSummary::class;
   protected $generativeSummaryDataType = '';
   /**
-   * Place is good for children.
-   *
    * @var bool
    */
   public $goodForChildren;
   /**
-   * Place accommodates groups.
-   *
    * @var bool
    */
   public $goodForGroups;
   /**
-   * Place is suitable for watching sports.
-   *
    * @var bool
    */
   public $goodForWatchingSports;
   protected $googleMapsLinksType = GoogleMapsPlacesV1PlaceGoogleMapsLinks::class;
   protected $googleMapsLinksDataType = '';
-  protected $googleMapsTypeLabelType = GoogleTypeLocalizedText::class;
-  protected $googleMapsTypeLabelDataType = '';
   /**
-   * A URL providing more information about this place.
-   *
    * @var string
    */
   public $googleMapsUri;
   /**
-   * Background color for icon_mask in hex format, e.g. #909CE1.
-   *
    * @var string
    */
   public $iconBackgroundColor;
   /**
-   * A truncated URL to an icon mask. User can access different icon type by
-   * appending type suffix to the end (eg, ".svg" or ".png").
-   *
    * @var string
    */
   public $iconMaskBaseUri;
   /**
-   * The unique identifier of a place.
-   *
    * @var string
    */
   public $id;
   /**
-   * A human-readable phone number for the place, in international format.
-   *
    * @var string
    */
   public $internationalPhoneNumber;
   /**
-   * Place provides live music.
-   *
    * @var bool
    */
   public $liveMusic;
   protected $locationType = GoogleTypeLatLng::class;
   protected $locationDataType = '';
   /**
-   * Place has a children's menu.
-   *
    * @var bool
    */
   public $menuForChildren;
   /**
-   * If this Place is permanently closed and has moved to a new Place, this
-   * field contains the new Place's resource name, in `places/{place_id}`
-   * format. If this Place moved multiple times, this field will represent the
-   * first moved place. This field will not be populated if this Place has not
-   * moved.
-   *
-   * @var string
-   */
-  public $movedPlace;
-  /**
-   * If this Place is permanently closed and has moved to a new Place, this
-   * field contains the new Place's place ID. If this Place moved multiple
-   * times, this field will represent the first moved Place. This field will not
-   * be populated if this Place has not moved.
-   *
-   * @var string
-   */
-  public $movedPlaceId;
-  /**
-   * This Place's resource name, in `places/{place_id}` format. Can be used to
-   * look up the Place.
-   *
    * @var string
    */
   public $name;
   /**
-   * A human-readable phone number for the place, in national format.
-   *
    * @var string
    */
   public $nationalPhoneNumber;
-  protected $navigationPointsType = GoogleMapsPlacesV1PlaceNavigationPoint::class;
-  protected $navigationPointsDataType = 'array';
-  protected $neighborhoodSummaryType = GoogleMapsPlacesV1PlaceNeighborhoodSummary::class;
-  protected $neighborhoodSummaryDataType = '';
-  protected $openingDateType = GoogleTypeDate::class;
-  protected $openingDateDataType = '';
   /**
-   * Place provides outdoor seating.
-   *
    * @var bool
    */
   public $outdoorSeating;
@@ -255,183 +138,108 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $photosDataType = 'array';
   protected $plusCodeType = GoogleMapsPlacesV1PlacePlusCode::class;
   protected $plusCodeDataType = '';
-  protected $postalAddressType = GoogleTypePostalAddress::class;
-  protected $postalAddressDataType = '';
   /**
-   * Price level of the place.
-   *
    * @var string
    */
   public $priceLevel;
   protected $priceRangeType = GoogleMapsPlacesV1PriceRange::class;
   protected $priceRangeDataType = '';
   /**
-   * The primary type of the given result. This type must be one of the Places
-   * API supported types. For example, "restaurant", "cafe", "airport", etc. A
-   * place can only have a single primary type. For the complete list of
-   * possible values, see Table A and Table B at
-   * https://developers.google.com/maps/documentation/places/web-service/place-
-   * types. The primary type may be missing if the place's primary type is not a
-   * supported type. When a primary type is present, it is always one of the
-   * types in the `types` field.
-   *
    * @var string
    */
   public $primaryType;
   protected $primaryTypeDisplayNameType = GoogleTypeLocalizedText::class;
   protected $primaryTypeDisplayNameDataType = '';
   /**
-   * Indicates whether the place is a pure service area business. Pure service
-   * area business is a business that visits or delivers to customers directly
-   * but does not serve customers at their business address. For example,
-   * businesses like cleaning services or plumbers. Those businesses may not
-   * have a physical address or location on Google Maps.
-   *
    * @var bool
    */
   public $pureServiceAreaBusiness;
-  /**
-   * A rating between 1.0 and 5.0, based on user reviews of this place.
-   *
-   * @var 
-   */
   public $rating;
   protected $regularOpeningHoursType = GoogleMapsPlacesV1PlaceOpeningHours::class;
   protected $regularOpeningHoursDataType = '';
   protected $regularSecondaryOpeningHoursType = GoogleMapsPlacesV1PlaceOpeningHours::class;
   protected $regularSecondaryOpeningHoursDataType = 'array';
   /**
-   * Specifies if the place supports reservations.
-   *
    * @var bool
    */
   public $reservable;
   /**
-   * Place has restroom.
-   *
    * @var bool
    */
   public $restroom;
-  protected $reviewSummaryType = GoogleMapsPlacesV1PlaceReviewSummary::class;
-  protected $reviewSummaryDataType = '';
   protected $reviewsType = GoogleMapsPlacesV1Review::class;
   protected $reviewsDataType = 'array';
   /**
-   * Specifies if the place serves beer.
-   *
    * @var bool
    */
   public $servesBeer;
   /**
-   * Specifies if the place serves breakfast.
-   *
    * @var bool
    */
   public $servesBreakfast;
   /**
-   * Specifies if the place serves brunch.
-   *
    * @var bool
    */
   public $servesBrunch;
   /**
-   * Place serves cocktails.
-   *
    * @var bool
    */
   public $servesCocktails;
   /**
-   * Place serves coffee.
-   *
    * @var bool
    */
   public $servesCoffee;
   /**
-   * Place serves dessert.
-   *
    * @var bool
    */
   public $servesDessert;
   /**
-   * Specifies if the place serves dinner.
-   *
    * @var bool
    */
   public $servesDinner;
   /**
-   * Specifies if the place serves lunch.
-   *
    * @var bool
    */
   public $servesLunch;
   /**
-   * Specifies if the place serves vegetarian food.
-   *
    * @var bool
    */
   public $servesVegetarianFood;
   /**
-   * Specifies if the place serves wine.
-   *
    * @var bool
    */
   public $servesWine;
   /**
-   * A short, human-readable address for this place.
-   *
    * @var string
    */
   public $shortFormattedAddress;
   protected $subDestinationsType = GoogleMapsPlacesV1PlaceSubDestination::class;
   protected $subDestinationsDataType = 'array';
   /**
-   * Specifies if the business supports takeout.
-   *
    * @var bool
    */
   public $takeout;
-  protected $timeZoneType = GoogleTypeTimeZone::class;
-  protected $timeZoneDataType = '';
-  protected $transitStationType = GoogleMapsPlacesV1TransitStation::class;
-  protected $transitStationDataType = '';
   /**
-   * A set of type tags for this result. For example, "political" and
-   * "locality". For the complete list of possible values, see Table A and Table
-   * B at https://developers.google.com/maps/documentation/places/web-
-   * service/place-types
-   *
    * @var string[]
    */
   public $types;
   /**
-   * The total number of reviews (with or without text) for this place.
-   *
    * @var int
    */
   public $userRatingCount;
   /**
-   * Number of minutes this place's timezone is currently offset from UTC. This
-   * is expressed in minutes to support timezones that are offset by fractions
-   * of an hour, e.g. X hours and 15 minutes.
-   *
    * @var int
    */
   public $utcOffsetMinutes;
   protected $viewportType = GoogleGeoTypeViewport::class;
   protected $viewportDataType = '';
   /**
-   * The authoritative website for this place, e.g. a business' homepage. Note
-   * that for places that are part of a chain (e.g. an IKEA store), this will
-   * usually be the website for the individual store, not the overall chain.
-   *
    * @var string
    */
   public $websiteUri;
 
   /**
-   * Information about the accessibility options a place offers.
-   *
-   * @param GoogleMapsPlacesV1PlaceAccessibilityOptions $accessibilityOptions
+   * @param GoogleMapsPlacesV1PlaceAccessibilityOptions
    */
   public function setAccessibilityOptions(GoogleMapsPlacesV1PlaceAccessibilityOptions $accessibilityOptions)
   {
@@ -445,21 +253,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->accessibilityOptions;
   }
   /**
-   * Repeated components for each locality level. Note the following facts about
-   * the address_components[] array: - The array of address components may
-   * contain more components than the formatted_address. - The array does not
-   * necessarily include all the political entities that contain an address,
-   * apart from those included in the formatted_address. To retrieve all the
-   * political entities that contain a specific address, you should use reverse
-   * geocoding, passing the latitude/longitude of the address as a parameter to
-   * the request. - The format of the response is not guaranteed to remain the
-   * same between requests. In particular, the number of address_components
-   * varies based on the address requested and can change over time for the same
-   * address. A component can change position in the array. The type of the
-   * component can change. A particular component may be missing in a later
-   * response.
-   *
-   * @param GoogleMapsPlacesV1PlaceAddressComponent[] $addressComponents
+   * @param GoogleMapsPlacesV1PlaceAddressComponent[]
    */
   public function setAddressComponents($addressComponents)
   {
@@ -473,13 +267,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->addressComponents;
   }
   /**
-   * The address descriptor of the place. Address descriptors include additional
-   * information that help describe a location using landmarks and areas. See
-   * address descriptor regional coverage in
-   * https://developers.google.com/maps/documentation/geocoding/address-
-   * descriptors/coverage.
-   *
-   * @param GoogleMapsPlacesV1AddressDescriptor $addressDescriptor
+   * @param GoogleMapsPlacesV1AddressDescriptor
    */
   public function setAddressDescriptor(GoogleMapsPlacesV1AddressDescriptor $addressDescriptor)
   {
@@ -493,9 +281,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->addressDescriptor;
   }
   /**
-   * The place's address in adr microformat: http://microformats.org/wiki/adr.
-   *
-   * @param string $adrFormatAddress
+   * @param string
    */
   public function setAdrFormatAddress($adrFormatAddress)
   {
@@ -509,9 +295,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->adrFormatAddress;
   }
   /**
-   * Place allows dogs.
-   *
-   * @param bool $allowsDogs
+   * @param bool
    */
   public function setAllowsDogs($allowsDogs)
   {
@@ -525,9 +309,21 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->allowsDogs;
   }
   /**
-   * A set of data provider that must be shown with this result.
-   *
-   * @param GoogleMapsPlacesV1PlaceAttribution[] $attributions
+   * @param GoogleMapsPlacesV1PlaceAreaSummary
+   */
+  public function setAreaSummary(GoogleMapsPlacesV1PlaceAreaSummary $areaSummary)
+  {
+    $this->areaSummary = $areaSummary;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceAreaSummary
+   */
+  public function getAreaSummary()
+  {
+    return $this->areaSummary;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceAttribution[]
    */
   public function setAttributions($attributions)
   {
@@ -541,45 +337,21 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->attributions;
   }
   /**
-   * The business status for the place.
-   *
-   * Accepted values: BUSINESS_STATUS_UNSPECIFIED, OPERATIONAL,
-   * CLOSED_TEMPORARILY, CLOSED_PERMANENTLY, FUTURE_OPENING
-   *
-   * @param self::BUSINESS_STATUS_* $businessStatus
+   * @param string
    */
   public function setBusinessStatus($businessStatus)
   {
     $this->businessStatus = $businessStatus;
   }
   /**
-   * @return self::BUSINESS_STATUS_*
+   * @return string
    */
   public function getBusinessStatus()
   {
     return $this->businessStatus;
   }
   /**
-   * The consumer alert message for the place when we detect suspicious review
-   * activity on a business or a business violates our policies.
-   *
-   * @param GoogleMapsPlacesV1PlaceConsumerAlert $consumerAlert
-   */
-  public function setConsumerAlert(GoogleMapsPlacesV1PlaceConsumerAlert $consumerAlert)
-  {
-    $this->consumerAlert = $consumerAlert;
-  }
-  /**
-   * @return GoogleMapsPlacesV1PlaceConsumerAlert
-   */
-  public function getConsumerAlert()
-  {
-    return $this->consumerAlert;
-  }
-  /**
-   * List of places in which the current place is located.
-   *
-   * @param GoogleMapsPlacesV1PlaceContainingPlace[] $containingPlaces
+   * @param GoogleMapsPlacesV1PlaceContainingPlace[]
    */
   public function setContainingPlaces($containingPlaces)
   {
@@ -593,9 +365,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->containingPlaces;
   }
   /**
-   * Specifies if the business supports curbside pickup.
-   *
-   * @param bool $curbsidePickup
+   * @param bool
    */
   public function setCurbsidePickup($curbsidePickup)
   {
@@ -609,16 +379,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->curbsidePickup;
   }
   /**
-   * The hours of operation for the next seven days (including today)
-   * incorporating any special opening hours. The time period starts at midnight
-   * on the date of the request and ends at 11:59 pm six days later. If the
-   * actual opening hours are outside of this range, the opening hours will be
-   * truncated. For example, if a place is open from 10pm yesterday to 6am
-   * today, the opening hours will be truncated to 12am today to 6am today. This
-   * field includes the special_days subfield of all hours, set for dates that
-   * have exceptional hours.
-   *
-   * @param GoogleMapsPlacesV1PlaceOpeningHours $currentOpeningHours
+   * @param GoogleMapsPlacesV1PlaceOpeningHours
    */
   public function setCurrentOpeningHours(GoogleMapsPlacesV1PlaceOpeningHours $currentOpeningHours)
   {
@@ -632,16 +393,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->currentOpeningHours;
   }
   /**
-   * Contains an array of entries for the next seven days including information
-   * about secondary hours of a business. Secondary hours are different from a
-   * business's main hours. For example, a restaurant can specify drive through
-   * hours or delivery hours as its secondary hours. This field populates the
-   * type subfield, which draws from a predefined list of opening hours types
-   * (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the
-   * place. This field includes the special_days subfield of all hours, set for
-   * dates that have exceptional hours.
-   *
-   * @param GoogleMapsPlacesV1PlaceOpeningHours[] $currentSecondaryOpeningHours
+   * @param GoogleMapsPlacesV1PlaceOpeningHours[]
    */
   public function setCurrentSecondaryOpeningHours($currentSecondaryOpeningHours)
   {
@@ -655,9 +407,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->currentSecondaryOpeningHours;
   }
   /**
-   * Specifies if the business supports delivery.
-   *
-   * @param bool $delivery
+   * @param bool
    */
   public function setDelivery($delivery)
   {
@@ -671,9 +421,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->delivery;
   }
   /**
-   * Specifies if the business supports indoor or outdoor seating options.
-   *
-   * @param bool $dineIn
+   * @param bool
    */
   public function setDineIn($dineIn)
   {
@@ -687,10 +435,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->dineIn;
   }
   /**
-   * The localized name of the place, suitable as a short human-readable
-   * description. For example, "Google Sydney", "Starbucks", "Pyrmont", etc.
-   *
-   * @param GoogleTypeLocalizedText $displayName
+   * @param GoogleTypeLocalizedText
    */
   public function setDisplayName(GoogleTypeLocalizedText $displayName)
   {
@@ -704,11 +449,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->displayName;
   }
   /**
-   * Contains a summary of the place. A summary is comprised of a textual
-   * overview, and also includes the language code for these if applicable.
-   * Summary text must be presented as-is and can not be modified or altered.
-   *
-   * @param GoogleTypeLocalizedText $editorialSummary
+   * @param GoogleTypeLocalizedText
    */
   public function setEditorialSummary(GoogleTypeLocalizedText $editorialSummary)
   {
@@ -722,41 +463,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->editorialSummary;
   }
   /**
-   * Entrances for this destination.
-   *
-   * @param GoogleMapsPlacesV1PlaceEntrance[] $entrances
-   */
-  public function setEntrances($entrances)
-  {
-    $this->entrances = $entrances;
-  }
-  /**
-   * @return GoogleMapsPlacesV1PlaceEntrance[]
-   */
-  public function getEntrances()
-  {
-    return $this->entrances;
-  }
-  /**
-   * The summary of amenities near the EV charging station.
-   *
-   * @param GoogleMapsPlacesV1PlaceEvChargeAmenitySummary $evChargeAmenitySummary
-   */
-  public function setEvChargeAmenitySummary(GoogleMapsPlacesV1PlaceEvChargeAmenitySummary $evChargeAmenitySummary)
-  {
-    $this->evChargeAmenitySummary = $evChargeAmenitySummary;
-  }
-  /**
-   * @return GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
-   */
-  public function getEvChargeAmenitySummary()
-  {
-    return $this->evChargeAmenitySummary;
-  }
-  /**
-   * Information of ev charging options.
-   *
-   * @param GoogleMapsPlacesV1EVChargeOptions $evChargeOptions
+   * @param GoogleMapsPlacesV1EVChargeOptions
    */
   public function setEvChargeOptions(GoogleMapsPlacesV1EVChargeOptions $evChargeOptions)
   {
@@ -770,9 +477,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->evChargeOptions;
   }
   /**
-   * A full, human-readable address for this place.
-   *
-   * @param string $formattedAddress
+   * @param string
    */
   public function setFormattedAddress($formattedAddress)
   {
@@ -786,10 +491,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->formattedAddress;
   }
   /**
-   * The most recent information about fuel options in a gas station. This
-   * information is updated regularly.
-   *
-   * @param GoogleMapsPlacesV1FuelOptions $fuelOptions
+   * @param GoogleMapsPlacesV1FuelOptions
    */
   public function setFuelOptions(GoogleMapsPlacesV1FuelOptions $fuelOptions)
   {
@@ -803,9 +505,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->fuelOptions;
   }
   /**
-   * AI-generated summary of the place.
-   *
-   * @param GoogleMapsPlacesV1PlaceGenerativeSummary $generativeSummary
+   * @param GoogleMapsPlacesV1PlaceGenerativeSummary
    */
   public function setGenerativeSummary(GoogleMapsPlacesV1PlaceGenerativeSummary $generativeSummary)
   {
@@ -819,9 +519,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->generativeSummary;
   }
   /**
-   * Place is good for children.
-   *
-   * @param bool $goodForChildren
+   * @param bool
    */
   public function setGoodForChildren($goodForChildren)
   {
@@ -835,9 +533,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->goodForChildren;
   }
   /**
-   * Place accommodates groups.
-   *
-   * @param bool $goodForGroups
+   * @param bool
    */
   public function setGoodForGroups($goodForGroups)
   {
@@ -851,9 +547,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->goodForGroups;
   }
   /**
-   * Place is suitable for watching sports.
-   *
-   * @param bool $goodForWatchingSports
+   * @param bool
    */
   public function setGoodForWatchingSports($goodForWatchingSports)
   {
@@ -867,9 +561,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->goodForWatchingSports;
   }
   /**
-   * Links to trigger different Google Maps actions.
-   *
-   * @param GoogleMapsPlacesV1PlaceGoogleMapsLinks $googleMapsLinks
+   * @param GoogleMapsPlacesV1PlaceGoogleMapsLinks
    */
   public function setGoogleMapsLinks(GoogleMapsPlacesV1PlaceGoogleMapsLinks $googleMapsLinks)
   {
@@ -883,30 +575,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->googleMapsLinks;
   }
   /**
-   * The type label of the place on Google Maps, localized to the request
-   * language if applicable, for example, "Restaurant", "Cafe", "Airport", etc.
-   * The type label may be different from the primary type display name and may
-   * not be a supported type in [Places API Place Types
-   * table](https://developers.google.com/maps/documentation/places/web-
-   * service/place-types).
-   *
-   * @param GoogleTypeLocalizedText $googleMapsTypeLabel
-   */
-  public function setGoogleMapsTypeLabel(GoogleTypeLocalizedText $googleMapsTypeLabel)
-  {
-    $this->googleMapsTypeLabel = $googleMapsTypeLabel;
-  }
-  /**
-   * @return GoogleTypeLocalizedText
-   */
-  public function getGoogleMapsTypeLabel()
-  {
-    return $this->googleMapsTypeLabel;
-  }
-  /**
-   * A URL providing more information about this place.
-   *
-   * @param string $googleMapsUri
+   * @param string
    */
   public function setGoogleMapsUri($googleMapsUri)
   {
@@ -920,9 +589,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->googleMapsUri;
   }
   /**
-   * Background color for icon_mask in hex format, e.g. #909CE1.
-   *
-   * @param string $iconBackgroundColor
+   * @param string
    */
   public function setIconBackgroundColor($iconBackgroundColor)
   {
@@ -936,10 +603,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->iconBackgroundColor;
   }
   /**
-   * A truncated URL to an icon mask. User can access different icon type by
-   * appending type suffix to the end (eg, ".svg" or ".png").
-   *
-   * @param string $iconMaskBaseUri
+   * @param string
    */
   public function setIconMaskBaseUri($iconMaskBaseUri)
   {
@@ -953,9 +617,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->iconMaskBaseUri;
   }
   /**
-   * The unique identifier of a place.
-   *
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {
@@ -969,9 +631,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->id;
   }
   /**
-   * A human-readable phone number for the place, in international format.
-   *
-   * @param string $internationalPhoneNumber
+   * @param string
    */
   public function setInternationalPhoneNumber($internationalPhoneNumber)
   {
@@ -985,9 +645,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->internationalPhoneNumber;
   }
   /**
-   * Place provides live music.
-   *
-   * @param bool $liveMusic
+   * @param bool
    */
   public function setLiveMusic($liveMusic)
   {
@@ -1001,9 +659,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->liveMusic;
   }
   /**
-   * The position of this place.
-   *
-   * @param GoogleTypeLatLng $location
+   * @param GoogleTypeLatLng
    */
   public function setLocation(GoogleTypeLatLng $location)
   {
@@ -1017,9 +673,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->location;
   }
   /**
-   * Place has a children's menu.
-   *
-   * @param bool $menuForChildren
+   * @param bool
    */
   public function setMenuForChildren($menuForChildren)
   {
@@ -1033,49 +687,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->menuForChildren;
   }
   /**
-   * If this Place is permanently closed and has moved to a new Place, this
-   * field contains the new Place's resource name, in `places/{place_id}`
-   * format. If this Place moved multiple times, this field will represent the
-   * first moved place. This field will not be populated if this Place has not
-   * moved.
-   *
-   * @param string $movedPlace
-   */
-  public function setMovedPlace($movedPlace)
-  {
-    $this->movedPlace = $movedPlace;
-  }
-  /**
-   * @return string
-   */
-  public function getMovedPlace()
-  {
-    return $this->movedPlace;
-  }
-  /**
-   * If this Place is permanently closed and has moved to a new Place, this
-   * field contains the new Place's place ID. If this Place moved multiple
-   * times, this field will represent the first moved Place. This field will not
-   * be populated if this Place has not moved.
-   *
-   * @param string $movedPlaceId
-   */
-  public function setMovedPlaceId($movedPlaceId)
-  {
-    $this->movedPlaceId = $movedPlaceId;
-  }
-  /**
-   * @return string
-   */
-  public function getMovedPlaceId()
-  {
-    return $this->movedPlaceId;
-  }
-  /**
-   * This Place's resource name, in `places/{place_id}` format. Can be used to
-   * look up the Place.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -1089,9 +701,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->name;
   }
   /**
-   * A human-readable phone number for the place, in national format.
-   *
-   * @param string $nationalPhoneNumber
+   * @param string
    */
   public function setNationalPhoneNumber($nationalPhoneNumber)
   {
@@ -1105,58 +715,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->nationalPhoneNumber;
   }
   /**
-   * Navigation points for this destination.
-   *
-   * @param GoogleMapsPlacesV1PlaceNavigationPoint[] $navigationPoints
-   */
-  public function setNavigationPoints($navigationPoints)
-  {
-    $this->navigationPoints = $navigationPoints;
-  }
-  /**
-   * @return GoogleMapsPlacesV1PlaceNavigationPoint[]
-   */
-  public function getNavigationPoints()
-  {
-    return $this->navigationPoints;
-  }
-  /**
-   * A summary of points of interest near the place.
-   *
-   * @param GoogleMapsPlacesV1PlaceNeighborhoodSummary $neighborhoodSummary
-   */
-  public function setNeighborhoodSummary(GoogleMapsPlacesV1PlaceNeighborhoodSummary $neighborhoodSummary)
-  {
-    $this->neighborhoodSummary = $neighborhoodSummary;
-  }
-  /**
-   * @return GoogleMapsPlacesV1PlaceNeighborhoodSummary
-   */
-  public function getNeighborhoodSummary()
-  {
-    return $this->neighborhoodSummary;
-  }
-  /**
-   * The date this place will open in the future. This field is only populated
-   * if the business status is FUTURE_OPENING.
-   *
-   * @param GoogleTypeDate $openingDate
-   */
-  public function setOpeningDate(GoogleTypeDate $openingDate)
-  {
-    $this->openingDate = $openingDate;
-  }
-  /**
-   * @return GoogleTypeDate
-   */
-  public function getOpeningDate()
-  {
-    return $this->openingDate;
-  }
-  /**
-   * Place provides outdoor seating.
-   *
-   * @param bool $outdoorSeating
+   * @param bool
    */
   public function setOutdoorSeating($outdoorSeating)
   {
@@ -1170,9 +729,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->outdoorSeating;
   }
   /**
-   * Options of parking provided by the place.
-   *
-   * @param GoogleMapsPlacesV1PlaceParkingOptions $parkingOptions
+   * @param GoogleMapsPlacesV1PlaceParkingOptions
    */
   public function setParkingOptions(GoogleMapsPlacesV1PlaceParkingOptions $parkingOptions)
   {
@@ -1186,10 +743,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->parkingOptions;
   }
   /**
-   * Payment options the place accepts. If a payment option data is not
-   * available, the payment option field will be unset.
-   *
-   * @param GoogleMapsPlacesV1PlacePaymentOptions $paymentOptions
+   * @param GoogleMapsPlacesV1PlacePaymentOptions
    */
   public function setPaymentOptions(GoogleMapsPlacesV1PlacePaymentOptions $paymentOptions)
   {
@@ -1203,10 +757,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->paymentOptions;
   }
   /**
-   * Information (including references) about photos of this place. A maximum of
-   * 10 photos can be returned.
-   *
-   * @param GoogleMapsPlacesV1Photo[] $photos
+   * @param GoogleMapsPlacesV1Photo[]
    */
   public function setPhotos($photos)
   {
@@ -1220,9 +771,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->photos;
   }
   /**
-   * Plus code of the place location lat/long.
-   *
-   * @param GoogleMapsPlacesV1PlacePlusCode $plusCode
+   * @param GoogleMapsPlacesV1PlacePlusCode
    */
   public function setPlusCode(GoogleMapsPlacesV1PlacePlusCode $plusCode)
   {
@@ -1236,45 +785,21 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->plusCode;
   }
   /**
-   * The address in postal address format.
-   *
-   * @param GoogleTypePostalAddress $postalAddress
-   */
-  public function setPostalAddress(GoogleTypePostalAddress $postalAddress)
-  {
-    $this->postalAddress = $postalAddress;
-  }
-  /**
-   * @return GoogleTypePostalAddress
-   */
-  public function getPostalAddress()
-  {
-    return $this->postalAddress;
-  }
-  /**
-   * Price level of the place.
-   *
-   * Accepted values: PRICE_LEVEL_UNSPECIFIED, PRICE_LEVEL_FREE,
-   * PRICE_LEVEL_INEXPENSIVE, PRICE_LEVEL_MODERATE, PRICE_LEVEL_EXPENSIVE,
-   * PRICE_LEVEL_VERY_EXPENSIVE
-   *
-   * @param self::PRICE_LEVEL_* $priceLevel
+   * @param string
    */
   public function setPriceLevel($priceLevel)
   {
     $this->priceLevel = $priceLevel;
   }
   /**
-   * @return self::PRICE_LEVEL_*
+   * @return string
    */
   public function getPriceLevel()
   {
     return $this->priceLevel;
   }
   /**
-   * The price range associated with a Place.
-   *
-   * @param GoogleMapsPlacesV1PriceRange $priceRange
+   * @param GoogleMapsPlacesV1PriceRange
    */
   public function setPriceRange(GoogleMapsPlacesV1PriceRange $priceRange)
   {
@@ -1288,16 +813,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->priceRange;
   }
   /**
-   * The primary type of the given result. This type must be one of the Places
-   * API supported types. For example, "restaurant", "cafe", "airport", etc. A
-   * place can only have a single primary type. For the complete list of
-   * possible values, see Table A and Table B at
-   * https://developers.google.com/maps/documentation/places/web-service/place-
-   * types. The primary type may be missing if the place's primary type is not a
-   * supported type. When a primary type is present, it is always one of the
-   * types in the `types` field.
-   *
-   * @param string $primaryType
+   * @param string
    */
   public function setPrimaryType($primaryType)
   {
@@ -1311,13 +827,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->primaryType;
   }
   /**
-   * The display name of the primary type, localized to the request language if
-   * applicable. For the complete list of possible values, see Table A and Table
-   * B at https://developers.google.com/maps/documentation/places/web-
-   * service/place-types. The primary type may be missing if the place's primary
-   * type is not a supported type.
-   *
-   * @param GoogleTypeLocalizedText $primaryTypeDisplayName
+   * @param GoogleTypeLocalizedText
    */
   public function setPrimaryTypeDisplayName(GoogleTypeLocalizedText $primaryTypeDisplayName)
   {
@@ -1331,13 +841,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->primaryTypeDisplayName;
   }
   /**
-   * Indicates whether the place is a pure service area business. Pure service
-   * area business is a business that visits or delivers to customers directly
-   * but does not serve customers at their business address. For example,
-   * businesses like cleaning services or plumbers. Those businesses may not
-   * have a physical address or location on Google Maps.
-   *
-   * @param bool $pureServiceAreaBusiness
+   * @param bool
    */
   public function setPureServiceAreaBusiness($pureServiceAreaBusiness)
   {
@@ -1359,20 +863,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->rating;
   }
   /**
-   * The regular hours are the hours of operation for a place on a typical
-   * schedule. Note that if a place is always open (24 hours), the `close` field
-   * will not be set. Clients can rely on always open (24 hours) being
-   * represented as an
-   * [`open`](https://developers.google.com/maps/documentation/places/web-
-   * service/reference/rest/v1/places#Period) period containing
-   * [`day`](https://developers.google.com/maps/documentation/places/web-
-   * service/reference/rest/v1/places#Point) with value `0`,
-   * [`hour`](https://developers.google.com/maps/documentation/places/web-
-   * service/reference/rest/v1/places#Point) with value `0`, and
-   * [`minute`](https://developers.google.com/maps/documentation/places/web-
-   * service/reference/rest/v1/places#Point) with value `0`.
-   *
-   * @param GoogleMapsPlacesV1PlaceOpeningHours $regularOpeningHours
+   * @param GoogleMapsPlacesV1PlaceOpeningHours
    */
   public function setRegularOpeningHours(GoogleMapsPlacesV1PlaceOpeningHours $regularOpeningHours)
   {
@@ -1386,14 +877,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->regularOpeningHours;
   }
   /**
-   * Contains an array of entries for information about regular secondary hours
-   * of a business. Secondary hours are different from a business's main hours.
-   * For example, a restaurant can specify drive through hours or delivery hours
-   * as its secondary hours. This field populates the type subfield, which draws
-   * from a predefined list of opening hours types (such as DRIVE_THROUGH,
-   * PICKUP, or TAKEOUT) based on the types of the place.
-   *
-   * @param GoogleMapsPlacesV1PlaceOpeningHours[] $regularSecondaryOpeningHours
+   * @param GoogleMapsPlacesV1PlaceOpeningHours[]
    */
   public function setRegularSecondaryOpeningHours($regularSecondaryOpeningHours)
   {
@@ -1407,9 +891,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->regularSecondaryOpeningHours;
   }
   /**
-   * Specifies if the place supports reservations.
-   *
-   * @param bool $reservable
+   * @param bool
    */
   public function setReservable($reservable)
   {
@@ -1423,9 +905,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->reservable;
   }
   /**
-   * Place has restroom.
-   *
-   * @param bool $restroom
+   * @param bool
    */
   public function setRestroom($restroom)
   {
@@ -1439,26 +919,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->restroom;
   }
   /**
-   * AI-generated summary of the place using user reviews.
-   *
-   * @param GoogleMapsPlacesV1PlaceReviewSummary $reviewSummary
-   */
-  public function setReviewSummary(GoogleMapsPlacesV1PlaceReviewSummary $reviewSummary)
-  {
-    $this->reviewSummary = $reviewSummary;
-  }
-  /**
-   * @return GoogleMapsPlacesV1PlaceReviewSummary
-   */
-  public function getReviewSummary()
-  {
-    return $this->reviewSummary;
-  }
-  /**
-   * List of reviews about this place, sorted by relevance. A maximum of 5
-   * reviews can be returned.
-   *
-   * @param GoogleMapsPlacesV1Review[] $reviews
+   * @param GoogleMapsPlacesV1Review[]
    */
   public function setReviews($reviews)
   {
@@ -1472,9 +933,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->reviews;
   }
   /**
-   * Specifies if the place serves beer.
-   *
-   * @param bool $servesBeer
+   * @param bool
    */
   public function setServesBeer($servesBeer)
   {
@@ -1488,9 +947,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesBeer;
   }
   /**
-   * Specifies if the place serves breakfast.
-   *
-   * @param bool $servesBreakfast
+   * @param bool
    */
   public function setServesBreakfast($servesBreakfast)
   {
@@ -1504,9 +961,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesBreakfast;
   }
   /**
-   * Specifies if the place serves brunch.
-   *
-   * @param bool $servesBrunch
+   * @param bool
    */
   public function setServesBrunch($servesBrunch)
   {
@@ -1520,9 +975,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesBrunch;
   }
   /**
-   * Place serves cocktails.
-   *
-   * @param bool $servesCocktails
+   * @param bool
    */
   public function setServesCocktails($servesCocktails)
   {
@@ -1536,9 +989,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesCocktails;
   }
   /**
-   * Place serves coffee.
-   *
-   * @param bool $servesCoffee
+   * @param bool
    */
   public function setServesCoffee($servesCoffee)
   {
@@ -1552,9 +1003,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesCoffee;
   }
   /**
-   * Place serves dessert.
-   *
-   * @param bool $servesDessert
+   * @param bool
    */
   public function setServesDessert($servesDessert)
   {
@@ -1568,9 +1017,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesDessert;
   }
   /**
-   * Specifies if the place serves dinner.
-   *
-   * @param bool $servesDinner
+   * @param bool
    */
   public function setServesDinner($servesDinner)
   {
@@ -1584,9 +1031,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesDinner;
   }
   /**
-   * Specifies if the place serves lunch.
-   *
-   * @param bool $servesLunch
+   * @param bool
    */
   public function setServesLunch($servesLunch)
   {
@@ -1600,9 +1045,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesLunch;
   }
   /**
-   * Specifies if the place serves vegetarian food.
-   *
-   * @param bool $servesVegetarianFood
+   * @param bool
    */
   public function setServesVegetarianFood($servesVegetarianFood)
   {
@@ -1616,9 +1059,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesVegetarianFood;
   }
   /**
-   * Specifies if the place serves wine.
-   *
-   * @param bool $servesWine
+   * @param bool
    */
   public function setServesWine($servesWine)
   {
@@ -1632,9 +1073,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesWine;
   }
   /**
-   * A short, human-readable address for this place.
-   *
-   * @param string $shortFormattedAddress
+   * @param string
    */
   public function setShortFormattedAddress($shortFormattedAddress)
   {
@@ -1648,9 +1087,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->shortFormattedAddress;
   }
   /**
-   * A list of sub-destinations related to the place.
-   *
-   * @param GoogleMapsPlacesV1PlaceSubDestination[] $subDestinations
+   * @param GoogleMapsPlacesV1PlaceSubDestination[]
    */
   public function setSubDestinations($subDestinations)
   {
@@ -1664,9 +1101,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->subDestinations;
   }
   /**
-   * Specifies if the business supports takeout.
-   *
-   * @param bool $takeout
+   * @param bool
    */
   public function setTakeout($takeout)
   {
@@ -1680,44 +1115,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->takeout;
   }
   /**
-   * IANA Time Zone Database time zone. For example "America/New_York".
-   *
-   * @param GoogleTypeTimeZone $timeZone
-   */
-  public function setTimeZone(GoogleTypeTimeZone $timeZone)
-  {
-    $this->timeZone = $timeZone;
-  }
-  /**
-   * @return GoogleTypeTimeZone
-   */
-  public function getTimeZone()
-  {
-    return $this->timeZone;
-  }
-  /**
-   * The transit station information for the place.
-   *
-   * @param GoogleMapsPlacesV1TransitStation $transitStation
-   */
-  public function setTransitStation(GoogleMapsPlacesV1TransitStation $transitStation)
-  {
-    $this->transitStation = $transitStation;
-  }
-  /**
-   * @return GoogleMapsPlacesV1TransitStation
-   */
-  public function getTransitStation()
-  {
-    return $this->transitStation;
-  }
-  /**
-   * A set of type tags for this result. For example, "political" and
-   * "locality". For the complete list of possible values, see Table A and Table
-   * B at https://developers.google.com/maps/documentation/places/web-
-   * service/place-types
-   *
-   * @param string[] $types
+   * @param string[]
    */
   public function setTypes($types)
   {
@@ -1731,9 +1129,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->types;
   }
   /**
-   * The total number of reviews (with or without text) for this place.
-   *
-   * @param int $userRatingCount
+   * @param int
    */
   public function setUserRatingCount($userRatingCount)
   {
@@ -1747,11 +1143,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->userRatingCount;
   }
   /**
-   * Number of minutes this place's timezone is currently offset from UTC. This
-   * is expressed in minutes to support timezones that are offset by fractions
-   * of an hour, e.g. X hours and 15 minutes.
-   *
-   * @param int $utcOffsetMinutes
+   * @param int
    */
   public function setUtcOffsetMinutes($utcOffsetMinutes)
   {
@@ -1765,11 +1157,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->utcOffsetMinutes;
   }
   /**
-   * A viewport suitable for displaying the place on an average-sized map. This
-   * viewport should not be used as the physical boundary or the service area of
-   * the business.
-   *
-   * @param GoogleGeoTypeViewport $viewport
+   * @param GoogleGeoTypeViewport
    */
   public function setViewport(GoogleGeoTypeViewport $viewport)
   {
@@ -1783,11 +1171,7 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->viewport;
   }
   /**
-   * The authoritative website for this place, e.g. a business' homepage. Note
-   * that for places that are part of a chain (e.g. an IKEA store), this will
-   * usually be the website for the individual store, not the overall chain.
-   *
-   * @param string $websiteUri
+   * @param string
    */
   public function setWebsiteUri($websiteUri)
   {

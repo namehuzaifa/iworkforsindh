@@ -15,7 +15,12 @@ class Options
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xE9\x01\x0A\x1Bgoogle/iam/v1/options.proto\x12\x0Dgoogle.iam.v1\"4\x0A\x10GetPolicyOptions\x12 \x0A\x18requested_policy_version\x18\x01 \x01(\x05B}\x0A\x11com.google.iam.v1B\x0COptionsProtoP\x01Z)cloud.google.com/go/iam/apiv1/iampb;iampb\xF8\x01\x01\xAA\x02\x13Google.Cloud.Iam.V1\xCA\x02\x13Google\\Cloud\\Iam\\V1b\x06proto3"
+            '
+é
+google/iam/v1/options.protogoogle.iam.v1"4
+GetPolicyOptions 
+requested_policy_version (B}
+com.google.iam.v1BOptionsProtoPZ)cloud.google.com/go/iam/apiv1/iampb;iampbøªGoogle.Cloud.Iam.V1ÊGoogle\\Cloud\\Iam\\V1bproto3'
         , true);
 
         static::$is_initialized = true;

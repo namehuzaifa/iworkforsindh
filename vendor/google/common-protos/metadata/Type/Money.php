@@ -15,7 +15,15 @@ class Money
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xCB\x01\x0A\x17google/type/money.proto\x12\x0Bgoogle.type\"<\x0A\x05Money\x12\x15\x0A\x0Dcurrency_code\x18\x01 \x01(\x09\x12\x0D\x0A\x05units\x18\x02 \x01(\x03\x12\x0D\x0A\x05nanos\x18\x03 \x01(\x05B]\x0A\x0Fcom.google.typeB\x0AMoneyProtoP\x01Z6google.golang.org/genproto/googleapis/type/money;money\xA2\x02\x03GTPb\x06proto3"
+            '
+Î
+google/type/money.protogoogle.type"<
+Money
+currency_code (	
+units (
+nanos (B`
+com.google.typeB
+MoneyProtoPZ6google.golang.org/genproto/googleapis/type/money;moneyø¢GTPbproto3'
         , true);
 
         static::$is_initialized = true;

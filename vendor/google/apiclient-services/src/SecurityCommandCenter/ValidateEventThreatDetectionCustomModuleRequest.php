@@ -29,7 +29,7 @@ class ValidateEventThreatDetectionCustomModuleRequest extends \Google\Model
   public $type;
 
   /**
-   * @param string $rawText
+   * @param string
    */
   public function setRawText($rawText)
   {
@@ -43,7 +43,7 @@ class ValidateEventThreatDetectionCustomModuleRequest extends \Google\Model
     return $this->rawText;
   }
   /**
-   * @param string $type
+   * @param string
    */
   public function setType($type)
   {

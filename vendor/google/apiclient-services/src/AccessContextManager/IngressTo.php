@@ -19,32 +19,16 @@ namespace Google\Service\AccessContextManager;
 
 class IngressTo extends \Google\Collection
 {
-  protected $collection_key = 'roles';
+  protected $collection_key = 'resources';
   protected $operationsType = ApiOperation::class;
   protected $operationsDataType = 'array';
   /**
-   * A list of resources, currently only projects in the form `projects/`,
-   * protected by this ServicePerimeter that are allowed to be accessed by
-   * sources defined in the corresponding IngressFrom. If a single `*` is
-   * specified, then access to all resources inside the perimeter are allowed.
-   *
    * @var string[]
    */
   public $resources;
-  /**
-   * IAM roles that represent the set of operations that the sources specified
-   * in the corresponding IngressFrom are allowed to perform in this
-   * ServicePerimeter.
-   *
-   * @var string[]
-   */
-  public $roles;
 
   /**
-   * A list of ApiOperations allowed to be performed by the sources specified in
-   * corresponding IngressFrom in this ServicePerimeter.
-   *
-   * @param ApiOperation[] $operations
+   * @param ApiOperation[]
    */
   public function setOperations($operations)
   {
@@ -58,12 +42,7 @@ class IngressTo extends \Google\Collection
     return $this->operations;
   }
   /**
-   * A list of resources, currently only projects in the form `projects/`,
-   * protected by this ServicePerimeter that are allowed to be accessed by
-   * sources defined in the corresponding IngressFrom. If a single `*` is
-   * specified, then access to all resources inside the perimeter are allowed.
-   *
-   * @param string[] $resources
+   * @param string[]
    */
   public function setResources($resources)
   {
@@ -75,24 +54,6 @@ class IngressTo extends \Google\Collection
   public function getResources()
   {
     return $this->resources;
-  }
-  /**
-   * IAM roles that represent the set of operations that the sources specified
-   * in the corresponding IngressFrom are allowed to perform in this
-   * ServicePerimeter.
-   *
-   * @param string[] $roles
-   */
-  public function setRoles($roles)
-  {
-    $this->roles = $roles;
-  }
-  /**
-   * @return string[]
-   */
-  public function getRoles()
-  {
-    return $this->roles;
   }
 }
 

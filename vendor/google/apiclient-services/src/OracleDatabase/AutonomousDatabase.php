@@ -17,125 +17,49 @@
 
 namespace Google\Service\OracleDatabase;
 
-class AutonomousDatabase extends \Google\Collection
+class AutonomousDatabase extends \Google\Model
 {
-  protected $collection_key = 'peerAutonomousDatabases';
   /**
-   * Optional. Immutable. The password for the default ADMIN user. Note: Only
-   * one of `admin_password_secret_version` or `admin_password` can be
-   * populated.
-   *
    * @var string
    */
   public $adminPassword;
   /**
-   * Optional. Immutable. The resource name of a secret version in Secret
-   * Manager which contains the database admin user's password. Format:
-   * projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
-   * `admin_password_secret_version` or `admin_password` can be populated.
-   *
-   * @var string
-   */
-  public $adminPasswordSecretVersion;
-  /**
-   * Optional. Immutable. The subnet CIDR range for the Autonomous Database.
-   *
    * @var string
    */
   public $cidr;
   /**
-   * Output only. The date and time that the Autonomous Database was created.
-   *
    * @var string
    */
   public $createTime;
   /**
-   * Optional. Immutable. The name of the Autonomous Database. The database name
-   * must be unique in the project. The name must begin with a letter and can
-   * contain a maximum of 30 alphanumeric characters.
-   *
    * @var string
    */
   public $database;
   /**
-   * Output only. List of supported GCP region to clone the Autonomous Database
-   * for disaster recovery. Format: `project/{project}/locations/{location}`.
-   *
-   * @var string[]
-   */
-  public $disasterRecoverySupportedLocations;
-  /**
-   * Optional. Immutable. The display name for the Autonomous Database. The name
-   * does not have to be unique within your project.
-   *
    * @var string
    */
   public $displayName;
   /**
-   * Output only. The ID of the subscription entitlement associated with the
-   * Autonomous Database.
-   *
    * @var string
    */
   public $entitlementId;
   /**
-   * Optional. The labels or tags associated with the Autonomous Database.
-   *
    * @var string[]
    */
   public $labels;
   /**
-   * Identifier. The name of the Autonomous Database resource in the following
-   * format: projects/{project}/locations/{region}/autonomousDatabases/{autonomo
-   * us_database}
-   *
    * @var string
    */
   public $name;
   /**
-   * Optional. Immutable. The name of the VPC network used by the Autonomous
-   * Database in the following format:
-   * projects/{project}/global/networks/{network}
-   *
    * @var string
    */
   public $network;
-  /**
-   * Optional. Immutable. The name of the OdbNetwork associated with the
-   * Autonomous Database. Format:
-   * projects/{project}/locations/{location}/odbNetworks/{odb_network} It is
-   * optional but if specified, this should match the parent ODBNetwork of the
-   * OdbSubnet.
-   *
-   * @var string
-   */
-  public $odbNetwork;
-  /**
-   * Optional. Immutable. The name of the OdbSubnet associated with the
-   * Autonomous Database. Format: projects/{project}/locations/{location}/odbNet
-   * works/{odb_network}/odbSubnets/{odb_subnet}
-   *
-   * @var string
-   */
-  public $odbSubnet;
-  /**
-   * Output only. The peer Autonomous Database names of the given Autonomous
-   * Database.
-   *
-   * @var string[]
-   */
-  public $peerAutonomousDatabases;
   protected $propertiesType = AutonomousDatabaseProperties::class;
   protected $propertiesDataType = '';
-  protected $sourceConfigType = SourceConfig::class;
-  protected $sourceConfigDataType = '';
 
   /**
-   * Optional. Immutable. The password for the default ADMIN user. Note: Only
-   * one of `admin_password_secret_version` or `admin_password` can be
-   * populated.
-   *
-   * @param string $adminPassword
+   * @param string
    */
   public function setAdminPassword($adminPassword)
   {
@@ -149,28 +73,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->adminPassword;
   }
   /**
-   * Optional. Immutable. The resource name of a secret version in Secret
-   * Manager which contains the database admin user's password. Format:
-   * projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
-   * `admin_password_secret_version` or `admin_password` can be populated.
-   *
-   * @param string $adminPasswordSecretVersion
-   */
-  public function setAdminPasswordSecretVersion($adminPasswordSecretVersion)
-  {
-    $this->adminPasswordSecretVersion = $adminPasswordSecretVersion;
-  }
-  /**
-   * @return string
-   */
-  public function getAdminPasswordSecretVersion()
-  {
-    return $this->adminPasswordSecretVersion;
-  }
-  /**
-   * Optional. Immutable. The subnet CIDR range for the Autonomous Database.
-   *
-   * @param string $cidr
+   * @param string
    */
   public function setCidr($cidr)
   {
@@ -184,9 +87,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->cidr;
   }
   /**
-   * Output only. The date and time that the Autonomous Database was created.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -200,11 +101,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->createTime;
   }
   /**
-   * Optional. Immutable. The name of the Autonomous Database. The database name
-   * must be unique in the project. The name must begin with a letter and can
-   * contain a maximum of 30 alphanumeric characters.
-   *
-   * @param string $database
+   * @param string
    */
   public function setDatabase($database)
   {
@@ -218,27 +115,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->database;
   }
   /**
-   * Output only. List of supported GCP region to clone the Autonomous Database
-   * for disaster recovery. Format: `project/{project}/locations/{location}`.
-   *
-   * @param string[] $disasterRecoverySupportedLocations
-   */
-  public function setDisasterRecoverySupportedLocations($disasterRecoverySupportedLocations)
-  {
-    $this->disasterRecoverySupportedLocations = $disasterRecoverySupportedLocations;
-  }
-  /**
-   * @return string[]
-   */
-  public function getDisasterRecoverySupportedLocations()
-  {
-    return $this->disasterRecoverySupportedLocations;
-  }
-  /**
-   * Optional. Immutable. The display name for the Autonomous Database. The name
-   * does not have to be unique within your project.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -252,10 +129,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->displayName;
   }
   /**
-   * Output only. The ID of the subscription entitlement associated with the
-   * Autonomous Database.
-   *
-   * @param string $entitlementId
+   * @param string
    */
   public function setEntitlementId($entitlementId)
   {
@@ -269,9 +143,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->entitlementId;
   }
   /**
-   * Optional. The labels or tags associated with the Autonomous Database.
-   *
-   * @param string[] $labels
+   * @param string[]
    */
   public function setLabels($labels)
   {
@@ -285,11 +157,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->labels;
   }
   /**
-   * Identifier. The name of the Autonomous Database resource in the following
-   * format: projects/{project}/locations/{region}/autonomousDatabases/{autonomo
-   * us_database}
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -303,11 +171,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->name;
   }
   /**
-   * Optional. Immutable. The name of the VPC network used by the Autonomous
-   * Database in the following format:
-   * projects/{project}/global/networks/{network}
-   *
-   * @param string $network
+   * @param string
    */
   public function setNetwork($network)
   {
@@ -321,64 +185,7 @@ class AutonomousDatabase extends \Google\Collection
     return $this->network;
   }
   /**
-   * Optional. Immutable. The name of the OdbNetwork associated with the
-   * Autonomous Database. Format:
-   * projects/{project}/locations/{location}/odbNetworks/{odb_network} It is
-   * optional but if specified, this should match the parent ODBNetwork of the
-   * OdbSubnet.
-   *
-   * @param string $odbNetwork
-   */
-  public function setOdbNetwork($odbNetwork)
-  {
-    $this->odbNetwork = $odbNetwork;
-  }
-  /**
-   * @return string
-   */
-  public function getOdbNetwork()
-  {
-    return $this->odbNetwork;
-  }
-  /**
-   * Optional. Immutable. The name of the OdbSubnet associated with the
-   * Autonomous Database. Format: projects/{project}/locations/{location}/odbNet
-   * works/{odb_network}/odbSubnets/{odb_subnet}
-   *
-   * @param string $odbSubnet
-   */
-  public function setOdbSubnet($odbSubnet)
-  {
-    $this->odbSubnet = $odbSubnet;
-  }
-  /**
-   * @return string
-   */
-  public function getOdbSubnet()
-  {
-    return $this->odbSubnet;
-  }
-  /**
-   * Output only. The peer Autonomous Database names of the given Autonomous
-   * Database.
-   *
-   * @param string[] $peerAutonomousDatabases
-   */
-  public function setPeerAutonomousDatabases($peerAutonomousDatabases)
-  {
-    $this->peerAutonomousDatabases = $peerAutonomousDatabases;
-  }
-  /**
-   * @return string[]
-   */
-  public function getPeerAutonomousDatabases()
-  {
-    return $this->peerAutonomousDatabases;
-  }
-  /**
-   * Optional. The properties of the Autonomous Database.
-   *
-   * @param AutonomousDatabaseProperties $properties
+   * @param AutonomousDatabaseProperties
    */
   public function setProperties(AutonomousDatabaseProperties $properties)
   {
@@ -390,25 +197,6 @@ class AutonomousDatabase extends \Google\Collection
   public function getProperties()
   {
     return $this->properties;
-  }
-  /**
-   * Optional. Immutable. The source Autonomous Database configuration for the
-   * standby Autonomous Database. The source Autonomous Database is configured
-   * while creating the Peer Autonomous Database and can't be updated after
-   * creation.
-   *
-   * @param SourceConfig $sourceConfig
-   */
-  public function setSourceConfig(SourceConfig $sourceConfig)
-  {
-    $this->sourceConfig = $sourceConfig;
-  }
-  /**
-   * @return SourceConfig
-   */
-  public function getSourceConfig()
-  {
-    return $this->sourceConfig;
   }
 }
 

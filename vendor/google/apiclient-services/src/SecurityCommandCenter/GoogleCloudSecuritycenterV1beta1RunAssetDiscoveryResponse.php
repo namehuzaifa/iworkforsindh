@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse extends \Google\Model
 {
-  public const STATE_STATE_UNSPECIFIED = 'STATE_UNSPECIFIED';
-  public const STATE_COMPLETED = 'COMPLETED';
-  public const STATE_SUPERSEDED = 'SUPERSEDED';
-  public const STATE_TERMINATED = 'TERMINATED';
   /**
    * @var string
    */
@@ -33,7 +29,7 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse extends \Google\
   public $state;
 
   /**
-   * @param string $duration
+   * @param string
    */
   public function setDuration($duration)
   {
@@ -47,14 +43,14 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse extends \Google\
     return $this->duration;
   }
   /**
-   * @param self::STATE_* $state
+   * @param string
    */
   public function setState($state)
   {
     $this->state = $state;
   }
   /**
-   * @return self::STATE_*
+   * @return string
    */
   public function getState()
   {

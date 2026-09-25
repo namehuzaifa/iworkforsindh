@@ -29,7 +29,7 @@ class Position extends \Google\Model
   public $lineNumber;
 
   /**
-   * @param int $columnNumber
+   * @param int
    */
   public function setColumnNumber($columnNumber)
   {
@@ -43,7 +43,7 @@ class Position extends \Google\Model
     return $this->columnNumber;
   }
   /**
-   * @param int $lineNumber
+   * @param int
    */
   public function setLineNumber($lineNumber)
   {

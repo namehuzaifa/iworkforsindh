@@ -15,10 +15,6 @@ trait NodeAttributes
 	 */
 	public function setAttribute(string $key, $value): void
 	{
-		if ($value === null) {
-			unset($this->attributes[$key]);
-			return;
-		}
 		$this->attributes[$key] = $value;
 	}
 

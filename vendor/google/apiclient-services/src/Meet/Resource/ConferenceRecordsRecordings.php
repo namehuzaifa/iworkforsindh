@@ -31,9 +31,7 @@ use Google\Service\Meet\Recording;
 class ConferenceRecordsRecordings extends \Google\Service\Resource
 {
   /**
-   * Gets a recording by recording ID. For more information, see [Work with artifa
-   * cts](https://developers.google.com/workspace/meet/api/guides/artifacts).
-   * (recordings.get)
+   * Gets a recording by recording ID. (recordings.get)
    *
    * @param string $name Required. Resource name of the recording.
    * @param array $optParams Optional parameters.
@@ -48,8 +46,7 @@ class ConferenceRecordsRecordings extends \Google\Service\Resource
   }
   /**
    * Lists the recording resources from the conference record. By default, ordered
-   * by start time and in ascending order. For more information, see [Work with ar
-   * tifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+   * by start time and in ascending order.
    * (recordings.listConferenceRecordsRecordings)
    *
    * @param string $parent Required. Format:

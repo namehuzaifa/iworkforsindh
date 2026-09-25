@@ -35,13 +35,9 @@ class PermissionSettings extends \Google\Model
   protected $toggleHistoryDataType = '';
   protected $useAtMentionAllType = PermissionSetting::class;
   protected $useAtMentionAllDataType = '';
-  protected $viewSpaceMembershipType = PermissionSetting::class;
-  protected $viewSpaceMembershipDataType = '';
 
   /**
-   * Optional. Setting for managing apps in a space.
-   *
-   * @param PermissionSetting $manageApps
+   * @param PermissionSetting
    */
   public function setManageApps(PermissionSetting $manageApps)
   {
@@ -55,9 +51,7 @@ class PermissionSettings extends \Google\Model
     return $this->manageApps;
   }
   /**
-   * Optional. Setting for managing members and groups in a space.
-   *
-   * @param PermissionSetting $manageMembersAndGroups
+   * @param PermissionSetting
    */
   public function setManageMembersAndGroups(PermissionSetting $manageMembersAndGroups)
   {
@@ -71,9 +65,7 @@ class PermissionSettings extends \Google\Model
     return $this->manageMembersAndGroups;
   }
   /**
-   * Optional. Setting for managing webhooks in a space.
-   *
-   * @param PermissionSetting $manageWebhooks
+   * @param PermissionSetting
    */
   public function setManageWebhooks(PermissionSetting $manageWebhooks)
   {
@@ -87,10 +79,7 @@ class PermissionSettings extends \Google\Model
     return $this->manageWebhooks;
   }
   /**
-   * Optional. Setting for updating space name, avatar, description and
-   * guidelines.
-   *
-   * @param PermissionSetting $modifySpaceDetails
+   * @param PermissionSetting
    */
   public function setModifySpaceDetails(PermissionSetting $modifySpaceDetails)
   {
@@ -104,9 +93,7 @@ class PermissionSettings extends \Google\Model
     return $this->modifySpaceDetails;
   }
   /**
-   * Output only. Setting for posting messages in a space.
-   *
-   * @param PermissionSetting $postMessages
+   * @param PermissionSetting
    */
   public function setPostMessages(PermissionSetting $postMessages)
   {
@@ -120,9 +107,7 @@ class PermissionSettings extends \Google\Model
     return $this->postMessages;
   }
   /**
-   * Optional. Setting for replying to messages in a space.
-   *
-   * @param PermissionSetting $replyMessages
+   * @param PermissionSetting
    */
   public function setReplyMessages(PermissionSetting $replyMessages)
   {
@@ -136,9 +121,7 @@ class PermissionSettings extends \Google\Model
     return $this->replyMessages;
   }
   /**
-   * Optional. Setting for toggling space history on and off.
-   *
-   * @param PermissionSetting $toggleHistory
+   * @param PermissionSetting
    */
   public function setToggleHistory(PermissionSetting $toggleHistory)
   {
@@ -152,9 +135,7 @@ class PermissionSettings extends \Google\Model
     return $this->toggleHistory;
   }
   /**
-   * Optional. Setting for using @all in a space.
-   *
-   * @param PermissionSetting $useAtMentionAll
+   * @param PermissionSetting
    */
   public function setUseAtMentionAll(PermissionSetting $useAtMentionAll)
   {
@@ -166,30 +147,6 @@ class PermissionSettings extends \Google\Model
   public function getUseAtMentionAll()
   {
     return $this->useAtMentionAll;
-  }
-  /**
-   * Optional. Setting for viewing space membership. Must be specified together
-   * with `AccessPermissionSettings.view_space_membership_setting` in the update
-   * mask and request body when updating who can view space membership. When
-   * restricting view access to specific roles (for example, space managers or
-   * assistant managers only), specify the desired role permissions here and
-   * provide an empty `AccessPermissionSettings.view_space_membership_setting`
-   * in the same request. If a target audience is configured in
-   * `AccessPermissionSettings.view_space_membership_setting`, this setting must
-   * be granted to all members.
-   *
-   * @param PermissionSetting $viewSpaceMembership
-   */
-  public function setViewSpaceMembership(PermissionSetting $viewSpaceMembership)
-  {
-    $this->viewSpaceMembership = $viewSpaceMembership;
-  }
-  /**
-   * @return PermissionSetting
-   */
-  public function getViewSpaceMembership()
-  {
-    return $this->viewSpaceMembership;
   }
 }
 

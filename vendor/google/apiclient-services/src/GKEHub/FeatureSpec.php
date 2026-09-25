@@ -29,17 +29,13 @@ class FeatureSpec extends \Google\Model
   protected $originDataType = '';
   protected $policycontrollerType = PolicyControllerSpec::class;
   protected $policycontrollerDataType = '';
-  protected $rbacrolebindingactuationType = RBACRoleBindingActuationSpec::class;
-  protected $rbacrolebindingactuationDataType = '';
   protected $servicemeshType = ServiceMeshSpec::class;
   protected $servicemeshDataType = '';
   protected $workloadcertificateType = WorkloadCertificateSpec::class;
   protected $workloadcertificateDataType = '';
 
   /**
-   * Cloudbuild-specific FeatureSpec.
-   *
-   * @param CloudBuildSpec $cloudbuild
+   * @param CloudBuildSpec
    */
   public function setCloudbuild(CloudBuildSpec $cloudbuild)
   {
@@ -53,9 +49,7 @@ class FeatureSpec extends \Google\Model
     return $this->cloudbuild;
   }
   /**
-   * Config Management FeatureSpec.
-   *
-   * @param ConfigManagementSpec $configmanagement
+   * @param ConfigManagementSpec
    */
   public function setConfigmanagement(ConfigManagementSpec $configmanagement)
   {
@@ -69,9 +63,7 @@ class FeatureSpec extends \Google\Model
     return $this->configmanagement;
   }
   /**
-   * IdentityService FeatureSpec.
-   *
-   * @param IdentityServiceSpec $identityservice
+   * @param IdentityServiceSpec
    */
   public function setIdentityservice(IdentityServiceSpec $identityservice)
   {
@@ -85,11 +77,7 @@ class FeatureSpec extends \Google\Model
     return $this->identityservice;
   }
   /**
-   * Whether this per-Feature spec was inherited from a fleet-level default.
-   * This field can be updated by users by either overriding a Feature config
-   * (updated to USER implicitly) or setting to FLEET explicitly.
-   *
-   * @param Origin $origin
+   * @param Origin
    */
   public function setOrigin(Origin $origin)
   {
@@ -103,9 +91,7 @@ class FeatureSpec extends \Google\Model
     return $this->origin;
   }
   /**
-   * Policycontroller-specific FeatureSpec.
-   *
-   * @param PolicyControllerSpec $policycontroller
+   * @param PolicyControllerSpec
    */
   public function setPolicycontroller(PolicyControllerSpec $policycontroller)
   {
@@ -119,25 +105,7 @@ class FeatureSpec extends \Google\Model
     return $this->policycontroller;
   }
   /**
-   * Rbacrolebindingactuation-specific FeatureSpec.
-   *
-   * @param RBACRoleBindingActuationSpec $rbacrolebindingactuation
-   */
-  public function setRbacrolebindingactuation(RBACRoleBindingActuationSpec $rbacrolebindingactuation)
-  {
-    $this->rbacrolebindingactuation = $rbacrolebindingactuation;
-  }
-  /**
-   * @return RBACRoleBindingActuationSpec
-   */
-  public function getRbacrolebindingactuation()
-  {
-    return $this->rbacrolebindingactuation;
-  }
-  /**
-   * ServiceMesh Feature Spec.
-   *
-   * @param ServiceMeshSpec $servicemesh
+   * @param ServiceMeshSpec
    */
   public function setServicemesh(ServiceMeshSpec $servicemesh)
   {
@@ -151,9 +119,7 @@ class FeatureSpec extends \Google\Model
     return $this->servicemesh;
   }
   /**
-   * Workloadcertificate-specific FeatureSpec.
-   *
-   * @param WorkloadCertificateSpec $workloadcertificate
+   * @param WorkloadCertificateSpec
    */
   public function setWorkloadcertificate(WorkloadCertificateSpec $workloadcertificate)
   {

@@ -30,7 +30,7 @@ class AzureMetadata extends \Google\Collection
   protected $tenantDataType = '';
 
   /**
-   * @param AzureManagementGroup[] $managementGroups
+   * @param AzureManagementGroup[]
    */
   public function setManagementGroups($managementGroups)
   {
@@ -44,7 +44,7 @@ class AzureMetadata extends \Google\Collection
     return $this->managementGroups;
   }
   /**
-   * @param AzureResourceGroup $resourceGroup
+   * @param AzureResourceGroup
    */
   public function setResourceGroup(AzureResourceGroup $resourceGroup)
   {
@@ -58,7 +58,7 @@ class AzureMetadata extends \Google\Collection
     return $this->resourceGroup;
   }
   /**
-   * @param AzureSubscription $subscription
+   * @param AzureSubscription
    */
   public function setSubscription(AzureSubscription $subscription)
   {
@@ -72,7 +72,7 @@ class AzureMetadata extends \Google\Collection
     return $this->subscription;
   }
   /**
-   * @param AzureTenant $tenant
+   * @param AzureTenant
    */
   public function setTenant(AzureTenant $tenant)
   {

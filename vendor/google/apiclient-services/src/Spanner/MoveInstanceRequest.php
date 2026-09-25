@@ -17,24 +17,15 @@
 
 namespace Google\Service\Spanner;
 
-class MoveInstanceRequest extends \Google\Collection
+class MoveInstanceRequest extends \Google\Model
 {
-  protected $collection_key = 'targetDatabaseMoveConfigs';
   /**
-   * Required. The target instance configuration where to move the instance.
-   * Values are of the form `projects//instanceConfigs/`.
-   *
    * @var string
    */
   public $targetConfig;
-  protected $targetDatabaseMoveConfigsType = DatabaseMoveConfig::class;
-  protected $targetDatabaseMoveConfigsDataType = 'array';
 
   /**
-   * Required. The target instance configuration where to move the instance.
-   * Values are of the form `projects//instanceConfigs/`.
-   *
-   * @param string $targetConfig
+   * @param string
    */
   public function setTargetConfig($targetConfig)
   {
@@ -46,23 +37,6 @@ class MoveInstanceRequest extends \Google\Collection
   public function getTargetConfig()
   {
     return $this->targetConfig;
-  }
-  /**
-   * Optional. The configuration for each database in the target instance
-   * configuration.
-   *
-   * @param DatabaseMoveConfig[] $targetDatabaseMoveConfigs
-   */
-  public function setTargetDatabaseMoveConfigs($targetDatabaseMoveConfigs)
-  {
-    $this->targetDatabaseMoveConfigs = $targetDatabaseMoveConfigs;
-  }
-  /**
-   * @return DatabaseMoveConfig[]
-   */
-  public function getTargetDatabaseMoveConfigs()
-  {
-    return $this->targetDatabaseMoveConfigs;
   }
 }
 

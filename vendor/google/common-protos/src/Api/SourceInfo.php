@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * Source information used to create a Service Config
@@ -28,7 +28,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \Google\Protobuf\Any[] $source_files
+     *     @type array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $source_files
      *           All files used during config generation.
      * }
      */
@@ -41,7 +41,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * All files used during config generation.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any source_files = 1;</code>
-     * @return RepeatedField<\Google\Protobuf\Any>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getSourceFiles()
     {
@@ -52,7 +52,7 @@ class SourceInfo extends \Google\Protobuf\Internal\Message
      * All files used during config generation.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any source_files = 1;</code>
-     * @param \Google\Protobuf\Any[] $var
+     * @param array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setSourceFiles($var)

@@ -25,7 +25,7 @@ class GetPolicyOptions extends \Google\Model
   public $requestedPolicyVersion;
 
   /**
-   * @param int $requestedPolicyVersion
+   * @param int
    */
   public function setRequestedPolicyVersion($requestedPolicyVersion)
   {

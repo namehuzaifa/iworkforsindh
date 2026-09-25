@@ -30,9 +30,17 @@ class AuthHandlerFactory
      */
     public static function build($cache = null, array $cacheConfig = [])
     {
-        switch (ClientInterface::MAJOR_VERSION) {
+        $guzzleVersion = null;
+        if (defined('\GuzzleHttp\ClientInterface::MAJOR_VERSION')) {
+            $guzzleVersion = ClientInterface::MAJOR_VERSION;
+        } elseif (defined('\GuzzleHttp\ClientInterface::VERSION')) {
+            $guzzleVersion = (int) substr(ClientInterface::VERSION, 0, 1);
+        }
+
+        switch ($guzzleVersion) {
+            case 6:
+                return new Guzzle6AuthHandler($cache, $cacheConfig);
             case 7:
-            case 8:
                 return new Guzzle7AuthHandler($cache, $cacheConfig);
             default:
                 throw new Exception('Version not supported');

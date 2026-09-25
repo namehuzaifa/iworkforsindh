@@ -47,7 +47,7 @@ class Asset extends \Google\Model
   public $updateTime;
 
   /**
-   * @param string $canonicalName
+   * @param string
    */
   public function setCanonicalName($canonicalName)
   {
@@ -61,7 +61,7 @@ class Asset extends \Google\Model
     return $this->canonicalName;
   }
   /**
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -75,7 +75,7 @@ class Asset extends \Google\Model
     return $this->createTime;
   }
   /**
-   * @param IamPolicy $iamPolicy
+   * @param IamPolicy
    */
   public function setIamPolicy(IamPolicy $iamPolicy)
   {
@@ -89,7 +89,7 @@ class Asset extends \Google\Model
     return $this->iamPolicy;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -103,7 +103,7 @@ class Asset extends \Google\Model
     return $this->name;
   }
   /**
-   * @param array[] $resourceProperties
+   * @param array[]
    */
   public function setResourceProperties($resourceProperties)
   {
@@ -117,7 +117,7 @@ class Asset extends \Google\Model
     return $this->resourceProperties;
   }
   /**
-   * @param SecurityCenterProperties $securityCenterProperties
+   * @param SecurityCenterProperties
    */
   public function setSecurityCenterProperties(SecurityCenterProperties $securityCenterProperties)
   {
@@ -131,7 +131,7 @@ class Asset extends \Google\Model
     return $this->securityCenterProperties;
   }
   /**
-   * @param SecurityMarks $securityMarks
+   * @param SecurityMarks
    */
   public function setSecurityMarks(SecurityMarks $securityMarks)
   {
@@ -145,7 +145,7 @@ class Asset extends \Google\Model
     return $this->securityMarks;
   }
   /**
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

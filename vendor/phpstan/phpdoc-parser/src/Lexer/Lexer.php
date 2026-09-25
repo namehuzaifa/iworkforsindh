@@ -5,6 +5,7 @@ namespace PHPStan\PhpDocParser\Lexer;
 use PHPStan\PhpDocParser\ParserConfig;
 use function implode;
 use function preg_match_all;
+use const PREG_SET_ORDER;
 
 /**
  * Implementation based on Nette Tokenizer (New BSD License; https://github.com/nette/tokenizer)
@@ -50,8 +51,6 @@ class Lexer
 	public const TOKEN_NEGATED = 35;
 	public const TOKEN_ARROW = 36;
 
-	public const TOKEN_COMMENT = 37;
-
 	public const TOKEN_LABELS = [
 		self::TOKEN_REFERENCE => '\'&\'',
 		self::TOKEN_UNION => '\'|\'',
@@ -67,7 +66,6 @@ class Lexer
 		self::TOKEN_OPEN_CURLY_BRACKET => '\'{\'',
 		self::TOKEN_CLOSE_CURLY_BRACKET => '\'}\'',
 		self::TOKEN_COMMA => '\',\'',
-		self::TOKEN_COMMENT => '\'//\'',
 		self::TOKEN_COLON => '\':\'',
 		self::TOKEN_VARIADIC => '\'...\'',
 		self::TOKEN_DOUBLE_COLON => '\'::\'',
@@ -106,6 +104,7 @@ class Lexer
 		$this->config = $config;
 	}
 
+
 	/**
 	 * @return list<array{string, int, int}>
 	 */
@@ -115,24 +114,13 @@ class Lexer
 			$this->regexp = $this->generateRegexp();
 		}
 
-		// PREG_PATTERN_ORDER, not PREG_SET_ORDER: it collects the whole PHPDoc
-		// into two arrays instead of allocating one array per token. This only
-		// pays off while the token patterns have no capturing groups, because
-		// every group would get an array of its own, one entry per token.
-		preg_match_all($this->regexp, $s, $matches);
-
-		$values = $matches[0];
-		if ($values === []) {
-			return [['', self::TOKEN_END, 1]];
-		}
-
-		$marks = $matches['MARK'];
+		preg_match_all($this->regexp, $s, $matches, PREG_SET_ORDER);
 
 		$tokens = [];
 		$line = 1;
-		foreach ($values as $i => $value) {
-			$type = (int) $marks[$i];
-			$tokens[] = [$value, $type, $line];
+		foreach ($matches as $match) {
+			$type = (int) $match['MARK'];
+			$tokens[] = [$match[0], $type, $line];
 			if ($type !== self::TOKEN_PHPDOC_EOL) {
 				continue;
 			}
@@ -145,9 +133,9 @@ class Lexer
 		return $tokens;
 	}
 
+
 	private function generateRegexp(): string
 	{
-		// every group in here must be non-capturing, see tokenize()
 		$patterns = [
 			self::TOKEN_HORIZONTAL_WS => '[\\x09\\x20]++',
 
@@ -156,7 +144,7 @@ class Lexer
 			self::TOKEN_VARIABLE => '\\$[a-z_\\x80-\\xFF][0-9a-z_\\x80-\\xFF]*+',
 
 			// '&' followed by TOKEN_VARIADIC, TOKEN_VARIABLE, TOKEN_EQUAL, TOKEN_EQUAL or TOKEN_CLOSE_PARENTHESES
-			self::TOKEN_REFERENCE => '&(?=\\s*+(?:[,=)]|\\.\\.\\.|(?:\\$(?!this(?![0-9a-z_\\x80-\\xFF])))))',
+			self::TOKEN_REFERENCE => '&(?=\\s*+(?:[.,=)]|(?:\\$(?!this(?![0-9a-z_\\x80-\\xFF])))))',
 			self::TOKEN_UNION => '\\|',
 			self::TOKEN_INTERSECTION => '&',
 			self::TOKEN_NULLABLE => '\\?',
@@ -172,7 +160,6 @@ class Lexer
 			self::TOKEN_CLOSE_CURLY_BRACKET => '\\}',
 
 			self::TOKEN_COMMA => ',',
-			self::TOKEN_COMMENT => '\/\/[^\\r\\n]*(?=\n|\r|\*/)',
 			self::TOKEN_VARIADIC => '\\.\\.\\.',
 			self::TOKEN_DOUBLE_COLON => '::',
 			self::TOKEN_DOUBLE_ARROW => '=>',
@@ -186,8 +173,8 @@ class Lexer
 			self::TOKEN_DOCTRINE_TAG => '@[a-z_\\\\][a-z0-9_\:\\\\]*[a-z_][a-z0-9_]*',
 			self::TOKEN_PHPDOC_EOL => '\\r?+\\n[\\x09\\x20]*+(?:\\*(?!/)\\x20?+)?',
 
-			self::TOKEN_FLOAT => '[+\-]?(?:(?:[0-9]++(?:_[0-9]++)*\\.[0-9]*+(?:_[0-9]++)*(?:e[+\-]?[0-9]++(?:_[0-9]++)*)?)|(?:[0-9]*+(?:_[0-9]++)*\\.[0-9]++(?:_[0-9]++)*(?:e[+\-]?[0-9]++(?:_[0-9]++)*)?)|(?:[0-9]++(?:_[0-9]++)*e[+\-]?[0-9]++(?:_[0-9]++)*))',
-			self::TOKEN_INTEGER => '[+\-]?(?:(?:0b[0-1]++(?:_[0-1]++)*)|(?:0o[0-7]++(?:_[0-7]++)*)|(?:0x[0-9a-f]++(?:_[0-9a-f]++)*)|(?:[0-9]++(?:_[0-9]++)*))',
+			self::TOKEN_FLOAT => '[+\-]?(?:(?:[0-9]++(_[0-9]++)*\\.[0-9]*+(_[0-9]++)*(?:e[+\-]?[0-9]++(_[0-9]++)*)?)|(?:[0-9]*+(_[0-9]++)*\\.[0-9]++(_[0-9]++)*(?:e[+\-]?[0-9]++(_[0-9]++)*)?)|(?:[0-9]++(_[0-9]++)*e[+\-]?[0-9]++(_[0-9]++)*))',
+			self::TOKEN_INTEGER => '[+\-]?(?:(?:0b[0-1]++(_[0-1]++)*)|(?:0o[0-7]++(_[0-7]++)*)|(?:0x[0-9a-f]++(_[0-9a-f]++)*)|(?:[0-9]++(_[0-9]++)*))',
 			self::TOKEN_SINGLE_QUOTED_STRING => '\'(?:\\\\[^\\r\\n]|[^\'\\r\\n\\\\])*+\'',
 			self::TOKEN_DOUBLE_QUOTED_STRING => '"(?:\\\\[^\\r\\n]|[^"\\r\\n\\\\])*+"',
 			self::TOKEN_DOCTRINE_ANNOTATION_STRING => '"(?:""|[^"])*+"',

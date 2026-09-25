@@ -20,72 +20,38 @@ namespace Google\Service\CloudDataplex;
 class GoogleCloudDataplexV1MetadataJob extends \Google\Model
 {
   /**
-   * Unspecified.
-   */
-  public const TYPE_TYPE_UNSPECIFIED = 'TYPE_UNSPECIFIED';
-  /**
-   * Import job.
-   */
-  public const TYPE_IMPORT = 'IMPORT';
-  /**
-   * Export job.
-   */
-  public const TYPE_EXPORT = 'EXPORT';
-  /**
-   * Output only. The time when the metadata job was created.
-   *
    * @var string
    */
   public $createTime;
-  protected $exportResultType = GoogleCloudDataplexV1MetadataJobExportJobResult::class;
-  protected $exportResultDataType = '';
-  protected $exportSpecType = GoogleCloudDataplexV1MetadataJobExportJobSpec::class;
-  protected $exportSpecDataType = '';
   protected $importResultType = GoogleCloudDataplexV1MetadataJobImportJobResult::class;
   protected $importResultDataType = '';
   protected $importSpecType = GoogleCloudDataplexV1MetadataJobImportJobSpec::class;
   protected $importSpecDataType = '';
   /**
-   * Optional. User-defined labels.
-   *
    * @var string[]
    */
   public $labels;
   /**
-   * Output only. Identifier. The name of the resource that the configuration is
-   * applied to, in the format projects/{project_number}/locations/{location_id}
-   * /metadataJobs/{metadata_job_id}.
-   *
    * @var string
    */
   public $name;
   protected $statusType = GoogleCloudDataplexV1MetadataJobStatus::class;
   protected $statusDataType = '';
   /**
-   * Required. Metadata job type.
-   *
    * @var string
    */
   public $type;
   /**
-   * Output only. A system-generated, globally unique ID for the metadata job.
-   * If the metadata job is deleted and then re-created with the same name, this
-   * ID is different.
-   *
    * @var string
    */
   public $uid;
   /**
-   * Output only. The time when the metadata job was updated.
-   *
    * @var string
    */
   public $updateTime;
 
   /**
-   * Output only. The time when the metadata job was created.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -99,41 +65,7 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->createTime;
   }
   /**
-   * Output only. Export job result.
-   *
-   * @param GoogleCloudDataplexV1MetadataJobExportJobResult $exportResult
-   */
-  public function setExportResult(GoogleCloudDataplexV1MetadataJobExportJobResult $exportResult)
-  {
-    $this->exportResult = $exportResult;
-  }
-  /**
-   * @return GoogleCloudDataplexV1MetadataJobExportJobResult
-   */
-  public function getExportResult()
-  {
-    return $this->exportResult;
-  }
-  /**
-   * Export job specification.
-   *
-   * @param GoogleCloudDataplexV1MetadataJobExportJobSpec $exportSpec
-   */
-  public function setExportSpec(GoogleCloudDataplexV1MetadataJobExportJobSpec $exportSpec)
-  {
-    $this->exportSpec = $exportSpec;
-  }
-  /**
-   * @return GoogleCloudDataplexV1MetadataJobExportJobSpec
-   */
-  public function getExportSpec()
-  {
-    return $this->exportSpec;
-  }
-  /**
-   * Output only. Import job result.
-   *
-   * @param GoogleCloudDataplexV1MetadataJobImportJobResult $importResult
+   * @param GoogleCloudDataplexV1MetadataJobImportJobResult
    */
   public function setImportResult(GoogleCloudDataplexV1MetadataJobImportJobResult $importResult)
   {
@@ -147,9 +79,7 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->importResult;
   }
   /**
-   * Import job specification.
-   *
-   * @param GoogleCloudDataplexV1MetadataJobImportJobSpec $importSpec
+   * @param GoogleCloudDataplexV1MetadataJobImportJobSpec
    */
   public function setImportSpec(GoogleCloudDataplexV1MetadataJobImportJobSpec $importSpec)
   {
@@ -163,9 +93,7 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->importSpec;
   }
   /**
-   * Optional. User-defined labels.
-   *
-   * @param string[] $labels
+   * @param string[]
    */
   public function setLabels($labels)
   {
@@ -179,11 +107,7 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->labels;
   }
   /**
-   * Output only. Identifier. The name of the resource that the configuration is
-   * applied to, in the format projects/{project_number}/locations/{location_id}
-   * /metadataJobs/{metadata_job_id}.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -197,9 +121,7 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->name;
   }
   /**
-   * Output only. Metadata job status.
-   *
-   * @param GoogleCloudDataplexV1MetadataJobStatus $status
+   * @param GoogleCloudDataplexV1MetadataJobStatus
    */
   public function setStatus(GoogleCloudDataplexV1MetadataJobStatus $status)
   {
@@ -213,29 +135,21 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->status;
   }
   /**
-   * Required. Metadata job type.
-   *
-   * Accepted values: TYPE_UNSPECIFIED, IMPORT, EXPORT
-   *
-   * @param self::TYPE_* $type
+   * @param string
    */
   public function setType($type)
   {
     $this->type = $type;
   }
   /**
-   * @return self::TYPE_*
+   * @return string
    */
   public function getType()
   {
     return $this->type;
   }
   /**
-   * Output only. A system-generated, globally unique ID for the metadata job.
-   * If the metadata job is deleted and then re-created with the same name, this
-   * ID is different.
-   *
-   * @param string $uid
+   * @param string
    */
   public function setUid($uid)
   {
@@ -249,9 +163,7 @@ class GoogleCloudDataplexV1MetadataJob extends \Google\Model
     return $this->uid;
   }
   /**
-   * Output only. The time when the metadata job was updated.
-   *
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

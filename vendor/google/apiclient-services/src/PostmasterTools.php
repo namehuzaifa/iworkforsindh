@@ -20,7 +20,7 @@ namespace Google\Service;
 use Google\Client;
 
 /**
- * Service definition for PostmasterTools (v2).
+ * Service definition for PostmasterTools (v1).
  *
  * <p>
  * The Postmaster Tools API is a RESTful API that provides programmatic access
@@ -29,30 +29,19 @@ use Google\Client;
  *
  * <p>
  * For more information about this service, see the API
- * <a href="https://developers.google.com/workspace/gmail/postmaster" target="_blank">Documentation</a>
+ * <a href="https://developers.google.com/gmail/postmaster" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
  */
 class PostmasterTools extends \Google\Service
 {
-  /** Get email traffic metrics, manage domains, and manage domain users for the domains you have registered with Postmaster Tools. */
-  const POSTMASTER =
-      "https://www.googleapis.com/auth/postmaster";
-  /** View and manage the domains you have registered with Postmaster Tools. */
-  const POSTMASTER_DOMAIN =
-      "https://www.googleapis.com/auth/postmaster.domain";
-  /** Get email traffic metrics for the domains you have registered with Postmaster Tools. */
-  const POSTMASTER_TRAFFIC_READONLY =
-      "https://www.googleapis.com/auth/postmaster.traffic.readonly";
-  /** View and manage users for the domains you have registered with Postmaster Tools. */
-  const POSTMASTER_USER =
-      "https://www.googleapis.com/auth/postmaster.user";
+  /** See email traffic metrics for the domains you have registered in Gmail Postmaster Tools. */
+  const POSTMASTER_READONLY =
+      "https://www.googleapis.com/auth/postmaster.readonly";
 
-  public $domainStats;
   public $domains;
-  public $domains_domainStats;
-  public $domains_users;
+  public $domains_trafficStats;
   public $rootUrlTemplate;
 
   /**
@@ -69,79 +58,27 @@ class PostmasterTools extends \Google\Service
     $this->rootUrlTemplate = $rootUrl ?: 'https://gmailpostmastertools.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v2';
+    $this->version = 'v1';
     $this->serviceName = 'gmailpostmastertools';
 
-    $this->domainStats = new PostmasterTools\Resource\DomainStats(
-        $this,
-        $this->serviceName,
-        'domainStats',
-        [
-          'methods' => [
-            'batchQuery' => [
-              'path' => 'v2/domainStats:batchQuery',
-              'httpMethod' => 'POST',
-              'parameters' => [],
-            ],
-          ]
-        ]
-    );
     $this->domains = new PostmasterTools\Resource\Domains(
         $this,
         $this->serviceName,
         'domains',
         [
           'methods' => [
-            'create' => [
-              'path' => 'v2/domains',
-              'httpMethod' => 'POST',
-              'parameters' => [],
-            ],'delete' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => 'v2/{+name}',
+            'get' => [
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],'getComplianceStatus' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getVerificationToken' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'verificationMethod' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'list' => [
-              'path' => 'v2/domains',
+              'path' => 'v1/domains',
               'httpMethod' => 'GET',
               'parameters' => [
                 'pageSize' => [
@@ -153,68 +90,18 @@ class PostmasterTools extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'verify' => [
-              'path' => 'v2/{+name}:verify',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
     );
-    $this->domains_domainStats = new PostmasterTools\Resource\DomainsDomainStats(
+    $this->domains_trafficStats = new PostmasterTools\Resource\DomainsTrafficStats(
         $this,
         $this->serviceName,
-        'domainStats',
+        'trafficStats',
         [
           'methods' => [
-            'query' => [
-              'path' => 'v2/{+parent}/domainStats:query',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->domains_users = new PostmasterTools\Resource\DomainsUsers(
-        $this,
-        $this->serviceName,
-        'users',
-        [
-          'methods' => [
-            'create' => [
-              'path' => 'v2/{+parent}/users',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => 'v2/{+name}',
+            'get' => [
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -224,13 +111,25 @@ class PostmasterTools extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v2/{+parent}/users',
+              'path' => 'v1/{+parent}/trafficStats',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'endDate.day' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'endDate.month' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'endDate.year' => [
+                  'location' => 'query',
+                  'type' => 'integer',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -240,19 +139,17 @@ class PostmasterTools extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
-              ],
-            ],'patch' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'updateMask' => [
+                'startDate.day' => [
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'integer',
+                ],
+                'startDate.month' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'startDate.year' => [
+                  'location' => 'query',
+                  'type' => 'integer',
                 ],
               ],
             ],

@@ -22,18 +22,12 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
   protected $collection_key = 'setParameterActions';
   protected $advancedSettingsType = GoogleCloudDialogflowCxV3AdvancedSettings::class;
   protected $advancedSettingsDataType = '';
-  /**
-   * @var string
-   */
-  public $codeBlockFunction;
   protected $conditionalCasesType = GoogleCloudDialogflowCxV3FulfillmentConditionalCases::class;
   protected $conditionalCasesDataType = 'array';
   /**
    * @var bool
    */
   public $enableGenerativeFallback;
-  protected $generatorsType = GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings::class;
-  protected $generatorsDataType = 'array';
   protected $messagesType = GoogleCloudDialogflowCxV3ResponseMessage::class;
   protected $messagesDataType = 'array';
   /**
@@ -52,7 +46,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
   public $webhook;
 
   /**
-   * @param GoogleCloudDialogflowCxV3AdvancedSettings $advancedSettings
+   * @param GoogleCloudDialogflowCxV3AdvancedSettings
    */
   public function setAdvancedSettings(GoogleCloudDialogflowCxV3AdvancedSettings $advancedSettings)
   {
@@ -66,21 +60,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->advancedSettings;
   }
   /**
-   * @param string $codeBlockFunction
-   */
-  public function setCodeBlockFunction($codeBlockFunction)
-  {
-    $this->codeBlockFunction = $codeBlockFunction;
-  }
-  /**
-   * @return string
-   */
-  public function getCodeBlockFunction()
-  {
-    return $this->codeBlockFunction;
-  }
-  /**
-   * @param GoogleCloudDialogflowCxV3FulfillmentConditionalCases[] $conditionalCases
+   * @param GoogleCloudDialogflowCxV3FulfillmentConditionalCases[]
    */
   public function setConditionalCases($conditionalCases)
   {
@@ -94,7 +74,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->conditionalCases;
   }
   /**
-   * @param bool $enableGenerativeFallback
+   * @param bool
    */
   public function setEnableGenerativeFallback($enableGenerativeFallback)
   {
@@ -108,21 +88,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->enableGenerativeFallback;
   }
   /**
-   * @param GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings[] $generators
-   */
-  public function setGenerators($generators)
-  {
-    $this->generators = $generators;
-  }
-  /**
-   * @return GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings[]
-   */
-  public function getGenerators()
-  {
-    return $this->generators;
-  }
-  /**
-   * @param GoogleCloudDialogflowCxV3ResponseMessage[] $messages
+   * @param GoogleCloudDialogflowCxV3ResponseMessage[]
    */
   public function setMessages($messages)
   {
@@ -136,7 +102,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->messages;
   }
   /**
-   * @param bool $returnPartialResponses
+   * @param bool
    */
   public function setReturnPartialResponses($returnPartialResponses)
   {
@@ -150,7 +116,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->returnPartialResponses;
   }
   /**
-   * @param GoogleCloudDialogflowCxV3FulfillmentSetParameterAction[] $setParameterActions
+   * @param GoogleCloudDialogflowCxV3FulfillmentSetParameterAction[]
    */
   public function setSetParameterActions($setParameterActions)
   {
@@ -164,7 +130,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->setParameterActions;
   }
   /**
-   * @param string $tag
+   * @param string
    */
   public function setTag($tag)
   {
@@ -178,7 +144,7 @@ class GoogleCloudDialogflowCxV3Fulfillment extends \Google\Collection
     return $this->tag;
   }
   /**
-   * @param string $webhook
+   * @param string
    */
   public function setWebhook($webhook)
   {

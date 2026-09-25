@@ -23,8 +23,6 @@ class CorpusQuery extends \Google\Model
   protected $calendarQueryDataType = '';
   protected $driveQueryType = HeldDriveQuery::class;
   protected $driveQueryDataType = '';
-  protected $geminiQueryType = HeldGeminiQuery::class;
-  protected $geminiQueryDataType = '';
   protected $groupsQueryType = HeldGroupsQuery::class;
   protected $groupsQueryDataType = '';
   protected $hangoutsChatQueryType = HeldHangoutsChatQuery::class;
@@ -35,10 +33,7 @@ class CorpusQuery extends \Google\Model
   protected $voiceQueryDataType = '';
 
   /**
-   * Service-specific options for Calendar holds. If set, **CorpusType** must be
-   * **CALENDAR**.
-   *
-   * @param HeldCalendarQuery $calendarQuery
+   * @param HeldCalendarQuery
    */
   public function setCalendarQuery(HeldCalendarQuery $calendarQuery)
   {
@@ -52,10 +47,7 @@ class CorpusQuery extends \Google\Model
     return $this->calendarQuery;
   }
   /**
-   * Service-specific options for Drive holds. If set, **CorpusType** must be
-   * **DRIVE**.
-   *
-   * @param HeldDriveQuery $driveQuery
+   * @param HeldDriveQuery
    */
   public function setDriveQuery(HeldDriveQuery $driveQuery)
   {
@@ -69,27 +61,7 @@ class CorpusQuery extends \Google\Model
     return $this->driveQuery;
   }
   /**
-   * Service-specific options for Gemini holds. If set, **CorpusType** must be
-   * **GEMINI**.
-   *
-   * @param HeldGeminiQuery $geminiQuery
-   */
-  public function setGeminiQuery(HeldGeminiQuery $geminiQuery)
-  {
-    $this->geminiQuery = $geminiQuery;
-  }
-  /**
-   * @return HeldGeminiQuery
-   */
-  public function getGeminiQuery()
-  {
-    return $this->geminiQuery;
-  }
-  /**
-   * Service-specific options for Groups holds. If set, **CorpusType** must be
-   * **GROUPS**.
-   *
-   * @param HeldGroupsQuery $groupsQuery
+   * @param HeldGroupsQuery
    */
   public function setGroupsQuery(HeldGroupsQuery $groupsQuery)
   {
@@ -103,10 +75,7 @@ class CorpusQuery extends \Google\Model
     return $this->groupsQuery;
   }
   /**
-   * Service-specific options for Chat holds. If set, **CorpusType** must be
-   * **HANGOUTS_CHAT**.
-   *
-   * @param HeldHangoutsChatQuery $hangoutsChatQuery
+   * @param HeldHangoutsChatQuery
    */
   public function setHangoutsChatQuery(HeldHangoutsChatQuery $hangoutsChatQuery)
   {
@@ -120,10 +89,7 @@ class CorpusQuery extends \Google\Model
     return $this->hangoutsChatQuery;
   }
   /**
-   * Service-specific options for Gmail holds. If set, **CorpusType** must be
-   * **MAIL**.
-   *
-   * @param HeldMailQuery $mailQuery
+   * @param HeldMailQuery
    */
   public function setMailQuery(HeldMailQuery $mailQuery)
   {
@@ -137,10 +103,7 @@ class CorpusQuery extends \Google\Model
     return $this->mailQuery;
   }
   /**
-   * Service-specific options for Voice holds. If set, **CorpusType** must be
-   * **VOICE**.
-   *
-   * @param HeldVoiceQuery $voiceQuery
+   * @param HeldVoiceQuery
    */
   public function setVoiceQuery(HeldVoiceQuery $voiceQuery)
   {

@@ -37,7 +37,7 @@ class Notebook extends \Google\Model
   public $service;
 
   /**
-   * @param string $lastAuthor
+   * @param string
    */
   public function setLastAuthor($lastAuthor)
   {
@@ -51,7 +51,7 @@ class Notebook extends \Google\Model
     return $this->lastAuthor;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -65,7 +65,7 @@ class Notebook extends \Google\Model
     return $this->name;
   }
   /**
-   * @param string $notebookUpdateTime
+   * @param string
    */
   public function setNotebookUpdateTime($notebookUpdateTime)
   {
@@ -79,7 +79,7 @@ class Notebook extends \Google\Model
     return $this->notebookUpdateTime;
   }
   /**
-   * @param string $service
+   * @param string
    */
   public function setService($service)
   {

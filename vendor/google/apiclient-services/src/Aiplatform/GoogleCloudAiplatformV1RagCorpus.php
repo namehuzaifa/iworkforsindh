@@ -22,59 +22,30 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
   protected $corpusStatusType = GoogleCloudAiplatformV1CorpusStatus::class;
   protected $corpusStatusDataType = '';
   /**
-   * Output only. Timestamp when this RagCorpus was created.
-   *
    * @var string
    */
   public $createTime;
   /**
-   * Optional. The description of the RagCorpus.
-   *
    * @var string
    */
   public $description;
   /**
-   * Required. The display name of the RagCorpus. The name can be up to 128
-   * characters long and can consist of any UTF-8 characters.
-   *
    * @var string
    */
   public $displayName;
-  protected $encryptionSpecType = GoogleCloudAiplatformV1EncryptionSpec::class;
-  protected $encryptionSpecDataType = '';
   /**
-   * Output only. The resource name of the RagCorpus.
-   *
    * @var string
    */
   public $name;
   /**
-   * Output only. Reserved for future use.
-   *
-   * @var bool
-   */
-  public $satisfiesPzi;
-  /**
-   * Output only. Reserved for future use.
-   *
-   * @var bool
-   */
-  public $satisfiesPzs;
-  /**
-   * Output only. Timestamp when this RagCorpus was last updated.
-   *
    * @var string
    */
   public $updateTime;
   protected $vectorDbConfigType = GoogleCloudAiplatformV1RagVectorDbConfig::class;
   protected $vectorDbConfigDataType = '';
-  protected $vertexAiSearchConfigType = GoogleCloudAiplatformV1VertexAiSearchConfig::class;
-  protected $vertexAiSearchConfigDataType = '';
 
   /**
-   * Output only. RagCorpus state.
-   *
-   * @param GoogleCloudAiplatformV1CorpusStatus $corpusStatus
+   * @param GoogleCloudAiplatformV1CorpusStatus
    */
   public function setCorpusStatus(GoogleCloudAiplatformV1CorpusStatus $corpusStatus)
   {
@@ -88,9 +59,7 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
     return $this->corpusStatus;
   }
   /**
-   * Output only. Timestamp when this RagCorpus was created.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -104,9 +73,7 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
     return $this->createTime;
   }
   /**
-   * Optional. The description of the RagCorpus.
-   *
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -120,10 +87,7 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
     return $this->description;
   }
   /**
-   * Required. The display name of the RagCorpus. The name can be up to 128
-   * characters long and can consist of any UTF-8 characters.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -137,28 +101,7 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
     return $this->displayName;
   }
   /**
-   * Optional. Immutable. The CMEK key name used to encrypt at-rest data related
-   * to this Corpus. Only applicable to RagManagedDb option for Vector DB. This
-   * field can only be set at corpus creation time, and cannot be updated or
-   * deleted.
-   *
-   * @param GoogleCloudAiplatformV1EncryptionSpec $encryptionSpec
-   */
-  public function setEncryptionSpec(GoogleCloudAiplatformV1EncryptionSpec $encryptionSpec)
-  {
-    $this->encryptionSpec = $encryptionSpec;
-  }
-  /**
-   * @return GoogleCloudAiplatformV1EncryptionSpec
-   */
-  public function getEncryptionSpec()
-  {
-    return $this->encryptionSpec;
-  }
-  /**
-   * Output only. The resource name of the RagCorpus.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -172,41 +115,7 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
     return $this->name;
   }
   /**
-   * Output only. Reserved for future use.
-   *
-   * @param bool $satisfiesPzi
-   */
-  public function setSatisfiesPzi($satisfiesPzi)
-  {
-    $this->satisfiesPzi = $satisfiesPzi;
-  }
-  /**
-   * @return bool
-   */
-  public function getSatisfiesPzi()
-  {
-    return $this->satisfiesPzi;
-  }
-  /**
-   * Output only. Reserved for future use.
-   *
-   * @param bool $satisfiesPzs
-   */
-  public function setSatisfiesPzs($satisfiesPzs)
-  {
-    $this->satisfiesPzs = $satisfiesPzs;
-  }
-  /**
-   * @return bool
-   */
-  public function getSatisfiesPzs()
-  {
-    return $this->satisfiesPzs;
-  }
-  /**
-   * Output only. Timestamp when this RagCorpus was last updated.
-   *
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {
@@ -220,9 +129,7 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
     return $this->updateTime;
   }
   /**
-   * Optional. Immutable. The config for the Vector DBs.
-   *
-   * @param GoogleCloudAiplatformV1RagVectorDbConfig $vectorDbConfig
+   * @param GoogleCloudAiplatformV1RagVectorDbConfig
    */
   public function setVectorDbConfig(GoogleCloudAiplatformV1RagVectorDbConfig $vectorDbConfig)
   {
@@ -234,22 +141,6 @@ class GoogleCloudAiplatformV1RagCorpus extends \Google\Model
   public function getVectorDbConfig()
   {
     return $this->vectorDbConfig;
-  }
-  /**
-   * Optional. Immutable. The config for the Vertex AI Search.
-   *
-   * @param GoogleCloudAiplatformV1VertexAiSearchConfig $vertexAiSearchConfig
-   */
-  public function setVertexAiSearchConfig(GoogleCloudAiplatformV1VertexAiSearchConfig $vertexAiSearchConfig)
-  {
-    $this->vertexAiSearchConfig = $vertexAiSearchConfig;
-  }
-  /**
-   * @return GoogleCloudAiplatformV1VertexAiSearchConfig
-   */
-  public function getVertexAiSearchConfig()
-  {
-    return $this->vertexAiSearchConfig;
   }
 }
 

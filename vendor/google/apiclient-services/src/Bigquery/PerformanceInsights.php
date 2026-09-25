@@ -19,12 +19,8 @@ namespace Google\Service\Bigquery;
 
 class PerformanceInsights extends \Google\Collection
 {
-  protected $collection_key = 'tableChangeInsights';
+  protected $collection_key = 'stagePerformanceStandaloneInsights';
   /**
-   * Output only. Average execution ms of previous runs. Indicates the job ran
-   * slow compared to previous executions. To find previous executions, use
-   * INFORMATION_SCHEMA tables and filter jobs with same query hash.
-   *
    * @var string
    */
   public $avgPreviousExecutionMs;
@@ -32,15 +28,9 @@ class PerformanceInsights extends \Google\Collection
   protected $stagePerformanceChangeInsightsDataType = 'array';
   protected $stagePerformanceStandaloneInsightsType = StagePerformanceStandaloneInsight::class;
   protected $stagePerformanceStandaloneInsightsDataType = 'array';
-  protected $tableChangeInsightsType = TableChangeInsight::class;
-  protected $tableChangeInsightsDataType = 'array';
 
   /**
-   * Output only. Average execution ms of previous runs. Indicates the job ran
-   * slow compared to previous executions. To find previous executions, use
-   * INFORMATION_SCHEMA tables and filter jobs with same query hash.
-   *
-   * @param string $avgPreviousExecutionMs
+   * @param string
    */
   public function setAvgPreviousExecutionMs($avgPreviousExecutionMs)
   {
@@ -54,10 +44,7 @@ class PerformanceInsights extends \Google\Collection
     return $this->avgPreviousExecutionMs;
   }
   /**
-   * Output only. Query stage performance insights compared to previous runs,
-   * for diagnosing performance regression.
-   *
-   * @param StagePerformanceChangeInsight[] $stagePerformanceChangeInsights
+   * @param StagePerformanceChangeInsight[]
    */
   public function setStagePerformanceChangeInsights($stagePerformanceChangeInsights)
   {
@@ -71,10 +58,7 @@ class PerformanceInsights extends \Google\Collection
     return $this->stagePerformanceChangeInsights;
   }
   /**
-   * Output only. Standalone query stage performance insights, for exploring
-   * potential improvements.
-   *
-   * @param StagePerformanceStandaloneInsight[] $stagePerformanceStandaloneInsights
+   * @param StagePerformanceStandaloneInsight[]
    */
   public function setStagePerformanceStandaloneInsights($stagePerformanceStandaloneInsights)
   {
@@ -86,23 +70,6 @@ class PerformanceInsights extends \Google\Collection
   public function getStagePerformanceStandaloneInsights()
   {
     return $this->stagePerformanceStandaloneInsights;
-  }
-  /**
-   * Output only. Performance insights for table-level attributes that changed
-   * compared to previous runs.
-   *
-   * @param TableChangeInsight[] $tableChangeInsights
-   */
-  public function setTableChangeInsights($tableChangeInsights)
-  {
-    $this->tableChangeInsights = $tableChangeInsights;
-  }
-  /**
-   * @return TableChangeInsight[]
-   */
-  public function getTableChangeInsights()
-  {
-    return $this->tableChangeInsights;
   }
 }
 

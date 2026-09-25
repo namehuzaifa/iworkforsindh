@@ -30,7 +30,7 @@ class AttackPath extends \Google\Collection
   protected $pathNodesDataType = 'array';
 
   /**
-   * @param AttackPathEdge[] $edges
+   * @param AttackPathEdge[]
    */
   public function setEdges($edges)
   {
@@ -44,7 +44,7 @@ class AttackPath extends \Google\Collection
     return $this->edges;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -58,7 +58,7 @@ class AttackPath extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param AttackPathNode[] $pathNodes
+   * @param AttackPathNode[]
    */
   public function setPathNodes($pathNodes)
   {

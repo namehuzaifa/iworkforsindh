@@ -37,7 +37,7 @@ class Source extends \Google\Model
   public $name;
 
   /**
-   * @param string $canonicalName
+   * @param string
    */
   public function setCanonicalName($canonicalName)
   {
@@ -51,7 +51,7 @@ class Source extends \Google\Model
     return $this->canonicalName;
   }
   /**
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -65,7 +65,7 @@ class Source extends \Google\Model
     return $this->description;
   }
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -79,7 +79,7 @@ class Source extends \Google\Model
     return $this->displayName;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {

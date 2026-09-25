@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * Define a system parameter rule mapping system parameter definitions to
@@ -47,7 +47,7 @@ class SystemParameterRule extends \Google\Protobuf\Internal\Message
      *           methods in all APIs.
      *           Refer to [selector][google.api.DocumentationRule.selector] for syntax
      *           details.
-     *     @type \Google\Api\SystemParameter[] $parameters
+     *     @type array<\Google\Api\SystemParameter>|\Google\Protobuf\Internal\RepeatedField $parameters
      *           Define parameters. Multiple names may be defined for a parameter.
      *           For a given method call, only one of them should be used. If multiple
      *           names are used the behavior is implementation-dependent.
@@ -100,7 +100,7 @@ class SystemParameterRule extends \Google\Protobuf\Internal\Message
      * parameter-dependent.
      *
      * Generated from protobuf field <code>repeated .google.api.SystemParameter parameters = 2;</code>
-     * @return RepeatedField<\Google\Api\SystemParameter>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getParameters()
     {
@@ -115,7 +115,7 @@ class SystemParameterRule extends \Google\Protobuf\Internal\Message
      * parameter-dependent.
      *
      * Generated from protobuf field <code>repeated .google.api.SystemParameter parameters = 2;</code>
-     * @param \Google\Api\SystemParameter[] $var
+     * @param array<\Google\Api\SystemParameter>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setParameters($var)

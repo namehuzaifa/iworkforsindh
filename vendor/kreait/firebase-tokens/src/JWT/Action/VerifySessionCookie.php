@@ -6,7 +6,7 @@ namespace Kreait\Firebase\JWT\Action;
 
 use InvalidArgumentException;
 
-final readonly class VerifySessionCookie
+final class VerifySessionCookie
 {
     /**
      * @param non-empty-string $sessionCookie
@@ -14,9 +14,9 @@ final readonly class VerifySessionCookie
      * @param non-empty-string|null $expectedTenantId
      */
     private function __construct(
-        private string $sessionCookie,
-        private int $leewayInSeconds,
-        private ?string $expectedTenantId,
+        private readonly string $sessionCookie,
+        private readonly int $leewayInSeconds,
+        private readonly ?string $expectedTenantId,
     ) {
     }
 

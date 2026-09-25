@@ -24,23 +24,12 @@ class GoogleCloudDiscoveryengineV1SearchResponseSearchResult extends \Google\Mod
   protected $documentType = GoogleCloudDiscoveryengineV1Document::class;
   protected $documentDataType = '';
   /**
-   * Document.id of the searched Document.
-   *
    * @var string
    */
   public $id;
-  protected $modelScoresType = GoogleCloudDiscoveryengineV1DoubleList::class;
-  protected $modelScoresDataType = 'map';
-  protected $rankSignalsType = GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals::class;
-  protected $rankSignalsDataType = '';
-  protected $retrievalSignalsType = GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals::class;
-  protected $retrievalSignalsDataType = '';
 
   /**
-   * The chunk data in the search response if the
-   * SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS.
-   *
-   * @param GoogleCloudDiscoveryengineV1Chunk $chunk
+   * @param GoogleCloudDiscoveryengineV1Chunk
    */
   public function setChunk(GoogleCloudDiscoveryengineV1Chunk $chunk)
   {
@@ -54,10 +43,7 @@ class GoogleCloudDiscoveryengineV1SearchResponseSearchResult extends \Google\Mod
     return $this->chunk;
   }
   /**
-   * The document data snippet in the search response. Only fields that are
-   * marked as `retrievable` are populated.
-   *
-   * @param GoogleCloudDiscoveryengineV1Document $document
+   * @param GoogleCloudDiscoveryengineV1Document
    */
   public function setDocument(GoogleCloudDiscoveryengineV1Document $document)
   {
@@ -71,9 +57,7 @@ class GoogleCloudDiscoveryengineV1SearchResponseSearchResult extends \Google\Mod
     return $this->document;
   }
   /**
-   * Document.id of the searched Document.
-   *
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {
@@ -85,55 +69,6 @@ class GoogleCloudDiscoveryengineV1SearchResponseSearchResult extends \Google\Mod
   public function getId()
   {
     return $this->id;
-  }
-  /**
-   * Output only. Google provided available scores.
-   *
-   * @param GoogleCloudDiscoveryengineV1DoubleList[] $modelScores
-   */
-  public function setModelScores($modelScores)
-  {
-    $this->modelScores = $modelScores;
-  }
-  /**
-   * @return GoogleCloudDiscoveryengineV1DoubleList[]
-   */
-  public function getModelScores()
-  {
-    return $this->modelScores;
-  }
-  /**
-   * Optional. A set of ranking signals associated with the result.
-   *
-   * @param GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals $rankSignals
-   */
-  public function setRankSignals(GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals $rankSignals)
-  {
-    $this->rankSignals = $rankSignals;
-  }
-  /**
-   * @return GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals
-   */
-  public function getRankSignals()
-  {
-    return $this->rankSignals;
-  }
-  /**
-   * Optional. A set of signals used by the relevance filter meant for use to
-   * fine-tune the relevance filter thresholds.
-   *
-   * @param GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals $retrievalSignals
-   */
-  public function setRetrievalSignals(GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals $retrievalSignals)
-  {
-    $this->retrievalSignals = $retrievalSignals;
-  }
-  /**
-   * @return GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals
-   */
-  public function getRetrievalSignals()
-  {
-    return $this->retrievalSignals;
   }
 }
 

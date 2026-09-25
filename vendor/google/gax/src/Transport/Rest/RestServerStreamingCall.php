@@ -55,7 +55,7 @@ class RestServerStreamingCall implements ServerStreamingCallInterface
     private array $decoderOptions;
 
     private RequestInterface $originalRequest;
-    private JsonStreamDecoder $decoder;
+    private ?JsonStreamDecoder $decoder;
     private string $decodeType;
     private ?ResponseInterface $response;
     private stdClass $status;
@@ -86,9 +86,7 @@ class RestServerStreamingCall implements ServerStreamingCallInterface
                 $callOptions
             )->wait();
         } catch (\Exception $ex) {
-            // Guzzle 7 carries the response on RequestException, Guzzle 8 only
-            // on its ResponseException subclass, hence the method_exists() check.
-            if ($ex instanceof RequestException && method_exists($ex, 'getResponse') && $ex->getResponse()) {
+            if ($ex instanceof RequestException && $ex->hasResponse()) {
                 $ex = ApiException::createFromRequestException($ex, /* isStream */ true);
             }
             throw $ex;
@@ -183,7 +181,7 @@ class RestServerStreamingCall implements ServerStreamingCallInterface
      */
     public function cancel()
     {
-        if (isset($this->decoder)) {
+        if (!is_null($this->decoder)) {
             $this->decoder->close();
         }
     }

@@ -101,8 +101,7 @@ final class AmpResponseV4 implements ResponseInterface, StreamableInterface
 
         $throttleWatcher = null;
 
-        $this->id = $id = self::$nextId;
-        self::$nextId = str_increment(self::$nextId);
+        $this->id = $id = self::$nextId++;
         Loop::defer(static function () use ($request, $multi, $id, &$info, &$headers, $canceller, &$options, $onProgress, &$handle, $logger, &$pause) {
             return new Coroutine(self::generateResponse($request, $multi, $id, $info, $headers, $canceller, $options, $onProgress, $handle, $logger, $pause));
         });
@@ -142,12 +141,12 @@ final class AmpResponseV4 implements ResponseInterface, StreamableInterface
         return null !== $type ? $this->info[$type] ?? null : $this->info;
     }
 
-    public function __serialize(): array
+    public function __sleep(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __unserialize(array $data): void
+    public function __wakeup(): void
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
@@ -182,17 +181,19 @@ final class AmpResponseV4 implements ResponseInterface, StreamableInterface
     /**
      * @param AmpClientStateV4 $multi
      */
-    private static function perform(ClientState $multi, ?array $responses = null): void
+    private static function perform(ClientState $multi, ?array &$responses = null): void
     {
-        foreach ($responses ?? [] as $response) {
-            try {
-                if ($response->info['start_time']) {
-                    $response->info['total_time'] = microtime(true) - $response->info['start_time'];
-                    ($response->onProgress)();
+        if ($responses) {
+            foreach ($responses as $response) {
+                try {
+                    if ($response->info['start_time']) {
+                        $response->info['total_time'] = microtime(true) - $response->info['start_time'];
+                        ($response->onProgress)();
+                    }
+                } catch (\Throwable $e) {
+                    $multi->handlesActivity[$response->id][] = null;
+                    $multi->handlesActivity[$response->id][] = $e;
                 }
-            } catch (\Throwable $e) {
-                $multi->handlesActivity[$response->id][] = null;
-                $multi->handlesActivity[$response->id][] = $e;
             }
         }
     }
@@ -225,7 +226,7 @@ final class AmpResponseV4 implements ResponseInterface, StreamableInterface
         });
 
         try {
-            /** @var Response $response */
+            /* @var Response $response */
             if (null === $response = yield from self::getPushedResponse($request, $multi, $info, $headers, $options, $logger)) {
                 $logger?->info(\sprintf('Request: "%s %s"', $info['http_method'], $info['url']));
 
@@ -331,10 +332,6 @@ final class AmpResponseV4 implements ResponseInterface, StreamableInterface
             $request->setTcpConnectTimeout($originRequest->getTcpConnectTimeout());
             $request->setTlsHandshakeTimeout($originRequest->getTlsHandshakeTimeout());
             $request->setTransferTimeout($originRequest->getTransferTimeout());
-            $request->setBodySizeLimit(0);
-            if (method_exists($request, 'setInactivityTimeout')) {
-                $request->setInactivityTimeout(0);
-            }
 
             if (303 === $status || \in_array($status, [301, 302], true) && 'POST' === $response->getRequest()->getMethod()) {
                 // Do like curl and browsers: turn POST to GET on 301, 302 and 303
@@ -352,7 +349,7 @@ final class AmpResponseV4 implements ResponseInterface, StreamableInterface
                 $request->addHeader($name, $value);
             }
 
-            if ($request->getUri()->getScheme() !== $originRequest->getUri()->getScheme() || $request->getUri()->getAuthority() !== $originRequest->getUri()->getAuthority()) {
+            if ($request->getUri()->getAuthority() !== $originRequest->getUri()->getAuthority()) {
                 $request->removeHeader('authorization');
                 $request->removeHeader('cookie');
                 $request->removeHeader('host');

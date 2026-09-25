@@ -18,7 +18,6 @@ use Psr\SimpleCache\CacheInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
 use Symfony\Component\Cache\Traits\ProxyTrait;
-use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * Turns a PSR-6 cache into a PSR-16 one.
@@ -69,10 +68,6 @@ class Psr16Cache implements CacheInterface, PruneableInterface, ResettableInterf
         };
         self::$packCacheItem ??= \Closure::bind(
             static function (CacheItem $item) {
-                if (!isset($item->metadata[ItemInterface::METADATA_CTIME])) {
-                    return $item->value;
-                }
-
                 $item->newMetadata = $item->metadata;
 
                 return $item->pack();
@@ -157,14 +152,14 @@ class Psr16Cache implements CacheInterface, PruneableInterface, ResettableInterf
                 $values[$key] = $item->isHit() ? $item->get() : $default;
             }
 
-            return $this->withRequestedKeys($keys, $values);
+            return $values;
         }
 
         foreach ($items as $key => $item) {
             $values[$key] = $item->isHit() ? (self::$packCacheItem)($item) : $default;
         }
 
-        return $this->withRequestedKeys($keys, $values);
+        return $values;
     }
 
     public function setMultiple($values, $ttl = null): bool
@@ -240,27 +235,6 @@ class Psr16Cache implements CacheInterface, PruneableInterface, ResettableInterf
             throw $e;
         } catch (Psr6CacheException $e) {
             throw new InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
-        }
-    }
-
-    private function withRequestedKeys(array $keys, array $values): iterable
-    {
-        foreach ($keys as $key) {
-            // PHP casts numeric strings to integers when they are used as array keys
-            if (\is_string($key) && $key === (string) (int) $key) {
-                return $this->yieldRequestedKeys($keys, $values);
-            }
-        }
-
-        return $values;
-    }
-
-    private function yieldRequestedKeys(array $keys, array $values): \Generator
-    {
-        $keys = array_combine($keys, $keys);
-
-        foreach ($values as $key => $value) {
-            yield ($keys[$key] ?? $key) => $value;
         }
     }
 }

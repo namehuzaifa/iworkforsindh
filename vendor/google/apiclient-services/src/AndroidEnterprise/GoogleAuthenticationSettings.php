@@ -20,38 +20,37 @@ namespace Google\Service\AndroidEnterprise;
 class GoogleAuthenticationSettings extends \Google\Model
 {
   /**
-   * This value is unused.
+   * @var string
    */
-  public const GOOGLE_AUTHENTICATION_REQUIRED_googleAuthenticationRequiredUnspecified = 'googleAuthenticationRequiredUnspecified';
+  public $dedicatedDevicesAllowed;
   /**
-   * Google authentication is not required.
-   */
-  public const GOOGLE_AUTHENTICATION_REQUIRED_notRequired = 'notRequired';
-  /**
-   * User is required to be successfully authenticated by Google.
-   */
-  public const GOOGLE_AUTHENTICATION_REQUIRED_required = 'required';
-  /**
-   * Whether Google authentication is required.
-   *
    * @var string
    */
   public $googleAuthenticationRequired;
 
   /**
-   * Whether Google authentication is required.
-   *
-   * Accepted values: googleAuthenticationRequiredUnspecified, notRequired,
-   * required
-   *
-   * @param self::GOOGLE_AUTHENTICATION_REQUIRED_* $googleAuthenticationRequired
+   * @param string
+   */
+  public function setDedicatedDevicesAllowed($dedicatedDevicesAllowed)
+  {
+    $this->dedicatedDevicesAllowed = $dedicatedDevicesAllowed;
+  }
+  /**
+   * @return string
+   */
+  public function getDedicatedDevicesAllowed()
+  {
+    return $this->dedicatedDevicesAllowed;
+  }
+  /**
+   * @param string
    */
   public function setGoogleAuthenticationRequired($googleAuthenticationRequired)
   {
     $this->googleAuthenticationRequired = $googleAuthenticationRequired;
   }
   /**
-   * @return self::GOOGLE_AUTHENTICATION_REQUIRED_*
+   * @return string
    */
   public function getGoogleAuthenticationRequired()
   {

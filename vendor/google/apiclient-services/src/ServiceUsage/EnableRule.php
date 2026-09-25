@@ -19,79 +19,54 @@ namespace Google\Service\ServiceUsage;
 
 class EnableRule extends \Google\Collection
 {
-  /**
-   * Unspecified enable type, which means enabled as both client and resource
-   * project.
-   */
-  public const ENABLE_TYPE_ENABLE_TYPE_UNSPECIFIED = 'ENABLE_TYPE_UNSPECIFIED';
-  /**
-   * Enable all clients under the CRM node specified by `ConsumerPolicy.name` to
-   * use the listed services. A client can be an API key, an OAuth client, or a
-   * service account.
-   */
-  public const ENABLE_TYPE_CLIENT = 'CLIENT';
-  /**
-   * Enable resources in the list services to be created and used under the CRM
-   * node specified by the `ConsumerPolicy.name`.
-   */
-  public const ENABLE_TYPE_RESOURCE = 'RESOURCE';
-  /**
-   * Activation made by Service Usage v1 API. This will be how consumers
-   * differentiate between policy changes made by v1 and v2 clients and
-   * understand what is actually possible based on those different policies.
-   */
-  public const ENABLE_TYPE_V1_COMPATIBLE = 'V1_COMPATIBLE';
   protected $collection_key = 'values';
   /**
-   * Deprecated: EnableType is not supported.
-   *
-   * @deprecated
    * @var string
    */
   public $enableType;
   /**
-   * The names of the services that are enabled. Example:
-   * `services/storage.googleapis.com`.
-   *
+   * @var string[]
+   */
+  public $groups;
+  /**
    * @var string[]
    */
   public $services;
   /**
-   * Deprecated: Use the `services` field instead. The names of the services or
-   * service groups that are enabled. Example:
-   * `services/storage.googleapis.com`, `groups/googleServices`,
-   * `groups/allServices`.
-   *
-   * @deprecated
    * @var string[]
    */
   public $values;
 
   /**
-   * Deprecated: EnableType is not supported.
-   *
-   * Accepted values: ENABLE_TYPE_UNSPECIFIED, CLIENT, RESOURCE, V1_COMPATIBLE
-   *
-   * @deprecated
-   * @param self::ENABLE_TYPE_* $enableType
+   * @param string
    */
   public function setEnableType($enableType)
   {
     $this->enableType = $enableType;
   }
   /**
-   * @deprecated
-   * @return self::ENABLE_TYPE_*
+   * @return string
    */
   public function getEnableType()
   {
     return $this->enableType;
   }
   /**
-   * The names of the services that are enabled. Example:
-   * `services/storage.googleapis.com`.
-   *
-   * @param string[] $services
+   * @param string[]
+   */
+  public function setGroups($groups)
+  {
+    $this->groups = $groups;
+  }
+  /**
+   * @return string[]
+   */
+  public function getGroups()
+  {
+    return $this->groups;
+  }
+  /**
+   * @param string[]
    */
   public function setServices($services)
   {
@@ -105,20 +80,13 @@ class EnableRule extends \Google\Collection
     return $this->services;
   }
   /**
-   * Deprecated: Use the `services` field instead. The names of the services or
-   * service groups that are enabled. Example:
-   * `services/storage.googleapis.com`, `groups/googleServices`,
-   * `groups/allServices`.
-   *
-   * @deprecated
-   * @param string[] $values
+   * @param string[]
    */
   public function setValues($values)
   {
     $this->values = $values;
   }
   /**
-   * @deprecated
    * @return string[]
    */
   public function getValues()

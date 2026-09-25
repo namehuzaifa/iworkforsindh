@@ -52,13 +52,9 @@ class Process extends \Google\Collection
   public $pid;
   protected $scriptType = SecuritycenterFile::class;
   protected $scriptDataType = '';
-  /**
-   * @var string
-   */
-  public $userId;
 
   /**
-   * @param string[] $args
+   * @param string[]
    */
   public function setArgs($args)
   {
@@ -72,7 +68,7 @@ class Process extends \Google\Collection
     return $this->args;
   }
   /**
-   * @param bool $argumentsTruncated
+   * @param bool
    */
   public function setArgumentsTruncated($argumentsTruncated)
   {
@@ -86,7 +82,7 @@ class Process extends \Google\Collection
     return $this->argumentsTruncated;
   }
   /**
-   * @param SecuritycenterFile $binary
+   * @param SecuritycenterFile
    */
   public function setBinary(SecuritycenterFile $binary)
   {
@@ -100,7 +96,7 @@ class Process extends \Google\Collection
     return $this->binary;
   }
   /**
-   * @param EnvironmentVariable[] $envVariables
+   * @param EnvironmentVariable[]
    */
   public function setEnvVariables($envVariables)
   {
@@ -114,7 +110,7 @@ class Process extends \Google\Collection
     return $this->envVariables;
   }
   /**
-   * @param bool $envVariablesTruncated
+   * @param bool
    */
   public function setEnvVariablesTruncated($envVariablesTruncated)
   {
@@ -128,7 +124,7 @@ class Process extends \Google\Collection
     return $this->envVariablesTruncated;
   }
   /**
-   * @param SecuritycenterFile[] $libraries
+   * @param SecuritycenterFile[]
    */
   public function setLibraries($libraries)
   {
@@ -142,7 +138,7 @@ class Process extends \Google\Collection
     return $this->libraries;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -156,7 +152,7 @@ class Process extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $parentPid
+   * @param string
    */
   public function setParentPid($parentPid)
   {
@@ -170,7 +166,7 @@ class Process extends \Google\Collection
     return $this->parentPid;
   }
   /**
-   * @param string $pid
+   * @param string
    */
   public function setPid($pid)
   {
@@ -184,7 +180,7 @@ class Process extends \Google\Collection
     return $this->pid;
   }
   /**
-   * @param SecuritycenterFile $script
+   * @param SecuritycenterFile
    */
   public function setScript(SecuritycenterFile $script)
   {
@@ -196,20 +192,6 @@ class Process extends \Google\Collection
   public function getScript()
   {
     return $this->script;
-  }
-  /**
-   * @param string $userId
-   */
-  public function setUserId($userId)
-  {
-    $this->userId = $userId;
-  }
-  /**
-   * @return string
-   */
-  public function getUserId()
-  {
-    return $this->userId;
   }
 }
 

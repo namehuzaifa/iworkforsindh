@@ -28,7 +28,7 @@ class ListResourceValueConfigsResponse extends \Google\Collection
   protected $resourceValueConfigsDataType = 'array';
 
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -42,7 +42,7 @@ class ListResourceValueConfigsResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * @param GoogleCloudSecuritycenterV1ResourceValueConfig[] $resourceValueConfigs
+   * @param GoogleCloudSecuritycenterV1ResourceValueConfig[]
    */
   public function setResourceValueConfigs($resourceValueConfigs)
   {

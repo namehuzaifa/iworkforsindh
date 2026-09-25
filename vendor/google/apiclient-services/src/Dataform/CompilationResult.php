@@ -25,72 +25,42 @@ class CompilationResult extends \Google\Collection
   protected $compilationErrorsType = CompilationError::class;
   protected $compilationErrorsDataType = 'array';
   /**
-   * Output only. The timestamp of when the compilation result was created.
-   *
    * @var string
    */
   public $createTime;
   protected $dataEncryptionStateType = DataEncryptionState::class;
   protected $dataEncryptionStateDataType = '';
   /**
-   * Output only. The version of `@dataform/core` that was used for compilation.
-   *
    * @var string
    */
   public $dataformCoreVersion;
-  protected $gcsRepositorySnapshotMetadataType = GcsRepositorySnapshotMetadata::class;
-  protected $gcsRepositorySnapshotMetadataDataType = '';
   /**
-   * Immutable. Git commit/tag/branch name at which the repository should be
-   * compiled. Must exist in the remote repository. Examples: - a commit SHA:
-   * `12ade345` - a tag: `tag1` - a branch name: `branch1`
-   *
    * @var string
    */
   public $gitCommitish;
   /**
-   * Output only. All the metadata information that is used internally to serve
-   * the resource. For example: timestamps, flags, status fields, etc. The
-   * format of this field is a JSON string.
-   *
    * @var string
    */
   public $internalMetadata;
   /**
-   * Output only. The compilation result's name.
-   *
    * @var string
    */
   public $name;
-  protected $privateResourceMetadataType = PrivateResourceMetadata::class;
-  protected $privateResourceMetadataDataType = '';
   /**
-   * Immutable. The name of the release config to compile. Must be in the format
-   * `projects/locations/repositories/releaseConfigs`.
-   *
    * @var string
    */
   public $releaseConfig;
   /**
-   * Output only. The fully resolved Git commit SHA of the code that was
-   * compiled. Not set for compilation results whose source is a workspace.
-   *
    * @var string
    */
   public $resolvedGitCommitSha;
   /**
-   * Immutable. The name of the workspace to compile. Must be in the format
-   * `projects/locations/repositories/workspaces`.
-   *
    * @var string
    */
   public $workspace;
 
   /**
-   * Immutable. If set, fields of `code_compilation_config` override the default
-   * compilation settings that are specified in dataform.json.
-   *
-   * @param CodeCompilationConfig $codeCompilationConfig
+   * @param CodeCompilationConfig
    */
   public function setCodeCompilationConfig(CodeCompilationConfig $codeCompilationConfig)
   {
@@ -104,9 +74,7 @@ class CompilationResult extends \Google\Collection
     return $this->codeCompilationConfig;
   }
   /**
-   * Output only. Errors encountered during project compilation.
-   *
-   * @param CompilationError[] $compilationErrors
+   * @param CompilationError[]
    */
   public function setCompilationErrors($compilationErrors)
   {
@@ -120,9 +88,7 @@ class CompilationResult extends \Google\Collection
     return $this->compilationErrors;
   }
   /**
-   * Output only. The timestamp of when the compilation result was created.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -136,9 +102,7 @@ class CompilationResult extends \Google\Collection
     return $this->createTime;
   }
   /**
-   * Output only. Only set if the repository has a KMS Key.
-   *
-   * @param DataEncryptionState $dataEncryptionState
+   * @param DataEncryptionState
    */
   public function setDataEncryptionState(DataEncryptionState $dataEncryptionState)
   {
@@ -152,9 +116,7 @@ class CompilationResult extends \Google\Collection
     return $this->dataEncryptionState;
   }
   /**
-   * Output only. The version of `@dataform/core` that was used for compilation.
-   *
-   * @param string $dataformCoreVersion
+   * @param string
    */
   public function setDataformCoreVersion($dataformCoreVersion)
   {
@@ -168,28 +130,7 @@ class CompilationResult extends \Google\Collection
     return $this->dataformCoreVersion;
   }
   /**
-   * Output only. Metadata about the repository snapshot used by scheduled
-   * notebooks.
-   *
-   * @param GcsRepositorySnapshotMetadata $gcsRepositorySnapshotMetadata
-   */
-  public function setGcsRepositorySnapshotMetadata(GcsRepositorySnapshotMetadata $gcsRepositorySnapshotMetadata)
-  {
-    $this->gcsRepositorySnapshotMetadata = $gcsRepositorySnapshotMetadata;
-  }
-  /**
-   * @return GcsRepositorySnapshotMetadata
-   */
-  public function getGcsRepositorySnapshotMetadata()
-  {
-    return $this->gcsRepositorySnapshotMetadata;
-  }
-  /**
-   * Immutable. Git commit/tag/branch name at which the repository should be
-   * compiled. Must exist in the remote repository. Examples: - a commit SHA:
-   * `12ade345` - a tag: `tag1` - a branch name: `branch1`
-   *
-   * @param string $gitCommitish
+   * @param string
    */
   public function setGitCommitish($gitCommitish)
   {
@@ -203,11 +144,7 @@ class CompilationResult extends \Google\Collection
     return $this->gitCommitish;
   }
   /**
-   * Output only. All the metadata information that is used internally to serve
-   * the resource. For example: timestamps, flags, status fields, etc. The
-   * format of this field is a JSON string.
-   *
-   * @param string $internalMetadata
+   * @param string
    */
   public function setInternalMetadata($internalMetadata)
   {
@@ -221,9 +158,7 @@ class CompilationResult extends \Google\Collection
     return $this->internalMetadata;
   }
   /**
-   * Output only. The compilation result's name.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -237,28 +172,7 @@ class CompilationResult extends \Google\Collection
     return $this->name;
   }
   /**
-   * Output only. Metadata indicating whether this resource is user-scoped.
-   * `CompilationResult` resource is `user_scoped` only if it is sourced from a
-   * workspace.
-   *
-   * @param PrivateResourceMetadata $privateResourceMetadata
-   */
-  public function setPrivateResourceMetadata(PrivateResourceMetadata $privateResourceMetadata)
-  {
-    $this->privateResourceMetadata = $privateResourceMetadata;
-  }
-  /**
-   * @return PrivateResourceMetadata
-   */
-  public function getPrivateResourceMetadata()
-  {
-    return $this->privateResourceMetadata;
-  }
-  /**
-   * Immutable. The name of the release config to compile. Must be in the format
-   * `projects/locations/repositories/releaseConfigs`.
-   *
-   * @param string $releaseConfig
+   * @param string
    */
   public function setReleaseConfig($releaseConfig)
   {
@@ -272,10 +186,7 @@ class CompilationResult extends \Google\Collection
     return $this->releaseConfig;
   }
   /**
-   * Output only. The fully resolved Git commit SHA of the code that was
-   * compiled. Not set for compilation results whose source is a workspace.
-   *
-   * @param string $resolvedGitCommitSha
+   * @param string
    */
   public function setResolvedGitCommitSha($resolvedGitCommitSha)
   {
@@ -289,10 +200,7 @@ class CompilationResult extends \Google\Collection
     return $this->resolvedGitCommitSha;
   }
   /**
-   * Immutable. The name of the workspace to compile. Must be in the format
-   * `projects/locations/repositories/workspaces`.
-   *
-   * @param string $workspace
+   * @param string
    */
   public function setWorkspace($workspace)
   {

@@ -23,7 +23,7 @@ class LogEntry extends \Google\Model
   protected $cloudLoggingEntryDataType = '';
 
   /**
-   * @param CloudLoggingEntry $cloudLoggingEntry
+   * @param CloudLoggingEntry
    */
   public function setCloudLoggingEntry(CloudLoggingEntry $cloudLoggingEntry)
   {

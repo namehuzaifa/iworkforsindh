@@ -20,31 +20,16 @@ namespace Google\Service\MyBusinessAccountManagement;
 class TargetLocation extends \Google\Model
 {
   /**
-   * The address of the location to which the user is invited. Not always
-   * populated.
-   *
    * @var string
    */
   public $address;
   /**
-   * The name of the location to which the user is invited.
-   *
    * @var string
    */
   public $locationName;
-  /**
-   * Output only. The Place ID of the location to which the user is invited. Not
-   * always populated.
-   *
-   * @var string
-   */
-  public $placeId;
 
   /**
-   * The address of the location to which the user is invited. Not always
-   * populated.
-   *
-   * @param string $address
+   * @param string
    */
   public function setAddress($address)
   {
@@ -58,9 +43,7 @@ class TargetLocation extends \Google\Model
     return $this->address;
   }
   /**
-   * The name of the location to which the user is invited.
-   *
-   * @param string $locationName
+   * @param string
    */
   public function setLocationName($locationName)
   {
@@ -72,23 +55,6 @@ class TargetLocation extends \Google\Model
   public function getLocationName()
   {
     return $this->locationName;
-  }
-  /**
-   * Output only. The Place ID of the location to which the user is invited. Not
-   * always populated.
-   *
-   * @param string $placeId
-   */
-  public function setPlaceId($placeId)
-  {
-    $this->placeId = $placeId;
-  }
-  /**
-   * @return string
-   */
-  public function getPlaceId()
-  {
-    return $this->placeId;
   }
 }
 

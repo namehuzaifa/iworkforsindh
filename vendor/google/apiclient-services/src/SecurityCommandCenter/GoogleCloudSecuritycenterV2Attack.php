@@ -24,7 +24,6 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
    */
   public $classification;
   /**
-   * @deprecated
    * @var int
    */
   public $volumeBps;
@@ -33,7 +32,6 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
    */
   public $volumeBpsLong;
   /**
-   * @deprecated
    * @var int
    */
   public $volumePps;
@@ -43,7 +41,7 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
   public $volumePpsLong;
 
   /**
-   * @param string $classification
+   * @param string
    */
   public function setClassification($classification)
   {
@@ -57,15 +55,13 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
     return $this->classification;
   }
   /**
-   * @deprecated
-   * @param int $volumeBps
+   * @param int
    */
   public function setVolumeBps($volumeBps)
   {
     $this->volumeBps = $volumeBps;
   }
   /**
-   * @deprecated
    * @return int
    */
   public function getVolumeBps()
@@ -73,7 +69,7 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
     return $this->volumeBps;
   }
   /**
-   * @param string $volumeBpsLong
+   * @param string
    */
   public function setVolumeBpsLong($volumeBpsLong)
   {
@@ -87,15 +83,13 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
     return $this->volumeBpsLong;
   }
   /**
-   * @deprecated
-   * @param int $volumePps
+   * @param int
    */
   public function setVolumePps($volumePps)
   {
     $this->volumePps = $volumePps;
   }
   /**
-   * @deprecated
    * @return int
    */
   public function getVolumePps()
@@ -103,7 +97,7 @@ class GoogleCloudSecuritycenterV2Attack extends \Google\Model
     return $this->volumePps;
   }
   /**
-   * @param string $volumePpsLong
+   * @param string
    */
   public function setVolumePpsLong($volumePpsLong)
   {

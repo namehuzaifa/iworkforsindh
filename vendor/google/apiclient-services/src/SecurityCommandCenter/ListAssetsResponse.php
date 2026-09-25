@@ -36,7 +36,7 @@ class ListAssetsResponse extends \Google\Collection
   public $totalSize;
 
   /**
-   * @param ListAssetsResult[] $listAssetsResults
+   * @param ListAssetsResult[]
    */
   public function setListAssetsResults($listAssetsResults)
   {
@@ -50,7 +50,7 @@ class ListAssetsResponse extends \Google\Collection
     return $this->listAssetsResults;
   }
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -64,7 +64,7 @@ class ListAssetsResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * @param string $readTime
+   * @param string
    */
   public function setReadTime($readTime)
   {
@@ -78,7 +78,7 @@ class ListAssetsResponse extends \Google\Collection
     return $this->readTime;
   }
   /**
-   * @param int $totalSize
+   * @param int
    */
   public function setTotalSize($totalSize)
   {

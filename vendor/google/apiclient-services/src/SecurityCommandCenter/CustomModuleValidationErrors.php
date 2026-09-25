@@ -24,7 +24,7 @@ class CustomModuleValidationErrors extends \Google\Collection
   protected $errorsDataType = 'array';
 
   /**
-   * @param CustomModuleValidationError[] $errors
+   * @param CustomModuleValidationError[]
    */
   public function setErrors($errors)
   {

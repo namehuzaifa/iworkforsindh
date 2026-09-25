@@ -28,7 +28,7 @@ class ListSourcesResponse extends \Google\Collection
   protected $sourcesDataType = 'array';
 
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -42,7 +42,7 @@ class ListSourcesResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * @param Source[] $sources
+   * @param Source[]
    */
   public function setSources($sources)
   {

@@ -19,16 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2ResourcePathNode extends \Google\Model
 {
-  public const NODE_TYPE_RESOURCE_PATH_NODE_TYPE_UNSPECIFIED = 'RESOURCE_PATH_NODE_TYPE_UNSPECIFIED';
-  public const NODE_TYPE_GCP_ORGANIZATION = 'GCP_ORGANIZATION';
-  public const NODE_TYPE_GCP_FOLDER = 'GCP_FOLDER';
-  public const NODE_TYPE_GCP_PROJECT = 'GCP_PROJECT';
-  public const NODE_TYPE_AWS_ORGANIZATION = 'AWS_ORGANIZATION';
-  public const NODE_TYPE_AWS_ORGANIZATIONAL_UNIT = 'AWS_ORGANIZATIONAL_UNIT';
-  public const NODE_TYPE_AWS_ACCOUNT = 'AWS_ACCOUNT';
-  public const NODE_TYPE_AZURE_MANAGEMENT_GROUP = 'AZURE_MANAGEMENT_GROUP';
-  public const NODE_TYPE_AZURE_SUBSCRIPTION = 'AZURE_SUBSCRIPTION';
-  public const NODE_TYPE_AZURE_RESOURCE_GROUP = 'AZURE_RESOURCE_GROUP';
   /**
    * @var string
    */
@@ -43,7 +33,7 @@ class GoogleCloudSecuritycenterV2ResourcePathNode extends \Google\Model
   public $nodeType;
 
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -57,7 +47,7 @@ class GoogleCloudSecuritycenterV2ResourcePathNode extends \Google\Model
     return $this->displayName;
   }
   /**
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {
@@ -71,14 +61,14 @@ class GoogleCloudSecuritycenterV2ResourcePathNode extends \Google\Model
     return $this->id;
   }
   /**
-   * @param self::NODE_TYPE_* $nodeType
+   * @param string
    */
   public function setNodeType($nodeType)
   {
     $this->nodeType = $nodeType;
   }
   /**
-   * @return self::NODE_TYPE_*
+   * @return string
    */
   public function getNodeType()
   {

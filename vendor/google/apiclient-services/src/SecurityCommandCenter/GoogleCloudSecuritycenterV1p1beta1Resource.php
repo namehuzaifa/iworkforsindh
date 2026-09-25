@@ -44,7 +44,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource extends \Google\Collection
   public $projectDisplayName;
 
   /**
-   * @param GoogleCloudSecuritycenterV1p1beta1Folder[] $folders
+   * @param GoogleCloudSecuritycenterV1p1beta1Folder[]
    */
   public function setFolders($folders)
   {
@@ -58,7 +58,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource extends \Google\Collection
     return $this->folders;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -72,7 +72,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $parent
+   * @param string
    */
   public function setParent($parent)
   {
@@ -86,7 +86,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource extends \Google\Collection
     return $this->parent;
   }
   /**
-   * @param string $parentDisplayName
+   * @param string
    */
   public function setParentDisplayName($parentDisplayName)
   {
@@ -100,7 +100,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource extends \Google\Collection
     return $this->parentDisplayName;
   }
   /**
-   * @param string $project
+   * @param string
    */
   public function setProject($project)
   {
@@ -114,7 +114,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource extends \Google\Collection
     return $this->project;
   }
   /**
-   * @param string $projectDisplayName
+   * @param string
    */
   public function setProjectDisplayName($projectDisplayName)
   {

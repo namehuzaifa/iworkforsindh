@@ -19,9 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2Role extends \Google\Model
 {
-  public const KIND_KIND_UNSPECIFIED = 'KIND_UNSPECIFIED';
-  public const KIND_ROLE = 'ROLE';
-  public const KIND_CLUSTER_ROLE = 'CLUSTER_ROLE';
   /**
    * @var string
    */
@@ -36,21 +33,21 @@ class GoogleCloudSecuritycenterV2Role extends \Google\Model
   public $ns;
 
   /**
-   * @param self::KIND_* $kind
+   * @param string
    */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
   /**
-   * @return self::KIND_*
+   * @return string
    */
   public function getKind()
   {
     return $this->kind;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -64,7 +61,7 @@ class GoogleCloudSecuritycenterV2Role extends \Google\Model
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {

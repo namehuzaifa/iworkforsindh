@@ -34,17 +34,17 @@ class TraceableResponse implements ResponseInterface, StreamableInterface
     public function __construct(
         private HttpClientInterface $client,
         private ResponseInterface $response,
-        private mixed &$content = false,
+        private mixed &$content,
         private ?StopwatchEvent $event = null,
     ) {
     }
 
-    public function __serialize(): array
+    public function __sleep(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __unserialize(array $data): void
+    public function __wakeup(): void
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }

@@ -15,7 +15,12 @@ class Decimal
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xAF\x01\x0A\x19google/type/decimal.proto\x12\x0Bgoogle.type\"\x18\x0A\x07Decimal\x12\x0D\x0A\x05value\x18\x01 \x01(\x09Bc\x0A\x0Fcom.google.typeB\x0CDecimalProtoP\x01Z:google.golang.org/genproto/googleapis/type/decimal;decimal\xA2\x02\x03GTPb\x06proto3"
+            '
+²
+google/type/decimal.protogoogle.type"
+Decimal
+value (	Bf
+com.google.typeBDecimalProtoPZ:google.golang.org/genproto/googleapis/type/decimal;decimalø¢GTPbproto3'
         , true);
 
         static::$is_initialized = true;

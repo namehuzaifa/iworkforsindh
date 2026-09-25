@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * Settings for Java client libraries.
@@ -22,10 +22,9 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      * in gapic.yaml. API teams should use the protobuf java_package option
      * where possible.
      * Example of a YAML configuration::
-     *     publishing:
-     *       library_settings:
-     *         java_settings:
-     *           library_package: com.google.cloud.pubsub.v1
+     *  publishing:
+     *    java_settings:
+     *      library_package: com.google.cloud.pubsub.v1
      *
      * Generated from protobuf field <code>string library_package = 1;</code>
      */
@@ -38,11 +37,11 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      * teams should otherwise use the service name as it appears in the
      * protobuf.
      * Example of a YAML configuration::
-     *     publishing:
-     *       java_settings:
-     *         service_class_names:
-     *           - google.pubsub.v1.Publisher: TopicAdmin
-     *           - google.pubsub.v1.Subscriber: SubscriptionAdmin
+     *  publishing:
+     *    java_settings:
+     *      service_class_names:
+     *        - google.pubsub.v1.Publisher: TopicAdmin
+     *        - google.pubsub.v1.Subscriber: SubscriptionAdmin
      *
      * Generated from protobuf field <code>map<string, string> service_class_names = 2;</code>
      */
@@ -67,10 +66,9 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      *           in gapic.yaml. API teams should use the protobuf java_package option
      *           where possible.
      *           Example of a YAML configuration::
-     *               publishing:
-     *                 library_settings:
-     *                   java_settings:
-     *                     library_package: com.google.cloud.pubsub.v1
+     *            publishing:
+     *              java_settings:
+     *                library_package: com.google.cloud.pubsub.v1
      *     @type array|\Google\Protobuf\Internal\MapField $service_class_names
      *           Configure the Java class name to use instead of the service's for its
      *           corresponding generated GAPIC client. Keys are fully-qualified
@@ -79,11 +77,11 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      *           teams should otherwise use the service name as it appears in the
      *           protobuf.
      *           Example of a YAML configuration::
-     *               publishing:
-     *                 java_settings:
-     *                   service_class_names:
-     *                     - google.pubsub.v1.Publisher: TopicAdmin
-     *                     - google.pubsub.v1.Subscriber: SubscriptionAdmin
+     *            publishing:
+     *              java_settings:
+     *                service_class_names:
+     *                  - google.pubsub.v1.Publisher: TopicAdmin
+     *                  - google.pubsub.v1.Subscriber: SubscriptionAdmin
      *     @type \Google\Api\CommonLanguageSettings $common
      *           Some settings.
      * }
@@ -100,10 +98,9 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      * in gapic.yaml. API teams should use the protobuf java_package option
      * where possible.
      * Example of a YAML configuration::
-     *     publishing:
-     *       library_settings:
-     *         java_settings:
-     *           library_package: com.google.cloud.pubsub.v1
+     *  publishing:
+     *    java_settings:
+     *      library_package: com.google.cloud.pubsub.v1
      *
      * Generated from protobuf field <code>string library_package = 1;</code>
      * @return string
@@ -120,10 +117,9 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      * in gapic.yaml. API teams should use the protobuf java_package option
      * where possible.
      * Example of a YAML configuration::
-     *     publishing:
-     *       library_settings:
-     *         java_settings:
-     *           library_package: com.google.cloud.pubsub.v1
+     *  publishing:
+     *    java_settings:
+     *      library_package: com.google.cloud.pubsub.v1
      *
      * Generated from protobuf field <code>string library_package = 1;</code>
      * @param string $var
@@ -145,11 +141,11 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      * teams should otherwise use the service name as it appears in the
      * protobuf.
      * Example of a YAML configuration::
-     *     publishing:
-     *       java_settings:
-     *         service_class_names:
-     *           - google.pubsub.v1.Publisher: TopicAdmin
-     *           - google.pubsub.v1.Subscriber: SubscriptionAdmin
+     *  publishing:
+     *    java_settings:
+     *      service_class_names:
+     *        - google.pubsub.v1.Publisher: TopicAdmin
+     *        - google.pubsub.v1.Subscriber: SubscriptionAdmin
      *
      * Generated from protobuf field <code>map<string, string> service_class_names = 2;</code>
      * @return \Google\Protobuf\Internal\MapField
@@ -167,11 +163,11 @@ class JavaSettings extends \Google\Protobuf\Internal\Message
      * teams should otherwise use the service name as it appears in the
      * protobuf.
      * Example of a YAML configuration::
-     *     publishing:
-     *       java_settings:
-     *         service_class_names:
-     *           - google.pubsub.v1.Publisher: TopicAdmin
-     *           - google.pubsub.v1.Subscriber: SubscriptionAdmin
+     *  publishing:
+     *    java_settings:
+     *      service_class_names:
+     *        - google.pubsub.v1.Publisher: TopicAdmin
+     *        - google.pubsub.v1.Subscriber: SubscriptionAdmin
      *
      * Generated from protobuf field <code>map<string, string> service_class_names = 2;</code>
      * @param array|\Google\Protobuf\Internal\MapField $var

@@ -19,131 +19,32 @@ namespace Google\Service\Dataform;
 
 class InvocationConfig extends \Google\Collection
 {
-  /**
-   * Default value.
-   */
-  public const EXECUTION_MODE_EXECUTION_MODE_UNSPECIFIED = 'EXECUTION_MODE_UNSPECIFIED';
-  /**
-   * Default execution mode, which runs all actions except unit tests. Same as
-   * ALL_EXCEPT_UNIT_TESTS.
-   */
-  public const EXECUTION_MODE_DEFAULT = 'DEFAULT';
-  /**
-   * Run all actions except unit tests.
-   */
-  public const EXECUTION_MODE_ALL_EXCEPT_UNIT_TESTS = 'ALL_EXCEPT_UNIT_TESTS';
-  /**
-   * Run unit tests only.
-   */
-  public const EXECUTION_MODE_UNIT_TESTS_ONLY = 'UNIT_TESTS_ONLY';
-  /**
-   * Default value. This value is unused.
-   */
-  public const QUERY_PRIORITY_QUERY_PRIORITY_UNSPECIFIED = 'QUERY_PRIORITY_UNSPECIFIED';
-  /**
-   * Query will be executed in BigQuery with interactive priority. More
-   * information can be found at https://cloud.google.com/bigquery/docs/running-
-   * queries#queries.
-   */
-  public const QUERY_PRIORITY_INTERACTIVE = 'INTERACTIVE';
-  /**
-   * Query will be executed in BigQuery with batch priority. More information
-   * can be found at https://cloud.google.com/bigquery/docs/running-
-   * queries#batchqueries.
-   */
-  public const QUERY_PRIORITY_BATCH = 'BATCH';
   protected $collection_key = 'includedTargets';
-  protected $endUserAuthConfigType = EndUserAuthenticationConfig::class;
-  protected $endUserAuthConfigDataType = '';
   /**
-   * Optional. Specifies the execution mode for the workflow invocation.
-   *
-   * @var string
-   */
-  public $executionMode;
-  /**
-   * Optional. When set to true, any incremental tables will be fully refreshed.
-   *
    * @var bool
    */
   public $fullyRefreshIncrementalTablesEnabled;
   /**
-   * Optional. The set of tags to include.
-   *
    * @var string[]
    */
   public $includedTags;
   protected $includedTargetsType = Target::class;
   protected $includedTargetsDataType = 'array';
   /**
-   * Optional. Specifies the priority for query execution in BigQuery. More
-   * information can be found at https://cloud.google.com/bigquery/docs/running-
-   * queries#queries.
-   *
-   * @var string
-   */
-  public $queryPriority;
-  /**
-   * Optional. The service account to run workflow invocations under.
-   *
    * @var string
    */
   public $serviceAccount;
   /**
-   * Optional. When set to true, transitive dependencies of included actions
-   * will be executed.
-   *
    * @var bool
    */
   public $transitiveDependenciesIncluded;
   /**
-   * Optional. When set to true, transitive dependents of included actions will
-   * be executed.
-   *
    * @var bool
    */
   public $transitiveDependentsIncluded;
 
   /**
-   * Optional. Configuration for end user authentication. Note that this should
-   * not be set when `service_account` is used.
-   *
-   * @param EndUserAuthenticationConfig $endUserAuthConfig
-   */
-  public function setEndUserAuthConfig(EndUserAuthenticationConfig $endUserAuthConfig)
-  {
-    $this->endUserAuthConfig = $endUserAuthConfig;
-  }
-  /**
-   * @return EndUserAuthenticationConfig
-   */
-  public function getEndUserAuthConfig()
-  {
-    return $this->endUserAuthConfig;
-  }
-  /**
-   * Optional. Specifies the execution mode for the workflow invocation.
-   *
-   * Accepted values: EXECUTION_MODE_UNSPECIFIED, DEFAULT,
-   * ALL_EXCEPT_UNIT_TESTS, UNIT_TESTS_ONLY
-   *
-   * @param self::EXECUTION_MODE_* $executionMode
-   */
-  public function setExecutionMode($executionMode)
-  {
-    $this->executionMode = $executionMode;
-  }
-  /**
-   * @return self::EXECUTION_MODE_*
-   */
-  public function getExecutionMode()
-  {
-    return $this->executionMode;
-  }
-  /**
-   * Optional. When set to true, any incremental tables will be fully refreshed.
-   *
-   * @param bool $fullyRefreshIncrementalTablesEnabled
+   * @param bool
    */
   public function setFullyRefreshIncrementalTablesEnabled($fullyRefreshIncrementalTablesEnabled)
   {
@@ -157,9 +58,7 @@ class InvocationConfig extends \Google\Collection
     return $this->fullyRefreshIncrementalTablesEnabled;
   }
   /**
-   * Optional. The set of tags to include.
-   *
-   * @param string[] $includedTags
+   * @param string[]
    */
   public function setIncludedTags($includedTags)
   {
@@ -173,9 +72,7 @@ class InvocationConfig extends \Google\Collection
     return $this->includedTags;
   }
   /**
-   * Optional. The set of action identifiers to include.
-   *
-   * @param Target[] $includedTargets
+   * @param Target[]
    */
   public function setIncludedTargets($includedTargets)
   {
@@ -189,29 +86,7 @@ class InvocationConfig extends \Google\Collection
     return $this->includedTargets;
   }
   /**
-   * Optional. Specifies the priority for query execution in BigQuery. More
-   * information can be found at https://cloud.google.com/bigquery/docs/running-
-   * queries#queries.
-   *
-   * Accepted values: QUERY_PRIORITY_UNSPECIFIED, INTERACTIVE, BATCH
-   *
-   * @param self::QUERY_PRIORITY_* $queryPriority
-   */
-  public function setQueryPriority($queryPriority)
-  {
-    $this->queryPriority = $queryPriority;
-  }
-  /**
-   * @return self::QUERY_PRIORITY_*
-   */
-  public function getQueryPriority()
-  {
-    return $this->queryPriority;
-  }
-  /**
-   * Optional. The service account to run workflow invocations under.
-   *
-   * @param string $serviceAccount
+   * @param string
    */
   public function setServiceAccount($serviceAccount)
   {
@@ -225,10 +100,7 @@ class InvocationConfig extends \Google\Collection
     return $this->serviceAccount;
   }
   /**
-   * Optional. When set to true, transitive dependencies of included actions
-   * will be executed.
-   *
-   * @param bool $transitiveDependenciesIncluded
+   * @param bool
    */
   public function setTransitiveDependenciesIncluded($transitiveDependenciesIncluded)
   {
@@ -242,10 +114,7 @@ class InvocationConfig extends \Google\Collection
     return $this->transitiveDependenciesIncluded;
   }
   /**
-   * Optional. When set to true, transitive dependents of included actions will
-   * be executed.
-   *
-   * @param bool $transitiveDependentsIncluded
+   * @param bool
    */
   public function setTransitiveDependentsIncluded($transitiveDependentsIncluded)
   {

@@ -36,13 +36,6 @@ use WpOrg\Requests\Utility\InputValidator;
  */
 class Requests {
 	/**
-	 * Current version of Requests
-	 *
-	 * @var string
-	 */
-	const VERSION = '2.0.20';
-
-	/**
 	 * POST method
 	 *
 	 * @var string
@@ -149,6 +142,13 @@ class Requests {
 		Curl::class      => Curl::class,
 		Fsockopen::class => Fsockopen::class,
 	];
+
+	/**
+	 * Current version of Requests
+	 *
+	 * @var string
+	 */
+	const VERSION = '2.0.15';
 
 	/**
 	 * Selected transport name
@@ -790,7 +790,7 @@ class Requests {
 					$options['type'] = self::GET;
 				}
 
-				++$options['redirected'];
+				$options['redirected']++;
 				$location = $return->headers['location'];
 				if (strpos($location, 'http://') !== 0 && strpos($location, 'https://') !== 0) {
 					// relative redirect, for compatibility make it absolute

@@ -25,7 +25,7 @@ class GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata extends \Googl
   public $projectId;
 
   /**
-   * @param string $projectId
+   * @param string
    */
   public function setProjectId($projectId)
   {

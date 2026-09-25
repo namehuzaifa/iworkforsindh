@@ -15,7 +15,19 @@ class Context
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xE1\x02\x0A\x18google/api/context.proto\x12\x0Agoogle.api\"1\x0A\x07Context\x12&\x0A\x05rules\x18\x01 \x03(\x0B2\x17.google.api.ContextRule\"\x8D\x01\x0A\x0BContextRule\x12\x10\x0A\x08selector\x18\x01 \x01(\x09\x12\x11\x0A\x09requested\x18\x02 \x03(\x09\x12\x10\x0A\x08provided\x18\x03 \x03(\x09\x12\"\x0A\x1Aallowed_request_extensions\x18\x04 \x03(\x09\x12#\x0A\x1Ballowed_response_extensions\x18\x05 \x03(\x09Bn\x0A\x0Ecom.google.apiB\x0CContextProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xA2\x02\x04GAPIb\x06proto3"
+            '
+·
+google/api/context.proto
+google.api"1
+Context&
+rules (2.google.api.ContextRule"ç
+ContextRule
+selector (	
+	requested (	
+provided (	"
+allowed_request_extensions (	#
+allowed_response_extensions (	Bn
+com.google.apiBContextProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3'
         , true);
 
         static::$is_initialized = true;

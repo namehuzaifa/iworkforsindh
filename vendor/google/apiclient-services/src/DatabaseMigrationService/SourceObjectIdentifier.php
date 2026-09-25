@@ -20,54 +20,16 @@ namespace Google\Service\DatabaseMigrationService;
 class SourceObjectIdentifier extends \Google\Model
 {
   /**
-   * The type of the migration job object is unknown.
-   */
-  public const TYPE_MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED = 'MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED';
-  /**
-   * The migration job object is a database.
-   */
-  public const TYPE_DATABASE = 'DATABASE';
-  /**
-   * The migration job object is a schema.
-   */
-  public const TYPE_SCHEMA = 'SCHEMA';
-  /**
-   * The migration job object is a table.
-   */
-  public const TYPE_TABLE = 'TABLE';
-  /**
-   * Optional. The database name. This will be required only if the object uses
-   * a database name as part of its unique identifier.
-   *
    * @var string
    */
   public $database;
   /**
-   * Optional. The schema name. This will be required only if the object uses a
-   * schema name as part of its unique identifier.
-   *
-   * @var string
-   */
-  public $schema;
-  /**
-   * Optional. The table name. This will be required only if the object is a
-   * level below database or schema.
-   *
-   * @var string
-   */
-  public $table;
-  /**
-   * Required. The type of the migration job object.
-   *
    * @var string
    */
   public $type;
 
   /**
-   * Optional. The database name. This will be required only if the object uses
-   * a database name as part of its unique identifier.
-   *
-   * @param string $database
+   * @param string
    */
   public function setDatabase($database)
   {
@@ -81,53 +43,14 @@ class SourceObjectIdentifier extends \Google\Model
     return $this->database;
   }
   /**
-   * Optional. The schema name. This will be required only if the object uses a
-   * schema name as part of its unique identifier.
-   *
-   * @param string $schema
-   */
-  public function setSchema($schema)
-  {
-    $this->schema = $schema;
-  }
-  /**
-   * @return string
-   */
-  public function getSchema()
-  {
-    return $this->schema;
-  }
-  /**
-   * Optional. The table name. This will be required only if the object is a
-   * level below database or schema.
-   *
-   * @param string $table
-   */
-  public function setTable($table)
-  {
-    $this->table = $table;
-  }
-  /**
-   * @return string
-   */
-  public function getTable()
-  {
-    return $this->table;
-  }
-  /**
-   * Required. The type of the migration job object.
-   *
-   * Accepted values: MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED, DATABASE, SCHEMA,
-   * TABLE
-   *
-   * @param self::TYPE_* $type
+   * @param string
    */
   public function setType($type)
   {
     $this->type = $type;
   }
   /**
-   * @return self::TYPE_*
+   * @return string
    */
   public function getType()
   {

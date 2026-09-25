@@ -15,7 +15,13 @@ class LocalizedText
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xE6\x01\x0A google/type/localized_text.proto\x12\x0Bgoogle.type\"4\x0A\x0DLocalizedText\x12\x0C\x0A\x04text\x18\x01 \x01(\x09\x12\x15\x0A\x0Dlanguage_code\x18\x02 \x01(\x09Bw\x0A\x0Fcom.google.typeB\x12LocalizedTextProtoP\x01ZHgoogle.golang.org/genproto/googleapis/type/localized_text;localized_text\xA2\x02\x03GTPb\x06proto3"
+            '
+é
+ google/type/localized_text.protogoogle.type"4
+LocalizedText
+text (	
+language_code (	Bz
+com.google.typeBLocalizedTextProtoPZHgoogle.golang.org/genproto/googleapis/type/localized_text;localized_textø¢GTPbproto3'
         , true);
 
         static::$is_initialized = true;

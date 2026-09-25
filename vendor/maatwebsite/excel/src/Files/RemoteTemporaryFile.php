@@ -93,22 +93,17 @@ class RemoteTemporaryFile extends TemporaryFile
     /**
      * @return TemporaryFile
      */
-    public function sync(bool $copy = true): TemporaryFile
+    public function sync(): TemporaryFile
     {
         if (!$this->localTemporaryFile->exists()) {
             $this->localTemporaryFile = resolve(TemporaryFileFactory::class)
                 ->makeLocal(Arr::last(explode('/', $this->filename)));
         }
 
-        if ($copy) {
-            $readStream = $this->readStream();
-
-            if (is_resource($readStream)) {
-                $this->localTemporaryFile->put($readStream);
-
-                fclose($readStream);
-            }
-        }
+        $this->disk()->copy(
+            $this,
+            $this->localTemporaryFile->getLocalPath()
+        );
 
         return $this;
     }

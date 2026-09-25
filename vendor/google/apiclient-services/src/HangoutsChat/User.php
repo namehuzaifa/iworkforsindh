@@ -20,86 +20,28 @@ namespace Google\Service\HangoutsChat;
 class User extends \Google\Model
 {
   /**
-   * Default value for the enum. DO NOT USE.
-   */
-  public const TYPE_TYPE_UNSPECIFIED = 'TYPE_UNSPECIFIED';
-  /**
-   * Human user.
-   */
-  public const TYPE_HUMAN = 'HUMAN';
-  /**
-   * Chat app user.
-   */
-  public const TYPE_BOT = 'BOT';
-  /**
-   * Output only. The user's display name. Populated for both app authentication
-   * and user authentication. This field is always populated for requests made
-   * with [app
-   * authentication](https://developers.google.com/workspace/chat/authenticate-
-   * authorize-chat-app). When calling the Messages and Memberships APIs with
-   * [user
-   * authentication](https://developers.google.com/workspace/chat/authenticate-
-   * authorize-chat-user), this field is populated for both internal and
-   * external users for the `sender` of a message, users within `annotations`
-   * (such as user mentions), and within `Membership` resources, provided the
-   * user is a member of the space or has prior affinity with the calling user.
-   *
    * @var string
    */
   public $displayName;
   /**
-   * Unique identifier of the user's Google Workspace domain.
-   *
    * @var string
    */
   public $domainId;
   /**
-   * Output only. When `true`, the user is deleted or their profile is not
-   * visible, such as when a user is mentioned in a space without being a member
-   * and without prior affinity with the calling user.
-   *
    * @var bool
    */
   public $isAnonymous;
   /**
-   * Resource name for a Google Chat user. Format: `users/{user}`. `users/app`
-   * can be used as an alias for the calling app bot user. For human users,
-   * `{user}` is the same user identifier as: - the `id` for the
-   * [Person](https://developers.google.com/people/api/rest/v1/people) in the
-   * People API. For example, `users/123456789` in Chat API represents the same
-   * person as the `123456789` Person profile ID in People API. - the `id` for a
-   * [user](https://developers.google.com/admin-
-   * sdk/directory/reference/rest/v1/users) in the Admin SDK Directory API. -
-   * the user's email address can be used as an alias for `{user}` in API
-   * requests. For example, if the People API Person profile ID for
-   * `user@example.com` is `123456789`, you can use `users/user@example.com` as
-   * an alias to reference `users/123456789`. Only the canonical resource name
-   * (for example `users/123456789`) will be returned from the API.
-   *
    * @var string
    */
   public $name;
   /**
-   * User type.
-   *
    * @var string
    */
   public $type;
 
   /**
-   * Output only. The user's display name. Populated for both app authentication
-   * and user authentication. This field is always populated for requests made
-   * with [app
-   * authentication](https://developers.google.com/workspace/chat/authenticate-
-   * authorize-chat-app). When calling the Messages and Memberships APIs with
-   * [user
-   * authentication](https://developers.google.com/workspace/chat/authenticate-
-   * authorize-chat-user), this field is populated for both internal and
-   * external users for the `sender` of a message, users within `annotations`
-   * (such as user mentions), and within `Membership` resources, provided the
-   * user is a member of the space or has prior affinity with the calling user.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -113,9 +55,7 @@ class User extends \Google\Model
     return $this->displayName;
   }
   /**
-   * Unique identifier of the user's Google Workspace domain.
-   *
-   * @param string $domainId
+   * @param string
    */
   public function setDomainId($domainId)
   {
@@ -129,11 +69,7 @@ class User extends \Google\Model
     return $this->domainId;
   }
   /**
-   * Output only. When `true`, the user is deleted or their profile is not
-   * visible, such as when a user is mentioned in a space without being a member
-   * and without prior affinity with the calling user.
-   *
-   * @param bool $isAnonymous
+   * @param bool
    */
   public function setIsAnonymous($isAnonymous)
   {
@@ -147,21 +83,7 @@ class User extends \Google\Model
     return $this->isAnonymous;
   }
   /**
-   * Resource name for a Google Chat user. Format: `users/{user}`. `users/app`
-   * can be used as an alias for the calling app bot user. For human users,
-   * `{user}` is the same user identifier as: - the `id` for the
-   * [Person](https://developers.google.com/people/api/rest/v1/people) in the
-   * People API. For example, `users/123456789` in Chat API represents the same
-   * person as the `123456789` Person profile ID in People API. - the `id` for a
-   * [user](https://developers.google.com/admin-
-   * sdk/directory/reference/rest/v1/users) in the Admin SDK Directory API. -
-   * the user's email address can be used as an alias for `{user}` in API
-   * requests. For example, if the People API Person profile ID for
-   * `user@example.com` is `123456789`, you can use `users/user@example.com` as
-   * an alias to reference `users/123456789`. Only the canonical resource name
-   * (for example `users/123456789`) will be returned from the API.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -175,18 +97,14 @@ class User extends \Google\Model
     return $this->name;
   }
   /**
-   * User type.
-   *
-   * Accepted values: TYPE_UNSPECIFIED, HUMAN, BOT
-   *
-   * @param self::TYPE_* $type
+   * @param string
    */
   public function setType($type)
   {
     $this->type = $type;
   }
   /**
-   * @return self::TYPE_*
+   * @return string
    */
   public function getType()
   {

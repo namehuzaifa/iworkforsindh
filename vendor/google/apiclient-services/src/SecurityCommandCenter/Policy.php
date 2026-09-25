@@ -34,7 +34,7 @@ class Policy extends \Google\Collection
   public $version;
 
   /**
-   * @param AuditConfig[] $auditConfigs
+   * @param AuditConfig[]
    */
   public function setAuditConfigs($auditConfigs)
   {
@@ -48,7 +48,7 @@ class Policy extends \Google\Collection
     return $this->auditConfigs;
   }
   /**
-   * @param Binding[] $bindings
+   * @param Binding[]
    */
   public function setBindings($bindings)
   {
@@ -62,7 +62,7 @@ class Policy extends \Google\Collection
     return $this->bindings;
   }
   /**
-   * @param string $etag
+   * @param string
    */
   public function setEtag($etag)
   {
@@ -76,7 +76,7 @@ class Policy extends \Google\Collection
     return $this->etag;
   }
   /**
-   * @param int $version
+   * @param int
    */
   public function setVersion($version)
   {

@@ -19,44 +19,22 @@ namespace Google\Service\Apigee;
 
 class GoogleCloudApigeeV1ControlPlaneAccess extends \Google\Collection
 {
-  protected $collection_key = 'watcherIdentities';
+  protected $collection_key = 'synchronizerIdentities';
   /**
-   * Optional. Array of service accounts authorized to publish analytics data to
-   * the control plane (for the Message Processor component).
-   *
    * @var string[]
    */
   public $analyticsPublisherIdentities;
   /**
-   * Identifier. The resource name of the ControlPlaneAccess. Format:
-   * "organizations/{org}/controlPlaneAccess"
-   *
    * @var string
    */
   public $name;
   /**
-   * Optional. Array of service accounts to grant access to control plane
-   * resources (for the Synchronizer component). The service accounts must have
-   * **Apigee Synchronizer Manager** role. See also [Create service
-   * accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-
-   * about#create-the-service-accounts).
-   *
    * @var string[]
    */
   public $synchronizerIdentities;
-  /**
-   * Optional. Service accounts granted access to control plane resources for
-   * the apigee-watcher component.
-   *
-   * @var string[]
-   */
-  public $watcherIdentities;
 
   /**
-   * Optional. Array of service accounts authorized to publish analytics data to
-   * the control plane (for the Message Processor component).
-   *
-   * @param string[] $analyticsPublisherIdentities
+   * @param string[]
    */
   public function setAnalyticsPublisherIdentities($analyticsPublisherIdentities)
   {
@@ -70,10 +48,7 @@ class GoogleCloudApigeeV1ControlPlaneAccess extends \Google\Collection
     return $this->analyticsPublisherIdentities;
   }
   /**
-   * Identifier. The resource name of the ControlPlaneAccess. Format:
-   * "organizations/{org}/controlPlaneAccess"
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -87,13 +62,7 @@ class GoogleCloudApigeeV1ControlPlaneAccess extends \Google\Collection
     return $this->name;
   }
   /**
-   * Optional. Array of service accounts to grant access to control plane
-   * resources (for the Synchronizer component). The service accounts must have
-   * **Apigee Synchronizer Manager** role. See also [Create service
-   * accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-
-   * about#create-the-service-accounts).
-   *
-   * @param string[] $synchronizerIdentities
+   * @param string[]
    */
   public function setSynchronizerIdentities($synchronizerIdentities)
   {
@@ -105,23 +74,6 @@ class GoogleCloudApigeeV1ControlPlaneAccess extends \Google\Collection
   public function getSynchronizerIdentities()
   {
     return $this->synchronizerIdentities;
-  }
-  /**
-   * Optional. Service accounts granted access to control plane resources for
-   * the apigee-watcher component.
-   *
-   * @param string[] $watcherIdentities
-   */
-  public function setWatcherIdentities($watcherIdentities)
-  {
-    $this->watcherIdentities = $watcherIdentities;
-  }
-  /**
-   * @return string[]
-   */
-  public function getWatcherIdentities()
-  {
-    return $this->watcherIdentities;
   }
 }
 

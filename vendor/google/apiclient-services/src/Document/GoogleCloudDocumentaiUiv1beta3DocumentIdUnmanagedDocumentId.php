@@ -20,16 +20,12 @@ namespace Google\Service\Document;
 class GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId extends \Google\Model
 {
   /**
-   * Required. The ID of the document.
-   *
    * @var string
    */
   public $docId;
 
   /**
-   * Required. The ID of the document.
-   *
-   * @param string $docId
+   * @param string
    */
   public function setDocId($docId)
   {

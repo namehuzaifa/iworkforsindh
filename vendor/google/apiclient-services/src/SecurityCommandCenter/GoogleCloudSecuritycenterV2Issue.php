@@ -19,18 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
 {
-  public const ISSUE_TYPE_ISSUE_TYPE_UNSPECIFIED = 'ISSUE_TYPE_UNSPECIFIED';
-  public const ISSUE_TYPE_CHOKEPOINT = 'CHOKEPOINT';
-  public const ISSUE_TYPE_TOXIC_COMBINATION = 'TOXIC_COMBINATION';
-  public const ISSUE_TYPE_INSIGHT = 'INSIGHT';
-  public const SEVERITY_SEVERITY_UNSPECIFIED = 'SEVERITY_UNSPECIFIED';
-  public const SEVERITY_CRITICAL = 'CRITICAL';
-  public const SEVERITY_HIGH = 'HIGH';
-  public const SEVERITY_MEDIUM = 'MEDIUM';
-  public const SEVERITY_LOW = 'LOW';
-  public const STATE_STATE_UNSPECIFIED = 'STATE_UNSPECIFIED';
-  public const STATE_ACTIVE = 'ACTIVE';
-  public const STATE_INACTIVE = 'INACTIVE';
   protected $collection_key = 'securityContexts';
   /**
    * @var string
@@ -87,7 +75,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
   public $updateTime;
 
   /**
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -101,7 +89,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->createTime;
   }
   /**
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -115,7 +103,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->description;
   }
   /**
-   * @param string $detection
+   * @param string
    */
   public function setDetection($detection)
   {
@@ -129,7 +117,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->detection;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueDomain[] $domains
+   * @param GoogleCloudSecuritycenterV2IssueDomain[]
    */
   public function setDomains($domains)
   {
@@ -151,21 +139,21 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->exposureScore;
   }
   /**
-   * @param self::ISSUE_TYPE_* $issueType
+   * @param string
    */
   public function setIssueType($issueType)
   {
     $this->issueType = $issueType;
   }
   /**
-   * @return self::ISSUE_TYPE_*
+   * @return string
    */
   public function getIssueType()
   {
     return $this->issueType;
   }
   /**
-   * @param string $lastObservationTime
+   * @param string
    */
   public function setLastObservationTime($lastObservationTime)
   {
@@ -179,7 +167,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->lastObservationTime;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueMute $mute
+   * @param GoogleCloudSecuritycenterV2IssueMute
    */
   public function setMute(GoogleCloudSecuritycenterV2IssueMute $mute)
   {
@@ -193,7 +181,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->mute;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -207,7 +195,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueResource $primaryResource
+   * @param GoogleCloudSecuritycenterV2IssueResource
    */
   public function setPrimaryResource(GoogleCloudSecuritycenterV2IssueResource $primaryResource)
   {
@@ -221,7 +209,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->primaryResource;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueFinding[] $relatedFindings
+   * @param GoogleCloudSecuritycenterV2IssueFinding[]
    */
   public function setRelatedFindings($relatedFindings)
   {
@@ -235,7 +223,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->relatedFindings;
   }
   /**
-   * @param string[] $remediations
+   * @param string[]
    */
   public function setRemediations($remediations)
   {
@@ -249,7 +237,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->remediations;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueResource[] $secondaryResources
+   * @param GoogleCloudSecuritycenterV2IssueResource[]
    */
   public function setSecondaryResources($secondaryResources)
   {
@@ -263,7 +251,7 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->secondaryResources;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueSecurityContext[] $securityContexts
+   * @param GoogleCloudSecuritycenterV2IssueSecurityContext[]
    */
   public function setSecurityContexts($securityContexts)
   {
@@ -277,35 +265,35 @@ class GoogleCloudSecuritycenterV2Issue extends \Google\Collection
     return $this->securityContexts;
   }
   /**
-   * @param self::SEVERITY_* $severity
+   * @param string
    */
   public function setSeverity($severity)
   {
     $this->severity = $severity;
   }
   /**
-   * @return self::SEVERITY_*
+   * @return string
    */
   public function getSeverity()
   {
     return $this->severity;
   }
   /**
-   * @param self::STATE_* $state
+   * @param string
    */
   public function setState($state)
   {
     $this->state = $state;
   }
   /**
-   * @return self::STATE_*
+   * @return string
    */
   public function getState()
   {
     return $this->state;
   }
   /**
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

@@ -20,33 +20,12 @@ namespace Google\Service\Compute;
 class ResourceStatusScheduling extends \Google\Model
 {
   /**
-   * Specifies the availability domain to place the instance in. The value must
-   * be a number between 1 and the number of availability domains specified in
-   * the spread placement policy attached to the instance.
-   *
    * @var int
    */
   public $availabilityDomain;
-  /**
-   * Output only. Specifies the timestamp, when the instance will start graceful
-   * shutdown process, in RFC3339 text format.
-   *
-   * @var string
-   */
-  public $gracefulShutdownTimestamp;
-  /**
-   * Time in future when the instance will be terminated inRFC3339 text format.
-   *
-   * @var string
-   */
-  public $terminationTimestamp;
 
   /**
-   * Specifies the availability domain to place the instance in. The value must
-   * be a number between 1 and the number of availability domains specified in
-   * the spread placement policy attached to the instance.
-   *
-   * @param int $availabilityDomain
+   * @param int
    */
   public function setAvailabilityDomain($availabilityDomain)
   {
@@ -58,39 +37,6 @@ class ResourceStatusScheduling extends \Google\Model
   public function getAvailabilityDomain()
   {
     return $this->availabilityDomain;
-  }
-  /**
-   * Output only. Specifies the timestamp, when the instance will start graceful
-   * shutdown process, in RFC3339 text format.
-   *
-   * @param string $gracefulShutdownTimestamp
-   */
-  public function setGracefulShutdownTimestamp($gracefulShutdownTimestamp)
-  {
-    $this->gracefulShutdownTimestamp = $gracefulShutdownTimestamp;
-  }
-  /**
-   * @return string
-   */
-  public function getGracefulShutdownTimestamp()
-  {
-    return $this->gracefulShutdownTimestamp;
-  }
-  /**
-   * Time in future when the instance will be terminated inRFC3339 text format.
-   *
-   * @param string $terminationTimestamp
-   */
-  public function setTerminationTimestamp($terminationTimestamp)
-  {
-    $this->terminationTimestamp = $terminationTimestamp;
-  }
-  /**
-   * @return string
-   */
-  public function getTerminationTimestamp()
-  {
-    return $this->terminationTimestamp;
   }
 }
 

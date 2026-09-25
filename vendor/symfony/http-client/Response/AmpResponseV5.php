@@ -96,8 +96,7 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
         };
 
         $pause = 0.0;
-        $this->id = $id = self::$nextId;
-        self::$nextId = str_increment(self::$nextId);
+        $this->id = $id = self::$nextId++;
 
         $info['pause_handler'] = static function (float $duration) use (&$pause) {
             $pause = $duration;
@@ -123,12 +122,12 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
         return null !== $type ? $this->info[$type] ?? null : $this->info;
     }
 
-    public function __serialize(): array
+    public function __sleep(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __unserialize(array $data): void
+    public function __wakeup(): void
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
@@ -163,7 +162,7 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
     /**
      * @param AmpClientStateV5 $multi
      */
-    private static function perform(ClientState $multi, ?array $responses = null): void
+    private static function perform(ClientState $multi, ?array &$responses = null): void
     {
         if ($responses) {
             foreach ($responses as $response) {
@@ -188,7 +187,7 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
         $delay = new DeferredFuture();
         $id = EventLoop::delay($timeout, $delay->complete(...));
 
-        awaitFirst((static function () use ($delay, $multi) {
+        awaitFirst((function () use ($delay, $multi) {
             yield $delay->getFuture();
 
             foreach ($multi->openHandles as $deferred) {
@@ -241,10 +240,6 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
             $body = $response->getBody();
 
             while (true) {
-                if (!isset($multi->openHandles[$id])) {
-                    return;
-                }
-
                 $multi->openHandles[$id]->complete();
                 $multi->openHandles[$id] = new DeferredFuture();
 
@@ -327,10 +322,6 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
             $request->setTcpConnectTimeout($originRequest->getTcpConnectTimeout());
             $request->setTlsHandshakeTimeout($originRequest->getTlsHandshakeTimeout());
             $request->setTransferTimeout($originRequest->getTransferTimeout());
-            $request->setBodySizeLimit(0);
-            if (method_exists($request, 'setInactivityTimeout')) {
-                $request->setInactivityTimeout(0);
-            }
 
             if (\in_array($status, [301, 302, 303], true)) {
                 $originRequest->removeHeader('transfer-encoding');
@@ -350,7 +341,7 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
                 $request->addHeader($name, $value);
             }
 
-            if ($request->getUri()->getScheme() !== $originRequest->getUri()->getScheme() || $request->getUri()->getAuthority() !== $originRequest->getUri()->getAuthority()) {
+            if ($request->getUri()->getAuthority() !== $originRequest->getUri()->getAuthority()) {
                 $request->removeHeader('authorization');
                 $request->removeHeader('cookie');
                 $request->removeHeader('host');

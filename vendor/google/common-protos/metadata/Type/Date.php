@@ -15,7 +15,14 @@ class Date
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xBB\x01\x0A\x16google/type/date.proto\x12\x0Bgoogle.type\"0\x0A\x04Date\x12\x0C\x0A\x04year\x18\x01 \x01(\x05\x12\x0D\x0A\x05month\x18\x02 \x01(\x05\x12\x0B\x0A\x03day\x18\x03 \x01(\x05BZ\x0A\x0Fcom.google.typeB\x09DateProtoP\x01Z4google.golang.org/genproto/googleapis/type/date;date\xA2\x02\x03GTPb\x06proto3"
+            '
+¾
+google/type/date.protogoogle.type"0
+Date
+year (
+month (
+day (B]
+com.google.typeB	DateProtoPZ4google.golang.org/genproto/googleapis/type/date;dateø¢GTPbproto3'
         , true);
 
         static::$is_initialized = true;

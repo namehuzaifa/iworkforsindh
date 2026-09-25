@@ -19,27 +19,16 @@ namespace Google\Service\OracleDatabase;
 
 class ListCloudExadataInfrastructuresResponse extends \Google\Collection
 {
-  protected $collection_key = 'unreachable';
+  protected $collection_key = 'cloudExadataInfrastructures';
   protected $cloudExadataInfrastructuresType = CloudExadataInfrastructure::class;
   protected $cloudExadataInfrastructuresDataType = 'array';
   /**
-   * A token for fetching next page of response.
-   *
    * @var string
    */
   public $nextPageToken;
-  /**
-   * Unreachable locations when listing resources across all locations using
-   * wildcard location '-'.
-   *
-   * @var string[]
-   */
-  public $unreachable;
 
   /**
-   * The list of Exadata Infrastructures.
-   *
-   * @param CloudExadataInfrastructure[] $cloudExadataInfrastructures
+   * @param CloudExadataInfrastructure[]
    */
   public function setCloudExadataInfrastructures($cloudExadataInfrastructures)
   {
@@ -53,9 +42,7 @@ class ListCloudExadataInfrastructuresResponse extends \Google\Collection
     return $this->cloudExadataInfrastructures;
   }
   /**
-   * A token for fetching next page of response.
-   *
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -67,23 +54,6 @@ class ListCloudExadataInfrastructuresResponse extends \Google\Collection
   public function getNextPageToken()
   {
     return $this->nextPageToken;
-  }
-  /**
-   * Unreachable locations when listing resources across all locations using
-   * wildcard location '-'.
-   *
-   * @param string[] $unreachable
-   */
-  public function setUnreachable($unreachable)
-  {
-    $this->unreachable = $unreachable;
-  }
-  /**
-   * @return string[]
-   */
-  public function getUnreachable()
-  {
-    return $this->unreachable;
   }
 }
 

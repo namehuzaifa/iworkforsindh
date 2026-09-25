@@ -2,6 +2,8 @@
 
 namespace Google\Protobuf\Internal;
 
+use Google\Protobuf\EnumValueDescriptor;
+
 class EnumDescriptor
 {
     use HasPublicDescriptorTrait;
@@ -11,7 +13,6 @@ class EnumDescriptor
     private $full_name;
     private $value;
     private $name_to_value;
-    private $custom_name_to_value = [];
     private $value_descriptor = [];
 
     public function __construct()
@@ -29,19 +30,11 @@ class EnumDescriptor
         return $this->full_name;
     }
 
-    /**
-     * @param EnumValueDescriptor $value
-     */
-    public function addValue(EnumValueDescriptor $value)
+    public function addValue($number, $value)
     {
-        $this->value[$value->getNumber()] = $value;
+        $this->value[$number] = $value;
         $this->name_to_value[$value->getName()] = $value;
-        $this->value_descriptor[] = $value;
-
-        $custom_name = $value->getCustomJsonName();
-        if ($custom_name !== null) {
-            $this->custom_name_to_value[$custom_name] = $value;
-        }
+        $this->value_descriptor[] = new EnumValueDescriptor($value->getName(), $number);
     }
 
     public function getValueByNumber($number)
@@ -58,20 +51,6 @@ class EnumDescriptor
             return $this->name_to_value[$name];
         }
         return null;
-    }
-
-    /**
-     * Looks up an enum value descriptor by its JSON name.
-     *
-     * @param string $name
-     * @return EnumValueDescriptor|null
-     */
-    public function getValueByJsonName($name)
-    {
-        if (isset($this->custom_name_to_value[$name])) {
-            return $this->custom_name_to_value[$name];
-        }
-        return $this->getValueByName($name);
     }
 
     public function getValueDescriptorByIndex($index)
@@ -107,7 +86,7 @@ class EnumDescriptor
         return $this->legacy_klass;
     }
 
-    public static function buildFromProto($proto, $file_proto, $containing, $custom_json_names = [])
+    public static function buildFromProto($proto, $file_proto, $containing)
     {
         $desc = new EnumDescriptor();
 
@@ -129,10 +108,7 @@ class EnumDescriptor
         $desc->setLegacyClass($legacy_classname);
         $values = $proto->getValue();
         foreach ($values as $value) {
-            $val_fqn = $fullname . '.' . $value->getName();
-            $custom_json_name = $custom_json_names[$val_fqn] ?? null;
-            $desc->addValue(new EnumValueDescriptor(
-                $value->getName(), $value->getNumber(), $custom_json_name));
+            $desc->addValue($value->getNumber(), $value);
         }
 
         return $desc;

@@ -39,9 +39,7 @@ class ProjectsTemplates extends \Google\Service\Resource
    * recommend using `projects.locations.templates.create` with a [regional
    * endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
    * endpoints). Using `projects.templates.create` is not recommended, because
-   * your job will always start in `us-central1`. # IAM Permissions Requires the
-   * following IAM permission(s) on the project: - `dataflow.jobs.create` -
-   * `resourcemanager.projects.get` (templates.create)
+   * your job will always start in `us-central1`. (templates.create)
    *
    * @param string $projectId Required. The ID of the Cloud Platform project that
    * the job belongs to.
@@ -61,8 +59,7 @@ class ProjectsTemplates extends \Google\Service\Resource
    * recommend using `projects.locations.templates.get` with a [regional endpoint]
    * (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
    * `projects.templates.get` is not recommended, because only templates that are
-   * running in `us-central1` are retrieved. # IAM Permissions Requires the
-   * `resourcemanager.projects.get` permission on the project. (templates.get)
+   * running in `us-central1` are retrieved. (templates.get)
    *
    * @param string $projectId Required. The ID of the Cloud Platform project that
    * the job belongs to.
@@ -89,9 +86,7 @@ class ProjectsTemplates extends \Google\Service\Resource
    * `projects.locations.templates.launch` with a [regional endpoint]
    * (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
    * `projects.templates.launch` is not recommended, because jobs launched from
-   * the template will always start in `us-central1`. # IAM Permissions Requires
-   * the following IAM permission(s) on the project: - `dataflow.jobs.create` -
-   * `resourcemanager.projects.get` (templates.launch)
+   * the template will always start in `us-central1`. (templates.launch)
    *
    * @param string $projectId Required. The ID of the Cloud Platform project that
    * the job belongs to.

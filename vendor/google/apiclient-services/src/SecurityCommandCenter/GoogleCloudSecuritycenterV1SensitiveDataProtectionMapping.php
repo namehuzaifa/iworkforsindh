@@ -19,16 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping extends \Google\Model
 {
-  public const HIGH_SENSITIVITY_MAPPING_RESOURCE_VALUE_UNSPECIFIED = 'RESOURCE_VALUE_UNSPECIFIED';
-  public const HIGH_SENSITIVITY_MAPPING_HIGH = 'HIGH';
-  public const HIGH_SENSITIVITY_MAPPING_MEDIUM = 'MEDIUM';
-  public const HIGH_SENSITIVITY_MAPPING_LOW = 'LOW';
-  public const HIGH_SENSITIVITY_MAPPING_NONE = 'NONE';
-  public const MEDIUM_SENSITIVITY_MAPPING_RESOURCE_VALUE_UNSPECIFIED = 'RESOURCE_VALUE_UNSPECIFIED';
-  public const MEDIUM_SENSITIVITY_MAPPING_HIGH = 'HIGH';
-  public const MEDIUM_SENSITIVITY_MAPPING_MEDIUM = 'MEDIUM';
-  public const MEDIUM_SENSITIVITY_MAPPING_LOW = 'LOW';
-  public const MEDIUM_SENSITIVITY_MAPPING_NONE = 'NONE';
   /**
    * @var string
    */
@@ -39,28 +29,28 @@ class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping extends \Google\
   public $mediumSensitivityMapping;
 
   /**
-   * @param self::HIGH_SENSITIVITY_MAPPING_* $highSensitivityMapping
+   * @param string
    */
   public function setHighSensitivityMapping($highSensitivityMapping)
   {
     $this->highSensitivityMapping = $highSensitivityMapping;
   }
   /**
-   * @return self::HIGH_SENSITIVITY_MAPPING_*
+   * @return string
    */
   public function getHighSensitivityMapping()
   {
     return $this->highSensitivityMapping;
   }
   /**
-   * @param self::MEDIUM_SENSITIVITY_MAPPING_* $mediumSensitivityMapping
+   * @param string
    */
   public function setMediumSensitivityMapping($mediumSensitivityMapping)
   {
     $this->mediumSensitivityMapping = $mediumSensitivityMapping;
   }
   /**
-   * @return self::MEDIUM_SENSITIVITY_MAPPING_*
+   * @return string
    */
   public function getMediumSensitivityMapping()
   {

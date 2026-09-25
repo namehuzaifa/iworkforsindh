@@ -107,14 +107,14 @@ class Excel implements Exporter, Importer
 
         $temporaryFile = $this->export($export, $filePath, $writerType);
 
-        try {
-            return $this->filesystem->disk($diskName ?: $disk, $diskOptions)->copy(
-                $temporaryFile,
-                $filePath
-            );
-        } finally {
-            $temporaryFile->delete();
-        }
+        $exported = $this->filesystem->disk($diskName ?: $disk, $diskOptions)->copy(
+            $temporaryFile,
+            $filePath
+        );
+
+        $temporaryFile->delete();
+
+        return $exported;
     }
 
     /**

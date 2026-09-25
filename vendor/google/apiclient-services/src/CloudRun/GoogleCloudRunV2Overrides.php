@@ -23,32 +23,16 @@ class GoogleCloudRunV2Overrides extends \Google\Collection
   protected $containerOverridesType = GoogleCloudRunV2ContainerOverride::class;
   protected $containerOverridesDataType = 'array';
   /**
-   * Optional. If true, the system will start the execution within the next 12
-   * hours depending on available capacity.
-   *
-   * @var bool
-   */
-  public $delayExecution;
-  /**
-   * Optional. The desired number of tasks the execution should run. Will
-   * replace existing task_count value.
-   *
    * @var int
    */
   public $taskCount;
   /**
-   * Duration in seconds the task may be active before the system will actively
-   * try to mark it failed and kill associated containers. Will replace existing
-   * timeout_seconds value.
-   *
    * @var string
    */
   public $timeout;
 
   /**
-   * Per container override specification.
-   *
-   * @param GoogleCloudRunV2ContainerOverride[] $containerOverrides
+   * @param GoogleCloudRunV2ContainerOverride[]
    */
   public function setContainerOverrides($containerOverrides)
   {
@@ -62,27 +46,7 @@ class GoogleCloudRunV2Overrides extends \Google\Collection
     return $this->containerOverrides;
   }
   /**
-   * Optional. If true, the system will start the execution within the next 12
-   * hours depending on available capacity.
-   *
-   * @param bool $delayExecution
-   */
-  public function setDelayExecution($delayExecution)
-  {
-    $this->delayExecution = $delayExecution;
-  }
-  /**
-   * @return bool
-   */
-  public function getDelayExecution()
-  {
-    return $this->delayExecution;
-  }
-  /**
-   * Optional. The desired number of tasks the execution should run. Will
-   * replace existing task_count value.
-   *
-   * @param int $taskCount
+   * @param int
    */
   public function setTaskCount($taskCount)
   {
@@ -96,11 +60,7 @@ class GoogleCloudRunV2Overrides extends \Google\Collection
     return $this->taskCount;
   }
   /**
-   * Duration in seconds the task may be active before the system will actively
-   * try to mark it failed and kill associated containers. Will replace existing
-   * timeout_seconds value.
-   *
-   * @param string $timeout
+   * @param string
    */
   public function setTimeout($timeout)
   {

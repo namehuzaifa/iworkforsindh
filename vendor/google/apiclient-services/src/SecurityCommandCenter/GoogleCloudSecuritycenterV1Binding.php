@@ -34,7 +34,7 @@ class GoogleCloudSecuritycenterV1Binding extends \Google\Collection
   protected $subjectsDataType = 'array';
 
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -48,7 +48,7 @@ class GoogleCloudSecuritycenterV1Binding extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {
@@ -62,7 +62,7 @@ class GoogleCloudSecuritycenterV1Binding extends \Google\Collection
     return $this->ns;
   }
   /**
-   * @param Role $role
+   * @param Role
    */
   public function setRole(Role $role)
   {
@@ -76,7 +76,7 @@ class GoogleCloudSecuritycenterV1Binding extends \Google\Collection
     return $this->role;
   }
   /**
-   * @param Subject[] $subjects
+   * @param Subject[]
    */
   public function setSubjects($subjects)
   {

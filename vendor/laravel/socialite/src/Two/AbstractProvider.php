@@ -141,7 +141,7 @@ abstract class AbstractProvider implements ProviderContract
      * Get the raw user for the given access token.
      *
      * @param  string  $token
-     * @return mixed
+     * @return array
      */
     abstract protected function getUserByToken($token);
 
@@ -262,7 +262,7 @@ abstract class AbstractProvider implements ProviderContract
     }
 
     /**
-     * Get a Socialite user instance from a known access token.
+     * Get a Social User instance from a known access token.
      *
      * @param  string  $token
      * @return \Laravel\Socialite\Two\User
@@ -287,14 +287,14 @@ abstract class AbstractProvider implements ProviderContract
 
         $state = $this->request->session()->pull('state');
 
-        return empty($state) || ! hash_equals($state, (string) $this->request->input('state'));
+        return empty($state) || $this->request->input('state') !== $state;
     }
 
     /**
      * Get the access token response for the given code.
      *
      * @param  string  $code
-     * @return mixed
+     * @return array
      */
     public function getAccessTokenResponse($code)
     {
@@ -362,7 +362,7 @@ abstract class AbstractProvider implements ProviderContract
      * Get the refresh token response for the given refresh token.
      *
      * @param  string  $refreshToken
-     * @return mixed
+     * @return array
      */
     protected function getRefreshTokenResponse($refreshToken)
     {

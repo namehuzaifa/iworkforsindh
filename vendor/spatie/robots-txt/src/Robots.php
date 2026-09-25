@@ -45,9 +45,7 @@ class Robots
             return false;
         }
 
-        $context = $this->createStreamContext();
-
-        $content = @file_get_contents($url, false, $context);
+        $content = @file_get_contents($url);
 
         if ($content === false) {
             throw new InvalidArgumentException("Could not read url `{$url}`");
@@ -59,9 +57,7 @@ class Robots
 
     public function mayFollowOn(string $url): bool
     {
-        $context = $this->createStreamContext();
-
-        $content = @file_get_contents($url, false, $context);
+        $content = @file_get_contents($url);
 
         if ($content === false) {
             throw new InvalidArgumentException("Could not read url `{$url}`");
@@ -70,15 +66,6 @@ class Robots
         return
             RobotsMeta::create($content)->mayFollow()
             && RobotsHeaders::create($http_response_header ?? [])->mayFollow();
-    }
-
-    protected function createStreamContext()
-    {
-        return stream_context_create([
-            'http' => [
-                'user_agent' => $this->userAgent ?? 'spatie/robots-txt',
-            ],
-        ]);
     }
 
     protected function createRobotsUrl(string $url): string

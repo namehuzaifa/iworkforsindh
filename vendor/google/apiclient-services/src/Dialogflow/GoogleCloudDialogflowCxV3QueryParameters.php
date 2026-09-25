@@ -33,10 +33,6 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
    */
   public $currentPage;
   /**
-   * @var string
-   */
-  public $currentPlaybook;
-  /**
    * @var bool
    */
   public $disableWebhook;
@@ -50,12 +46,6 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
   public $flowVersions;
   protected $geoLocationType = GoogleTypeLatLng::class;
   protected $geoLocationDataType = '';
-  protected $llmModelSettingsType = GoogleCloudDialogflowCxV3LlmModelSettings::class;
-  protected $llmModelSettingsDataType = '';
-  /**
-   * @var string
-   */
-  public $parameterScope;
   /**
    * @var array[]
    */
@@ -65,7 +55,6 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
    */
   public $payload;
   /**
-   * @deprecated
    * @var bool
    */
   public $populateDataStoreConnectionSignals;
@@ -87,7 +76,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
   public $webhookHeaders;
 
   /**
-   * @param bool $analyzeQueryTextSentiment
+   * @param bool
    */
   public function setAnalyzeQueryTextSentiment($analyzeQueryTextSentiment)
   {
@@ -101,7 +90,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->analyzeQueryTextSentiment;
   }
   /**
-   * @param string $channel
+   * @param string
    */
   public function setChannel($channel)
   {
@@ -115,7 +104,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->channel;
   }
   /**
-   * @param string $currentPage
+   * @param string
    */
   public function setCurrentPage($currentPage)
   {
@@ -129,21 +118,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->currentPage;
   }
   /**
-   * @param string $currentPlaybook
-   */
-  public function setCurrentPlaybook($currentPlaybook)
-  {
-    $this->currentPlaybook = $currentPlaybook;
-  }
-  /**
-   * @return string
-   */
-  public function getCurrentPlaybook()
-  {
-    return $this->currentPlaybook;
-  }
-  /**
-   * @param bool $disableWebhook
+   * @param bool
    */
   public function setDisableWebhook($disableWebhook)
   {
@@ -157,7 +132,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->disableWebhook;
   }
   /**
-   * @param array[] $endUserMetadata
+   * @param array[]
    */
   public function setEndUserMetadata($endUserMetadata)
   {
@@ -171,7 +146,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->endUserMetadata;
   }
   /**
-   * @param string[] $flowVersions
+   * @param string[]
    */
   public function setFlowVersions($flowVersions)
   {
@@ -185,7 +160,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->flowVersions;
   }
   /**
-   * @param GoogleTypeLatLng $geoLocation
+   * @param GoogleTypeLatLng
    */
   public function setGeoLocation(GoogleTypeLatLng $geoLocation)
   {
@@ -199,35 +174,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->geoLocation;
   }
   /**
-   * @param GoogleCloudDialogflowCxV3LlmModelSettings $llmModelSettings
-   */
-  public function setLlmModelSettings(GoogleCloudDialogflowCxV3LlmModelSettings $llmModelSettings)
-  {
-    $this->llmModelSettings = $llmModelSettings;
-  }
-  /**
-   * @return GoogleCloudDialogflowCxV3LlmModelSettings
-   */
-  public function getLlmModelSettings()
-  {
-    return $this->llmModelSettings;
-  }
-  /**
-   * @param string $parameterScope
-   */
-  public function setParameterScope($parameterScope)
-  {
-    $this->parameterScope = $parameterScope;
-  }
-  /**
-   * @return string
-   */
-  public function getParameterScope()
-  {
-    return $this->parameterScope;
-  }
-  /**
-   * @param array[] $parameters
+   * @param array[]
    */
   public function setParameters($parameters)
   {
@@ -241,7 +188,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->parameters;
   }
   /**
-   * @param array[] $payload
+   * @param array[]
    */
   public function setPayload($payload)
   {
@@ -255,15 +202,13 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->payload;
   }
   /**
-   * @deprecated
-   * @param bool $populateDataStoreConnectionSignals
+   * @param bool
    */
   public function setPopulateDataStoreConnectionSignals($populateDataStoreConnectionSignals)
   {
     $this->populateDataStoreConnectionSignals = $populateDataStoreConnectionSignals;
   }
   /**
-   * @deprecated
    * @return bool
    */
   public function getPopulateDataStoreConnectionSignals()
@@ -271,7 +216,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->populateDataStoreConnectionSignals;
   }
   /**
-   * @param GoogleCloudDialogflowCxV3SearchConfig $searchConfig
+   * @param GoogleCloudDialogflowCxV3SearchConfig
    */
   public function setSearchConfig(GoogleCloudDialogflowCxV3SearchConfig $searchConfig)
   {
@@ -285,7 +230,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->searchConfig;
   }
   /**
-   * @param GoogleCloudDialogflowCxV3SessionEntityType[] $sessionEntityTypes
+   * @param GoogleCloudDialogflowCxV3SessionEntityType[]
    */
   public function setSessionEntityTypes($sessionEntityTypes)
   {
@@ -299,7 +244,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->sessionEntityTypes;
   }
   /**
-   * @param string $sessionTtl
+   * @param string
    */
   public function setSessionTtl($sessionTtl)
   {
@@ -313,7 +258,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->sessionTtl;
   }
   /**
-   * @param string $timeZone
+   * @param string
    */
   public function setTimeZone($timeZone)
   {
@@ -327,7 +272,7 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
     return $this->timeZone;
   }
   /**
-   * @param string[] $webhookHeaders
+   * @param string[]
    */
   public function setWebhookHeaders($webhookHeaders)
   {

@@ -25,7 +25,7 @@ class GoogleCloudSecuritycenterV2Contact extends \Google\Model
   public $email;
 
   /**
-   * @param string $email
+   * @param string
    */
   public function setEmail($email)
   {

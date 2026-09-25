@@ -25,7 +25,7 @@ class IamPolicy extends \Google\Model
   public $policyBlob;
 
   /**
-   * @param string $policyBlob
+   * @param string
    */
   public function setPolicyBlob($policyBlob)
   {

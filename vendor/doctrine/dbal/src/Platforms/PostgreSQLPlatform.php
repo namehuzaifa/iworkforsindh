@@ -833,16 +833,6 @@ SQL
             return $this->getDropConstraintSQL($constraintName, $table);
         }
 
-        if ($table !== null) {
-            $indexName = $index instanceof Index ? $index->getQuotedName($this) : $index;
-            $tableName = $table instanceof Table ? $table->getQuotedName($this) : $table;
-
-            if (strpos($tableName, '.') !== false) {
-                [$schema] = explode('.', $tableName);
-                $index    = $schema . '.' . $indexName;
-            }
-        }
-
         return parent::getDropIndexSQL($index, $table);
     }
 

@@ -19,14 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent extends \Google\Model
 {
-  public const EVENT_TYPE_EVENT_TYPE_UNSPECIFIED = 'EVENT_TYPE_UNSPECIFIED';
-  /**
-   * @deprecated
-   */
-  public const EVENT_TYPE_EVENT_TYPE_MAX_TTL_EXCEEDED = 'EVENT_TYPE_MAX_TTL_EXCEEDED';
-  public const EVENT_TYPE_EVENT_TYPE_MAX_TTL_FROM_CREATION = 'EVENT_TYPE_MAX_TTL_FROM_CREATION';
-  public const EVENT_TYPE_EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION = 'EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION';
-  public const EVENT_TYPE_EVENT_TYPE_MIN_TTL_FROM_CREATION = 'EVENT_TYPE_MIN_TTL_FROM_CREATION';
   /**
    * @var string
    */
@@ -43,13 +35,9 @@ class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent extends \Google\Mode
    * @var string
    */
   public $maxRetentionAllowed;
-  /**
-   * @var string
-   */
-  public $minRetentionAllowed;
 
   /**
-   * @param string $dataObjectCount
+   * @param string
    */
   public function setDataObjectCount($dataObjectCount)
   {
@@ -63,7 +51,7 @@ class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent extends \Google\Mode
     return $this->dataObjectCount;
   }
   /**
-   * @param string $eventDetectionTime
+   * @param string
    */
   public function setEventDetectionTime($eventDetectionTime)
   {
@@ -77,21 +65,21 @@ class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent extends \Google\Mode
     return $this->eventDetectionTime;
   }
   /**
-   * @param self::EVENT_TYPE_* $eventType
+   * @param string
    */
   public function setEventType($eventType)
   {
     $this->eventType = $eventType;
   }
   /**
-   * @return self::EVENT_TYPE_*
+   * @return string
    */
   public function getEventType()
   {
     return $this->eventType;
   }
   /**
-   * @param string $maxRetentionAllowed
+   * @param string
    */
   public function setMaxRetentionAllowed($maxRetentionAllowed)
   {
@@ -103,20 +91,6 @@ class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent extends \Google\Mode
   public function getMaxRetentionAllowed()
   {
     return $this->maxRetentionAllowed;
-  }
-  /**
-   * @param string $minRetentionAllowed
-   */
-  public function setMinRetentionAllowed($minRetentionAllowed)
-  {
-    $this->minRetentionAllowed = $minRetentionAllowed;
-  }
-  /**
-   * @return string
-   */
-  public function getMinRetentionAllowed()
-  {
-    return $this->minRetentionAllowed;
   }
 }
 

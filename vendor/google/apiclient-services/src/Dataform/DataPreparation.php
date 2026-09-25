@@ -20,66 +20,37 @@ namespace Google\Service\Dataform;
 class DataPreparation extends \Google\Collection
 {
   protected $collection_key = 'tags';
-  protected $contentsSqlType = SqlDefinition::class;
-  protected $contentsSqlDataType = '';
   /**
-   * The data preparation definition, stored as a YAML string.
-   *
    * @var string
    */
-  public $contentsYaml;
+  public $contents;
   protected $dependencyTargetsType = Target::class;
   protected $dependencyTargetsDataType = 'array';
   /**
-   * Whether this action is disabled (i.e. should not be run).
-   *
    * @var bool
    */
   public $disabled;
   /**
-   * Arbitrary, user-defined tags on this action.
-   *
    * @var string[]
    */
   public $tags;
 
   /**
-   * SQL definition for a Data Preparation. Contains a SQL query and additional
-   * context information.
-   *
-   * @param SqlDefinition $contentsSql
+   * @param string
    */
-  public function setContentsSql(SqlDefinition $contentsSql)
+  public function setContents($contents)
   {
-    $this->contentsSql = $contentsSql;
-  }
-  /**
-   * @return SqlDefinition
-   */
-  public function getContentsSql()
-  {
-    return $this->contentsSql;
-  }
-  /**
-   * The data preparation definition, stored as a YAML string.
-   *
-   * @param string $contentsYaml
-   */
-  public function setContentsYaml($contentsYaml)
-  {
-    $this->contentsYaml = $contentsYaml;
+    $this->contents = $contents;
   }
   /**
    * @return string
    */
-  public function getContentsYaml()
+  public function getContents()
   {
-    return $this->contentsYaml;
+    return $this->contents;
   }
   /**
-   * A list of actions that this action depends on.
-   *
-   * @param Target[] $dependencyTargets
+   * @param Target[]
    */
   public function setDependencyTargets($dependencyTargets)
   {
@@ -93,9 +64,7 @@ class DataPreparation extends \Google\Collection
     return $this->dependencyTargets;
   }
   /**
-   * Whether this action is disabled (i.e. should not be run).
-   *
-   * @param bool $disabled
+   * @param bool
    */
   public function setDisabled($disabled)
   {
@@ -109,9 +78,7 @@ class DataPreparation extends \Google\Collection
     return $this->disabled;
   }
   /**
-   * Arbitrary, user-defined tags on this action.
-   *
-   * @param string[] $tags
+   * @param string[]
    */
   public function setTags($tags)
   {

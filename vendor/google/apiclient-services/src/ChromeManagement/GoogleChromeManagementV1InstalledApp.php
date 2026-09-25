@@ -19,154 +19,56 @@ namespace Google\Service\ChromeManagement;
 
 class GoogleChromeManagementV1InstalledApp extends \Google\Collection
 {
-  /**
-   * Application install type not specified.
-   */
-  public const APP_INSTALL_TYPE_APP_INSTALL_TYPE_UNSPECIFIED = 'APP_INSTALL_TYPE_UNSPECIFIED';
-  /**
-   * Multiple app install types.
-   */
-  public const APP_INSTALL_TYPE_MULTIPLE = 'MULTIPLE';
-  /**
-   * Normal app install type.
-   */
-  public const APP_INSTALL_TYPE_NORMAL = 'NORMAL';
-  /**
-   * Administrator app install type.
-   */
-  public const APP_INSTALL_TYPE_ADMIN = 'ADMIN';
-  /**
-   * Development app install type.
-   */
-  public const APP_INSTALL_TYPE_DEVELOPMENT = 'DEVELOPMENT';
-  /**
-   * Sideloaded app install type.
-   */
-  public const APP_INSTALL_TYPE_SIDELOAD = 'SIDELOAD';
-  /**
-   * Other app install type.
-   */
-  public const APP_INSTALL_TYPE_OTHER = 'OTHER';
-  /**
-   * Application source not specified.
-   */
-  public const APP_SOURCE_APP_SOURCE_UNSPECIFIED = 'APP_SOURCE_UNSPECIFIED';
-  /**
-   * Generally for extensions and Chrome apps.
-   */
-  public const APP_SOURCE_CHROME_WEBSTORE = 'CHROME_WEBSTORE';
-  /**
-   * Play Store app.
-   */
-  public const APP_SOURCE_PLAY_STORE = 'PLAY_STORE';
-  /**
-   * App type not specified.
-   */
-  public const APP_TYPE_APP_TYPE_UNSPECIFIED = 'APP_TYPE_UNSPECIFIED';
-  /**
-   * Chrome extension.
-   */
-  public const APP_TYPE_EXTENSION = 'EXTENSION';
-  /**
-   * Chrome app.
-   */
-  public const APP_TYPE_APP = 'APP';
-  /**
-   * Chrome theme.
-   */
-  public const APP_TYPE_THEME = 'THEME';
-  /**
-   * Chrome hosted app.
-   */
-  public const APP_TYPE_HOSTED_APP = 'HOSTED_APP';
-  /**
-   * ARC++ app.
-   */
-  public const APP_TYPE_ANDROID_APP = 'ANDROID_APP';
   protected $collection_key = 'permissions';
   /**
-   * Output only. Unique identifier of the app. For Chrome apps and extensions,
-   * the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android
-   * apps, the package name (e.g. com.evernote).
-   *
    * @var string
    */
   public $appId;
   /**
-   * Output only. How the app was installed.
-   *
    * @var string
    */
   public $appInstallType;
   /**
-   * Output only. Source of the installed app.
-   *
    * @var string
    */
   public $appSource;
   /**
-   * Output only. Type of the app.
-   *
    * @var string
    */
   public $appType;
   /**
-   * Output only. Count of browser devices with this app installed.
-   *
    * @var string
    */
   public $browserDeviceCount;
   /**
-   * Output only. Description of the installed app.
-   *
    * @var string
    */
   public $description;
   /**
-   * Output only. Whether the app is disabled.
-   *
    * @var bool
    */
   public $disabled;
   /**
-   * Output only. Name of the installed app.
-   *
    * @var string
    */
   public $displayName;
   /**
-   * Output only. Homepage uri of the installed app.
-   *
    * @var string
    */
   public $homepageUri;
   /**
-   * Output only. Count of ChromeOS users with this app installed.
-   *
    * @var string
    */
   public $osUserCount;
   /**
-   * Output only. Permissions of the installed app.
-   *
    * @var string[]
    */
   public $permissions;
-  /**
-   * Output only. Count of Chrome Profiles with this app installed.
-   *
-   * @var string
-   */
-  public $profileCount;
   protected $riskAssessmentType = GoogleChromeManagementV1RiskAssessmentData::class;
   protected $riskAssessmentDataType = '';
 
   /**
-   * Output only. Unique identifier of the app. For Chrome apps and extensions,
-   * the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android
-   * apps, the package name (e.g. com.evernote).
-   *
-   * @param string $appId
+   * @param string
    */
   public function setAppId($appId)
   {
@@ -180,65 +82,49 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->appId;
   }
   /**
-   * Output only. How the app was installed.
-   *
-   * Accepted values: APP_INSTALL_TYPE_UNSPECIFIED, MULTIPLE, NORMAL, ADMIN,
-   * DEVELOPMENT, SIDELOAD, OTHER
-   *
-   * @param self::APP_INSTALL_TYPE_* $appInstallType
+   * @param string
    */
   public function setAppInstallType($appInstallType)
   {
     $this->appInstallType = $appInstallType;
   }
   /**
-   * @return self::APP_INSTALL_TYPE_*
+   * @return string
    */
   public function getAppInstallType()
   {
     return $this->appInstallType;
   }
   /**
-   * Output only. Source of the installed app.
-   *
-   * Accepted values: APP_SOURCE_UNSPECIFIED, CHROME_WEBSTORE, PLAY_STORE
-   *
-   * @param self::APP_SOURCE_* $appSource
+   * @param string
    */
   public function setAppSource($appSource)
   {
     $this->appSource = $appSource;
   }
   /**
-   * @return self::APP_SOURCE_*
+   * @return string
    */
   public function getAppSource()
   {
     return $this->appSource;
   }
   /**
-   * Output only. Type of the app.
-   *
-   * Accepted values: APP_TYPE_UNSPECIFIED, EXTENSION, APP, THEME, HOSTED_APP,
-   * ANDROID_APP
-   *
-   * @param self::APP_TYPE_* $appType
+   * @param string
    */
   public function setAppType($appType)
   {
     $this->appType = $appType;
   }
   /**
-   * @return self::APP_TYPE_*
+   * @return string
    */
   public function getAppType()
   {
     return $this->appType;
   }
   /**
-   * Output only. Count of browser devices with this app installed.
-   *
-   * @param string $browserDeviceCount
+   * @param string
    */
   public function setBrowserDeviceCount($browserDeviceCount)
   {
@@ -252,9 +138,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->browserDeviceCount;
   }
   /**
-   * Output only. Description of the installed app.
-   *
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -268,9 +152,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->description;
   }
   /**
-   * Output only. Whether the app is disabled.
-   *
-   * @param bool $disabled
+   * @param bool
    */
   public function setDisabled($disabled)
   {
@@ -284,9 +166,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->disabled;
   }
   /**
-   * Output only. Name of the installed app.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -300,9 +180,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->displayName;
   }
   /**
-   * Output only. Homepage uri of the installed app.
-   *
-   * @param string $homepageUri
+   * @param string
    */
   public function setHomepageUri($homepageUri)
   {
@@ -316,9 +194,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->homepageUri;
   }
   /**
-   * Output only. Count of ChromeOS users with this app installed.
-   *
-   * @param string $osUserCount
+   * @param string
    */
   public function setOsUserCount($osUserCount)
   {
@@ -332,9 +208,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->osUserCount;
   }
   /**
-   * Output only. Permissions of the installed app.
-   *
-   * @param string[] $permissions
+   * @param string[]
    */
   public function setPermissions($permissions)
   {
@@ -348,25 +222,7 @@ class GoogleChromeManagementV1InstalledApp extends \Google\Collection
     return $this->permissions;
   }
   /**
-   * Output only. Count of Chrome Profiles with this app installed.
-   *
-   * @param string $profileCount
-   */
-  public function setProfileCount($profileCount)
-  {
-    $this->profileCount = $profileCount;
-  }
-  /**
-   * @return string
-   */
-  public function getProfileCount()
-  {
-    return $this->profileCount;
-  }
-  /**
-   * Output only. If available, the risk assessment data about this extension.
-   *
-   * @param GoogleChromeManagementV1RiskAssessmentData $riskAssessment
+   * @param GoogleChromeManagementV1RiskAssessmentData
    */
   public function setRiskAssessment(GoogleChromeManagementV1RiskAssessmentData $riskAssessment)
   {

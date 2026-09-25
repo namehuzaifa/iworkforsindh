@@ -36,7 +36,7 @@ class Kubernetes extends \Google\Collection
   protected $rolesDataType = 'array';
 
   /**
-   * @param AccessReview[] $accessReviews
+   * @param AccessReview[]
    */
   public function setAccessReviews($accessReviews)
   {
@@ -50,7 +50,7 @@ class Kubernetes extends \Google\Collection
     return $this->accessReviews;
   }
   /**
-   * @param GoogleCloudSecuritycenterV1Binding[] $bindings
+   * @param GoogleCloudSecuritycenterV1Binding[]
    */
   public function setBindings($bindings)
   {
@@ -64,7 +64,7 @@ class Kubernetes extends \Google\Collection
     return $this->bindings;
   }
   /**
-   * @param NodePool[] $nodePools
+   * @param NodePool[]
    */
   public function setNodePools($nodePools)
   {
@@ -78,7 +78,7 @@ class Kubernetes extends \Google\Collection
     return $this->nodePools;
   }
   /**
-   * @param Node[] $nodes
+   * @param Node[]
    */
   public function setNodes($nodes)
   {
@@ -92,7 +92,7 @@ class Kubernetes extends \Google\Collection
     return $this->nodes;
   }
   /**
-   * @param SecuritycenterObject[] $objects
+   * @param SecuritycenterObject[]
    */
   public function setObjects($objects)
   {
@@ -106,7 +106,7 @@ class Kubernetes extends \Google\Collection
     return $this->objects;
   }
   /**
-   * @param Pod[] $pods
+   * @param Pod[]
    */
   public function setPods($pods)
   {
@@ -120,7 +120,7 @@ class Kubernetes extends \Google\Collection
     return $this->pods;
   }
   /**
-   * @param Role[] $roles
+   * @param Role[]
    */
   public function setRoles($roles)
   {

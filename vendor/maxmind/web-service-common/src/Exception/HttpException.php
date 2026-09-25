@@ -11,20 +11,22 @@ class HttpException extends WebServiceException
 {
     /**
      * The URI queried.
+     *
+     * @var string
      */
-    private readonly string $uri;
+    private $uri;
 
     /**
      * @param string     $message    a message describing the error
      * @param int        $httpStatus the HTTP status code of the response
      * @param string     $uri        the URI used in the request
-     * @param \Throwable $previous   the previous exception, if any
+     * @param \Exception $previous   the previous exception, if any
      */
     public function __construct(
         string $message,
         int $httpStatus,
         string $uri,
-        ?\Throwable $previous = null
+        ?\Exception $previous = null
     ) {
         $this->uri = $uri;
         parent::__construct($message, $httpStatus, $previous);

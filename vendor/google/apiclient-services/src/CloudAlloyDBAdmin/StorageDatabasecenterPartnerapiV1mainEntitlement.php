@@ -20,79 +20,37 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainEntitlement extends \Google\Model
 {
   /**
-   * Disable validation warnings
-   */
-  public const ENTITLEMENT_STATE_ENTITLEMENT_STATE_UNSPECIFIED = 'ENTITLEMENT_STATE_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const ENTITLEMENT_STATE_ENTITLED = 'ENTITLED';
-  /**
-   * Disable validation warnings
-   */
-  public const ENTITLEMENT_STATE_REVOKED = 'REVOKED';
-  /**
-   * Disable validation warnings
-   */
-  public const TYPE_ENTITLEMENT_TYPE_UNSPECIFIED = 'ENTITLEMENT_TYPE_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   *
-   * @deprecated
-   */
-  public const TYPE_GEMINI = 'GEMINI';
-  /**
-   * Disable validation warnings
-   */
-  public const TYPE_NATIVE = 'NATIVE';
-  /**
-   * Disable validation warnings
-   */
-  public const TYPE_GCA_STANDARD = 'GCA_STANDARD';
-  /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $entitlementState;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $type;
 
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: ENTITLEMENT_STATE_UNSPECIFIED, ENTITLED, REVOKED
-   *
-   * @param self::ENTITLEMENT_STATE_* $entitlementState
+   * @param string
    */
   public function setEntitlementState($entitlementState)
   {
     $this->entitlementState = $entitlementState;
   }
   /**
-   * @return self::ENTITLEMENT_STATE_*
+   * @return string
    */
   public function getEntitlementState()
   {
     return $this->entitlementState;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: ENTITLEMENT_TYPE_UNSPECIFIED, GEMINI, NATIVE, GCA_STANDARD
-   *
-   * @param self::TYPE_* $type
+   * @param string
    */
   public function setType($type)
   {
     $this->type = $type;
   }
   /**
-   * @return self::TYPE_*
+   * @return string
    */
   public function getType()
   {

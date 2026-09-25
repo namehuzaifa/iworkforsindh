@@ -29,9 +29,7 @@ class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails 
   protected $quotaInfoDataType = '';
 
   /**
-   * Error information containing structured domain, reason, and metadata.
-   *
-   * @param ErrorInfo $errorInfo
+   * @param ErrorInfo
    */
   public function setErrorInfo(ErrorInfo $errorInfo)
   {
@@ -45,9 +43,7 @@ class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails 
     return $this->errorInfo;
   }
   /**
-   * Links and information to help the user resolve the error.
-   *
-   * @param Help $help
+   * @param Help
    */
   public function setHelp(Help $help)
   {
@@ -61,9 +57,7 @@ class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails 
     return $this->help;
   }
   /**
-   * A localized human-readable error message intended for end users.
-   *
-   * @param LocalizedMessage $localizedMessage
+   * @param LocalizedMessage
    */
   public function setLocalizedMessage(LocalizedMessage $localizedMessage)
   {
@@ -77,9 +71,7 @@ class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails 
     return $this->localizedMessage;
   }
   /**
-   * Details about quota limits and metrics when a quota is exceeded.
-   *
-   * @param QuotaExceededInfo $quotaInfo
+   * @param QuotaExceededInfo
    */
   public function setQuotaInfo(QuotaExceededInfo $quotaInfo)
   {

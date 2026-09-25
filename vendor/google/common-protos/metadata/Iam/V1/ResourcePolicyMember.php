@@ -16,7 +16,13 @@ class ResourcePolicyMember
         }
         \GPBMetadata\Google\Api\FieldBehavior::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\xB4\x02\x0A*google/iam/v1/resource_policy_member.proto\x12\x0Dgoogle.iam.v1\"e\x0A\x14ResourcePolicyMember\x12&\x0A\x19iam_policy_name_principal\x18\x01 \x01(\x09B\x03\xE0A\x03\x12%\x0A\x18iam_policy_uid_principal\x18\x02 \x01(\x09B\x03\xE0A\x03B\x87\x01\x0A\x11com.google.iam.v1B\x19ResourcePolicyMemberProtoP\x01Z)cloud.google.com/go/iam/apiv1/iampb;iampb\xAA\x02\x13Google.Cloud.Iam.V1\xCA\x02\x13Google\\Cloud\\Iam\\V1b\x06proto3"
+            '
+´
+*google/iam/v1/resource_policy_member.protogoogle.iam.v1"e
+ResourcePolicyMember&
+iam_policy_name_principal (	BàA%
+iam_policy_uid_principal (	BàAB‡
+com.google.iam.v1BResourcePolicyMemberProtoPZ)cloud.google.com/go/iam/apiv1/iampb;iampbªGoogle.Cloud.Iam.V1ÊGoogle\\Cloud\\Iam\\V1bproto3'
         , true);
 
         static::$is_initialized = true;

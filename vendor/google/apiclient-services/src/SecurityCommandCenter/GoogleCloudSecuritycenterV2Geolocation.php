@@ -25,7 +25,7 @@ class GoogleCloudSecuritycenterV2Geolocation extends \Google\Model
   public $regionCode;
 
   /**
-   * @param string $regionCode
+   * @param string
    */
   public function setRegionCode($regionCode)
   {

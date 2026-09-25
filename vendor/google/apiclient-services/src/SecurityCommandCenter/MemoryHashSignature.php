@@ -28,7 +28,7 @@ class MemoryHashSignature extends \Google\Collection
   protected $detectionsDataType = 'array';
 
   /**
-   * @param string $binaryFamily
+   * @param string
    */
   public function setBinaryFamily($binaryFamily)
   {
@@ -42,7 +42,7 @@ class MemoryHashSignature extends \Google\Collection
     return $this->binaryFamily;
   }
   /**
-   * @param Detection[] $detections
+   * @param Detection[]
    */
   public function setDetections($detections)
   {

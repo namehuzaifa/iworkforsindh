@@ -197,7 +197,7 @@ SQL,
 
     private function parseDefaultExpression(string $value): ?string
     {
-        while (preg_match('/^\((.*)\)$/s', $value, $matches) === 1) {
+        while (preg_match('/^\((.*)\)$/s', $value, $matches)) {
             $value = $matches[1];
         }
 
@@ -227,15 +227,9 @@ SQL,
             $name = $tableForeignKey['ForeignKey'];
 
             if (! isset($foreignKeys[$name])) {
-                $referencedTableName = $tableForeignKey['ReferenceTableName'];
-
-                if ($tableForeignKey['ReferenceSchemaName'] !== 'dbo') {
-                    $referencedTableName = $tableForeignKey['ReferenceSchemaName'] . '.' . $referencedTableName;
-                }
-
                 $foreignKeys[$name] = [
                     'local_columns' => [$tableForeignKey['ColumnName']],
-                    'foreign_table' => $referencedTableName,
+                    'foreign_table' => $tableForeignKey['ReferenceTableName'],
                     'foreign_columns' => [$tableForeignKey['ReferenceColumnName']],
                     'name' => $name,
                     'options' => [
@@ -562,29 +556,31 @@ SQL;
     {
         $sql = <<<'SQL'
           SELECT
-            scm.name AS schema_name,
-            tbl.name AS table_name,
+            tbl.name,
             p.value AS [table_comment]
           FROM
             sys.tables AS tbl
-            JOIN sys.schemas AS scm
-              ON tbl.schema_id = scm.schema_id
             INNER JOIN sys.extended_properties AS p ON p.major_id=tbl.object_id AND p.minor_id=0 AND p.class=1
 SQL;
 
-        $conditions = ["p.name = N'MS_Description'"];
+        $conditions = ["SCHEMA_NAME(tbl.schema_id) = N'dbo'", "p.name = N'MS_Description'"];
+        $params     = [];
 
         if ($tableName !== null) {
-            $conditions[] = $this->getTableWhereClause($tableName, 'scm.name', 'tbl.name');
+            $conditions[] = "tbl.name = N'" . $tableName . "'";
         }
 
         $sql .= ' WHERE ' . implode(' AND ', $conditions);
 
+        /** @var array<string,array<string,mixed>> $metadata */
+        $metadata = $this->_conn->executeQuery($sql, $params)
+            ->fetchAllAssociativeIndexed();
+
         $tableOptions = [];
-        foreach ($this->_conn->iterateAssociative($sql) as $data) {
+        foreach ($metadata as $table => $data) {
             $data = array_change_key_case($data, CASE_LOWER);
 
-            $tableOptions[$this->_getPortableTableDefinition($data)] = [
+            $tableOptions[$table] = [
                 'comment' => $data['table_comment'],
             ];
         }

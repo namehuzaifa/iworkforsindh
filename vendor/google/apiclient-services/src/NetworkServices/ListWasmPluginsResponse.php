@@ -21,30 +21,14 @@ class ListWasmPluginsResponse extends \Google\Collection
 {
   protected $collection_key = 'wasmPlugins';
   /**
-   * If there might be more results than those appearing in this response, then
-   * `next_page_token` is included. To get the next set of results, call this
-   * method again using the value of `next_page_token` as `page_token`.
-   *
    * @var string
    */
   public $nextPageToken;
-  /**
-   * Unreachable resources. Populated when the request attempts to list all
-   * resources across all supported locations, while some locations are
-   * temporarily unavailable.
-   *
-   * @var string[]
-   */
-  public $unreachable;
   protected $wasmPluginsType = WasmPlugin::class;
   protected $wasmPluginsDataType = 'array';
 
   /**
-   * If there might be more results than those appearing in this response, then
-   * `next_page_token` is included. To get the next set of results, call this
-   * method again using the value of `next_page_token` as `page_token`.
-   *
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -58,27 +42,7 @@ class ListWasmPluginsResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * Unreachable resources. Populated when the request attempts to list all
-   * resources across all supported locations, while some locations are
-   * temporarily unavailable.
-   *
-   * @param string[] $unreachable
-   */
-  public function setUnreachable($unreachable)
-  {
-    $this->unreachable = $unreachable;
-  }
-  /**
-   * @return string[]
-   */
-  public function getUnreachable()
-  {
-    return $this->unreachable;
-  }
-  /**
-   * List of `WasmPlugin` resources.
-   *
-   * @param WasmPlugin[] $wasmPlugins
+   * @param WasmPlugin[]
    */
   public function setWasmPlugins($wasmPlugins)
   {

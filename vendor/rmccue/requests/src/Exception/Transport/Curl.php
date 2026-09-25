@@ -76,4 +76,5 @@ final class Curl extends Transport {
 	public function getReason() {
 		return $this->reason;
 	}
+
 }

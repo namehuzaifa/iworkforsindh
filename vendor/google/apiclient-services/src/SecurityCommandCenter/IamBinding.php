@@ -19,9 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class IamBinding extends \Google\Model
 {
-  public const ACTION_ACTION_UNSPECIFIED = 'ACTION_UNSPECIFIED';
-  public const ACTION_ADD = 'ADD';
-  public const ACTION_REMOVE = 'REMOVE';
   /**
    * @var string
    */
@@ -36,21 +33,21 @@ class IamBinding extends \Google\Model
   public $role;
 
   /**
-   * @param self::ACTION_* $action
+   * @param string
    */
   public function setAction($action)
   {
     $this->action = $action;
   }
   /**
-   * @return self::ACTION_*
+   * @return string
    */
   public function getAction()
   {
     return $this->action;
   }
   /**
-   * @param string $member
+   * @param string
    */
   public function setMember($member)
   {
@@ -64,7 +61,7 @@ class IamBinding extends \Google\Model
     return $this->member;
   }
   /**
-   * @param string $role
+   * @param string
    */
   public function setRole($role)
   {

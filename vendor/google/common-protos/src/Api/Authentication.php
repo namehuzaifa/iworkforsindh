@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * `Authentication` defines the authentication configuration for API methods
@@ -50,10 +50,10 @@ class Authentication extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \Google\Api\AuthenticationRule[] $rules
+     *     @type array<\Google\Api\AuthenticationRule>|\Google\Protobuf\Internal\RepeatedField $rules
      *           A list of authentication rules that apply to individual API methods.
      *           **NOTE:** All service configuration rules follow "last one wins" order.
-     *     @type \Google\Api\AuthProvider[] $providers
+     *     @type array<\Google\Api\AuthProvider>|\Google\Protobuf\Internal\RepeatedField $providers
      *           Defines a set of authentication providers that a service supports.
      * }
      */
@@ -67,7 +67,7 @@ class Authentication extends \Google\Protobuf\Internal\Message
      * **NOTE:** All service configuration rules follow "last one wins" order.
      *
      * Generated from protobuf field <code>repeated .google.api.AuthenticationRule rules = 3;</code>
-     * @return RepeatedField<\Google\Api\AuthenticationRule>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getRules()
     {
@@ -79,7 +79,7 @@ class Authentication extends \Google\Protobuf\Internal\Message
      * **NOTE:** All service configuration rules follow "last one wins" order.
      *
      * Generated from protobuf field <code>repeated .google.api.AuthenticationRule rules = 3;</code>
-     * @param \Google\Api\AuthenticationRule[] $var
+     * @param array<\Google\Api\AuthenticationRule>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setRules($var)
@@ -94,7 +94,7 @@ class Authentication extends \Google\Protobuf\Internal\Message
      * Defines a set of authentication providers that a service supports.
      *
      * Generated from protobuf field <code>repeated .google.api.AuthProvider providers = 4;</code>
-     * @return RepeatedField<\Google\Api\AuthProvider>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getProviders()
     {
@@ -105,7 +105,7 @@ class Authentication extends \Google\Protobuf\Internal\Message
      * Defines a set of authentication providers that a service supports.
      *
      * Generated from protobuf field <code>repeated .google.api.AuthProvider providers = 4;</code>
-     * @param \Google\Api\AuthProvider[] $var
+     * @param array<\Google\Api\AuthProvider>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setProviders($var)

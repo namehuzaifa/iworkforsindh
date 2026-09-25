@@ -30,12 +30,12 @@ use Symfony\Contracts\Service\ResetInterface;
  */
 final class NoPrivateNetworkHttpClient implements HttpClientInterface, LoggerAwareInterface, ResetInterface
 {
-    use AsyncDecoratorTrait;
     use HttpClientTrait;
+    use AsyncDecoratorTrait;
 
     private array $defaultOptions = self::OPTIONS_DEFAULTS;
     private HttpClientInterface $client;
-    private ?array $subnets;
+    private array|null $subnets;
     private int $ipFlags;
     private \ArrayObject $dnsCache;
 
@@ -73,7 +73,6 @@ final class NoPrivateNetworkHttpClient implements HttpClientInterface, LoggerAwa
         [$url, $options] = self::prepareRequest($method, $url, $options, $this->defaultOptions, true);
 
         $redirectHeaders = parse_url($url['authority']);
-        $redirectHeaders['scheme'] = $url['scheme'];
         $host = $redirectHeaders['host'];
         $url = implode('', $url);
         $dnsCache = $this->dnsCache;
@@ -104,7 +103,9 @@ final class NoPrivateNetworkHttpClient implements HttpClientInterface, LoggerAwa
         $redirectHeaders['with_auth'] = $redirectHeaders['no_auth'] = $options['headers'];
 
         if (isset($options['normalized_headers']['host']) || isset($options['normalized_headers']['authorization']) || isset($options['normalized_headers']['cookie'])) {
-            $redirectHeaders['no_auth'] = array_filter($redirectHeaders['no_auth'], static fn ($h) => 0 !== stripos($h, 'Host:') && 0 !== stripos($h, 'Authorization:') && 0 !== stripos($h, 'Cookie:'));
+            $redirectHeaders['no_auth'] = array_filter($redirectHeaders['no_auth'], static function ($h) {
+                return 0 !== stripos($h, 'Host:') && 0 !== stripos($h, 'Authorization:') && 0 !== stripos($h, 'Cookie:');
+            });
         }
 
         return new AsyncResponse($this->client, $method, $url, $options, static function (ChunkInterface $chunk, AsyncContext $context) use (&$method, &$options, $maxRedirects, &$redirectHeaders, $subnets, $ipFlags, $dnsCache): \Generator {
@@ -134,16 +135,18 @@ final class NoPrivateNetworkHttpClient implements HttpClientInterface, LoggerAwa
                 unset($options['body'], $options['json']);
 
                 if (isset($options['normalized_headers']['content-length']) || isset($options['normalized_headers']['content-type']) || isset($options['normalized_headers']['transfer-encoding'])) {
-                    $filterContentHeaders = static fn ($h) => 0 !== stripos($h, 'Content-Length:') && 0 !== stripos($h, 'Content-Type:') && 0 !== stripos($h, 'Transfer-Encoding:');
+                    $filterContentHeaders = static function ($h) {
+                        return 0 !== stripos($h, 'Content-Length:') && 0 !== stripos($h, 'Content-Type:') && 0 !== stripos($h, 'Transfer-Encoding:');
+                    };
                     $options['headers'] = array_filter($options['headers'], $filterContentHeaders);
                     $redirectHeaders['no_auth'] = array_filter($redirectHeaders['no_auth'], $filterContentHeaders);
                     $redirectHeaders['with_auth'] = array_filter($redirectHeaders['with_auth'], $filterContentHeaders);
                 }
             }
 
-            // Authorization and Cookie headers MUST NOT follow except for the initial scheme, host and port
+            // Authorization and Cookie headers MUST NOT follow except for the initial host name
             $port = parse_url($url, \PHP_URL_PORT);
-            $options['headers'] = parse_url($url, \PHP_URL_SCHEME).':' === $redirectHeaders['scheme'] && $redirectHeaders['host'] === $host && ($redirectHeaders['port'] ?? null) === $port ? $redirectHeaders['with_auth'] : $redirectHeaders['no_auth'];
+            $options['headers'] = $redirectHeaders['host'] === $host && ($redirectHeaders['port'] ?? null) === $port ? $redirectHeaders['with_auth'] : $redirectHeaders['no_auth'];
 
             static $redirectCount = 0;
             $context->setInfo('redirect_count', ++$redirectCount);
@@ -204,9 +207,9 @@ final class NoPrivateNetworkHttpClient implements HttpClientInterface, LoggerAwa
             return $host;
         }
 
-        if ($ip = @dns_get_record($host, \DNS_AAAA)) {
+        if ($ip = dns_get_record($host, \DNS_AAAA)) {
             $ip = $ip[0]['ipv6'];
-        } elseif (\extension_loaded('sockets')) {
+        } elseif (extension_loaded('sockets')) {
             if (!$info = socket_addrinfo_lookup($host, 0, ['ai_socktype' => \SOCK_STREAM, 'ai_family' => \AF_INET6])) {
                 return $host;
             }

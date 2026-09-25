@@ -19,28 +19,20 @@ namespace Google\Service\Aiplatform;
 
 class CloudAiLargeModelsVisionGenerateVideoResponse extends \Google\Collection
 {
-  protected $collection_key = 'videos';
+  protected $collection_key = 'raiMediaFilteredReasons';
   protected $generatedSamplesType = CloudAiLargeModelsVisionMedia::class;
   protected $generatedSamplesDataType = 'array';
   /**
-   * Returns if any videos were filtered due to RAI policies.
-   *
    * @var int
    */
   public $raiMediaFilteredCount;
   /**
-   * Returns rai failure reasons if any.
-   *
    * @var string[]
    */
   public $raiMediaFilteredReasons;
-  protected $videosType = CloudAiLargeModelsVisionGenerateVideoResponseVideo::class;
-  protected $videosDataType = 'array';
 
   /**
-   * The generates samples.
-   *
-   * @param CloudAiLargeModelsVisionMedia[] $generatedSamples
+   * @param CloudAiLargeModelsVisionMedia[]
    */
   public function setGeneratedSamples($generatedSamples)
   {
@@ -54,9 +46,7 @@ class CloudAiLargeModelsVisionGenerateVideoResponse extends \Google\Collection
     return $this->generatedSamples;
   }
   /**
-   * Returns if any videos were filtered due to RAI policies.
-   *
-   * @param int $raiMediaFilteredCount
+   * @param int
    */
   public function setRaiMediaFilteredCount($raiMediaFilteredCount)
   {
@@ -70,9 +60,7 @@ class CloudAiLargeModelsVisionGenerateVideoResponse extends \Google\Collection
     return $this->raiMediaFilteredCount;
   }
   /**
-   * Returns rai failure reasons if any.
-   *
-   * @param string[] $raiMediaFilteredReasons
+   * @param string[]
    */
   public function setRaiMediaFilteredReasons($raiMediaFilteredReasons)
   {
@@ -84,22 +72,6 @@ class CloudAiLargeModelsVisionGenerateVideoResponse extends \Google\Collection
   public function getRaiMediaFilteredReasons()
   {
     return $this->raiMediaFilteredReasons;
-  }
-  /**
-   * List of videos, used to align naming with the external response.
-   *
-   * @param CloudAiLargeModelsVisionGenerateVideoResponseVideo[] $videos
-   */
-  public function setVideos($videos)
-  {
-    $this->videos = $videos;
-  }
-  /**
-   * @return CloudAiLargeModelsVisionGenerateVideoResponseVideo[]
-   */
-  public function getVideos()
-  {
-    return $this->videos;
   }
 }
 

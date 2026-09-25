@@ -20,31 +20,11 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class MaintenanceUpdatePolicy extends \Google\Collection
 {
   protected $collection_key = 'maintenanceWindows';
-  protected $denyMaintenancePeriodsType = DenyMaintenancePeriod::class;
-  protected $denyMaintenancePeriodsDataType = 'array';
   protected $maintenanceWindowsType = MaintenanceWindow::class;
   protected $maintenanceWindowsDataType = 'array';
 
   /**
-   * Periods to deny maintenance. Currently limited to 1.
-   *
-   * @param DenyMaintenancePeriod[] $denyMaintenancePeriods
-   */
-  public function setDenyMaintenancePeriods($denyMaintenancePeriods)
-  {
-    $this->denyMaintenancePeriods = $denyMaintenancePeriods;
-  }
-  /**
-   * @return DenyMaintenancePeriod[]
-   */
-  public function getDenyMaintenancePeriods()
-  {
-    return $this->denyMaintenancePeriods;
-  }
-  /**
-   * Preferred windows to perform maintenance. Currently limited to 1.
-   *
-   * @param MaintenanceWindow[] $maintenanceWindows
+   * @param MaintenanceWindow[]
    */
   public function setMaintenanceWindows($maintenanceWindows)
   {

@@ -44,7 +44,7 @@ class GcpMetadata extends \Google\Collection
   public $projectDisplayName;
 
   /**
-   * @param GoogleCloudSecuritycenterV2Folder[] $folders
+   * @param GoogleCloudSecuritycenterV2Folder[]
    */
   public function setFolders($folders)
   {
@@ -58,7 +58,7 @@ class GcpMetadata extends \Google\Collection
     return $this->folders;
   }
   /**
-   * @param string $organization
+   * @param string
    */
   public function setOrganization($organization)
   {
@@ -72,7 +72,7 @@ class GcpMetadata extends \Google\Collection
     return $this->organization;
   }
   /**
-   * @param string $parent
+   * @param string
    */
   public function setParent($parent)
   {
@@ -86,7 +86,7 @@ class GcpMetadata extends \Google\Collection
     return $this->parent;
   }
   /**
-   * @param string $parentDisplayName
+   * @param string
    */
   public function setParentDisplayName($parentDisplayName)
   {
@@ -100,7 +100,7 @@ class GcpMetadata extends \Google\Collection
     return $this->parentDisplayName;
   }
   /**
-   * @param string $project
+   * @param string
    */
   public function setProject($project)
   {
@@ -114,7 +114,7 @@ class GcpMetadata extends \Google\Collection
     return $this->project;
   }
   /**
-   * @param string $projectDisplayName
+   * @param string
    */
   public function setProjectDisplayName($projectDisplayName)
   {

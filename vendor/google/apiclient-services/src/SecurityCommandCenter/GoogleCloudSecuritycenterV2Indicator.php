@@ -36,7 +36,7 @@ class GoogleCloudSecuritycenterV2Indicator extends \Google\Collection
   public $uris;
 
   /**
-   * @param string[] $domains
+   * @param string[]
    */
   public function setDomains($domains)
   {
@@ -50,7 +50,7 @@ class GoogleCloudSecuritycenterV2Indicator extends \Google\Collection
     return $this->domains;
   }
   /**
-   * @param string[] $ipAddresses
+   * @param string[]
    */
   public function setIpAddresses($ipAddresses)
   {
@@ -64,7 +64,7 @@ class GoogleCloudSecuritycenterV2Indicator extends \Google\Collection
     return $this->ipAddresses;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ProcessSignature[] $signatures
+   * @param GoogleCloudSecuritycenterV2ProcessSignature[]
    */
   public function setSignatures($signatures)
   {
@@ -78,7 +78,7 @@ class GoogleCloudSecuritycenterV2Indicator extends \Google\Collection
     return $this->signatures;
   }
   /**
-   * @param string[] $uris
+   * @param string[]
    */
   public function setUris($uris)
   {

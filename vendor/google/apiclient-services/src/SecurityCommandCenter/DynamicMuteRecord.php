@@ -29,7 +29,7 @@ class DynamicMuteRecord extends \Google\Model
   public $muteConfig;
 
   /**
-   * @param string $matchTime
+   * @param string
    */
   public function setMatchTime($matchTime)
   {
@@ -43,7 +43,7 @@ class DynamicMuteRecord extends \Google\Model
     return $this->matchTime;
   }
   /**
-   * @param string $muteConfig
+   * @param string
    */
   public function setMuteConfig($muteConfig)
   {

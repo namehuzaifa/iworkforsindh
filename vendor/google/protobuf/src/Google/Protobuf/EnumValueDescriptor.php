@@ -11,14 +11,16 @@ namespace Google\Protobuf;
 
 class EnumValueDescriptor
 {
-    private $internal_desc;
+    private $name;
+    private $number;
 
     /**
      * @internal
      */
-    public function __construct($internal_desc)
+    public function __construct($name, $number)
     {
-        $this->internal_desc = $internal_desc;
+        $this->name = $name;
+        $this->number = $number;
     }
 
     /**
@@ -26,7 +28,7 @@ class EnumValueDescriptor
      */
     public function getName()
     {
-        return $this->internal_desc->getName();
+        return $this->name;
     }
 
     /**
@@ -34,6 +36,6 @@ class EnumValueDescriptor
      */
     public function getNumber()
     {
-        return $this->internal_desc->getNumber();
+        return $this->number;
     }
 }

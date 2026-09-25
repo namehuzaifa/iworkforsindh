@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class StaticMute extends \Google\Model
 {
-  public const STATE_MUTE_UNSPECIFIED = 'MUTE_UNSPECIFIED';
-  public const STATE_MUTED = 'MUTED';
-  public const STATE_UNMUTED = 'UNMUTED';
-  public const STATE_UNDEFINED = 'UNDEFINED';
   /**
    * @var string
    */
@@ -33,7 +29,7 @@ class StaticMute extends \Google\Model
   public $state;
 
   /**
-   * @param string $applyTime
+   * @param string
    */
   public function setApplyTime($applyTime)
   {
@@ -47,14 +43,14 @@ class StaticMute extends \Google\Model
     return $this->applyTime;
   }
   /**
-   * @param self::STATE_* $state
+   * @param string
    */
   public function setState($state)
   {
     $this->state = $state;
   }
   /**
-   * @return self::STATE_*
+   * @return string
    */
   public function getState()
   {

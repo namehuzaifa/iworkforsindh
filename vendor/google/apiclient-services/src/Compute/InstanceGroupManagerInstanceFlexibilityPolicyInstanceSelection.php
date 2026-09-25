@@ -20,51 +20,17 @@ namespace Google\Service\Compute;
 class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection extends \Google\Collection
 {
   protected $collection_key = 'machineTypes';
-  protected $disksType = AttachedDisk::class;
-  protected $disksDataType = 'array';
   /**
-   * Full machine-type names, e.g. "n1-standard-16".
-   *
    * @var string[]
    */
   public $machineTypes;
   /**
-   * Name of the minimum CPU platform to be used by this instance selection.
-   * e.g. 'Intel Ice Lake'.
-   *
-   * @var string
-   */
-  public $minCpuPlatform;
-  /**
-   * Preference of this instance selection. Lower number means higher
-   * preference. MIG will first try to create a VM based on the machine-type
-   * with lowest rank and fallback to next rank based on availability. Machine
-   * types and instance selections with the same rank have the same preference.
-   *
    * @var int
    */
   public $rank;
 
   /**
-   * List of disks to be attached to the instances created from this selection.
-   *
-   * @param AttachedDisk[] $disks
-   */
-  public function setDisks($disks)
-  {
-    $this->disks = $disks;
-  }
-  /**
-   * @return AttachedDisk[]
-   */
-  public function getDisks()
-  {
-    return $this->disks;
-  }
-  /**
-   * Full machine-type names, e.g. "n1-standard-16".
-   *
-   * @param string[] $machineTypes
+   * @param string[]
    */
   public function setMachineTypes($machineTypes)
   {
@@ -78,29 +44,7 @@ class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection extends \Go
     return $this->machineTypes;
   }
   /**
-   * Name of the minimum CPU platform to be used by this instance selection.
-   * e.g. 'Intel Ice Lake'.
-   *
-   * @param string $minCpuPlatform
-   */
-  public function setMinCpuPlatform($minCpuPlatform)
-  {
-    $this->minCpuPlatform = $minCpuPlatform;
-  }
-  /**
-   * @return string
-   */
-  public function getMinCpuPlatform()
-  {
-    return $this->minCpuPlatform;
-  }
-  /**
-   * Preference of this instance selection. Lower number means higher
-   * preference. MIG will first try to create a VM based on the machine-type
-   * with lowest rank and fallback to next rank based on availability. Machine
-   * types and instance selections with the same rank have the same preference.
-   *
-   * @param int $rank
+   * @param int
    */
   public function setRank($rank)
   {

@@ -15,7 +15,18 @@ class Monitoring
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\x93\x03\x0A\x1Bgoogle/api/monitoring.proto\x12\x0Agoogle.api\"\xEC\x01\x0A\x0AMonitoring\x12K\x0A\x15producer_destinations\x18\x01 \x03(\x0B2,.google.api.Monitoring.MonitoringDestination\x12K\x0A\x15consumer_destinations\x18\x02 \x03(\x0B2,.google.api.Monitoring.MonitoringDestination\x1AD\x0A\x15MonitoringDestination\x12\x1A\x0A\x12monitored_resource\x18\x01 \x01(\x09\x12\x0F\x0A\x07metrics\x18\x02 \x03(\x09Bq\x0A\x0Ecom.google.apiB\x0FMonitoringProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xA2\x02\x04GAPIb\x06proto3"
+            '
+“
+google/api/monitoring.proto
+google.api"ì
+
+MonitoringK
+producer_destinations (2,.google.api.Monitoring.MonitoringDestinationK
+consumer_destinations (2,.google.api.Monitoring.MonitoringDestinationD
+MonitoringDestination
+monitored_resource (	
+metrics (	Bq
+com.google.apiBMonitoringProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3'
         , true);
 
         static::$is_initialized = true;

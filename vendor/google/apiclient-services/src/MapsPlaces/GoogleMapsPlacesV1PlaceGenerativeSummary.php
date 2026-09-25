@@ -19,39 +19,51 @@ namespace Google\Service\MapsPlaces;
 
 class GoogleMapsPlacesV1PlaceGenerativeSummary extends \Google\Model
 {
-  protected $disclosureTextType = GoogleTypeLocalizedText::class;
-  protected $disclosureTextDataType = '';
+  protected $descriptionType = GoogleTypeLocalizedText::class;
+  protected $descriptionDataType = '';
+  /**
+   * @var string
+   */
+  public $descriptionFlagContentUri;
   protected $overviewType = GoogleTypeLocalizedText::class;
   protected $overviewDataType = '';
   /**
-   * A link where users can flag a problem with the overview summary.
-   *
    * @var string
    */
   public $overviewFlagContentUri;
+  protected $referencesType = GoogleMapsPlacesV1References::class;
+  protected $referencesDataType = '';
 
   /**
-   * The AI disclosure message "Summarized with Gemini" (and its localized
-   * variants). This will be in the language specified in the request if
-   * available.
-   *
-   * @param GoogleTypeLocalizedText $disclosureText
+   * @param GoogleTypeLocalizedText
    */
-  public function setDisclosureText(GoogleTypeLocalizedText $disclosureText)
+  public function setDescription(GoogleTypeLocalizedText $description)
   {
-    $this->disclosureText = $disclosureText;
+    $this->description = $description;
   }
   /**
    * @return GoogleTypeLocalizedText
    */
-  public function getDisclosureText()
+  public function getDescription()
   {
-    return $this->disclosureText;
+    return $this->description;
   }
   /**
-   * The overview of the place.
-   *
-   * @param GoogleTypeLocalizedText $overview
+   * @param string
+   */
+  public function setDescriptionFlagContentUri($descriptionFlagContentUri)
+  {
+    $this->descriptionFlagContentUri = $descriptionFlagContentUri;
+  }
+  /**
+   * @return string
+   */
+  public function getDescriptionFlagContentUri()
+  {
+    return $this->descriptionFlagContentUri;
+  }
+  /**
+   * @param GoogleTypeLocalizedText
    */
   public function setOverview(GoogleTypeLocalizedText $overview)
   {
@@ -65,9 +77,7 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary extends \Google\Model
     return $this->overview;
   }
   /**
-   * A link where users can flag a problem with the overview summary.
-   *
-   * @param string $overviewFlagContentUri
+   * @param string
    */
   public function setOverviewFlagContentUri($overviewFlagContentUri)
   {
@@ -79,6 +89,20 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary extends \Google\Model
   public function getOverviewFlagContentUri()
   {
     return $this->overviewFlagContentUri;
+  }
+  /**
+   * @param GoogleMapsPlacesV1References
+   */
+  public function setReferences(GoogleMapsPlacesV1References $references)
+  {
+    $this->references = $references;
+  }
+  /**
+   * @return GoogleMapsPlacesV1References
+   */
+  public function getReferences()
+  {
+    return $this->references;
   }
 }
 

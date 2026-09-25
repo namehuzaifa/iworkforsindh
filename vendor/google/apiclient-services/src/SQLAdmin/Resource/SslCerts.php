@@ -45,8 +45,6 @@ class SslCerts extends \Google\Service\Resource
    * project ID.
    * @param SslCertsCreateEphemeralRequest $postBody
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param string location Optional. Region of the Cloud SQL instance.
    * @return SslCert
    * @throws \Google\Service\Exception
    */

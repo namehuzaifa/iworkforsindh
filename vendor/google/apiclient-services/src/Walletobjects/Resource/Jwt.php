@@ -19,8 +19,6 @@ namespace Google\Service\Walletobjects\Resource;
 
 use Google\Service\Walletobjects\JwtInsertResponse;
 use Google\Service\Walletobjects\JwtResource;
-use Google\Service\Walletobjects\JwtValidateRequest;
-use Google\Service\Walletobjects\JwtValidateResponse;
 
 /**
  * The "jwt" collection of methods.
@@ -45,21 +43,6 @@ class Jwt extends \Google\Service\Resource
     $params = ['postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('insert', [$params], JwtInsertResponse::class);
-  }
-  /**
-   * Checks that the JWT or JSON string in the request represents a valid pass to
-   * be saved. (jwt.validate)
-   *
-   * @param JwtValidateRequest $postBody
-   * @param array $optParams Optional parameters.
-   * @return JwtValidateResponse
-   * @throws \Google\Service\Exception
-   */
-  public function validate(JwtValidateRequest $postBody, $optParams = [])
-  {
-    $params = ['postBody' => $postBody];
-    $params = array_merge($params, $optParams);
-    return $this->call('validate', [$params], JwtValidateResponse::class);
   }
 }
 

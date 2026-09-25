@@ -20,60 +20,28 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration extends \Google\Model
 {
   /**
-   * Disable validation warnings
-   */
-  public const AVAILABILITY_TYPE_AVAILABILITY_TYPE_UNSPECIFIED = 'AVAILABILITY_TYPE_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const AVAILABILITY_TYPE_ZONAL = 'ZONAL';
-  /**
-   * Disable validation warnings
-   */
-  public const AVAILABILITY_TYPE_REGIONAL = 'REGIONAL';
-  /**
-   * Disable validation warnings
-   */
-  public const AVAILABILITY_TYPE_MULTI_REGIONAL = 'MULTI_REGIONAL';
-  /**
-   * Disable validation warnings
-   */
-  public const AVAILABILITY_TYPE_AVAILABILITY_TYPE_OTHER = 'AVAILABILITY_TYPE_OTHER';
-  /**
-   * Disable validation warnings
-   *
    * @var bool
    */
   public $automaticFailoverRoutingConfigured;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $availabilityType;
   /**
-   * Disable validation warnings
-   *
    * @var bool
    */
   public $crossRegionReplicaConfigured;
   /**
-   * Disable validation warnings
-   *
    * @var bool
    */
   public $externalReplicaConfigured;
   /**
-   * Disable validation warnings
-   *
    * @var bool
    */
   public $promotableReplicaConfigured;
 
   /**
-   * Disable validation warnings
-   *
-   * @param bool $automaticFailoverRoutingConfigured
+   * @param bool
    */
   public function setAutomaticFailoverRoutingConfigured($automaticFailoverRoutingConfigured)
   {
@@ -87,28 +55,21 @@ class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration extends \Go
     return $this->automaticFailoverRoutingConfigured;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: AVAILABILITY_TYPE_UNSPECIFIED, ZONAL, REGIONAL,
-   * MULTI_REGIONAL, AVAILABILITY_TYPE_OTHER
-   *
-   * @param self::AVAILABILITY_TYPE_* $availabilityType
+   * @param string
    */
   public function setAvailabilityType($availabilityType)
   {
     $this->availabilityType = $availabilityType;
   }
   /**
-   * @return self::AVAILABILITY_TYPE_*
+   * @return string
    */
   public function getAvailabilityType()
   {
     return $this->availabilityType;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param bool $crossRegionReplicaConfigured
+   * @param bool
    */
   public function setCrossRegionReplicaConfigured($crossRegionReplicaConfigured)
   {
@@ -122,9 +83,7 @@ class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration extends \Go
     return $this->crossRegionReplicaConfigured;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param bool $externalReplicaConfigured
+   * @param bool
    */
   public function setExternalReplicaConfigured($externalReplicaConfigured)
   {
@@ -138,9 +97,7 @@ class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration extends \Go
     return $this->externalReplicaConfigured;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param bool $promotableReplicaConfigured
+   * @param bool
    */
   public function setPromotableReplicaConfigured($promotableReplicaConfigured)
   {

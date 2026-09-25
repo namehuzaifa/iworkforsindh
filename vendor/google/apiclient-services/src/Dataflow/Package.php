@@ -20,34 +20,16 @@ namespace Google\Service\Dataflow;
 class Package extends \Google\Model
 {
   /**
-   * The resource to read the package from. The supported resource type is:
-   * Google Cloud Storage: storage.googleapis.com/{bucket}
-   * bucket.storage.googleapis.com/
-   *
    * @var string
    */
   public $location;
   /**
-   * The name of the package.
-   *
    * @var string
    */
   public $name;
-  /**
-   * Optional. The hex-encoded SHA256 checksum of the package. If the checksum
-   * is provided, the worker will verify the checksum of the package before
-   * using it. If the checksum does not match, the worker will fail to start.
-   *
-   * @var string
-   */
-  public $sha256;
 
   /**
-   * The resource to read the package from. The supported resource type is:
-   * Google Cloud Storage: storage.googleapis.com/{bucket}
-   * bucket.storage.googleapis.com/
-   *
-   * @param string $location
+   * @param string
    */
   public function setLocation($location)
   {
@@ -61,9 +43,7 @@ class Package extends \Google\Model
     return $this->location;
   }
   /**
-   * The name of the package.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -75,24 +55,6 @@ class Package extends \Google\Model
   public function getName()
   {
     return $this->name;
-  }
-  /**
-   * Optional. The hex-encoded SHA256 checksum of the package. If the checksum
-   * is provided, the worker will verify the checksum of the package before
-   * using it. If the checksum does not match, the worker will fail to start.
-   *
-   * @param string $sha256
-   */
-  public function setSha256($sha256)
-  {
-    $this->sha256 = $sha256;
-  }
-  /**
-   * @return string
-   */
-  public function getSha256()
-  {
-    return $this->sha256;
   }
 }
 

@@ -28,11 +28,11 @@ use Google\Auth\IamSignerTrait;
 use Google\Auth\ProjectIdProviderInterface;
 use Google\Auth\SignBlobInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
 use InvalidArgumentException;
-use Psr\Http\Client\NetworkExceptionInterface;
 
 /**
  * GCECredentials supports authorization on Google Compute Engine.
@@ -40,25 +40,23 @@ use Psr\Http\Client\NetworkExceptionInterface;
  * It can be used to authorize requests using the AuthTokenMiddleware, but will
  * only succeed if being run on GCE:
  *
- * ```
- * use Google\Auth\Credentials\GCECredentials;
- * use Google\Auth\Middleware\AuthTokenMiddleware;
- * use GuzzleHttp\Client;
- * use GuzzleHttp\HandlerStack;
+ *   use Google\Auth\Credentials\GCECredentials;
+ *   use Google\Auth\Middleware\AuthTokenMiddleware;
+ *   use GuzzleHttp\Client;
+ *   use GuzzleHttp\HandlerStack;
  *
- * $gce = new GCECredentials();
- * $middleware = new AuthTokenMiddleware($gce);
- * $stack = HandlerStack::create();
- * $stack->push($middleware);
+ *   $gce = new GCECredentials();
+ *   $middleware = new AuthTokenMiddleware($gce);
+ *   $stack = HandlerStack::create();
+ *   $stack->push($middleware);
  *
- * $client = new Client([
- *    'handler' => $stack,
- *    'base_uri' => 'https://www.googleapis.com/taskqueue/v1beta2/projects/',
- *    'auth' => 'google_auth'
- * ]);
+ *   $client = new Client([
+ *      'handler' => $stack,
+ *      'base_uri' => 'https://www.googleapis.com/taskqueue/v1beta2/projects/',
+ *      'auth' => 'google_auth'
+ *   ]);
  *
- * $res = $client->get('myproject/taskqueues/myqueue');
- * ```
+ *   $res = $client->get('myproject/taskqueues/myqueue');
  */
 class GCECredentials extends CredentialsLoader implements
     SignBlobInterface,
@@ -66,7 +64,6 @@ class GCECredentials extends CredentialsLoader implements
     GetQuotaProjectInterface
 {
     use IamSignerTrait;
-    use RegionalAccessBoundaryTrait;
 
     // phpcs:disable
     const cacheKey = 'GOOGLE_AUTH_PHP_GCE';
@@ -109,11 +106,6 @@ class GCECredentials extends CredentialsLoader implements
      * The header whose presence indicates GCE presence.
      */
     const FLAVOR_HEADER = 'Metadata-Flavor';
-
-    /**
-     * Flag used to determine whether to perform the GCE residency check. Used for testing.
-     */
-    private static bool $checkResidency = true;
 
     /**
      * The Linux file which contains the product name.
@@ -217,7 +209,6 @@ class GCECredentials extends CredentialsLoader implements
      *   account identity name to use instead of "default".
      * @param string|null $universeDomain [optional] Specify a universe domain to use
      *   instead of fetching one from the metadata server.
-     * @param bool $enableRegionalAccessBoundary Lookup and include the regional access boundary header.
      */
     public function __construct(
         ?Iam $iam = null,
@@ -225,8 +216,7 @@ class GCECredentials extends CredentialsLoader implements
         $targetAudience = null,
         $quotaProject = null,
         $serviceAccountIdentity = null,
-        ?string $universeDomain = null,
-        bool $enableRegionalAccessBoundary = false
+        ?string $universeDomain = null
     ) {
         $this->iam = $iam;
 
@@ -255,7 +245,6 @@ class GCECredentials extends CredentialsLoader implements
         $this->quotaProject = $quotaProject;
         $this->serviceAccountIdentity = $serviceAccountIdentity;
         $this->universeDomain = $universeDomain;
-        $this->enableRegionalAccessBoundary = $enableRegionalAccessBoundary;
     }
 
     /**
@@ -401,12 +390,8 @@ class GCECredentials extends CredentialsLoader implements
             } catch (ClientException $e) {
             } catch (ServerException $e) {
             } catch (RequestException $e) {
-            } catch (NetworkExceptionInterface $e) {
+            } catch (ConnectException $e) {
             }
-        }
-
-        if (!self::$checkResidency) {
-            return false;
         }
 
         if (PHP_OS === 'Windows' || PHP_OS === 'WINNT') {
@@ -440,7 +425,6 @@ class GCECredentials extends CredentialsLoader implements
         $productName = null;
 
         try {
-            // @phpstan-ignore method.notFound
             $productName = $shell->regRead($registryProductKey);
         } catch (com_exception) {
             // This means that we tried to read a key that doesn't exist on the registry
@@ -630,7 +614,7 @@ class GCECredentials extends CredentialsLoader implements
             // If the metadata server exists, but returns a 404 for the universe domain, the auth
             // libraries should safely assume this is an older metadata server running in GCU, and
             // should return the default universe domain.
-            if (404 !== $e->getResponse()->getStatusCode()) {
+            if (!$e->hasResponse() || 404 != $e->getResponse()->getStatusCode()) {
                 throw $e;
             }
             $this->universeDomain = self::DEFAULT_UNIVERSE_DOMAIN;
@@ -643,36 +627,6 @@ class GCECredentials extends CredentialsLoader implements
         }
 
         return $this->universeDomain;
-    }
-
-    /**
-     * Updates metadata with the authorization token.
-     *
-     * @param array<mixed> $metadata metadata hashmap
-     * @param string $authUri optional auth uri
-     * @param callable|null $httpHandler callback which delivers psr7 request
-     * @return array<mixed> updated metadata hashmap
-     */
-    public function updateMetadata(
-        $metadata,
-        $authUri = null,
-        ?callable $httpHandler = null
-    ) {
-        $metadata = parent::updateMetadata($metadata, $authUri, $httpHandler);
-
-        if ($this->enableRegionalAccessBoundary) {
-            $serviceAccountEmail = $this->getClientName($httpHandler);
-            if (preg_match('/^[^@]+@[^@]+\.[^@]+$/', $serviceAccountEmail)) {
-                $metadata = $this->updateRegionalAccessBoundaryMetadata(
-                    $metadata,
-                    $this->buildRegionalAccessBoundaryLookupUrl($serviceAccountEmail),
-                    $this->getUniverseDomain($httpHandler),
-                    $httpHandler,
-                );
-            }
-        }
-
-        return $metadata;
     }
 
     /**

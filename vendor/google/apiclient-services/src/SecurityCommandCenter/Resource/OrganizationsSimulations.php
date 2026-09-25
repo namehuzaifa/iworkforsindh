@@ -30,9 +30,13 @@ use Google\Service\SecurityCommandCenter\Simulation;
 class OrganizationsSimulations extends \Google\Service\Resource
 {
   /**
-   * (simulations.get)
+   * Get the simulation by name or the latest simulation for the given
+   * organization. (simulations.get)
    *
-   * @param string $name
+   * @param string $name Required. The organization name or simulation name of
+   * this simulation Valid format:
+   * `organizations/{organization}/simulations/latest`
+   * `organizations/{organization}/simulations/{simulation}`
    * @param array $optParams Optional parameters.
    * @return Simulation
    * @throws \Google\Service\Exception

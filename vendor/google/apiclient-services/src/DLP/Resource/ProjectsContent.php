@@ -36,17 +36,16 @@ class ProjectsContent extends \Google\Service\Resource
 {
   /**
    * De-identifies potentially sensitive info from a ContentItem. This method has
-   * limits on input size and output size. See
-   * https://docs.cloud.google.com/sensitive-data-protection/docs/deidentify-
-   * sensitive-data to learn more. When no InfoTypes or CustomInfoTypes are
-   * specified in this request, the system will automatically choose what
-   * detectors to run. By default this may be all types, but may change over time
-   * as detectors are updated. (content.deidentify)
+   * limits on input size and output size. See https://cloud.google.com/sensitive-
+   * data-protection/docs/deidentify-sensitive-data to learn more. When no
+   * InfoTypes or CustomInfoTypes are specified in this request, the system will
+   * automatically choose what detectors to run. By default this may be all types,
+   * but may change over time as detectors are updated. (content.deidentify)
    *
    * @param string $parent Parent resource name. The format of this value varies
    * depending on whether you have [specified a processing
-   * location](https://docs.cloud.google.com/sensitive-data-
-   * protection/docs/specifying-location): + Projects scope, location specified:
+   * location](https://cloud.google.com/sensitive-data-protection/docs/specifying-
+   * location): + Projects scope, location specified:
    * `projects/{project_id}/locations/{location_id}` + Projects scope, no location
    * specified (defaults to global): `projects/{project_id}` The following example
    * `parent` string specifies a parent project with the identifier `example-
@@ -69,14 +68,14 @@ class ProjectsContent extends \Google\Service\Resource
    * are specified in this request, the system will automatically choose what
    * detectors to run. By default this may be all types, but may change over time
    * as detectors are updated. For how to guides, see
-   * https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-
-   * images and https://docs.cloud.google.com/sensitive-data-
-   * protection/docs/inspecting-text, (content.inspect)
+   * https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and
+   * https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
+   * (content.inspect)
    *
    * @param string $parent Parent resource name. The format of this value varies
    * depending on whether you have [specified a processing
-   * location](https://docs.cloud.google.com/sensitive-data-
-   * protection/docs/specifying-location): + Projects scope, location specified:
+   * location](https://cloud.google.com/sensitive-data-protection/docs/specifying-
+   * location): + Projects scope, location specified:
    * `projects/{project_id}/locations/{location_id}` + Projects scope, no location
    * specified (defaults to global): `projects/{project_id}` The following example
    * `parent` string specifies a parent project with the identifier `example-
@@ -95,14 +94,13 @@ class ProjectsContent extends \Google\Service\Resource
   }
   /**
    * Re-identifies content that has been de-identified. See
-   * https://docs.cloud.google.com/sensitive-data-
-   * protection/docs/pseudonymization#re-identification_in_free_text_code_example
-   * to learn more. (content.reidentify)
+   * https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-
+   * identification_in_free_text_code_example to learn more. (content.reidentify)
    *
    * @param string $parent Required. Parent resource name. The format of this
    * value varies depending on whether you have [specified a processing
-   * location](https://docs.cloud.google.com/sensitive-data-
-   * protection/docs/specifying-location): + Projects scope, location specified:
+   * location](https://cloud.google.com/sensitive-data-protection/docs/specifying-
+   * location): + Projects scope, location specified:
    * `projects/{project_id}/locations/{location_id}` + Projects scope, no location
    * specified (defaults to global): `projects/{project_id}` The following example
    * `parent` string specifies a parent project with the identifier `example-

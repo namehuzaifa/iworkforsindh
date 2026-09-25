@@ -17,12 +17,8 @@
 
 namespace Google\Service\SecurityCommandCenter;
 
-class GoogleCloudSecuritycenterV2File extends \Google\Collection
+class GoogleCloudSecuritycenterV2File extends \Google\Model
 {
-  public const FILE_LOAD_STATE_FILE_LOAD_STATE_UNSPECIFIED = 'FILE_LOAD_STATE_UNSPECIFIED';
-  public const FILE_LOAD_STATE_LOADED_BY_PROCESS = 'LOADED_BY_PROCESS';
-  public const FILE_LOAD_STATE_NOT_LOADED_BY_PROCESS = 'NOT_LOADED_BY_PROCESS';
-  protected $collection_key = 'operations';
   /**
    * @var string
    */
@@ -32,13 +28,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
   /**
    * @var string
    */
-  public $fileLoadState;
-  /**
-   * @var string
-   */
   public $hashedSize;
-  protected $operationsType = GoogleCloudSecuritycenterV2FileOperation::class;
-  protected $operationsDataType = 'array';
   /**
    * @var bool
    */
@@ -57,7 +47,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
   public $size;
 
   /**
-   * @param string $contents
+   * @param string
    */
   public function setContents($contents)
   {
@@ -71,7 +61,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
     return $this->contents;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2DiskPath $diskPath
+   * @param GoogleCloudSecuritycenterV2DiskPath
    */
   public function setDiskPath(GoogleCloudSecuritycenterV2DiskPath $diskPath)
   {
@@ -85,21 +75,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
     return $this->diskPath;
   }
   /**
-   * @param self::FILE_LOAD_STATE_* $fileLoadState
-   */
-  public function setFileLoadState($fileLoadState)
-  {
-    $this->fileLoadState = $fileLoadState;
-  }
-  /**
-   * @return self::FILE_LOAD_STATE_*
-   */
-  public function getFileLoadState()
-  {
-    return $this->fileLoadState;
-  }
-  /**
-   * @param string $hashedSize
+   * @param string
    */
   public function setHashedSize($hashedSize)
   {
@@ -113,21 +89,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
     return $this->hashedSize;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2FileOperation[] $operations
-   */
-  public function setOperations($operations)
-  {
-    $this->operations = $operations;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2FileOperation[]
-   */
-  public function getOperations()
-  {
-    return $this->operations;
-  }
-  /**
-   * @param bool $partiallyHashed
+   * @param bool
    */
   public function setPartiallyHashed($partiallyHashed)
   {
@@ -141,7 +103,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
     return $this->partiallyHashed;
   }
   /**
-   * @param string $path
+   * @param string
    */
   public function setPath($path)
   {
@@ -155,7 +117,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
     return $this->path;
   }
   /**
-   * @param string $sha256
+   * @param string
    */
   public function setSha256($sha256)
   {
@@ -169,7 +131,7 @@ class GoogleCloudSecuritycenterV2File extends \Google\Collection
     return $this->sha256;
   }
   /**
-   * @param string $size
+   * @param string
    */
   public function setSize($size)
   {

@@ -20,24 +20,18 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainBackupConfiguration extends \Google\Model
 {
   /**
-   * Disable validation warnings
-   *
    * @var bool
    */
   public $automatedBackupEnabled;
   protected $backupRetentionSettingsType = StorageDatabasecenterPartnerapiV1mainRetentionSettings::class;
   protected $backupRetentionSettingsDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var bool
    */
   public $pointInTimeRecoveryEnabled;
 
   /**
-   * Disable validation warnings
-   *
-   * @param bool $automatedBackupEnabled
+   * @param bool
    */
   public function setAutomatedBackupEnabled($automatedBackupEnabled)
   {
@@ -51,9 +45,7 @@ class StorageDatabasecenterPartnerapiV1mainBackupConfiguration extends \Google\M
     return $this->automatedBackupEnabled;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainRetentionSettings $backupRetentionSettings
+   * @param StorageDatabasecenterPartnerapiV1mainRetentionSettings
    */
   public function setBackupRetentionSettings(StorageDatabasecenterPartnerapiV1mainRetentionSettings $backupRetentionSettings)
   {
@@ -67,9 +59,7 @@ class StorageDatabasecenterPartnerapiV1mainBackupConfiguration extends \Google\M
     return $this->backupRetentionSettings;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param bool $pointInTimeRecoveryEnabled
+   * @param bool
    */
   public function setPointInTimeRecoveryEnabled($pointInTimeRecoveryEnabled)
   {

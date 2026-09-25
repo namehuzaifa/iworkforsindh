@@ -26,10 +26,6 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
   /**
    * @var string
    */
-  public $cryptoKeyName;
-  /**
-   * @var string
-   */
   public $dataset;
   /**
    * @var string
@@ -57,7 +53,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
   public $updateTime;
 
   /**
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -71,21 +67,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->createTime;
   }
   /**
-   * @param string $cryptoKeyName
-   */
-  public function setCryptoKeyName($cryptoKeyName)
-  {
-    $this->cryptoKeyName = $cryptoKeyName;
-  }
-  /**
-   * @return string
-   */
-  public function getCryptoKeyName()
-  {
-    return $this->cryptoKeyName;
-  }
-  /**
-   * @param string $dataset
+   * @param string
    */
   public function setDataset($dataset)
   {
@@ -99,7 +81,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->dataset;
   }
   /**
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -113,7 +95,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->description;
   }
   /**
-   * @param string $filter
+   * @param string
    */
   public function setFilter($filter)
   {
@@ -127,7 +109,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->filter;
   }
   /**
-   * @param string $mostRecentEditor
+   * @param string
    */
   public function setMostRecentEditor($mostRecentEditor)
   {
@@ -141,7 +123,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->mostRecentEditor;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -155,7 +137,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->name;
   }
   /**
-   * @param string $principal
+   * @param string
    */
   public function setPrincipal($principal)
   {
@@ -169,7 +151,7 @@ class GoogleCloudSecuritycenterV2BigQueryExport extends \Google\Model
     return $this->principal;
   }
   /**
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

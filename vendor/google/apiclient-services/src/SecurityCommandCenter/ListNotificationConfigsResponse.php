@@ -28,7 +28,7 @@ class ListNotificationConfigsResponse extends \Google\Collection
   protected $notificationConfigsDataType = 'array';
 
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -42,7 +42,7 @@ class ListNotificationConfigsResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * @param NotificationConfig[] $notificationConfigs
+   * @param NotificationConfig[]
    */
   public function setNotificationConfigs($notificationConfigs)
   {

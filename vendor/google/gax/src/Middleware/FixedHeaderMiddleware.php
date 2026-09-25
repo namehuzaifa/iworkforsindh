@@ -36,8 +36,6 @@ use Google\ApiCore\Call;
 
 /**
  * Middleware to add fixed headers to an API call.
- *
- * @internal
  */
 class FixedHeaderMiddleware implements MiddlewareInterface
 {

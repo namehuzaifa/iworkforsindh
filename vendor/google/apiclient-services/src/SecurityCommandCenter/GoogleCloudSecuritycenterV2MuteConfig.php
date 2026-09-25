@@ -19,17 +19,10 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
 {
-  public const TYPE_MUTE_CONFIG_TYPE_UNSPECIFIED = 'MUTE_CONFIG_TYPE_UNSPECIFIED';
-  public const TYPE_STATIC = 'STATIC';
-  public const TYPE_DYNAMIC = 'DYNAMIC';
   /**
    * @var string
    */
   public $createTime;
-  /**
-   * @var string
-   */
-  public $cryptoKeyName;
   /**
    * @var string
    */
@@ -60,7 +53,7 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
   public $updateTime;
 
   /**
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -74,21 +67,7 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
     return $this->createTime;
   }
   /**
-   * @param string $cryptoKeyName
-   */
-  public function setCryptoKeyName($cryptoKeyName)
-  {
-    $this->cryptoKeyName = $cryptoKeyName;
-  }
-  /**
-   * @return string
-   */
-  public function getCryptoKeyName()
-  {
-    return $this->cryptoKeyName;
-  }
-  /**
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -102,7 +81,7 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
     return $this->description;
   }
   /**
-   * @param string $expiryTime
+   * @param string
    */
   public function setExpiryTime($expiryTime)
   {
@@ -116,7 +95,7 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
     return $this->expiryTime;
   }
   /**
-   * @param string $filter
+   * @param string
    */
   public function setFilter($filter)
   {
@@ -130,7 +109,7 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
     return $this->filter;
   }
   /**
-   * @param string $mostRecentEditor
+   * @param string
    */
   public function setMostRecentEditor($mostRecentEditor)
   {
@@ -144,7 +123,7 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
     return $this->mostRecentEditor;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -158,21 +137,21 @@ class GoogleCloudSecuritycenterV2MuteConfig extends \Google\Model
     return $this->name;
   }
   /**
-   * @param self::TYPE_* $type
+   * @param string
    */
   public function setType($type)
   {
     $this->type = $type;
   }
   /**
-   * @return self::TYPE_*
+   * @return string
    */
   public function getType()
   {
     return $this->type;
   }
   /**
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

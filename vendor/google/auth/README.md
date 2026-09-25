@@ -1,10 +1,15 @@
 # Google Auth Library for PHP
 
-* [API documentation](https://cloud.google.com/php/docs/reference/auth/latest)
-
-**NOTE:** This repository is part of [Google Cloud PHP](https://github.com/googleapis/google-cloud-php). Any
-support requests, bug reports, or development contributions should be directed to
-that project.
+<dl>
+  <dt>Homepage</dt><dd><a href="http://www.github.com/google/google-auth-library-php">http://www.github.com/google/google-auth-library-php</a></dd>
+  <dt>Reference Docs</dt><dd><a href="https://googleapis.github.io/google-auth-library-php/main/">https://googleapis.github.io/google-auth-library-php/main/</a></dd>
+  <dt>Authors</dt>
+    <dd><a href="mailto:temiola@google.com">Tim Emiola</a></dd>
+    <dd><a href="mailto:stanleycheung@google.com">Stanley Cheung</a></dd>
+    <dd><a href="mailto:betterbrent@google.com">Brent Shaffer</a></dd>
+  <dt>Copyright</dt><dd>Copyright © 2015 Google, Inc.</dd>
+  <dt>License</dt><dd>Apache 2.0</dd>
+</dl>
 
 ## Description
 
@@ -164,9 +169,7 @@ If you want to use a specific JSON key instead of using `GOOGLE_APPLICATION_CRED
  do this:
 
 ```php
-use Google\Auth\Credentials\ServiceAccountCredentials;
-use Google\Auth\Credentials\UserRefreshCredentials;
-use Google\Auth\FetchAuthTokenCache;
+use Google\Auth\CredentialsLoader;
 use Google\Auth\Middleware\AuthTokenMiddleware;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
@@ -177,19 +180,11 @@ $jsonKey = ['key' => 'value'];
 // define the scopes for your API call
 $scopes = ['https://www.googleapis.com/auth/drive.readonly'];
 
-// Load credentials from JSON containing service account credentials.
-$creds = new ServiceAccountCredentials($scopes, $jsonKey);
-
-// For other credentials types, create those classes explicitly using the
-// "type" field in the JSON key, for example:
-$creds = match ($jsonKey['type']) {
-    'service_account' => new ServiceAccountCredentials($scopes, $jsonKey),
-    'authorized_user' => new UserRefreshCredentials($scopes, $jsonKey),
-    default => throw new InvalidArgumentException('This application only supports service account and user account credentials'),
-};
+// Load credentials
+$creds = CredentialsLoader::makeCredentials($scopes, $jsonKey);
 
 // optional caching
-$creds = new FetchAuthTokenCache($creds, $cacheConfig, $cache);
+// $creds = new FetchAuthTokenCache($creds, $cacheConfig, $cache);
 
 // create middleware
 $middleware = new AuthTokenMiddleware($creds);

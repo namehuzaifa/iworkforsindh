@@ -35,7 +35,7 @@ class ToxicCombination extends \Google\Collection
     return $this->attackExposureScore;
   }
   /**
-   * @param string[] $relatedFindings
+   * @param string[]
    */
   public function setRelatedFindings($relatedFindings)
   {

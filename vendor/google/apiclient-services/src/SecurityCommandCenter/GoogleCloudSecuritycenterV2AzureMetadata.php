@@ -30,7 +30,7 @@ class GoogleCloudSecuritycenterV2AzureMetadata extends \Google\Collection
   protected $tenantDataType = '';
 
   /**
-   * @param GoogleCloudSecuritycenterV2AzureManagementGroup[] $managementGroups
+   * @param GoogleCloudSecuritycenterV2AzureManagementGroup[]
    */
   public function setManagementGroups($managementGroups)
   {
@@ -44,7 +44,7 @@ class GoogleCloudSecuritycenterV2AzureMetadata extends \Google\Collection
     return $this->managementGroups;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2AzureResourceGroup $resourceGroup
+   * @param GoogleCloudSecuritycenterV2AzureResourceGroup
    */
   public function setResourceGroup(GoogleCloudSecuritycenterV2AzureResourceGroup $resourceGroup)
   {
@@ -58,7 +58,7 @@ class GoogleCloudSecuritycenterV2AzureMetadata extends \Google\Collection
     return $this->resourceGroup;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2AzureSubscription $subscription
+   * @param GoogleCloudSecuritycenterV2AzureSubscription
    */
   public function setSubscription(GoogleCloudSecuritycenterV2AzureSubscription $subscription)
   {
@@ -72,7 +72,7 @@ class GoogleCloudSecuritycenterV2AzureMetadata extends \Google\Collection
     return $this->subscription;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2AzureTenant $tenant
+   * @param GoogleCloudSecuritycenterV2AzureTenant
    */
   public function setTenant(GoogleCloudSecuritycenterV2AzureTenant $tenant)
   {

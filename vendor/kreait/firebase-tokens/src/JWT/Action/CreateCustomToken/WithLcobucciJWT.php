@@ -18,18 +18,18 @@ use Throwable;
 /**
  * @internal
  */
-final readonly class WithLcobucciJWT implements Handler
+final class WithLcobucciJWT implements Handler
 {
-    private Configuration $config;
+    private readonly Configuration $config;
 
     /**
      * @param non-empty-string $clientEmail
      * @param non-empty-string $privateKey
      */
     public function __construct(
-        private string $clientEmail,
+        private readonly string $clientEmail,
         string $privateKey,
-        private ClockInterface $clock,
+        private readonly ClockInterface $clock,
     ) {
         $this->config = Configuration::forSymmetricSigner(
             new Sha256(),

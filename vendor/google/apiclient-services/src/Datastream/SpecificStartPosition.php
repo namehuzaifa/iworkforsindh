@@ -19,55 +19,15 @@ namespace Google\Service\Datastream;
 
 class SpecificStartPosition extends \Google\Model
 {
-  protected $mongodbChangeStreamPositionType = MongodbChangeStreamPosition::class;
-  protected $mongodbChangeStreamPositionDataType = '';
-  protected $mysqlGtidPositionType = MysqlGtidPosition::class;
-  protected $mysqlGtidPositionDataType = '';
   protected $mysqlLogPositionType = MysqlLogPosition::class;
   protected $mysqlLogPositionDataType = '';
   protected $oracleScnPositionType = OracleScnPosition::class;
   protected $oracleScnPositionDataType = '';
-  protected $spannerChangeStreamPositionType = SpannerChangeStreamPosition::class;
-  protected $spannerChangeStreamPositionDataType = '';
   protected $sqlServerLsnPositionType = SqlServerLsnPosition::class;
   protected $sqlServerLsnPositionDataType = '';
 
   /**
-   * MongoDB change stream position to start replicating from.
-   *
-   * @param MongodbChangeStreamPosition $mongodbChangeStreamPosition
-   */
-  public function setMongodbChangeStreamPosition(MongodbChangeStreamPosition $mongodbChangeStreamPosition)
-  {
-    $this->mongodbChangeStreamPosition = $mongodbChangeStreamPosition;
-  }
-  /**
-   * @return MongodbChangeStreamPosition
-   */
-  public function getMongodbChangeStreamPosition()
-  {
-    return $this->mongodbChangeStreamPosition;
-  }
-  /**
-   * MySQL GTID set to start replicating from.
-   *
-   * @param MysqlGtidPosition $mysqlGtidPosition
-   */
-  public function setMysqlGtidPosition(MysqlGtidPosition $mysqlGtidPosition)
-  {
-    $this->mysqlGtidPosition = $mysqlGtidPosition;
-  }
-  /**
-   * @return MysqlGtidPosition
-   */
-  public function getMysqlGtidPosition()
-  {
-    return $this->mysqlGtidPosition;
-  }
-  /**
-   * MySQL specific log position to start replicating from.
-   *
-   * @param MysqlLogPosition $mysqlLogPosition
+   * @param MysqlLogPosition
    */
   public function setMysqlLogPosition(MysqlLogPosition $mysqlLogPosition)
   {
@@ -81,9 +41,7 @@ class SpecificStartPosition extends \Google\Model
     return $this->mysqlLogPosition;
   }
   /**
-   * Oracle SCN to start replicating from.
-   *
-   * @param OracleScnPosition $oracleScnPosition
+   * @param OracleScnPosition
    */
   public function setOracleScnPosition(OracleScnPosition $oracleScnPosition)
   {
@@ -97,25 +55,7 @@ class SpecificStartPosition extends \Google\Model
     return $this->oracleScnPosition;
   }
   /**
-   * Optional. Spanner change stream position to start replicating from.
-   *
-   * @param SpannerChangeStreamPosition $spannerChangeStreamPosition
-   */
-  public function setSpannerChangeStreamPosition(SpannerChangeStreamPosition $spannerChangeStreamPosition)
-  {
-    $this->spannerChangeStreamPosition = $spannerChangeStreamPosition;
-  }
-  /**
-   * @return SpannerChangeStreamPosition
-   */
-  public function getSpannerChangeStreamPosition()
-  {
-    return $this->spannerChangeStreamPosition;
-  }
-  /**
-   * SqlServer LSN to start replicating from.
-   *
-   * @param SqlServerLsnPosition $sqlServerLsnPosition
+   * @param SqlServerLsnPosition
    */
   public function setSqlServerLsnPosition(SqlServerLsnPosition $sqlServerLsnPosition)
   {

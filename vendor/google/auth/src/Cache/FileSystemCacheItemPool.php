@@ -46,9 +46,7 @@ class FileSystemCacheItemPool implements CacheItemPoolInterface
             return;
         }
 
-        // Suppress the error for when the directory already exists because of a
-        // race condition
-        if (!@mkdir($this->cachePath, 0777, true) && !is_dir($this->cachePath)) {
+        if (!mkdir($this->cachePath)) {
             throw new ErrorException("Cache folder couldn't be created.");
         }
     }
@@ -59,31 +57,24 @@ class FileSystemCacheItemPool implements CacheItemPoolInterface
     public function getItem(string $key): CacheItemInterface
     {
         if (!$this->validKey($key)) {
-            throw new InvalidArgumentException(
-                'The key \'' . $key . '\' is not valid. The key should follow the pattern |^[a-zA-Z0-9_\.! ]+$|'
-            );
+            throw new InvalidArgumentException("The key '$key' is not valid. The key should follow the pattern |^[a-zA-Z0-9_\.! ]+$|");
         }
+
+        $item = new TypedItem($key);
 
         $itemPath = $this->cacheFilePath($key);
 
         if (!file_exists($itemPath)) {
-            return new TypedItem($key);
+            return $item;
         }
 
         $serializedItem = file_get_contents($itemPath);
 
         if ($serializedItem === false) {
-            return new TypedItem($key);
+            return $item;
         }
 
-        $data = unserialize($serializedItem);
-
-        if ($data instanceof CacheItemInterface) {
-            return $data;
-        }
-
-        $item = new TypedItem($key);
-        $item->set($data);
+        $item->set(unserialize($serializedItem));
 
         return $item;
     }
@@ -118,9 +109,9 @@ class FileSystemCacheItemPool implements CacheItemPoolInterface
         }
 
         $itemPath = $this->cacheFilePath($item->getKey());
-        $serializedItem = serialize($item);
+        $serializedItem = serialize($item->get());
 
-        $result = file_put_contents($itemPath, $serializedItem, LOCK_EX);
+        $result = file_put_contents($itemPath, $serializedItem);
 
         // 0 bytes write is considered a successful operation
         if ($result === false) {
@@ -173,9 +164,7 @@ class FileSystemCacheItemPool implements CacheItemPoolInterface
     public function deleteItem(string $key): bool
     {
         if (!$this->validKey($key)) {
-            throw new InvalidArgumentException(
-                'The key \'' . $key . '\' is not valid. The key should follow the pattern |^[a-zA-Z0-9_\.! ]+$|'
-            );
+            throw new InvalidArgumentException("The key '$key' is not valid. The key should follow the pattern |^[a-zA-Z0-9_\.! ]+$|");
         }
 
         $itemPath = $this->cacheFilePath($key);

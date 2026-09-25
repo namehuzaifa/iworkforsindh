@@ -5,8 +5,8 @@
 namespace Google\Cloud\Iam\V1;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * The difference delta between two policies.
@@ -34,9 +34,9 @@ class PolicyDelta extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \Google\Cloud\Iam\V1\BindingDelta[] $binding_deltas
+     *     @type array<\Google\Cloud\Iam\V1\BindingDelta>|\Google\Protobuf\Internal\RepeatedField $binding_deltas
      *           The delta for Bindings between two policies.
-     *     @type \Google\Cloud\Iam\V1\AuditConfigDelta[] $audit_config_deltas
+     *     @type array<\Google\Cloud\Iam\V1\AuditConfigDelta>|\Google\Protobuf\Internal\RepeatedField $audit_config_deltas
      *           The delta for AuditConfigs between two policies.
      * }
      */
@@ -49,7 +49,7 @@ class PolicyDelta extends \Google\Protobuf\Internal\Message
      * The delta for Bindings between two policies.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.BindingDelta binding_deltas = 1;</code>
-     * @return RepeatedField<\Google\Cloud\Iam\V1\BindingDelta>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getBindingDeltas()
     {
@@ -60,7 +60,7 @@ class PolicyDelta extends \Google\Protobuf\Internal\Message
      * The delta for Bindings between two policies.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.BindingDelta binding_deltas = 1;</code>
-     * @param \Google\Cloud\Iam\V1\BindingDelta[] $var
+     * @param array<\Google\Cloud\Iam\V1\BindingDelta>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setBindingDeltas($var)
@@ -75,7 +75,7 @@ class PolicyDelta extends \Google\Protobuf\Internal\Message
      * The delta for AuditConfigs between two policies.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.AuditConfigDelta audit_config_deltas = 2;</code>
-     * @return RepeatedField<\Google\Cloud\Iam\V1\AuditConfigDelta>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getAuditConfigDeltas()
     {
@@ -86,7 +86,7 @@ class PolicyDelta extends \Google\Protobuf\Internal\Message
      * The delta for AuditConfigs between two policies.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.AuditConfigDelta audit_config_deltas = 2;</code>
-     * @param \Google\Cloud\Iam\V1\AuditConfigDelta[] $var
+     * @param array<\Google\Cloud\Iam\V1\AuditConfigDelta>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setAuditConfigDeltas($var)

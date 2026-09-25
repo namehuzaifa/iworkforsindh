@@ -19,70 +19,32 @@ namespace Google\Service\SQLAdmin;
 
 class OnPremisesConfiguration extends \Google\Collection
 {
-  /**
-   * Unknown SSL option i.e. SSL option not specified by user.
-   */
-  public const SSL_OPTION_SSL_OPTION_UNSPECIFIED = 'SSL_OPTION_UNSPECIFIED';
-  /**
-   * SSL is not used for replica connection to the on-premises source.
-   */
-  public const SSL_OPTION_DISABLE = 'DISABLE';
-  /**
-   * SSL is required for replica connection to the on-premises source.
-   */
-  public const SSL_OPTION_REQUIRE = 'REQUIRE';
-  /**
-   * Verify CA is required for replica connection to the on-premises source.
-   */
-  public const SSL_OPTION_VERIFY_CA = 'VERIFY_CA';
   protected $collection_key = 'selectedObjects';
   /**
-   * PEM representation of the trusted CA's x509 certificate.
-   *
    * @var string
    */
   public $caCertificate;
   /**
-   * PEM representation of the replica's x509 certificate.
-   *
    * @var string
    */
   public $clientCertificate;
   /**
-   * PEM representation of the replica's private key. The corresponding public
-   * key is encoded in the client's certificate.
-   *
    * @var string
    */
   public $clientKey;
   /**
-   * Output only. Indicates whether the resource is managed by Database
-   * Migration Service.
-   *
-   * @var bool
-   */
-  public $dmsManaged;
-  /**
-   * The dump file to create the Cloud SQL replica.
-   *
    * @var string
    */
   public $dumpFilePath;
   /**
-   * The host and port of the on-premises instance in host:port format
-   *
    * @var string
    */
   public $hostPort;
   /**
-   * This is always `sql#onPremisesConfiguration`.
-   *
    * @var string
    */
   public $kind;
   /**
-   * The password for connecting to on-premises instance.
-   *
    * @var string
    */
   public $password;
@@ -91,22 +53,16 @@ class OnPremisesConfiguration extends \Google\Collection
   protected $sourceInstanceType = InstanceReference::class;
   protected $sourceInstanceDataType = '';
   /**
-   * Optional. SSL option for replica connection to the on-premises source.
-   *
    * @var string
    */
   public $sslOption;
   /**
-   * The username for connecting to on-premises instance.
-   *
    * @var string
    */
   public $username;
 
   /**
-   * PEM representation of the trusted CA's x509 certificate.
-   *
-   * @param string $caCertificate
+   * @param string
    */
   public function setCaCertificate($caCertificate)
   {
@@ -120,9 +76,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->caCertificate;
   }
   /**
-   * PEM representation of the replica's x509 certificate.
-   *
-   * @param string $clientCertificate
+   * @param string
    */
   public function setClientCertificate($clientCertificate)
   {
@@ -136,10 +90,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->clientCertificate;
   }
   /**
-   * PEM representation of the replica's private key. The corresponding public
-   * key is encoded in the client's certificate.
-   *
-   * @param string $clientKey
+   * @param string
    */
   public function setClientKey($clientKey)
   {
@@ -153,26 +104,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->clientKey;
   }
   /**
-   * Output only. Indicates whether the resource is managed by Database
-   * Migration Service.
-   *
-   * @param bool $dmsManaged
-   */
-  public function setDmsManaged($dmsManaged)
-  {
-    $this->dmsManaged = $dmsManaged;
-  }
-  /**
-   * @return bool
-   */
-  public function getDmsManaged()
-  {
-    return $this->dmsManaged;
-  }
-  /**
-   * The dump file to create the Cloud SQL replica.
-   *
-   * @param string $dumpFilePath
+   * @param string
    */
   public function setDumpFilePath($dumpFilePath)
   {
@@ -186,9 +118,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->dumpFilePath;
   }
   /**
-   * The host and port of the on-premises instance in host:port format
-   *
-   * @param string $hostPort
+   * @param string
    */
   public function setHostPort($hostPort)
   {
@@ -202,9 +132,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->hostPort;
   }
   /**
-   * This is always `sql#onPremisesConfiguration`.
-   *
-   * @param string $kind
+   * @param string
    */
   public function setKind($kind)
   {
@@ -218,9 +146,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->kind;
   }
   /**
-   * The password for connecting to on-premises instance.
-   *
-   * @param string $password
+   * @param string
    */
   public function setPassword($password)
   {
@@ -234,10 +160,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->password;
   }
   /**
-   * Optional. A list of objects that the user selects for replication from an
-   * external source instance.
-   *
-   * @param SelectedObjects[] $selectedObjects
+   * @param SelectedObjects[]
    */
   public function setSelectedObjects($selectedObjects)
   {
@@ -251,9 +174,7 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->selectedObjects;
   }
   /**
-   * The reference to Cloud SQL instance if the source is Cloud SQL.
-   *
-   * @param InstanceReference $sourceInstance
+   * @param InstanceReference
    */
   public function setSourceInstance(InstanceReference $sourceInstance)
   {
@@ -267,27 +188,21 @@ class OnPremisesConfiguration extends \Google\Collection
     return $this->sourceInstance;
   }
   /**
-   * Optional. SSL option for replica connection to the on-premises source.
-   *
-   * Accepted values: SSL_OPTION_UNSPECIFIED, DISABLE, REQUIRE, VERIFY_CA
-   *
-   * @param self::SSL_OPTION_* $sslOption
+   * @param string
    */
   public function setSslOption($sslOption)
   {
     $this->sslOption = $sslOption;
   }
   /**
-   * @return self::SSL_OPTION_*
+   * @return string
    */
   public function getSslOption()
   {
     return $this->sslOption;
   }
   /**
-   * The username for connecting to on-premises instance.
-   *
-   * @param string $username
+   * @param string
    */
   public function setUsername($username)
   {

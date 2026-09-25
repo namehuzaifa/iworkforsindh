@@ -20,38 +20,12 @@ namespace Google\Service\TagManager;
 class GetContainerSnippetResponse extends \Google\Model
 {
   /**
-   * Server container config param for manually provisioning a tagging server.
-   *
-   * @var string
-   */
-  public $containerConfig;
-  /**
-   * Tagging snippet for a Container.
-   *
    * @var string
    */
   public $snippet;
 
   /**
-   * Server container config param for manually provisioning a tagging server.
-   *
-   * @param string $containerConfig
-   */
-  public function setContainerConfig($containerConfig)
-  {
-    $this->containerConfig = $containerConfig;
-  }
-  /**
-   * @return string
-   */
-  public function getContainerConfig()
-  {
-    return $this->containerConfig;
-  }
-  /**
-   * Tagging snippet for a Container.
-   *
-   * @param string $snippet
+   * @param string
    */
   public function setSnippet($snippet)
   {

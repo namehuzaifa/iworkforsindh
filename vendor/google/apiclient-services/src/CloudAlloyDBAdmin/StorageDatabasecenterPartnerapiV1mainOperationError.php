@@ -20,57 +20,20 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainOperationError extends \Google\Model
 {
   /**
-   * UNSPECIFIED means product type is not known or available.
-   */
-  public const ERROR_TYPE_OPERATION_ERROR_TYPE_UNSPECIFIED = 'OPERATION_ERROR_TYPE_UNSPECIFIED';
-  /**
-   * key destroyed, expired, not found, unreachable or permission denied.
-   */
-  public const ERROR_TYPE_KMS_KEY_ERROR = 'KMS_KEY_ERROR';
-  /**
-   * Database is not accessible
-   */
-  public const ERROR_TYPE_DATABASE_ERROR = 'DATABASE_ERROR';
-  /**
-   * The zone or region does not have sufficient resources to handle the request
-   * at the moment
-   */
-  public const ERROR_TYPE_STOCKOUT_ERROR = 'STOCKOUT_ERROR';
-  /**
-   * User initiated cancellation
-   */
-  public const ERROR_TYPE_CANCELLATION_ERROR = 'CANCELLATION_ERROR';
-  /**
-   * SQL server specific error
-   */
-  public const ERROR_TYPE_SQLSERVER_ERROR = 'SQLSERVER_ERROR';
-  /**
-   * Any other internal error.
-   */
-  public const ERROR_TYPE_INTERNAL_ERROR = 'INTERNAL_ERROR';
-  /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $code;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $errorType;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $message;
 
   /**
-   * Disable validation warnings
-   *
-   * @param string $code
+   * @param string
    */
   public function setCode($code)
   {
@@ -84,29 +47,21 @@ class StorageDatabasecenterPartnerapiV1mainOperationError extends \Google\Model
     return $this->code;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: OPERATION_ERROR_TYPE_UNSPECIFIED, KMS_KEY_ERROR,
-   * DATABASE_ERROR, STOCKOUT_ERROR, CANCELLATION_ERROR, SQLSERVER_ERROR,
-   * INTERNAL_ERROR
-   *
-   * @param self::ERROR_TYPE_* $errorType
+   * @param string
    */
   public function setErrorType($errorType)
   {
     $this->errorType = $errorType;
   }
   /**
-   * @return self::ERROR_TYPE_*
+   * @return string
    */
   public function getErrorType()
   {
     return $this->errorType;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param string $message
+   * @param string
    */
   public function setMessage($message)
   {

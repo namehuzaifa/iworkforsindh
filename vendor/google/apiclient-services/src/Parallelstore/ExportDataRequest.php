@@ -21,33 +21,11 @@ class ExportDataRequest extends \Google\Model
 {
   protected $destinationGcsBucketType = DestinationGcsBucket::class;
   protected $destinationGcsBucketDataType = '';
-  protected $metadataOptionsType = TransferMetadataOptions::class;
-  protected $metadataOptionsDataType = '';
   /**
-   * Optional. An optional request ID to identify requests. Specify a unique
-   * request ID so that if you must retry your request, the server will know to
-   * ignore the request if it has already been completed. The server will
-   * guarantee that for at least 60 minutes since the first request. For
-   * example, consider a situation where you make an initial request and the
-   * request times out. If you make the request again with the same request ID,
-   * the server can check if original operation with the same request ID was
-   * received, and if so, will ignore the second request. This prevents clients
-   * from accidentally creating duplicate commitments. The request ID must be a
-   * valid UUID with the exception that zero UUID is not supported
-   * (00000000-0000-0000-0000-000000000000).
-   *
    * @var string
    */
   public $requestId;
   /**
-   * Optional. User-specified Service Account (SA) credentials to be used when
-   * performing the transfer. Use one of the following formats: *
-   * `{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/{PROJECT_ID_OR_NUMBER}/serviceAc
-   * counts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` *
-   * `projects/-/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` If unspecified,
-   * the Parallelstore service agent is used: `service-@gcp-sa-
-   * parallelstore.iam.gserviceaccount.com`
-   *
    * @var string
    */
   public $serviceAccount;
@@ -55,9 +33,7 @@ class ExportDataRequest extends \Google\Model
   protected $sourceParallelstoreDataType = '';
 
   /**
-   * Cloud Storage destination.
-   *
-   * @param DestinationGcsBucket $destinationGcsBucket
+   * @param DestinationGcsBucket
    */
   public function setDestinationGcsBucket(DestinationGcsBucket $destinationGcsBucket)
   {
@@ -71,35 +47,7 @@ class ExportDataRequest extends \Google\Model
     return $this->destinationGcsBucket;
   }
   /**
-   * Optional. The metadata options for the export data.
-   *
-   * @param TransferMetadataOptions $metadataOptions
-   */
-  public function setMetadataOptions(TransferMetadataOptions $metadataOptions)
-  {
-    $this->metadataOptions = $metadataOptions;
-  }
-  /**
-   * @return TransferMetadataOptions
-   */
-  public function getMetadataOptions()
-  {
-    return $this->metadataOptions;
-  }
-  /**
-   * Optional. An optional request ID to identify requests. Specify a unique
-   * request ID so that if you must retry your request, the server will know to
-   * ignore the request if it has already been completed. The server will
-   * guarantee that for at least 60 minutes since the first request. For
-   * example, consider a situation where you make an initial request and the
-   * request times out. If you make the request again with the same request ID,
-   * the server can check if original operation with the same request ID was
-   * received, and if so, will ignore the second request. This prevents clients
-   * from accidentally creating duplicate commitments. The request ID must be a
-   * valid UUID with the exception that zero UUID is not supported
-   * (00000000-0000-0000-0000-000000000000).
-   *
-   * @param string $requestId
+   * @param string
    */
   public function setRequestId($requestId)
   {
@@ -113,15 +61,7 @@ class ExportDataRequest extends \Google\Model
     return $this->requestId;
   }
   /**
-   * Optional. User-specified Service Account (SA) credentials to be used when
-   * performing the transfer. Use one of the following formats: *
-   * `{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/{PROJECT_ID_OR_NUMBER}/serviceAc
-   * counts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` *
-   * `projects/-/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` If unspecified,
-   * the Parallelstore service agent is used: `service-@gcp-sa-
-   * parallelstore.iam.gserviceaccount.com`
-   *
-   * @param string $serviceAccount
+   * @param string
    */
   public function setServiceAccount($serviceAccount)
   {
@@ -135,9 +75,7 @@ class ExportDataRequest extends \Google\Model
     return $this->serviceAccount;
   }
   /**
-   * Parallelstore source.
-   *
-   * @param SourceParallelstore $sourceParallelstore
+   * @param SourceParallelstore
    */
   public function setSourceParallelstore(SourceParallelstore $sourceParallelstore)
   {

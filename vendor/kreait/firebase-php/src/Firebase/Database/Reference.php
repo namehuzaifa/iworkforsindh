@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kreait\Firebase\Database;
 
+use Kreait\Firebase\Database\Reference\Validator;
 use Kreait\Firebase\Exception\DatabaseException;
 use Kreait\Firebase\Exception\InvalidArgumentException;
 use Kreait\Firebase\Exception\OutOfRangeException;
@@ -26,13 +27,21 @@ use function trim;
  */
 class Reference implements Stringable
 {
+    private readonly UriInterface $uri;
+
     /**
      * @internal
+     *
+     * @throws InvalidArgumentException if the reference URI is invalid
      */
     public function __construct(
-        private readonly UriInterface $uri,
+        UriInterface $uri,
         private readonly ApiClient $apiClient,
+        private readonly Validator $validator = new Validator(),
     ) {
+        $this->validator->validateUri($uri);
+
+        $this->uri = $uri;
     }
 
     /**
@@ -80,7 +89,11 @@ class Reference implements Stringable
             throw new OutOfRangeException('Cannot get parent of root reference');
         }
 
-        return new self($this->uri->withPath('/'.ltrim($parentPath, '/')), $this->apiClient);
+        return new self(
+            $this->uri->withPath('/'.ltrim($parentPath, '/')),
+            $this->apiClient,
+            $this->validator,
+        );
     }
 
     /**
@@ -88,7 +101,7 @@ class Reference implements Stringable
      */
     public function getRoot(): self
     {
-        return new self($this->uri->withPath('/'), $this->apiClient);
+        return new self($this->uri->withPath('/'), $this->apiClient, $this->validator);
     }
 
     /**
@@ -104,7 +117,11 @@ class Reference implements Stringable
         $childPath = sprintf('/%s/%s', trim($this->uri->getPath(), '/'), trim($path, '/'));
 
         try {
-            return new self($this->uri->withPath($childPath), $this->apiClient);
+            return new self(
+                $this->uri->withPath($childPath),
+                $this->apiClient,
+                $this->validator,
+            );
         } catch (\InvalidArgumentException $e) {
             throw new InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
@@ -306,7 +323,7 @@ class Reference implements Stringable
         $newKey = $this->apiClient->push($this->uri->getPath(), $value);
         $newPath = sprintf('%s/%s', $this->uri->getPath(), $newKey);
 
-        return new self($this->uri->withPath($newPath), $this->apiClient);
+        return new self($this->uri->withPath($newPath), $this->apiClient, $this->validator);
     }
 
     /**

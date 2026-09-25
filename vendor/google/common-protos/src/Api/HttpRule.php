@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * gRPC Transcoding
@@ -32,7 +32,7 @@ use Google\Protobuf\RepeatedField;
  *     service Messaging {
  *       rpc GetMessage(GetMessageRequest) returns (Message) {
  *         option (google.api.http) = {
- *             get: "/v1/{name=messages/*}"
+ *             get: "/v1/{name=messages/&#42;}"
  *         };
  *       }
  *     }
@@ -179,7 +179,7 @@ use Google\Protobuf\RepeatedField;
  * [Discovery
  * Document](https://developers.google.com/discovery/v1/reference/apis) as
  * `{var}`.
- * If a variable contains multiple path segments, such as `"{var=foo/*}"`
+ * If a variable contains multiple path segments, such as `"{var=foo/&#42;}"`
  * or `"{var=**}"`, when such a variable is expanded into a URL path on the
  * client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
  * The server side does the reverse decoding, except "%2F" and "%2f" are left
@@ -306,7 +306,7 @@ class HttpRule extends \Google\Protobuf\Internal\Message
      *           as the HTTP response body.
      *           NOTE: The referred field must be present at the top-level of the response
      *           message type.
-     *     @type \Google\Api\HttpRule[] $additional_bindings
+     *     @type array<\Google\Api\HttpRule>|\Google\Protobuf\Internal\RepeatedField $additional_bindings
      *           Additional HTTP bindings for the selector. Nested bindings must
      *           not contain an `additional_bindings` field themselves (that is,
      *           the nesting may only be one level deep).
@@ -615,7 +615,7 @@ class HttpRule extends \Google\Protobuf\Internal\Message
      * the nesting may only be one level deep).
      *
      * Generated from protobuf field <code>repeated .google.api.HttpRule additional_bindings = 11;</code>
-     * @return RepeatedField<\Google\Api\HttpRule>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getAdditionalBindings()
     {
@@ -628,7 +628,7 @@ class HttpRule extends \Google\Protobuf\Internal\Message
      * the nesting may only be one level deep).
      *
      * Generated from protobuf field <code>repeated .google.api.HttpRule additional_bindings = 11;</code>
-     * @param \Google\Api\HttpRule[] $var
+     * @param array<\Google\Api\HttpRule>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setAdditionalBindings($var)

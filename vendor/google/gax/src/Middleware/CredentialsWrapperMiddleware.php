@@ -37,8 +37,6 @@ use Google\ApiCore\HeaderCredentialsInterface;
 
 /**
 * Middleware which adds a CredentialsWrapper object to the call options.
-*
-* @internal
 */
 class CredentialsWrapperMiddleware implements MiddlewareInterface
 {

@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * Authentication rules for the service.
@@ -64,7 +64,7 @@ class AuthenticationRule extends \Google\Protobuf\Internal\Message
      *     @type bool $allow_without_credential
      *           If true, the service accepts API keys without any other credential.
      *           This flag only applies to HTTP and gRPC requests.
-     *     @type \Google\Api\AuthRequirement[] $requirements
+     *     @type array<\Google\Api\AuthRequirement>|\Google\Protobuf\Internal\RepeatedField $requirements
      *           Requirements for additional authentication providers.
      * }
      */
@@ -171,7 +171,7 @@ class AuthenticationRule extends \Google\Protobuf\Internal\Message
      * Requirements for additional authentication providers.
      *
      * Generated from protobuf field <code>repeated .google.api.AuthRequirement requirements = 7;</code>
-     * @return RepeatedField<\Google\Api\AuthRequirement>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getRequirements()
     {
@@ -182,7 +182,7 @@ class AuthenticationRule extends \Google\Protobuf\Internal\Message
      * Requirements for additional authentication providers.
      *
      * Generated from protobuf field <code>repeated .google.api.AuthRequirement requirements = 7;</code>
-     * @param \Google\Api\AuthRequirement[] $var
+     * @param array<\Google\Api\AuthRequirement>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setRequirements($var)

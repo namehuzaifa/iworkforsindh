@@ -117,7 +117,7 @@ class RequestBuilder
                 $uri = $this->buildUri($pathTemplate, $queryParams);
 
                 return new Request(
-                    strtoupper($config['method']),
+                    $config['method'],
                     $uri,
                     ['Content-Type' => 'application/json'] + $headers,
                     $body
@@ -259,7 +259,7 @@ class RequestBuilder
         $template = new AbsoluteResourceTemplate($uriTemplate);
 
         try {
-            return $template->render($bindings, true);
+            return $template->render($bindings);
         } catch (ValidationException $e) {
             return null;
         }

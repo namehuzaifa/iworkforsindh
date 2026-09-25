@@ -31,9 +31,7 @@ use Google\Service\Bigquery\Model;
 class Models extends \Google\Service\Resource
 {
   /**
-   * Deletes the model specified by modelId from the dataset. # IAM Permissions
-   * Requires the `bigquery.models.delete` permission on the model.
-   * (models.delete)
+   * Deletes the model specified by modelId from the dataset. (models.delete)
    *
    * @param string $projectId Required. Project ID of the model to delete.
    * @param string $datasetId Required. Dataset ID of the model to delete.
@@ -48,8 +46,7 @@ class Models extends \Google\Service\Resource
     return $this->call('delete', [$params]);
   }
   /**
-   * Gets the specified model resource by model ID. # IAM Permissions Requires the
-   * `bigquery.models.getMetadata` permission on the model. (models.get)
+   * Gets the specified model resource by model ID. (models.get)
    *
    * @param string $projectId Required. Project ID of the requested model.
    * @param string $datasetId Required. Dataset ID of the requested model.
@@ -67,8 +64,7 @@ class Models extends \Google\Service\Resource
   /**
    * Lists all models in the specified dataset. Requires the READER dataset role.
    * After retrieving the list of models, you can get information about a
-   * particular model by calling the models.get method. # IAM Permissions Requires
-   * the `bigquery.models.list` permission on the dataset. (models.listModels)
+   * particular model by calling the models.get method. (models.listModels)
    *
    * @param string $projectId Required. Project ID of the models to list.
    * @param string $datasetId Required. Dataset ID of the models to list.
@@ -89,8 +85,7 @@ class Models extends \Google\Service\Resource
     return $this->call('list', [$params], ListModelsResponse::class);
   }
   /**
-   * Patch specific fields in the specified model. # IAM Permissions Requires the
-   * `bigquery.models.updateMetadata` permission on the model. (models.patch)
+   * Patch specific fields in the specified model. (models.patch)
    *
    * @param string $projectId Required. Project ID of the model to patch.
    * @param string $datasetId Required. Dataset ID of the model to patch.

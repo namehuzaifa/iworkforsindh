@@ -20,42 +20,22 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainBackupRun extends \Google\Model
 {
   /**
-   * Disable validation warnings
-   */
-  public const STATUS_STATUS_UNSPECIFIED = 'STATUS_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const STATUS_SUCCESSFUL = 'SUCCESSFUL';
-  /**
-   * Disable validation warnings
-   */
-  public const STATUS_FAILED = 'FAILED';
-  /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $endTime;
   protected $errorType = StorageDatabasecenterPartnerapiV1mainOperationError::class;
   protected $errorDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $startTime;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $status;
 
   /**
-   * Disable validation warnings
-   *
-   * @param string $endTime
+   * @param string
    */
   public function setEndTime($endTime)
   {
@@ -69,9 +49,7 @@ class StorageDatabasecenterPartnerapiV1mainBackupRun extends \Google\Model
     return $this->endTime;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainOperationError $error
+   * @param StorageDatabasecenterPartnerapiV1mainOperationError
    */
   public function setError(StorageDatabasecenterPartnerapiV1mainOperationError $error)
   {
@@ -85,9 +63,7 @@ class StorageDatabasecenterPartnerapiV1mainBackupRun extends \Google\Model
     return $this->error;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param string $startTime
+   * @param string
    */
   public function setStartTime($startTime)
   {
@@ -101,18 +77,14 @@ class StorageDatabasecenterPartnerapiV1mainBackupRun extends \Google\Model
     return $this->startTime;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: STATUS_UNSPECIFIED, SUCCESSFUL, FAILED
-   *
-   * @param self::STATUS_* $status
+   * @param string
    */
   public function setStatus($status)
   {
     $this->status = $status;
   }
   /**
-   * @return self::STATUS_*
+   * @return string
    */
   public function getStatus()
   {

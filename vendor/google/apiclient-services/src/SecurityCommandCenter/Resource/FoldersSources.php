@@ -30,13 +30,18 @@ use Google\Service\SecurityCommandCenter\ListSourcesResponse;
 class FoldersSources extends \Google\Service\Resource
 {
   /**
-   * (sources.listFoldersSources)
+   * Lists all sources belonging to an organization. (sources.listFoldersSources)
    *
-   * @param string $parent
+   * @param string $parent Required. Resource name of the parent of sources to
+   * list. Its format should be `organizations/[organization_id]`,
+   * `folders/[folder_id]`, or `projects/[project_id]`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize
-   * @opt_param string pageToken
+   * @opt_param int pageSize The maximum number of results to return in a single
+   * response. Default is 10, minimum is 1, maximum is 1000.
+   * @opt_param string pageToken The value returned by the last
+   * `ListSourcesResponse`; indicates that this is a continuation of a prior
+   * `ListSources` call, and that the system should return the next page of data.
    * @return ListSourcesResponse
    * @throws \Google\Service\Exception
    */

@@ -19,43 +19,17 @@ namespace Google\Service\Datastream;
 
 class DiscoverConnectionProfileResponse extends \Google\Model
 {
-  protected $mongodbClusterType = MongodbCluster::class;
-  protected $mongodbClusterDataType = '';
   protected $mysqlRdbmsType = MysqlRdbms::class;
   protected $mysqlRdbmsDataType = '';
   protected $oracleRdbmsType = OracleRdbms::class;
   protected $oracleRdbmsDataType = '';
   protected $postgresqlRdbmsType = PostgresqlRdbms::class;
   protected $postgresqlRdbmsDataType = '';
-  protected $salesforceOrgType = SalesforceOrg::class;
-  protected $salesforceOrgDataType = '';
-  protected $sourceCatalogType = SourceCatalog::class;
-  protected $sourceCatalogDataType = '';
-  protected $spannerDatabaseType = SpannerDatabase::class;
-  protected $spannerDatabaseDataType = '';
   protected $sqlServerRdbmsType = SqlServerRdbms::class;
   protected $sqlServerRdbmsDataType = '';
 
   /**
-   * Enriched MongoDB cluster.
-   *
-   * @param MongodbCluster $mongodbCluster
-   */
-  public function setMongodbCluster(MongodbCluster $mongodbCluster)
-  {
-    $this->mongodbCluster = $mongodbCluster;
-  }
-  /**
-   * @return MongodbCluster
-   */
-  public function getMongodbCluster()
-  {
-    return $this->mongodbCluster;
-  }
-  /**
-   * Enriched MySQL RDBMS object.
-   *
-   * @param MysqlRdbms $mysqlRdbms
+   * @param MysqlRdbms
    */
   public function setMysqlRdbms(MysqlRdbms $mysqlRdbms)
   {
@@ -69,9 +43,7 @@ class DiscoverConnectionProfileResponse extends \Google\Model
     return $this->mysqlRdbms;
   }
   /**
-   * Enriched Oracle RDBMS object.
-   *
-   * @param OracleRdbms $oracleRdbms
+   * @param OracleRdbms
    */
   public function setOracleRdbms(OracleRdbms $oracleRdbms)
   {
@@ -85,9 +57,7 @@ class DiscoverConnectionProfileResponse extends \Google\Model
     return $this->oracleRdbms;
   }
   /**
-   * Enriched PostgreSQL RDBMS object.
-   *
-   * @param PostgresqlRdbms $postgresqlRdbms
+   * @param PostgresqlRdbms
    */
   public function setPostgresqlRdbms(PostgresqlRdbms $postgresqlRdbms)
   {
@@ -101,58 +71,7 @@ class DiscoverConnectionProfileResponse extends \Google\Model
     return $this->postgresqlRdbms;
   }
   /**
-   * Enriched Salesforce organization.
-   *
-   * @param SalesforceOrg $salesforceOrg
-   */
-  public function setSalesforceOrg(SalesforceOrg $salesforceOrg)
-  {
-    $this->salesforceOrg = $salesforceOrg;
-  }
-  /**
-   * @return SalesforceOrg
-   */
-  public function getSalesforceOrg()
-  {
-    return $this->salesforceOrg;
-  }
-  /**
-   * Enriched source catalog. This is mainly used to represent SaaS sources
-   * databases.
-   *
-   * @param SourceCatalog $sourceCatalog
-   */
-  public function setSourceCatalog(SourceCatalog $sourceCatalog)
-  {
-    $this->sourceCatalog = $sourceCatalog;
-  }
-  /**
-   * @return SourceCatalog
-   */
-  public function getSourceCatalog()
-  {
-    return $this->sourceCatalog;
-  }
-  /**
-   * Enriched Spanner database.
-   *
-   * @param SpannerDatabase $spannerDatabase
-   */
-  public function setSpannerDatabase(SpannerDatabase $spannerDatabase)
-  {
-    $this->spannerDatabase = $spannerDatabase;
-  }
-  /**
-   * @return SpannerDatabase
-   */
-  public function getSpannerDatabase()
-  {
-    return $this->spannerDatabase;
-  }
-  /**
-   * Enriched SQLServer RDBMS object.
-   *
-   * @param SqlServerRdbms $sqlServerRdbms
+   * @param SqlServerRdbms
    */
   public function setSqlServerRdbms(SqlServerRdbms $sqlServerRdbms)
   {

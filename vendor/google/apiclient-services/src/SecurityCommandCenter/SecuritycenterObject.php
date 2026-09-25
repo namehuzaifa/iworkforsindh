@@ -40,7 +40,7 @@ class SecuritycenterObject extends \Google\Collection
   public $ns;
 
   /**
-   * @param Container[] $containers
+   * @param Container[]
    */
   public function setContainers($containers)
   {
@@ -54,7 +54,7 @@ class SecuritycenterObject extends \Google\Collection
     return $this->containers;
   }
   /**
-   * @param string $group
+   * @param string
    */
   public function setGroup($group)
   {
@@ -68,7 +68,7 @@ class SecuritycenterObject extends \Google\Collection
     return $this->group;
   }
   /**
-   * @param string $kind
+   * @param string
    */
   public function setKind($kind)
   {
@@ -82,7 +82,7 @@ class SecuritycenterObject extends \Google\Collection
     return $this->kind;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -96,7 +96,7 @@ class SecuritycenterObject extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {

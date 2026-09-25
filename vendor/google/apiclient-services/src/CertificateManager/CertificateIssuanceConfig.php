@@ -19,87 +19,43 @@ namespace Google\Service\CertificateManager;
 
 class CertificateIssuanceConfig extends \Google\Model
 {
-  /**
-   * Unspecified key algorithm.
-   */
-  public const KEY_ALGORITHM_KEY_ALGORITHM_UNSPECIFIED = 'KEY_ALGORITHM_UNSPECIFIED';
-  /**
-   * Specifies RSA with a 2048-bit modulus.
-   */
-  public const KEY_ALGORITHM_RSA_2048 = 'RSA_2048';
-  /**
-   * Specifies ECDSA with curve P256.
-   */
-  public const KEY_ALGORITHM_ECDSA_P256 = 'ECDSA_P256';
   protected $certificateAuthorityConfigType = CertificateAuthorityConfig::class;
   protected $certificateAuthorityConfigDataType = '';
   /**
-   * Output only. The creation timestamp of a CertificateIssuanceConfig.
-   *
    * @var string
    */
   public $createTime;
   /**
-   * Optional. One or more paragraphs of text description of a
-   * CertificateIssuanceConfig.
-   *
    * @var string
    */
   public $description;
   /**
-   * Required. The key algorithm to use when generating the private key.
-   *
    * @var string
    */
   public $keyAlgorithm;
   /**
-   * Optional. Set of labels associated with a CertificateIssuanceConfig.
-   *
    * @var string[]
    */
   public $labels;
   /**
-   * Required. Workload certificate lifetime requested.
-   *
    * @var string
    */
   public $lifetime;
   /**
-   * Identifier. A user-defined name of the certificate issuance config.
-   * CertificateIssuanceConfig names must be unique globally and match pattern
-   * `projects/locations/certificateIssuanceConfigs`.
-   *
    * @var string
    */
   public $name;
   /**
-   * Required. Specifies the percentage of elapsed time of the certificate
-   * lifetime to wait before renewing the certificate. Must be a number between
-   * 1-99, inclusive.
-   *
    * @var int
    */
   public $rotationWindowPercentage;
   /**
-   * Optional. Input only. Immutable. Tag keys/values directly bound to this
-   * resource. For example: "123/environment": "production", "123/costCenter":
-   * "marketing"
-   *
-   * @var string[]
-   */
-  public $tags;
-  /**
-   * Output only. The last update timestamp of a CertificateIssuanceConfig.
-   *
    * @var string
    */
   public $updateTime;
 
   /**
-   * Required. The CA that issues the workload certificate. It includes the CA
-   * address, type, authentication to CA service, etc.
-   *
-   * @param CertificateAuthorityConfig $certificateAuthorityConfig
+   * @param CertificateAuthorityConfig
    */
   public function setCertificateAuthorityConfig(CertificateAuthorityConfig $certificateAuthorityConfig)
   {
@@ -113,9 +69,7 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->certificateAuthorityConfig;
   }
   /**
-   * Output only. The creation timestamp of a CertificateIssuanceConfig.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -129,10 +83,7 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->createTime;
   }
   /**
-   * Optional. One or more paragraphs of text description of a
-   * CertificateIssuanceConfig.
-   *
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -146,27 +97,21 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->description;
   }
   /**
-   * Required. The key algorithm to use when generating the private key.
-   *
-   * Accepted values: KEY_ALGORITHM_UNSPECIFIED, RSA_2048, ECDSA_P256
-   *
-   * @param self::KEY_ALGORITHM_* $keyAlgorithm
+   * @param string
    */
   public function setKeyAlgorithm($keyAlgorithm)
   {
     $this->keyAlgorithm = $keyAlgorithm;
   }
   /**
-   * @return self::KEY_ALGORITHM_*
+   * @return string
    */
   public function getKeyAlgorithm()
   {
     return $this->keyAlgorithm;
   }
   /**
-   * Optional. Set of labels associated with a CertificateIssuanceConfig.
-   *
-   * @param string[] $labels
+   * @param string[]
    */
   public function setLabels($labels)
   {
@@ -180,9 +125,7 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->labels;
   }
   /**
-   * Required. Workload certificate lifetime requested.
-   *
-   * @param string $lifetime
+   * @param string
    */
   public function setLifetime($lifetime)
   {
@@ -196,11 +139,7 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->lifetime;
   }
   /**
-   * Identifier. A user-defined name of the certificate issuance config.
-   * CertificateIssuanceConfig names must be unique globally and match pattern
-   * `projects/locations/certificateIssuanceConfigs`.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -214,11 +153,7 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->name;
   }
   /**
-   * Required. Specifies the percentage of elapsed time of the certificate
-   * lifetime to wait before renewing the certificate. Must be a number between
-   * 1-99, inclusive.
-   *
-   * @param int $rotationWindowPercentage
+   * @param int
    */
   public function setRotationWindowPercentage($rotationWindowPercentage)
   {
@@ -232,27 +167,7 @@ class CertificateIssuanceConfig extends \Google\Model
     return $this->rotationWindowPercentage;
   }
   /**
-   * Optional. Input only. Immutable. Tag keys/values directly bound to this
-   * resource. For example: "123/environment": "production", "123/costCenter":
-   * "marketing"
-   *
-   * @param string[] $tags
-   */
-  public function setTags($tags)
-  {
-    $this->tags = $tags;
-  }
-  /**
-   * @return string[]
-   */
-  public function getTags()
-  {
-    return $this->tags;
-  }
-  /**
-   * Output only. The last update timestamp of a CertificateIssuanceConfig.
-   *
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

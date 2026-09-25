@@ -34,7 +34,7 @@ class GoogleCloudSecuritycenterV2Pod extends \Google\Collection
   public $ns;
 
   /**
-   * @param GoogleCloudSecuritycenterV2Container[] $containers
+   * @param GoogleCloudSecuritycenterV2Container[]
    */
   public function setContainers($containers)
   {
@@ -48,7 +48,7 @@ class GoogleCloudSecuritycenterV2Pod extends \Google\Collection
     return $this->containers;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Label[] $labels
+   * @param GoogleCloudSecuritycenterV2Label[]
    */
   public function setLabels($labels)
   {
@@ -62,7 +62,7 @@ class GoogleCloudSecuritycenterV2Pod extends \Google\Collection
     return $this->labels;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -76,7 +76,7 @@ class GoogleCloudSecuritycenterV2Pod extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {

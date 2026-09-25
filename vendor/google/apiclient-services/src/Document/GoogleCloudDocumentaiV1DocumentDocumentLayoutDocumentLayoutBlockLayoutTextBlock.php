@@ -20,46 +20,19 @@ namespace Google\Service\Document;
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock extends \Google\Collection
 {
   protected $collection_key = 'blocks';
-  protected $annotationsType = GoogleCloudDocumentaiV1DocumentAnnotations::class;
-  protected $annotationsDataType = '';
   protected $blocksType = GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock::class;
   protected $blocksDataType = 'array';
   /**
-   * Text content stored in the block.
-   *
    * @var string
    */
   public $text;
   /**
-   * Type of the text in the block. Available options are: `paragraph`,
-   * `subtitle`, `heading-1`, `heading-2`, `heading-3`, `heading-4`,
-   * `heading-5`, `header`, `footer`.
-   *
    * @var string
    */
   public $type;
 
   /**
-   * Annotation of the text block.
-   *
-   * @param GoogleCloudDocumentaiV1DocumentAnnotations $annotations
-   */
-  public function setAnnotations(GoogleCloudDocumentaiV1DocumentAnnotations $annotations)
-  {
-    $this->annotations = $annotations;
-  }
-  /**
-   * @return GoogleCloudDocumentaiV1DocumentAnnotations
-   */
-  public function getAnnotations()
-  {
-    return $this->annotations;
-  }
-  /**
-   * A text block could further have child blocks. Repeated blocks support
-   * further hierarchies and nested blocks.
-   *
-   * @param GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock[] $blocks
+   * @param GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock[]
    */
   public function setBlocks($blocks)
   {
@@ -73,9 +46,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
     return $this->blocks;
   }
   /**
-   * Text content stored in the block.
-   *
-   * @param string $text
+   * @param string
    */
   public function setText($text)
   {
@@ -89,11 +60,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
     return $this->text;
   }
   /**
-   * Type of the text in the block. Available options are: `paragraph`,
-   * `subtitle`, `heading-1`, `heading-2`, `heading-3`, `heading-4`,
-   * `heading-5`, `header`, `footer`.
-   *
-   * @param string $type
+   * @param string
    */
   public function setType($type)
   {

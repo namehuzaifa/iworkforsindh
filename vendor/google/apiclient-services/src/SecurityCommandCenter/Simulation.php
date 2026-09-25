@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class Simulation extends \Google\Collection
 {
-  public const CLOUD_PROVIDER_CLOUD_PROVIDER_UNSPECIFIED = 'CLOUD_PROVIDER_UNSPECIFIED';
-  public const CLOUD_PROVIDER_GOOGLE_CLOUD_PLATFORM = 'GOOGLE_CLOUD_PLATFORM';
-  public const CLOUD_PROVIDER_AMAZON_WEB_SERVICES = 'AMAZON_WEB_SERVICES';
-  public const CLOUD_PROVIDER_MICROSOFT_AZURE = 'MICROSOFT_AZURE';
   protected $collection_key = 'resourceValueConfigsMetadata';
   /**
    * @var string
@@ -40,21 +36,21 @@ class Simulation extends \Google\Collection
   protected $resourceValueConfigsMetadataDataType = 'array';
 
   /**
-   * @param self::CLOUD_PROVIDER_* $cloudProvider
+   * @param string
    */
   public function setCloudProvider($cloudProvider)
   {
     $this->cloudProvider = $cloudProvider;
   }
   /**
-   * @return self::CLOUD_PROVIDER_*
+   * @return string
    */
   public function getCloudProvider()
   {
     return $this->cloudProvider;
   }
   /**
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -68,7 +64,7 @@ class Simulation extends \Google\Collection
     return $this->createTime;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -82,7 +78,7 @@ class Simulation extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param ResourceValueConfigMetadata[] $resourceValueConfigsMetadata
+   * @param ResourceValueConfigMetadata[]
    */
   public function setResourceValueConfigsMetadata($resourceValueConfigsMetadata)
   {

@@ -16,11 +16,9 @@ use Psr\Cache\InvalidArgumentException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\Cache\CacheItem;
-use Symfony\Component\Cache\Exception\BadMethodCallException;
 use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\ResettableInterface;
 use Symfony\Component\Cache\Traits\ContractsTrait;
-use Symfony\Contracts\Cache\NamespacedPoolInterface;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
 /**
@@ -35,7 +33,7 @@ use Symfony\Contracts\Cache\TagAwareCacheInterface;
  * @author Nicolas Grekas <p@tchwork.com>
  * @author Sergey Belyshkin <sbelyshkin@gmail.com>
  */
-class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterface, NamespacedPoolInterface, PruneableInterface, ResettableInterface, LoggerAwareInterface
+class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterface, PruneableInterface, ResettableInterface, LoggerAwareInterface
 {
     use ContractsTrait;
     use LoggerAwareTrait;
@@ -198,16 +196,7 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
         }
         $tagVersions = null;
 
-        $items = (self::$setCacheItemTags)($bufferedItems, $itemTags);
-
-        foreach ($keys as $key) {
-            // PHP casts numeric strings to integers when they are used as array keys
-            if (\is_string($key) && $key === (string) (int) $key) {
-                return $this->yieldRequestedKeys($keys, $items);
-            }
-        }
-
-        return $items;
+        return (self::$setCacheItemTags)($bufferedItems, $itemTags);
     }
 
     public function clear(string $prefix = ''): bool
@@ -220,8 +209,9 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
             }
 
             return $this->pool->clear($prefix);
+        } else {
+            $this->deferred = [];
         }
-        $this->deferred = [];
 
         return $this->pool->clear();
     }
@@ -287,23 +277,6 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
         return $ok;
     }
 
-    /**
-     * @throws BadMethodCallException When the item pool is not a NamespacedPoolInterface
-     */
-    public function withSubNamespace(string $namespace): static
-    {
-        if (!$this->pool instanceof NamespacedPoolInterface) {
-            throw new BadMethodCallException(\sprintf('Cannot call "%s::withSubNamespace()": this class doesn\'t implement "%s".', get_debug_type($this->pool), NamespacedPoolInterface::class));
-        }
-
-        $knownTagVersions = &$this->knownTagVersions; // ensures clones share the same array
-        $clone = clone $this;
-        $clone->deferred = [];
-        $clone->pool = $this->pool->withSubNamespace($namespace);
-
-        return $clone;
-    }
-
     public function prune(): bool
     {
         return $this->pool instanceof PruneableInterface && $this->pool->prune();
@@ -311,22 +284,18 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
 
     public function reset(): void
     {
-        try {
-            $this->commit();
-        } finally {
-            $this->knownTagVersions = [];
-            $this->deferred = [];
-            $this->pool instanceof ResettableInterface && $this->pool->reset();
-            $this->tags instanceof ResettableInterface && $this->tags->reset();
-        }
+        $this->commit();
+        $this->knownTagVersions = [];
+        $this->pool instanceof ResettableInterface && $this->pool->reset();
+        $this->tags instanceof ResettableInterface && $this->tags->reset();
     }
 
-    public function __serialize(): array
+    public function __sleep(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __unserialize(array $data): void
+    public function __wakeup(): void
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
@@ -390,19 +359,10 @@ class TagAwareAdapter implements TagAwareAdapterInterface, TagAwareCacheInterfac
             (self::$saveTags)($this->tags, $newTags);
         }
 
-        while ($now > ($this->knownTagVersions[$tag = array_key_first($this->knownTagVersions) ?? ''][0] ?? \INF)) {
+        while ($now > ($this->knownTagVersions[$tag = array_key_first($this->knownTagVersions)][0] ?? \INF)) {
             unset($this->knownTagVersions[$tag]);
         }
 
         return $tagVersions;
-    }
-
-    private function yieldRequestedKeys(array $keys, array $items): \Generator
-    {
-        $keys = array_combine($keys, $keys);
-
-        foreach ($items as $key => $item) {
-            yield ($keys[$key] ?? $key) => $item;
-        }
     }
 }

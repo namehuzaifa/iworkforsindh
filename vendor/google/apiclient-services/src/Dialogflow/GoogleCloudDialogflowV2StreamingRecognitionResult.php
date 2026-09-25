@@ -19,13 +19,6 @@ namespace Google\Service\Dialogflow;
 
 class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collection
 {
-  public const MESSAGE_TYPE_MESSAGE_TYPE_UNSPECIFIED = 'MESSAGE_TYPE_UNSPECIFIED';
-  public const MESSAGE_TYPE_TRANSCRIPT = 'TRANSCRIPT';
-  public const MESSAGE_TYPE_DTMF_DIGITS = 'DTMF_DIGITS';
-  public const MESSAGE_TYPE_END_OF_SINGLE_UTTERANCE = 'END_OF_SINGLE_UTTERANCE';
-  public const MESSAGE_TYPE_PARTIAL_DTMF_DIGITS = 'PARTIAL_DTMF_DIGITS';
-  public const MESSAGE_TYPE_SPEECH_ACTIVITY_BEGIN = 'SPEECH_ACTIVITY_BEGIN';
-  public const MESSAGE_TYPE_SPEECH_ACTIVITY_END = 'SPEECH_ACTIVITY_END';
   protected $collection_key = 'speechWordInfo';
   /**
    * @var float
@@ -55,7 +48,7 @@ class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collecti
   public $transcript;
 
   /**
-   * @param float $confidence
+   * @param float
    */
   public function setConfidence($confidence)
   {
@@ -69,7 +62,7 @@ class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collecti
     return $this->confidence;
   }
   /**
-   * @param bool $isFinal
+   * @param bool
    */
   public function setIsFinal($isFinal)
   {
@@ -83,7 +76,7 @@ class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collecti
     return $this->isFinal;
   }
   /**
-   * @param string $languageCode
+   * @param string
    */
   public function setLanguageCode($languageCode)
   {
@@ -97,21 +90,21 @@ class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collecti
     return $this->languageCode;
   }
   /**
-   * @param self::MESSAGE_TYPE_* $messageType
+   * @param string
    */
   public function setMessageType($messageType)
   {
     $this->messageType = $messageType;
   }
   /**
-   * @return self::MESSAGE_TYPE_*
+   * @return string
    */
   public function getMessageType()
   {
     return $this->messageType;
   }
   /**
-   * @param string $speechEndOffset
+   * @param string
    */
   public function setSpeechEndOffset($speechEndOffset)
   {
@@ -125,7 +118,7 @@ class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collecti
     return $this->speechEndOffset;
   }
   /**
-   * @param GoogleCloudDialogflowV2SpeechWordInfo[] $speechWordInfo
+   * @param GoogleCloudDialogflowV2SpeechWordInfo[]
    */
   public function setSpeechWordInfo($speechWordInfo)
   {
@@ -139,7 +132,7 @@ class GoogleCloudDialogflowV2StreamingRecognitionResult extends \Google\Collecti
     return $this->speechWordInfo;
   }
   /**
-   * @param string $transcript
+   * @param string
    */
   public function setTranscript($transcript)
   {

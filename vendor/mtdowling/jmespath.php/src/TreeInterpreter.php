@@ -69,8 +69,7 @@ class TreeInterpreter
 
             case 'projection':
                 $left = $this->dispatch($node['children'][0], $value);
-                $from = isset($node['from']) ? $node['from'] : null;
-                switch ($from) {
+                switch ($node['from']) {
                     case 'object':
                         if (!Utils::isObject($left)) {
                             return null;
@@ -82,7 +81,7 @@ class TreeInterpreter
                         }
                         break;
                     default:
-                        if (!is_array($left) && !($left instanceof \stdClass)) {
+                        if (!is_array($left) || !($left instanceof \stdClass)) {
                             return null;
                         }
                 }

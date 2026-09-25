@@ -28,7 +28,7 @@ class ListBigQueryExportsResponse extends \Google\Collection
   public $nextPageToken;
 
   /**
-   * @param GoogleCloudSecuritycenterV1BigQueryExport[] $bigQueryExports
+   * @param GoogleCloudSecuritycenterV1BigQueryExport[]
    */
   public function setBigQueryExports($bigQueryExports)
   {
@@ -42,7 +42,7 @@ class ListBigQueryExportsResponse extends \Google\Collection
     return $this->bigQueryExports;
   }
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {

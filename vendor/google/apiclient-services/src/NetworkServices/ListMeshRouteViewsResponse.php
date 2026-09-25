@@ -19,29 +19,16 @@ namespace Google\Service\NetworkServices;
 
 class ListMeshRouteViewsResponse extends \Google\Collection
 {
-  protected $collection_key = 'unreachable';
+  protected $collection_key = 'meshRouteViews';
   protected $meshRouteViewsType = MeshRouteView::class;
   protected $meshRouteViewsDataType = 'array';
   /**
-   * A token, which can be sent as `page_token` to retrieve the next page. If
-   * this field is omitted, there are no subsequent pages.
-   *
    * @var string
    */
   public $nextPageToken;
-  /**
-   * Unreachable resources. Populated when the request attempts to list all
-   * resources across all supported locations, while some locations are
-   * temporarily unavailable.
-   *
-   * @var string[]
-   */
-  public $unreachable;
 
   /**
-   * List of MeshRouteView resources.
-   *
-   * @param MeshRouteView[] $meshRouteViews
+   * @param MeshRouteView[]
    */
   public function setMeshRouteViews($meshRouteViews)
   {
@@ -55,10 +42,7 @@ class ListMeshRouteViewsResponse extends \Google\Collection
     return $this->meshRouteViews;
   }
   /**
-   * A token, which can be sent as `page_token` to retrieve the next page. If
-   * this field is omitted, there are no subsequent pages.
-   *
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -70,24 +54,6 @@ class ListMeshRouteViewsResponse extends \Google\Collection
   public function getNextPageToken()
   {
     return $this->nextPageToken;
-  }
-  /**
-   * Unreachable resources. Populated when the request attempts to list all
-   * resources across all supported locations, while some locations are
-   * temporarily unavailable.
-   *
-   * @param string[] $unreachable
-   */
-  public function setUnreachable($unreachable)
-  {
-    $this->unreachable = $unreachable;
-  }
-  /**
-   * @return string[]
-   */
-  public function getUnreachable()
-  {
-    return $this->unreachable;
   }
 }
 

@@ -19,18 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
 {
-  public const CLOUD_PROVIDER_CLOUD_PROVIDER_UNSPECIFIED = 'CLOUD_PROVIDER_UNSPECIFIED';
-  public const CLOUD_PROVIDER_GOOGLE_CLOUD = 'GOOGLE_CLOUD';
-  public const CLOUD_PROVIDER_AMAZON_WEB_SERVICES = 'AMAZON_WEB_SERVICES';
-  public const CLOUD_PROVIDER_MICROSOFT_AZURE = 'MICROSOFT_AZURE';
-  protected $adcApplicationType = GoogleCloudSecuritycenterV2IssueResourceAdcApplication::class;
-  protected $adcApplicationDataType = '';
-  protected $adcApplicationTemplateType = GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision::class;
-  protected $adcApplicationTemplateDataType = '';
-  protected $adcSharedTemplateType = GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision::class;
-  protected $adcSharedTemplateDataType = '';
-  protected $applicationType = GoogleCloudSecuritycenterV2IssueResourceApplication::class;
-  protected $applicationDataType = '';
   protected $awsMetadataType = GoogleCloudSecuritycenterV2IssueResourceAwsMetadata::class;
   protected $awsMetadataDataType = '';
   protected $azureMetadataType = GoogleCloudSecuritycenterV2IssueResourceAzureMetadata::class;
@@ -55,63 +43,7 @@ class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
   public $type;
 
   /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceAdcApplication $adcApplication
-   */
-  public function setAdcApplication(GoogleCloudSecuritycenterV2IssueResourceAdcApplication $adcApplication)
-  {
-    $this->adcApplication = $adcApplication;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2IssueResourceAdcApplication
-   */
-  public function getAdcApplication()
-  {
-    return $this->adcApplication;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision $adcApplicationTemplate
-   */
-  public function setAdcApplicationTemplate(GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision $adcApplicationTemplate)
-  {
-    $this->adcApplicationTemplate = $adcApplicationTemplate;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision
-   */
-  public function getAdcApplicationTemplate()
-  {
-    return $this->adcApplicationTemplate;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision $adcSharedTemplate
-   */
-  public function setAdcSharedTemplate(GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision $adcSharedTemplate)
-  {
-    $this->adcSharedTemplate = $adcSharedTemplate;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision
-   */
-  public function getAdcSharedTemplate()
-  {
-    return $this->adcSharedTemplate;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceApplication $application
-   */
-  public function setApplication(GoogleCloudSecuritycenterV2IssueResourceApplication $application)
-  {
-    $this->application = $application;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2IssueResourceApplication
-   */
-  public function getApplication()
-  {
-    return $this->application;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceAwsMetadata $awsMetadata
+   * @param GoogleCloudSecuritycenterV2IssueResourceAwsMetadata
    */
   public function setAwsMetadata(GoogleCloudSecuritycenterV2IssueResourceAwsMetadata $awsMetadata)
   {
@@ -125,7 +57,7 @@ class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
     return $this->awsMetadata;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceAzureMetadata $azureMetadata
+   * @param GoogleCloudSecuritycenterV2IssueResourceAzureMetadata
    */
   public function setAzureMetadata(GoogleCloudSecuritycenterV2IssueResourceAzureMetadata $azureMetadata)
   {
@@ -139,21 +71,21 @@ class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
     return $this->azureMetadata;
   }
   /**
-   * @param self::CLOUD_PROVIDER_* $cloudProvider
+   * @param string
    */
   public function setCloudProvider($cloudProvider)
   {
     $this->cloudProvider = $cloudProvider;
   }
   /**
-   * @return self::CLOUD_PROVIDER_*
+   * @return string
    */
   public function getCloudProvider()
   {
     return $this->cloudProvider;
   }
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -167,7 +99,7 @@ class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
     return $this->displayName;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata $googleCloudMetadata
+   * @param GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata
    */
   public function setGoogleCloudMetadata(GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata $googleCloudMetadata)
   {
@@ -181,7 +113,7 @@ class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
     return $this->googleCloudMetadata;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -195,7 +127,7 @@ class GoogleCloudSecuritycenterV2IssueResource extends \Google\Model
     return $this->name;
   }
   /**
-   * @param string $type
+   * @param string
    */
   public function setType($type)
   {

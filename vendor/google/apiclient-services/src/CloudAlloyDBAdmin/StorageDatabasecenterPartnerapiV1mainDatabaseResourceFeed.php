@@ -20,52 +20,10 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\Model
 {
   /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_FEEDTYPE_UNSPECIFIED = 'FEEDTYPE_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_RESOURCE_METADATA = 'RESOURCE_METADATA';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_OBSERVABILITY_DATA = 'OBSERVABILITY_DATA';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_SECURITY_FINDING_DATA = 'SECURITY_FINDING_DATA';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_RECOMMENDATION_SIGNAL_DATA = 'RECOMMENDATION_SIGNAL_DATA';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_CONFIG_BASED_SIGNAL_DATA = 'CONFIG_BASED_SIGNAL_DATA';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_BACKUPDR_METADATA = 'BACKUPDR_METADATA';
-  /**
-   * Disable validation warnings
-   */
-  public const FEED_TYPE_DATABASE_RESOURCE_SIGNAL_DATA = 'DATABASE_RESOURCE_SIGNAL_DATA';
-  protected $backupdrMetadataType = StorageDatabasecenterPartnerapiV1mainBackupDRMetadata::class;
-  protected $backupdrMetadataDataType = '';
-  protected $configBasedSignalDataType = StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::class;
-  protected $configBasedSignalDataDataType = '';
-  protected $databaseResourceSignalDataType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData::class;
-  protected $databaseResourceSignalDataDataType = '';
-  /**
-   * Required. Disable validation warnings
-   *
    * @var string
    */
   public $feedTimestamp;
   /**
-   * Required. Disable validation warnings
-   *
    * @var string
    */
   public $feedType;
@@ -79,65 +37,9 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
   protected $resourceIdDataType = '';
   protected $resourceMetadataType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata::class;
   protected $resourceMetadataDataType = '';
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @var bool
-   */
-  public $skipIngestion;
 
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainBackupDRMetadata $backupdrMetadata
-   */
-  public function setBackupdrMetadata(StorageDatabasecenterPartnerapiV1mainBackupDRMetadata $backupdrMetadata)
-  {
-    $this->backupdrMetadata = $backupdrMetadata;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainBackupDRMetadata
-   */
-  public function getBackupdrMetadata()
-  {
-    return $this->backupdrMetadata;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData $configBasedSignalData
-   */
-  public function setConfigBasedSignalData(StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData $configBasedSignalData)
-  {
-    $this->configBasedSignalData = $configBasedSignalData;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
-   */
-  public function getConfigBasedSignalData()
-  {
-    return $this->configBasedSignalData;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData $databaseResourceSignalData
-   */
-  public function setDatabaseResourceSignalData(StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData $databaseResourceSignalData)
-  {
-    $this->databaseResourceSignalData = $databaseResourceSignalData;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
-   */
-  public function getDatabaseResourceSignalData()
-  {
-    return $this->databaseResourceSignalData;
-  }
-  /**
-   * Required. Disable validation warnings
-   *
-   * @param string $feedTimestamp
+   * @param string
    */
   public function setFeedTimestamp($feedTimestamp)
   {
@@ -151,29 +53,21 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
     return $this->feedTimestamp;
   }
   /**
-   * Required. Disable validation warnings
-   *
-   * Accepted values: FEEDTYPE_UNSPECIFIED, RESOURCE_METADATA,
-   * OBSERVABILITY_DATA, SECURITY_FINDING_DATA, RECOMMENDATION_SIGNAL_DATA,
-   * CONFIG_BASED_SIGNAL_DATA, BACKUPDR_METADATA, DATABASE_RESOURCE_SIGNAL_DATA
-   *
-   * @param self::FEED_TYPE_* $feedType
+   * @param string
    */
   public function setFeedType($feedType)
   {
     $this->feedType = $feedType;
   }
   /**
-   * @return self::FEED_TYPE_*
+   * @return string
    */
   public function getFeedType()
   {
     return $this->feedType;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainObservabilityMetricData $observabilityMetricData
+   * @param StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
    */
   public function setObservabilityMetricData(StorageDatabasecenterPartnerapiV1mainObservabilityMetricData $observabilityMetricData)
   {
@@ -187,9 +81,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
     return $this->observabilityMetricData;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData $recommendationSignalData
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
    */
   public function setRecommendationSignalData(StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData $recommendationSignalData)
   {
@@ -203,9 +95,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
     return $this->recommendationSignalData;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData $resourceHealthSignalData
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData
    */
   public function setResourceHealthSignalData(StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData $resourceHealthSignalData)
   {
@@ -219,17 +109,13 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
     return $this->resourceHealthSignalData;
   }
   /**
-   * Disable validation warnings
-   *
-   * @deprecated
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $resourceId
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
    */
   public function setResourceId(StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
   /**
-   * @deprecated
    * @return StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
    */
   public function getResourceId()
@@ -237,9 +123,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
     return $this->resourceId;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata $resourceMetadata
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
    */
   public function setResourceMetadata(StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata $resourceMetadata)
   {
@@ -251,22 +135,6 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
   public function getResourceMetadata()
   {
     return $this->resourceMetadata;
-  }
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @param bool $skipIngestion
-   */
-  public function setSkipIngestion($skipIngestion)
-  {
-    $this->skipIngestion = $skipIngestion;
-  }
-  /**
-   * @return bool
-   */
-  public function getSkipIngestion()
-  {
-    return $this->skipIngestion;
   }
 }
 

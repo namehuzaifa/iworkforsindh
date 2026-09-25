@@ -22,25 +22,12 @@ class ConfigureManagementSettingsRequest extends \Google\Model
   protected $managementSettingsType = ManagementSettings::class;
   protected $managementSettingsDataType = '';
   /**
-   * Required. The field mask describing which fields to update as a comma-
-   * separated list. For example, if only the transfer lock is being updated,
-   * the `update_mask` is `"transfer_lock_state"`.
-   *
    * @var string
    */
   public $updateMask;
-  /**
-   * Optional. If set, validates the request without actually updating the
-   * management settings.
-   *
-   * @var bool
-   */
-  public $validateOnly;
 
   /**
-   * Fields of the `ManagementSettings` to update.
-   *
-   * @param ManagementSettings $managementSettings
+   * @param ManagementSettings
    */
   public function setManagementSettings(ManagementSettings $managementSettings)
   {
@@ -54,11 +41,7 @@ class ConfigureManagementSettingsRequest extends \Google\Model
     return $this->managementSettings;
   }
   /**
-   * Required. The field mask describing which fields to update as a comma-
-   * separated list. For example, if only the transfer lock is being updated,
-   * the `update_mask` is `"transfer_lock_state"`.
-   *
-   * @param string $updateMask
+   * @param string
    */
   public function setUpdateMask($updateMask)
   {
@@ -70,23 +53,6 @@ class ConfigureManagementSettingsRequest extends \Google\Model
   public function getUpdateMask()
   {
     return $this->updateMask;
-  }
-  /**
-   * Optional. If set, validates the request without actually updating the
-   * management settings.
-   *
-   * @param bool $validateOnly
-   */
-  public function setValidateOnly($validateOnly)
-  {
-    $this->validateOnly = $validateOnly;
-  }
-  /**
-   * @return bool
-   */
-  public function getValidateOnly()
-  {
-    return $this->validateOnly;
   }
 }
 

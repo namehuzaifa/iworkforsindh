@@ -32,9 +32,7 @@ use Google\Service\Meet\Space;
 class Spaces extends \Google\Service\Resource
 {
   /**
-   * Creates a space. For more information, see [Manage meeting
-   * spaces](https://developers.google.com/workspace/meet/api/guides/manage-
-   * meeting-spaces). (spaces.create)
+   * Creates a space. (spaces.create)
    *
    * @param Space $postBody
    * @param array $optParams Optional parameters.
@@ -48,17 +46,16 @@ class Spaces extends \Google\Service\Resource
     return $this->call('create', [$params], Space::class);
   }
   /**
-   * Ends an active conference (if there's one). For more information, see [Manage
-   * meeting
-   * spaces](https://developers.google.com/workspace/meet/api/guides/manage-
-   * meeting-spaces). (spaces.endActiveConference)
+   * Ends an active conference (if there's one). For an example, see [End active
+   * conference](https://developers.google.com/meet/api/guides/meeting-spaces#end-
+   * active-conference). (spaces.endActiveConference)
    *
    * @param string $name Required. Resource name of the space. Format:
    * `spaces/{space}`. `{space}` is the resource identifier for the space. It's a
    * unique, server-generated ID and is case sensitive. For example,
    * `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting
-   * space](https://developers.google.com/workspace/meet/api/guides/meeting-
-   * spaces#identify-meeting-space).
+   * space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-
+   * meeting-space).
    * @param EndActiveConferenceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return MeetEmpty
@@ -71,11 +68,9 @@ class Spaces extends \Google\Service\Resource
     return $this->call('endActiveConference', [$params], MeetEmpty::class);
   }
   /**
-   * Gets details about a meeting space. For more information, see [Manage meeting
-   * spaces](https://developers.google.com/workspace/meet/api/guides/manage-
-   * meeting-spaces). For an example, see [Get a meeting
-   * space](https://developers.google.com/workspace/meet/api/guides/meeting-
-   * spaces#get-meeting-space). (spaces.get)
+   * Gets details about a meeting space. For an example, see [Get a meeting
+   * space](https://developers.google.com/meet/api/guides/meeting-spaces#get-
+   * meeting-space). (spaces.get)
    *
    * @param string $name Required. Resource name of the space. Format:
    * `spaces/{space}` or `spaces/{meetingCode}`. `{space}` is the resource
@@ -89,8 +84,8 @@ class Spaces extends \Google\Service\Resource
    * information, see [Learn about meeting codes in Google
    * Meet](https://support.google.com/meet/answer/10710509). For more information,
    * see [How Meet identifies a meeting
-   * space](https://developers.google.com/workspace/meet/api/guides/meeting-
-   * spaces#identify-meeting-space).
+   * space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-
+   * meeting-space).
    * @param array $optParams Optional parameters.
    * @return Space
    * @throws \Google\Service\Exception
@@ -102,17 +97,16 @@ class Spaces extends \Google\Service\Resource
     return $this->call('get', [$params], Space::class);
   }
   /**
-   * Updates details about a meeting space. For more information, see [Manage
-   * meeting
-   * spaces](https://developers.google.com/workspace/meet/api/guides/manage-
-   * meeting-spaces). (spaces.patch)
+   * Updates details about a meeting space. For an example, see [Update a meeting
+   * space](https://developers.google.com/meet/api/guides/meeting-spaces#update-
+   * meeting-space). (spaces.patch)
    *
    * @param string $name Immutable. Resource name of the space. Format:
    * `spaces/{space}`. `{space}` is the resource identifier for the space. It's a
    * unique, server-generated ID and is case sensitive. For example,
    * `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting
-   * space](https://developers.google.com/workspace/meet/api/guides/meeting-
-   * spaces#identify-meeting-space).
+   * space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-
+   * meeting-space).
    * @param Space $postBody
    * @param array $optParams Optional parameters.
    *

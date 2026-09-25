@@ -20,48 +20,32 @@ namespace Google\Service\NetworkManagement;
 class RedisInstanceInfo extends \Google\Model
 {
   /**
-   * Name of a Cloud Redis Instance.
-   *
    * @var string
    */
   public $displayName;
   /**
-   * URI of a Cloud Redis Instance network in format
-   * "projects/{project}/global/networks/{network}".
-   *
    * @var string
    */
   public $networkUri;
   /**
-   * Primary endpoint IP address of a Cloud Redis Instance.
-   *
    * @var string
    */
   public $primaryEndpointIp;
   /**
-   * Read endpoint IP address of a Cloud Redis Instance (if applicable).
-   *
    * @var string
    */
   public $readEndpointIp;
   /**
-   * Region in which the Cloud Redis Instance is defined.
-   *
    * @var string
    */
   public $region;
   /**
-   * URI of a Cloud Redis Instance in format
-   * "projects/{project}/locations/{location}/instances/{instance}"
-   *
    * @var string
    */
   public $uri;
 
   /**
-   * Name of a Cloud Redis Instance.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -75,10 +59,7 @@ class RedisInstanceInfo extends \Google\Model
     return $this->displayName;
   }
   /**
-   * URI of a Cloud Redis Instance network in format
-   * "projects/{project}/global/networks/{network}".
-   *
-   * @param string $networkUri
+   * @param string
    */
   public function setNetworkUri($networkUri)
   {
@@ -92,9 +73,7 @@ class RedisInstanceInfo extends \Google\Model
     return $this->networkUri;
   }
   /**
-   * Primary endpoint IP address of a Cloud Redis Instance.
-   *
-   * @param string $primaryEndpointIp
+   * @param string
    */
   public function setPrimaryEndpointIp($primaryEndpointIp)
   {
@@ -108,9 +87,7 @@ class RedisInstanceInfo extends \Google\Model
     return $this->primaryEndpointIp;
   }
   /**
-   * Read endpoint IP address of a Cloud Redis Instance (if applicable).
-   *
-   * @param string $readEndpointIp
+   * @param string
    */
   public function setReadEndpointIp($readEndpointIp)
   {
@@ -124,9 +101,7 @@ class RedisInstanceInfo extends \Google\Model
     return $this->readEndpointIp;
   }
   /**
-   * Region in which the Cloud Redis Instance is defined.
-   *
-   * @param string $region
+   * @param string
    */
   public function setRegion($region)
   {
@@ -140,10 +115,7 @@ class RedisInstanceInfo extends \Google\Model
     return $this->region;
   }
   /**
-   * URI of a Cloud Redis Instance in format
-   * "projects/{project}/locations/{location}/instances/{instance}"
-   *
-   * @param string $uri
+   * @param string
    */
   public function setUri($uri)
   {

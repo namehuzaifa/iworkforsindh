@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class DataFlowEvent extends \Google\Model
 {
-  public const OPERATION_OPERATION_UNSPECIFIED = 'OPERATION_UNSPECIFIED';
-  public const OPERATION_READ = 'READ';
-  public const OPERATION_MOVE = 'MOVE';
-  public const OPERATION_COPY = 'COPY';
   /**
    * @var string
    */
@@ -45,7 +41,7 @@ class DataFlowEvent extends \Google\Model
   public $violatedLocation;
 
   /**
-   * @param string $eventId
+   * @param string
    */
   public function setEventId($eventId)
   {
@@ -59,7 +55,7 @@ class DataFlowEvent extends \Google\Model
     return $this->eventId;
   }
   /**
-   * @param string $eventTime
+   * @param string
    */
   public function setEventTime($eventTime)
   {
@@ -73,21 +69,21 @@ class DataFlowEvent extends \Google\Model
     return $this->eventTime;
   }
   /**
-   * @param self::OPERATION_* $operation
+   * @param string
    */
   public function setOperation($operation)
   {
     $this->operation = $operation;
   }
   /**
-   * @return self::OPERATION_*
+   * @return string
    */
   public function getOperation()
   {
     return $this->operation;
   }
   /**
-   * @param string $principalEmail
+   * @param string
    */
   public function setPrincipalEmail($principalEmail)
   {
@@ -101,7 +97,7 @@ class DataFlowEvent extends \Google\Model
     return $this->principalEmail;
   }
   /**
-   * @param string $violatedLocation
+   * @param string
    */
   public function setViolatedLocation($violatedLocation)
   {

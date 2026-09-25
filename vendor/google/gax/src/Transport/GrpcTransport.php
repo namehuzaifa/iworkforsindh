@@ -178,7 +178,7 @@ class GrpcTransport extends BaseStub implements TransportInterface
     {
         $this->verifyUniverseDomain($options);
 
-        $bidiStream = new BidiStream(
+        return new BidiStream(
             $this->_bidiRequest(
                 '/' . $call->getMethod(),
                 [$call->getDecodeType(), 'decode'],
@@ -188,22 +188,6 @@ class GrpcTransport extends BaseStub implements TransportInterface
             $call->getDescriptor(),
             $this->logger
         );
-
-        if ($this->logger) {
-            $requestEvent = new RpcLogEvent();
-
-            $requestEvent->headers = $options['headers'] ?? [];
-            $requestEvent->retryAttempt = $options['retryAttempt'] ?? null;
-            $requestEvent->serviceName = $options['serviceName'] ?? null;
-            $requestEvent->rpcName = $call->getMethod();
-            $requestEvent->processId = (int) getmypid();
-            $requestEvent->requestId = crc32((string) spl_object_id($bidiStream) . getmypid());
-            $requestEvent->url = $this->getGrpcUrl();
-
-            $this->logRequest($requestEvent);
-        }
-
-        return $bidiStream;
     }
 
     /**
@@ -264,7 +248,6 @@ class GrpcTransport extends BaseStub implements TransportInterface
             $requestEvent->rpcName = $call->getMethod();
             $requestEvent->processId = (int) getmypid();
             $requestEvent->requestId = crc32((string) spl_object_id($serverStream) . getmypid());
-            $requestEvent->url = $this->getGrpcUrl();
 
             $this->logRequest($requestEvent);
         }
@@ -299,7 +282,6 @@ class GrpcTransport extends BaseStub implements TransportInterface
             $requestEvent->rpcName = $call->getMethod();
             $requestEvent->processId = (int) getmypid();
             $requestEvent->requestId = crc32((string) spl_object_id($call) . getmypid());
-            $requestEvent->url = $this->getGrpcUrl();
 
             $this->logRequest($requestEvent);
         }
@@ -360,11 +342,6 @@ class GrpcTransport extends BaseStub implements TransportInterface
         }
 
         return $callOptions;
-    }
-
-    private function getGrpcUrl(): string
-    {
-        return 'grpc://' . str_replace('dns:///', '', $this->getTarget());
     }
 
     private static function loadClientCertSource(callable $clientCertSource)

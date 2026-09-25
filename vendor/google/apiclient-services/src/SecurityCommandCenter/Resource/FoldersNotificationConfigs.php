@@ -32,13 +32,17 @@ use Google\Service\SecurityCommandCenter\SecuritycenterEmpty;
 class FoldersNotificationConfigs extends \Google\Service\Resource
 {
   /**
-   * (notificationConfigs.create)
+   * Creates a notification config. (notificationConfigs.create)
    *
-   * @param string $parent
+   * @param string $parent Required. Resource name of the new notification
+   * config's parent. Its format is `organizations/[organization_id]`,
+   * `folders/[folder_id]`, or `projects/[project_id]`.
    * @param NotificationConfig $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string configId
+   * @opt_param string configId Required. Unique identifier provided by the client
+   * within the parent scope. It must be between 1 and 128 characters and contain
+   * alphanumeric characters, underscores, or hyphens only.
    * @return NotificationConfig
    * @throws \Google\Service\Exception
    */
@@ -49,9 +53,12 @@ class FoldersNotificationConfigs extends \Google\Service\Resource
     return $this->call('create', [$params], NotificationConfig::class);
   }
   /**
-   * (notificationConfigs.delete)
+   * Deletes a notification config. (notificationConfigs.delete)
    *
-   * @param string $name
+   * @param string $name Required. Name of the notification config to delete. Its
+   * format is `organizations/[organization_id]/notificationConfigs/[config_id]`,
+   * `folders/[folder_id]/notificationConfigs/[config_id]`, or
+   * `projects/[project_id]/notificationConfigs/[config_id]`.
    * @param array $optParams Optional parameters.
    * @return SecuritycenterEmpty
    * @throws \Google\Service\Exception
@@ -63,9 +70,12 @@ class FoldersNotificationConfigs extends \Google\Service\Resource
     return $this->call('delete', [$params], SecuritycenterEmpty::class);
   }
   /**
-   * (notificationConfigs.get)
+   * Gets a notification config. (notificationConfigs.get)
    *
-   * @param string $name
+   * @param string $name Required. Name of the notification config to get. Its
+   * format is `organizations/[organization_id]/notificationConfigs/[config_id]`,
+   * `folders/[folder_id]/notificationConfigs/[config_id]`, or
+   * `projects/[project_id]/notificationConfigs/[config_id]`.
    * @param array $optParams Optional parameters.
    * @return NotificationConfig
    * @throws \Google\Service\Exception
@@ -77,13 +87,20 @@ class FoldersNotificationConfigs extends \Google\Service\Resource
     return $this->call('get', [$params], NotificationConfig::class);
   }
   /**
+   * Lists notification configs.
    * (notificationConfigs.listFoldersNotificationConfigs)
    *
-   * @param string $parent
+   * @param string $parent Required. The name of the parent in which to list the
+   * notification configurations. Its format is "organizations/[organization_id]",
+   * "folders/[folder_id]", or "projects/[project_id]".
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize
-   * @opt_param string pageToken
+   * @opt_param int pageSize The maximum number of results to return in a single
+   * response. Default is 10, minimum is 1, maximum is 1000.
+   * @opt_param string pageToken The value returned by the last
+   * `ListNotificationConfigsResponse`; indicates that this is a continuation of a
+   * prior `ListNotificationConfigs` call, and that the system should return the
+   * next page of data.
    * @return ListNotificationConfigsResponse
    * @throws \Google\Service\Exception
    */
@@ -94,13 +111,22 @@ class FoldersNotificationConfigs extends \Google\Service\Resource
     return $this->call('list', [$params], ListNotificationConfigsResponse::class);
   }
   /**
+   * Updates a notification config. The following update fields are allowed:
+   * description, pubsub_topic, streaming_config.filter
    * (notificationConfigs.patch)
    *
-   * @param string $name
+   * @param string $name The relative resource name of this notification config.
+   * See:
+   * https://cloud.google.com/apis/design/resource_names#relative_resource_name
+   * Example:
+   * "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
+   * "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
+   * "projects/{project_id}/notificationConfigs/notify_public_bucket".
    * @param NotificationConfig $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask
+   * @opt_param string updateMask The FieldMask to use when updating the
+   * notification config. If empty all mutable fields will be updated.
    * @return NotificationConfig
    * @throws \Google\Service\Exception
    */

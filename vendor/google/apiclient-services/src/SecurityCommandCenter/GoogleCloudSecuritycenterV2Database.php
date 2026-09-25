@@ -46,7 +46,7 @@ class GoogleCloudSecuritycenterV2Database extends \Google\Collection
   public $version;
 
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -60,7 +60,7 @@ class GoogleCloudSecuritycenterV2Database extends \Google\Collection
     return $this->displayName;
   }
   /**
-   * @param string[] $grantees
+   * @param string[]
    */
   public function setGrantees($grantees)
   {
@@ -74,7 +74,7 @@ class GoogleCloudSecuritycenterV2Database extends \Google\Collection
     return $this->grantees;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -88,7 +88,7 @@ class GoogleCloudSecuritycenterV2Database extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $query
+   * @param string
    */
   public function setQuery($query)
   {
@@ -102,7 +102,7 @@ class GoogleCloudSecuritycenterV2Database extends \Google\Collection
     return $this->query;
   }
   /**
-   * @param string $userName
+   * @param string
    */
   public function setUserName($userName)
   {
@@ -116,7 +116,7 @@ class GoogleCloudSecuritycenterV2Database extends \Google\Collection
     return $this->userName;
   }
   /**
-   * @param string $version
+   * @param string
    */
   public function setVersion($version)
   {

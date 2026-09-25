@@ -15,7 +15,13 @@ class Fraction
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xCD\x01\x0A\x1Agoogle/type/fraction.proto\x12\x0Bgoogle.type\"2\x0A\x08Fraction\x12\x11\x0A\x09numerator\x18\x01 \x01(\x03\x12\x13\x0A\x0Bdenominator\x18\x02 \x01(\x03Bf\x0A\x0Fcom.google.typeB\x0DFractionProtoP\x01Z<google.golang.org/genproto/googleapis/type/fraction;fraction\xA2\x02\x03GTPb\x06proto3"
+            '
+Í
+google/type/fraction.protogoogle.type"2
+Fraction
+	numerator (
+denominator (Bf
+com.google.typeBFractionProtoPZ<google.golang.org/genproto/googleapis/type/fraction;fraction¢GTPbproto3'
         , true);
 
         static::$is_initialized = true;

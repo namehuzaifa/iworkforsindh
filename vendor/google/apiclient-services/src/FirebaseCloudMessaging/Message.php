@@ -24,53 +24,26 @@ class Message extends \Google\Model
   protected $apnsType = ApnsConfig::class;
   protected $apnsDataType = '';
   /**
-   * Condition to send a message to, e.g. "'foo' in topics && 'bar' in topics".
-   *
    * @var string
    */
   public $condition;
   /**
-   * Input only. Arbitrary key/value payload, which must be UTF-8 encoded. The
-   * key should not be a reserved word ("from", "message_type", or any word
-   * starting with "google." or "gcm.notification."). When sending payloads
-   * containing only data fields to iOS devices, only normal priority (`"apns-
-   * priority": "5"`) is allowed in
-   * [`ApnsConfig`](/docs/reference/fcm/rest/v1/projects.messages#apnsconfig).
-   *
    * @var string[]
    */
   public $data;
   protected $fcmOptionsType = FcmOptions::class;
   protected $fcmOptionsDataType = '';
   /**
-   * [Firebase Installation ID (FID)](/docs/cloud-messaging/android/get-
-   * started#access-firebase-installation-id) to send a message to.
-   *
-   * @var string
-   */
-  public $fid;
-  /**
-   * Output Only. The identifier of the message sent, in the format of
-   * `projects/messages/{message_id}`.
-   *
    * @var string
    */
   public $name;
   protected $notificationType = Notification::class;
   protected $notificationDataType = '';
   /**
-   * Deprecated: Use `fid` instead. During the transition period, this field
-   * also accepts a Firebase Installation ID (FID). Registration token to send a
-   * message to.
-   *
-   * @deprecated
    * @var string
    */
   public $token;
   /**
-   * Topic name to send a message to, e.g. "weather". Note: "/topics/" prefix
-   * should not be provided.
-   *
    * @var string
    */
   public $topic;
@@ -78,10 +51,7 @@ class Message extends \Google\Model
   protected $webpushDataType = '';
 
   /**
-   * Input only. Android specific options for messages sent through [FCM
-   * connection server](https://goo.gl/4GLdUl).
-   *
-   * @param AndroidConfig $android
+   * @param AndroidConfig
    */
   public function setAndroid(AndroidConfig $android)
   {
@@ -95,10 +65,7 @@ class Message extends \Google\Model
     return $this->android;
   }
   /**
-   * Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)
-   * specific options.
-   *
-   * @param ApnsConfig $apns
+   * @param ApnsConfig
    */
   public function setApns(ApnsConfig $apns)
   {
@@ -112,9 +79,7 @@ class Message extends \Google\Model
     return $this->apns;
   }
   /**
-   * Condition to send a message to, e.g. "'foo' in topics && 'bar' in topics".
-   *
-   * @param string $condition
+   * @param string
    */
   public function setCondition($condition)
   {
@@ -128,14 +93,7 @@ class Message extends \Google\Model
     return $this->condition;
   }
   /**
-   * Input only. Arbitrary key/value payload, which must be UTF-8 encoded. The
-   * key should not be a reserved word ("from", "message_type", or any word
-   * starting with "google." or "gcm.notification."). When sending payloads
-   * containing only data fields to iOS devices, only normal priority (`"apns-
-   * priority": "5"`) is allowed in
-   * [`ApnsConfig`](/docs/reference/fcm/rest/v1/projects.messages#apnsconfig).
-   *
-   * @param string[] $data
+   * @param string[]
    */
   public function setData($data)
   {
@@ -149,10 +107,7 @@ class Message extends \Google\Model
     return $this->data;
   }
   /**
-   * Input only. Template for FCM SDK feature options to use across all
-   * platforms.
-   *
-   * @param FcmOptions $fcmOptions
+   * @param FcmOptions
    */
   public function setFcmOptions(FcmOptions $fcmOptions)
   {
@@ -166,27 +121,7 @@ class Message extends \Google\Model
     return $this->fcmOptions;
   }
   /**
-   * [Firebase Installation ID (FID)](/docs/cloud-messaging/android/get-
-   * started#access-firebase-installation-id) to send a message to.
-   *
-   * @param string $fid
-   */
-  public function setFid($fid)
-  {
-    $this->fid = $fid;
-  }
-  /**
-   * @return string
-   */
-  public function getFid()
-  {
-    return $this->fid;
-  }
-  /**
-   * Output Only. The identifier of the message sent, in the format of
-   * `projects/messages/{message_id}`.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -200,9 +135,7 @@ class Message extends \Google\Model
     return $this->name;
   }
   /**
-   * Input only. Basic notification template to use across all platforms.
-   *
-   * @param Notification $notification
+   * @param Notification
    */
   public function setNotification(Notification $notification)
   {
@@ -216,19 +149,13 @@ class Message extends \Google\Model
     return $this->notification;
   }
   /**
-   * Deprecated: Use `fid` instead. During the transition period, this field
-   * also accepts a Firebase Installation ID (FID). Registration token to send a
-   * message to.
-   *
-   * @deprecated
-   * @param string $token
+   * @param string
    */
   public function setToken($token)
   {
     $this->token = $token;
   }
   /**
-   * @deprecated
    * @return string
    */
   public function getToken()
@@ -236,10 +163,7 @@ class Message extends \Google\Model
     return $this->token;
   }
   /**
-   * Topic name to send a message to, e.g. "weather". Note: "/topics/" prefix
-   * should not be provided.
-   *
-   * @param string $topic
+   * @param string
    */
   public function setTopic($topic)
   {
@@ -253,10 +177,7 @@ class Message extends \Google\Model
     return $this->topic;
   }
   /**
-   * Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)
-   * options.
-   *
-   * @param WebpushConfig $webpush
+   * @param WebpushConfig
    */
   public function setWebpush(WebpushConfig $webpush)
   {

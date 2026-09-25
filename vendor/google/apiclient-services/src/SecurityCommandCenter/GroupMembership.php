@@ -19,9 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GroupMembership extends \Google\Model
 {
-  public const GROUP_TYPE_GROUP_TYPE_UNSPECIFIED = 'GROUP_TYPE_UNSPECIFIED';
-  public const GROUP_TYPE_GROUP_TYPE_TOXIC_COMBINATION = 'GROUP_TYPE_TOXIC_COMBINATION';
-  public const GROUP_TYPE_GROUP_TYPE_CHOKEPOINT = 'GROUP_TYPE_CHOKEPOINT';
   /**
    * @var string
    */
@@ -32,7 +29,7 @@ class GroupMembership extends \Google\Model
   public $groupType;
 
   /**
-   * @param string $groupId
+   * @param string
    */
   public function setGroupId($groupId)
   {
@@ -46,14 +43,14 @@ class GroupMembership extends \Google\Model
     return $this->groupId;
   }
   /**
-   * @param self::GROUP_TYPE_* $groupType
+   * @param string
    */
   public function setGroupType($groupType)
   {
     $this->groupType = $groupType;
   }
   /**
-   * @return self::GROUP_TYPE_*
+   * @return string
    */
   public function getGroupType()
   {

@@ -32,7 +32,7 @@ class Binding extends \Google\Collection
   public $role;
 
   /**
-   * @param Expr $condition
+   * @param Expr
    */
   public function setCondition(Expr $condition)
   {
@@ -46,7 +46,7 @@ class Binding extends \Google\Collection
     return $this->condition;
   }
   /**
-   * @param string[] $members
+   * @param string[]
    */
   public function setMembers($members)
   {
@@ -60,7 +60,7 @@ class Binding extends \Google\Collection
     return $this->members;
   }
   /**
-   * @param string $role
+   * @param string
    */
   public function setRole($role)
   {

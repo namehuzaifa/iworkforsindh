@@ -29,7 +29,7 @@ class GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount extends \Goo
   public $name;
 
   /**
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {
@@ -43,7 +43,7 @@ class GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount extends \Goo
     return $this->id;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {

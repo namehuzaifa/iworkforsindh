@@ -20,67 +20,42 @@ namespace Google\Service\Compute;
 class AcceleratorType extends \Google\Model
 {
   /**
-   * [Output Only] Creation timestamp inRFC3339 text format.
-   *
    * @var string
    */
   public $creationTimestamp;
   protected $deprecatedType = DeprecationStatus::class;
   protected $deprecatedDataType = '';
   /**
-   * [Output Only] An optional textual description of the resource.
-   *
    * @var string
    */
   public $description;
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
-   *
    * @var string
    */
   public $id;
   /**
-   * Output only. [Output Only] The type of the resource.
-   * Alwayscompute#acceleratorType for accelerator types.
-   *
    * @var string
    */
   public $kind;
   /**
-   * [Output Only] Maximum number of accelerator cards allowed per instance.
-   *
    * @var int
    */
   public $maximumCardsPerInstance;
   /**
-   * [Output Only] Name of the resource.
-   *
    * @var string
    */
   public $name;
-  protected $resourceMetadataType = ResourceMetadata::class;
-  protected $resourceMetadataDataType = '';
   /**
-   * Output only. [Output Only] Server-defined, fully qualified URL for this
-   * resource.
-   *
    * @var string
    */
   public $selfLink;
   /**
-   * [Output Only] The name of the zone where the accelerator type resides, such
-   * as us-central1-a. You must specify this field as part of the HTTP request
-   * URL. It is not settable as a field in the request body.
-   *
    * @var string
    */
   public $zone;
 
   /**
-   * [Output Only] Creation timestamp inRFC3339 text format.
-   *
-   * @param string $creationTimestamp
+   * @param string
    */
   public function setCreationTimestamp($creationTimestamp)
   {
@@ -94,9 +69,7 @@ class AcceleratorType extends \Google\Model
     return $this->creationTimestamp;
   }
   /**
-   * [Output Only] The deprecation status associated with this accelerator type.
-   *
-   * @param DeprecationStatus $deprecated
+   * @param DeprecationStatus
    */
   public function setDeprecated(DeprecationStatus $deprecated)
   {
@@ -110,9 +83,7 @@ class AcceleratorType extends \Google\Model
     return $this->deprecated;
   }
   /**
-   * [Output Only] An optional textual description of the resource.
-   *
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -126,10 +97,7 @@ class AcceleratorType extends \Google\Model
     return $this->description;
   }
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
-   *
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {
@@ -143,10 +111,7 @@ class AcceleratorType extends \Google\Model
     return $this->id;
   }
   /**
-   * Output only. [Output Only] The type of the resource.
-   * Alwayscompute#acceleratorType for accelerator types.
-   *
-   * @param string $kind
+   * @param string
    */
   public function setKind($kind)
   {
@@ -160,9 +125,7 @@ class AcceleratorType extends \Google\Model
     return $this->kind;
   }
   /**
-   * [Output Only] Maximum number of accelerator cards allowed per instance.
-   *
-   * @param int $maximumCardsPerInstance
+   * @param int
    */
   public function setMaximumCardsPerInstance($maximumCardsPerInstance)
   {
@@ -176,9 +139,7 @@ class AcceleratorType extends \Google\Model
     return $this->maximumCardsPerInstance;
   }
   /**
-   * [Output Only] Name of the resource.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -192,29 +153,7 @@ class AcceleratorType extends \Google\Model
     return $this->name;
   }
   /**
-   * Output only. Contains standard resource metadata for an AcceleratorType
-   * resource. It is populated for each instance of the AcceleratorType
-   * resource, and includes the api_version the instance was retrieved through,
-   * and its canonical resource_type name.
-   *
-   * @param ResourceMetadata $resourceMetadata
-   */
-  public function setResourceMetadata(ResourceMetadata $resourceMetadata)
-  {
-    $this->resourceMetadata = $resourceMetadata;
-  }
-  /**
-   * @return ResourceMetadata
-   */
-  public function getResourceMetadata()
-  {
-    return $this->resourceMetadata;
-  }
-  /**
-   * Output only. [Output Only] Server-defined, fully qualified URL for this
-   * resource.
-   *
-   * @param string $selfLink
+   * @param string
    */
   public function setSelfLink($selfLink)
   {
@@ -228,11 +167,7 @@ class AcceleratorType extends \Google\Model
     return $this->selfLink;
   }
   /**
-   * [Output Only] The name of the zone where the accelerator type resides, such
-   * as us-central1-a. You must specify this field as part of the HTTP request
-   * URL. It is not settable as a field in the request body.
-   *
-   * @param string $zone
+   * @param string
    */
   public function setZone($zone)
   {

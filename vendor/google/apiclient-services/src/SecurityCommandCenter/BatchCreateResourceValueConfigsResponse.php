@@ -24,7 +24,7 @@ class BatchCreateResourceValueConfigsResponse extends \Google\Collection
   protected $resourceValueConfigsDataType = 'array';
 
   /**
-   * @param GoogleCloudSecuritycenterV1ResourceValueConfig[] $resourceValueConfigs
+   * @param GoogleCloudSecuritycenterV1ResourceValueConfig[]
    */
   public function setResourceValueConfigs($resourceValueConfigs)
   {

@@ -20,25 +20,16 @@ namespace Google\Service\AndroidManagement;
 class ManagedConfigurationTemplate extends \Google\Model
 {
   /**
-   * Optional, a map containing configuration variables defined for the
-   * configuration.
-   *
    * @var string[]
    */
   public $configurationVariables;
   /**
-   * The ID of the managed configurations template. This value must be a numeric
-   * string containing exactly one or more digits (for example, "123456").
-   *
    * @var string
    */
   public $templateId;
 
   /**
-   * Optional, a map containing configuration variables defined for the
-   * configuration.
-   *
-   * @param string[] $configurationVariables
+   * @param string[]
    */
   public function setConfigurationVariables($configurationVariables)
   {
@@ -52,10 +43,7 @@ class ManagedConfigurationTemplate extends \Google\Model
     return $this->configurationVariables;
   }
   /**
-   * The ID of the managed configurations template. This value must be a numeric
-   * string containing exactly one or more digits (for example, "123456").
-   *
-   * @param string $templateId
+   * @param string
    */
   public function setTemplateId($templateId)
   {

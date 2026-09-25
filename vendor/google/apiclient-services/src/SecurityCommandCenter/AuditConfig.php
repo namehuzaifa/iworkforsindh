@@ -28,7 +28,7 @@ class AuditConfig extends \Google\Collection
   public $service;
 
   /**
-   * @param AuditLogConfig[] $auditLogConfigs
+   * @param AuditLogConfig[]
    */
   public function setAuditLogConfigs($auditLogConfigs)
   {
@@ -42,7 +42,7 @@ class AuditConfig extends \Google\Collection
     return $this->auditLogConfigs;
   }
   /**
-   * @param string $service
+   * @param string
    */
   public function setService($service)
   {

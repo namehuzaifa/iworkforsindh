@@ -1,7 +1,5 @@
 <?php
 
-use Astrotomic\Translatable\Validation\RuleFactory;
-
 return [
 
     /*
@@ -144,7 +142,7 @@ return [
      *
      */
     'rule_factory' => [
-        'format' => RuleFactory::FORMAT_ARRAY,
+        'format' => \Astrotomic\Translatable\Validation\RuleFactory::FORMAT_ARRAY,
         'prefix' => '%',
         'suffix' => '%',
     ],

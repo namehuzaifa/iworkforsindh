@@ -36,7 +36,7 @@ class ListFindingsResponse extends \Google\Collection
   public $totalSize;
 
   /**
-   * @param ListFindingsResult[] $listFindingsResults
+   * @param ListFindingsResult[]
    */
   public function setListFindingsResults($listFindingsResults)
   {
@@ -50,7 +50,7 @@ class ListFindingsResponse extends \Google\Collection
     return $this->listFindingsResults;
   }
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -64,7 +64,7 @@ class ListFindingsResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * @param string $readTime
+   * @param string
    */
   public function setReadTime($readTime)
   {
@@ -78,7 +78,7 @@ class ListFindingsResponse extends \Google\Collection
     return $this->readTime;
   }
   /**
-   * @param int $totalSize
+   * @param int
    */
   public function setTotalSize($totalSize)
   {

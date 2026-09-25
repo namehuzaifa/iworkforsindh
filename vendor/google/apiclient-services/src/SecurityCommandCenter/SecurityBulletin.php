@@ -33,7 +33,7 @@ class SecurityBulletin extends \Google\Model
   public $suggestedUpgradeVersion;
 
   /**
-   * @param string $bulletinId
+   * @param string
    */
   public function setBulletinId($bulletinId)
   {
@@ -47,7 +47,7 @@ class SecurityBulletin extends \Google\Model
     return $this->bulletinId;
   }
   /**
-   * @param string $submissionTime
+   * @param string
    */
   public function setSubmissionTime($submissionTime)
   {
@@ -61,7 +61,7 @@ class SecurityBulletin extends \Google\Model
     return $this->submissionTime;
   }
   /**
-   * @param string $suggestedUpgradeVersion
+   * @param string
    */
   public function setSuggestedUpgradeVersion($suggestedUpgradeVersion)
   {

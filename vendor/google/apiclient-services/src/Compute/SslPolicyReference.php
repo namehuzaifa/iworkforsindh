@@ -25,7 +25,7 @@ class SslPolicyReference extends \Google\Model
   public $sslPolicy;
 
   /**
-   * @param string $sslPolicy
+   * @param string
    */
   public function setSslPolicy($sslPolicy)
   {

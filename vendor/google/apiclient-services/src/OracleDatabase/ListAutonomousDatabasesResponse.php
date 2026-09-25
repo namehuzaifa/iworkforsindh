@@ -19,27 +19,16 @@ namespace Google\Service\OracleDatabase;
 
 class ListAutonomousDatabasesResponse extends \Google\Collection
 {
-  protected $collection_key = 'unreachable';
+  protected $collection_key = 'autonomousDatabases';
   protected $autonomousDatabasesType = AutonomousDatabase::class;
   protected $autonomousDatabasesDataType = 'array';
   /**
-   * A token identifying a page of results the server should return.
-   *
    * @var string
    */
   public $nextPageToken;
-  /**
-   * Unreachable locations when listing resources across all locations using
-   * wildcard location '-'.
-   *
-   * @var string[]
-   */
-  public $unreachable;
 
   /**
-   * The list of Autonomous Databases.
-   *
-   * @param AutonomousDatabase[] $autonomousDatabases
+   * @param AutonomousDatabase[]
    */
   public function setAutonomousDatabases($autonomousDatabases)
   {
@@ -53,9 +42,7 @@ class ListAutonomousDatabasesResponse extends \Google\Collection
     return $this->autonomousDatabases;
   }
   /**
-   * A token identifying a page of results the server should return.
-   *
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -67,23 +54,6 @@ class ListAutonomousDatabasesResponse extends \Google\Collection
   public function getNextPageToken()
   {
     return $this->nextPageToken;
-  }
-  /**
-   * Unreachable locations when listing resources across all locations using
-   * wildcard location '-'.
-   *
-   * @param string[] $unreachable
-   */
-  public function setUnreachable($unreachable)
-  {
-    $this->unreachable = $unreachable;
-  }
-  /**
-   * @return string[]
-   */
-  public function getUnreachable()
-  {
-    return $this->unreachable;
   }
 }
 

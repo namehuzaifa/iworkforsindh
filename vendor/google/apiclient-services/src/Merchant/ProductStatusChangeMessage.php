@@ -19,90 +19,40 @@ namespace Google\Service\Merchant;
 
 class ProductStatusChangeMessage extends \Google\Collection
 {
-  /**
-   * Unspecified attribute
-   */
-  public const ATTRIBUTE_ATTRIBUTE_UNSPECIFIED = 'ATTRIBUTE_UNSPECIFIED';
-  /**
-   * Status of the changed entity
-   */
-  public const ATTRIBUTE_STATUS = 'STATUS';
-  /**
-   * Unspecified resource
-   */
-  public const RESOURCE_TYPE_RESOURCE_UNSPECIFIED = 'RESOURCE_UNSPECIFIED';
-  /**
-   * Resource type : product
-   */
-  public const RESOURCE_TYPE_PRODUCT = 'PRODUCT';
-  /**
-   * Account service
-   */
-  public const RESOURCE_TYPE_ACCOUNT_SERVICE = 'ACCOUNT_SERVICE';
   protected $collection_key = 'changes';
   /**
-   * The target account that owns the entity that changed. Format :
-   * `accounts/{merchant_id}`
-   *
    * @var string
    */
   public $account;
   /**
-   * The attribute in the resource that changed, in this case it will be always
-   * `Status`.
-   *
    * @var string
    */
   public $attribute;
   protected $changesType = ProductChange::class;
   protected $changesDataType = 'array';
   /**
-   * The time at which the event was generated. If you want to order the
-   * notification messages you receive you should rely on this field not on the
-   * order of receiving the notifications.
-   *
-   * @var string
-   */
-  public $eventTime;
-  /**
-   * Optional. The product expiration time. This field will not be set if the
-   * notification is sent for a product deletion event.
-   *
    * @var string
    */
   public $expirationTime;
   /**
-   * The account that manages the merchant's account. can be the same as
-   * merchant id if it is standalone account. Format :
-   * `accounts/{service_provider_id}`
-   *
    * @var string
    */
   public $managingAccount;
   /**
-   * The product name. Format: `accounts/{account}/products/{product}`
-   *
    * @var string
    */
   public $resource;
   /**
-   * The product id.
-   *
    * @var string
    */
   public $resourceId;
   /**
-   * The resource that changed, in this case it will always be `Product`.
-   *
    * @var string
    */
   public $resourceType;
 
   /**
-   * The target account that owns the entity that changed. Format :
-   * `accounts/{merchant_id}`
-   *
-   * @param string $account
+   * @param string
    */
   public function setAccount($account)
   {
@@ -116,28 +66,21 @@ class ProductStatusChangeMessage extends \Google\Collection
     return $this->account;
   }
   /**
-   * The attribute in the resource that changed, in this case it will be always
-   * `Status`.
-   *
-   * Accepted values: ATTRIBUTE_UNSPECIFIED, STATUS
-   *
-   * @param self::ATTRIBUTE_* $attribute
+   * @param string
    */
   public function setAttribute($attribute)
   {
     $this->attribute = $attribute;
   }
   /**
-   * @return self::ATTRIBUTE_*
+   * @return string
    */
   public function getAttribute()
   {
     return $this->attribute;
   }
   /**
-   * A message to describe the change that happened to the product
-   *
-   * @param ProductChange[] $changes
+   * @param ProductChange[]
    */
   public function setChanges($changes)
   {
@@ -151,28 +94,7 @@ class ProductStatusChangeMessage extends \Google\Collection
     return $this->changes;
   }
   /**
-   * The time at which the event was generated. If you want to order the
-   * notification messages you receive you should rely on this field not on the
-   * order of receiving the notifications.
-   *
-   * @param string $eventTime
-   */
-  public function setEventTime($eventTime)
-  {
-    $this->eventTime = $eventTime;
-  }
-  /**
-   * @return string
-   */
-  public function getEventTime()
-  {
-    return $this->eventTime;
-  }
-  /**
-   * Optional. The product expiration time. This field will not be set if the
-   * notification is sent for a product deletion event.
-   *
-   * @param string $expirationTime
+   * @param string
    */
   public function setExpirationTime($expirationTime)
   {
@@ -186,11 +108,7 @@ class ProductStatusChangeMessage extends \Google\Collection
     return $this->expirationTime;
   }
   /**
-   * The account that manages the merchant's account. can be the same as
-   * merchant id if it is standalone account. Format :
-   * `accounts/{service_provider_id}`
-   *
-   * @param string $managingAccount
+   * @param string
    */
   public function setManagingAccount($managingAccount)
   {
@@ -204,9 +122,7 @@ class ProductStatusChangeMessage extends \Google\Collection
     return $this->managingAccount;
   }
   /**
-   * The product name. Format: `accounts/{account}/products/{product}`
-   *
-   * @param string $resource
+   * @param string
    */
   public function setResource($resource)
   {
@@ -220,9 +136,7 @@ class ProductStatusChangeMessage extends \Google\Collection
     return $this->resource;
   }
   /**
-   * The product id.
-   *
-   * @param string $resourceId
+   * @param string
    */
   public function setResourceId($resourceId)
   {
@@ -236,18 +150,14 @@ class ProductStatusChangeMessage extends \Google\Collection
     return $this->resourceId;
   }
   /**
-   * The resource that changed, in this case it will always be `Product`.
-   *
-   * Accepted values: RESOURCE_UNSPECIFIED, PRODUCT, ACCOUNT_SERVICE
-   *
-   * @param self::RESOURCE_TYPE_* $resourceType
+   * @param string
    */
   public function setResourceType($resourceType)
   {
     $this->resourceType = $resourceType;
   }
   /**
-   * @return self::RESOURCE_TYPE_*
+   * @return string
    */
   public function getResourceType()
   {

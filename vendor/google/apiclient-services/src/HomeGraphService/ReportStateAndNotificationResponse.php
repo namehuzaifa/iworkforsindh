@@ -19,36 +19,13 @@ namespace Google\Service\HomeGraphService;
 
 class ReportStateAndNotificationResponse extends \Google\Model
 {
-  protected $deviceResultsType = Result::class;
-  protected $deviceResultsDataType = 'map';
   /**
-   * Request ID copied from ReportStateAndNotificationRequest.
-   *
    * @var string
    */
   public $requestId;
 
   /**
-   * Map from agent device ID to the result of reporting state and
-   * notifications. This is only populated for UDDM updates for now.
-   *
-   * @param Result[] $deviceResults
-   */
-  public function setDeviceResults($deviceResults)
-  {
-    $this->deviceResults = $deviceResults;
-  }
-  /**
-   * @return Result[]
-   */
-  public function getDeviceResults()
-  {
-    return $this->deviceResults;
-  }
-  /**
-   * Request ID copied from ReportStateAndNotificationRequest.
-   *
-   * @param string $requestId
+   * @param string
    */
   public function setRequestId($requestId)
   {

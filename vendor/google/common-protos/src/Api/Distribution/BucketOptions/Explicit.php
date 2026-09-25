@@ -5,8 +5,8 @@
 namespace Google\Api\Distribution\BucketOptions;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * Specifies a set of buckets with arbitrary widths.
@@ -35,7 +35,7 @@ class Explicit extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type float[] $bounds
+     *     @type array<float>|\Google\Protobuf\Internal\RepeatedField $bounds
      *           The values must be monotonically increasing.
      * }
      */
@@ -48,7 +48,7 @@ class Explicit extends \Google\Protobuf\Internal\Message
      * The values must be monotonically increasing.
      *
      * Generated from protobuf field <code>repeated double bounds = 1;</code>
-     * @return RepeatedField<float>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getBounds()
     {
@@ -59,7 +59,7 @@ class Explicit extends \Google\Protobuf\Internal\Message
      * The values must be monotonically increasing.
      *
      * Generated from protobuf field <code>repeated double bounds = 1;</code>
-     * @param float[] $var
+     * @param array<float>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setBounds($var)
@@ -71,4 +71,5 @@ class Explicit extends \Google\Protobuf\Internal\Message
     }
 
 }
+
 

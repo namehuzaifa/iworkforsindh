@@ -26,7 +26,7 @@ class GoogleCloudSecuritycenterV1ResourceSelector extends \Google\Collection
   public $resourceTypes;
 
   /**
-   * @param string[] $resourceTypes
+   * @param string[]
    */
   public function setResourceTypes($resourceTypes)
   {

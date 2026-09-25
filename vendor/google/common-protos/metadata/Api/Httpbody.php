@@ -16,7 +16,16 @@ class Httpbody
         }
         \GPBMetadata\Google\Protobuf\Any::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\xF0\x01\x0A\x19google/api/httpbody.proto\x12\x0Agoogle.api\"X\x0A\x08HttpBody\x12\x14\x0A\x0Ccontent_type\x18\x01 \x01(\x09\x12\x0C\x0A\x04data\x18\x02 \x01(\x0C\x12(\x0A\x0Aextensions\x18\x03 \x03(\x0B2\x14.google.protobuf.AnyBe\x0A\x0Ecom.google.apiB\x0DHttpBodyProtoP\x01Z;google.golang.org/genproto/googleapis/api/httpbody;httpbody\xA2\x02\x04GAPIb\x06proto3"
+            '
+ð
+google/api/httpbody.proto
+google.api"X
+HttpBody
+content_type (	
+data ((
+
+extensions (2.google.protobuf.AnyBe
+com.google.apiBHttpBodyProtoPZ;google.golang.org/genproto/googleapis/api/httpbody;httpbody¢GAPIbproto3'
         , true);
 
         static::$is_initialized = true;

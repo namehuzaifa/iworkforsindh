@@ -37,7 +37,7 @@ class GoogleCloudSecuritycenterV2CloudArmor extends \Google\Model
   public $threatVector;
 
   /**
-   * @param GoogleCloudSecuritycenterV2AdaptiveProtection $adaptiveProtection
+   * @param GoogleCloudSecuritycenterV2AdaptiveProtection
    */
   public function setAdaptiveProtection(GoogleCloudSecuritycenterV2AdaptiveProtection $adaptiveProtection)
   {
@@ -51,7 +51,7 @@ class GoogleCloudSecuritycenterV2CloudArmor extends \Google\Model
     return $this->adaptiveProtection;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Attack $attack
+   * @param GoogleCloudSecuritycenterV2Attack
    */
   public function setAttack(GoogleCloudSecuritycenterV2Attack $attack)
   {
@@ -65,7 +65,7 @@ class GoogleCloudSecuritycenterV2CloudArmor extends \Google\Model
     return $this->attack;
   }
   /**
-   * @param string $duration
+   * @param string
    */
   public function setDuration($duration)
   {
@@ -79,7 +79,7 @@ class GoogleCloudSecuritycenterV2CloudArmor extends \Google\Model
     return $this->duration;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Requests $requests
+   * @param GoogleCloudSecuritycenterV2Requests
    */
   public function setRequests(GoogleCloudSecuritycenterV2Requests $requests)
   {
@@ -93,7 +93,7 @@ class GoogleCloudSecuritycenterV2CloudArmor extends \Google\Model
     return $this->requests;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2SecurityPolicy $securityPolicy
+   * @param GoogleCloudSecuritycenterV2SecurityPolicy
    */
   public function setSecurityPolicy(GoogleCloudSecuritycenterV2SecurityPolicy $securityPolicy)
   {
@@ -107,7 +107,7 @@ class GoogleCloudSecuritycenterV2CloudArmor extends \Google\Model
     return $this->securityPolicy;
   }
   /**
-   * @param string $threatVector
+   * @param string
    */
   public function setThreatVector($threatVector)
   {

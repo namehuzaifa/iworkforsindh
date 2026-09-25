@@ -19,322 +19,72 @@ namespace Google\Service\CloudAlloyDBAdmin;
 
 class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Google\Collection
 {
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_STATE_UNSPECIFIED = 'STATE_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_HEALTHY = 'HEALTHY';
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_UNHEALTHY = 'UNHEALTHY';
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_SUSPENDED = 'SUSPENDED';
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_DELETED = 'DELETED';
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_STATE_OTHER = 'STATE_OTHER';
-  /**
-   * Disable validation warnings
-   */
-  public const CURRENT_STATE_STOPPED = 'STOPPED';
-  /**
-   * Disable validation warnings
-   */
-  public const EDITION_EDITION_UNSPECIFIED = 'EDITION_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const EDITION_EDITION_ENTERPRISE = 'EDITION_ENTERPRISE';
-  /**
-   * Disable validation warnings
-   */
-  public const EDITION_EDITION_ENTERPRISE_PLUS = 'EDITION_ENTERPRISE_PLUS';
-  /**
-   * Disable validation warnings
-   */
-  public const EDITION_EDITION_STANDARD = 'EDITION_STANDARD';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_STATE_UNSPECIFIED = 'STATE_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_HEALTHY = 'HEALTHY';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_UNHEALTHY = 'UNHEALTHY';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_SUSPENDED = 'SUSPENDED';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_DELETED = 'DELETED';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_STATE_OTHER = 'STATE_OTHER';
-  /**
-   * Disable validation warnings
-   */
-  public const EXPECTED_STATE_STOPPED = 'STOPPED';
-  /**
-   * Unspecified.
-   *
-   * @deprecated
-   */
-  public const INSTANCE_TYPE_INSTANCE_TYPE_UNSPECIFIED = 'INSTANCE_TYPE_UNSPECIFIED';
-  /**
-   * For rest of the other categories.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_UNSPECIFIED = 'SUB_RESOURCE_TYPE_UNSPECIFIED';
-  /**
-   * A regular primary database instance.
-   *
-   * @deprecated
-   */
-  public const INSTANCE_TYPE_PRIMARY = 'PRIMARY';
-  /**
-   * A cluster or an instance acting as a secondary.
-   *
-   * @deprecated
-   */
-  public const INSTANCE_TYPE_SECONDARY = 'SECONDARY';
-  /**
-   * An instance acting as a read-replica.
-   *
-   * @deprecated
-   */
-  public const INSTANCE_TYPE_READ_REPLICA = 'READ_REPLICA';
-  /**
-   * For rest of the other categories.
-   *
-   * @deprecated
-   */
-  public const INSTANCE_TYPE_OTHER = 'OTHER';
-  /**
-   * A regular primary database instance.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_PRIMARY = 'SUB_RESOURCE_TYPE_PRIMARY';
-  /**
-   * A cluster or an instance acting as a secondary.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_SECONDARY = 'SUB_RESOURCE_TYPE_SECONDARY';
-  /**
-   * An instance acting as a read-replica.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_READ_REPLICA = 'SUB_RESOURCE_TYPE_READ_REPLICA';
-  /**
-   * An instance acting as an external primary.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY = 'SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY';
-  /**
-   * An instance acting as Read Pool.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_READ_POOL = 'SUB_RESOURCE_TYPE_READ_POOL';
-  /**
-   * Represents a reservation resource.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_RESERVATION = 'SUB_RESOURCE_TYPE_RESERVATION';
-  /**
-   * Represents a dataset resource.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_DATASET = 'SUB_RESOURCE_TYPE_DATASET';
-  /**
-   * For rest of the other categories.
-   */
-  public const INSTANCE_TYPE_SUB_RESOURCE_TYPE_OTHER = 'SUB_RESOURCE_TYPE_OTHER';
-  /**
-   * Suspension reason is unspecified.
-   */
-  public const SUSPENSION_REASON_SUSPENSION_REASON_UNSPECIFIED = 'SUSPENSION_REASON_UNSPECIFIED';
-  /**
-   * Wipeout hide event.
-   */
-  public const SUSPENSION_REASON_WIPEOUT_HIDE_EVENT = 'WIPEOUT_HIDE_EVENT';
-  /**
-   * Wipeout purge event.
-   */
-  public const SUSPENSION_REASON_WIPEOUT_PURGE_EVENT = 'WIPEOUT_PURGE_EVENT';
-  /**
-   * Billing disabled for project
-   */
-  public const SUSPENSION_REASON_BILLING_DISABLED = 'BILLING_DISABLED';
-  /**
-   * Abuse detected for resource
-   */
-  public const SUSPENSION_REASON_ABUSER_DETECTED = 'ABUSER_DETECTED';
-  /**
-   * Encryption key inaccessible.
-   */
-  public const SUSPENSION_REASON_ENCRYPTION_KEY_INACCESSIBLE = 'ENCRYPTION_KEY_INACCESSIBLE';
-  /**
-   * Replicated cluster encryption key inaccessible.
-   */
-  public const SUSPENSION_REASON_REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE = 'REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE';
-  protected $collection_key = 'resourceFlags';
-  /**
-   * Disable validation warnings
-   *
-   * @var array[]
-   */
-  public $additionalMetadata;
+  protected $collection_key = 'entitlements';
   protected $availabilityConfigurationType = StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration::class;
   protected $availabilityConfigurationDataType = '';
   protected $backupConfigurationType = StorageDatabasecenterPartnerapiV1mainBackupConfiguration::class;
   protected $backupConfigurationDataType = '';
   protected $backupRunType = StorageDatabasecenterPartnerapiV1mainBackupRun::class;
   protected $backupRunDataType = '';
-  protected $backupdrConfigurationType = StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration::class;
-  protected $backupdrConfigurationDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $creationTime;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $currentState;
   protected $customMetadataType = StorageDatabasecenterPartnerapiV1mainCustomMetadataData::class;
   protected $customMetadataDataType = '';
   /**
-   * Optional. Disable validation warnings
-   *
    * @var string
    */
   public $edition;
   protected $entitlementsType = StorageDatabasecenterPartnerapiV1mainEntitlement::class;
   protected $entitlementsDataType = 'array';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $expectedState;
-  protected $gcbdrConfigurationType = StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration::class;
-  protected $gcbdrConfigurationDataType = '';
   protected $idType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::class;
   protected $idDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $instanceType;
   /**
-   * Disable validation warnings
-   *
-   * @var array[]
-   */
-  public $internalAdditionalMetadata;
-  protected $ipAddressType = StorageDatabasecenterPartnerapiV1mainIpAddress::class;
-  protected $ipAddressDataType = '';
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @var bool
-   */
-  public $isDeletionProtectionEnabled;
-  /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $location;
   protected $machineConfigurationType = StorageDatabasecenterPartnerapiV1mainMachineConfiguration::class;
   protected $machineConfigurationDataType = '';
-  protected $maintenanceInfoType = StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo::class;
-  protected $maintenanceInfoDataType = '';
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @var string[]
-   */
-  public $modes;
   protected $primaryResourceIdType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::class;
   protected $primaryResourceIdDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $primaryResourceLocation;
   protected $productType = StorageDatabasecenterProtoCommonProduct::class;
   protected $productDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $resourceContainer;
-  protected $resourceFlagsType = StorageDatabasecenterPartnerapiV1mainResourceFlags::class;
-  protected $resourceFlagsDataType = 'array';
   /**
-   * Required. Disable validation warnings
-   *
    * @var string
    */
   public $resourceName;
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @var string
-   */
-  public $suspensionReason;
   protected $tagsSetType = StorageDatabasecenterPartnerapiV1mainTags::class;
   protected $tagsSetDataType = '';
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $updationTime;
   protected $userLabelSetType = StorageDatabasecenterPartnerapiV1mainUserLabels::class;
   protected $userLabelSetDataType = '';
-  /**
-   * Disable validation warnings
-   *
-   * @var string
-   */
-  public $zone;
 
   /**
-   * Disable validation warnings
-   *
-   * @param array[] $additionalMetadata
-   */
-  public function setAdditionalMetadata($additionalMetadata)
-  {
-    $this->additionalMetadata = $additionalMetadata;
-  }
-  /**
-   * @return array[]
-   */
-  public function getAdditionalMetadata()
-  {
-    return $this->additionalMetadata;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration $availabilityConfiguration
+   * @param StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration
    */
   public function setAvailabilityConfiguration(StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration $availabilityConfiguration)
   {
@@ -348,9 +98,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->availabilityConfiguration;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainBackupConfiguration $backupConfiguration
+   * @param StorageDatabasecenterPartnerapiV1mainBackupConfiguration
    */
   public function setBackupConfiguration(StorageDatabasecenterPartnerapiV1mainBackupConfiguration $backupConfiguration)
   {
@@ -364,9 +112,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->backupConfiguration;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainBackupRun $backupRun
+   * @param StorageDatabasecenterPartnerapiV1mainBackupRun
    */
   public function setBackupRun(StorageDatabasecenterPartnerapiV1mainBackupRun $backupRun)
   {
@@ -380,25 +126,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->backupRun;
   }
   /**
-   * Optional. Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration $backupdrConfiguration
-   */
-  public function setBackupdrConfiguration(StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration $backupdrConfiguration)
-  {
-    $this->backupdrConfiguration = $backupdrConfiguration;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration
-   */
-  public function getBackupdrConfiguration()
-  {
-    return $this->backupdrConfiguration;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param string $creationTime
+   * @param string
    */
   public function setCreationTime($creationTime)
   {
@@ -412,28 +140,21 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->creationTime;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: STATE_UNSPECIFIED, HEALTHY, UNHEALTHY, SUSPENDED, DELETED,
-   * STATE_OTHER, STOPPED
-   *
-   * @param self::CURRENT_STATE_* $currentState
+   * @param string
    */
   public function setCurrentState($currentState)
   {
     $this->currentState = $currentState;
   }
   /**
-   * @return self::CURRENT_STATE_*
+   * @return string
    */
   public function getCurrentState()
   {
     return $this->currentState;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainCustomMetadataData $customMetadata
+   * @param StorageDatabasecenterPartnerapiV1mainCustomMetadataData
    */
   public function setCustomMetadata(StorageDatabasecenterPartnerapiV1mainCustomMetadataData $customMetadata)
   {
@@ -447,28 +168,21 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->customMetadata;
   }
   /**
-   * Optional. Disable validation warnings
-   *
-   * Accepted values: EDITION_UNSPECIFIED, EDITION_ENTERPRISE,
-   * EDITION_ENTERPRISE_PLUS, EDITION_STANDARD
-   *
-   * @param self::EDITION_* $edition
+   * @param string
    */
   public function setEdition($edition)
   {
     $this->edition = $edition;
   }
   /**
-   * @return self::EDITION_*
+   * @return string
    */
   public function getEdition()
   {
     return $this->edition;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainEntitlement[] $entitlements
+   * @param StorageDatabasecenterPartnerapiV1mainEntitlement[]
    */
   public function setEntitlements($entitlements)
   {
@@ -482,46 +196,21 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->entitlements;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: STATE_UNSPECIFIED, HEALTHY, UNHEALTHY, SUSPENDED, DELETED,
-   * STATE_OTHER, STOPPED
-   *
-   * @param self::EXPECTED_STATE_* $expectedState
+   * @param string
    */
   public function setExpectedState($expectedState)
   {
     $this->expectedState = $expectedState;
   }
   /**
-   * @return self::EXPECTED_STATE_*
+   * @return string
    */
   public function getExpectedState()
   {
     return $this->expectedState;
   }
   /**
-   * Disable validation warnings
-   *
-   * @deprecated
-   * @param StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration $gcbdrConfiguration
-   */
-  public function setGcbdrConfiguration(StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration $gcbdrConfiguration)
-  {
-    $this->gcbdrConfiguration = $gcbdrConfiguration;
-  }
-  /**
-   * @deprecated
-   * @return StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration
-   */
-  public function getGcbdrConfiguration()
-  {
-    return $this->gcbdrConfiguration;
-  }
-  /**
-   * Required. Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $id
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
    */
   public function setId(StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $id)
   {
@@ -535,80 +224,21 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->id;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: INSTANCE_TYPE_UNSPECIFIED, SUB_RESOURCE_TYPE_UNSPECIFIED,
-   * PRIMARY, SECONDARY, READ_REPLICA, OTHER, SUB_RESOURCE_TYPE_PRIMARY,
-   * SUB_RESOURCE_TYPE_SECONDARY, SUB_RESOURCE_TYPE_READ_REPLICA,
-   * SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY, SUB_RESOURCE_TYPE_READ_POOL,
-   * SUB_RESOURCE_TYPE_RESERVATION, SUB_RESOURCE_TYPE_DATASET,
-   * SUB_RESOURCE_TYPE_OTHER
-   *
-   * @param self::INSTANCE_TYPE_* $instanceType
+   * @param string
    */
   public function setInstanceType($instanceType)
   {
     $this->instanceType = $instanceType;
   }
   /**
-   * @return self::INSTANCE_TYPE_*
+   * @return string
    */
   public function getInstanceType()
   {
     return $this->instanceType;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param array[] $internalAdditionalMetadata
-   */
-  public function setInternalAdditionalMetadata($internalAdditionalMetadata)
-  {
-    $this->internalAdditionalMetadata = $internalAdditionalMetadata;
-  }
-  /**
-   * @return array[]
-   */
-  public function getInternalAdditionalMetadata()
-  {
-    return $this->internalAdditionalMetadata;
-  }
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainIpAddress $ipAddress
-   */
-  public function setIpAddress(StorageDatabasecenterPartnerapiV1mainIpAddress $ipAddress)
-  {
-    $this->ipAddress = $ipAddress;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainIpAddress
-   */
-  public function getIpAddress()
-  {
-    return $this->ipAddress;
-  }
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @param bool $isDeletionProtectionEnabled
-   */
-  public function setIsDeletionProtectionEnabled($isDeletionProtectionEnabled)
-  {
-    $this->isDeletionProtectionEnabled = $isDeletionProtectionEnabled;
-  }
-  /**
-   * @return bool
-   */
-  public function getIsDeletionProtectionEnabled()
-  {
-    return $this->isDeletionProtectionEnabled;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param string $location
+   * @param string
    */
   public function setLocation($location)
   {
@@ -622,9 +252,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->location;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainMachineConfiguration $machineConfiguration
+   * @param StorageDatabasecenterPartnerapiV1mainMachineConfiguration
    */
   public function setMachineConfiguration(StorageDatabasecenterPartnerapiV1mainMachineConfiguration $machineConfiguration)
   {
@@ -638,41 +266,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->machineConfiguration;
   }
   /**
-   * Optional. Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo $maintenanceInfo
-   */
-  public function setMaintenanceInfo(StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo $maintenanceInfo)
-  {
-    $this->maintenanceInfo = $maintenanceInfo;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
-   */
-  public function getMaintenanceInfo()
-  {
-    return $this->maintenanceInfo;
-  }
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @param string[] $modes
-   */
-  public function setModes($modes)
-  {
-    $this->modes = $modes;
-  }
-  /**
-   * @return string[]
-   */
-  public function getModes()
-  {
-    return $this->modes;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $primaryResourceId
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
    */
   public function setPrimaryResourceId(StorageDatabasecenterPartnerapiV1mainDatabaseResourceId $primaryResourceId)
   {
@@ -686,9 +280,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->primaryResourceId;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param string $primaryResourceLocation
+   * @param string
    */
   public function setPrimaryResourceLocation($primaryResourceLocation)
   {
@@ -702,9 +294,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->primaryResourceLocation;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterProtoCommonProduct $product
+   * @param StorageDatabasecenterProtoCommonProduct
    */
   public function setProduct(StorageDatabasecenterProtoCommonProduct $product)
   {
@@ -718,9 +308,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->product;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param string $resourceContainer
+   * @param string
    */
   public function setResourceContainer($resourceContainer)
   {
@@ -734,25 +322,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->resourceContainer;
   }
   /**
-   * Optional. Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainResourceFlags[] $resourceFlags
-   */
-  public function setResourceFlags($resourceFlags)
-  {
-    $this->resourceFlags = $resourceFlags;
-  }
-  /**
-   * @return StorageDatabasecenterPartnerapiV1mainResourceFlags[]
-   */
-  public function getResourceFlags()
-  {
-    return $this->resourceFlags;
-  }
-  /**
-   * Required. Disable validation warnings
-   *
-   * @param string $resourceName
+   * @param string
    */
   public function setResourceName($resourceName)
   {
@@ -766,29 +336,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->resourceName;
   }
   /**
-   * Optional. Disable validation warnings
-   *
-   * Accepted values: SUSPENSION_REASON_UNSPECIFIED, WIPEOUT_HIDE_EVENT,
-   * WIPEOUT_PURGE_EVENT, BILLING_DISABLED, ABUSER_DETECTED,
-   * ENCRYPTION_KEY_INACCESSIBLE, REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE
-   *
-   * @param self::SUSPENSION_REASON_* $suspensionReason
-   */
-  public function setSuspensionReason($suspensionReason)
-  {
-    $this->suspensionReason = $suspensionReason;
-  }
-  /**
-   * @return self::SUSPENSION_REASON_*
-   */
-  public function getSuspensionReason()
-  {
-    return $this->suspensionReason;
-  }
-  /**
-   * Optional. Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainTags $tagsSet
+   * @param StorageDatabasecenterPartnerapiV1mainTags
    */
   public function setTagsSet(StorageDatabasecenterPartnerapiV1mainTags $tagsSet)
   {
@@ -802,9 +350,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->tagsSet;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param string $updationTime
+   * @param string
    */
   public function setUpdationTime($updationTime)
   {
@@ -818,9 +364,7 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->updationTime;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param StorageDatabasecenterPartnerapiV1mainUserLabels $userLabelSet
+   * @param StorageDatabasecenterPartnerapiV1mainUserLabels
    */
   public function setUserLabelSet(StorageDatabasecenterPartnerapiV1mainUserLabels $userLabelSet)
   {
@@ -832,22 +376,6 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
   public function getUserLabelSet()
   {
     return $this->userLabelSet;
-  }
-  /**
-   * Disable validation warnings
-   *
-   * @param string $zone
-   */
-  public function setZone($zone)
-  {
-    $this->zone = $zone;
-  }
-  /**
-   * @return string
-   */
-  public function getZone()
-  {
-    return $this->zone;
   }
 }
 

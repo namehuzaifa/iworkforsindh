@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class ListAssetsResult extends \Google\Model
 {
-  public const STATE_CHANGE_UNUSED = 'UNUSED';
-  public const STATE_CHANGE_ADDED = 'ADDED';
-  public const STATE_CHANGE_REMOVED = 'REMOVED';
-  public const STATE_CHANGE_ACTIVE = 'ACTIVE';
   protected $assetType = Asset::class;
   protected $assetDataType = '';
   /**
@@ -31,7 +27,7 @@ class ListAssetsResult extends \Google\Model
   public $stateChange;
 
   /**
-   * @param Asset $asset
+   * @param Asset
    */
   public function setAsset(Asset $asset)
   {
@@ -45,14 +41,14 @@ class ListAssetsResult extends \Google\Model
     return $this->asset;
   }
   /**
-   * @param self::STATE_CHANGE_* $stateChange
+   * @param string
    */
   public function setStateChange($stateChange)
   {
     $this->stateChange = $stateChange;
   }
   /**
-   * @return self::STATE_CHANGE_*
+   * @return string
    */
   public function getStateChange()
   {

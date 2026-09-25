@@ -55,32 +55,25 @@ class Compute extends \Google\Service
 
   public $acceleratorTypes;
   public $addresses;
-  public $advice;
   public $autoscalers;
   public $backendBuckets;
   public $backendServices;
-  public $crossSiteNetworks;
   public $diskTypes;
   public $disks;
   public $externalVpnGateways;
   public $firewallPolicies;
   public $firewalls;
   public $forwardingRules;
-  public $futureReservations;
   public $globalAddresses;
   public $globalForwardingRules;
-  public $globalFrontendSettings;
   public $globalNetworkEndpointGroups;
   public $globalOperations;
   public $globalOrganizationOperations;
   public $globalPublicDelegatedPrefixes;
-  public $globalVmExtensionPolicies;
   public $healthChecks;
-  public $hosts;
   public $httpHealthChecks;
   public $httpsHealthChecks;
   public $imageFamilyViews;
-  public $imageViews;
   public $images;
   public $instanceGroupManagerResizeRequests;
   public $instanceGroupManagers;
@@ -88,11 +81,8 @@ class Compute extends \Google\Service
   public $instanceSettings;
   public $instanceTemplates;
   public $instances;
-  public $instantSnapshotGroups;
   public $instantSnapshots;
-  public $interconnectAttachmentGroups;
   public $interconnectAttachments;
-  public $interconnectGroups;
   public $interconnectLocations;
   public $interconnectRemoteLocations;
   public $interconnects;
@@ -100,7 +90,6 @@ class Compute extends \Google\Service
   public $licenses;
   public $machineImages;
   public $machineTypes;
-  public $managedRulesets;
   public $networkAttachments;
   public $networkEdgeSecurityServices;
   public $networkEndpointGroups;
@@ -110,38 +99,27 @@ class Compute extends \Google\Service
   public $nodeGroups;
   public $nodeTemplates;
   public $nodeTypes;
-  public $organizationSecurityPolicies;
   public $packetMirrorings;
-  public $previewFeatures;
-  public $projectViews;
   public $projects;
   public $publicAdvertisedPrefixes;
   public $publicDelegatedPrefixes;
   public $regionAutoscalers;
-  public $regionBackendBuckets;
   public $regionBackendServices;
   public $regionCommitments;
-  public $regionCompositeHealthChecks;
   public $regionDiskTypes;
   public $regionDisks;
-  public $regionHealthAggregationPolicies;
   public $regionHealthCheckServices;
   public $regionHealthChecks;
-  public $regionHealthSources;
-  public $regionInstanceGroupManagerResizeRequests;
   public $regionInstanceGroupManagers;
   public $regionInstanceGroups;
   public $regionInstanceTemplates;
   public $regionInstances;
-  public $regionInstantSnapshotGroups;
   public $regionInstantSnapshots;
   public $regionNetworkEndpointGroups;
   public $regionNetworkFirewallPolicies;
   public $regionNotificationEndpoints;
   public $regionOperations;
   public $regionSecurityPolicies;
-  public $regionSnapshotSettings;
-  public $regionSnapshots;
   public $regionSslCertificates;
   public $regionSslPolicies;
   public $regionTargetHttpProxies;
@@ -150,14 +128,8 @@ class Compute extends \Google\Service
   public $regionUrlMaps;
   public $regionZones;
   public $regions;
-  public $reliabilityRisks;
-  public $reservationBlocks;
-  public $reservationSlots;
-  public $reservationSubBlocks;
   public $reservations;
   public $resourcePolicies;
-  public $rolloutPlans;
-  public $rollouts;
   public $routers;
   public $routes;
   public $securityPolicies;
@@ -180,9 +152,7 @@ class Compute extends \Google\Service
   public $urlMaps;
   public $vpnGateways;
   public $vpnTunnels;
-  public $wireGroups;
   public $zoneOperations;
-  public $zoneVmExtensionPolicies;
   public $zones;
   public $rootUrlTemplate;
 
@@ -496,81 +466,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/addresses/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->advice = new Compute\Resource\Advice(
-        $this,
-        $this->serviceName,
-        'advice',
-        [
-          'methods' => [
-            'calendarMode' => [
-              'path' => 'projects/{project}/regions/{region}/advice/calendarMode',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'capacity' => [
-              'path' => 'projects/{project}/regions/{region}/advice/capacity',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'capacityHistory' => [
-              'path' => 'projects/{project}/regions/{region}/advice/capacityHistory',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -740,26 +635,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/zones/{zone}/autoscalers/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'update' => [
               'path' => 'projects/{project}/zones/{zone}/autoscalers',
               'httpMethod' => 'PUT',
@@ -808,44 +683,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/backendBuckets',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -943,36 +780,6 @@ class Compute extends \Google\Service
               ],
             ],'list' => [
               'path' => 'projects/{project}/global/backendBuckets',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'listUsable' => [
-              'path' => 'projects/{project}/global/backendBuckets/listUsable',
               'httpMethod' => 'GET',
               'parameters' => [
                 'project' => [
@@ -1213,21 +1020,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],'getEffectiveSecurityPolicies' => [
-              'path' => 'projects/{project}/global/backendServices/{backendService}/getEffectiveSecurityPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'backendService' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'getHealth' => [
               'path' => 'projects/{project}/global/backendServices/{backendService}/getHealth',
               'httpMethod' => 'POST',
@@ -1446,125 +1238,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->crossSiteNetworks = new Compute\Resource\CrossSiteNetworks(
-        $this,
-        $this->serviceName,
-        'crossSiteNetworks',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'validateOnly' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'validateOnly' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->diskTypes = new Compute\Resource\DiskTypes(
         $this,
         $this->serviceName,
@@ -1751,29 +1424,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'bulkSetLabels' => [
-              'path' => 'projects/{project}/zones/{zone}/disks/bulkSetLabels',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'resource' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -2144,30 +1794,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'updateKmsKey' => [
-              'path' => 'projects/{project}/zones/{zone}/disks/{disk}/updateKmsKey',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'disk' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],
           ]
         ]
@@ -2458,10 +2084,6 @@ class Compute extends \Google\Service
               'path' => 'locations/global/firewallPolicies/listAssociations',
               'httpMethod' => 'GET',
               'parameters' => [
-                'includeInheritedPolicies' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'targetResource' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -2680,21 +2302,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/firewalls/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'update' => [
               'path' => 'projects/{project}/global/firewalls/{firewall}',
               'httpMethod' => 'PUT',
@@ -2804,10 +2411,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'view' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'insert' => [
@@ -2940,204 +2543,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->futureReservations = new Compute\Resource\FutureReservations(
-        $this,
-        $this->serviceName,
-        'futureReservations',
-        [
-          'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/futureReservations',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'cancel' => [
-              'path' => 'projects/{project}/zones/{zone}/futureReservations/{futureReservation}/cancel',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'futureReservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/zones/{zone}/futureReservations/{futureReservation}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'futureReservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/zones/{zone}/futureReservations/{futureReservation}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'futureReservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/zones/{zone}/futureReservations',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/futureReservations',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'update' => [
-              'path' => 'projects/{project}/zones/{zone}/futureReservations/{futureReservation}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'futureReservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->globalAddresses = new Compute\Resource\GlobalAddresses(
         $this,
         $this->serviceName,
@@ -3256,21 +2661,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/addresses/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -3313,10 +2703,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'view' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'insert' => [
@@ -3412,44 +2798,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->globalFrontendSettings = new Compute\Resource\GlobalFrontendSettings(
-        $this,
-        $this->serviceName,
-        'globalFrontendSettings',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/global/globalFrontendSettings',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/global/globalFrontendSettings',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -3916,151 +3264,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->globalVmExtensionPolicies = new Compute\Resource\GlobalVmExtensionPolicies(
-        $this,
-        $this->serviceName,
-        'globalVmExtensionPolicies',
-        [
-          'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/vmExtensionPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/global/vmExtensionPolicies/{globalVmExtensionPolicy}/delete',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'globalVmExtensionPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/vmExtensionPolicies/{globalVmExtensionPolicy}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'globalVmExtensionPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/global/vmExtensionPolicies',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/vmExtensionPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'update' => [
-              'path' => 'projects/{project}/global/vmExtensionPolicies/{globalVmExtensionPolicy}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'globalVmExtensionPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->healthChecks = new Compute\Resource\HealthChecks(
         $this,
         $this->serviceName,
@@ -4202,21 +3405,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/healthChecks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'update' => [
               'path' => 'projects/{project}/global/healthChecks/{healthCheck}',
               'httpMethod' => 'PUT',
@@ -4234,110 +3422,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->hosts = new Compute\Resource\Hosts(
-        $this,
-        $this->serviceName,
-        'hosts',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/zones/{zone}/{association}/hosts/{host}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'association' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'host' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getVersion' => [
-              'path' => 'projects/{project}/zones/{zone}/{association}/hosts/{host}/getVersion',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'association' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'host' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/{association}/hosts',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'association' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
               ],
             ],
@@ -4445,21 +3529,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/httpHealthChecks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],'update' => [
@@ -4588,21 +3657,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/httpsHealthChecks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'update' => [
               'path' => 'projects/{project}/global/httpsHealthChecks/{httpsHealthCheck}',
               'httpMethod' => 'PUT',
@@ -4650,71 +3704,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->imageViews = new Compute\Resource\ImageViews(
-        $this,
-        $this->serviceName,
-        'imageViews',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/regions/{region}/imageViews/{resourceId}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resourceId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/imageViews',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
               ],
             ],
@@ -5218,10 +4207,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -5245,10 +4230,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
                 'requestId' => [
                   'location' => 'query',
@@ -5536,10 +4517,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -5688,10 +4665,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
                 'requestId' => [
                   'location' => 'query',
@@ -6004,26 +4977,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/zones/{zone}/instanceGroups/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -6286,30 +5239,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'addNetworkInterface' => [
-              'path' => 'projects/{project}/zones/{zone}/instances/{instance}/addNetworkInterface',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instance' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],'addResourcePolicies' => [
               'path' => 'projects/{project}/zones/{zone}/instances/{instance}/addResourcePolicies',
               'httpMethod' => 'POST',
@@ -6438,10 +5367,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -6472,35 +5397,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'networkInterface' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'deleteNetworkInterface' => [
-              'path' => 'projects/{project}/zones/{zone}/instances/{instance}/deleteNetworkInterface',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instance' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'networkInterfaceName' => [
                   'location' => 'query',
                   'type' => 'string',
                   'required' => true,
@@ -6832,30 +5728,6 @@ class Compute extends \Google\Service
               ],
             ],'removeResourcePolicies' => [
               'path' => 'projects/{project}/zones/{zone}/instances/{instance}/removeResourcePolicies',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instance' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'reportHostAsFaulty' => [
-              'path' => 'projects/{project}/zones/{zone}/instances/{instance}/reportHostAsFaulty',
               'httpMethod' => 'POST',
               'parameters' => [
                 'project' => [
@@ -7391,10 +6263,6 @@ class Compute extends \Google\Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -7466,10 +6334,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'discardLocalSsd' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
                 'minimalAction' => [
                   'location' => 'query',
@@ -7588,182 +6452,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->instantSnapshotGroups = new Compute\Resource\InstantSnapshotGroups(
-        $this,
-        $this->serviceName,
-        'instantSnapshotGroups',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups/{instantSnapshotGroup}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instantSnapshotGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups/{instantSnapshotGroup}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instantSnapshotGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'sourceConsistencyGroup' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -8004,181 +6692,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->interconnectAttachmentGroups = new Compute\Resource\InterconnectAttachmentGroups(
-        $this,
-        $this->serviceName,
-        'interconnectAttachmentGroups',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectAttachmentGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectAttachmentGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'getOperationalStatus' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}/getOperationalStatus',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectAttachmentGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectAttachmentGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/interconnectAttachmentGroups/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->interconnectAttachments = new Compute\Resource\InterconnectAttachments(
         $this,
         $this->serviceName,
@@ -8371,196 +6884,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->interconnectGroups = new Compute\Resource\InterconnectGroups(
-        $this,
-        $this->serviceName,
-        'interconnectGroups',
-        [
-          'methods' => [
-            'createMembers' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{interconnectGroup}/createMembers',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{interconnectGroup}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{interconnectGroup}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'getOperationalStatus' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{interconnectGroup}/getOperationalStatus',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/global/interconnectGroups',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/interconnectGroups',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{interconnectGroup}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'interconnectGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/interconnectGroups/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -8850,40 +7173,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/global/licenseCodes/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/global/licenseCodes/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'testIamPermissions' => [
               'path' => 'projects/{project}/global/licenseCodes/{resource}/testIamPermissions',
               'httpMethod' => 'POST',
@@ -9036,29 +7325,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],'update' => [
-              'path' => 'projects/{project}/global/licenses/{license}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'license' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],
           ]
         ]
@@ -9185,21 +7451,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],'setLabels' => [
-              'path' => 'projects/{project}/global/machineImages/{resource}/setLabels',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'testIamPermissions' => [
               'path' => 'projects/{project}/global/machineImages/{resource}/testIamPermissions',
               'httpMethod' => 'POST',
@@ -9293,61 +7544,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->managedRulesets = new Compute\Resource\ManagedRulesets(
-        $this,
-        $this->serviceName,
-        'managedRulesets',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/global/managedRulesets/{managedRuleset}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'managedRuleset' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/managedRulesets',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -10042,33 +8238,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'addPacketMirroringRule' => [
-              'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/addPacketMirroringRule',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'firewallPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'maxPriority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'minPriority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],'addRule' => [
               'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/addRule',
               'httpMethod' => 'POST',
@@ -10229,25 +8398,6 @@ class Compute extends \Google\Service
                   'type' => 'integer',
                 ],
               ],
-            ],'getPacketMirroringRule' => [
-              'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/getPacketMirroringRule',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'firewallPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'priority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
             ],'getRule' => [
               'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/getRule',
               'httpMethod' => 'GET',
@@ -10330,29 +8480,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'patchPacketMirroringRule' => [
-              'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/patchPacketMirroringRule',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'firewallPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'priority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],'patchRule' => [
               'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/patchRule',
               'httpMethod' => 'POST',
@@ -10393,29 +8520,6 @@ class Compute extends \Google\Service
                 'name' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'removePacketMirroringRule' => [
-              'path' => 'projects/{project}/global/firewallPolicies/{firewallPolicy}/removePacketMirroringRule',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'firewallPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'priority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
                 ],
                 'requestId' => [
                   'location' => 'query',
@@ -10542,25 +8646,6 @@ class Compute extends \Google\Service
           'methods' => [
             'addPeering' => [
               'path' => 'projects/{project}/global/networks/{network}/addPeering',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'network' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'cancelRequestRemovePeering' => [
-              'path' => 'projects/{project}/global/networks/{network}/cancelRequestRemovePeering',
               'httpMethod' => 'POST',
               'parameters' => [
                 'project' => [
@@ -10739,25 +8824,6 @@ class Compute extends \Google\Service
               ],
             ],'removePeering' => [
               'path' => 'projects/{project}/global/networks/{network}/removePeering',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'network' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'requestRemovePeering' => [
-              'path' => 'projects/{project}/global/networks/{network}/requestRemovePeering',
               'httpMethod' => 'POST',
               'parameters' => [
                 'project' => [
@@ -11529,284 +9595,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->organizationSecurityPolicies = new Compute\Resource\OrganizationSecurityPolicies(
-        $this,
-        $this->serviceName,
-        'organizationSecurityPolicies',
-        [
-          'methods' => [
-            'addAssociation' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/addAssociation',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'replaceExistingAssociation' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'addRule' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/addRule',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'copyRules' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/copyRules',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'sourceSecurityPolicy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getAssociation' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/getAssociation',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'name' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'getRule' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/getRule',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'priority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'locations/global/securityPolicies',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parentId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'locations/global/securityPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'parentId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'listAssociations' => [
-              'path' => 'locations/global/securityPolicies/listAssociations',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'targetResource' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'listPreconfiguredExpressionSets' => [
-              'path' => 'locations/global/securityPolicies/listPreconfiguredExpressionSets',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'parentId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'move' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/move',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'patchRule' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/patchRule',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'priority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'removeAssociation' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/removeAssociation',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'name' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'removeRule' => [
-              'path' => 'locations/global/securityPolicies/{securityPolicy}/removeRule',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'securityPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'priority' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->packetMirrorings = new Compute\Resource\PacketMirrorings(
         $this,
         $this->serviceName,
@@ -11988,105 +9776,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->previewFeatures = new Compute\Resource\PreviewFeatures(
-        $this,
-        $this->serviceName,
-        'previewFeatures',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/global/previewFeatures/{previewFeature}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'previewFeature' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/previewFeatures',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'update' => [
-              'path' => 'projects/{project}/global/previewFeatures/{previewFeature}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'previewFeature' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->projectViews = new Compute\Resource\ProjectViews(
-        $this,
-        $this->serviceName,
-        'projectViews',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/regions/{region}/projectViews',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -12816,26 +10505,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/autoscalers/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'update' => [
               'path' => 'projects/{project}/regions/{region}/autoscalers',
               'httpMethod' => 'PUT',
@@ -12857,237 +10526,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionBackendBuckets = new Compute\Resource\RegionBackendBuckets(
-        $this,
-        $this->serviceName,
-        'regionBackendBuckets',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/{backendBucket}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'backendBucket' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/{backendBucket}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'backendBucket' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'listUsable' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/listUsable',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/{backendBucket}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'backendBucket' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/backendBuckets/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -13542,216 +10980,6 @@ class Compute extends \Google\Service
                 'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionCompositeHealthChecks = new Compute\Resource\RegionCompositeHealthChecks(
-        $this,
-        $this->serviceName,
-        'regionCompositeHealthChecks',
-        [
-          'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/compositeHealthChecks',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'compositeHealthCheck' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'compositeHealthCheck' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getHealth' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}/getHealth',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'compositeHealthCheck' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'compositeHealthCheck' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/compositeHealthChecks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -14234,220 +11462,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'updateKmsKey' => [
-              'path' => 'projects/{project}/regions/{region}/disks/{disk}/updateKmsKey',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'disk' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionHealthAggregationPolicies = new Compute\Resource\RegionHealthAggregationPolicies(
-        $this,
-        $this->serviceName,
-        'regionHealthAggregationPolicies',
-        [
-          'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/healthAggregationPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthAggregationPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthAggregationPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/healthAggregationPolicies',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/healthAggregationPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthAggregationPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/healthAggregationPolicies/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -14458,45 +11472,7 @@ class Compute extends \Google\Service
         'regionHealthCheckServices',
         [
           'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/healthCheckServices',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
+            'delete' => [
               'path' => 'projects/{project}/regions/{region}/healthCheckServices/{healthCheckService}',
               'httpMethod' => 'DELETE',
               'parameters' => [
@@ -14616,26 +11592,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/healthCheckServices/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -14770,26 +11726,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/healthChecks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],'update' => [
               'path' => 'projects/{project}/regions/{region}/healthChecks/{healthCheck}',
               'httpMethod' => 'PUT',
@@ -14812,373 +11748,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionHealthSources = new Compute\Resource\RegionHealthSources(
-        $this,
-        $this->serviceName,
-        'regionHealthSources',
-        [
-          'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/healthSources',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources/{healthSource}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthSource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources/{healthSource}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthSource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getHealth' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources/{healthSource}/getHealth',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthSource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources/{healthSource}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'healthSource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/healthSources/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionInstanceGroupManagerResizeRequests = new Compute\Resource\RegionInstanceGroupManagerResizeRequests(
-        $this,
-        $this->serviceName,
-        'regionInstanceGroupManagerResizeRequests',
-        [
-          'methods' => [
-            'cancel' => [
-              'path' => 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}/cancel',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instanceGroupManager' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resizeRequest' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instanceGroupManager' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resizeRequest' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instanceGroupManager' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resizeRequest' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instanceGroupManager' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instanceGroupManager' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
               ],
             ],
@@ -15278,10 +11847,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -15305,10 +11870,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
                 'requestId' => [
                   'location' => 'query',
@@ -15596,10 +12157,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -15748,10 +12305,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'noGracefulShutdown' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
                 'requestId' => [
                   'location' => 'query',
@@ -15935,26 +12488,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/instanceGroups/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -16090,182 +12623,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionInstantSnapshotGroups = new Compute\Resource\RegionInstantSnapshotGroups(
-        $this,
-        $this->serviceName,
-        'regionInstantSnapshotGroups',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups/{instantSnapshotGroup}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instantSnapshotGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups/{instantSnapshotGroup}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'instantSnapshotGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'sourceConsistencyGroup' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -16689,10 +13046,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'associatedPolicyToBeReplaced' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
                 'replaceExistingAssociation' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -16976,30 +13329,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'patchAssociation' => [
-              'path' => 'projects/{project}/regions/{region}/firewallPolicies/{firewallPolicy}/patchAssociation',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'firewallPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],'patchRule' => [
               'path' => 'projects/{project}/regions/{region}/firewallPolicies/{firewallPolicy}/patchRule',
               'httpMethod' => 'POST',
@@ -17134,45 +13463,7 @@ class Compute extends \Google\Service
         'regionNotificationEndpoints',
         [
           'methods' => [
-            'aggregatedList' => [
-              'path' => 'projects/{project}/aggregated/notificationEndpoints',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeAllScopes' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'serviceProjectNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
+            'delete' => [
               'path' => 'projects/{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}',
               'httpMethod' => 'DELETE',
               'parameters' => [
@@ -17268,26 +13559,6 @@ class Compute extends \Google\Service
                 'returnPartialSuccess' => [
                   'location' => 'query',
                   'type' => 'boolean',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/notificationEndpoints/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -17654,274 +13925,6 @@ class Compute extends \Google\Service
                   'required' => true,
                 ],
                 'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionSnapshotSettings = new Compute\Resource\RegionSnapshotSettings(
-        $this,
-        $this->serviceName,
-        'regionSnapshotSettings',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/regions/{region}/snapshotSettings',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/regions/{region}/snapshotSettings',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->regionSnapshots = new Compute\Resource\RegionSnapshots(
-        $this,
-        $this->serviceName,
-        'regionSnapshots',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{snapshot}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'snapshot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{snapshot}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'snapshot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'setLabels' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{resource}/setLabels',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'updateKmsKey' => [
-              'path' => 'projects/{project}/regions/{region}/snapshots/{snapshot}/updateKmsKey',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'snapshot' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -18906,655 +14909,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->reliabilityRisks = new Compute\Resource\ReliabilityRisks(
-        $this,
-        $this->serviceName,
-        'reliabilityRisks',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/global/reliabilityRisks/{reliabilityRisk}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reliabilityRisk' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/reliabilityRisks',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->reservationBlocks = new Compute\Resource\ReservationBlocks(
-        $this,
-        $this->serviceName,
-        'reservationBlocks',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks/{reservationBlock}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationBlock' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'view' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentResource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'performMaintenance' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks/{reservationBlock}/performMaintenance',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationBlock' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentResource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentResource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->reservationSlots = new Compute\Resource\ReservationSlots(
-        $this,
-        $this->serviceName,
-        'reservationSlots',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSlot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getHealth' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getHealth',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSlot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'getVersion' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getVersion',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSlot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'update' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSlot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->reservationSubBlocks = new Compute\Resource\ReservationSubBlocks(
-        $this,
-        $this->serviceName,
-        'reservationSubBlocks',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSubBlock' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'view' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'getIamPolicy' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/getIamPolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentResource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'optionsRequestedPolicyVersion' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-              ],
-            ],'getVersion' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/getVersion',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSubBlock' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'performMaintenance' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSubBlock' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'reportFaulty' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservationSubBlock' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'setIamPolicy' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/setIamPolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentResource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'parentResource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->reservations = new Compute\Resource\Reservations(
         $this,
         $this->serviceName,
@@ -19719,30 +15073,6 @@ class Compute extends \Google\Service
                 'returnPartialSuccess' => [
                   'location' => 'query',
                   'type' => 'boolean',
-                ],
-              ],
-            ],'performMaintenance' => [
-              'path' => 'projects/{project}/zones/{zone}/reservations/{reservation}/performMaintenance',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'reservation' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'resize' => [
@@ -20084,260 +15414,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->rolloutPlans = new Compute\Resource\RolloutPlans(
-        $this,
-        $this->serviceName,
-        'rolloutPlans',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/global/rolloutPlans/{rolloutPlan}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rolloutPlan' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/rolloutPlans/{rolloutPlan}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rolloutPlan' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/global/rolloutPlans',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/rolloutPlans',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->rollouts = new Compute\Resource\Rollouts(
-        $this,
-        $this->serviceName,
-        'rollouts',
-        [
-          'methods' => [
-            'advance' => [
-              'path' => 'projects/{project}/global/rollouts/{rollout}/advance',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rollout' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'currentWaveNumber' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'cancel' => [
-              'path' => 'projects/{project}/global/rollouts/{rollout}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rollout' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'rollback' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'projects/{project}/global/rollouts/{rollout}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rollout' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/rollouts/{rollout}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rollout' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/rollouts',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'pause' => [
-              'path' => 'projects/{project}/global/rollouts/{rollout}/pause',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rollout' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'etag' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'resume' => [
-              'path' => 'projects/{project}/global/rollouts/{rollout}/resume',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'rollout' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'etag' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->routers = new Compute\Resource\Routers(
         $this,
         $this->serviceName,
@@ -20406,62 +15482,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'deleteNamedSet' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/deleteNamedSet',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'namedSet' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'deleteRoutePolicy' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/deleteRoutePolicy',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'policy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
             ],'get' => [
               'path' => 'projects/{project}/regions/{region}/routers/{router}',
               'httpMethod' => 'GET',
@@ -20480,30 +15500,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],'getNamedSet' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/getNamedSet',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'namedSet' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'getNatIpInfo' => [
@@ -20572,30 +15568,6 @@ class Compute extends \Google\Service
                 'returnPartialSuccess' => [
                   'location' => 'query',
                   'type' => 'boolean',
-                ],
-              ],
-            ],'getRoutePolicy' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/getRoutePolicy',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'policy' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'getRouterStatus' => [
@@ -20672,197 +15644,9 @@ class Compute extends \Google\Service
                   'type' => 'boolean',
                 ],
               ],
-            ],'listBgpRoutes' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/listBgpRoutes',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'addressFamily' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'destinationPrefix' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'peer' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'policyApplied' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'routeType' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'listNamedSets' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/listNamedSets',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'listRoutePolicies' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/listRoutePolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
             ],'patch' => [
               'path' => 'projects/{project}/regions/{region}/routers/{router}',
               'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'patchNamedSet' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/patchNamedSet',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'patchRoutePolicy' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/patchRoutePolicy',
-              'httpMethod' => 'POST',
               'parameters' => [
                 'project' => [
                   'location' => 'path',
@@ -20907,54 +15691,6 @@ class Compute extends \Google\Service
             ],'update' => [
               'path' => 'projects/{project}/regions/{region}/routers/{router}',
               'httpMethod' => 'PUT',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'updateNamedSet' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/updateNamedSet',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'router' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'updateRoutePolicy' => [
-              'path' => 'projects/{project}/regions/{region}/routers/{router}/updateRoutePolicy',
-              'httpMethod' => 'POST',
               'parameters' => [
                 'project' => [
                   'location' => 'path',
@@ -21062,21 +15798,6 @@ class Compute extends \Google\Service
                 'returnPartialSuccess' => [
                   'location' => 'query',
                   'type' => 'boolean',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/routes/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -21452,10 +16173,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'showNatIps' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
               ],
             ],'getIamPolicy' => [
               'path' => 'projects/{project}/regions/{region}/serviceAttachments/{resource}/getIamPolicy',
@@ -21787,25 +16504,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],'updateKmsKey' => [
-              'path' => 'projects/{project}/global/snapshots/{snapshot}/updateKmsKey',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'snapshot' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],
@@ -22537,11 +17235,6 @@ class Compute extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'views' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
               ],
             ],'delete' => [
               'path' => 'projects/{project}/regions/{region}/subnetworks/{subnetwork}',
@@ -22609,11 +17302,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'views' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
                 ],
               ],
             ],'getIamPolicy' => [
@@ -22693,11 +17381,6 @@ class Compute extends \Google\Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ],
-                'views' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
               ],
             ],'listUsable' => [
               'path' => 'projects/{project}/aggregated/subnetworks/listUsable',
@@ -22727,10 +17410,6 @@ class Compute extends \Google\Service
                 'returnPartialSuccess' => [
                   'location' => 'query',
                   'type' => 'boolean',
-                ],
-                'serviceProject' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'patch' => [
@@ -23506,26 +18185,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/zones/{zone}/targetInstances/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -23840,26 +18499,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/regions/{region}/targetPools/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'region' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -24043,21 +18682,6 @@ class Compute extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/targetSslProxies/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
             ],
           ]
         ]
@@ -24220,21 +18844,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/targetTcpProxies/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -24569,21 +19178,6 @@ class Compute extends \Google\Service
                 'requestId' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],'testIamPermissions' => [
-              'path' => 'projects/{project}/global/urlMaps/{resource}/testIamPermissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'resource' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],'update' => [
@@ -25004,150 +19598,6 @@ class Compute extends \Google\Service
           ]
         ]
     );
-    $this->wireGroups = new Compute\Resource\WireGroups(
-        $this,
-        $this->serviceName,
-        'wireGroups',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups/{wireGroup}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'wireGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups/{wireGroup}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'wireGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'validateOnly' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups/{wireGroup}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'crossSiteNetwork' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'wireGroup' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'validateOnly' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->zoneOperations = new Compute\Resource\ZoneOperations(
         $this,
         $this->serviceName,
@@ -25247,138 +19697,6 @@ class Compute extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->zoneVmExtensionPolicies = new Compute\Resource\ZoneVmExtensionPolicies(
-        $this,
-        $this->serviceName,
-        'zoneVmExtensionPolicies',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'vmExtensionPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'vmExtensionPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'insert' => [
-              'path' => 'projects/{project}/zones/{zone}/vmExtensionPolicies',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'list' => [
-              'path' => 'projects/{project}/zones/{zone}/vmExtensionPolicies',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'update' => [
-              'path' => 'projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'project' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'zone' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'vmExtensionPolicy' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'requestId' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],

@@ -54,7 +54,7 @@ use Google\ApiCore\ValidationException;
 class AbsoluteResourceTemplate implements ResourceTemplateInterface
 {
     private RelativeResourceTemplate $resourceTemplate;
-    /** @var string */
+    /** @var string|bool */
     private $verb;
 
     /**
@@ -88,9 +88,9 @@ class AbsoluteResourceTemplate implements ResourceTemplateInterface
     /**
      * @inheritdoc
      */
-    public function render(array $bindings, bool $urlEncode = false)
+    public function render(array $bindings)
     {
-        return sprintf('/%s%s', $this->resourceTemplate->render($bindings, $urlEncode), $this->renderVerb());
+        return sprintf('/%s%s', $this->resourceTemplate->render($bindings), $this->renderVerb());
     }
 
     /**

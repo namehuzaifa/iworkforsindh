@@ -34,7 +34,7 @@ class Pod extends \Google\Collection
   public $ns;
 
   /**
-   * @param Container[] $containers
+   * @param Container[]
    */
   public function setContainers($containers)
   {
@@ -48,7 +48,7 @@ class Pod extends \Google\Collection
     return $this->containers;
   }
   /**
-   * @param Label[] $labels
+   * @param Label[]
    */
   public function setLabels($labels)
   {
@@ -62,7 +62,7 @@ class Pod extends \Google\Collection
     return $this->labels;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -76,7 +76,7 @@ class Pod extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {

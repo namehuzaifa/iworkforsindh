@@ -14,14 +14,11 @@ class ThrottleLoginsTest extends TestCase
     #[DataProvider('emailProvider')]
     public function it_can_generate_throttle_key(string $email, string $expectedEmail): void
     {
-        $throttle = $this->createStub(ThrottlesLogins::class);
+        $throttle = $this->createMock(ThrottlesLogins::class);
         $throttle->method('username')->willReturn('email');
         $reflection = new \ReflectionClass($throttle);
         $method = $reflection->getMethod('throttleKey');
-
-        if (PHP_VERSION_ID < 80100) {
-            $method->setAccessible(true);
-        }
+        $method->setAccessible(true);
 
         $request = $this->mock(Request::class);
         $request->expects('input')->with('email')->andReturn($email);

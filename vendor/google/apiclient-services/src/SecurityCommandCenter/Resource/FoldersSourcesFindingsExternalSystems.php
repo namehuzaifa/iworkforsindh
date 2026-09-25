@@ -30,13 +30,17 @@ use Google\Service\SecurityCommandCenter\GoogleCloudSecuritycenterV1ExternalSyst
 class FoldersSourcesFindingsExternalSystems extends \Google\Service\Resource
 {
   /**
-   * (externalSystems.patch)
+   * Updates external system. This is for a given finding. (externalSystems.patch)
    *
-   * @param string $name
+   * @param string $name Full resource name of the external system, for example:
+   * "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
+   * "folders/1234/sources/5678/findings/123456/externalSystems/jira",
+   * "projects/1234/sources/5678/findings/123456/externalSystems/jira"
    * @param GoogleCloudSecuritycenterV1ExternalSystem $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask
+   * @opt_param string updateMask The FieldMask to use when updating the external
+   * system resource. If empty all mutable fields will be updated.
    * @return GoogleCloudSecuritycenterV1ExternalSystem
    * @throws \Google\Service\Exception
    */

@@ -19,17 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class Cve extends \Google\Collection
 {
-  public const EXPLOITATION_ACTIVITY_EXPLOITATION_ACTIVITY_UNSPECIFIED = 'EXPLOITATION_ACTIVITY_UNSPECIFIED';
-  public const EXPLOITATION_ACTIVITY_WIDE = 'WIDE';
-  public const EXPLOITATION_ACTIVITY_CONFIRMED = 'CONFIRMED';
-  public const EXPLOITATION_ACTIVITY_AVAILABLE = 'AVAILABLE';
-  public const EXPLOITATION_ACTIVITY_ANTICIPATED = 'ANTICIPATED';
-  public const EXPLOITATION_ACTIVITY_NO_KNOWN = 'NO_KNOWN';
-  public const IMPACT_RISK_RATING_UNSPECIFIED = 'RISK_RATING_UNSPECIFIED';
-  public const IMPACT_LOW = 'LOW';
-  public const IMPACT_MEDIUM = 'MEDIUM';
-  public const IMPACT_HIGH = 'HIGH';
-  public const IMPACT_CRITICAL = 'CRITICAL';
   protected $collection_key = 'references';
   protected $cvssv3Type = Cvssv3::class;
   protected $cvssv3DataType = '';
@@ -69,7 +58,7 @@ class Cve extends \Google\Collection
   public $zeroDay;
 
   /**
-   * @param Cvssv3 $cvssv3
+   * @param Cvssv3
    */
   public function setCvssv3(Cvssv3 $cvssv3)
   {
@@ -83,7 +72,7 @@ class Cve extends \Google\Collection
     return $this->cvssv3;
   }
   /**
-   * @param string $exploitReleaseDate
+   * @param string
    */
   public function setExploitReleaseDate($exploitReleaseDate)
   {
@@ -97,21 +86,21 @@ class Cve extends \Google\Collection
     return $this->exploitReleaseDate;
   }
   /**
-   * @param self::EXPLOITATION_ACTIVITY_* $exploitationActivity
+   * @param string
    */
   public function setExploitationActivity($exploitationActivity)
   {
     $this->exploitationActivity = $exploitationActivity;
   }
   /**
-   * @return self::EXPLOITATION_ACTIVITY_*
+   * @return string
    */
   public function getExploitationActivity()
   {
     return $this->exploitationActivity;
   }
   /**
-   * @param string $firstExploitationDate
+   * @param string
    */
   public function setFirstExploitationDate($firstExploitationDate)
   {
@@ -125,7 +114,7 @@ class Cve extends \Google\Collection
     return $this->firstExploitationDate;
   }
   /**
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {
@@ -139,21 +128,21 @@ class Cve extends \Google\Collection
     return $this->id;
   }
   /**
-   * @param self::IMPACT_* $impact
+   * @param string
    */
   public function setImpact($impact)
   {
     $this->impact = $impact;
   }
   /**
-   * @return self::IMPACT_*
+   * @return string
    */
   public function getImpact()
   {
     return $this->impact;
   }
   /**
-   * @param bool $observedInTheWild
+   * @param bool
    */
   public function setObservedInTheWild($observedInTheWild)
   {
@@ -167,7 +156,7 @@ class Cve extends \Google\Collection
     return $this->observedInTheWild;
   }
   /**
-   * @param Reference[] $references
+   * @param Reference[]
    */
   public function setReferences($references)
   {
@@ -181,7 +170,7 @@ class Cve extends \Google\Collection
     return $this->references;
   }
   /**
-   * @param bool $upstreamFixAvailable
+   * @param bool
    */
   public function setUpstreamFixAvailable($upstreamFixAvailable)
   {
@@ -195,7 +184,7 @@ class Cve extends \Google\Collection
     return $this->upstreamFixAvailable;
   }
   /**
-   * @param bool $zeroDay
+   * @param bool
    */
   public function setZeroDay($zeroDay)
   {

@@ -20,44 +20,16 @@ namespace Google\Service\Aiplatform;
 class GoogleCloudAiplatformV1DeployedModelRef extends \Google\Model
 {
   /**
-   * Immutable. The ID of the Checkpoint deployed in the DeployedModel.
-   *
-   * @var string
-   */
-  public $checkpointId;
-  /**
-   * Immutable. An ID of a DeployedModel in the above Endpoint.
-   *
    * @var string
    */
   public $deployedModelId;
   /**
-   * Immutable. A resource name of an Endpoint.
-   *
    * @var string
    */
   public $endpoint;
 
   /**
-   * Immutable. The ID of the Checkpoint deployed in the DeployedModel.
-   *
-   * @param string $checkpointId
-   */
-  public function setCheckpointId($checkpointId)
-  {
-    $this->checkpointId = $checkpointId;
-  }
-  /**
-   * @return string
-   */
-  public function getCheckpointId()
-  {
-    return $this->checkpointId;
-  }
-  /**
-   * Immutable. An ID of a DeployedModel in the above Endpoint.
-   *
-   * @param string $deployedModelId
+   * @param string
    */
   public function setDeployedModelId($deployedModelId)
   {
@@ -71,9 +43,7 @@ class GoogleCloudAiplatformV1DeployedModelRef extends \Google\Model
     return $this->deployedModelId;
   }
   /**
-   * Immutable. A resource name of an Endpoint.
-   *
-   * @param string $endpoint
+   * @param string
    */
   public function setEndpoint($endpoint)
   {

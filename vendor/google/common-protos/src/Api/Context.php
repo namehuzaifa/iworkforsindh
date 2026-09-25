@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * `Context` defines which contexts an API requests.
@@ -56,7 +56,7 @@ class Context extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \Google\Api\ContextRule[] $rules
+     *     @type array<\Google\Api\ContextRule>|\Google\Protobuf\Internal\RepeatedField $rules
      *           A list of RPC context rules that apply to individual API methods.
      *           **NOTE:** All service configuration rules follow "last one wins" order.
      * }
@@ -71,7 +71,7 @@ class Context extends \Google\Protobuf\Internal\Message
      * **NOTE:** All service configuration rules follow "last one wins" order.
      *
      * Generated from protobuf field <code>repeated .google.api.ContextRule rules = 1;</code>
-     * @return RepeatedField<\Google\Api\ContextRule>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getRules()
     {
@@ -83,7 +83,7 @@ class Context extends \Google\Protobuf\Internal\Message
      * **NOTE:** All service configuration rules follow "last one wins" order.
      *
      * Generated from protobuf field <code>repeated .google.api.ContextRule rules = 1;</code>
-     * @param \Google\Api\ContextRule[] $var
+     * @param array<\Google\Api\ContextRule>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setRules($var)

@@ -18,8 +18,10 @@ class Util
         if (fseek($stream, $offset) === 0) {
             $value = fread($stream, $numberOfBytes);
 
-            // Check that the number of bytes read is the number asked for.
-            if ($value !== false && \strlen($value) === $numberOfBytes) {
+            // We check that the number of bytes read is equal to the number
+            // asked for. We use ftell as getting the length of $value is
+            // much slower.
+            if ($value !== false && ftell($stream) - $offset === $numberOfBytes) {
                 return $value;
             }
         }

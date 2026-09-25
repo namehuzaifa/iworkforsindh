@@ -39,7 +39,6 @@ class CloudTasks extends \Google\Service
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_locations;
-  public $projects_locations_operations;
   public $projects_locations_queues;
   public $projects_locations_queues_tasks;
   public $rootUrlTemplate;
@@ -96,11 +95,6 @@ class CloudTasks extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'extraLocationTypes' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
                 'filter' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -126,26 +120,6 @@ class CloudTasks extends \Google\Service
                 'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_locations_operations = new CloudTasks\Resource\ProjectsLocationsOperations(
-        $this,
-        $this->serviceName,
-        'operations',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],

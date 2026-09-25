@@ -58,8 +58,9 @@ class ProjectsServicesResourcePolicies extends \Google\Service\Resource
    * @param string $parent Required. The relative resource name of the parent
    * Service in which the specified ResourcePolicy will be created, in the format:
    * ``` projects/{project_number}/services/{service_id} ``` Note that the
-   * `service_id` element must be a supported service ID. Consult the
-   * ResourcePolicy.name field for a list of supported service IDs.
+   * `service_id` element must be a supported service ID. Currently, the following
+   * service IDs are supported: * `oauth2.googleapis.com` (Google Identity for
+   * iOS)
    * @param GoogleFirebaseAppcheckV1ResourcePolicy $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleFirebaseAppcheckV1ResourcePolicy
@@ -102,8 +103,9 @@ class ProjectsServicesResourcePolicies extends \Google\Service\Resource
    * @param string $name Required. The relative resource name of the
    * ResourcePolicy to retrieve, in the format: ``` projects/{project_number}/serv
    * ices/{service_id}/resourcePolicies/{resource_policy_id} ``` Note that the
-   * `service_id` element must be a supported service ID. Consult the
-   * ResourcePolicy.name field for a list of supported service IDs.
+   * `service_id` element must be a supported service ID. Currently, the following
+   * service IDs are supported: * `oauth2.googleapis.com` (Google Identity for
+   * iOS)
    * @param array $optParams Optional parameters.
    * @return GoogleFirebaseAppcheckV1ResourcePolicy
    * @throws \Google\Service\Exception
@@ -121,8 +123,9 @@ class ProjectsServicesResourcePolicies extends \Google\Service\Resource
    * @param string $parent Required. The relative resource name of the parent
    * Service for which to list each associated ResourcePolicy, in the format: ```
    * projects/{project_number}/services/{service_id} ``` Note that the
-   * `service_id` element must be a supported service ID. Consult the
-   * ResourcePolicy.name field for a list of supported service IDs.
+   * `service_id` element must be a supported service ID. Currently, the following
+   * service IDs are supported: * `oauth2.googleapis.com` (Google Identity for
+   * iOS)
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter Optional. Filters the results by the specified rule.

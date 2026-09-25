@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * A simple descriptor of a resource type.
@@ -156,7 +156,7 @@ class ResourceDescriptor extends \Google\Protobuf\Internal\Message
      *           /[A-Za-z][a-zA-Z0-9]+/. It should start with an upper case character and
      *           should use PascalCase (UpperCamelCase). The maximum number of
      *           characters allowed for the `resource_type_kind` is 100.
-     *     @type string[] $pattern
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $pattern
      *           Optional. The relative resource name pattern associated with this resource
      *           type. The DNS prefix of the full resource name shouldn't be specified here.
      *           The path pattern must follow the syntax, which aligns with HTTP binding
@@ -204,7 +204,7 @@ class ResourceDescriptor extends \Google\Protobuf\Internal\Message
      *           The same concept of the `singular` field in k8s CRD spec
      *           https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
      *           Such as "project" for the `resourcemanager.googleapis.com/Project` type.
-     *     @type int[] $style
+     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $style
      *           Style flag(s) for this resource.
      *           These indicate that a resource is expected to conform to a given
      *           style. See the specific style flags for additional information.
@@ -272,7 +272,7 @@ class ResourceDescriptor extends \Google\Protobuf\Internal\Message
      * type of resource.
      *
      * Generated from protobuf field <code>repeated string pattern = 2;</code>
-     * @return RepeatedField<string>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getPattern()
     {
@@ -296,7 +296,7 @@ class ResourceDescriptor extends \Google\Protobuf\Internal\Message
      * type of resource.
      *
      * Generated from protobuf field <code>repeated string pattern = 2;</code>
-     * @param string[] $var
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setPattern($var)
@@ -467,7 +467,7 @@ class ResourceDescriptor extends \Google\Protobuf\Internal\Message
      * style. See the specific style flags for additional information.
      *
      * Generated from protobuf field <code>repeated .google.api.ResourceDescriptor.Style style = 10;</code>
-     * @return RepeatedField<int>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getStyle()
     {
@@ -480,7 +480,7 @@ class ResourceDescriptor extends \Google\Protobuf\Internal\Message
      * style. See the specific style flags for additional information.
      *
      * Generated from protobuf field <code>repeated .google.api.ResourceDescriptor.Style style = 10;</code>
-     * @param int[] $var
+     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setStyle($var)

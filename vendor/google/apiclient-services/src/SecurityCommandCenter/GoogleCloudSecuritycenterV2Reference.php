@@ -29,7 +29,7 @@ class GoogleCloudSecuritycenterV2Reference extends \Google\Model
   public $uri;
 
   /**
-   * @param string $source
+   * @param string
    */
   public function setSource($source)
   {
@@ -43,7 +43,7 @@ class GoogleCloudSecuritycenterV2Reference extends \Google\Model
     return $this->source;
   }
   /**
-   * @param string $uri
+   * @param string
    */
   public function setUri($uri)
   {

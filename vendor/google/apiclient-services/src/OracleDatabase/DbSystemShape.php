@@ -20,117 +20,56 @@ namespace Google\Service\OracleDatabase;
 class DbSystemShape extends \Google\Model
 {
   /**
-   * Optional. Available core count.
-   *
-   * @var int
-   */
-  public $availableCoreCount;
-  /**
-   * Optional. Number of cores per node.
-   *
    * @var int
    */
   public $availableCoreCountPerNode;
   /**
-   * Optional. Storage per storage server in terabytes.
-   *
    * @var int
    */
   public $availableDataStorageTb;
   /**
-   * Optional. Memory per database server node in gigabytes.
-   *
    * @var int
    */
   public $availableMemoryPerNodeGb;
   /**
-   * Optional. Core count increment.
-   *
-   * @var int
-   */
-  public $coreCountIncrement;
-  /**
-   * Optional. Maximum number of database servers.
-   *
    * @var int
    */
   public $maxNodeCount;
   /**
-   * Optional. Maximum number of storage servers.
-   *
    * @var int
    */
   public $maxStorageCount;
   /**
-   * Optional. Minimum core count per node.
-   *
    * @var int
    */
   public $minCoreCountPerNode;
   /**
-   * Optional. Minimum node storage per database server in gigabytes.
-   *
    * @var int
    */
   public $minDbNodeStoragePerNodeGb;
   /**
-   * Optional. Minimum memory per node in gigabytes.
-   *
    * @var int
    */
   public $minMemoryPerNodeGb;
   /**
-   * Optional. Minimum number of database servers.
-   *
    * @var int
    */
   public $minNodeCount;
   /**
-   * Optional. Minimum number of storage servers.
-   *
    * @var int
    */
   public $minStorageCount;
   /**
-   * Optional. Minimum core count per node.
-   *
-   * @var int
-   */
-  public $minimumCoreCount;
-  /**
-   * Identifier. The name of the Database System Shape resource with the format:
-   * projects/{project}/locations/{region}/dbSystemShapes/{db_system_shape}
-   *
    * @var string
    */
   public $name;
   /**
-   * Optional. shape
-   *
    * @var string
    */
   public $shape;
 
   /**
-   * Optional. Available core count.
-   *
-   * @param int $availableCoreCount
-   */
-  public function setAvailableCoreCount($availableCoreCount)
-  {
-    $this->availableCoreCount = $availableCoreCount;
-  }
-  /**
-   * @return int
-   */
-  public function getAvailableCoreCount()
-  {
-    return $this->availableCoreCount;
-  }
-  /**
-   * Optional. Number of cores per node.
-   *
-   * @param int $availableCoreCountPerNode
+   * @param int
    */
   public function setAvailableCoreCountPerNode($availableCoreCountPerNode)
   {
@@ -144,9 +83,7 @@ class DbSystemShape extends \Google\Model
     return $this->availableCoreCountPerNode;
   }
   /**
-   * Optional. Storage per storage server in terabytes.
-   *
-   * @param int $availableDataStorageTb
+   * @param int
    */
   public function setAvailableDataStorageTb($availableDataStorageTb)
   {
@@ -160,9 +97,7 @@ class DbSystemShape extends \Google\Model
     return $this->availableDataStorageTb;
   }
   /**
-   * Optional. Memory per database server node in gigabytes.
-   *
-   * @param int $availableMemoryPerNodeGb
+   * @param int
    */
   public function setAvailableMemoryPerNodeGb($availableMemoryPerNodeGb)
   {
@@ -176,25 +111,7 @@ class DbSystemShape extends \Google\Model
     return $this->availableMemoryPerNodeGb;
   }
   /**
-   * Optional. Core count increment.
-   *
-   * @param int $coreCountIncrement
-   */
-  public function setCoreCountIncrement($coreCountIncrement)
-  {
-    $this->coreCountIncrement = $coreCountIncrement;
-  }
-  /**
-   * @return int
-   */
-  public function getCoreCountIncrement()
-  {
-    return $this->coreCountIncrement;
-  }
-  /**
-   * Optional. Maximum number of database servers.
-   *
-   * @param int $maxNodeCount
+   * @param int
    */
   public function setMaxNodeCount($maxNodeCount)
   {
@@ -208,9 +125,7 @@ class DbSystemShape extends \Google\Model
     return $this->maxNodeCount;
   }
   /**
-   * Optional. Maximum number of storage servers.
-   *
-   * @param int $maxStorageCount
+   * @param int
    */
   public function setMaxStorageCount($maxStorageCount)
   {
@@ -224,9 +139,7 @@ class DbSystemShape extends \Google\Model
     return $this->maxStorageCount;
   }
   /**
-   * Optional. Minimum core count per node.
-   *
-   * @param int $minCoreCountPerNode
+   * @param int
    */
   public function setMinCoreCountPerNode($minCoreCountPerNode)
   {
@@ -240,9 +153,7 @@ class DbSystemShape extends \Google\Model
     return $this->minCoreCountPerNode;
   }
   /**
-   * Optional. Minimum node storage per database server in gigabytes.
-   *
-   * @param int $minDbNodeStoragePerNodeGb
+   * @param int
    */
   public function setMinDbNodeStoragePerNodeGb($minDbNodeStoragePerNodeGb)
   {
@@ -256,9 +167,7 @@ class DbSystemShape extends \Google\Model
     return $this->minDbNodeStoragePerNodeGb;
   }
   /**
-   * Optional. Minimum memory per node in gigabytes.
-   *
-   * @param int $minMemoryPerNodeGb
+   * @param int
    */
   public function setMinMemoryPerNodeGb($minMemoryPerNodeGb)
   {
@@ -272,9 +181,7 @@ class DbSystemShape extends \Google\Model
     return $this->minMemoryPerNodeGb;
   }
   /**
-   * Optional. Minimum number of database servers.
-   *
-   * @param int $minNodeCount
+   * @param int
    */
   public function setMinNodeCount($minNodeCount)
   {
@@ -288,9 +195,7 @@ class DbSystemShape extends \Google\Model
     return $this->minNodeCount;
   }
   /**
-   * Optional. Minimum number of storage servers.
-   *
-   * @param int $minStorageCount
+   * @param int
    */
   public function setMinStorageCount($minStorageCount)
   {
@@ -304,26 +209,7 @@ class DbSystemShape extends \Google\Model
     return $this->minStorageCount;
   }
   /**
-   * Optional. Minimum core count per node.
-   *
-   * @param int $minimumCoreCount
-   */
-  public function setMinimumCoreCount($minimumCoreCount)
-  {
-    $this->minimumCoreCount = $minimumCoreCount;
-  }
-  /**
-   * @return int
-   */
-  public function getMinimumCoreCount()
-  {
-    return $this->minimumCoreCount;
-  }
-  /**
-   * Identifier. The name of the Database System Shape resource with the format:
-   * projects/{project}/locations/{region}/dbSystemShapes/{db_system_shape}
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -337,9 +223,7 @@ class DbSystemShape extends \Google\Model
     return $this->name;
   }
   /**
-   * Optional. shape
-   *
-   * @param string $shape
+   * @param string
    */
   public function setShape($shape)
   {

@@ -4,10 +4,13 @@ namespace PhpOffice\PhpSpreadsheet;
 
 use JsonSerializable;
 use PhpOffice\PhpSpreadsheet\Calculation\Calculation;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
+use PhpOffice\PhpSpreadsheet\Shared\File;
 use PhpOffice\PhpSpreadsheet\Shared\StringHelper;
 use PhpOffice\PhpSpreadsheet\Style\Style;
 use PhpOffice\PhpSpreadsheet\Worksheet\Iterator;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx as XlsxWriter;
 
 class Spreadsheet implements JsonSerializable
 {
@@ -1158,7 +1161,17 @@ class Spreadsheet implements JsonSerializable
      */
     public function copy()
     {
-        return unserialize(serialize($this));
+        $filename = File::temporaryFilename();
+        $writer = new XlsxWriter($this);
+        $writer->setIncludeCharts(true);
+        $writer->save($filename);
+
+        $reader = new XlsxReader();
+        $reader->setIncludeCharts(true);
+        $reloadedSpreadsheet = $reader->load($filename);
+        unlink($filename);
+
+        return $reloadedSpreadsheet;
     }
 
     public function __clone()
@@ -1652,6 +1665,16 @@ class Spreadsheet implements JsonSerializable
 
     /**
      * @throws Exception
+     *
+     * @return mixed
+     */
+    public function __serialize()
+    {
+        throw new Exception('Spreadsheet objects cannot be serialized');
+    }
+
+    /**
+     * @throws Exception
      */
     public function jsonSerialize(): mixed
     {
@@ -1678,26 +1701,5 @@ class Spreadsheet implements JsonSerializable
                 $cellStyleXf->getFont()->setName($minorFontLatin)->setScheme($scheme);
             }
         }
-    }
-
-    /** @var string[] */
-    private $domainWhiteList = [];
-
-    /**
-     * Currently used only by WEBSERVICE function.
-     *
-     * @param string[] $domainWhiteList
-     */
-    public function setDomainWhiteList(array $domainWhiteList): self
-    {
-        $this->domainWhiteList = $domainWhiteList;
-
-        return $this;
-    }
-
-    /** @return string[] */
-    public function getDomainWhiteList(): array
-    {
-        return $this->domainWhiteList;
     }
 }

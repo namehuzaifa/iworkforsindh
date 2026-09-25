@@ -30,9 +30,7 @@ use Google\Service\MyBusinessBusinessInformation\Attributes as AttributesModel;
 class LocationsAttributes extends \Google\Service\Resource
 {
   /**
-   * Retrieves attributes for a location as they appear live on Google Maps and
-   * Search. This consumer-facing view may have been updated by Google or user-
-   * generated content and may differ from the merchant's version.
+   * Gets the Google-updated version of the specified location.
    * (attributes.getGoogleUpdated)
    *
    * @param string $name Required. Google identifier for this location in the form

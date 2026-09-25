@@ -14,13 +14,11 @@ namespace Symfony\Component\Cache\Adapter;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\CacheItem;
-use Symfony\Component\Cache\Exception\BadMethodCallException;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
 use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\ResettableInterface;
 use Symfony\Component\Cache\Traits\ContractsTrait;
 use Symfony\Contracts\Cache\CacheInterface;
-use Symfony\Contracts\Cache\NamespacedPoolInterface;
 use Symfony\Contracts\Service\ResetInterface;
 
 /**
@@ -31,7 +29,7 @@ use Symfony\Contracts\Service\ResetInterface;
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-class ChainAdapter implements AdapterInterface, CacheInterface, NamespacedPoolInterface, PruneableInterface, ResettableInterface
+class ChainAdapter implements AdapterInterface, CacheInterface, PruneableInterface, ResettableInterface
 {
     use ContractsTrait;
 
@@ -81,7 +79,6 @@ class ChainAdapter implements AdapterInterface, CacheInterface, NamespacedPoolIn
                     $item->expiresAt(\DateTimeImmutable::createFromFormat('U.u', \sprintf('%.6F', $item->metadata[CacheItem::METADATA_EXPIRY])));
                 } elseif (0 < $defaultLifetime) {
                     $item->expiresAfter($defaultLifetime);
-                    $item->newMetadata[CacheItem::METADATA_EXPIRY] = $item->expiry;
                 }
 
                 return $item;
@@ -109,7 +106,7 @@ class ChainAdapter implements AdapterInterface, CacheInterface, NamespacedPoolIn
                 $callback = $wrap;
                 $beta = \INF === $beta ? \INF : 0;
             }
-            if ($adapter instanceof CacheInterface && $i !== $this->adapterCount) {
+            if ($adapter instanceof CacheInterface) {
                 $value = $adapter->get($key, $callback, $beta, $metadata);
             } else {
                 $value = $this->doGet($adapter, $key, $callback, $beta, $metadata);
@@ -281,23 +278,6 @@ class ChainAdapter implements AdapterInterface, CacheInterface, NamespacedPoolIn
         }
 
         return $pruned;
-    }
-
-    public function withSubNamespace(string $namespace): static
-    {
-        $clone = clone $this;
-        $adapters = [];
-
-        foreach ($this->adapters as $adapter) {
-            if (!$adapter instanceof NamespacedPoolInterface) {
-                throw new BadMethodCallException('All adapters must implement NamespacedPoolInterface to support namespaces.');
-            }
-
-            $adapters[] = $adapter->withSubNamespace($namespace);
-        }
-        $clone->adapters = $adapters;
-
-        return $clone;
     }
 
     public function reset(): void

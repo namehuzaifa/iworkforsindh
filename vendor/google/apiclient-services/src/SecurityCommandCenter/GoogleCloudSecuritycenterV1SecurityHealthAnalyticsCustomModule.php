@@ -19,14 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Google\Model
 {
-  public const CLOUD_PROVIDER_CLOUD_PROVIDER_UNSPECIFIED = 'CLOUD_PROVIDER_UNSPECIFIED';
-  public const CLOUD_PROVIDER_GOOGLE_CLOUD_PLATFORM = 'GOOGLE_CLOUD_PLATFORM';
-  public const CLOUD_PROVIDER_AMAZON_WEB_SERVICES = 'AMAZON_WEB_SERVICES';
-  public const CLOUD_PROVIDER_MICROSOFT_AZURE = 'MICROSOFT_AZURE';
-  public const ENABLEMENT_STATE_ENABLEMENT_STATE_UNSPECIFIED = 'ENABLEMENT_STATE_UNSPECIFIED';
-  public const ENABLEMENT_STATE_ENABLED = 'ENABLED';
-  public const ENABLEMENT_STATE_DISABLED = 'DISABLED';
-  public const ENABLEMENT_STATE_INHERITED = 'INHERITED';
   /**
    * @var string
    */
@@ -59,7 +51,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Go
   public $updateTime;
 
   /**
-   * @param string $ancestorModule
+   * @param string
    */
   public function setAncestorModule($ancestorModule)
   {
@@ -73,21 +65,21 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Go
     return $this->ancestorModule;
   }
   /**
-   * @param self::CLOUD_PROVIDER_* $cloudProvider
+   * @param string
    */
   public function setCloudProvider($cloudProvider)
   {
     $this->cloudProvider = $cloudProvider;
   }
   /**
-   * @return self::CLOUD_PROVIDER_*
+   * @return string
    */
   public function getCloudProvider()
   {
     return $this->cloudProvider;
   }
   /**
-   * @param GoogleCloudSecuritycenterV1CustomConfig $customConfig
+   * @param GoogleCloudSecuritycenterV1CustomConfig
    */
   public function setCustomConfig(GoogleCloudSecuritycenterV1CustomConfig $customConfig)
   {
@@ -101,7 +93,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Go
     return $this->customConfig;
   }
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -115,21 +107,21 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Go
     return $this->displayName;
   }
   /**
-   * @param self::ENABLEMENT_STATE_* $enablementState
+   * @param string
    */
   public function setEnablementState($enablementState)
   {
     $this->enablementState = $enablementState;
   }
   /**
-   * @return self::ENABLEMENT_STATE_*
+   * @return string
    */
   public function getEnablementState()
   {
     return $this->enablementState;
   }
   /**
-   * @param string $lastEditor
+   * @param string
    */
   public function setLastEditor($lastEditor)
   {
@@ -143,7 +135,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Go
     return $this->lastEditor;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -157,7 +149,7 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule extends \Go
     return $this->name;
   }
   /**
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {

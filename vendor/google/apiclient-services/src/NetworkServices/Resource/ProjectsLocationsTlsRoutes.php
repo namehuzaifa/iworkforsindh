@@ -35,7 +35,7 @@ class ProjectsLocationsTlsRoutes extends \Google\Service\Resource
    * Creates a new TlsRoute in a given project and location. (tlsRoutes.create)
    *
    * @param string $parent Required. The parent resource of the TlsRoute. Must be
-   * in the format `projects/locations`.
+   * in the format `projects/locations/global`.
    * @param TlsRoute $postBody
    * @param array $optParams Optional parameters.
    *
@@ -54,8 +54,12 @@ class ProjectsLocationsTlsRoutes extends \Google\Service\Resource
    * Deletes a single TlsRoute. (tlsRoutes.delete)
    *
    * @param string $name Required. A name of the TlsRoute to delete. Must be in
-   * the format `projects/locations/tlsRoutes`.
+   * the format `projects/locations/global/tlsRoutes`.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string etag Optional. Etag of the resource. If this is provided,
+   * it must match the server's etag. If the provided etag does not match the
+   * server's etag, the request will fail with a 409 ABORTED error.
    * @return Operation
    * @throws \Google\Service\Exception
    */
@@ -69,7 +73,7 @@ class ProjectsLocationsTlsRoutes extends \Google\Service\Resource
    * Gets details of a single TlsRoute. (tlsRoutes.get)
    *
    * @param string $name Required. A name of the TlsRoute to get. Must be in the
-   * format `projects/locations/tlsRoutes`.
+   * format `projects/locations/global/tlsRoutes`.
    * @param array $optParams Optional parameters.
    * @return TlsRoute
    * @throws \Google\Service\Exception
@@ -85,7 +89,8 @@ class ProjectsLocationsTlsRoutes extends \Google\Service\Resource
    * (tlsRoutes.listProjectsLocationsTlsRoutes)
    *
    * @param string $parent Required. The project and location from which the
-   * TlsRoutes should be listed, specified in the format `projects/locations`.
+   * TlsRoutes should be listed, specified in the format
+   * `projects/locations/global`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize Maximum number of TlsRoutes to return per call.
@@ -93,9 +98,6 @@ class ProjectsLocationsTlsRoutes extends \Google\Service\Resource
    * `ListTlsRoutesResponse` Indicates that this is a continuation of a prior
    * `ListTlsRoutes` call, and that the system should return the next page of
    * data.
-   * @opt_param bool returnPartialSuccess Optional. If true, allow partial
-   * responses for multi-regional Aggregated List requests. Otherwise if one of
-   * the locations is down or unreachable, the Aggregated List request will fail.
    * @return ListTlsRoutesResponse
    * @throws \Google\Service\Exception
    */
@@ -109,7 +111,7 @@ class ProjectsLocationsTlsRoutes extends \Google\Service\Resource
    * Updates the parameters of a single TlsRoute. (tlsRoutes.patch)
    *
    * @param string $name Identifier. Name of the TlsRoute resource. It matches
-   * pattern `projects/locations/tlsRoutes/tls_route_name>`.
+   * pattern `projects/locations/global/tlsRoutes/tls_route_name>`.
    * @param TlsRoute $postBody
    * @param array $optParams Optional parameters.
    *

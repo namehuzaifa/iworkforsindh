@@ -21,26 +21,14 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse extends \Google\Collection
 {
   protected $collection_key = 'releases';
   /**
-   * A short-lived token, which can be sent as `pageToken` to retrieve the next
-   * page. If this field is omitted, there are no subsequent pages.
-   *
    * @var string
    */
   public $nextPageToken;
   protected $releasesType = GoogleFirebaseAppdistroV1Release::class;
   protected $releasesDataType = 'array';
-  /**
-   * The total number of releases.
-   *
-   * @var int
-   */
-  public $totalSize;
 
   /**
-   * A short-lived token, which can be sent as `pageToken` to retrieve the next
-   * page. If this field is omitted, there are no subsequent pages.
-   *
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {
@@ -54,9 +42,7 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse extends \Google\Collection
     return $this->nextPageToken;
   }
   /**
-   * The releases
-   *
-   * @param GoogleFirebaseAppdistroV1Release[] $releases
+   * @param GoogleFirebaseAppdistroV1Release[]
    */
   public function setReleases($releases)
   {
@@ -68,22 +54,6 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse extends \Google\Collection
   public function getReleases()
   {
     return $this->releases;
-  }
-  /**
-   * The total number of releases.
-   *
-   * @param int $totalSize
-   */
-  public function setTotalSize($totalSize)
-  {
-    $this->totalSize = $totalSize;
-  }
-  /**
-   * @return int
-   */
-  public function getTotalSize()
-  {
-    return $this->totalSize;
   }
 }
 

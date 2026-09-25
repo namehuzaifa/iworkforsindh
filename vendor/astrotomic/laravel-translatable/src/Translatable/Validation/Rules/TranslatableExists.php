@@ -9,8 +9,6 @@ use Illuminate\Contracts\Validation\InvokableRule;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Illuminate\Translation\PotentiallyTranslatedString;
-use Illuminate\Validation\ValidationException;
 
 /**
  * Custom exists validation for translatable attributes
@@ -87,9 +85,9 @@ class TranslatableExists implements InvokableRule
      *
      * @param  string  $attribute  attribute name
      * @param  mixed  $value  attribute value
-     * @param  Closure(string): PotentiallyTranslatedString  $fail
+     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      *
-     * @throws ValidationException
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
@@ -113,7 +111,7 @@ class TranslatableExists implements InvokableRule
      *
      * @param  string  $attribute
      * @param  mixed  $value
-     * @param  Closure(string): PotentiallyTranslatedString  $fail
+     * @param  Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
     public function __invoke($attribute, $value, $fail): void
     {

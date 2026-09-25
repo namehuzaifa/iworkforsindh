@@ -37,8 +37,7 @@ class Tables extends \Google\Service\Resource
 {
   /**
    * Deletes the table specified by tableId from the dataset. If the table
-   * contains data, all the data will be deleted. # IAM Permissions Requires the
-   * `bigquery.tables.delete` permission on the table. (tables.delete)
+   * contains data, all the data will be deleted. (tables.delete)
    *
    * @param string $projectId Required. Project ID of the table to delete
    * @param string $datasetId Required. Dataset ID of the table to delete
@@ -55,8 +54,7 @@ class Tables extends \Google\Service\Resource
   /**
    * Gets the specified table resource by table ID. This method does not return
    * the data in the table, it only returns the table resource, which describes
-   * the structure of this table. # IAM Permissions Requires the
-   * `bigquery.tables.get` permission on the table. (tables.get)
+   * the structure of this table. (tables.get)
    *
    * @param string $projectId Required. Project ID of the requested table
    * @param string $datasetId Required. Dataset ID of the requested table
@@ -101,8 +99,7 @@ class Tables extends \Google\Service\Resource
     return $this->call('getIamPolicy', [$params], Policy::class);
   }
   /**
-   * Creates a new, empty table in the dataset. # IAM Permissions Requires the
-   * `bigquery.tables.create` permission on the dataset. (tables.insert)
+   * Creates a new, empty table in the dataset. (tables.insert)
    *
    * @param string $projectId Required. Project ID of the new table
    * @param string $datasetId Required. Dataset ID of the new table
@@ -119,8 +116,7 @@ class Tables extends \Google\Service\Resource
   }
   /**
    * Lists all tables in the specified dataset. Requires the READER dataset role.
-   * # IAM Permissions Requires the `bigquery.tables.list` permission on the
-   * dataset. (tables.listTables)
+   * (tables.listTables)
    *
    * @param string $projectId Required. Project ID of the tables to list
    * @param string $datasetId Required. Dataset ID of the tables to list
@@ -144,8 +140,7 @@ class Tables extends \Google\Service\Resource
    * Updates information in an existing table. The update method replaces the
    * entire table resource, whereas the patch method only replaces fields that are
    * provided in the submitted table resource. This method supports RFC5789 patch
-   * semantics. # IAM Permissions Requires the following IAM permission(s) on the
-   * table: - `bigquery.tables.update` - `bigquery.tables.get` (tables.patch)
+   * semantics. (tables.patch)
    *
    * @param string $projectId Required. Project ID of the table to update
    * @param string $datasetId Required. Dataset ID of the table to update
@@ -209,8 +204,7 @@ class Tables extends \Google\Service\Resource
   /**
    * Updates information in an existing table. The update method replaces the
    * entire Table resource, whereas the patch method only replaces fields that are
-   * provided in the submitted Table resource. # IAM Permissions Requires the
-   * `bigquery.tables.update` permission on the table. (tables.update)
+   * provided in the submitted Table resource. (tables.update)
    *
    * @param string $projectId Required. Project ID of the table to update
    * @param string $datasetId Required. Dataset ID of the table to update

@@ -28,7 +28,7 @@ class AwsMetadata extends \Google\Collection
   protected $organizationalUnitsDataType = 'array';
 
   /**
-   * @param AwsAccount $account
+   * @param AwsAccount
    */
   public function setAccount(AwsAccount $account)
   {
@@ -42,7 +42,7 @@ class AwsMetadata extends \Google\Collection
     return $this->account;
   }
   /**
-   * @param AwsOrganization $organization
+   * @param AwsOrganization
    */
   public function setOrganization(AwsOrganization $organization)
   {
@@ -56,7 +56,7 @@ class AwsMetadata extends \Google\Collection
     return $this->organization;
   }
   /**
-   * @param AwsOrganizationalUnit[] $organizationalUnits
+   * @param AwsOrganizationalUnit[]
    */
   public function setOrganizationalUnits($organizationalUnits)
   {

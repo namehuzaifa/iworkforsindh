@@ -21,9 +21,6 @@ class Links extends \Google\Collection
 {
   protected $collection_key = 'link';
   /**
-   * Optional. The number of dropped links after the maximum size was enforced.
-   * If this value is 0, then no links were dropped.
-   *
    * @var int
    */
   public $droppedLinksCount;
@@ -31,10 +28,7 @@ class Links extends \Google\Collection
   protected $linkDataType = 'array';
 
   /**
-   * Optional. The number of dropped links after the maximum size was enforced.
-   * If this value is 0, then no links were dropped.
-   *
-   * @param int $droppedLinksCount
+   * @param int
    */
   public function setDroppedLinksCount($droppedLinksCount)
   {
@@ -48,9 +42,7 @@ class Links extends \Google\Collection
     return $this->droppedLinksCount;
   }
   /**
-   * Optional. A collection of links.
-   *
-   * @param Link[] $link
+   * @param Link[]
    */
   public function setLink($link)
   {

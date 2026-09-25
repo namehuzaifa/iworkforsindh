@@ -18,7 +18,7 @@ class Gifsicle extends BaseOptimizer
         $optionString = implode(' ', $this->options);
 
         return "\"{$this->binaryPath}{$this->binaryName}\" {$optionString}"
-            .' '.escapeshellarg($this->imagePath)
-            .' --output '.escapeshellarg($this->imagePath);
+            .' -i '.escapeshellarg($this->imagePath)
+            .' -o '.escapeshellarg($this->imagePath);
     }
 }

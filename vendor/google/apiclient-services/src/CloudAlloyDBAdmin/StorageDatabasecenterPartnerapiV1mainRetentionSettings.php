@@ -20,62 +20,28 @@ namespace Google\Service\CloudAlloyDBAdmin;
 class StorageDatabasecenterPartnerapiV1mainRetentionSettings extends \Google\Model
 {
   /**
-   * Disable validation warnings
-   */
-  public const RETENTION_UNIT_RETENTION_UNIT_UNSPECIFIED = 'RETENTION_UNIT_UNSPECIFIED';
-  /**
-   * Disable validation warnings
-   */
-  public const RETENTION_UNIT_COUNT = 'COUNT';
-  /**
-   * Disable validation warnings
-   */
-  public const RETENTION_UNIT_TIME = 'TIME';
-  /**
-   * Disable validation warnings
-   */
-  public const RETENTION_UNIT_DURATION = 'DURATION';
-  /**
-   * Disable validation warnings
-   */
-  public const RETENTION_UNIT_RETENTION_UNIT_OTHER = 'RETENTION_UNIT_OTHER';
-  /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $durationBasedRetention;
   /**
-   * Disable validation warnings
-   *
    * @var int
    */
   public $quantityBasedRetention;
   /**
-   * Disable validation warnings
-   *
-   * @deprecated
    * @var string
    */
   public $retentionUnit;
   /**
-   * Disable validation warnings
-   *
-   * @deprecated
    * @var string
    */
   public $timeBasedRetention;
   /**
-   * Disable validation warnings
-   *
    * @var string
    */
   public $timestampBasedRetentionTime;
 
   /**
-   * Disable validation warnings
-   *
-   * @param string $durationBasedRetention
+   * @param string
    */
   public function setDurationBasedRetention($durationBasedRetention)
   {
@@ -89,9 +55,7 @@ class StorageDatabasecenterPartnerapiV1mainRetentionSettings extends \Google\Mod
     return $this->durationBasedRetention;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param int $quantityBasedRetention
+   * @param int
    */
   public function setQuantityBasedRetention($quantityBasedRetention)
   {
@@ -105,38 +69,27 @@ class StorageDatabasecenterPartnerapiV1mainRetentionSettings extends \Google\Mod
     return $this->quantityBasedRetention;
   }
   /**
-   * Disable validation warnings
-   *
-   * Accepted values: RETENTION_UNIT_UNSPECIFIED, COUNT, TIME, DURATION,
-   * RETENTION_UNIT_OTHER
-   *
-   * @deprecated
-   * @param self::RETENTION_UNIT_* $retentionUnit
+   * @param string
    */
   public function setRetentionUnit($retentionUnit)
   {
     $this->retentionUnit = $retentionUnit;
   }
   /**
-   * @deprecated
-   * @return self::RETENTION_UNIT_*
+   * @return string
    */
   public function getRetentionUnit()
   {
     return $this->retentionUnit;
   }
   /**
-   * Disable validation warnings
-   *
-   * @deprecated
-   * @param string $timeBasedRetention
+   * @param string
    */
   public function setTimeBasedRetention($timeBasedRetention)
   {
     $this->timeBasedRetention = $timeBasedRetention;
   }
   /**
-   * @deprecated
    * @return string
    */
   public function getTimeBasedRetention()
@@ -144,9 +97,7 @@ class StorageDatabasecenterPartnerapiV1mainRetentionSettings extends \Google\Mod
     return $this->timeBasedRetention;
   }
   /**
-   * Disable validation warnings
-   *
-   * @param string $timestampBasedRetentionTime
+   * @param string
    */
   public function setTimestampBasedRetentionTime($timestampBasedRetentionTime)
   {

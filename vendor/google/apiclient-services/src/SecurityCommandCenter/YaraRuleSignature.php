@@ -25,7 +25,7 @@ class YaraRuleSignature extends \Google\Model
   public $yaraRule;
 
   /**
-   * @param string $yaraRule
+   * @param string
    */
   public function setYaraRule($yaraRule)
   {

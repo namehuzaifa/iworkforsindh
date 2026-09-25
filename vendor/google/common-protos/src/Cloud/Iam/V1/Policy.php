@@ -5,8 +5,8 @@
 namespace Google\Cloud\Iam\V1;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * An Identity and Access Management (IAM) policy, which specifies access
@@ -30,16 +30,16 @@ use Google\Protobuf\RepeatedField;
  *         {
  *           "role": "roles/resourcemanager.organizationAdmin",
  *           "members": [
- *             "user:mike\@example.com",
- *             "group:admins\@example.com",
+ *             "user:mike&#64;example.com",
+ *             "group:admins&#64;example.com",
  *             "domain:google.com",
- *             "serviceAccount:my-project-id\@appspot.gserviceaccount.com"
+ *             "serviceAccount:my-project-id&#64;appspot.gserviceaccount.com"
  *           ]
  *         },
  *         {
  *           "role": "roles/resourcemanager.organizationViewer",
  *           "members": [
- *             "user:eve\@example.com"
+ *             "user:eve&#64;example.com"
  *           ],
  *           "condition": {
  *             "title": "expirable access",
@@ -57,13 +57,13 @@ use Google\Protobuf\RepeatedField;
  * ```
  *     bindings:
  *     - members:
- *       - user:mike\@example.com
- *       - group:admins\@example.com
+ *       - user:mike&#64;example.com
+ *       - group:admins&#64;example.com
  *       - domain:google.com
- *       - serviceAccount:my-project-id\@appspot.gserviceaccount.com
+ *       - serviceAccount:my-project-id&#64;appspot.gserviceaccount.com
  *       role: roles/resourcemanager.organizationAdmin
  *     - members:
- *       - user:eve\@example.com
+ *       - user:eve&#64;example.com
  *       role: roles/resourcemanager.organizationViewer
  *       condition:
  *         title: expirable access
@@ -110,7 +110,7 @@ class Policy extends \Google\Protobuf\Internal\Message
      * The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250
      * of these principals can be Google groups. Each occurrence of a principal
      * counts towards these limits. For example, if the `bindings` grant 50
-     * different roles to `user:alice\@example.com`, and not to any other
+     * different roles to `user:alice&#64;example.com`, and not to any other
      * principal, then you can add another 1,450 principals to the `bindings` in
      * the `Policy`.
      *
@@ -166,17 +166,17 @@ class Policy extends \Google\Protobuf\Internal\Message
      *           To learn which resources support conditions in their IAM policies, see the
      *           [IAM
      *           documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-     *     @type \Google\Cloud\Iam\V1\Binding[] $bindings
+     *     @type array<\Google\Cloud\Iam\V1\Binding>|\Google\Protobuf\Internal\RepeatedField $bindings
      *           Associates a list of `members`, or principals, with a `role`. Optionally,
      *           may specify a `condition` that determines how and when the `bindings` are
      *           applied. Each of the `bindings` must contain at least one principal.
      *           The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250
      *           of these principals can be Google groups. Each occurrence of a principal
      *           counts towards these limits. For example, if the `bindings` grant 50
-     *           different roles to `user:alice\@example.com`, and not to any other
+     *           different roles to `user:alice&#64;example.com`, and not to any other
      *           principal, then you can add another 1,450 principals to the `bindings` in
      *           the `Policy`.
-     *     @type \Google\Cloud\Iam\V1\AuditConfig[] $audit_configs
+     *     @type array<\Google\Cloud\Iam\V1\AuditConfig>|\Google\Protobuf\Internal\RepeatedField $audit_configs
      *           Specifies cloud audit logging configuration for this policy.
      *     @type string $etag
      *           `etag` is used for optimistic concurrency control as a way to help
@@ -266,12 +266,12 @@ class Policy extends \Google\Protobuf\Internal\Message
      * The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250
      * of these principals can be Google groups. Each occurrence of a principal
      * counts towards these limits. For example, if the `bindings` grant 50
-     * different roles to `user:alice\@example.com`, and not to any other
+     * different roles to `user:alice&#64;example.com`, and not to any other
      * principal, then you can add another 1,450 principals to the `bindings` in
      * the `Policy`.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.Binding bindings = 4;</code>
-     * @return RepeatedField<\Google\Cloud\Iam\V1\Binding>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getBindings()
     {
@@ -285,12 +285,12 @@ class Policy extends \Google\Protobuf\Internal\Message
      * The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250
      * of these principals can be Google groups. Each occurrence of a principal
      * counts towards these limits. For example, if the `bindings` grant 50
-     * different roles to `user:alice\@example.com`, and not to any other
+     * different roles to `user:alice&#64;example.com`, and not to any other
      * principal, then you can add another 1,450 principals to the `bindings` in
      * the `Policy`.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.Binding bindings = 4;</code>
-     * @param \Google\Cloud\Iam\V1\Binding[] $var
+     * @param array<\Google\Cloud\Iam\V1\Binding>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setBindings($var)
@@ -305,7 +305,7 @@ class Policy extends \Google\Protobuf\Internal\Message
      * Specifies cloud audit logging configuration for this policy.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.AuditConfig audit_configs = 6;</code>
-     * @return RepeatedField<\Google\Cloud\Iam\V1\AuditConfig>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getAuditConfigs()
     {
@@ -316,7 +316,7 @@ class Policy extends \Google\Protobuf\Internal\Message
      * Specifies cloud audit logging configuration for this policy.
      *
      * Generated from protobuf field <code>repeated .google.iam.v1.AuditConfig audit_configs = 6;</code>
-     * @param \Google\Cloud\Iam\V1\AuditConfig[] $var
+     * @param array<\Google\Cloud\Iam\V1\AuditConfig>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setAuditConfigs($var)

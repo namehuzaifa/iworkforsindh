@@ -29,7 +29,7 @@ class DiskPath extends \Google\Model
   public $relativePath;
 
   /**
-   * @param string $partitionUuid
+   * @param string
    */
   public function setPartitionUuid($partitionUuid)
   {
@@ -43,7 +43,7 @@ class DiskPath extends \Google\Model
     return $this->partitionUuid;
   }
   /**
-   * @param string $relativePath
+   * @param string
    */
   public function setRelativePath($relativePath)
   {

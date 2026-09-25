@@ -49,7 +49,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
   public $version;
 
   /**
-   * @param string $group
+   * @param string
    */
   public function setGroup($group)
   {
@@ -63,7 +63,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
     return $this->group;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -77,7 +77,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {
@@ -91,7 +91,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
     return $this->ns;
   }
   /**
-   * @param string $resource
+   * @param string
    */
   public function setResource($resource)
   {
@@ -105,7 +105,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
     return $this->resource;
   }
   /**
-   * @param string $subresource
+   * @param string
    */
   public function setSubresource($subresource)
   {
@@ -119,7 +119,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
     return $this->subresource;
   }
   /**
-   * @param string $verb
+   * @param string
    */
   public function setVerb($verb)
   {
@@ -133,7 +133,7 @@ class GoogleCloudSecuritycenterV2AccessReview extends \Google\Model
     return $this->verb;
   }
   /**
-   * @param string $version
+   * @param string
    */
   public function setVersion($version)
   {

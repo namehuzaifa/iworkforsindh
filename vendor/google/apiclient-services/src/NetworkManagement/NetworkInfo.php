@@ -20,42 +20,28 @@ namespace Google\Service\NetworkManagement;
 class NetworkInfo extends \Google\Model
 {
   /**
-   * Name of a Compute Engine network.
-   *
    * @var string
    */
   public $displayName;
   /**
-   * The IP range of the subnet matching the source IP address of the test.
-   *
    * @var string
    */
   public $matchedIpRange;
   /**
-   * URI of the subnet matching the source IP address of the test in format
-   * "projects/{project}/regions/{region}/subnetworks/{subnetwork}"
-   *
    * @var string
    */
   public $matchedSubnetUri;
   /**
-   * The region of the subnet matching the source IP address of the test.
-   *
    * @var string
    */
   public $region;
   /**
-   * URI of a Compute Engine network in format
-   * "projects/{project}/global/networks/{network}"
-   *
    * @var string
    */
   public $uri;
 
   /**
-   * Name of a Compute Engine network.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -69,9 +55,7 @@ class NetworkInfo extends \Google\Model
     return $this->displayName;
   }
   /**
-   * The IP range of the subnet matching the source IP address of the test.
-   *
-   * @param string $matchedIpRange
+   * @param string
    */
   public function setMatchedIpRange($matchedIpRange)
   {
@@ -85,10 +69,7 @@ class NetworkInfo extends \Google\Model
     return $this->matchedIpRange;
   }
   /**
-   * URI of the subnet matching the source IP address of the test in format
-   * "projects/{project}/regions/{region}/subnetworks/{subnetwork}"
-   *
-   * @param string $matchedSubnetUri
+   * @param string
    */
   public function setMatchedSubnetUri($matchedSubnetUri)
   {
@@ -102,9 +83,7 @@ class NetworkInfo extends \Google\Model
     return $this->matchedSubnetUri;
   }
   /**
-   * The region of the subnet matching the source IP address of the test.
-   *
-   * @param string $region
+   * @param string
    */
   public function setRegion($region)
   {
@@ -118,10 +97,7 @@ class NetworkInfo extends \Google\Model
     return $this->region;
   }
   /**
-   * URI of a Compute Engine network in format
-   * "projects/{project}/global/networks/{network}"
-   *
-   * @param string $uri
+   * @param string
    */
   public function setUri($uri)
   {

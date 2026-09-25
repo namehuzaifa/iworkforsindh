@@ -58,12 +58,9 @@ class HeaderUtils
                         "(?:[^"\\\\]|\\\\.)*(?:"|\\\\|$)
                     |
                         # token
-                        [^"\s'.$quotedSeparators.']++
-                    |
-                        # whitespace, only when more of the value follows it, so that a value
-                        # never ends on whitespace and none of it ever has to be given back
-                        \s++(?!['.$quotedSeparators.']|$)
-                    )++
+                        [^"'.$quotedSeparators.']+
+                    )+
+                (?<!\s)
             |
                 # separator
                 \s*
@@ -168,7 +165,7 @@ class HeaderUtils
     public static function makeDisposition(string $disposition, string $filename, string $filenameFallback = ''): string
     {
         if (!\in_array($disposition, [self::DISPOSITION_ATTACHMENT, self::DISPOSITION_INLINE])) {
-            throw new \InvalidArgumentException(\sprintf('The disposition must be either "%s" or "%s".', self::DISPOSITION_ATTACHMENT, self::DISPOSITION_INLINE));
+            throw new \InvalidArgumentException(sprintf('The disposition must be either "%s" or "%s".', self::DISPOSITION_ATTACHMENT, self::DISPOSITION_INLINE));
         }
 
         if ('' === $filenameFallback) {

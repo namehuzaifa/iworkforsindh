@@ -20,31 +20,16 @@ namespace Google\Service\Dataform;
 class NotebookAction extends \Google\Model
 {
   /**
-   * Output only. The code contents of a Notebook to be run.
-   *
    * @var string
    */
   public $contents;
   /**
-   * Output only. The path to the notebook file in the repository.
-   *
-   * @var string
-   */
-  public $filePath;
-  /**
-   * Output only. The ID of the Gemini Enterprise Agent Platform job that
-   * executed the notebook in contents and also the ID used for the outputs
-   * created in Google Cloud Storage buckets. Only set once the job has started
-   * to run.
-   *
    * @var string
    */
   public $jobId;
 
   /**
-   * Output only. The code contents of a Notebook to be run.
-   *
-   * @param string $contents
+   * @param string
    */
   public function setContents($contents)
   {
@@ -58,28 +43,7 @@ class NotebookAction extends \Google\Model
     return $this->contents;
   }
   /**
-   * Output only. The path to the notebook file in the repository.
-   *
-   * @param string $filePath
-   */
-  public function setFilePath($filePath)
-  {
-    $this->filePath = $filePath;
-  }
-  /**
-   * @return string
-   */
-  public function getFilePath()
-  {
-    return $this->filePath;
-  }
-  /**
-   * Output only. The ID of the Gemini Enterprise Agent Platform job that
-   * executed the notebook in contents and also the ID used for the outputs
-   * created in Google Cloud Storage buckets. Only set once the job has started
-   * to run.
-   *
-   * @param string $jobId
+   * @param string
    */
   public function setJobId($jobId)
   {

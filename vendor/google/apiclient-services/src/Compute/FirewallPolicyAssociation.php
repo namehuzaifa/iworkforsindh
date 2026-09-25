@@ -20,54 +20,28 @@ namespace Google\Service\Compute;
 class FirewallPolicyAssociation extends \Google\Model
 {
   /**
-   * The target that the firewall policy is attached to.
-   *
    * @var string
    */
   public $attachmentTarget;
   /**
-   * [Output Only] Deprecated, please use short name instead. The display name
-   * of the firewall policy of the association.
-   *
-   * @deprecated
    * @var string
    */
   public $displayName;
   /**
-   * Output only. [Output Only] The firewall policy ID of the association.
-   *
    * @var string
    */
   public $firewallPolicyId;
   /**
-   * The name for an association.
-   *
    * @var string
    */
   public $name;
   /**
-   * An integer indicating the priority of an association. The priority must be
-   * a positive value between 1 and 2147483647. Firewall Policies are evaluated
-   * from highest to lowest priority where 1 is the highest priority and
-   * 2147483647 is the lowest priority. The default value is `1000`. If two
-   * associations have the same priority then lexicographical order on
-   * association names is applied.
-   *
-   * @var int
-   */
-  public $priority;
-  /**
-   * Output only. [Output Only] The short name of the firewall policy of the
-   * association.
-   *
    * @var string
    */
   public $shortName;
 
   /**
-   * The target that the firewall policy is attached to.
-   *
-   * @param string $attachmentTarget
+   * @param string
    */
   public function setAttachmentTarget($attachmentTarget)
   {
@@ -81,18 +55,13 @@ class FirewallPolicyAssociation extends \Google\Model
     return $this->attachmentTarget;
   }
   /**
-   * [Output Only] Deprecated, please use short name instead. The display name
-   * of the firewall policy of the association.
-   *
-   * @deprecated
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
   /**
-   * @deprecated
    * @return string
    */
   public function getDisplayName()
@@ -100,9 +69,7 @@ class FirewallPolicyAssociation extends \Google\Model
     return $this->displayName;
   }
   /**
-   * Output only. [Output Only] The firewall policy ID of the association.
-   *
-   * @param string $firewallPolicyId
+   * @param string
    */
   public function setFirewallPolicyId($firewallPolicyId)
   {
@@ -116,9 +83,7 @@ class FirewallPolicyAssociation extends \Google\Model
     return $this->firewallPolicyId;
   }
   /**
-   * The name for an association.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -132,31 +97,7 @@ class FirewallPolicyAssociation extends \Google\Model
     return $this->name;
   }
   /**
-   * An integer indicating the priority of an association. The priority must be
-   * a positive value between 1 and 2147483647. Firewall Policies are evaluated
-   * from highest to lowest priority where 1 is the highest priority and
-   * 2147483647 is the lowest priority. The default value is `1000`. If two
-   * associations have the same priority then lexicographical order on
-   * association names is applied.
-   *
-   * @param int $priority
-   */
-  public function setPriority($priority)
-  {
-    $this->priority = $priority;
-  }
-  /**
-   * @return int
-   */
-  public function getPriority()
-  {
-    return $this->priority;
-  }
-  /**
-   * Output only. [Output Only] The short name of the firewall policy of the
-   * association.
-   *
-   * @param string $shortName
+   * @param string
    */
   public function setShortName($shortName)
   {

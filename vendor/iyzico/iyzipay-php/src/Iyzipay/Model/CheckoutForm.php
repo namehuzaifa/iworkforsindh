@@ -11,7 +11,6 @@ class CheckoutForm extends PaymentResource
     private $token;
     private $callbackUrl;
     private $signature;
-    private $mdStatus;
 
     public static function retrieve(RetrieveCheckoutFormRequest $request, Options $options)
     {
@@ -49,15 +48,5 @@ class CheckoutForm extends PaymentResource
     public function setSignature($signature)
     {
         return $this->signature = $signature;
-    }
-
-    public function getmdStatus()
-    {
-        return $this->mdStatus;
-    }
-
-    public function setmdStatus($mdStatus)
-    {
-        return $this->mdStatus = $mdStatus;
     }
 }

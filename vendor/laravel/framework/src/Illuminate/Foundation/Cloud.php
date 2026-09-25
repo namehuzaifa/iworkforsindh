@@ -7,7 +7,6 @@ use Illuminate\Foundation\Bootstrap\HandleExceptions;
 use Illuminate\Foundation\Bootstrap\LoadConfiguration;
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\SocketHandler;
-use PDO;
 
 class Cloud
 {
@@ -83,14 +82,6 @@ class Cloud
                     'host' => str_replace('-pooler', '', $host),
                 ])
             );
-
-            $app['config']->set(
-                'database.connections.pgsql.options',
-                array_merge(
-                    $app['config']->get('database.connections.pgsql.options', []),
-                    [PDO::ATTR_EMULATE_PREPARES => true],
-                ),
-            );
         }
     }
 
@@ -133,7 +124,6 @@ class Cloud
                                       $_SERVER['LARAVEL_CLOUD_LOG_SOCKET'] ??
                                       'unix:///tmp/cloud-init.sock',
                 'persistent' => true,
-                'timeout' => 2.0,
             ],
         ]);
     }

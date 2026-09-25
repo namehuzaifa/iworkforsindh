@@ -20,74 +20,28 @@ namespace Google\Service\AccessContextManager;
 class SessionSettings extends \Google\Model
 {
   /**
-   * If method is undefined in the API, LOGIN will be used by default.
-   */
-  public const SESSION_REAUTH_METHOD_SESSION_REAUTH_METHOD_UNSPECIFIED = 'SESSION_REAUTH_METHOD_UNSPECIFIED';
-  /**
-   * The user will be prompted to perform regular login. Users who are enrolled
-   * for two-step verification and haven't chosen "Remember this computer" will
-   * be prompted for their second factor.
-   */
-  public const SESSION_REAUTH_METHOD_LOGIN = 'LOGIN';
-  /**
-   * The user will be prompted to authenticate using their security key. If no
-   * security key has been configured, then authentication will fallback to
-   * LOGIN.
-   */
-  public const SESSION_REAUTH_METHOD_SECURITY_KEY = 'SECURITY_KEY';
-  /**
-   * The user will be prompted for their password.
-   */
-  public const SESSION_REAUTH_METHOD_PASSWORD = 'PASSWORD';
-  /**
-   * Optional. How long a user is allowed to take between actions before a new
-   * access token must be issued. Only set for Google Cloud apps.
-   *
    * @var string
    */
   public $maxInactivity;
   /**
-   * Optional. The session length. Setting this field to zero allows for
-   * sessions that are active indefinitely. Also, setting
-   * `session_length_enabled` to `false` disregards session limits, which means
-   * that sessions never expire. If `use_oidc_max_age` is `true`, for OIDC apps,
-   * the session length will be the minimum of this field and the OIDC `max_age`
-   * param. If this field is set to zero, `session_length_enabled` must be set
-   * to `false` or left unset.
-   *
    * @var string
    */
   public $sessionLength;
   /**
-   * Optional. This field enables or disables Google Cloud session length. When
-   * false, all fields set above will be disregarded and the session length is
-   * basically infinite. If `session_length` is set to zero, this field must be
-   * set to false.
-   *
    * @var bool
    */
   public $sessionLengthEnabled;
   /**
-   * Optional. Session method when user's Google Cloud session is up.
-   *
    * @var string
    */
   public $sessionReauthMethod;
   /**
-   * Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if
-   * passed in the authentication request will be ignored. When true, the re-
-   * auth period will be the minimum of the session_length field and the max_age
-   * OIDC param.
-   *
    * @var bool
    */
   public $useOidcMaxAge;
 
   /**
-   * Optional. How long a user is allowed to take between actions before a new
-   * access token must be issued. Only set for Google Cloud apps.
-   *
-   * @param string $maxInactivity
+   * @param string
    */
   public function setMaxInactivity($maxInactivity)
   {
@@ -101,15 +55,7 @@ class SessionSettings extends \Google\Model
     return $this->maxInactivity;
   }
   /**
-   * Optional. The session length. Setting this field to zero allows for
-   * sessions that are active indefinitely. Also, setting
-   * `session_length_enabled` to `false` disregards session limits, which means
-   * that sessions never expire. If `use_oidc_max_age` is `true`, for OIDC apps,
-   * the session length will be the minimum of this field and the OIDC `max_age`
-   * param. If this field is set to zero, `session_length_enabled` must be set
-   * to `false` or left unset.
-   *
-   * @param string $sessionLength
+   * @param string
    */
   public function setSessionLength($sessionLength)
   {
@@ -123,12 +69,7 @@ class SessionSettings extends \Google\Model
     return $this->sessionLength;
   }
   /**
-   * Optional. This field enables or disables Google Cloud session length. When
-   * false, all fields set above will be disregarded and the session length is
-   * basically infinite. If `session_length` is set to zero, this field must be
-   * set to false.
-   *
-   * @param bool $sessionLengthEnabled
+   * @param bool
    */
   public function setSessionLengthEnabled($sessionLengthEnabled)
   {
@@ -142,31 +83,21 @@ class SessionSettings extends \Google\Model
     return $this->sessionLengthEnabled;
   }
   /**
-   * Optional. Session method when user's Google Cloud session is up.
-   *
-   * Accepted values: SESSION_REAUTH_METHOD_UNSPECIFIED, LOGIN, SECURITY_KEY,
-   * PASSWORD
-   *
-   * @param self::SESSION_REAUTH_METHOD_* $sessionReauthMethod
+   * @param string
    */
   public function setSessionReauthMethod($sessionReauthMethod)
   {
     $this->sessionReauthMethod = $sessionReauthMethod;
   }
   /**
-   * @return self::SESSION_REAUTH_METHOD_*
+   * @return string
    */
   public function getSessionReauthMethod()
   {
     return $this->sessionReauthMethod;
   }
   /**
-   * Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if
-   * passed in the authentication request will be ignored. When true, the re-
-   * auth period will be the minimum of the session_length field and the max_age
-   * OIDC param.
-   *
-   * @param bool $useOidcMaxAge
+   * @param bool
    */
   public function setUseOidcMaxAge($useOidcMaxAge)
   {

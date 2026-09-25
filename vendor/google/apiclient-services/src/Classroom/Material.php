@@ -23,19 +23,13 @@ class Material extends \Google\Model
   protected $driveFileDataType = '';
   protected $formType = Form::class;
   protected $formDataType = '';
-  protected $gemType = GeminiGem::class;
-  protected $gemDataType = '';
   protected $linkType = Link::class;
   protected $linkDataType = '';
-  protected $notebookType = NotebookLmNotebook::class;
-  protected $notebookDataType = '';
   protected $youtubeVideoType = YouTubeVideo::class;
   protected $youtubeVideoDataType = '';
 
   /**
-   * Google Drive file material.
-   *
-   * @param SharedDriveFile $driveFile
+   * @param SharedDriveFile
    */
   public function setDriveFile(SharedDriveFile $driveFile)
   {
@@ -49,9 +43,7 @@ class Material extends \Google\Model
     return $this->driveFile;
   }
   /**
-   * Google Forms material. Read-only.
-   *
-   * @param Form $form
+   * @param Form
    */
   public function setForm(Form $form)
   {
@@ -65,26 +57,7 @@ class Material extends \Google\Model
     return $this->form;
   }
   /**
-   * Gemini Gem material. Read-only.
-   *
-   * @param GeminiGem $gem
-   */
-  public function setGem(GeminiGem $gem)
-  {
-    $this->gem = $gem;
-  }
-  /**
-   * @return GeminiGem
-   */
-  public function getGem()
-  {
-    return $this->gem;
-  }
-  /**
-   * Link material. On creation, this is upgraded to a more appropriate type if
-   * possible, and this is reflected in the response.
-   *
-   * @param Link $link
+   * @param Link
    */
   public function setLink(Link $link)
   {
@@ -98,25 +71,7 @@ class Material extends \Google\Model
     return $this->link;
   }
   /**
-   * NotebookLM Notebook material. Read-only.
-   *
-   * @param NotebookLmNotebook $notebook
-   */
-  public function setNotebook(NotebookLmNotebook $notebook)
-  {
-    $this->notebook = $notebook;
-  }
-  /**
-   * @return NotebookLmNotebook
-   */
-  public function getNotebook()
-  {
-    return $this->notebook;
-  }
-  /**
-   * YouTube video material.
-   *
-   * @param YouTubeVideo $youtubeVideo
+   * @param YouTubeVideo
    */
   public function setYoutubeVideo(YouTubeVideo $youtubeVideo)
   {

@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class Subject extends \Google\Model
 {
-  public const KIND_AUTH_TYPE_UNSPECIFIED = 'AUTH_TYPE_UNSPECIFIED';
-  public const KIND_USER = 'USER';
-  public const KIND_SERVICEACCOUNT = 'SERVICEACCOUNT';
-  public const KIND_GROUP = 'GROUP';
   /**
    * @var string
    */
@@ -37,21 +33,21 @@ class Subject extends \Google\Model
   public $ns;
 
   /**
-   * @param self::KIND_* $kind
+   * @param string
    */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
   /**
-   * @return self::KIND_*
+   * @return string
    */
   public function getKind()
   {
     return $this->kind;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -65,7 +61,7 @@ class Subject extends \Google\Model
     return $this->name;
   }
   /**
-   * @param string $ns
+   * @param string
    */
   public function setNs($ns)
   {

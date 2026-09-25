@@ -22,16 +22,10 @@ class ConnectionProfile extends \Google\Model
   protected $bigqueryProfileType = BigQueryProfile::class;
   protected $bigqueryProfileDataType = '';
   /**
-   * Output only. The create time of the resource.
-   *
    * @var string
    */
   public $createTime;
-  protected $dataverseProfileType = DataverseProfile::class;
-  protected $dataverseProfileDataType = '';
   /**
-   * Required. Display name.
-   *
    * @var string
    */
   public $displayName;
@@ -40,18 +34,12 @@ class ConnectionProfile extends \Google\Model
   protected $gcsProfileType = GcsProfile::class;
   protected $gcsProfileDataType = '';
   /**
-   * Labels.
-   *
    * @var string[]
    */
   public $labels;
-  protected $mongodbProfileType = MongodbProfile::class;
-  protected $mongodbProfileDataType = '';
   protected $mysqlProfileType = MysqlProfile::class;
   protected $mysqlProfileDataType = '';
   /**
-   * Output only. Identifier. The resource's name.
-   *
    * @var string
    */
   public $name;
@@ -61,43 +49,25 @@ class ConnectionProfile extends \Google\Model
   protected $postgresqlProfileDataType = '';
   protected $privateConnectivityType = PrivateConnectivity::class;
   protected $privateConnectivityDataType = '';
-  protected $salesforceMarketingCloudProfileType = SalesforceMarketingCloudProfile::class;
-  protected $salesforceMarketingCloudProfileDataType = '';
-  protected $salesforceProfileType = SalesforceProfile::class;
-  protected $salesforceProfileDataType = '';
   /**
-   * Output only. Reserved for future use.
-   *
    * @var bool
    */
   public $satisfiesPzi;
   /**
-   * Output only. Reserved for future use.
-   *
    * @var bool
    */
   public $satisfiesPzs;
-  protected $serviceNowProfileType = ServiceNowProfile::class;
-  protected $serviceNowProfileDataType = '';
-  protected $spannerProfileType = SpannerProfile::class;
-  protected $spannerProfileDataType = '';
   protected $sqlServerProfileType = SqlServerProfile::class;
   protected $sqlServerProfileDataType = '';
   protected $staticServiceIpConnectivityType = StaticServiceIpConnectivity::class;
   protected $staticServiceIpConnectivityDataType = '';
   /**
-   * Output only. The update time of the resource.
-   *
    * @var string
    */
   public $updateTime;
-  protected $workdayProfileType = WorkdayProfile::class;
-  protected $workdayProfileDataType = '';
 
   /**
-   * Profile for connecting to a BigQuery destination.
-   *
-   * @param BigQueryProfile $bigqueryProfile
+   * @param BigQueryProfile
    */
   public function setBigqueryProfile(BigQueryProfile $bigqueryProfile)
   {
@@ -111,9 +81,7 @@ class ConnectionProfile extends \Google\Model
     return $this->bigqueryProfile;
   }
   /**
-   * Output only. The create time of the resource.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -127,25 +95,7 @@ class ConnectionProfile extends \Google\Model
     return $this->createTime;
   }
   /**
-   * Profile for connecting to a Dataverse source.
-   *
-   * @param DataverseProfile $dataverseProfile
-   */
-  public function setDataverseProfile(DataverseProfile $dataverseProfile)
-  {
-    $this->dataverseProfile = $dataverseProfile;
-  }
-  /**
-   * @return DataverseProfile
-   */
-  public function getDataverseProfile()
-  {
-    return $this->dataverseProfile;
-  }
-  /**
-   * Required. Display name.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -159,9 +109,7 @@ class ConnectionProfile extends \Google\Model
     return $this->displayName;
   }
   /**
-   * Forward SSH tunnel connectivity.
-   *
-   * @param ForwardSshTunnelConnectivity $forwardSshConnectivity
+   * @param ForwardSshTunnelConnectivity
    */
   public function setForwardSshConnectivity(ForwardSshTunnelConnectivity $forwardSshConnectivity)
   {
@@ -175,9 +123,7 @@ class ConnectionProfile extends \Google\Model
     return $this->forwardSshConnectivity;
   }
   /**
-   * Profile for connecting to a Cloud Storage destination.
-   *
-   * @param GcsProfile $gcsProfile
+   * @param GcsProfile
    */
   public function setGcsProfile(GcsProfile $gcsProfile)
   {
@@ -191,9 +137,7 @@ class ConnectionProfile extends \Google\Model
     return $this->gcsProfile;
   }
   /**
-   * Labels.
-   *
-   * @param string[] $labels
+   * @param string[]
    */
   public function setLabels($labels)
   {
@@ -207,25 +151,7 @@ class ConnectionProfile extends \Google\Model
     return $this->labels;
   }
   /**
-   * Profile for connecting to a MongoDB source.
-   *
-   * @param MongodbProfile $mongodbProfile
-   */
-  public function setMongodbProfile(MongodbProfile $mongodbProfile)
-  {
-    $this->mongodbProfile = $mongodbProfile;
-  }
-  /**
-   * @return MongodbProfile
-   */
-  public function getMongodbProfile()
-  {
-    return $this->mongodbProfile;
-  }
-  /**
-   * Profile for connecting to a MySQL source.
-   *
-   * @param MysqlProfile $mysqlProfile
+   * @param MysqlProfile
    */
   public function setMysqlProfile(MysqlProfile $mysqlProfile)
   {
@@ -239,9 +165,7 @@ class ConnectionProfile extends \Google\Model
     return $this->mysqlProfile;
   }
   /**
-   * Output only. Identifier. The resource's name.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -255,9 +179,7 @@ class ConnectionProfile extends \Google\Model
     return $this->name;
   }
   /**
-   * Profile for connecting to an Oracle source.
-   *
-   * @param OracleProfile $oracleProfile
+   * @param OracleProfile
    */
   public function setOracleProfile(OracleProfile $oracleProfile)
   {
@@ -271,9 +193,7 @@ class ConnectionProfile extends \Google\Model
     return $this->oracleProfile;
   }
   /**
-   * Profile for connecting to a PostgreSQL source.
-   *
-   * @param PostgresqlProfile $postgresqlProfile
+   * @param PostgresqlProfile
    */
   public function setPostgresqlProfile(PostgresqlProfile $postgresqlProfile)
   {
@@ -287,9 +207,7 @@ class ConnectionProfile extends \Google\Model
     return $this->postgresqlProfile;
   }
   /**
-   * Private connectivity.
-   *
-   * @param PrivateConnectivity $privateConnectivity
+   * @param PrivateConnectivity
    */
   public function setPrivateConnectivity(PrivateConnectivity $privateConnectivity)
   {
@@ -303,41 +221,7 @@ class ConnectionProfile extends \Google\Model
     return $this->privateConnectivity;
   }
   /**
-   * Profile for connecting to a Salesforce Marketing Cloud source.
-   *
-   * @param SalesforceMarketingCloudProfile $salesforceMarketingCloudProfile
-   */
-  public function setSalesforceMarketingCloudProfile(SalesforceMarketingCloudProfile $salesforceMarketingCloudProfile)
-  {
-    $this->salesforceMarketingCloudProfile = $salesforceMarketingCloudProfile;
-  }
-  /**
-   * @return SalesforceMarketingCloudProfile
-   */
-  public function getSalesforceMarketingCloudProfile()
-  {
-    return $this->salesforceMarketingCloudProfile;
-  }
-  /**
-   * Profile for connecting to a Salesforce source.
-   *
-   * @param SalesforceProfile $salesforceProfile
-   */
-  public function setSalesforceProfile(SalesforceProfile $salesforceProfile)
-  {
-    $this->salesforceProfile = $salesforceProfile;
-  }
-  /**
-   * @return SalesforceProfile
-   */
-  public function getSalesforceProfile()
-  {
-    return $this->salesforceProfile;
-  }
-  /**
-   * Output only. Reserved for future use.
-   *
-   * @param bool $satisfiesPzi
+   * @param bool
    */
   public function setSatisfiesPzi($satisfiesPzi)
   {
@@ -351,9 +235,7 @@ class ConnectionProfile extends \Google\Model
     return $this->satisfiesPzi;
   }
   /**
-   * Output only. Reserved for future use.
-   *
-   * @param bool $satisfiesPzs
+   * @param bool
    */
   public function setSatisfiesPzs($satisfiesPzs)
   {
@@ -367,41 +249,7 @@ class ConnectionProfile extends \Google\Model
     return $this->satisfiesPzs;
   }
   /**
-   * Profile for connecting to a ServiceNow source.
-   *
-   * @param ServiceNowProfile $serviceNowProfile
-   */
-  public function setServiceNowProfile(ServiceNowProfile $serviceNowProfile)
-  {
-    $this->serviceNowProfile = $serviceNowProfile;
-  }
-  /**
-   * @return ServiceNowProfile
-   */
-  public function getServiceNowProfile()
-  {
-    return $this->serviceNowProfile;
-  }
-  /**
-   * Profile for connecting to a Spanner source.
-   *
-   * @param SpannerProfile $spannerProfile
-   */
-  public function setSpannerProfile(SpannerProfile $spannerProfile)
-  {
-    $this->spannerProfile = $spannerProfile;
-  }
-  /**
-   * @return SpannerProfile
-   */
-  public function getSpannerProfile()
-  {
-    return $this->spannerProfile;
-  }
-  /**
-   * Profile for connecting to a SQLServer source.
-   *
-   * @param SqlServerProfile $sqlServerProfile
+   * @param SqlServerProfile
    */
   public function setSqlServerProfile(SqlServerProfile $sqlServerProfile)
   {
@@ -415,9 +263,7 @@ class ConnectionProfile extends \Google\Model
     return $this->sqlServerProfile;
   }
   /**
-   * Static Service IP connectivity.
-   *
-   * @param StaticServiceIpConnectivity $staticServiceIpConnectivity
+   * @param StaticServiceIpConnectivity
    */
   public function setStaticServiceIpConnectivity(StaticServiceIpConnectivity $staticServiceIpConnectivity)
   {
@@ -431,9 +277,7 @@ class ConnectionProfile extends \Google\Model
     return $this->staticServiceIpConnectivity;
   }
   /**
-   * Output only. The update time of the resource.
-   *
-   * @param string $updateTime
+   * @param string
    */
   public function setUpdateTime($updateTime)
   {
@@ -445,22 +289,6 @@ class ConnectionProfile extends \Google\Model
   public function getUpdateTime()
   {
     return $this->updateTime;
-  }
-  /**
-   * Optional. Profile for connecting to a Workday source.
-   *
-   * @param WorkdayProfile $workdayProfile
-   */
-  public function setWorkdayProfile(WorkdayProfile $workdayProfile)
-  {
-    $this->workdayProfile = $workdayProfile;
-  }
-  /**
-   * @return WorkdayProfile
-   */
-  public function getWorkdayProfile()
-  {
-    return $this->workdayProfile;
   }
 }
 

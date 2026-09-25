@@ -33,7 +33,7 @@ class GoogleCloudSecuritycenterV2SecurityPolicy extends \Google\Model
   public $type;
 
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -47,7 +47,7 @@ class GoogleCloudSecuritycenterV2SecurityPolicy extends \Google\Model
     return $this->name;
   }
   /**
-   * @param bool $preview
+   * @param bool
    */
   public function setPreview($preview)
   {
@@ -61,7 +61,7 @@ class GoogleCloudSecuritycenterV2SecurityPolicy extends \Google\Model
     return $this->preview;
   }
   /**
-   * @param string $type
+   * @param string
    */
   public function setType($type)
   {

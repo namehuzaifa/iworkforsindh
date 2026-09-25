@@ -29,7 +29,7 @@ class GoogleCloudSecuritycenterV2NotificationMessage extends \Google\Model
   protected $resourceDataType = '';
 
   /**
-   * @param GoogleCloudSecuritycenterV2Finding $finding
+   * @param GoogleCloudSecuritycenterV2Finding
    */
   public function setFinding(GoogleCloudSecuritycenterV2Finding $finding)
   {
@@ -43,7 +43,7 @@ class GoogleCloudSecuritycenterV2NotificationMessage extends \Google\Model
     return $this->finding;
   }
   /**
-   * @param string $notificationConfigName
+   * @param string
    */
   public function setNotificationConfigName($notificationConfigName)
   {
@@ -57,7 +57,7 @@ class GoogleCloudSecuritycenterV2NotificationMessage extends \Google\Model
     return $this->notificationConfigName;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Resource $resource
+   * @param GoogleCloudSecuritycenterV2Resource
    */
   public function setResource(GoogleCloudSecuritycenterV2Resource $resource)
   {

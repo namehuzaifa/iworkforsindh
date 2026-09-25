@@ -29,7 +29,7 @@ class AzureSubscription extends \Google\Model
   public $id;
 
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -43,7 +43,7 @@ class AzureSubscription extends \Google\Model
     return $this->displayName;
   }
   /**
-   * @param string $id
+   * @param string
    */
   public function setId($id)
   {

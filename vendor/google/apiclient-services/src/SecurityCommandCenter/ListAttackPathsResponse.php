@@ -28,7 +28,7 @@ class ListAttackPathsResponse extends \Google\Collection
   public $nextPageToken;
 
   /**
-   * @param AttackPath[] $attackPaths
+   * @param AttackPath[]
    */
   public function setAttackPaths($attackPaths)
   {
@@ -42,7 +42,7 @@ class ListAttackPathsResponse extends \Google\Collection
     return $this->attackPaths;
   }
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {

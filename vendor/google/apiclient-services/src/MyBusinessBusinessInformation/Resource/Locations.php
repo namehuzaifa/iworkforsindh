@@ -50,9 +50,7 @@ class Locations extends \Google\Service\Resource
     return $this->call('delete', [$params], MybusinessbusinessinformationEmpty::class);
   }
   /**
-   * Returns the specified location as last set by the merchant. It may not
-   * reflect updates from Google or user-generated content that are live on Google
-   * Maps. (locations.get)
+   * Returns the specified location. (locations.get)
    *
    * @param string $name Required. The name of the location to fetch.
    * @param array $optParams Optional parameters.
@@ -69,9 +67,8 @@ class Locations extends \Google\Service\Resource
     return $this->call('get', [$params], Location::class);
   }
   /**
-   * Retrieves attributes for a location as last set by the merchant. It may not
-   * reflect updates from Google or user-generated content that are live on Google
-   * Maps. (locations.getAttributes)
+   * Looks up all the attributes set for a given location.
+   * (locations.getAttributes)
    *
    * @param string $name Required. Google identifier for this location in the form
    * of `locations/{location_id}/attributes`.
@@ -86,11 +83,8 @@ class Locations extends \Google\Service\Resource
     return $this->call('getAttributes', [$params], AttributesModel::class);
   }
   /**
-   * Returns the specified location as it appears live on Google Maps and Search.
-   * This consumer-facing view may have been updated by Google or user-generated
-   * content and may differ from the merchant's version. The returned
-   * GoogleUpdatedLocation contains masks that indicate which fields differ from
-   * the merchant's information. (locations.getGoogleUpdated)
+   * Gets the Google-updated version of the specified location.
+   * (locations.getGoogleUpdated)
    *
    * @param string $name Required. The name of the location to fetch.
    * @param array $optParams Optional parameters.
@@ -109,8 +103,8 @@ class Locations extends \Google\Service\Resource
   /**
    * Updates the specified location. (locations.patch)
    *
-   * @param string $name Identifier. Google identifier for this location in the
-   * form: `locations/{location_id}`.
+   * @param string $name Google identifier for this location in the form:
+   * `locations/{location_id}`.
    * @param Location $postBody
    * @param array $optParams Optional parameters.
    *

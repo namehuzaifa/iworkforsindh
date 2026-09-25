@@ -19,10 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class ValuedResource extends \Google\Collection
 {
-  public const RESOURCE_VALUE_RESOURCE_VALUE_UNSPECIFIED = 'RESOURCE_VALUE_UNSPECIFIED';
-  public const RESOURCE_VALUE_RESOURCE_VALUE_LOW = 'RESOURCE_VALUE_LOW';
-  public const RESOURCE_VALUE_RESOURCE_VALUE_MEDIUM = 'RESOURCE_VALUE_MEDIUM';
-  public const RESOURCE_VALUE_RESOURCE_VALUE_HIGH = 'RESOURCE_VALUE_HIGH';
   protected $collection_key = 'resourceValueConfigsUsed';
   /**
    * @var string
@@ -49,7 +45,7 @@ class ValuedResource extends \Google\Collection
   protected $resourceValueConfigsUsedDataType = 'array';
 
   /**
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -71,7 +67,7 @@ class ValuedResource extends \Google\Collection
     return $this->exposedScore;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -85,7 +81,7 @@ class ValuedResource extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $resource
+   * @param string
    */
   public function setResource($resource)
   {
@@ -99,7 +95,7 @@ class ValuedResource extends \Google\Collection
     return $this->resource;
   }
   /**
-   * @param string $resourceType
+   * @param string
    */
   public function setResourceType($resourceType)
   {
@@ -113,21 +109,21 @@ class ValuedResource extends \Google\Collection
     return $this->resourceType;
   }
   /**
-   * @param self::RESOURCE_VALUE_* $resourceValue
+   * @param string
    */
   public function setResourceValue($resourceValue)
   {
     $this->resourceValue = $resourceValue;
   }
   /**
-   * @return self::RESOURCE_VALUE_*
+   * @return string
    */
   public function getResourceValue()
   {
     return $this->resourceValue;
   }
   /**
-   * @param ResourceValueConfigMetadata[] $resourceValueConfigsUsed
+   * @param ResourceValueConfigMetadata[]
    */
   public function setResourceValueConfigsUsed($resourceValueConfigsUsed)
   {

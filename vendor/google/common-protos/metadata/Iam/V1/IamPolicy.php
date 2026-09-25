@@ -22,7 +22,29 @@ class IamPolicy
         \GPBMetadata\Google\Iam\V1\Policy::initOnce();
         \GPBMetadata\Google\Protobuf\FieldMask::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\x9B\x09\x0A\x1Egoogle/iam/v1/iam_policy.proto\x12\x0Dgoogle.iam.v1\x1A\x17google/api/client.proto\x1A\x1Fgoogle/api/field_behavior.proto\x1A\x19google/api/resource.proto\x1A\x1Bgoogle/iam/v1/options.proto\x1A\x1Agoogle/iam/v1/policy.proto\x1A google/protobuf/field_mask.proto\"\x8F\x01\x0A\x13SetIamPolicyRequest\x12\x1B\x0A\x08resource\x18\x01 \x01(\x09B\x09\xE0A\x02\xFAA\x03\x0A\x01*\x12*\x0A\x06policy\x18\x02 \x01(\x0B2\x15.google.iam.v1.PolicyB\x03\xE0A\x02\x12/\x0A\x0Bupdate_mask\x18\x03 \x01(\x0B2\x1A.google.protobuf.FieldMask\"d\x0A\x13GetIamPolicyRequest\x12\x1B\x0A\x08resource\x18\x01 \x01(\x09B\x09\xE0A\x02\xFAA\x03\x0A\x01*\x120\x0A\x07options\x18\x02 \x01(\x0B2\x1F.google.iam.v1.GetPolicyOptions\"R\x0A\x19TestIamPermissionsRequest\x12\x1B\x0A\x08resource\x18\x01 \x01(\x09B\x09\xE0A\x02\xFAA\x03\x0A\x01*\x12\x18\x0A\x0Bpermissions\x18\x02 \x03(\x09B\x03\xE0A\x02\"1\x0A\x1ATestIamPermissionsResponse\x12\x13\x0A\x0Bpermissions\x18\x01 \x03(\x092\xB4\x03\x0A\x09IAMPolicy\x12t\x0A\x0CSetIamPolicy\x12\".google.iam.v1.SetIamPolicyRequest\x1A\x15.google.iam.v1.Policy\")\x82\xD3\xE4\x93\x02#\"\x1E/v1/{resource=**}:setIamPolicy:\x01*\x12t\x0A\x0CGetIamPolicy\x12\".google.iam.v1.GetIamPolicyRequest\x1A\x15.google.iam.v1.Policy\")\x82\xD3\xE4\x93\x02#\"\x1E/v1/{resource=**}:getIamPolicy:\x01*\x12\x9A\x01\x0A\x12TestIamPermissions\x12(.google.iam.v1.TestIamPermissionsRequest\x1A).google.iam.v1.TestIamPermissionsResponse\"/\x82\xD3\xE4\x93\x02)\"\$/v1/{resource=**}:testIamPermissions:\x01*\x1A\x1E\xCAA\x1Biam-meta-api.googleapis.comB|\x0A\x11com.google.iam.v1B\x0EIamPolicyProtoP\x01Z)cloud.google.com/go/iam/apiv1/iampb;iampb\xAA\x02\x13Google.Cloud.Iam.V1\xCA\x02\x13Google\\Cloud\\Iam\\V1b\x06proto3"
+            '
+õ	
+google/iam/v1/iam_policy.protogoogle.iam.v1google/api/client.protogoogle/api/field_behavior.protogoogle/api/resource.protogoogle/iam/v1/options.protogoogle/iam/v1/policy.proto google/protobuf/field_mask.proto"è
+SetIamPolicyRequest
+resource (	B	‡A˙A
+**
+policy (2.google.iam.v1.PolicyB‡A/
+update_mask (2.google.protobuf.FieldMask"d
+GetIamPolicyRequest
+resource (	B	‡A˙A
+*0
+options (2.google.iam.v1.GetPolicyOptions"R
+TestIamPermissionsRequest
+resource (	B	‡A˙A
+*
+permissions (	B‡A"1
+TestIamPermissionsResponse
+permissions (	2¥
+	IAMPolicyt
+SetIamPolicy".google.iam.v1.SetIamPolicyRequest.google.iam.v1.Policy")Ç”‰ì#"/v1/{resource=**}:setIamPolicy:*t
+GetIamPolicy".google.iam.v1.GetIamPolicyRequest.google.iam.v1.Policy")Ç”‰ì#"/v1/{resource=**}:getIamPolicy:*ö
+TestIamPermissions(.google.iam.v1.TestIamPermissionsRequest).google.iam.v1.TestIamPermissionsResponse"/Ç”‰ì)"$/v1/{resource=**}:testIamPermissions:* Aiam-meta-api.googleapis.comB|
+com.google.iam.v1BIamPolicyProtoPZ)cloud.google.com/go/iam/apiv1/iampb;iampb™Google.Cloud.Iam.V1 Google\\Cloud\\Iam\\V1bproto3'
         , true);
 
         static::$is_initialized = true;

@@ -27,7 +27,7 @@ use Google\Client;
  *
  * <p>
  * For more information about this service, see the API
- * <a href="https://developers.google.com/workspace/meet/api" target="_blank">Documentation</a>
+ * <a href="https://developers.google.com/meet/api" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -48,11 +48,9 @@ class Meet extends \Google\Service
   public $conferenceRecords_participants;
   public $conferenceRecords_participants_participantSessions;
   public $conferenceRecords_recordings;
-  public $conferenceRecords_smartNotes;
   public $conferenceRecords_transcripts;
   public $conferenceRecords_transcripts_entries;
   public $spaces;
-  public $spaces_members;
   public $rootUrlTemplate;
 
   /**
@@ -231,44 +229,6 @@ class Meet extends \Google\Service
           ]
         ]
     );
-    $this->conferenceRecords_smartNotes = new Meet\Resource\ConferenceRecordsSmartNotes(
-        $this,
-        $this->serviceName,
-        'smartNotes',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'v2/{+parent}/smartNotes',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->conferenceRecords_transcripts = new Meet\Resource\ConferenceRecordsTranscripts(
         $this,
         $this->serviceName,
@@ -373,88 +333,6 @@ class Meet extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],'patch' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'updateMask' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->spaces_members = new Meet\Resource\SpacesMembers(
-        $this,
-        $this->serviceName,
-        'members',
-        [
-          'methods' => [
-            'batchUpdate' => [
-              'path' => 'v2/{+parent}/members:batchUpdate',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'create' => [
-              'path' => 'v2/{+parent}/members',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'v2/{+parent}/members',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],'patch' => [

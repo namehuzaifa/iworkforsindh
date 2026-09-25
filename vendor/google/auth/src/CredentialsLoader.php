@@ -17,7 +17,6 @@
 
 namespace Google\Auth;
 
-use Google\Auth\Credentials\ExternalAccountAuthorizedUserCredentials;
 use Google\Auth\Credentials\ExternalAccountCredentials;
 use Google\Auth\Credentials\ImpersonatedServiceAccountCredentials;
 use Google\Auth\Credentials\InsecureCredentials;
@@ -77,7 +76,7 @@ abstract class CredentialsLoader implements
      */
     public static function fromEnv()
     {
-        $path = self::getEnv(self::ENV_VAR);
+        $path = getenv(self::ENV_VAR);
         if (empty($path)) {
             return null;
         }
@@ -105,7 +104,7 @@ abstract class CredentialsLoader implements
     public static function fromWellKnownFile()
     {
         $rootEnv = self::isOnWindows() ? 'APPDATA' : 'HOME';
-        $path = [self::getEnv($rootEnv)];
+        $path = [getenv($rootEnv)];
         if (!self::isOnWindows()) {
             $path[] = self::NON_WINDOWS_WELL_KNOWN_PATH_BASE;
         }
@@ -121,46 +120,25 @@ abstract class CredentialsLoader implements
     /**
      * Create a new Credentials instance.
      *
-     * @deprecated This method is being deprecated because of a potential security risk.
+     * **Important**: If you accept a credential configuration (credential JSON/File/Stream) from an
+     * external source for authentication to Google Cloud Platform, you must validate it before
+     * providing it to any Google API or library. Providing an unvalidated credential configuration to
+     * Google APIs can compromise the security of your systems and data. For more information
+     * {@see https://cloud.google.com/docs/authentication/external/externally-sourced-credentials}
      *
-     * This method does not validate the credential configuration. The security
-     * risk occurs when a credential configuration is accepted from a source
-     * that is not under your control and used without validation on your side.
+     * @param string|string[] $scope the scope of the access request, expressed
+     *        either as an Array or as a space-delimited String.
+     * @param array<mixed> $jsonKey the JSON credentials.
+     * @param string|string[] $defaultScope The default scope to use if no
+     *   user-defined scopes exist, expressed either as an Array or as a
+     *   space-delimited string.
      *
-     * If you know that you will be loading credential configurations of a
-     * specific type, it is recommended to use a credential-type-specific
-     * method.
-     * This will ensure that an unexpected credential type with potential for
-     * malicious intent is not loaded unintentionally. You might still have to do
-     * validation for certain credential types. Please follow the recommendation
-     * for that method. For example, if you want to load only service accounts,
-     * you can create the {@see ServiceAccountCredentials} explicitly:
-     *
-     * ```
-     * use Google\Auth\Credentials\ServiceAccountCredentials;
-     * $creds = new ServiceAccountCredentials($scopes, $json);
-     * ```
-     *
-     * If you are loading your credential configuration from an untrusted source and have
-     * not mitigated the risks (e.g. by validating the configuration yourself), make
-     * these changes as soon as possible to prevent security risks to your environment.
-     *
-     * Regardless of the method used, it is always your responsibility to validate
-     * configurations received from external sources.
-     *
-     * @see https://cloud.google.com/docs/authentication/external/externally-sourced-credentials
-     *
-     * @param string|string[] $scope
-     * @param array<mixed> $jsonKey
-     * @param string|string[] $defaultScope
-     * @param bool $enableRegionalAccessBoundary Lookup and include the regional access boundary header.
-     * @return ServiceAccountCredentials|UserRefreshCredentials|ImpersonatedServiceAccountCredentials|ExternalAccountCredentials|ExternalAccountAuthorizedUserCredentials
+     * @return ServiceAccountCredentials|UserRefreshCredentials|ImpersonatedServiceAccountCredentials|ExternalAccountCredentials
      */
     public static function makeCredentials(
         $scope,
         array $jsonKey,
-        $defaultScope = null,
-        bool $enableRegionalAccessBoundary = false
+        $defaultScope = null
     ) {
         if (!array_key_exists('type', $jsonKey)) {
             throw new \InvalidArgumentException('json key is missing the type field');
@@ -168,11 +146,7 @@ abstract class CredentialsLoader implements
 
         if ($jsonKey['type'] == 'service_account') {
             // Do not pass $defaultScope to ServiceAccountCredentials
-            return new ServiceAccountCredentials(
-                $scope,
-                $jsonKey,
-                enableRegionalAccessBoundary: $enableRegionalAccessBoundary
-            );
+            return new ServiceAccountCredentials($scope, $jsonKey);
         }
 
         if ($jsonKey['type'] == 'authorized_user') {
@@ -181,27 +155,13 @@ abstract class CredentialsLoader implements
         }
 
         if ($jsonKey['type'] == 'impersonated_service_account') {
-            return new ImpersonatedServiceAccountCredentials(
-                $scope,
-                $jsonKey,
-                defaultScope: $defaultScope,
-                enableRegionalAccessBoundary: $enableRegionalAccessBoundary
-            );
+            $anyScope = $scope ?: $defaultScope;
+            return new ImpersonatedServiceAccountCredentials($anyScope, $jsonKey);
         }
 
         if ($jsonKey['type'] == 'external_account') {
             $anyScope = $scope ?: $defaultScope;
-            return new ExternalAccountCredentials($anyScope, $jsonKey, $enableRegionalAccessBoundary);
-        }
-
-        if ($jsonKey['type'] == 'external_account_authorized_user') {
-            $anyScope = $scope ?: $defaultScope;
-            return new ExternalAccountAuthorizedUserCredentials($anyScope, $jsonKey);
-        }
-
-        if ($jsonKey['type'] == 'external_account_authorized_user') {
-            $anyScope = $scope ?: $defaultScope;
-            return new ExternalAccountAuthorizedUserCredentials($anyScope, $jsonKey);
+            return new ExternalAccountCredentials($anyScope, $jsonKey);
         }
 
         throw new \InvalidArgumentException('invalid value in the type field');
@@ -255,7 +215,7 @@ abstract class CredentialsLoader implements
      */
     public static function quotaProjectFromEnv()
     {
-        return self::getEnv(self::QUOTA_PROJECT_ENV_VAR) ?: null;
+        return getenv(self::QUOTA_PROJECT_ENV_VAR) ?: null;
     }
 
     /**
@@ -291,7 +251,7 @@ abstract class CredentialsLoader implements
      */
     public static function shouldLoadClientCertSource()
     {
-        return filter_var(self::getEnv(self::MTLS_CERT_ENV_VAR), FILTER_VALIDATE_BOOLEAN);
+        return filter_var(getenv(self::MTLS_CERT_ENV_VAR), FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
@@ -300,7 +260,7 @@ abstract class CredentialsLoader implements
     private static function loadDefaultClientCertSourceFile()
     {
         $rootEnv = self::isOnWindows() ? 'APPDATA' : 'HOME';
-        $path = sprintf('%s/%s', self::getEnv($rootEnv), self::MTLS_WELL_KNOWN_PATH);
+        $path = sprintf('%s/%s', getenv($rootEnv), self::MTLS_WELL_KNOWN_PATH);
         if (!file_exists($path)) {
             return null;
         }
@@ -331,10 +291,5 @@ abstract class CredentialsLoader implements
     public function getUniverseDomain(): string
     {
         return self::DEFAULT_UNIVERSE_DOMAIN;
-    }
-
-    private static function getEnv(string $env): mixed
-    {
-        return getenv($env) ?: $_ENV[$env] ?? null;
     }
 }

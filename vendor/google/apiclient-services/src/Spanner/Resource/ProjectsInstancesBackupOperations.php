@@ -41,7 +41,7 @@ class ProjectsInstancesBackupOperations extends \Google\Service\Resource
    * (backupOperations.listProjectsInstancesBackupOperations)
    *
    * @param string $parent Required. The instance of the backup operations. Values
-   * are of the form `projects/{project}/instances/{instance}`.
+   * are of the form `projects//instances/`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter An expression that filters the list of returned

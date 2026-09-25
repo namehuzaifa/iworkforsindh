@@ -19,9 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
 {
-  public const STATE_STATE_UNSPECIFIED = 'STATE_UNSPECIFIED';
-  public const STATE_CALCULATED = 'CALCULATED';
-  public const STATE_NOT_CALCULATED = 'NOT_CALCULATED';
   /**
    * @var string
    */
@@ -49,7 +46,7 @@ class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
   public $state;
 
   /**
-   * @param string $attackExposureResult
+   * @param string
    */
   public function setAttackExposureResult($attackExposureResult)
   {
@@ -63,7 +60,7 @@ class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
     return $this->attackExposureResult;
   }
   /**
-   * @param int $exposedHighValueResourcesCount
+   * @param int
    */
   public function setExposedHighValueResourcesCount($exposedHighValueResourcesCount)
   {
@@ -77,7 +74,7 @@ class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
     return $this->exposedHighValueResourcesCount;
   }
   /**
-   * @param int $exposedLowValueResourcesCount
+   * @param int
    */
   public function setExposedLowValueResourcesCount($exposedLowValueResourcesCount)
   {
@@ -91,7 +88,7 @@ class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
     return $this->exposedLowValueResourcesCount;
   }
   /**
-   * @param int $exposedMediumValueResourcesCount
+   * @param int
    */
   public function setExposedMediumValueResourcesCount($exposedMediumValueResourcesCount)
   {
@@ -105,7 +102,7 @@ class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
     return $this->exposedMediumValueResourcesCount;
   }
   /**
-   * @param string $latestCalculationTime
+   * @param string
    */
   public function setLatestCalculationTime($latestCalculationTime)
   {
@@ -127,14 +124,14 @@ class GoogleCloudSecuritycenterV2AttackExposure extends \Google\Model
     return $this->score;
   }
   /**
-   * @param self::STATE_* $state
+   * @param string
    */
   public function setState($state)
   {
     $this->state = $state;
   }
   /**
-   * @return self::STATE_*
+   * @return string
    */
   public function getState()
   {

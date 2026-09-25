@@ -24,20 +24,11 @@ class Config extends \Google\Collection
   protected $availableImagesDataType = 'array';
   protected $defaultValuesType = DefaultValues::class;
   protected $defaultValuesDataType = '';
-  /**
-   * Output only. Flag to disable the creation of legacy Workbench notebooks
-   * (User-managed notebooks and Google-managed notebooks).
-   *
-   * @var bool
-   */
-  public $disableWorkbenchLegacyCreation;
   protected $supportedValuesType = SupportedValues::class;
   protected $supportedValuesDataType = '';
 
   /**
-   * Output only. The list of available images to create a WbI.
-   *
-   * @param ImageRelease[] $availableImages
+   * @param ImageRelease[]
    */
   public function setAvailableImages($availableImages)
   {
@@ -51,9 +42,7 @@ class Config extends \Google\Collection
     return $this->availableImages;
   }
   /**
-   * Output only. The default values for configuration.
-   *
-   * @param DefaultValues $defaultValues
+   * @param DefaultValues
    */
   public function setDefaultValues(DefaultValues $defaultValues)
   {
@@ -67,26 +56,7 @@ class Config extends \Google\Collection
     return $this->defaultValues;
   }
   /**
-   * Output only. Flag to disable the creation of legacy Workbench notebooks
-   * (User-managed notebooks and Google-managed notebooks).
-   *
-   * @param bool $disableWorkbenchLegacyCreation
-   */
-  public function setDisableWorkbenchLegacyCreation($disableWorkbenchLegacyCreation)
-  {
-    $this->disableWorkbenchLegacyCreation = $disableWorkbenchLegacyCreation;
-  }
-  /**
-   * @return bool
-   */
-  public function getDisableWorkbenchLegacyCreation()
-  {
-    return $this->disableWorkbenchLegacyCreation;
-  }
-  /**
-   * Output only. The supported values for configuration.
-   *
-   * @param SupportedValues $supportedValues
+   * @param SupportedValues
    */
   public function setSupportedValues(SupportedValues $supportedValues)
   {

@@ -57,7 +57,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
   public $unexpectedSystemCallHandler;
 
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -71,7 +71,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->name;
   }
   /**
-   * @param bool $unexpectedCodeModification
+   * @param bool
    */
   public function setUnexpectedCodeModification($unexpectedCodeModification)
   {
@@ -85,7 +85,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedCodeModification;
   }
   /**
-   * @param bool $unexpectedFtraceHandler
+   * @param bool
    */
   public function setUnexpectedFtraceHandler($unexpectedFtraceHandler)
   {
@@ -99,7 +99,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedFtraceHandler;
   }
   /**
-   * @param bool $unexpectedInterruptHandler
+   * @param bool
    */
   public function setUnexpectedInterruptHandler($unexpectedInterruptHandler)
   {
@@ -113,7 +113,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedInterruptHandler;
   }
   /**
-   * @param bool $unexpectedKernelCodePages
+   * @param bool
    */
   public function setUnexpectedKernelCodePages($unexpectedKernelCodePages)
   {
@@ -127,7 +127,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedKernelCodePages;
   }
   /**
-   * @param bool $unexpectedKprobeHandler
+   * @param bool
    */
   public function setUnexpectedKprobeHandler($unexpectedKprobeHandler)
   {
@@ -141,7 +141,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedKprobeHandler;
   }
   /**
-   * @param bool $unexpectedProcessesInRunqueue
+   * @param bool
    */
   public function setUnexpectedProcessesInRunqueue($unexpectedProcessesInRunqueue)
   {
@@ -155,7 +155,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedProcessesInRunqueue;
   }
   /**
-   * @param bool $unexpectedReadOnlyDataModification
+   * @param bool
    */
   public function setUnexpectedReadOnlyDataModification($unexpectedReadOnlyDataModification)
   {
@@ -169,7 +169,7 @@ class GoogleCloudSecuritycenterV2KernelRootkit extends \Google\Model
     return $this->unexpectedReadOnlyDataModification;
   }
   /**
-   * @param bool $unexpectedSystemCallHandler
+   * @param bool
    */
   public function setUnexpectedSystemCallHandler($unexpectedSystemCallHandler)
   {

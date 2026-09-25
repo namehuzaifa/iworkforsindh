@@ -87,11 +87,6 @@ class CloudWorkstations extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'extraLocationTypes' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
                 'filter' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -166,10 +161,6 @@ class CloudWorkstations extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
               ],
             ],
           ]
@@ -239,10 +230,6 @@ class CloudWorkstations extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -357,10 +344,6 @@ class CloudWorkstations extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -520,10 +503,6 @@ class CloudWorkstations extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -595,16 +574,6 @@ class CloudWorkstations extends \Google\Service
               ],
             ],'stop' => [
               'path' => 'v1/{+name}:stop',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'suspend' => [
-              'path' => 'v1/{+name}:suspend',
               'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [

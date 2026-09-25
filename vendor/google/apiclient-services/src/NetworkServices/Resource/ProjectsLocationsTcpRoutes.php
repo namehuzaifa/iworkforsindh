@@ -35,7 +35,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * Creates a new TcpRoute in a given project and location. (tcpRoutes.create)
    *
    * @param string $parent Required. The parent resource of the TcpRoute. Must be
-   * in the format `projects/locations`.
+   * in the format `projects/locations/global`.
    * @param TcpRoute $postBody
    * @param array $optParams Optional parameters.
    *
@@ -54,8 +54,12 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * Deletes a single TcpRoute. (tcpRoutes.delete)
    *
    * @param string $name Required. A name of the TcpRoute to delete. Must be in
-   * the format `projects/locations/tcpRoutes`.
+   * the format `projects/locations/global/tcpRoutes`.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string etag Optional. Etag of the resource. If this is provided,
+   * it must match the server's etag. If the provided etag does not match the
+   * server's etag, the request will fail with a 409 ABORTED error.
    * @return Operation
    * @throws \Google\Service\Exception
    */
@@ -69,7 +73,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * Gets details of a single TcpRoute. (tcpRoutes.get)
    *
    * @param string $name Required. A name of the TcpRoute to get. Must be in the
-   * format `projects/locations/tcpRoutes`.
+   * format `projects/locations/global/tcpRoutes`.
    * @param array $optParams Optional parameters.
    * @return TcpRoute
    * @throws \Google\Service\Exception
@@ -85,7 +89,8 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * (tcpRoutes.listProjectsLocationsTcpRoutes)
    *
    * @param string $parent Required. The project and location from which the
-   * TcpRoutes should be listed, specified in the format `projects/locations`.
+   * TcpRoutes should be listed, specified in the format
+   * `projects/locations/global`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize Maximum number of TcpRoutes to return per call.
@@ -93,9 +98,6 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * `ListTcpRoutesResponse` Indicates that this is a continuation of a prior
    * `ListTcpRoutes` call, and that the system should return the next page of
    * data.
-   * @opt_param bool returnPartialSuccess Optional. If true, allow partial
-   * responses for multi-regional Aggregated List requests. Otherwise if one of
-   * the locations is down or unreachable, the Aggregated List request will fail.
    * @return ListTcpRoutesResponse
    * @throws \Google\Service\Exception
    */
@@ -109,7 +111,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * Updates the parameters of a single TcpRoute. (tcpRoutes.patch)
    *
    * @param string $name Identifier. Name of the TcpRoute resource. It matches
-   * pattern `projects/locations/tcpRoutes/tcp_route_name>`.
+   * pattern `projects/locations/global/tcpRoutes/tcp_route_name>`.
    * @param TcpRoute $postBody
    * @param array $optParams Optional parameters.
    *

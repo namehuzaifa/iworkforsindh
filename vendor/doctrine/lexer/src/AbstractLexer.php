@@ -20,7 +20,7 @@ use const PREG_SPLIT_OFFSET_CAPTURE;
  * Base class for writing simple lexers, i.e. for creating small DSLs.
  *
  * @template T of UnitEnum|string|int
- * @template V of string|int|float|bool
+ * @template V of string|int
  */
 abstract class AbstractLexer
 {
@@ -138,7 +138,7 @@ abstract class AbstractLexer
      *
      * @return bool
      *
-     * @phpstan-assert-if-true !=null $this->lookahead
+     * @psalm-assert-if-true !=null $this->lookahead
      */
     public function isNextToken(int|string|UnitEnum $type)
     {
@@ -152,7 +152,7 @@ abstract class AbstractLexer
      *
      * @return bool
      *
-     * @phpstan-assert-if-true !=null $this->lookahead
+     * @psalm-assert-if-true !=null $this->lookahead
      */
     public function isNextTokenAny(array $types)
     {
@@ -164,8 +164,7 @@ abstract class AbstractLexer
      *
      * @return bool
      *
-     * @phpstan-impure
-     * @phpstan-assert-if-true !null $this->lookahead
+     * @psalm-assert-if-true !null $this->lookahead
      */
     public function moveNext()
     {
@@ -219,8 +218,6 @@ abstract class AbstractLexer
      * Peeks at the next token, returns it and immediately resets the peek.
      *
      * @return Token<T, V>|null The next token or NULL if there are no more tokens ahead.
-     *
-     * @phpstan-impure
      */
     public function glimpse()
     {

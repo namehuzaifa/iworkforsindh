@@ -20,22 +20,12 @@ namespace Google\Service\CloudDataplex;
 class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing extends \Google\Model
 {
   /**
-   * Output only. The BigQuery dataset the discovered tables are published to.
-   *
    * @var string
    */
   public $dataset;
-  /**
-   * Output only. The location of the BigQuery publishing dataset.
-   *
-   * @var string
-   */
-  public $location;
 
   /**
-   * Output only. The BigQuery dataset the discovered tables are published to.
-   *
-   * @param string $dataset
+   * @param string
    */
   public function setDataset($dataset)
   {
@@ -47,22 +37,6 @@ class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing extends \Google
   public function getDataset()
   {
     return $this->dataset;
-  }
-  /**
-   * Output only. The location of the BigQuery publishing dataset.
-   *
-   * @param string $location
-   */
-  public function setLocation($location)
-  {
-    $this->location = $location;
-  }
-  /**
-   * @return string
-   */
-  public function getLocation()
-  {
-    return $this->location;
   }
 }
 

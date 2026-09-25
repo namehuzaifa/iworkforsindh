@@ -31,7 +31,7 @@ class SubscriptionDetails extends IyzipayResource
     public static function retrieve(SubscriptionDetailsRequest $request, Options $options)
     {
         $uri = $options->getBaseUrl() . "/v2/subscription/subscriptions/".$request->getSubscriptionReferenceCode().RequestStringBuilder::requestToStringQuery($request, 'defaultParams');;
-        $rawResult = parent::httpClient()->getV2($uri, parent::getHttpHeadersV2($uri, null, $options));
+        $rawResult = parent::httpClient()->getV2($uri, parent::getHttpHeadersV2($uri, null, $options), $request->toJsonString());
         return SubscriptionDetailsMapper::create($rawResult)->jsonDecode()->mapSubscriptionDetails(new SubscriptionDetails());
     }
 

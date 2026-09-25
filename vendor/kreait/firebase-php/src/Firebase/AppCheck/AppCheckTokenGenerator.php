@@ -11,8 +11,6 @@ use Psr\Clock\ClockInterface;
 
 /**
  * @internal
- *
- * @todo Add #[SensitiveParameter] attribute to the private key once the minimum required PHP version is >=8.2
  */
 final class AppCheckTokenGenerator
 {
@@ -51,7 +49,7 @@ final class AppCheckTokenGenerator
             'exp' => $now + 300,
         ];
 
-        if ($options?->ttl !== null) {
+        if (null !== $options && $options->ttl) {
             $payload['ttl'] = $options->ttl.'s';
         }
 

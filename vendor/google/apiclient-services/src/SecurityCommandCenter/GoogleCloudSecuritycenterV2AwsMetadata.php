@@ -28,7 +28,7 @@ class GoogleCloudSecuritycenterV2AwsMetadata extends \Google\Collection
   protected $organizationalUnitsDataType = 'array';
 
   /**
-   * @param GoogleCloudSecuritycenterV2AwsAccount $account
+   * @param GoogleCloudSecuritycenterV2AwsAccount
    */
   public function setAccount(GoogleCloudSecuritycenterV2AwsAccount $account)
   {
@@ -42,7 +42,7 @@ class GoogleCloudSecuritycenterV2AwsMetadata extends \Google\Collection
     return $this->account;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2AwsOrganization $organization
+   * @param GoogleCloudSecuritycenterV2AwsOrganization
    */
   public function setOrganization(GoogleCloudSecuritycenterV2AwsOrganization $organization)
   {
@@ -56,7 +56,7 @@ class GoogleCloudSecuritycenterV2AwsMetadata extends \Google\Collection
     return $this->organization;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2AwsOrganizationalUnit[] $organizationalUnits
+   * @param GoogleCloudSecuritycenterV2AwsOrganizationalUnit[]
    */
   public function setOrganizationalUnits($organizationalUnits)
   {

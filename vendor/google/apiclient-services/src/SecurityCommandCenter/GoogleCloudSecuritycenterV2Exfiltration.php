@@ -30,7 +30,7 @@ class GoogleCloudSecuritycenterV2Exfiltration extends \Google\Collection
   public $totalExfiltratedBytes;
 
   /**
-   * @param GoogleCloudSecuritycenterV2ExfilResource[] $sources
+   * @param GoogleCloudSecuritycenterV2ExfilResource[]
    */
   public function setSources($sources)
   {
@@ -44,7 +44,7 @@ class GoogleCloudSecuritycenterV2Exfiltration extends \Google\Collection
     return $this->sources;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ExfilResource[] $targets
+   * @param GoogleCloudSecuritycenterV2ExfilResource[]
    */
   public function setTargets($targets)
   {
@@ -58,7 +58,7 @@ class GoogleCloudSecuritycenterV2Exfiltration extends \Google\Collection
     return $this->targets;
   }
   /**
-   * @param string $totalExfiltratedBytes
+   * @param string
    */
   public function setTotalExfiltratedBytes($totalExfiltratedBytes)
   {

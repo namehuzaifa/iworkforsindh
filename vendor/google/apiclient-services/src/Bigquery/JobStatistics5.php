@@ -20,29 +20,16 @@ namespace Google\Service\Bigquery;
 class JobStatistics5 extends \Google\Model
 {
   /**
-   * Output only. Number of logical bytes copied to the destination table.
-   *
    * @var string
    */
   public $copiedLogicalBytes;
   /**
-   * Output only. Number of rows copied to the destination table.
-   *
    * @var string
    */
   public $copiedRows;
-  /**
-   * Output only. Destination region for a cross-region copy job. Not set for
-   * in-region copy jobs.
-   *
-   * @var string
-   */
-  public $remoteDestinationRegion;
 
   /**
-   * Output only. Number of logical bytes copied to the destination table.
-   *
-   * @param string $copiedLogicalBytes
+   * @param string
    */
   public function setCopiedLogicalBytes($copiedLogicalBytes)
   {
@@ -56,9 +43,7 @@ class JobStatistics5 extends \Google\Model
     return $this->copiedLogicalBytes;
   }
   /**
-   * Output only. Number of rows copied to the destination table.
-   *
-   * @param string $copiedRows
+   * @param string
    */
   public function setCopiedRows($copiedRows)
   {
@@ -70,23 +55,6 @@ class JobStatistics5 extends \Google\Model
   public function getCopiedRows()
   {
     return $this->copiedRows;
-  }
-  /**
-   * Output only. Destination region for a cross-region copy job. Not set for
-   * in-region copy jobs.
-   *
-   * @param string $remoteDestinationRegion
-   */
-  public function setRemoteDestinationRegion($remoteDestinationRegion)
-  {
-    $this->remoteDestinationRegion = $remoteDestinationRegion;
-  }
-  /**
-   * @return string
-   */
-  public function getRemoteDestinationRegion()
-  {
-    return $this->remoteDestinationRegion;
   }
 }
 

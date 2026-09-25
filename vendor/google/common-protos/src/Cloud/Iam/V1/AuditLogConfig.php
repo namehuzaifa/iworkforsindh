@@ -5,8 +5,8 @@
 namespace Google\Cloud\Iam\V1;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * Provides the configuration for logging a type of permissions.
@@ -16,7 +16,7 @@ use Google\Protobuf\RepeatedField;
  *         {
  *           "log_type": "DATA_READ",
  *           "exempted_members": [
- *             "user:jose\@example.com"
+ *             "user:jose&#64;example.com"
  *           ]
  *         },
  *         {
@@ -25,7 +25,7 @@ use Google\Protobuf\RepeatedField;
  *       ]
  *     }
  * This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
- * jose\@example.com from DATA_READ logging.
+ * jose&#64;example.com from DATA_READ logging.
  *
  * Generated from protobuf message <code>google.iam.v1.AuditLogConfig</code>
  */
@@ -55,7 +55,7 @@ class AuditLogConfig extends \Google\Protobuf\Internal\Message
      *
      *     @type int $log_type
      *           The log type that this config enables.
-     *     @type string[] $exempted_members
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $exempted_members
      *           Specifies the identities that do not cause logging for this type of
      *           permission.
      *           Follows the same format of
@@ -100,7 +100,7 @@ class AuditLogConfig extends \Google\Protobuf\Internal\Message
      * [Binding.members][google.iam.v1.Binding.members].
      *
      * Generated from protobuf field <code>repeated string exempted_members = 2;</code>
-     * @return RepeatedField<string>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getExemptedMembers()
     {
@@ -114,7 +114,7 @@ class AuditLogConfig extends \Google\Protobuf\Internal\Message
      * [Binding.members][google.iam.v1.Binding.members].
      *
      * Generated from protobuf field <code>repeated string exempted_members = 2;</code>
-     * @param string[] $var
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setExemptedMembers($var)

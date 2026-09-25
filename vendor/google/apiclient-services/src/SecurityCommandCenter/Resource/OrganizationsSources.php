@@ -36,9 +36,10 @@ use Google\Service\SecurityCommandCenter\TestIamPermissionsResponse;
 class OrganizationsSources extends \Google\Service\Resource
 {
   /**
-   * (sources.create)
+   * Creates a source. (sources.create)
    *
-   * @param string $parent
+   * @param string $parent Required. Resource name of the new source's parent. Its
+   * format should be `organizations/[organization_id]`.
    * @param Source $postBody
    * @param array $optParams Optional parameters.
    * @return Source
@@ -51,9 +52,10 @@ class OrganizationsSources extends \Google\Service\Resource
     return $this->call('create', [$params], Source::class);
   }
   /**
-   * (sources.get)
+   * Gets a source. (sources.get)
    *
-   * @param string $name
+   * @param string $name Required. Relative resource name of the source. Its
+   * format is `organizations/[organization_id]/source/[source_id]`.
    * @param array $optParams Optional parameters.
    * @return Source
    * @throws \Google\Service\Exception
@@ -65,9 +67,13 @@ class OrganizationsSources extends \Google\Service\Resource
     return $this->call('get', [$params], Source::class);
   }
   /**
+   * Gets the access control policy on the specified Source.
    * (sources.getIamPolicy)
    *
-   * @param string $resource
+   * @param string $resource REQUIRED: The resource for which the policy is being
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
@@ -80,13 +86,19 @@ class OrganizationsSources extends \Google\Service\Resource
     return $this->call('getIamPolicy', [$params], Policy::class);
   }
   /**
+   * Lists all sources belonging to an organization.
    * (sources.listOrganizationsSources)
    *
-   * @param string $parent
+   * @param string $parent Required. Resource name of the parent of sources to
+   * list. Its format should be `organizations/[organization_id]`,
+   * `folders/[folder_id]`, or `projects/[project_id]`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize
-   * @opt_param string pageToken
+   * @opt_param int pageSize The maximum number of results to return in a single
+   * response. Default is 10, minimum is 1, maximum is 1000.
+   * @opt_param string pageToken The value returned by the last
+   * `ListSourcesResponse`; indicates that this is a continuation of a prior
+   * `ListSources` call, and that the system should return the next page of data.
    * @return ListSourcesResponse
    * @throws \Google\Service\Exception
    */
@@ -97,13 +109,16 @@ class OrganizationsSources extends \Google\Service\Resource
     return $this->call('list', [$params], ListSourcesResponse::class);
   }
   /**
-   * (sources.patch)
+   * Updates a source. (sources.patch)
    *
-   * @param string $name
+   * @param string $name The relative resource name of this source. See:
+   * https://cloud.google.com/apis/design/resource_names#relative_resource_name
+   * Example: "organizations/{organization_id}/sources/{source_id}"
    * @param Source $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask
+   * @opt_param string updateMask The FieldMask to use when updating the source
+   * resource. If empty all mutable fields will be updated.
    * @return Source
    * @throws \Google\Service\Exception
    */
@@ -114,9 +129,13 @@ class OrganizationsSources extends \Google\Service\Resource
     return $this->call('patch', [$params], Source::class);
   }
   /**
+   * Sets the access control policy on the specified Source.
    * (sources.setIamPolicy)
    *
-   * @param string $resource
+   * @param string $resource REQUIRED: The resource for which the policy is being
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
@@ -129,9 +148,13 @@ class OrganizationsSources extends \Google\Service\Resource
     return $this->call('setIamPolicy', [$params], Policy::class);
   }
   /**
+   * Returns the permissions that a caller has on the specified source.
    * (sources.testIamPermissions)
    *
-   * @param string $resource
+   * @param string $resource REQUIRED: The resource for which the policy detail is
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse

@@ -21,59 +21,30 @@ class GcpUserAccessBinding extends \Google\Collection
 {
   protected $collection_key = 'scopedAccessSettings';
   /**
-   * Optional. Access level that a user must have to be granted access. Only one
-   * access level is supported, not multiple. This repeated field must have
-   * exactly one element. Example:
-   * "accessPolicies/9522/accessLevels/device_trusted"
-   *
    * @var string[]
    */
   public $accessLevels;
   /**
-   * Optional. Dry run access level that will be evaluated but will not be
-   * enforced. The access denial based on dry run policy will be logged. Only
-   * one access level is supported, not multiple. This list must have exactly
-   * one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-   *
    * @var string[]
    */
   public $dryRunAccessLevels;
   /**
-   * Optional. Immutable. Google Group id whose users are subject to this
-   * binding's restrictions. See "id" in the [Google Workspace Directory API's
-   * Group Resource] (https://developers.google.com/admin-
-   * sdk/directory/v1/reference/groups#resource). If a group's email
-   * address/alias is changed, this resource will continue to point at the
-   * changed group. This field does not accept group email addresses or aliases.
-   * Example: "01d520gv4vjcrht"
-   *
    * @var string
    */
   public $groupKey;
   /**
-   * Immutable. Assigned by the server during creation. The last segment has an
-   * arbitrary length and has only URI unreserved characters (as defined by [RFC
-   * 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
-   * not be specified by the client during creation. Example:
-   * "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
-   *
    * @var string
    */
   public $name;
-  protected $principalType = Principal::class;
-  protected $principalDataType = '';
+  protected $restrictedClientApplicationsType = Application::class;
+  protected $restrictedClientApplicationsDataType = 'array';
   protected $scopedAccessSettingsType = ScopedAccessSettings::class;
   protected $scopedAccessSettingsDataType = 'array';
   protected $sessionSettingsType = SessionSettings::class;
   protected $sessionSettingsDataType = '';
 
   /**
-   * Optional. Access level that a user must have to be granted access. Only one
-   * access level is supported, not multiple. This repeated field must have
-   * exactly one element. Example:
-   * "accessPolicies/9522/accessLevels/device_trusted"
-   *
-   * @param string[] $accessLevels
+   * @param string[]
    */
   public function setAccessLevels($accessLevels)
   {
@@ -87,12 +58,7 @@ class GcpUserAccessBinding extends \Google\Collection
     return $this->accessLevels;
   }
   /**
-   * Optional. Dry run access level that will be evaluated but will not be
-   * enforced. The access denial based on dry run policy will be logged. Only
-   * one access level is supported, not multiple. This list must have exactly
-   * one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-   *
-   * @param string[] $dryRunAccessLevels
+   * @param string[]
    */
   public function setDryRunAccessLevels($dryRunAccessLevels)
   {
@@ -106,15 +72,7 @@ class GcpUserAccessBinding extends \Google\Collection
     return $this->dryRunAccessLevels;
   }
   /**
-   * Optional. Immutable. Google Group id whose users are subject to this
-   * binding's restrictions. See "id" in the [Google Workspace Directory API's
-   * Group Resource] (https://developers.google.com/admin-
-   * sdk/directory/v1/reference/groups#resource). If a group's email
-   * address/alias is changed, this resource will continue to point at the
-   * changed group. This field does not accept group email addresses or aliases.
-   * Example: "01d520gv4vjcrht"
-   *
-   * @param string $groupKey
+   * @param string
    */
   public function setGroupKey($groupKey)
   {
@@ -128,13 +86,7 @@ class GcpUserAccessBinding extends \Google\Collection
     return $this->groupKey;
   }
   /**
-   * Immutable. Assigned by the server during creation. The last segment has an
-   * arbitrary length and has only URI unreserved characters (as defined by [RFC
-   * 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
-   * not be specified by the client during creation. Example:
-   * "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -148,27 +100,21 @@ class GcpUserAccessBinding extends \Google\Collection
     return $this->name;
   }
   /**
-   * Optional. Immutable. The principal that is subject to the access policies
-   * in this policy binding.
-   *
-   * @param Principal $principal
+   * @param Application[]
    */
-  public function setPrincipal(Principal $principal)
+  public function setRestrictedClientApplications($restrictedClientApplications)
   {
-    $this->principal = $principal;
+    $this->restrictedClientApplications = $restrictedClientApplications;
   }
   /**
-   * @return Principal
+   * @return Application[]
    */
-  public function getPrincipal()
+  public function getRestrictedClientApplications()
   {
-    return $this->principal;
+    return $this->restrictedClientApplications;
   }
   /**
-   * Optional. A list of scoped access settings that set this binding's
-   * restrictions on a subset of applications.
-   *
-   * @param ScopedAccessSettings[] $scopedAccessSettings
+   * @param ScopedAccessSettings[]
    */
   public function setScopedAccessSettings($scopedAccessSettings)
   {
@@ -182,9 +128,7 @@ class GcpUserAccessBinding extends \Google\Collection
     return $this->scopedAccessSettings;
   }
   /**
-   * Optional. The Google Cloud session length (GCSL) policy for the group key.
-   *
-   * @param SessionSettings $sessionSettings
+   * @param SessionSettings
    */
   public function setSessionSettings(SessionSettings $sessionSettings)
   {

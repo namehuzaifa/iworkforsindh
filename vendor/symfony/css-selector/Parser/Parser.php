@@ -27,10 +27,7 @@ use Symfony\Component\CssSelector\Parser\Tokenizer\Tokenizer;
  */
 class Parser implements ParserInterface
 {
-    private const NESTING_LIMIT = 16;
-
     private Tokenizer $tokenizer;
-    private int $nestingDepth = 0;
 
     public function __construct(?Tokenizer $tokenizer = null)
     {
@@ -60,9 +57,9 @@ class Parser implements ParserInterface
             }
         }
 
-        $joined = trim(implode('', array_map(static fn (Token $token) => $token->getValue(), $tokens)));
+        $joined = trim(implode('', array_map(fn (Token $token) => $token->getValue(), $tokens)));
 
-        $int = static function ($string) {
+        $int = function ($string) {
             if (!is_numeric($string)) {
                 throw SyntaxErrorException::stringAsFunctionArgument();
             }
@@ -193,7 +190,7 @@ class Parser implements ParserInterface
                 }
 
                 $identifier = $stream->getNextIdentifier();
-                if (\in_array(strtolower($identifier), ['first-line', 'first-letter', 'before', 'after'], true)) {
+                if (\in_array(strtolower($identifier), ['first-line', 'first-letter', 'before', 'after'])) {
                     // Special case: CSS 2.1 pseudo-elements can have a single ':'.
                     // Any new pseudo-element must have two.
                     $pseudoElement = $identifier;
@@ -239,7 +236,7 @@ class Parser implements ParserInterface
 
                     $result = new Node\NegationNode($result, $argument);
                 } elseif ('is' === strtolower($identifier)) {
-                    $selectors = $this->parseNestedSelectorList($stream, 'is');
+                    $selectors = $this->parseSelectorList($stream, true);
 
                     $next = $stream->getNext();
                     if (!$next->isDelimiter([')'])) {
@@ -248,7 +245,7 @@ class Parser implements ParserInterface
 
                     $result = new Node\MatchingNode($result, $selectors);
                 } elseif ('where' === strtolower($identifier)) {
-                    $selectors = $this->parseNestedSelectorList($stream, 'where');
+                    $selectors = $this->parseSelectorList($stream, true);
 
                     $next = $stream->getNext();
                     if (!$next->isDelimiter([')'])) {
@@ -293,26 +290,6 @@ class Parser implements ParserInterface
         }
 
         return [$result, $pseudoElement];
-    }
-
-    /**
-     * @return Node\SelectorNode[]
-     *
-     * @throws SyntaxErrorException
-     */
-    private function parseNestedSelectorList(TokenStream $stream, string $identifier): array
-    {
-        if ($this->nestingDepth >= self::NESTING_LIMIT) {
-            throw new SyntaxErrorException(\sprintf('Got too deeply nested :%s().', $identifier));
-        }
-
-        ++$this->nestingDepth;
-
-        try {
-            return $this->parseSelectorList($stream, true);
-        } finally {
-            --$this->nestingDepth;
-        }
     }
 
     private function parseElementNode(TokenStream $stream): Node\ElementNode

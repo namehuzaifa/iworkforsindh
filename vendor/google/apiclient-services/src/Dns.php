@@ -570,6 +570,10 @@ class Dns extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'clientOperationId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
               ],
             ],
           ]
@@ -671,10 +675,6 @@ class Dns extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
                 'maxResults' => [
                   'location' => 'query',

@@ -23,7 +23,7 @@ class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata extends \Google\Model
   protected $accountDataType = '';
 
   /**
-   * @param GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount $account
+   * @param GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount
    */
   public function setAccount(GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount $account)
   {

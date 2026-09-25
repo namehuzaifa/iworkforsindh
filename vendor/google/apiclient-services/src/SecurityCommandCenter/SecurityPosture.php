@@ -52,7 +52,7 @@ class SecurityPosture extends \Google\Collection
   public $revisionId;
 
   /**
-   * @param string $changedPolicy
+   * @param string
    */
   public function setChangedPolicy($changedPolicy)
   {
@@ -66,7 +66,7 @@ class SecurityPosture extends \Google\Collection
     return $this->changedPolicy;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -80,7 +80,7 @@ class SecurityPosture extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param string $policy
+   * @param string
    */
   public function setPolicy($policy)
   {
@@ -94,7 +94,7 @@ class SecurityPosture extends \Google\Collection
     return $this->policy;
   }
   /**
-   * @param PolicyDriftDetails[] $policyDriftDetails
+   * @param PolicyDriftDetails[]
    */
   public function setPolicyDriftDetails($policyDriftDetails)
   {
@@ -108,7 +108,7 @@ class SecurityPosture extends \Google\Collection
     return $this->policyDriftDetails;
   }
   /**
-   * @param string $policySet
+   * @param string
    */
   public function setPolicySet($policySet)
   {
@@ -122,7 +122,7 @@ class SecurityPosture extends \Google\Collection
     return $this->policySet;
   }
   /**
-   * @param string $postureDeployment
+   * @param string
    */
   public function setPostureDeployment($postureDeployment)
   {
@@ -136,7 +136,7 @@ class SecurityPosture extends \Google\Collection
     return $this->postureDeployment;
   }
   /**
-   * @param string $postureDeploymentResource
+   * @param string
    */
   public function setPostureDeploymentResource($postureDeploymentResource)
   {
@@ -150,7 +150,7 @@ class SecurityPosture extends \Google\Collection
     return $this->postureDeploymentResource;
   }
   /**
-   * @param string $revisionId
+   * @param string
    */
   public function setRevisionId($revisionId)
   {

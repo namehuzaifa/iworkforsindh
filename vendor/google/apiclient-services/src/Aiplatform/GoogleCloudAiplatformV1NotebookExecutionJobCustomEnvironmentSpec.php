@@ -25,13 +25,9 @@ class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec extends \
   protected $networkSpecDataType = '';
   protected $persistentDiskSpecType = GoogleCloudAiplatformV1PersistentDiskSpec::class;
   protected $persistentDiskSpecDataType = '';
-  protected $shieldedInstanceConfigType = GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpecShieldedInstanceConfig::class;
-  protected $shieldedInstanceConfigDataType = '';
 
   /**
-   * The specification of a single machine for the execution job.
-   *
-   * @param GoogleCloudAiplatformV1MachineSpec $machineSpec
+   * @param GoogleCloudAiplatformV1MachineSpec
    */
   public function setMachineSpec(GoogleCloudAiplatformV1MachineSpec $machineSpec)
   {
@@ -45,9 +41,7 @@ class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec extends \
     return $this->machineSpec;
   }
   /**
-   * The network configuration to use for the execution job.
-   *
-   * @param GoogleCloudAiplatformV1NetworkSpec $networkSpec
+   * @param GoogleCloudAiplatformV1NetworkSpec
    */
   public function setNetworkSpec(GoogleCloudAiplatformV1NetworkSpec $networkSpec)
   {
@@ -61,9 +55,7 @@ class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec extends \
     return $this->networkSpec;
   }
   /**
-   * The specification of a persistent disk to attach for the execution job.
-   *
-   * @param GoogleCloudAiplatformV1PersistentDiskSpec $persistentDiskSpec
+   * @param GoogleCloudAiplatformV1PersistentDiskSpec
    */
   public function setPersistentDiskSpec(GoogleCloudAiplatformV1PersistentDiskSpec $persistentDiskSpec)
   {
@@ -75,23 +67,6 @@ class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec extends \
   public function getPersistentDiskSpec()
   {
     return $this->persistentDiskSpec;
-  }
-  /**
-   * Optional. Shielded VM configuration (for example, Secure Boot) for the
-   * execution VM.
-   *
-   * @param GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpecShieldedInstanceConfig $shieldedInstanceConfig
-   */
-  public function setShieldedInstanceConfig(GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpecShieldedInstanceConfig $shieldedInstanceConfig)
-  {
-    $this->shieldedInstanceConfig = $shieldedInstanceConfig;
-  }
-  /**
-   * @return GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpecShieldedInstanceConfig
-   */
-  public function getShieldedInstanceConfig()
-  {
-    return $this->shieldedInstanceConfig;
   }
 }
 

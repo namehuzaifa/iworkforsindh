@@ -25,7 +25,7 @@ class SimulateSecurityHealthAnalyticsCustomModuleRequest extends \Google\Model
   protected $resourceDataType = '';
 
   /**
-   * @param GoogleCloudSecuritycenterV1CustomConfig $customConfig
+   * @param GoogleCloudSecuritycenterV1CustomConfig
    */
   public function setCustomConfig(GoogleCloudSecuritycenterV1CustomConfig $customConfig)
   {
@@ -39,7 +39,7 @@ class SimulateSecurityHealthAnalyticsCustomModuleRequest extends \Google\Model
     return $this->customConfig;
   }
   /**
-   * @param SimulatedResource $resource
+   * @param SimulatedResource
    */
   public function setResource(SimulatedResource $resource)
   {

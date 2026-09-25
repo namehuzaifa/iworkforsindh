@@ -1,12 +1,8 @@
 # Google API Core for PHP
 
-[![Latest Stable Version](https://poser.pugx.org/google/gax/v/stable)](https://packagist.org/packages/google/gax) [![Packagist](https://img.shields.io/packagist/dm/google/gax.svg)](https://packagist.org/packages/google/gax)
+![Build Status](https://github.com/googleapis/gax-php/actions/workflows/tests.yml/badge.svg)
 
-* [API documentation](https://cloud.google.com/php/docs/reference/gax/latest)
-
-**NOTE:** This repository is part of [Google Cloud PHP](https://github.com/googleapis/google-cloud-php). Any
-support requests, bug reports, or development contributions should be directed to
-that project.
+-   [Documentation](https://googleapis.github.io/gax-php)
 
 Google API Core for PHP (gax-php) is a set of modules which aids the development
 of APIs for clients based on [gRPC][] and Google API conventions.
@@ -21,7 +17,7 @@ more convenient and idiomatic API surface to callers.
 
 ## PHP Versions
 
-gax-php currently requires PHP 8.2 or higher.
+gax-php currently requires PHP 8.0 or higher.
 
 ## Contributing
 
@@ -77,17 +73,22 @@ be found for Mac or Windows.
 3.  Run tests.
 
     ```sh
-    > vendor/bin/phpunit
+    > composer test
     ```
 
-    For Showcase Conformance testing and client generation, see [tests/Conformance/README.md](tests/Conformance/README.md).
-
-4.  Run static analysis tools
+4.  Updating dependencies after changing `composer.json`:
 
     ```sh
-    > phpstan -c phpstan.neon.dist
+    > composer update
+    `
     ```
 
+5.  Formatting source:
+
+    ```sh
+    > composer cs-lint
+    > composer cs-fix
+    ```
 
 ## License
 

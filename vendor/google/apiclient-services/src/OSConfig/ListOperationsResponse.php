@@ -19,45 +19,21 @@ namespace Google\Service\OSConfig;
 
 class ListOperationsResponse extends \Google\Collection
 {
-  protected $collection_key = 'unreachable';
-  /**
-   * The standard List next-page token.
-   *
-   * @var string
-   */
+  protected $collection_key = 'operations';
   public $nextPageToken;
   protected $operationsType = Operation::class;
   protected $operationsDataType = 'array';
-  /**
-   * Unordered list. Unreachable resources. Populated when the request sets
-   * `ListOperationsRequest.return_partial_success` and reads across
-   * collections. For example, when attempting to list all resources across all
-   * supported locations.
-   *
-   * @var string[]
-   */
-  public $unreachable;
 
-  /**
-   * The standard List next-page token.
-   *
-   * @param string $nextPageToken
-   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
-  /**
-   * @return string
-   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;
   }
   /**
-   * A list of operations that matches the specified filter in the request.
-   *
-   * @param Operation[] $operations
+   * @param Operation[]
    */
   public function setOperations($operations)
   {
@@ -69,25 +45,6 @@ class ListOperationsResponse extends \Google\Collection
   public function getOperations()
   {
     return $this->operations;
-  }
-  /**
-   * Unordered list. Unreachable resources. Populated when the request sets
-   * `ListOperationsRequest.return_partial_success` and reads across
-   * collections. For example, when attempting to list all resources across all
-   * supported locations.
-   *
-   * @param string[] $unreachable
-   */
-  public function setUnreachable($unreachable)
-  {
-    $this->unreachable = $unreachable;
-  }
-  /**
-   * @return string[]
-   */
-  public function getUnreachable()
-  {
-    return $this->unreachable;
   }
 }
 

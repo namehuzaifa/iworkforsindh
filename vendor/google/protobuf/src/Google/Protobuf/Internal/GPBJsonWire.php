@@ -9,8 +9,6 @@
 
 namespace Google\Protobuf\Internal;
 
-use Google\Protobuf\PrintOptions;
-
 class GPBJsonWire
 {
 
@@ -21,7 +19,7 @@ class GPBJsonWire
     {
         if ($has_field_name) {
             $output->writeRaw("\"", 1);
-            $field_name = GPBJsonWire::formatFieldName($field, $output->getOptions());
+            $field_name = GPBJsonWire::formatFieldName($field);
             $output->writeRaw($field_name, strlen($field_name));
             $output->writeRaw("\":", 2);
         }
@@ -158,7 +156,7 @@ class GPBJsonWire
                 } elseif ($value === -INF) {
                     $str_value = "\"-Infinity\"";
                 } else {
-                    $str_value = sprintf("%.8h", $value);
+                    $str_value = sprintf("%.8g", $value);
                 }
                 $output->writeRaw($str_value, strlen($str_value));
                 break;
@@ -170,7 +168,7 @@ class GPBJsonWire
                 } elseif ($value === -INF) {
                     $str_value = "\"-Infinity\"";
                 } else {
-                    $str_value = sprintf("%.17h", $value);
+                    $str_value = sprintf("%.17g", $value);
                 }
                 $output->writeRaw($str_value, strlen($str_value));
                 break;
@@ -180,17 +178,12 @@ class GPBJsonWire
                     $output->writeRaw("null", 4);
                     break;
                 }
-                if ($output->getOptions() & PrintOptions::ALWAYS_PRINT_ENUMS_AS_INTS) {
-                    $str_value = strval($value);
-                    $output->writeRaw($str_value, strlen($str_value));
-                    break;
-                }
                 $enum_value_desc = $enum_desc->getValueByNumber($value);
                 if (!is_null($enum_value_desc)) {
-                    $str_value = json_encode(
-                        self::formatEnumValueName($enum_value_desc),
-                        JSON_UNESCAPED_UNICODE);
+                    $str_value = $enum_value_desc->getName();
+                    $output->writeRaw("\"", 1);
                     $output->writeRaw($str_value, strlen($str_value));
+                    $output->writeRaw("\"", 1);
                 } else {
                     $str_value = strval($value);
                     $output->writeRaw($str_value, strlen($str_value));
@@ -227,19 +220,9 @@ class GPBJsonWire
         return true;
     }
 
-    private static function formatFieldName($field, $options)
+    private static function formatFieldName($field)
     {
-        if ($options & PrintOptions::PRESERVE_PROTO_FIELD_NAMES) {
-            return $field->getName();
-        }
         return $field->getJsonName();
-    }
-
-    public static function formatEnumValueName($enum_value_desc)
-    {
-        $custom_name = $enum_value_desc->getCustomJsonName();
-        return $custom_name !== null
-            ? $custom_name : $enum_value_desc->getName();
     }
 
     // Used for escaping control chars in strings.

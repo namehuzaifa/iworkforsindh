@@ -10,11 +10,11 @@ use Kreait\Firebase\JWT\Value\Duration;
 
 final class CreateCustomToken
 {
-    public const string MINIMUM_TTL = 'PT1S';
+    public const MINIMUM_TTL = 'PT1S';
 
-    public const string MAXIMUM_TTL = 'PT1H';
+    public const MAXIMUM_TTL = 'PT1H';
 
-    public const string DEFAULT_TTL = self::MAXIMUM_TTL;
+    public const DEFAULT_TTL = self::MAXIMUM_TTL;
 
     private ?string $tenantId = null;
 

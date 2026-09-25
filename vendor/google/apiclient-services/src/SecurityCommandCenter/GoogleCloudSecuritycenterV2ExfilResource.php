@@ -30,7 +30,7 @@ class GoogleCloudSecuritycenterV2ExfilResource extends \Google\Collection
   public $name;
 
   /**
-   * @param string[] $components
+   * @param string[]
    */
   public function setComponents($components)
   {
@@ -44,7 +44,7 @@ class GoogleCloudSecuritycenterV2ExfilResource extends \Google\Collection
     return $this->components;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {

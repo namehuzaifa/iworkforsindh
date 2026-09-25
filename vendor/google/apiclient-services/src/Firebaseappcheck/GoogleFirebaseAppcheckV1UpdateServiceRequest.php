@@ -22,21 +22,12 @@ class GoogleFirebaseAppcheckV1UpdateServiceRequest extends \Google\Model
   protected $serviceType = GoogleFirebaseAppcheckV1Service::class;
   protected $serviceDataType = '';
   /**
-   * Required. A comma-separated list of names of fields in the Service to
-   * update. Example: `enforcement_mode`.
-   *
    * @var string
    */
   public $updateMask;
 
   /**
-   * Required. The Service to update. The Service's `name` field is used to
-   * identify the Service to be updated, in the format: ```
-   * projects/{project_number}/services/{service_id} ``` Note that the
-   * `service_id` element must be a supported service ID. Consult the
-   * Service.name field for a list of supported service IDs.
-   *
-   * @param GoogleFirebaseAppcheckV1Service $service
+   * @param GoogleFirebaseAppcheckV1Service
    */
   public function setService(GoogleFirebaseAppcheckV1Service $service)
   {
@@ -50,10 +41,7 @@ class GoogleFirebaseAppcheckV1UpdateServiceRequest extends \Google\Model
     return $this->service;
   }
   /**
-   * Required. A comma-separated list of names of fields in the Service to
-   * update. Example: `enforcement_mode`.
-   *
-   * @param string $updateMask
+   * @param string
    */
   public function setUpdateMask($updateMask)
   {

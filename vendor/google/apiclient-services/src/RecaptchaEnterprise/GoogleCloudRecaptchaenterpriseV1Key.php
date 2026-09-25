@@ -22,14 +22,10 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
   protected $androidSettingsType = GoogleCloudRecaptchaenterpriseV1AndroidKeySettings::class;
   protected $androidSettingsDataType = '';
   /**
-   * Output only. The timestamp corresponding to the creation of this key.
-   *
    * @var string
    */
   public $createTime;
   /**
-   * Required. Human-readable display name of this key. Modifiable by user.
-   *
    * @var string
    */
   public $displayName;
@@ -38,32 +34,22 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
   protected $iosSettingsType = GoogleCloudRecaptchaenterpriseV1IOSKeySettings::class;
   protected $iosSettingsDataType = '';
   /**
-   * Optional. See [Creating and managing labels]
-   * (https://cloud.google.com/recaptcha/docs/labels).
-   *
    * @var string[]
    */
   public $labels;
   /**
-   * Identifier. The resource name for the Key in the format
-   * `projects/{project}/keys/{key}`.
-   *
    * @var string
    */
   public $name;
   protected $testingOptionsType = GoogleCloudRecaptchaenterpriseV1TestingOptions::class;
   protected $testingOptionsDataType = '';
-  protected $universalSettingsType = GoogleCloudRecaptchaenterpriseV1UniversalKeySettings::class;
-  protected $universalSettingsDataType = '';
   protected $wafSettingsType = GoogleCloudRecaptchaenterpriseV1WafSettings::class;
   protected $wafSettingsDataType = '';
   protected $webSettingsType = GoogleCloudRecaptchaenterpriseV1WebKeySettings::class;
   protected $webSettingsDataType = '';
 
   /**
-   * Settings for keys that can be used by Android apps.
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1AndroidKeySettings $androidSettings
+   * @param GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
    */
   public function setAndroidSettings(GoogleCloudRecaptchaenterpriseV1AndroidKeySettings $androidSettings)
   {
@@ -77,9 +63,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->androidSettings;
   }
   /**
-   * Output only. The timestamp corresponding to the creation of this key.
-   *
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -93,9 +77,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->createTime;
   }
   /**
-   * Required. Human-readable display name of this key. Modifiable by user.
-   *
-   * @param string $displayName
+   * @param string
    */
   public function setDisplayName($displayName)
   {
@@ -109,9 +91,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->displayName;
   }
   /**
-   * Settings for keys that can be used by reCAPTCHA Express.
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1ExpressKeySettings $expressSettings
+   * @param GoogleCloudRecaptchaenterpriseV1ExpressKeySettings
    */
   public function setExpressSettings(GoogleCloudRecaptchaenterpriseV1ExpressKeySettings $expressSettings)
   {
@@ -125,9 +105,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->expressSettings;
   }
   /**
-   * Settings for keys that can be used by iOS apps.
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1IOSKeySettings $iosSettings
+   * @param GoogleCloudRecaptchaenterpriseV1IOSKeySettings
    */
   public function setIosSettings(GoogleCloudRecaptchaenterpriseV1IOSKeySettings $iosSettings)
   {
@@ -141,10 +119,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->iosSettings;
   }
   /**
-   * Optional. See [Creating and managing labels]
-   * (https://cloud.google.com/recaptcha/docs/labels).
-   *
-   * @param string[] $labels
+   * @param string[]
    */
   public function setLabels($labels)
   {
@@ -158,10 +133,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->labels;
   }
   /**
-   * Identifier. The resource name for the Key in the format
-   * `projects/{project}/keys/{key}`.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -175,9 +147,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->name;
   }
   /**
-   * Optional. Options for user acceptance testing.
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1TestingOptions $testingOptions
+   * @param GoogleCloudRecaptchaenterpriseV1TestingOptions
    */
   public function setTestingOptions(GoogleCloudRecaptchaenterpriseV1TestingOptions $testingOptions)
   {
@@ -191,25 +161,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->testingOptions;
   }
   /**
-   * Settings for keys that are configured through their Policy.
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1UniversalKeySettings $universalSettings
-   */
-  public function setUniversalSettings(GoogleCloudRecaptchaenterpriseV1UniversalKeySettings $universalSettings)
-  {
-    $this->universalSettings = $universalSettings;
-  }
-  /**
-   * @return GoogleCloudRecaptchaenterpriseV1UniversalKeySettings
-   */
-  public function getUniversalSettings()
-  {
-    return $this->universalSettings;
-  }
-  /**
-   * Optional. Settings for Web Application Firewall (WAF).
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1WafSettings $wafSettings
+   * @param GoogleCloudRecaptchaenterpriseV1WafSettings
    */
   public function setWafSettings(GoogleCloudRecaptchaenterpriseV1WafSettings $wafSettings)
   {
@@ -223,9 +175,7 @@ class GoogleCloudRecaptchaenterpriseV1Key extends \Google\Model
     return $this->wafSettings;
   }
   /**
-   * Settings for keys that can be used by websites.
-   *
-   * @param GoogleCloudRecaptchaenterpriseV1WebKeySettings $webSettings
+   * @param GoogleCloudRecaptchaenterpriseV1WebKeySettings
    */
   public function setWebSettings(GoogleCloudRecaptchaenterpriseV1WebKeySettings $webSettings)
   {

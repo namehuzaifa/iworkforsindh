@@ -24,9 +24,6 @@ class ConnectorConfiguration extends \Google\Model
   protected $authenticationType = ConnectorConfigurationAuthentication::class;
   protected $authenticationDataType = '';
   /**
-   * Required. Immutable. The ID of the Connector these parameters are
-   * configured for.
-   *
    * @var string
    */
   public $connectorId;
@@ -34,15 +31,9 @@ class ConnectorConfiguration extends \Google\Model
   protected $endpointDataType = '';
   protected $networkType = ConnectorConfigurationNetwork::class;
   protected $networkDataType = '';
-  protected $parametersType = ConnectorConfigurationParameterValue::class;
-  protected $parametersDataType = 'map';
-  protected $tlsType = ConnectorConfigurationTls::class;
-  protected $tlsDataType = '';
 
   /**
-   * Data asset.
-   *
-   * @param ConnectorConfigurationAsset $asset
+   * @param ConnectorConfigurationAsset
    */
   public function setAsset(ConnectorConfigurationAsset $asset)
   {
@@ -56,9 +47,7 @@ class ConnectorConfiguration extends \Google\Model
     return $this->asset;
   }
   /**
-   * Client authentication.
-   *
-   * @param ConnectorConfigurationAuthentication $authentication
+   * @param ConnectorConfigurationAuthentication
    */
   public function setAuthentication(ConnectorConfigurationAuthentication $authentication)
   {
@@ -72,10 +61,7 @@ class ConnectorConfiguration extends \Google\Model
     return $this->authentication;
   }
   /**
-   * Required. Immutable. The ID of the Connector these parameters are
-   * configured for.
-   *
-   * @param string $connectorId
+   * @param string
    */
   public function setConnectorId($connectorId)
   {
@@ -89,9 +75,7 @@ class ConnectorConfiguration extends \Google\Model
     return $this->connectorId;
   }
   /**
-   * Specifies how to reach the remote system this connection is pointing to.
-   *
-   * @param ConnectorConfigurationEndpoint $endpoint
+   * @param ConnectorConfigurationEndpoint
    */
   public function setEndpoint(ConnectorConfigurationEndpoint $endpoint)
   {
@@ -105,9 +89,7 @@ class ConnectorConfiguration extends \Google\Model
     return $this->endpoint;
   }
   /**
-   * Networking configuration.
-   *
-   * @param ConnectorConfigurationNetwork $network
+   * @param ConnectorConfigurationNetwork
    */
   public function setNetwork(ConnectorConfigurationNetwork $network)
   {
@@ -119,44 +101,6 @@ class ConnectorConfiguration extends \Google\Model
   public function getNetwork()
   {
     return $this->network;
-  }
-  /**
-   * Optional. A map of name-value pairs for connector-specific parameters.
-   * These extra configuration parameters aren't standardized in the
-   * configuration sections. To update a single parameter value, call
-   * ConnectionService.UpdateConnection with `update_mask` set to
-   * `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit
-   * the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with
-   * backticks—for example, ``configuration.parameters.`parameter id` ``.
-   *
-   * @param ConnectorConfigurationParameterValue[] $parameters
-   */
-  public function setParameters($parameters)
-  {
-    $this->parameters = $parameters;
-  }
-  /**
-   * @return ConnectorConfigurationParameterValue[]
-   */
-  public function getParameters()
-  {
-    return $this->parameters;
-  }
-  /**
-   * Optional. TLS configuration options.
-   *
-   * @param ConnectorConfigurationTls $tls
-   */
-  public function setTls(ConnectorConfigurationTls $tls)
-  {
-    $this->tls = $tls;
-  }
-  /**
-   * @return ConnectorConfigurationTls
-   */
-  public function getTls()
-  {
-    return $this->tls;
   }
 }
 

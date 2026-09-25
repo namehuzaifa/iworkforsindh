@@ -19,93 +19,28 @@ namespace Google\Service\DiscoveryEngine;
 
 class GoogleCloudDiscoveryengineV1Feedback extends \Google\Collection
 {
-  /**
-   * Unspecified feedback source.
-   */
-  public const FEEDBACK_SOURCE_FEEDBACK_SOURCE_UNSPECIFIED = 'FEEDBACK_SOURCE_UNSPECIFIED';
-  /**
-   * Feedback source is Google Console.
-   */
-  public const FEEDBACK_SOURCE_GOOGLE_CONSOLE = 'GOOGLE_CONSOLE';
-  /**
-   * Feedback source is Google Widget.
-   */
-  public const FEEDBACK_SOURCE_GOOGLE_WIDGET = 'GOOGLE_WIDGET';
-  /**
-   * Feedback source is Google Webapp.
-   */
-  public const FEEDBACK_SOURCE_GOOGLE_WEBAPP = 'GOOGLE_WEBAPP';
-  /**
-   * Feedback source is Google AgentSpace Mobile app.
-   */
-  public const FEEDBACK_SOURCE_GOOGLE_AGENTSPACE_MOBILE = 'GOOGLE_AGENTSPACE_MOBILE';
-  /**
-   * Unspecified feedback type.
-   */
-  public const FEEDBACK_TYPE_FEEDBACK_TYPE_UNSPECIFIED = 'FEEDBACK_TYPE_UNSPECIFIED';
-  /**
-   * The user gives a positive feedback.
-   */
-  public const FEEDBACK_TYPE_LIKE = 'LIKE';
-  /**
-   * The user gives a negative feedback.
-   */
-  public const FEEDBACK_TYPE_DISLIKE = 'DISLIKE';
   protected $collection_key = 'reasons';
   /**
-   * Optional. The additional user comment of the feedback if user gives a thumb
-   * down.
-   *
    * @var string
    */
   public $comment;
-  /**
-   * Optional. The version of the component that this report is being sent from.
-   *
-   * @var string
-   */
-  public $componentVersion;
   protected $conversationInfoType = GoogleCloudDiscoveryengineV1FeedbackConversationInfo::class;
   protected $conversationInfoDataType = '';
   /**
-   * Optional. Whether the customer accepted data use terms.
-   *
-   * @var bool
-   */
-  public $dataTermsAccepted;
-  /**
-   * Optional. The UI component the user feedback comes from, which could be
-   * GOOGLE_CONSOLE, GOOGLE_WIDGET, GOOGLE_WEBAPP.
-   *
-   * @var string
-   */
-  public $feedbackSource;
-  /**
-   * Required. Indicate whether the user gives a positive or negative feedback.
-   * If the user gives a negative feedback, there might be more feedback
-   * details.
-   *
    * @var string
    */
   public $feedbackType;
   /**
-   * The version of the LLM model that was used to generate the response.
-   *
    * @var string
    */
   public $llmModelVersion;
   /**
-   * Optional. The reason if user gives a thumb down.
-   *
    * @var string[]
    */
   public $reasons;
 
   /**
-   * Optional. The additional user comment of the feedback if user gives a thumb
-   * down.
-   *
-   * @param string $comment
+   * @param string
    */
   public function setComment($comment)
   {
@@ -119,25 +54,7 @@ class GoogleCloudDiscoveryengineV1Feedback extends \Google\Collection
     return $this->comment;
   }
   /**
-   * Optional. The version of the component that this report is being sent from.
-   *
-   * @param string $componentVersion
-   */
-  public function setComponentVersion($componentVersion)
-  {
-    $this->componentVersion = $componentVersion;
-  }
-  /**
-   * @return string
-   */
-  public function getComponentVersion()
-  {
-    return $this->componentVersion;
-  }
-  /**
-   * The related conversation information when user gives feedback.
-   *
-   * @param GoogleCloudDiscoveryengineV1FeedbackConversationInfo $conversationInfo
+   * @param GoogleCloudDiscoveryengineV1FeedbackConversationInfo
    */
   public function setConversationInfo(GoogleCloudDiscoveryengineV1FeedbackConversationInfo $conversationInfo)
   {
@@ -151,65 +68,21 @@ class GoogleCloudDiscoveryengineV1Feedback extends \Google\Collection
     return $this->conversationInfo;
   }
   /**
-   * Optional. Whether the customer accepted data use terms.
-   *
-   * @param bool $dataTermsAccepted
-   */
-  public function setDataTermsAccepted($dataTermsAccepted)
-  {
-    $this->dataTermsAccepted = $dataTermsAccepted;
-  }
-  /**
-   * @return bool
-   */
-  public function getDataTermsAccepted()
-  {
-    return $this->dataTermsAccepted;
-  }
-  /**
-   * Optional. The UI component the user feedback comes from, which could be
-   * GOOGLE_CONSOLE, GOOGLE_WIDGET, GOOGLE_WEBAPP.
-   *
-   * Accepted values: FEEDBACK_SOURCE_UNSPECIFIED, GOOGLE_CONSOLE,
-   * GOOGLE_WIDGET, GOOGLE_WEBAPP, GOOGLE_AGENTSPACE_MOBILE
-   *
-   * @param self::FEEDBACK_SOURCE_* $feedbackSource
-   */
-  public function setFeedbackSource($feedbackSource)
-  {
-    $this->feedbackSource = $feedbackSource;
-  }
-  /**
-   * @return self::FEEDBACK_SOURCE_*
-   */
-  public function getFeedbackSource()
-  {
-    return $this->feedbackSource;
-  }
-  /**
-   * Required. Indicate whether the user gives a positive or negative feedback.
-   * If the user gives a negative feedback, there might be more feedback
-   * details.
-   *
-   * Accepted values: FEEDBACK_TYPE_UNSPECIFIED, LIKE, DISLIKE
-   *
-   * @param self::FEEDBACK_TYPE_* $feedbackType
+   * @param string
    */
   public function setFeedbackType($feedbackType)
   {
     $this->feedbackType = $feedbackType;
   }
   /**
-   * @return self::FEEDBACK_TYPE_*
+   * @return string
    */
   public function getFeedbackType()
   {
     return $this->feedbackType;
   }
   /**
-   * The version of the LLM model that was used to generate the response.
-   *
-   * @param string $llmModelVersion
+   * @param string
    */
   public function setLlmModelVersion($llmModelVersion)
   {
@@ -223,9 +96,7 @@ class GoogleCloudDiscoveryengineV1Feedback extends \Google\Collection
     return $this->llmModelVersion;
   }
   /**
-   * Optional. The reason if user gives a thumb down.
-   *
-   * @param string[] $reasons
+   * @param string[]
    */
   public function setReasons($reasons)
   {

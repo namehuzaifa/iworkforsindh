@@ -25,7 +25,7 @@ class GoogleCloudSecuritycenterV2OrgPolicy extends \Google\Model
   public $name;
 
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {

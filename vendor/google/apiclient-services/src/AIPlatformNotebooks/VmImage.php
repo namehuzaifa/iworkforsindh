@@ -20,40 +20,20 @@ namespace Google\Service\AIPlatformNotebooks;
 class VmImage extends \Google\Model
 {
   /**
-   * Optional. Use this VM image family to find the image; the newest image in
-   * this family will be used.
-   *
    * @var string
    */
   public $family;
   /**
-   * Output only. A human-readable description of the image running on the
-   * instance (for example, "Debian 11, Python 3.10"), derived at read time from
-   * the image release configuration (the source of truth). Set to "Custom" for
-   * unrecognized boot-disk images.
-   *
-   * @var string
-   */
-  public $imageDescription;
-  /**
-   * Optional. Use VM image name to find the image.
-   *
    * @var string
    */
   public $name;
   /**
-   * Required. The name of the Google Cloud project that this VM image belongs
-   * to. Format: `{project_id}`
-   *
    * @var string
    */
   public $project;
 
   /**
-   * Optional. Use this VM image family to find the image; the newest image in
-   * this family will be used.
-   *
-   * @param string $family
+   * @param string
    */
   public function setFamily($family)
   {
@@ -67,28 +47,7 @@ class VmImage extends \Google\Model
     return $this->family;
   }
   /**
-   * Output only. A human-readable description of the image running on the
-   * instance (for example, "Debian 11, Python 3.10"), derived at read time from
-   * the image release configuration (the source of truth). Set to "Custom" for
-   * unrecognized boot-disk images.
-   *
-   * @param string $imageDescription
-   */
-  public function setImageDescription($imageDescription)
-  {
-    $this->imageDescription = $imageDescription;
-  }
-  /**
-   * @return string
-   */
-  public function getImageDescription()
-  {
-    return $this->imageDescription;
-  }
-  /**
-   * Optional. Use VM image name to find the image.
-   *
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -102,10 +61,7 @@ class VmImage extends \Google\Model
     return $this->name;
   }
   /**
-   * Required. The name of the Google Cloud project that this VM image belongs
-   * to. Format: `{project_id}`
-   *
-   * @param string $project
+   * @param string
    */
   public function setProject($project)
   {

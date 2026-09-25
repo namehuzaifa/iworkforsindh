@@ -19,49 +19,11 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
 {
-  public const FINDING_CLASS_FINDING_CLASS_UNSPECIFIED = 'FINDING_CLASS_UNSPECIFIED';
-  public const FINDING_CLASS_THREAT = 'THREAT';
-  public const FINDING_CLASS_VULNERABILITY = 'VULNERABILITY';
-  public const FINDING_CLASS_MISCONFIGURATION = 'MISCONFIGURATION';
-  public const FINDING_CLASS_OBSERVATION = 'OBSERVATION';
-  public const FINDING_CLASS_SCC_ERROR = 'SCC_ERROR';
-  public const FINDING_CLASS_POSTURE_VIOLATION = 'POSTURE_VIOLATION';
-  public const FINDING_CLASS_TOXIC_COMBINATION = 'TOXIC_COMBINATION';
-  public const FINDING_CLASS_SENSITIVE_DATA_RISK = 'SENSITIVE_DATA_RISK';
-  public const FINDING_CLASS_CHOKEPOINT = 'CHOKEPOINT';
-  public const FINDING_CLASS_EXTERNAL_EXPOSURE = 'EXTERNAL_EXPOSURE';
-  public const FINDING_CLASS_SECRET = 'SECRET';
-  public const MUTE_MUTE_UNSPECIFIED = 'MUTE_UNSPECIFIED';
-  public const MUTE_MUTED = 'MUTED';
-  public const MUTE_UNMUTED = 'UNMUTED';
-  public const MUTE_UNDEFINED = 'UNDEFINED';
-  public const SEVERITY_SEVERITY_UNSPECIFIED = 'SEVERITY_UNSPECIFIED';
-  public const SEVERITY_CRITICAL = 'CRITICAL';
-  public const SEVERITY_HIGH = 'HIGH';
-  public const SEVERITY_MEDIUM = 'MEDIUM';
-  public const SEVERITY_LOW = 'LOW';
-  public const STATE_STATE_UNSPECIFIED = 'STATE_UNSPECIFIED';
-  public const STATE_ACTIVE = 'ACTIVE';
-  public const STATE_INACTIVE = 'INACTIVE';
   protected $collection_key = 'processes';
   protected $accessType = GoogleCloudSecuritycenterV2Access::class;
   protected $accessDataType = '';
-  protected $affectedResourcesType = GoogleCloudSecuritycenterV2AffectedResources::class;
-  protected $affectedResourcesDataType = '';
-  protected $agentType = GoogleCloudSecuritycenterV2Agent::class;
-  protected $agentDataType = '';
-  protected $agentAnomalyType = GoogleCloudSecuritycenterV2AgentAnomaly::class;
-  protected $agentAnomalyDataType = '';
-  protected $agentDataAccessEventsType = GoogleCloudSecuritycenterV2AgentDataAccessEvent::class;
-  protected $agentDataAccessEventsDataType = 'array';
-  protected $agentSessionsType = GoogleCloudSecuritycenterV2AgentSession::class;
-  protected $agentSessionsDataType = 'array';
-  protected $aiModelType = GoogleCloudSecuritycenterV2AiModel::class;
-  protected $aiModelDataType = '';
   protected $applicationType = GoogleCloudSecuritycenterV2Application::class;
   protected $applicationDataType = '';
-  protected $artifactGuardPoliciesType = GoogleCloudSecuritycenterV2ArtifactGuardPolicies::class;
-  protected $artifactGuardPoliciesDataType = '';
   protected $attackExposureType = GoogleCloudSecuritycenterV2AttackExposure::class;
   protected $attackExposureDataType = '';
   protected $backupDisasterRecoveryType = GoogleCloudSecuritycenterV2BackupDisasterRecovery::class;
@@ -74,16 +36,12 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
    * @var string
    */
   public $category;
-  protected $chokepointType = GoogleCloudSecuritycenterV2Chokepoint::class;
-  protected $chokepointDataType = '';
   protected $cloudArmorType = GoogleCloudSecuritycenterV2CloudArmor::class;
   protected $cloudArmorDataType = '';
   protected $cloudDlpDataProfileType = GoogleCloudSecuritycenterV2CloudDlpDataProfile::class;
   protected $cloudDlpDataProfileDataType = '';
   protected $cloudDlpInspectionType = GoogleCloudSecuritycenterV2CloudDlpInspection::class;
   protected $cloudDlpInspectionDataType = '';
-  protected $complianceDetailsType = GoogleCloudSecuritycenterV2ComplianceDetails::class;
-  protected $complianceDetailsDataType = '';
   protected $compliancesType = GoogleCloudSecuritycenterV2Compliance::class;
   protected $compliancesDataType = 'array';
   protected $connectionsType = GoogleCloudSecuritycenterV2Connection::class;
@@ -96,10 +54,6 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
    * @var string
    */
   public $createTime;
-  /**
-   * @var string
-   */
-  public $cryptoKeyName;
   protected $dataAccessEventsType = GoogleCloudSecuritycenterV2DataAccessEvent::class;
   protected $dataAccessEventsDataType = 'array';
   protected $dataFlowEventsType = GoogleCloudSecuritycenterV2DataFlowEvent::class;
@@ -112,8 +66,6 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
    * @var string
    */
   public $description;
-  protected $discoveredWorkloadType = GoogleCloudSecuritycenterV2DiscoveredWorkload::class;
-  protected $discoveredWorkloadDataType = '';
   protected $diskType = GoogleCloudSecuritycenterV2Disk::class;
   protected $diskDataType = '';
   /**
@@ -122,8 +74,6 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
   public $eventTime;
   protected $exfiltrationType = GoogleCloudSecuritycenterV2Exfiltration::class;
   protected $exfiltrationDataType = '';
-  protected $externalExposureType = GoogleCloudSecuritycenterV2ExternalExposure::class;
-  protected $externalExposureDataType = '';
   protected $externalSystemsType = GoogleCloudSecuritycenterV2ExternalSystem::class;
   protected $externalSystemsDataType = 'map';
   /**
@@ -140,14 +90,8 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
   protected $groupMembershipsDataType = 'array';
   protected $iamBindingsType = GoogleCloudSecuritycenterV2IamBinding::class;
   protected $iamBindingsDataType = 'array';
-  protected $iamDetailsType = GoogleCloudSecuritycenterV2IamDetails::class;
-  protected $iamDetailsDataType = '';
   protected $indicatorType = GoogleCloudSecuritycenterV2Indicator::class;
   protected $indicatorDataType = '';
-  protected $ipRulesType = GoogleCloudSecuritycenterV2IpRules::class;
-  protected $ipRulesDataType = '';
-  protected $jobType = GoogleCloudSecuritycenterV2Job::class;
-  protected $jobDataType = '';
   protected $kernelRootkitType = GoogleCloudSecuritycenterV2KernelRootkit::class;
   protected $kernelRootkitDataType = '';
   protected $kubernetesType = GoogleCloudSecuritycenterV2Kubernetes::class;
@@ -180,8 +124,6 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
    * @var string
    */
   public $name;
-  protected $networksType = GoogleCloudSecuritycenterV2Network::class;
-  protected $networksDataType = 'array';
   /**
    * @var string
    */
@@ -198,16 +140,12 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
    * @var string
    */
   public $parentDisplayName;
-  protected $policyViolationSummaryType = GoogleCloudSecuritycenterV2PolicyViolationSummary::class;
-  protected $policyViolationSummaryDataType = '';
   protected $processesType = GoogleCloudSecuritycenterV2Process::class;
   protected $processesDataType = 'array';
   /**
    * @var string
    */
   public $resourceName;
-  protected $secretType = GoogleCloudSecuritycenterV2Secret::class;
-  protected $secretDataType = '';
   protected $securityMarksType = GoogleCloudSecuritycenterV2SecurityMarks::class;
   protected $securityMarksDataType = '';
   protected $securityPostureType = GoogleCloudSecuritycenterV2SecurityPosture::class;
@@ -226,13 +164,11 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
   public $state;
   protected $toxicCombinationType = GoogleCloudSecuritycenterV2ToxicCombination::class;
   protected $toxicCombinationDataType = '';
-  protected $vertexAiType = GoogleCloudSecuritycenterV2VertexAi::class;
-  protected $vertexAiDataType = '';
   protected $vulnerabilityType = GoogleCloudSecuritycenterV2Vulnerability::class;
   protected $vulnerabilityDataType = '';
 
   /**
-   * @param GoogleCloudSecuritycenterV2Access $access
+   * @param GoogleCloudSecuritycenterV2Access
    */
   public function setAccess(GoogleCloudSecuritycenterV2Access $access)
   {
@@ -246,91 +182,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->access;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2AffectedResources $affectedResources
-   */
-  public function setAffectedResources(GoogleCloudSecuritycenterV2AffectedResources $affectedResources)
-  {
-    $this->affectedResources = $affectedResources;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2AffectedResources
-   */
-  public function getAffectedResources()
-  {
-    return $this->affectedResources;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Agent $agent
-   */
-  public function setAgent(GoogleCloudSecuritycenterV2Agent $agent)
-  {
-    $this->agent = $agent;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2Agent
-   */
-  public function getAgent()
-  {
-    return $this->agent;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2AgentAnomaly $agentAnomaly
-   */
-  public function setAgentAnomaly(GoogleCloudSecuritycenterV2AgentAnomaly $agentAnomaly)
-  {
-    $this->agentAnomaly = $agentAnomaly;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2AgentAnomaly
-   */
-  public function getAgentAnomaly()
-  {
-    return $this->agentAnomaly;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2AgentDataAccessEvent[] $agentDataAccessEvents
-   */
-  public function setAgentDataAccessEvents($agentDataAccessEvents)
-  {
-    $this->agentDataAccessEvents = $agentDataAccessEvents;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2AgentDataAccessEvent[]
-   */
-  public function getAgentDataAccessEvents()
-  {
-    return $this->agentDataAccessEvents;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2AgentSession[] $agentSessions
-   */
-  public function setAgentSessions($agentSessions)
-  {
-    $this->agentSessions = $agentSessions;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2AgentSession[]
-   */
-  public function getAgentSessions()
-  {
-    return $this->agentSessions;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2AiModel $aiModel
-   */
-  public function setAiModel(GoogleCloudSecuritycenterV2AiModel $aiModel)
-  {
-    $this->aiModel = $aiModel;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2AiModel
-   */
-  public function getAiModel()
-  {
-    return $this->aiModel;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Application $application
+   * @param GoogleCloudSecuritycenterV2Application
    */
   public function setApplication(GoogleCloudSecuritycenterV2Application $application)
   {
@@ -344,21 +196,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->application;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ArtifactGuardPolicies $artifactGuardPolicies
-   */
-  public function setArtifactGuardPolicies(GoogleCloudSecuritycenterV2ArtifactGuardPolicies $artifactGuardPolicies)
-  {
-    $this->artifactGuardPolicies = $artifactGuardPolicies;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2ArtifactGuardPolicies
-   */
-  public function getArtifactGuardPolicies()
-  {
-    return $this->artifactGuardPolicies;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2AttackExposure $attackExposure
+   * @param GoogleCloudSecuritycenterV2AttackExposure
    */
   public function setAttackExposure(GoogleCloudSecuritycenterV2AttackExposure $attackExposure)
   {
@@ -372,7 +210,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->attackExposure;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2BackupDisasterRecovery $backupDisasterRecovery
+   * @param GoogleCloudSecuritycenterV2BackupDisasterRecovery
    */
   public function setBackupDisasterRecovery(GoogleCloudSecuritycenterV2BackupDisasterRecovery $backupDisasterRecovery)
   {
@@ -386,7 +224,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->backupDisasterRecovery;
   }
   /**
-   * @param string $canonicalName
+   * @param string
    */
   public function setCanonicalName($canonicalName)
   {
@@ -400,7 +238,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->canonicalName;
   }
   /**
-   * @param string $category
+   * @param string
    */
   public function setCategory($category)
   {
@@ -414,21 +252,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->category;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Chokepoint $chokepoint
-   */
-  public function setChokepoint(GoogleCloudSecuritycenterV2Chokepoint $chokepoint)
-  {
-    $this->chokepoint = $chokepoint;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2Chokepoint
-   */
-  public function getChokepoint()
-  {
-    return $this->chokepoint;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2CloudArmor $cloudArmor
+   * @param GoogleCloudSecuritycenterV2CloudArmor
    */
   public function setCloudArmor(GoogleCloudSecuritycenterV2CloudArmor $cloudArmor)
   {
@@ -442,7 +266,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->cloudArmor;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2CloudDlpDataProfile $cloudDlpDataProfile
+   * @param GoogleCloudSecuritycenterV2CloudDlpDataProfile
    */
   public function setCloudDlpDataProfile(GoogleCloudSecuritycenterV2CloudDlpDataProfile $cloudDlpDataProfile)
   {
@@ -456,7 +280,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->cloudDlpDataProfile;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2CloudDlpInspection $cloudDlpInspection
+   * @param GoogleCloudSecuritycenterV2CloudDlpInspection
    */
   public function setCloudDlpInspection(GoogleCloudSecuritycenterV2CloudDlpInspection $cloudDlpInspection)
   {
@@ -470,21 +294,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->cloudDlpInspection;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ComplianceDetails $complianceDetails
-   */
-  public function setComplianceDetails(GoogleCloudSecuritycenterV2ComplianceDetails $complianceDetails)
-  {
-    $this->complianceDetails = $complianceDetails;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2ComplianceDetails
-   */
-  public function getComplianceDetails()
-  {
-    return $this->complianceDetails;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Compliance[] $compliances
+   * @param GoogleCloudSecuritycenterV2Compliance[]
    */
   public function setCompliances($compliances)
   {
@@ -498,7 +308,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->compliances;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Connection[] $connections
+   * @param GoogleCloudSecuritycenterV2Connection[]
    */
   public function setConnections($connections)
   {
@@ -512,7 +322,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->connections;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ContactDetails[] $contacts
+   * @param GoogleCloudSecuritycenterV2ContactDetails[]
    */
   public function setContacts($contacts)
   {
@@ -526,7 +336,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->contacts;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Container[] $containers
+   * @param GoogleCloudSecuritycenterV2Container[]
    */
   public function setContainers($containers)
   {
@@ -540,7 +350,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->containers;
   }
   /**
-   * @param string $createTime
+   * @param string
    */
   public function setCreateTime($createTime)
   {
@@ -554,21 +364,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->createTime;
   }
   /**
-   * @param string $cryptoKeyName
-   */
-  public function setCryptoKeyName($cryptoKeyName)
-  {
-    $this->cryptoKeyName = $cryptoKeyName;
-  }
-  /**
-   * @return string
-   */
-  public function getCryptoKeyName()
-  {
-    return $this->cryptoKeyName;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2DataAccessEvent[] $dataAccessEvents
+   * @param GoogleCloudSecuritycenterV2DataAccessEvent[]
    */
   public function setDataAccessEvents($dataAccessEvents)
   {
@@ -582,7 +378,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->dataAccessEvents;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2DataFlowEvent[] $dataFlowEvents
+   * @param GoogleCloudSecuritycenterV2DataFlowEvent[]
    */
   public function setDataFlowEvents($dataFlowEvents)
   {
@@ -596,7 +392,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->dataFlowEvents;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2DataRetentionDeletionEvent[] $dataRetentionDeletionEvents
+   * @param GoogleCloudSecuritycenterV2DataRetentionDeletionEvent[]
    */
   public function setDataRetentionDeletionEvents($dataRetentionDeletionEvents)
   {
@@ -610,7 +406,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->dataRetentionDeletionEvents;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Database $database
+   * @param GoogleCloudSecuritycenterV2Database
    */
   public function setDatabase(GoogleCloudSecuritycenterV2Database $database)
   {
@@ -624,7 +420,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->database;
   }
   /**
-   * @param string $description
+   * @param string
    */
   public function setDescription($description)
   {
@@ -638,21 +434,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->description;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2DiscoveredWorkload $discoveredWorkload
-   */
-  public function setDiscoveredWorkload(GoogleCloudSecuritycenterV2DiscoveredWorkload $discoveredWorkload)
-  {
-    $this->discoveredWorkload = $discoveredWorkload;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2DiscoveredWorkload
-   */
-  public function getDiscoveredWorkload()
-  {
-    return $this->discoveredWorkload;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Disk $disk
+   * @param GoogleCloudSecuritycenterV2Disk
    */
   public function setDisk(GoogleCloudSecuritycenterV2Disk $disk)
   {
@@ -666,7 +448,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->disk;
   }
   /**
-   * @param string $eventTime
+   * @param string
    */
   public function setEventTime($eventTime)
   {
@@ -680,7 +462,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->eventTime;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Exfiltration $exfiltration
+   * @param GoogleCloudSecuritycenterV2Exfiltration
    */
   public function setExfiltration(GoogleCloudSecuritycenterV2Exfiltration $exfiltration)
   {
@@ -694,21 +476,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->exfiltration;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ExternalExposure $externalExposure
-   */
-  public function setExternalExposure(GoogleCloudSecuritycenterV2ExternalExposure $externalExposure)
-  {
-    $this->externalExposure = $externalExposure;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2ExternalExposure
-   */
-  public function getExternalExposure()
-  {
-    return $this->externalExposure;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2ExternalSystem[] $externalSystems
+   * @param GoogleCloudSecuritycenterV2ExternalSystem[]
    */
   public function setExternalSystems($externalSystems)
   {
@@ -722,7 +490,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->externalSystems;
   }
   /**
-   * @param string $externalUri
+   * @param string
    */
   public function setExternalUri($externalUri)
   {
@@ -736,7 +504,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->externalUri;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2File[] $files
+   * @param GoogleCloudSecuritycenterV2File[]
    */
   public function setFiles($files)
   {
@@ -750,21 +518,21 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->files;
   }
   /**
-   * @param self::FINDING_CLASS_* $findingClass
+   * @param string
    */
   public function setFindingClass($findingClass)
   {
     $this->findingClass = $findingClass;
   }
   /**
-   * @return self::FINDING_CLASS_*
+   * @return string
    */
   public function getFindingClass()
   {
     return $this->findingClass;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2GroupMembership[] $groupMemberships
+   * @param GoogleCloudSecuritycenterV2GroupMembership[]
    */
   public function setGroupMemberships($groupMemberships)
   {
@@ -778,7 +546,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->groupMemberships;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IamBinding[] $iamBindings
+   * @param GoogleCloudSecuritycenterV2IamBinding[]
    */
   public function setIamBindings($iamBindings)
   {
@@ -792,21 +560,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->iamBindings;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IamDetails $iamDetails
-   */
-  public function setIamDetails(GoogleCloudSecuritycenterV2IamDetails $iamDetails)
-  {
-    $this->iamDetails = $iamDetails;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2IamDetails
-   */
-  public function getIamDetails()
-  {
-    return $this->iamDetails;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Indicator $indicator
+   * @param GoogleCloudSecuritycenterV2Indicator
    */
   public function setIndicator(GoogleCloudSecuritycenterV2Indicator $indicator)
   {
@@ -820,35 +574,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->indicator;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2IpRules $ipRules
-   */
-  public function setIpRules(GoogleCloudSecuritycenterV2IpRules $ipRules)
-  {
-    $this->ipRules = $ipRules;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2IpRules
-   */
-  public function getIpRules()
-  {
-    return $this->ipRules;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Job $job
-   */
-  public function setJob(GoogleCloudSecuritycenterV2Job $job)
-  {
-    $this->job = $job;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2Job
-   */
-  public function getJob()
-  {
-    return $this->job;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2KernelRootkit $kernelRootkit
+   * @param GoogleCloudSecuritycenterV2KernelRootkit
    */
   public function setKernelRootkit(GoogleCloudSecuritycenterV2KernelRootkit $kernelRootkit)
   {
@@ -862,7 +588,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->kernelRootkit;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Kubernetes $kubernetes
+   * @param GoogleCloudSecuritycenterV2Kubernetes
    */
   public function setKubernetes(GoogleCloudSecuritycenterV2Kubernetes $kubernetes)
   {
@@ -876,7 +602,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->kubernetes;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2LoadBalancer[] $loadBalancers
+   * @param GoogleCloudSecuritycenterV2LoadBalancer[]
    */
   public function setLoadBalancers($loadBalancers)
   {
@@ -890,7 +616,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->loadBalancers;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2LogEntry[] $logEntries
+   * @param GoogleCloudSecuritycenterV2LogEntry[]
    */
   public function setLogEntries($logEntries)
   {
@@ -904,7 +630,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->logEntries;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2MitreAttack $mitreAttack
+   * @param GoogleCloudSecuritycenterV2MitreAttack
    */
   public function setMitreAttack(GoogleCloudSecuritycenterV2MitreAttack $mitreAttack)
   {
@@ -918,7 +644,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->mitreAttack;
   }
   /**
-   * @param string $moduleName
+   * @param string
    */
   public function setModuleName($moduleName)
   {
@@ -932,21 +658,21 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->moduleName;
   }
   /**
-   * @param self::MUTE_* $mute
+   * @param string
    */
   public function setMute($mute)
   {
     $this->mute = $mute;
   }
   /**
-   * @return self::MUTE_*
+   * @return string
    */
   public function getMute()
   {
     return $this->mute;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2MuteInfo $muteInfo
+   * @param GoogleCloudSecuritycenterV2MuteInfo
    */
   public function setMuteInfo(GoogleCloudSecuritycenterV2MuteInfo $muteInfo)
   {
@@ -960,7 +686,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->muteInfo;
   }
   /**
-   * @param string $muteInitiator
+   * @param string
    */
   public function setMuteInitiator($muteInitiator)
   {
@@ -974,7 +700,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->muteInitiator;
   }
   /**
-   * @param string $muteUpdateTime
+   * @param string
    */
   public function setMuteUpdateTime($muteUpdateTime)
   {
@@ -988,7 +714,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->muteUpdateTime;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -1002,21 +728,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->name;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Network[] $networks
-   */
-  public function setNetworks($networks)
-  {
-    $this->networks = $networks;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2Network[]
-   */
-  public function getNetworks()
-  {
-    return $this->networks;
-  }
-  /**
-   * @param string $nextSteps
+   * @param string
    */
   public function setNextSteps($nextSteps)
   {
@@ -1030,7 +742,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->nextSteps;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Notebook $notebook
+   * @param GoogleCloudSecuritycenterV2Notebook
    */
   public function setNotebook(GoogleCloudSecuritycenterV2Notebook $notebook)
   {
@@ -1044,7 +756,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->notebook;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2OrgPolicy[] $orgPolicies
+   * @param GoogleCloudSecuritycenterV2OrgPolicy[]
    */
   public function setOrgPolicies($orgPolicies)
   {
@@ -1058,7 +770,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->orgPolicies;
   }
   /**
-   * @param string $parent
+   * @param string
    */
   public function setParent($parent)
   {
@@ -1072,7 +784,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->parent;
   }
   /**
-   * @param string $parentDisplayName
+   * @param string
    */
   public function setParentDisplayName($parentDisplayName)
   {
@@ -1086,21 +798,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->parentDisplayName;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2PolicyViolationSummary $policyViolationSummary
-   */
-  public function setPolicyViolationSummary(GoogleCloudSecuritycenterV2PolicyViolationSummary $policyViolationSummary)
-  {
-    $this->policyViolationSummary = $policyViolationSummary;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2PolicyViolationSummary
-   */
-  public function getPolicyViolationSummary()
-  {
-    return $this->policyViolationSummary;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Process[] $processes
+   * @param GoogleCloudSecuritycenterV2Process[]
    */
   public function setProcesses($processes)
   {
@@ -1114,7 +812,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->processes;
   }
   /**
-   * @param string $resourceName
+   * @param string
    */
   public function setResourceName($resourceName)
   {
@@ -1128,21 +826,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->resourceName;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2Secret $secret
-   */
-  public function setSecret(GoogleCloudSecuritycenterV2Secret $secret)
-  {
-    $this->secret = $secret;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2Secret
-   */
-  public function getSecret()
-  {
-    return $this->secret;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2SecurityMarks $securityMarks
+   * @param GoogleCloudSecuritycenterV2SecurityMarks
    */
   public function setSecurityMarks(GoogleCloudSecuritycenterV2SecurityMarks $securityMarks)
   {
@@ -1156,7 +840,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->securityMarks;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2SecurityPosture $securityPosture
+   * @param GoogleCloudSecuritycenterV2SecurityPosture
    */
   public function setSecurityPosture(GoogleCloudSecuritycenterV2SecurityPosture $securityPosture)
   {
@@ -1170,21 +854,21 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->securityPosture;
   }
   /**
-   * @param self::SEVERITY_* $severity
+   * @param string
    */
   public function setSeverity($severity)
   {
     $this->severity = $severity;
   }
   /**
-   * @return self::SEVERITY_*
+   * @return string
    */
   public function getSeverity()
   {
     return $this->severity;
   }
   /**
-   * @param array[] $sourceProperties
+   * @param array[]
    */
   public function setSourceProperties($sourceProperties)
   {
@@ -1198,21 +882,21 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->sourceProperties;
   }
   /**
-   * @param self::STATE_* $state
+   * @param string
    */
   public function setState($state)
   {
     $this->state = $state;
   }
   /**
-   * @return self::STATE_*
+   * @return string
    */
   public function getState()
   {
     return $this->state;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2ToxicCombination $toxicCombination
+   * @param GoogleCloudSecuritycenterV2ToxicCombination
    */
   public function setToxicCombination(GoogleCloudSecuritycenterV2ToxicCombination $toxicCombination)
   {
@@ -1226,21 +910,7 @@ class GoogleCloudSecuritycenterV2Finding extends \Google\Collection
     return $this->toxicCombination;
   }
   /**
-   * @param GoogleCloudSecuritycenterV2VertexAi $vertexAi
-   */
-  public function setVertexAi(GoogleCloudSecuritycenterV2VertexAi $vertexAi)
-  {
-    $this->vertexAi = $vertexAi;
-  }
-  /**
-   * @return GoogleCloudSecuritycenterV2VertexAi
-   */
-  public function getVertexAi()
-  {
-    return $this->vertexAi;
-  }
-  /**
-   * @param GoogleCloudSecuritycenterV2Vulnerability $vulnerability
+   * @param GoogleCloudSecuritycenterV2Vulnerability
    */
   public function setVulnerability(GoogleCloudSecuritycenterV2Vulnerability $vulnerability)
   {

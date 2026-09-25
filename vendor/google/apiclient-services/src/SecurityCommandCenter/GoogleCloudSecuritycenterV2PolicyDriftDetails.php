@@ -33,7 +33,7 @@ class GoogleCloudSecuritycenterV2PolicyDriftDetails extends \Google\Model
   public $field;
 
   /**
-   * @param string $detectedValue
+   * @param string
    */
   public function setDetectedValue($detectedValue)
   {
@@ -47,7 +47,7 @@ class GoogleCloudSecuritycenterV2PolicyDriftDetails extends \Google\Model
     return $this->detectedValue;
   }
   /**
-   * @param string $expectedValue
+   * @param string
    */
   public function setExpectedValue($expectedValue)
   {
@@ -61,7 +61,7 @@ class GoogleCloudSecuritycenterV2PolicyDriftDetails extends \Google\Model
     return $this->expectedValue;
   }
   /**
-   * @param string $field
+   * @param string
    */
   public function setField($field)
   {

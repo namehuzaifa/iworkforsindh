@@ -10,6 +10,7 @@
 namespace Google\Protobuf\Internal;
 
 use Google\Protobuf\Internal\EnumDescriptor;
+use Google\Protobuf\EnumValueDescriptor;
 
 class EnumBuilderContext
 {
@@ -25,10 +26,10 @@ class EnumBuilderContext
         $this->pool = $pool;
     }
 
-    public function value($name, $number, $custom_json_name = null)
+    public function value($name, $number)
     {
-        $value = new EnumValueDescriptor($name, $number, $custom_json_name);
-        $this->descriptor->addValue($value);
+        $value = new EnumValueDescriptor($name, $number);
+        $this->descriptor->addValue($number, $value);
         return $this;
     }
 

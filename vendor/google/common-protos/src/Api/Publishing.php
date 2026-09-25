@@ -5,8 +5,8 @@
 namespace Google\Api;
 
 use Google\Protobuf\Internal\GPBType;
+use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\RepeatedField;
 
 /**
  * This message configures the settings for publishing [Google Cloud Client
@@ -101,7 +101,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \Google\Api\MethodSettings[] $method_settings
+     *     @type array<\Google\Api\MethodSettings>|\Google\Protobuf\Internal\RepeatedField $method_settings
      *           A list of API method settings, e.g. the behavior for methods that use the
      *           long-running operation pattern.
      *     @type string $new_issue_uri
@@ -116,7 +116,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      *           etc.  Example: "speech".
      *     @type string $github_label
      *           GitHub label to apply to issues and pull requests opened for this API.
-     *     @type string[] $codeowner_github_teams
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $codeowner_github_teams
      *           GitHub teams to be added to CODEOWNERS in the directory in GitHub
      *           containing source code for the client libraries for this API.
      *     @type string $doc_tag_prefix
@@ -124,7 +124,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      *           documentation.
      *     @type int $organization
      *           For whom the client library is being published.
-     *     @type \Google\Api\ClientLibrarySettings[] $library_settings
+     *     @type array<\Google\Api\ClientLibrarySettings>|\Google\Protobuf\Internal\RepeatedField $library_settings
      *           Client library settings.  If the same version string appears multiple
      *           times in this list, then the last one wins.  Settings from earlier
      *           settings with the same version string are discarded.
@@ -146,7 +146,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * long-running operation pattern.
      *
      * Generated from protobuf field <code>repeated .google.api.MethodSettings method_settings = 2;</code>
-     * @return RepeatedField<\Google\Api\MethodSettings>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getMethodSettings()
     {
@@ -158,7 +158,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * long-running operation pattern.
      *
      * Generated from protobuf field <code>repeated .google.api.MethodSettings method_settings = 2;</code>
-     * @param \Google\Api\MethodSettings[] $var
+     * @param array<\Google\Api\MethodSettings>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setMethodSettings($var)
@@ -286,7 +286,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * containing source code for the client libraries for this API.
      *
      * Generated from protobuf field <code>repeated string codeowner_github_teams = 105;</code>
-     * @return RepeatedField<string>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getCodeownerGithubTeams()
     {
@@ -298,7 +298,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * containing source code for the client libraries for this API.
      *
      * Generated from protobuf field <code>repeated string codeowner_github_teams = 105;</code>
-     * @param string[] $var
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setCodeownerGithubTeams($var)
@@ -369,7 +369,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * settings with the same version string are discarded.
      *
      * Generated from protobuf field <code>repeated .google.api.ClientLibrarySettings library_settings = 109;</code>
-     * @return RepeatedField<\Google\Api\ClientLibrarySettings>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getLibrarySettings()
     {
@@ -382,7 +382,7 @@ class Publishing extends \Google\Protobuf\Internal\Message
      * settings with the same version string are discarded.
      *
      * Generated from protobuf field <code>repeated .google.api.ClientLibrarySettings library_settings = 109;</code>
-     * @param \Google\Api\ClientLibrarySettings[] $var
+     * @param array<\Google\Api\ClientLibrarySettings>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setLibrarySettings($var)

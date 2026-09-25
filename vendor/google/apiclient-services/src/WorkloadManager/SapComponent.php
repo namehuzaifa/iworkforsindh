@@ -19,64 +19,24 @@ namespace Google\Service\WorkloadManager;
 
 class SapComponent extends \Google\Collection
 {
-  /**
-   * Unspecified topology.
-   */
-  public const TOPOLOGY_TYPE_TOPOLOGY_TYPE_UNSPECIFIED = 'TOPOLOGY_TYPE_UNSPECIFIED';
-  /**
-   * A scale-up single node system.
-   */
-  public const TOPOLOGY_TYPE_TOPOLOGY_SCALE_UP = 'TOPOLOGY_SCALE_UP';
-  /**
-   * A scale-out multi-node system.
-   */
-  public const TOPOLOGY_TYPE_TOPOLOGY_SCALE_OUT = 'TOPOLOGY_SCALE_OUT';
   protected $collection_key = 'resources';
-  protected $databasePropertiesType = DatabaseProperties::class;
-  protected $databasePropertiesDataType = '';
   /**
-   * List of host URIs that are part of the HA configuration if present. An
-   * empty list indicates the component is not configured for HA.
-   *
    * @var string[]
    */
   public $haHosts;
   protected $resourcesType = CloudResource::class;
   protected $resourcesDataType = 'array';
   /**
-   * Output only. sid is the sap component identificator
-   *
    * @var string
    */
   public $sid;
   /**
-   * The detected topology of the component.
-   *
    * @var string
    */
   public $topologyType;
 
   /**
-   * Output only. All instance properties.
-   *
-   * @param DatabaseProperties $databaseProperties
-   */
-  public function setDatabaseProperties(DatabaseProperties $databaseProperties)
-  {
-    $this->databaseProperties = $databaseProperties;
-  }
-  /**
-   * @return DatabaseProperties
-   */
-  public function getDatabaseProperties()
-  {
-    return $this->databaseProperties;
-  }
-  /**
-   * List of host URIs that are part of the HA configuration if present. An
-   * empty list indicates the component is not configured for HA.
-   *
-   * @param string[] $haHosts
+   * @param string[]
    */
   public function setHaHosts($haHosts)
   {
@@ -90,9 +50,7 @@ class SapComponent extends \Google\Collection
     return $this->haHosts;
   }
   /**
-   * Output only. resources in the component
-   *
-   * @param CloudResource[] $resources
+   * @param CloudResource[]
    */
   public function setResources($resources)
   {
@@ -106,9 +64,7 @@ class SapComponent extends \Google\Collection
     return $this->resources;
   }
   /**
-   * Output only. sid is the sap component identificator
-   *
-   * @param string $sid
+   * @param string
    */
   public function setSid($sid)
   {
@@ -122,19 +78,14 @@ class SapComponent extends \Google\Collection
     return $this->sid;
   }
   /**
-   * The detected topology of the component.
-   *
-   * Accepted values: TOPOLOGY_TYPE_UNSPECIFIED, TOPOLOGY_SCALE_UP,
-   * TOPOLOGY_SCALE_OUT
-   *
-   * @param self::TOPOLOGY_TYPE_* $topologyType
+   * @param string
    */
   public function setTopologyType($topologyType)
   {
     $this->topologyType = $topologyType;
   }
   /**
-   * @return self::TOPOLOGY_TYPE_*
+   * @return string
    */
   public function getTopologyType()
   {

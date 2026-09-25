@@ -39,8 +39,6 @@ use Google\Protobuf\Internal\Message;
 
 /**
 * Middleware which wraps the response in an PagedListResponses object.
-*
-* @internal
 */
 class PagedMiddleware implements MiddlewareInterface
 {

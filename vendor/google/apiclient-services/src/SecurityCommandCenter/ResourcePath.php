@@ -24,7 +24,7 @@ class ResourcePath extends \Google\Collection
   protected $nodesDataType = 'array';
 
   /**
-   * @param ResourcePathNode[] $nodes
+   * @param ResourcePathNode[]
    */
   public function setNodes($nodes)
   {

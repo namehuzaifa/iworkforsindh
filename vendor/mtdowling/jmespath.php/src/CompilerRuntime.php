@@ -8,14 +8,11 @@ namespace JmesPath;
  * logic to determine the filename:
  *
  * 1. Start with the string "jmespath_"
- * 2. Append the MD5 checksum of the expression salted with the PHP version
- *    and compiled-cache epoch.
+ * 2. Append the MD5 checksum of the expression.
  * 3. Append ".php"
  */
 class CompilerRuntime
 {
-    const CACHE_VERSION = 5;
-
     private $parser;
     private $compiler;
     private $cacheDir;
@@ -54,7 +51,7 @@ class CompilerRuntime
      */
     public function __invoke($expression, $data)
     {
-        $functionName = self::functionName($expression);
+        $functionName = 'jmespath_' . md5($expression);
 
         if (!function_exists($functionName)) {
             $filename = "{$this->cacheDir}/{$functionName}.php";
@@ -67,23 +64,6 @@ class CompilerRuntime
         return $functionName($this->interpreter, $data);
     }
 
-    /**
-     * @internal Shared with DebugRuntime so cache naming cannot drift.
-     */
-    public static function functionName($expression)
-    {
-        return 'jmespath_' . md5(
-            'jmespath:' . PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION
-            . ':' . self::CACHE_VERSION . ':' . $expression
-        );
-    }
-
-    /** @internal */
-    public function getCacheDir()
-    {
-        return $this->cacheDir;
-    }
-
     private function compile($filename, $expression, $functionName)
     {
         $code = $this->compiler->visit(
@@ -92,26 +72,12 @@ class CompilerRuntime
             $expression
         );
 
-        $tempFile = $filename . '.' . bin2hex(random_bytes(12)) . '.tmp';
-
-        if (!file_put_contents($tempFile, $code)) {
+        if (!file_put_contents($filename, $code)) {
             throw new \RuntimeException(sprintf(
                 'Unable to write the compiled PHP code to: %s (%s)',
-                $tempFile,
+                $filename,
                 var_export(error_get_last(), true)
             ));
-        }
-
-        if (!rename($tempFile, $filename)) {
-            @unlink($tempFile);
-            if (!file_exists($filename)) {
-                throw new \RuntimeException(
-                    "Unable to move the compiled PHP code to: {$filename}"
-                );
-            }
-            // Another process won the race; its file is equivalent.
-        } elseif (function_exists('opcache_invalidate')) {
-            opcache_invalidate($filename, true);
         }
     }
 }

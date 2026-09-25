@@ -19,35 +19,13 @@ namespace Google\Service\Container;
 
 class ManagedPrometheusConfig extends \Google\Model
 {
-  protected $autoMonitoringConfigType = AutoMonitoringConfig::class;
-  protected $autoMonitoringConfigDataType = '';
   /**
-   * Enable Managed Collection.
-   *
    * @var bool
    */
   public $enabled;
 
   /**
-   * GKE Workload Auto-Monitoring Configuration.
-   *
-   * @param AutoMonitoringConfig $autoMonitoringConfig
-   */
-  public function setAutoMonitoringConfig(AutoMonitoringConfig $autoMonitoringConfig)
-  {
-    $this->autoMonitoringConfig = $autoMonitoringConfig;
-  }
-  /**
-   * @return AutoMonitoringConfig
-   */
-  public function getAutoMonitoringConfig()
-  {
-    return $this->autoMonitoringConfig;
-  }
-  /**
-   * Enable Managed Collection.
-   *
-   * @param bool $enabled
+   * @param bool
    */
   public function setEnabled($enabled)
   {

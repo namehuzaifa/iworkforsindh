@@ -17,45 +17,15 @@
 
 namespace Google\Service\Compute;
 
-class ManagedInstancePropertiesFromFlexibilityPolicy extends \Google\Collection
+class ManagedInstancePropertiesFromFlexibilityPolicy extends \Google\Model
 {
-  protected $collection_key = 'disks';
-  protected $disksType = AttachedDisk::class;
-  protected $disksDataType = 'array';
   /**
-   * Output only. The machine type to be used for this instance.
-   *
    * @var string
    */
   public $machineType;
-  /**
-   * Name of the minimum CPU platform to be used by this instance. e.g. 'Intel
-   * Ice Lake'.
-   *
-   * @var string
-   */
-  public $minCpuPlatform;
 
   /**
-   * List of disks to be attached to the instance.
-   *
-   * @param AttachedDisk[] $disks
-   */
-  public function setDisks($disks)
-  {
-    $this->disks = $disks;
-  }
-  /**
-   * @return AttachedDisk[]
-   */
-  public function getDisks()
-  {
-    return $this->disks;
-  }
-  /**
-   * Output only. The machine type to be used for this instance.
-   *
-   * @param string $machineType
+   * @param string
    */
   public function setMachineType($machineType)
   {
@@ -67,23 +37,6 @@ class ManagedInstancePropertiesFromFlexibilityPolicy extends \Google\Collection
   public function getMachineType()
   {
     return $this->machineType;
-  }
-  /**
-   * Name of the minimum CPU platform to be used by this instance. e.g. 'Intel
-   * Ice Lake'.
-   *
-   * @param string $minCpuPlatform
-   */
-  public function setMinCpuPlatform($minCpuPlatform)
-  {
-    $this->minCpuPlatform = $minCpuPlatform;
-  }
-  /**
-   * @return string
-   */
-  public function getMinCpuPlatform()
-  {
-    return $this->minCpuPlatform;
   }
 }
 

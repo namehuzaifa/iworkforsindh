@@ -35,7 +35,6 @@ use Google\ApiCore\ApiException;
 use Google\ApiCore\Call;
 use Google\ApiCore\InsecureRequestBuilder;
 use Google\ApiCore\RequestBuilder;
-use Google\ApiCore\ResumableUpload\ResumableUploadTransportInterface;
 use Google\ApiCore\ServerStream;
 use Google\ApiCore\ServiceAddressTrait;
 use Google\ApiCore\Transport\Rest\RestServerStreamingCall;
@@ -49,7 +48,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * A REST based transport implementation.
  */
-class RestTransport implements TransportInterface, ResumableUploadTransportInterface
+class RestTransport implements TransportInterface
 {
     use ValidationTrait;
     use ServiceAddressTrait;
@@ -170,10 +169,7 @@ class RestTransport implements TransportInterface, ResumableUploadTransportInter
                 return $return;
             },
             function (\Throwable $ex) {
-                // Guzzle 7 carries the response on RequestException, Guzzle 8
-                // only on its ResponseException subclass, hence the
-                // method_exists() check.
-                if ($ex instanceof RequestException && method_exists($ex, 'getResponse') && $ex->getResponse()) {
+                if ($ex instanceof RequestException && $ex->hasResponse()) {
                     throw ApiException::createFromRequestException($ex);
                 }
 
@@ -204,7 +200,7 @@ class RestTransport implements TransportInterface, ResumableUploadTransportInter
         $request = $this->requestBuilder->build(
             $call->getMethod(),
             $call->getMessage()
-            // Exclude headers here because they will be added in doServerStreamRequest().
+            // Exclude headers here because they will be added in _serverStreamRequest().
         );
 
         $decoderOptions = [];
@@ -213,7 +209,7 @@ class RestTransport implements TransportInterface, ResumableUploadTransportInter
         }
 
         return new ServerStream(
-            $this->doServerStreamRequest(
+            $this->_serverStreamRequest(
                 $this->httpHandler,
                 $request,
                 $headers,
@@ -223,31 +219,6 @@ class RestTransport implements TransportInterface, ResumableUploadTransportInter
             ),
             $call->getDescriptor()
         );
-    }
-
-    /**
-     * Sends a raw PSR-7 request.
-     *
-     * @param RequestInterface $request
-     * @param array            $options
-     * @return \Psr\Http\Message\ResponseInterface|\GuzzleHttp\Promise\PromiseInterface
-     */
-    public function sendRawRequest(RequestInterface $request, array $options = [])
-    {
-        return ($this->httpHandler)($request, $options);
-    }
-
-    /**
-     * Builds a PSR-7 request.
-     *
-     * @param string   $method
-     * @param ?Message $message
-     * @param array    $headers
-     * @return RequestInterface
-     */
-    public function buildRequest(string $method, ?Message $message = null, array $headers = []): RequestInterface
-    {
-        return $this->requestBuilder->build($method, $message, $headers);
     }
 
     /**
@@ -262,7 +233,7 @@ class RestTransport implements TransportInterface, ResumableUploadTransportInter
      *
      * @return RestServerStreamingCall
      */
-    private function doServerStreamRequest(
+    private function _serverStreamRequest(
         $httpHandler,
         $request,
         $headers,

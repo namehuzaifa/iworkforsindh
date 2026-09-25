@@ -3,14 +3,14 @@
 /**
  * Pure-PHP FIPS 186-4 compliant implementation of DSA.
  *
- * PHP version 8.1+
+ * PHP version 5
  *
  * Here's an example of how to create signatures and verify signatures with this library:
  * <code>
  * <?php
  * include 'vendor/autoload.php';
  *
- * $private = \phpseclib4\Crypt\DSA::createKey();
+ * $private = \phpseclib3\Crypt\DSA::createKey();
  * $public = $private->getPublicKey();
  *
  * $plaintext = 'terrafrost';
@@ -22,19 +22,19 @@
  * </code>
  *
  * @author    Jim Wigginton <terrafrost@php.net>
- * @copyright 2016-2026 Jim Wigginton
+ * @copyright 2016 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @link      https://phpseclib.com/
+ * @link      http://phpseclib.sourceforge.net
  */
 
-declare(strict_types=1);
+namespace phpseclib3\Crypt;
 
-namespace phpseclib4\Crypt;
-
-use phpseclib4\Crypt\Common\AsymmetricKey;
-use phpseclib4\Crypt\DSA\{Parameters, PrivateKey, PublicKey};
-use phpseclib4\Exception\{BadConfigurationException, BadMethodCallException, InvalidArgumentException};
-use phpseclib4\Math\BigInteger;
+use phpseclib3\Crypt\Common\AsymmetricKey;
+use phpseclib3\Crypt\DSA\Parameters;
+use phpseclib3\Crypt\DSA\PrivateKey;
+use phpseclib3\Crypt\DSA\PublicKey;
+use phpseclib3\Exception\InsufficientSetupException;
+use phpseclib3\Math\BigInteger;
 
 /**
  * Pure-PHP FIPS 186-4 compliant implementation of DSA.
@@ -48,57 +48,70 @@ abstract class DSA extends AsymmetricKey
      *
      * @var string
      */
-    public const ALGORITHM = 'DSA';
+    const ALGORITHM = 'DSA';
 
     /**
      * DSA Prime P
+     *
+     * @var BigInteger
      */
-    protected BigInteger $p;
+    protected $p;
 
     /**
      * DSA Group Order q
      *
      * Prime divisor of p-1
+     *
+     * @var BigInteger
      */
-    protected BigInteger $q;
+    protected $q;
 
     /**
      * DSA Group Generator G
+     *
+     * @var BigInteger
      */
-    protected BigInteger $g;
+    protected $g;
 
     /**
      * DSA public key value y
+     *
+     * @var BigInteger
      */
-    protected BigInteger $y;
+    protected $y;
 
     /**
      * Signature Format
-     */
-    protected string $sigFormat;
-
-    /**
-     * Forced Engine
      *
-     * @see parent::forceEngine()
+     * @var string
      */
-    protected static ?string $forcedEngine = null;
+    protected $sigFormat;
 
     /**
      * Signature Format (Short)
+     *
+     * @var string
      */
-    protected string $shortFormat = 'ASN1';
+    protected $shortFormat;
 
     /**
      * Create DSA parameters
+     *
+     * @param int $L
+     * @param int $N
+     * @return DSA|bool
      */
-    public static function createParameters(int $L = 2048, int $N = 224): Parameters
+    public static function createParameters($L = 2048, $N = 224)
     {
         self::initialize_static_variables();
 
         $class = new \ReflectionClass(static::class);
         if ($class->isFinal()) {
-            throw new BadMethodCallException('createParameters() should not be called from final classes (' . static::class . ')');
+            throw new \RuntimeException('createParameters() should not be called from final classes (' . static::class . ')');
+        }
+
+        if (!isset(self::$engines['PHP'])) {
+            self::useBestEngine();
         }
 
         switch (true) {
@@ -119,7 +132,7 @@ abstract class DSA extends AsymmetricKey
             case $L == 3072 && $N == 256:
                 break;
             default:
-                throw new InvalidArgumentException('Invalid values for N and L');
+                throw new \InvalidArgumentException('Invalid values for N and L');
         }
 
         $two = new BigInteger(2);
@@ -129,12 +142,12 @@ abstract class DSA extends AsymmetricKey
 
         do {
             $x = BigInteger::random($L);
-            [, $c] = $x->divide($divisor);
+            list(, $c) = $x->divide($divisor);
             $p = $x->subtract($c->subtract(self::$one));
         } while ($p->getLength() != $L || !$p->isPrime());
 
         $p_1 = $p->subtract(self::$one);
-        [$e] = $p_1->divide($q);
+        list($e) = $p_1->divide($q);
 
         // quoting http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf#page=50 ,
         // "h could be obtained from a random number generator or from a counter that
@@ -164,22 +177,21 @@ abstract class DSA extends AsymmetricKey
      * no parameters (at which point L and N will be generated with this method)
      *
      * Returns the private key, from which the publickey can be extracted
+     *
+     * @param int[] ...$args
+     * @return PrivateKey
      */
-    public static function createKey(int|Parameters ...$args): PrivateKey
+    public static function createKey(...$args)
     {
         self::initialize_static_variables();
 
-        if (self::$forcedEngine == 'libsodium') {
-            throw new BadConfigurationException('Engine ' . self::$forcedEngine . ' is forced but unsupported for DSA');
-        }
-
-        if (self::$forcedEngine == 'OpenSSL' && !defined('OPENSSL_KEYTYPE_DSA')) {
-            throw new BadConfigurationException("Engine OpenSSL is forced but unsupported for DSA");
-        }
-
         $class = new \ReflectionClass(static::class);
         if ($class->isFinal()) {
-            throw new BadMethodCallException('createKey() should not be called from final classes (' . static::class . ')');
+            throw new \RuntimeException('createKey() should not be called from final classes (' . static::class . ')');
+        }
+
+        if (!isset(self::$engines['PHP'])) {
+            self::useBestEngine();
         }
 
         if (count($args) == 2 && is_int($args[0]) && is_int($args[1])) {
@@ -189,34 +201,7 @@ abstract class DSA extends AsymmetricKey
         } elseif (!count($args)) {
             $params = self::createParameters();
         } else {
-            throw new InvalidArgumentException('Valid parameters are either two integers (L and N), a single DSA object or no parameters at all.');
-        }
-
-        // at this point the only two supported values for self::$forcedEngine are OpenSSL, PHP and null
-        // if it's either OpenSSL or null we'll use OpenSSL (if it's available)
-        if (self::$forcedEngine !== 'PHP' && defined('OPENSSL_KEYTYPE_DSA')) {
-            $config = [];
-            if (self::$configFile) {
-                $config['config'] = self::$configFile;
-            }
-            $dsa = openssl_pkey_new($config + [
-                'private_key_type' => OPENSSL_KEYTYPE_DSA,
-                'p' => $params->p,
-                'q' => $params->q,
-                'g' => $params->g,
-            ]);
-            if ($dsa && openssl_pkey_export($dsa, $privatekeystr, null, $config)) {
-                // clear the buffer of error strings stemming from a minimalistic openssl.cnf
-                // https://github.com/php/php-src/issues/11054 talks about other errors this'll pick up
-                while (openssl_error_string() !== false) {
-                }
-
-                return DSA::load($privatekeystr)
-                    ->withHash($params->hash->getHash())
-                    ->withSignatureFormat($params->shortFormat);
-            } elseif (isset(self::$forcedEngine)) {
-                throw new BadConfigurationException('Engine OpenSSL is forced but unsupported for DSA');
-            }
+            throw new InsufficientSetupException('Valid parameters are either two integers (L and N), a single DSA object or no parameters at all.');
         }
 
         $private = new PrivateKey();
@@ -237,9 +222,15 @@ abstract class DSA extends AsymmetricKey
 
     /**
      * OnLoad Handler
+     *
+     * @return bool
      */
-    protected static function onLoad(array $components): Parameters|PrivateKey|PublicKey
+    protected static function onLoad(array $components)
     {
+        if (!isset(self::$engines['PHP'])) {
+            self::useBestEngine();
+        }
+
         if (!isset($components['x']) && !isset($components['y'])) {
             $new = new Parameters();
         } elseif (isset($components['x'])) {
@@ -268,6 +259,7 @@ abstract class DSA extends AsymmetricKey
     protected function __construct()
     {
         $this->sigFormat = self::validatePlugin('Signature', 'ASN1');
+        $this->shortFormat = 'ASN1';
 
         parent::__construct();
     }
@@ -276,10 +268,28 @@ abstract class DSA extends AsymmetricKey
      * Returns the key size
      *
      * More specifically, this L (the length of DSA Prime P) and N (the length of DSA Group Order q)
+     *
+     * @return array
      */
-    public function getLength(): array
+    public function getLength()
     {
         return ['L' => $this->p->getLength(), 'N' => $this->q->getLength()];
+    }
+
+    /**
+     * Returns the current engine being used
+     *
+     * @see self::useInternalEngine()
+     * @see self::useBestEngine()
+     * @return string
+     */
+    public function getEngine()
+    {
+        if (!isset(self::$engines['PHP'])) {
+            self::useBestEngine();
+        }
+        return self::$engines['OpenSSL'] && in_array($this->hash->getHash(), openssl_get_md_methods()) ?
+            'OpenSSL' : 'PHP';
     }
 
     /**
@@ -289,8 +299,9 @@ abstract class DSA extends AsymmetricKey
      * value.
      *
      * @see self::getPublicKey()
+     * @return mixed
      */
-    public function getParameters(): Parameters
+    public function getParameters()
     {
         $type = self::validatePlugin('Keys', 'PKCS1', 'saveParameters');
 
@@ -304,8 +315,10 @@ abstract class DSA extends AsymmetricKey
      * Determines the signature padding mode
      *
      * Valid values are: ASN1, SSH2, Raw
+     *
+     * @param string $format
      */
-    public function withSignatureFormat(string $format): static
+    public function withSignatureFormat($format)
     {
         $new = clone $this;
         $new->shortFormat = $format;
@@ -316,9 +329,8 @@ abstract class DSA extends AsymmetricKey
     /**
      * Returns the signature format currently being used
      *
-     * @psalm-suppress PossiblyUnusedMethod
      */
-    public function getSignatureFormat(): string
+    public function getSignatureFormat()
     {
         return $this->shortFormat;
     }

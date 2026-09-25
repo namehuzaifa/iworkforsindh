@@ -16,7 +16,28 @@ class HttpRequest
         }
         \GPBMetadata\Google\Protobuf\Duration::initOnce();
         $pool->internalAddGeneratedFile(
-            "\x0A\xF8\x04\x0A&google/logging/type/http_request.proto\x12\x13google.logging.type\"\xEF\x02\x0A\x0BHttpRequest\x12\x16\x0A\x0Erequest_method\x18\x01 \x01(\x09\x12\x13\x0A\x0Brequest_url\x18\x02 \x01(\x09\x12\x14\x0A\x0Crequest_size\x18\x03 \x01(\x03\x12\x0E\x0A\x06status\x18\x04 \x01(\x05\x12\x15\x0A\x0Dresponse_size\x18\x05 \x01(\x03\x12\x12\x0A\x0Auser_agent\x18\x06 \x01(\x09\x12\x11\x0A\x09remote_ip\x18\x07 \x01(\x09\x12\x11\x0A\x09server_ip\x18\x0D \x01(\x09\x12\x0F\x0A\x07referer\x18\x08 \x01(\x09\x12*\x0A\x07latency\x18\x0E \x01(\x0B2\x19.google.protobuf.Duration\x12\x14\x0A\x0Ccache_lookup\x18\x0B \x01(\x08\x12\x11\x0A\x09cache_hit\x18\x09 \x01(\x08\x12*\x0A\"cache_validated_with_origin_server\x18\x0A \x01(\x08\x12\x18\x0A\x10cache_fill_bytes\x18\x0C \x01(\x03\x12\x10\x0A\x08protocol\x18\x0F \x01(\x09B\xBE\x01\x0A\x17com.google.logging.typeB\x10HttpRequestProtoP\x01Z8google.golang.org/genproto/googleapis/logging/type;ltype\xAA\x02\x19Google.Cloud.Logging.Type\xCA\x02\x19Google\\Cloud\\Logging\\Type\xEA\x02\x1CGoogle::Cloud::Logging::Typeb\x06proto3"
+            '
+ø
+&google/logging/type/http_request.protogoogle.logging.type"ï
+HttpRequest
+request_method (	
+request_url (	
+request_size (
+status (
+response_size (
+
+user_agent (	
+	remote_ip (	
+	server_ip (	
+referer (	*
+latency (2.google.protobuf.Duration
+cache_lookup (
+	cache_hit	 (*
+"cache_validated_with_origin_server
+ (
+cache_fill_bytes (
+protocol (	B¾
+com.google.logging.typeBHttpRequestProtoPZ8google.golang.org/genproto/googleapis/logging/type;ltypeªGoogle.Cloud.Logging.TypeÊGoogle\\Cloud\\Logging\\TypeêGoogle::Cloud::Logging::Typebproto3'
         , true);
 
         static::$is_initialized = true;

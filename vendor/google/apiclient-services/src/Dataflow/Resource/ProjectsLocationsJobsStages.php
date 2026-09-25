@@ -31,8 +31,7 @@ class ProjectsLocationsJobsStages extends \Google\Service\Resource
 {
   /**
    * Request detailed information about the execution status of a stage of the
-   * job. EXPERIMENTAL. This API is subject to change or removal without notice. #
-   * IAM Permissions Requires the `dataflow.metrics.get` permission on the job.
+   * job. EXPERIMENTAL. This API is subject to change or removal without notice.
    * (stages.getExecutionDetails)
    *
    * @param string $projectId A project id.

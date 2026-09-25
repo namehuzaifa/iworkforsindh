@@ -27,7 +27,7 @@ class CreateResourceValueConfigRequest extends \Google\Model
   protected $resourceValueConfigDataType = '';
 
   /**
-   * @param string $parent
+   * @param string
    */
   public function setParent($parent)
   {
@@ -41,7 +41,7 @@ class CreateResourceValueConfigRequest extends \Google\Model
     return $this->parent;
   }
   /**
-   * @param GoogleCloudSecuritycenterV1ResourceValueConfig $resourceValueConfig
+   * @param GoogleCloudSecuritycenterV1ResourceValueConfig
    */
   public function setResourceValueConfig(GoogleCloudSecuritycenterV1ResourceValueConfig $resourceValueConfig)
   {

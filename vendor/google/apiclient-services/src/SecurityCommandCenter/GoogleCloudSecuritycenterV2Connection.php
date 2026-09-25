@@ -19,12 +19,6 @@ namespace Google\Service\SecurityCommandCenter;
 
 class GoogleCloudSecuritycenterV2Connection extends \Google\Model
 {
-  public const PROTOCOL_PROTOCOL_UNSPECIFIED = 'PROTOCOL_UNSPECIFIED';
-  public const PROTOCOL_ICMP = 'ICMP';
-  public const PROTOCOL_TCP = 'TCP';
-  public const PROTOCOL_UDP = 'UDP';
-  public const PROTOCOL_GRE = 'GRE';
-  public const PROTOCOL_ESP = 'ESP';
   /**
    * @var string
    */
@@ -47,7 +41,7 @@ class GoogleCloudSecuritycenterV2Connection extends \Google\Model
   public $sourcePort;
 
   /**
-   * @param string $destinationIp
+   * @param string
    */
   public function setDestinationIp($destinationIp)
   {
@@ -61,7 +55,7 @@ class GoogleCloudSecuritycenterV2Connection extends \Google\Model
     return $this->destinationIp;
   }
   /**
-   * @param int $destinationPort
+   * @param int
    */
   public function setDestinationPort($destinationPort)
   {
@@ -75,21 +69,21 @@ class GoogleCloudSecuritycenterV2Connection extends \Google\Model
     return $this->destinationPort;
   }
   /**
-   * @param self::PROTOCOL_* $protocol
+   * @param string
    */
   public function setProtocol($protocol)
   {
     $this->protocol = $protocol;
   }
   /**
-   * @return self::PROTOCOL_*
+   * @return string
    */
   public function getProtocol()
   {
     return $this->protocol;
   }
   /**
-   * @param string $sourceIp
+   * @param string
    */
   public function setSourceIp($sourceIp)
   {
@@ -103,7 +97,7 @@ class GoogleCloudSecuritycenterV2Connection extends \Google\Model
     return $this->sourceIp;
   }
   /**
-   * @param int $sourcePort
+   * @param int
    */
   public function setSourcePort($sourcePort)
   {

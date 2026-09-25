@@ -19,95 +19,23 @@ namespace Google\Service\CloudSearch;
 
 class RequestOptions extends \Google\Model
 {
-  /**
-   * The BCP-47 language code, such as "pt" or "en". It represents the user's
-   * preferred Display Language.
-   *
-   * @var string
-   */
-  public $clientDisplayLanguageCode;
-  /**
-   * Optional. Specifies the country/region where the query originated, as a
-   * lowercase ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for
-   * the United Kingdom).
-   *
-   * @var string
-   */
-  public $countryCode;
   protected $debugOptionsType = DebugOptions::class;
   protected $debugOptionsDataType = '';
   /**
-   * The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-   * information, see
-   * http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For
-   * translations. Set this field using the language set in browser or for the
-   * page. In the event that the user's language preference is known, set this
-   * field to the known user language. When specified, the documents in search
-   * results are biased towards the specified language. The Suggest API uses
-   * this field as a hint to make better third-party autocomplete predictions.
-   *
    * @var string
    */
   public $languageCode;
   /**
-   * The ID generated when you create a search application using the [admin
-   * console](https://support.google.com/a/answer/9043922).
-   *
    * @var string
    */
   public $searchApplicationId;
   /**
-   * Current user's time zone id, such as "America/Los_Angeles" or
-   * "Australia/Sydney". These IDs are defined by [Unicode Common Locale Data
-   * Repository (CLDR)](http://cldr.unicode.org/) project, and currently
-   * available in the file [timezone.xml](http://unicode.org/repos/cldr/trunk/co
-   * mmon/bcp47/timezone.xml). This field is used to correctly interpret date
-   * and time queries. If this field is not specified, the default time zone
-   * (UTC) is used.
-   *
    * @var string
    */
   public $timeZone;
 
   /**
-   * The BCP-47 language code, such as "pt" or "en". It represents the user's
-   * preferred Display Language.
-   *
-   * @param string $clientDisplayLanguageCode
-   */
-  public function setClientDisplayLanguageCode($clientDisplayLanguageCode)
-  {
-    $this->clientDisplayLanguageCode = $clientDisplayLanguageCode;
-  }
-  /**
-   * @return string
-   */
-  public function getClientDisplayLanguageCode()
-  {
-    return $this->clientDisplayLanguageCode;
-  }
-  /**
-   * Optional. Specifies the country/region where the query originated, as a
-   * lowercase ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for
-   * the United Kingdom).
-   *
-   * @param string $countryCode
-   */
-  public function setCountryCode($countryCode)
-  {
-    $this->countryCode = $countryCode;
-  }
-  /**
-   * @return string
-   */
-  public function getCountryCode()
-  {
-    return $this->countryCode;
-  }
-  /**
-   * Debug options of the request
-   *
-   * @param DebugOptions $debugOptions
+   * @param DebugOptions
    */
   public function setDebugOptions(DebugOptions $debugOptions)
   {
@@ -121,16 +49,7 @@ class RequestOptions extends \Google\Model
     return $this->debugOptions;
   }
   /**
-   * The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-   * information, see
-   * http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For
-   * translations. Set this field using the language set in browser or for the
-   * page. In the event that the user's language preference is known, set this
-   * field to the known user language. When specified, the documents in search
-   * results are biased towards the specified language. The Suggest API uses
-   * this field as a hint to make better third-party autocomplete predictions.
-   *
-   * @param string $languageCode
+   * @param string
    */
   public function setLanguageCode($languageCode)
   {
@@ -144,10 +63,7 @@ class RequestOptions extends \Google\Model
     return $this->languageCode;
   }
   /**
-   * The ID generated when you create a search application using the [admin
-   * console](https://support.google.com/a/answer/9043922).
-   *
-   * @param string $searchApplicationId
+   * @param string
    */
   public function setSearchApplicationId($searchApplicationId)
   {
@@ -161,15 +77,7 @@ class RequestOptions extends \Google\Model
     return $this->searchApplicationId;
   }
   /**
-   * Current user's time zone id, such as "America/Los_Angeles" or
-   * "Australia/Sydney". These IDs are defined by [Unicode Common Locale Data
-   * Repository (CLDR)](http://cldr.unicode.org/) project, and currently
-   * available in the file [timezone.xml](http://unicode.org/repos/cldr/trunk/co
-   * mmon/bcp47/timezone.xml). This field is used to correctly interpret date
-   * and time queries. If this field is not specified, the default time zone
-   * (UTC) is used.
-   *
-   * @param string $timeZone
+   * @param string
    */
   public function setTimeZone($timeZone)
   {

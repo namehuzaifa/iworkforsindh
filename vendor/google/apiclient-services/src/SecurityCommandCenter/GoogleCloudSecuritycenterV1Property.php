@@ -27,7 +27,7 @@ class GoogleCloudSecuritycenterV1Property extends \Google\Model
   protected $valueExpressionDataType = '';
 
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {
@@ -41,7 +41,7 @@ class GoogleCloudSecuritycenterV1Property extends \Google\Model
     return $this->name;
   }
   /**
-   * @param Expr $valueExpression
+   * @param Expr
    */
   public function setValueExpression(Expr $valueExpression)
   {

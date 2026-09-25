@@ -33,7 +33,7 @@ class PathNodeAssociatedFinding extends \Google\Model
   public $name;
 
   /**
-   * @param string $canonicalFinding
+   * @param string
    */
   public function setCanonicalFinding($canonicalFinding)
   {
@@ -47,7 +47,7 @@ class PathNodeAssociatedFinding extends \Google\Model
     return $this->canonicalFinding;
   }
   /**
-   * @param string $findingCategory
+   * @param string
    */
   public function setFindingCategory($findingCategory)
   {
@@ -61,7 +61,7 @@ class PathNodeAssociatedFinding extends \Google\Model
     return $this->findingCategory;
   }
   /**
-   * @param string $name
+   * @param string
    */
   public function setName($name)
   {

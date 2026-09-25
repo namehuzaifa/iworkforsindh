@@ -13,7 +13,6 @@ final class InMemoryCache implements CacheItemPoolInterface
 
     /** @var array<string, CacheItemInterface> */
     private array $items;
-
     /** @var array<string, CacheItemInterface> */
     private array $deferredItems;
 
@@ -25,6 +24,7 @@ final class InMemoryCache implements CacheItemPoolInterface
             {
                 return new DateTimeImmutable();
             }
+
         };
         $this->items = [];
         $this->deferredItems = [];

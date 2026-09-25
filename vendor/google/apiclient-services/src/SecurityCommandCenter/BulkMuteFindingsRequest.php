@@ -19,15 +19,11 @@ namespace Google\Service\SecurityCommandCenter;
 
 class BulkMuteFindingsRequest extends \Google\Model
 {
-  public const MUTE_STATE_MUTE_STATE_UNSPECIFIED = 'MUTE_STATE_UNSPECIFIED';
-  public const MUTE_STATE_MUTED = 'MUTED';
-  public const MUTE_STATE_UNDEFINED = 'UNDEFINED';
   /**
    * @var string
    */
   public $filter;
   /**
-   * @deprecated
    * @var string
    */
   public $muteAnnotation;
@@ -37,7 +33,7 @@ class BulkMuteFindingsRequest extends \Google\Model
   public $muteState;
 
   /**
-   * @param string $filter
+   * @param string
    */
   public function setFilter($filter)
   {
@@ -51,15 +47,13 @@ class BulkMuteFindingsRequest extends \Google\Model
     return $this->filter;
   }
   /**
-   * @deprecated
-   * @param string $muteAnnotation
+   * @param string
    */
   public function setMuteAnnotation($muteAnnotation)
   {
     $this->muteAnnotation = $muteAnnotation;
   }
   /**
-   * @deprecated
    * @return string
    */
   public function getMuteAnnotation()
@@ -67,14 +61,14 @@ class BulkMuteFindingsRequest extends \Google\Model
     return $this->muteAnnotation;
   }
   /**
-   * @param self::MUTE_STATE_* $muteState
+   * @param string
    */
   public function setMuteState($muteState)
   {
     $this->muteState = $muteState;
   }
   /**
-   * @return self::MUTE_STATE_*
+   * @return string
    */
   public function getMuteState()
   {

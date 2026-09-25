@@ -28,7 +28,7 @@ class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse extends \Google\
   public $nextPageToken;
 
   /**
-   * @param GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule[] $effectiveSecurityHealthAnalyticsCustomModules
+   * @param GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule[]
    */
   public function setEffectiveSecurityHealthAnalyticsCustomModules($effectiveSecurityHealthAnalyticsCustomModules)
   {
@@ -42,7 +42,7 @@ class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse extends \Google\
     return $this->effectiveSecurityHealthAnalyticsCustomModules;
   }
   /**
-   * @param string $nextPageToken
+   * @param string
    */
   public function setNextPageToken($nextPageToken)
   {

@@ -17,7 +17,6 @@
 
 namespace Google\Service\CloudRedis\Resource;
 
-use Google\Service\CloudRedis\AddTokenAuthUserRequest;
 use Google\Service\CloudRedis\BackupClusterRequest;
 use Google\Service\CloudRedis\CertificateAuthority;
 use Google\Service\CloudRedis\Cluster;
@@ -36,24 +35,6 @@ use Google\Service\CloudRedis\RescheduleClusterMaintenanceRequest;
 class ProjectsLocationsClusters extends \Google\Service\Resource
 {
   /**
-   * Adds a token auth user for a token based auth enabled cluster.
-   * (clusters.addTokenAuthUser)
-   *
-   * @param string $cluster Required. The cluster resource that this token auth
-   * user will be added for. Format:
-   * projects/{project}/locations/{location}/clusters/{cluster}
-   * @param AddTokenAuthUserRequest $postBody
-   * @param array $optParams Optional parameters.
-   * @return Operation
-   * @throws \Google\Service\Exception
-   */
-  public function addTokenAuthUser($cluster, AddTokenAuthUserRequest $postBody, $optParams = [])
-  {
-    $params = ['cluster' => $cluster, 'postBody' => $postBody];
-    $params = array_merge($params, $optParams);
-    return $this->call('addTokenAuthUser', [$params], Operation::class);
-  }
-  /**
    * Backup Redis Cluster. If this is the first time a backup is being created, a
    * backup collection will be created at the backend, and this backup belongs to
    * this collection. Both collection and backup will have a resource name. Backup
@@ -68,7 +49,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $name Required. Redis cluster resource name using the form:
    * `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where
-   * `location_id` refers to a Google Cloud region.
+   * `location_id` refers to a GCP region.
    * @param BackupClusterRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
@@ -91,7 +72,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $parent Required. The resource name of the cluster location
    * using the form: `projects/{project_id}/locations/{location_id}` where
-   * `location_id` refers to a Google Cloud region.
+   * `location_id` refers to a GCP region.
    * @param Cluster $postBody
    * @param array $optParams Optional parameters.
    *
@@ -100,7 +81,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    * lowercase letters, numbers, and hyphens. * Must start with a letter. * Must
    * be between 1-63 characters. * Must end with a number or a letter. * Must be
    * unique within the customer project / location
-   * @opt_param string requestId Optional. Idempotent request UUID.
+   * @opt_param string requestId Idempotent request UUID.
    * @return Operation
    * @throws \Google\Service\Exception
    */
@@ -116,10 +97,10 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $name Required. Redis cluster resource name using the form:
    * `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where
-   * `location_id` refers to a Google Cloud region.
+   * `location_id` refers to a GCP region.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string requestId Optional. Idempotent request UUID.
+   * @opt_param string requestId Idempotent request UUID.
    * @return Operation
    * @throws \Google\Service\Exception
    */
@@ -134,7 +115,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $name Required. Redis cluster resource name using the form:
    * `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where
-   * `location_id` refers to a Google Cloud region.
+   * `location_id` refers to a GCP region.
    * @param array $optParams Optional parameters.
    * @return Cluster
    * @throws \Google\Service\Exception
@@ -151,8 +132,8 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $name Required. Redis cluster certificate authority resource
    * name using the form: `projects/{project_id}/locations/{location_id}/clusters/
-   * {cluster_id}/certificateAuthority` where `location_id` refers to a Google
-   * Cloud region.
+   * {cluster_id}/certificateAuthority` where `location_id` refers to a GCP
+   * region.
    * @param array $optParams Optional parameters.
    * @return CertificateAuthority
    * @throws \Google\Service\Exception
@@ -172,7 +153,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $parent Required. The resource name of the cluster location
    * using the form: `projects/{project_id}/locations/{location_id}` where
-   * `location_id` refers to a Google Cloud region.
+   * `location_id` refers to a GCP region.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The maximum number of items to return. If not
@@ -181,7 +162,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    * should only rely on response's `next_page_token` to determine if there are
    * more clusters left to be queried.
    * @opt_param string pageToken The `next_page_token` value returned from a
-   * previous `ListClusters` request, if any.
+   * previous ListClusters request, if any.
    * @return ListClustersResponse
    * @throws \Google\Service\Exception
    */
@@ -203,7 +184,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    * @param Cluster $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string requestId Optional. Idempotent request UUID.
+   * @opt_param string requestId Idempotent request UUID.
    * @opt_param string updateMask Required. Mask of fields to update. At least one
    * path must be supplied in this field. The elements of the repeated paths field
    * may only include these fields from Cluster: * `size_gb` * `replica_count` *
@@ -223,7 +204,7 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
    *
    * @param string $name Required. Redis Cluster instance resource name using the
    * form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-   * where `location_id` refers to a Google Cloud region.
+   * where `location_id` refers to a GCP region.
    * @param RescheduleClusterMaintenanceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation

@@ -15,7 +15,13 @@ class Latlng
           return;
         }
         $pool->internalAddGeneratedFile(
-            "\x0A\xC0\x01\x0A\x18google/type/latlng.proto\x12\x0Bgoogle.type\"-\x0A\x06LatLng\x12\x10\x0A\x08latitude\x18\x01 \x01(\x01\x12\x11\x0A\x09longitude\x18\x02 \x01(\x01B`\x0A\x0Fcom.google.typeB\x0BLatLngProtoP\x01Z8google.golang.org/genproto/googleapis/type/latlng;latlng\xA2\x02\x03GTPb\x06proto3"
+            '
+Ã
+google/type/latlng.protogoogle.type"-
+LatLng
+latitude (
+	longitude (Bc
+com.google.typeBLatLngProtoPZ8google.golang.org/genproto/googleapis/type/latlng;latlngø¢GTPbproto3'
         , true);
 
         static::$is_initialized = true;

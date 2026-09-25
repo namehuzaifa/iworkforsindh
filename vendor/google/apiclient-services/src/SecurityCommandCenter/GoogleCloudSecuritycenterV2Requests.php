@@ -34,7 +34,7 @@ class GoogleCloudSecuritycenterV2Requests extends \Google\Model
   public $shortTermAllowed;
 
   /**
-   * @param int $longTermAllowed
+   * @param int
    */
   public function setLongTermAllowed($longTermAllowed)
   {
@@ -48,7 +48,7 @@ class GoogleCloudSecuritycenterV2Requests extends \Google\Model
     return $this->longTermAllowed;
   }
   /**
-   * @param int $longTermDenied
+   * @param int
    */
   public function setLongTermDenied($longTermDenied)
   {
@@ -70,7 +70,7 @@ class GoogleCloudSecuritycenterV2Requests extends \Google\Model
     return $this->ratio;
   }
   /**
-   * @param int $shortTermAllowed
+   * @param int
    */
   public function setShortTermAllowed($shortTermAllowed)
   {

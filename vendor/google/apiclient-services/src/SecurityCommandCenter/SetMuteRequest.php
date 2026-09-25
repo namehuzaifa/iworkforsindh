@@ -19,24 +19,20 @@ namespace Google\Service\SecurityCommandCenter;
 
 class SetMuteRequest extends \Google\Model
 {
-  public const MUTE_MUTE_UNSPECIFIED = 'MUTE_UNSPECIFIED';
-  public const MUTE_MUTED = 'MUTED';
-  public const MUTE_UNMUTED = 'UNMUTED';
-  public const MUTE_UNDEFINED = 'UNDEFINED';
   /**
    * @var string
    */
   public $mute;
 
   /**
-   * @param self::MUTE_* $mute
+   * @param string
    */
   public function setMute($mute)
   {
     $this->mute = $mute;
   }
   /**
-   * @return self::MUTE_*
+   * @return string
    */
   public function getMute()
   {

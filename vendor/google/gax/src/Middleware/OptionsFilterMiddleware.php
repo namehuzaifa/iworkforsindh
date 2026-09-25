@@ -36,8 +36,6 @@ use Google\ApiCore\Call;
 
 /**
 * Middleware which filters the $options array.
-*
-* @internal
 */
 class OptionsFilterMiddleware implements MiddlewareInterface
 {

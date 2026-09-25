@@ -213,11 +213,6 @@ class Translate extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'extraLocationTypes' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
                 'filter' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -229,16 +224,6 @@ class Translate extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-              ],
-            ],'refineText' => [
-              'path' => 'v3/{+parent}:refineText',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],'romanizeText' => [
@@ -823,10 +808,6 @@ class Translate extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-                'returnPartialSuccess' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
               ],
             ],'wait' => [

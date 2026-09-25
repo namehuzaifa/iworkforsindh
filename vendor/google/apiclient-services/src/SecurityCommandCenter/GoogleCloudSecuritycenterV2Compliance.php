@@ -34,7 +34,7 @@ class GoogleCloudSecuritycenterV2Compliance extends \Google\Collection
   public $version;
 
   /**
-   * @param string[] $ids
+   * @param string[]
    */
   public function setIds($ids)
   {
@@ -48,7 +48,7 @@ class GoogleCloudSecuritycenterV2Compliance extends \Google\Collection
     return $this->ids;
   }
   /**
-   * @param string $standard
+   * @param string
    */
   public function setStandard($standard)
   {
@@ -62,7 +62,7 @@ class GoogleCloudSecuritycenterV2Compliance extends \Google\Collection
     return $this->standard;
   }
   /**
-   * @param string $version
+   * @param string
    */
   public function setVersion($version)
   {

@@ -31,9 +31,7 @@ use Google\Service\AccessContextManager\SupportedService;
 class Services extends \Google\Service\Resource
 {
   /**
-   * Returns a VPC-SC supported service based on the service name. **IAM
-   * Permissions**: Requires the following IAM permissions to use this method: -
-   * `serviceusage.services.use` on the project. (services.get)
+   * Returns a VPC-SC supported service based on the service name. (services.get)
    *
    * @param string $name The name of the service to get information about. The
    * names must be in the same format as used in defining a service perimeter, for
@@ -49,16 +47,14 @@ class Services extends \Google\Service\Resource
     return $this->call('get', [$params], SupportedService::class);
   }
   /**
-   * Lists all VPC-SC supported services. **IAM Permissions**: Requires the
-   * following IAM permissions to use this method: - `serviceusage.services.use`
-   * on the project. (services.listServices)
+   * Lists all VPC-SC supported services. (services.listServices)
    *
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize This flag specifies the maximum number of services to
-   * return per page. Default value is 100.
-   * @opt_param string pageToken Use this token to retrieve a specific page of
-   * results. Default is the first page.
+   * return per page. Default is 100.
+   * @opt_param string pageToken Token to start on a later page. Default is the
+   * first page.
    * @return ListSupportedServicesResponse
    * @throws \Google\Service\Exception
    */

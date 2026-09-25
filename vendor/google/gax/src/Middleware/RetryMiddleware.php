@@ -39,8 +39,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 
 /**
  * Middleware that adds retry functionality.
- *
- * @internal
  */
 class RetryMiddleware implements MiddlewareInterface
 {
@@ -48,8 +46,6 @@ class RetryMiddleware implements MiddlewareInterface
     private $nextHandler;
     private RetrySettings $retrySettings;
     private ?float $deadlineMs;
-    /** @var callable */
-    private $delayHandler;
 
     /*
      * The number of retries that have already been attempted.
@@ -61,14 +57,12 @@ class RetryMiddleware implements MiddlewareInterface
         callable $nextHandler,
         RetrySettings $retrySettings,
         $deadlineMs = null,
-        $retryAttempts = 0,
-        ?callable $delayHandler = null
+        $retryAttempts = 0
     ) {
         $this->nextHandler = $nextHandler;
         $this->retrySettings = $retrySettings;
         $this->deadlineMs = $deadlineMs;
         $this->retryAttempts = $retryAttempts;
-        $this->delayHandler = ($delayHandler ?? [$this, 'sleepMillis']);
     }
 
     /**
@@ -98,11 +92,6 @@ class RetryMiddleware implements MiddlewareInterface
         // Call the handler immediately if retry settings are disabled.
         if (!$this->retrySettings->retriesEnabled()) {
             return $nextHandler($call, $options);
-        }
-
-        // Set the deadline before making the call, if it has not been set
-        if (is_null($this->deadlineMs)) {
-            $this->deadlineMs = $this->getCurrentTimeMs() + $this->retrySettings->getTotalTimeoutMillis();
         }
 
         return $nextHandler($call, $options)->then(null, function ($e) use ($call, $options) {
@@ -141,12 +130,14 @@ class RetryMiddleware implements MiddlewareInterface
         $maxDelayMs = $this->retrySettings->getMaxRetryDelayMillis();
         $timeoutMult = $this->retrySettings->getRpcTimeoutMultiplier();
         $maxTimeoutMs = $this->retrySettings->getMaxRpcTimeoutMillis();
+        $totalTimeoutMs = $this->retrySettings->getTotalTimeoutMillis();
 
         $delayMs = $this->retrySettings->getInitialRetryDelayMillis();
         $timeoutMs = $options['timeoutMillis'];
         $currentTimeMs = $this->getCurrentTimeMs();
+        $deadlineMs = $this->deadlineMs ?: $currentTimeMs + $totalTimeoutMs;
 
-        if ($currentTimeMs >= $this->deadlineMs) {
+        if ($currentTimeMs >= $deadlineMs) {
             throw new ApiException(
                 'Retry total timeout exceeded.',
                 \Google\Rpc\Code::DEADLINE_EXCEEDED,
@@ -154,28 +145,24 @@ class RetryMiddleware implements MiddlewareInterface
             );
         }
 
-        $nextDelayMs = min($delayMs * $delayMult, $maxDelayMs);
+        $delayMs = min($delayMs * $delayMult, $maxDelayMs);
         $timeoutMs = (int) min(
             $timeoutMs * $timeoutMult,
             $maxTimeoutMs,
-            $this->deadlineMs - $this->getCurrentTimeMs()
+            $deadlineMs - $this->getCurrentTimeMs()
         );
 
         $nextHandler = new RetryMiddleware(
             $this->nextHandler,
             $this->retrySettings->with([
-                'initialRetryDelayMillis' => $nextDelayMs,
+                'initialRetryDelayMillis' => $delayMs,
             ]),
-            $this->deadlineMs,
-            $this->retryAttempts + 1,
-            $this->delayHandler,
+            $deadlineMs,
+            $this->retryAttempts + 1
         );
 
         // Set the timeout for the call
         $options['timeoutMillis'] = $timeoutMs;
-
-        // Sleep for the length of the delay
-        ($this->delayHandler)((int) $delayMs);
 
         return $nextHandler(
             $call,
@@ -208,13 +195,5 @@ class RetryMiddleware implements MiddlewareInterface
 
                 return true;
             };
-    }
-
-    /**
-     * @param int $millis
-     */
-    private function sleepMillis(int $millis)
-    {
-        usleep($millis * 1000);
     }
 }

@@ -29,7 +29,7 @@ class GroupResult extends \Google\Model
   public $properties;
 
   /**
-   * @param string $count
+   * @param string
    */
   public function setCount($count)
   {
@@ -43,7 +43,7 @@ class GroupResult extends \Google\Model
     return $this->count;
   }
   /**
-   * @param array[] $properties
+   * @param array[]
    */
   public function setProperties($properties)
   {
